@@ -19,7 +19,9 @@
     "test": "node --test",
     "benchmark": "node benchmark/run.js",
     "demo": "python3 -m http.server 4173 --bind 127.0.0.1",
-    "demo:lan": "python3 -m http.server 4173 --bind"
+    "demo:lan": "python3 -m http.server 4173 --bind",
+    "benchmark:aksharantar": "node benchmark/aksharantar.js",
+    "benchmark:sentence-queue": "node benchmark/sentence-review.js"
   },
   "engines": {
     "node": ">=18"
