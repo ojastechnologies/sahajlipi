@@ -2,14 +2,26 @@
 
 A small, dependency-free prototype for direct Roman Nepali → Unicode typing in web apps. SahajLipi currently supports Nepali; the project name leaves room for other languages written in Devanagari. The default result appears inline; the engine returns alternatives only for spellings explicitly marked as ambiguous.
 
+## Documentation
+
+[Browse all documentation](docs/README.md), including the [security policy](SECURITY.md).
+
+- [Typing reference](docs/typing-reference.md)
+- [API reference](docs/api.md)
+- [Architecture](docs/architecture.md)
+- [Benchmarks and evaluation](docs/benchmarks.md)
+- [Development and contributing](docs/development.md)
+- [Project status and roadmap](docs/status-and-roadmap.md)
+
 ## Try it
 
 Try the [live demo](https://ojastechnologies.github.io/sahajlipi/demo/) in your browser.
 
-Requires Node.js 18+ and Python 3. No package install is needed.
+Node.js 18+ runs the tests and benchmark; Python 3 serves the local demo. No package install is needed.
 
 ```sh
 npm test
+npm run benchmark -- --check
 npm run demo
 ```
 
