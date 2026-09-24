@@ -4,6 +4,8 @@ A small, dependency-free prototype for direct Roman Nepali → Unicode typing in
 
 ## Try it
 
+Try the [live demo](https://ojastechnologies.github.io/sahajlipi/demo/) in your browser.
+
 Requires Node.js 18+ and Python 3. No package install is needed.
 
 ```sh
