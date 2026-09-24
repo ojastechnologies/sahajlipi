@@ -1,13 +1,13 @@
 # SahajLipi documentation
 
-Choose the guide for the part of SahajLipi you are using. The **package** provides conversion and an optional textarea adapter. The **demo** is a static playground built with that package.
+Choose the guide for the part of SahajLipi you are using. The **package** provides conversion and optional browser input adapters. The **demo** is a static playground built with that package.
 
 ## Reusable package
 
 | Read | For |
 | --- | --- |
 | [Package overview](package/README.md) | Entry points, scope, and current distribution status. |
-| [API reference](package/api.md) | Core engine and textarea adapter APIs, examples, and TypeScript declarations. |
+| [API reference](package/api.md) | Core engine and browser input APIs, one-call setup, and TypeScript declarations. |
 | [Typing reference](package/typing-reference.md) | Exact Roman-key behavior, half forms, marks, punctuation, and candidates. |
 | [Architecture](package/architecture.md) | Conversion flow, module boundaries, Unicode, and adapter event handling. |
 | [Benchmarks](package/benchmarks.md) | Reproducible engine cases, metrics, provenance, baseline, and limitations. |

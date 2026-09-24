@@ -1,0 +1,464 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { attachNepaliInput, attachNepaliInputs } from "../src/dom.js";
+
+const activeObservers = new Set();
+
+class FakeMutationObserver {
+  constructor(callback) {
+    this.callback = callback;
+    this.records = [];
+    this.scheduled = false;
+  }
+
+  observe(target, options) {
+    this.target = target;
+    this.options = options;
+    activeObservers.add(this);
+  }
+
+  disconnect() {
+    activeObservers.delete(this);
+    this.records = [];
+  }
+
+  static notify(record) {
+    for (const observer of activeObservers) {
+      const inScope = record.target === observer.target ||
+        (observer.options.subtree && observer.target.contains(record.target));
+      if (!inScope || !observer.options[record.type]) continue;
+      if (record.type === "attributes" && observer.options.attributeFilter &&
+          !observer.options.attributeFilter.includes(record.attributeName)) continue;
+      observer.records.push(record);
+      if (observer.scheduled) continue;
+      observer.scheduled = true;
+      queueMicrotask(() => {
+        observer.scheduled = false;
+        const records = observer.records.splice(0);
+        if (activeObservers.has(observer) && records.length) observer.callback(records, observer);
+      });
+    }
+  }
+}
+
+class FakeNode extends EventTarget {
+  constructor(tagName, ownerDocument = null) {
+    super();
+    this.tagName = tagName.toUpperCase();
+    this.nodeName = this.tagName;
+    this.ownerDocument = ownerDocument;
+    this.parentNode = null;
+    this.children = [];
+    this.attributes = new Map();
+  }
+
+  appendChild(child) {
+    child.parentNode = this;
+    child.ownerDocument = this.ownerDocument ?? this;
+    this.children.push(child);
+    FakeMutationObserver.notify({ type: "childList", target: this, addedNodes: [child], removedNodes: [] });
+    return child;
+  }
+
+  removeChild(child) {
+    const index = this.children.indexOf(child);
+    if (index < 0) throw new Error("Child is missing");
+    this.children.splice(index, 1);
+    child.parentNode = null;
+    FakeMutationObserver.notify({ type: "childList", target: this, addedNodes: [], removedNodes: [child] });
+    return child;
+  }
+
+  contains(node) {
+    if (this === node) return true;
+    return this.children.some((child) => child.contains(node));
+  }
+
+  setAttribute(name, value = "") {
+    this.attributes.set(name, String(value));
+    FakeMutationObserver.notify({ type: "attributes", target: this, attributeName: name });
+  }
+
+  removeAttribute(name) {
+    this.attributes.delete(name);
+    FakeMutationObserver.notify({ type: "attributes", target: this, attributeName: name });
+  }
+
+  hasAttribute(name) {
+    return this.attributes.has(name);
+  }
+
+  matches(selector) {
+    return selector.split(",").some((part) => {
+      const term = part.trim().toLowerCase();
+      const attribute = term.match(/\[([a-z][a-z0-9-]*)\]/)?.[1];
+      if (!attribute || !this.hasAttribute(attribute)) return false;
+      if (term.startsWith("textarea")) return this.tagName === "TEXTAREA";
+      if (term.startsWith("input")) return this.tagName === "INPUT";
+      return true;
+    });
+  }
+
+  querySelectorAll(selector) {
+    const found = [];
+    for (const child of this.children) {
+      if (child.matches(selector)) found.push(child);
+      found.push(...child.querySelectorAll(selector));
+    }
+    return found;
+  }
+}
+
+class FakeDocument extends FakeNode {
+  constructor() {
+    super("#document");
+    this.ownerDocument = this;
+    this.activeElement = null;
+    this.defaultView = { MutationObserver: FakeMutationObserver };
+    this.documentElement = this;
+  }
+}
+
+class FakeField extends FakeNode {
+  constructor(tagName = "textarea", type = "text") {
+    super(tagName);
+    this.type = type;
+    this.value = "";
+    this.selectionStart = 0;
+    this.selectionEnd = 0;
+  }
+
+  setSelectionRange(start, end) {
+    this.selectionStart = start;
+    this.selectionEnd = end;
+  }
+
+  setRangeText(text, start, end, selectionMode = "preserve") {
+    this.value = this.value.slice(0, start) + text + this.value.slice(end);
+    if (selectionMode === "end") this.setSelectionRange(start + text.length, start + text.length);
+  }
+
+  focus() {
+    this.ownerDocument.activeElement = this;
+  }
+}
+
+function setup({ observer = true } = {}) {
+  const previousDocument = globalThis.document;
+  const previousObserver = globalThis.MutationObserver;
+  const document = new FakeDocument();
+  if (!observer) delete document.defaultView.MutationObserver;
+  globalThis.document = document;
+  if (observer) globalThis.MutationObserver = FakeMutationObserver;
+  else delete globalThis.MutationObserver;
+  document.cleanup = () => {
+    for (const instance of [...activeObservers]) instance.disconnect();
+    if (previousDocument === undefined) delete globalThis.document;
+    else globalThis.document = previousDocument;
+    if (previousObserver === undefined) delete globalThis.MutationObserver;
+    else globalThis.MutationObserver = previousObserver;
+  };
+  return document;
+}
+
+function field(document, tagName = "textarea", type = "text", marked = false) {
+  const element = new FakeField(tagName, type);
+  if (marked) element.setAttribute("data-sahajlipi");
+  document.appendChild(element);
+  return element;
+}
+
+function beforeInput(element, inputType, data = null) {
+  element.focus();
+  const event = new Event("beforeinput", { cancelable: true });
+  Object.defineProperties(event, {
+    inputType: { value: inputType },
+    data: { value: data },
+  });
+  element.dispatchEvent(event);
+  if (!event.defaultPrevented && inputType === "insertText" && typeof data === "string") {
+    element.setRangeText(data, element.selectionStart, element.selectionEnd, "end");
+    const input = new Event("input");
+    Object.defineProperty(input, "inputType", { value: inputType });
+    element.dispatchEvent(input);
+  }
+  return event;
+}
+
+function type(element, text) {
+  for (const character of text) beforeInput(element, "insertText", character);
+}
+
+async function mutationsFlush() {
+  await new Promise((resolve) => setTimeout(resolve, 0));
+}
+
+test("a single field uses built-in conversion without passing engine functions", (t) => {
+  const document = setup();
+  const textarea = field(document);
+  const controller = attachNepaliInput(textarea);
+  t.after(() => { controller.destroy(); document.cleanup(); });
+
+  type(textarea, "pani|");
+  assert.equal(textarea.value, "पनि।");
+  assert.equal(controller.getState().text, "पनि।");
+});
+
+test("text and search inputs convert Nepali while keeping Enter single-line", (t) => {
+  const document = setup();
+  const controllers = [];
+  t.after(() => { controllers.forEach((controller) => controller.destroy()); document.cleanup(); });
+  for (const inputType of ["text", "search"]) {
+    const input = field(document, "input", inputType);
+    const controller = attachNepaliInput(input);
+    controllers.push(controller);
+    type(input, "pani");
+    assert.equal(input.value, "पनि", inputType);
+    beforeInput(input, "insertLineBreak");
+    assert.equal(input.value, "पनि", `${inputType} gained a newline`);
+  }
+});
+
+
+test("a text input supports selection replacement, paste, undo, and redo", (t) => {
+  const document = setup();
+  const input = field(document, "input", "text");
+  const controller = attachNepaliInput(input);
+  t.after(() => { controller.destroy(); document.cleanup(); });
+
+  type(input, "paani");
+  assert.equal(input.value, "पानी");
+  input.setSelectionRange(0, input.value.length);
+  type(input, "pani");
+  assert.equal(input.value, "पनि");
+
+  const paste = new Event("paste", { cancelable: true });
+  Object.defineProperty(paste, "clipboardData", {
+    value: { getData: () => " ghar" },
+  });
+  input.dispatchEvent(paste);
+  assert.equal(paste.defaultPrevented, true);
+  assert.equal(input.value, "पनि घर");
+  controller.undo();
+  assert.equal(input.value, "पनि");
+  controller.redo();
+  assert.equal(input.value, "पनि घर");
+});
+
+test("an element root and custom selector keep conversion inside that scope", (t) => {
+  const document = setup();
+  const section = new FakeNode("section");
+  document.appendChild(section);
+  const inside = new FakeField("input", "text");
+  inside.setAttribute("data-nepali-input");
+  section.appendChild(inside);
+  const outside = field(document, "input", "text");
+  outside.setAttribute("data-nepali-input");
+
+  const manager = attachNepaliInputs(section, { selector: "[data-nepali-input]" });
+  t.after(() => { manager.destroy(); document.cleanup(); });
+  assert.ok(manager.getController(inside));
+  assert.equal(manager.getController(outside), null);
+  type(inside, "pani");
+  type(outside, "pani");
+  assert.equal(inside.value, "पनि");
+  assert.equal(outside.value, "pani");
+});
+
+test("unsupported input types are rejected even if they expose setRangeText", (t) => {
+  const document = setup();
+  t.after(() => document.cleanup());
+  for (const inputType of ["email", "password", "number"]) {
+    const input = field(document, "input", inputType);
+    assert.throws(() => attachNepaliInput(input), TypeError, inputType);
+  }
+});
+
+test("one call attaches only marked supported fields and keeps their state separate", (t) => {
+  const document = setup();
+  const textarea = field(document, "textarea", "text", true);
+  const search = field(document, "input", "search", true);
+  const ordinary = field(document, "input", "text");
+  const email = field(document, "input", "email", true);
+  const updates = [];
+  const manager = attachNepaliInputs(document, {
+    onStateChange: (state, element) => updates.push({ state, element }),
+  });
+  t.after(() => { manager.destroy(); document.cleanup(); });
+
+  assert.ok(manager.getController(textarea));
+  assert.ok(manager.getController(search));
+  assert.equal(manager.getController(ordinary), null);
+  assert.equal(manager.getController(email), null);
+
+  type(textarea, "kam");
+  type(search, "pani");
+  type(ordinary, "pani");
+  type(email, "pani");
+  assert.equal(textarea.value, "कम");
+  assert.equal(search.value, "पनि");
+  assert.equal(ordinary.value, "pani");
+  assert.equal(email.value, "pani");
+  assert.deepEqual(manager.getController(textarea).getState().candidates, ["कम", "काम"]);
+  assert.equal(manager.getController(search).getState().activeRoman, "pani");
+  assert.ok(updates.some(({ state, element }) => element === textarea && state.text === "कम"));
+  assert.ok(updates.some(({ state, element }) => element === search && state.text === "पनि"));
+});
+
+test("marked fields added later attach, and unmarking or removing them detaches", async (t) => {
+  const document = setup();
+  const manager = attachNepaliInputs();
+  t.after(() => { manager.destroy(); document.cleanup(); });
+  const dynamic = field(document, "input", "text", true);
+  await mutationsFlush();
+  assert.ok(manager.getController(dynamic));
+  type(dynamic, "pani");
+  assert.equal(dynamic.value, "पनि");
+
+  dynamic.removeAttribute("data-sahajlipi");
+  await mutationsFlush();
+  assert.equal(manager.getController(dynamic), null);
+  dynamic.value = "";
+  dynamic.setSelectionRange(0, 0);
+  type(dynamic, "pani");
+  assert.equal(dynamic.value, "pani");
+
+  dynamic.setAttribute("data-sahajlipi");
+  await mutationsFlush();
+  assert.ok(manager.getController(dynamic));
+  document.removeChild(dynamic);
+  await mutationsFlush();
+  assert.equal(manager.getController(dynamic), null);
+});
+
+test("refresh attaches fields when MutationObserver is unavailable", (t) => {
+  const document = setup({ observer: false });
+  const manager = attachNepaliInputs(document);
+  t.after(() => { manager.destroy(); document.cleanup(); });
+  const added = field(document, "textarea", "text", true);
+  assert.equal(manager.getController(added), null);
+  manager.refresh();
+  assert.ok(manager.getController(added));
+  type(added, "pani");
+  assert.equal(added.value, "पनि");
+});
+
+test("destroy removes handlers and stops observing later fields", async (t) => {
+  const document = setup();
+  const first = field(document, "textarea", "text", true);
+  const manager = attachNepaliInputs(document);
+  t.after(() => document.cleanup());
+  assert.ok(manager.getController(first));
+  manager.destroy();
+  assert.equal(manager.getController(first), null);
+  type(first, "pani");
+  assert.equal(first.value, "pani");
+
+  const later = field(document, "input", "text", true);
+  await mutationsFlush();
+  assert.equal(manager.getController(later), null);
+  type(later, "pani");
+  assert.equal(later.value, "pani");
+});
+
+test("a custom converter still works with the single-field adapter", (t) => {
+  const document = setup();
+  const textarea = field(document);
+  const controller = attachNepaliInput(textarea, {
+    convertWord: (roman) => ({ text: `«${roman}»`, candidates: [`«${roman}»`], ambiguous: false }),
+    convertText: (text) => `[${text}]`,
+  });
+  t.after(() => { controller.destroy(); document.cleanup(); });
+  type(textarea, "ab");
+  assert.equal(textarea.value, "«ab»");
+});
+
+for (const teardown of ["destroy", "remove", "unmark"]) {
+  test(`queued composition does not update a field after ${teardown}`, async (t) => {
+    const document = setup();
+    const input = field(document, "input", "text", true);
+    const updates = [];
+    const manager = attachNepaliInputs(document, {
+      onStateChange: (state, element) => updates.push({ state, element }),
+    });
+    t.after(() => { manager.destroy(); document.cleanup(); });
+
+    input.dispatchEvent(new Event("compositionstart"));
+    input.setRangeText("pani", 0, 0, "end");
+    input.dispatchEvent(new Event("input"));
+    input.dispatchEvent(new Event("compositionend"));
+
+    if (teardown === "destroy") manager.destroy();
+    else if (teardown === "remove") document.removeChild(input);
+    else input.removeAttribute("data-sahajlipi");
+    const countAtTeardown = updates.length;
+
+    await new Promise((resolve) => setTimeout(resolve, 10));
+    assert.equal(manager.getController(input), null);
+    assert.equal(input.value, "pani");
+    assert.equal(updates.length, countAtTeardown);
+  });
+}
+
+test("a dynamic field's initial state callback can retrieve its controller", async (t) => {
+  const document = setup();
+  const input = new FakeField("input", "text");
+  input.setAttribute("data-sahajlipi");
+  let initialController = null;
+  let manager;
+  manager = attachNepaliInputs(document, {
+    onStateChange: (state, element) => {
+      if (element === input && state.text === "") {
+        initialController = manager.getController(element);
+      }
+    },
+  });
+  t.after(() => { manager.destroy(); document.cleanup(); });
+
+  document.appendChild(input);
+  await mutationsFlush();
+  assert.ok(initialController);
+  assert.equal(initialController, manager.getController(input));
+});
+
+test("unrelated attribute changes do not rescan marked fields", async (t) => {
+  const document = setup();
+  const input = field(document, "input", "text", true);
+  const querySelectorAll = document.querySelectorAll.bind(document);
+  let scans = 0;
+  document.querySelectorAll = (selector) => {
+    scans++;
+    return querySelectorAll(selector);
+  };
+  const manager = attachNepaliInputs(document);
+  t.after(() => { manager.destroy(); document.cleanup(); });
+  const scansAfterSetup = scans;
+
+  input.setAttribute("aria-label", "Nepali title");
+  await mutationsFlush();
+  assert.equal(scans, scansAfterSetup);
+  assert.ok(manager.getController(input));
+});
+
+test("unmarked DOM subtrees do not rescan the default selector", async (t) => {
+  const document = setup();
+  const querySelectorAll = document.querySelectorAll.bind(document);
+  let scans = 0;
+  document.querySelectorAll = (selector) => {
+    scans++;
+    return querySelectorAll(selector);
+  };
+  const manager = attachNepaliInputs(document);
+  t.after(() => { manager.destroy(); document.cleanup(); });
+  const scansAfterSetup = scans;
+
+  const section = new FakeNode("section");
+  section.appendChild(new FakeField("input", "text"));
+  document.appendChild(section);
+  await mutationsFlush();
+  assert.equal(scans, scansAfterSetup, "adding an unrelated subtree triggered a rescan");
+
+  document.removeChild(section);
+  await mutationsFlush();
+  assert.equal(scans, scansAfterSetup, "removing an unrelated subtree triggered a rescan");
+});

@@ -19,13 +19,35 @@ export interface NepaliInputController {
   destroy(): void;
 }
 
+export type NepaliInputField = HTMLTextAreaElement | HTMLInputElement;
+
 export interface NepaliInputOptions {
-  convertWord(roman: string): Conversion;
-  convertText(text: string): string;
+  convertWord?(roman: string): Conversion;
+  convertText?(text: string): string;
   onStateChange?(state: InputState): void;
 }
 
+export interface NepaliInputsOptions {
+  selector?: string;
+  convertWord?(roman: string): Conversion;
+  convertText?(text: string): string;
+  onStateChange?(state: InputState, field: NepaliInputField): void;
+}
+
+export interface NepaliInputsController {
+  refresh(): void;
+  getController(field: NepaliInputField): NepaliInputController | null;
+  destroy(): void;
+}
+
+/** Accepts a textarea, text input, or search input. */
 export function attachNepaliInput(
-  input: HTMLTextAreaElement,
-  options: NepaliInputOptions,
+  input: NepaliInputField,
+  options?: NepaliInputOptions,
 ): NepaliInputController;
+
+/** Attaches to marked fields in a document or element; observes DOM changes when available. */
+export function attachNepaliInputs(
+  root?: Document | Element,
+  options?: NepaliInputsOptions,
+): NepaliInputsController;

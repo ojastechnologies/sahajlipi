@@ -7,7 +7,7 @@ The public surface has two entry points:
 | Entry point | Source | Purpose |
 | --- | --- | --- |
 | Core | [`src/index.js`](../../src/index.js), types in [`src/index.d.ts`](../../src/index.d.ts) | Convert Roman input without a DOM. |
-| Browser adapter | [`src/dom.js`](../../src/dom.js), types in [`src/dom.d.ts`](../../src/dom.d.ts) | Make a `<textarea>` convert text as someone types. |
+| Browser adapters | [`src/dom.js`](../../src/dom.js), types in [`src/dom.d.ts`](../../src/dom.d.ts) | Add live typing to one field or all opted-in fields in a page region. |
 
 ## Core engine
 
@@ -61,43 +61,91 @@ convertWord('kam').text;           // 'कम' — the default engine is unchang
 
 `createEngine` currently configures dictionary entries only. The phonetic token tables and special-key behavior are fixed in the Nepali implementation; there is no language-profile API yet.
 
-## Browser textarea adapter
+## Browser input adapters
 
-[`attachNepaliInput`](../../src/dom.js) takes a textarea and the conversion functions to use. It returns a controller. The separate import lets server-side code use the core without touching `document`.
+The browser module is optional. It uses the default `convertWord` and `convertText` functions unless you supply your own. The core entry point can still run without a DOM. Supported fields are `<textarea>`, `<input type="text">`, and `<input type="search">`. Password, email, number, other input types, and `contenteditable` are outside this adapter.
+
+### Opt in several fields with one call
+
+Mark the fields that should transliterate:
+
+```html
+<textarea id="message" data-sahajlipi></textarea>
+<input type="text" name="name" data-sahajlipi>
+<input type="search" name="query" data-sahajlipi>
+<input type="email" name="email">
+```
+
+Then initialize once after the fields are available:
 
 ```js
-import { convertWord, convertText } from './src/index.js';
+import { attachNepaliInputs } from './src/dom.js';
+
+const manager = attachNepaliInputs();
+
+const message = document.querySelector('#message');
+manager.getController(message)?.setEnabled(false);
+
+// When the page or containing app is torn down:
+manager.destroy();
+```
+
+The default selector is `[data-sahajlipi]`. The unmarked email field above is left alone. The manager watches additions, removals, and marker or input-type changes with `MutationObserver`, attaching or detaching eligible fields as needed. `manager.refresh()` rescans on demand; use it when a page changes in an environment without `MutationObserver`. `manager.getController(field)` returns that field's controller, or `null` when it is not attached. `manager.destroy()` stops observing and detaches every field managed by this call.
+
+Pass a container to limit where it scans, or an explicit selector if your app already marks Nepali fields another way:
+
+```js
+const form = document.querySelector('#nepali-form');
+const manager = attachNepaliInputs(form, {
+  selector: '[data-language="ne"]',
+  onStateChange(state, field) {
+    // Render candidates for this field when state.candidates.length > 1.
+  },
+});
+```
+
+Only supported fields matching the selector are attached. The callback receives an initial state for each attached field after its controller is registered, then updates after adapter actions. `manager.getController(field)` is available inside that callback. It is the app's job to render an alternatives dropdown; the adapter provides ordered candidates and keyboard selection.
+
+### Attach one field directly
+
+Use `attachNepaliInput` when a component owns one field or needs a custom engine:
+
+```js
+import { createEngine } from './src/index.js';
 import { attachNepaliInput } from './src/dom.js';
 
-const textarea = document.querySelector('textarea');
-const controller = attachNepaliInput(textarea, {
-  convertWord,
-  convertText,
+const field = document.querySelector('#message');
+const engine = createEngine({ entries: { myname: ['मेरोनाम'] } });
+const controller = attachNepaliInput(field, {
+  convertWord: engine.convertWord,
+  convertText: engine.convertText,
   onStateChange({ text, enabled, activeRoman, candidates }) {
-    // Render a candidate list only when candidates.length > 1.
+    // Render candidates only when candidates.length > 1.
   },
 });
 
-// Call when removing the textarea or your component:
+// Call during component teardown:
 controller.destroy();
 ```
 
-`onStateChange` is optional. It receives an initial state at attachment and updates after adapter actions. `activeRoman` is the spelling of the word currently being edited at the caret. `candidates` is empty unless that active word has visible alternatives. `enabled` controls conversion of subsequent typing and paste; toggling it does not rewrite existing text.
+`attachNepaliInput(field)` without an options object uses the built-in converters and needs no callback. A custom engine can be passed through the two converter options shown above. A field with an unsupported type or an invalid converter option causes the direct API to throw `TypeError`; the manager simply ignores unsupported fields.
+
+`activeRoman` is the spelling of the word currently being edited at the caret. `candidates` is empty unless that active word has visible alternatives. `enabled` controls conversion of subsequent typing and paste; toggling it does not rewrite existing text.
 
 | Controller method | Behavior |
 | --- | --- |
 | `getState()` | Read `{ text, enabled, activeRoman, candidates }`. |
 | `chooseCandidate(index)` | Replace the active word with the zero-based candidate; does nothing when no choice is available. |
 | `setEnabled(boolean)` | Turn future conversion on or off. |
-| `setText(string)` | Replace textarea contents with the supplied **literal** text. |
+| `setText(string)` | Replace the field contents with the supplied **literal** text. |
 | `insertPunctuation(mark?)` | Insert `।` by default, or `॥`, at the selection. The keyboard shortcut `|` produces only `।`. |
 | `insertMark(mark)` | Insert `ं` or `ँ`; invalid marks throw `TypeError`. |
 | `undo()` / `redo()` | Move through the adapter's edit snapshots. |
 | `destroy()` | Remove listeners installed by this controller. Call it during UI teardown. |
 
-The adapter expects a textarea with `setRangeText`; passing another object or missing conversion functions throws `TypeError`. It uses `beforeinput` where possible, an `input` fallback, paste/cut and composition events, and its own undo history. An active word keeps its Roman spelling so Backspace can edit the spelling even after the visible text changes. Once the word is committed, deletion uses `Intl.Segmenter` for grapheme boundaries when available, with a code-point fallback. See [architecture](architecture.md) for the event flow.
+The field adapter uses `beforeinput` where possible, an `input` fallback, paste/cut and composition events, and its own undo history. An active word keeps its Roman spelling so Backspace can edit the spelling even after the visible text changes. Once the word is committed, deletion uses `Intl.Segmenter` for grapheme boundaries when available, with a code-point fallback. See [architecture](architecture.md) for the event flow.
 
-The adapter currently targets `<textarea>`, not `contenteditable` or arbitrary form controls. Automated input tests use a simulated textarea; a cross-browser and real-device compatibility matrix has not been established.
+Automated input tests use simulated fields; a cross-browser and real-device compatibility matrix has not been established. Framework-controlled fields can re-render their values, so test their event and teardown behavior in the host app.
 
 ## Typing contract and limits
 

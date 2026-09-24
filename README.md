@@ -4,7 +4,22 @@ SahajLipi is an MIT-licensed Roman Nepali → Unicode typing prototype for web d
 
 ## Use the package
 
-The core engine converts words and text without a browser. An optional textarea adapter adds live typing to a web app.
+The core engine converts words and text without a browser. For live typing, mark only the fields that should accept Roman Nepali, then initialize the browser adapter once:
+
+```html
+<textarea data-sahajlipi></textarea>
+<input type="text" data-sahajlipi>
+<input type="search" data-sahajlipi>
+
+<script type="module">
+  import { attachNepaliInputs } from './src/dom.js';
+
+  const nepali = attachNepaliInputs();
+  // Call nepali.destroy() when the page or app is torn down.
+</script>
+```
+
+The manager also picks up marked fields added later. For one field, call `attachNepaliInput(field)`; pass a custom engine or state callback only when needed. See the [browser API](docs/package/api.md#browser-input-adapters) for options and cleanup details.
 
 ```js
 import { convertWord, convertText } from './src/index.js';
