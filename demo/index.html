@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f7fa" />
+    <title>SahajLipi — Nepali typing playground</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <div class="identity">
+          <span class="identity-mark" aria-hidden="true">क</span>
+          <span class="identity-text">
+            <strong>SahajLipi</strong>
+            <small>Nepali typing prototype</small>
+          </span>
+        </div>
+        <span class="header-note">Core engine + browser input</span>
+      </header>
+
+      <main>
+        <div class="intro">
+          <h1>Type Nepali here.</h1>
+          <p>Write with Roman letters and watch them become Unicode Nepali. If a word has more than one reading, choose the one you mean.</p>
+        </div>
+
+        <div class="workbench">
+          <section class="editor" aria-label="Nepali typing playground">
+            <div class="editor-toolbar">
+              <div class="editor-heading">
+                <span class="live-indicator" aria-hidden="true"></span>
+                <span>Live editor</span>
+              </div>
+              <div class="toolbar-actions">
+                <button id="mode-button" class="mode-button" type="button" aria-pressed="true">Nepali on</button>
+                <button id="copy-button" class="quiet-button" type="button">Copy</button>
+                <button id="clear-button" class="quiet-button" type="button">Clear</button>
+              </div>
+            </div>
+
+            <textarea
+              id="typing-field"
+              aria-label="Type Roman Nepali here"
+              aria-describedby="typing-hint"
+              placeholder="Try typing: namaste mero ghar"
+              autocapitalize="off"
+              autocomplete="off"
+              autocorrect="off"
+              spellcheck="false"
+            ></textarea>
+
+            <div id="candidate-panel" class="candidate-panel" hidden>
+              <div class="candidate-copy">
+                <label for="candidate-select">Readings for <span id="roman-spelling"></span></label>
+              </div>
+              <select id="candidate-select" class="candidate-select"></select>
+            </div>
+
+            <div class="editor-footer">
+              <span id="typing-hint">Type Roman Nepali directly. Space finishes a word; the typing guide below shows vowels, half sounds, marks, and punctuation.</span>
+              <span id="character-count" class="character-count">0 characters</span>
+            </div>
+          </section>
+        </div>
+
+        <section class="guide" aria-labelledby="guide-title">
+          <div class="guide-heading">
+            <div>
+              <span class="section-label">Keyboard reference</span>
+              <h2 id="guide-title">How to type</h2>
+            </div>
+            <p>Type the Roman spelling. Nepali appears in the editor as you go. These examples show the keys the prototype currently understands.</p>
+          </div>
+
+          <div class="guide-grid">
+            <section class="guide-card">
+              <span class="guide-number">01 / Start typing</span>
+              <h3>Words appear directly</h3>
+              <p>Type a word without opening a candidate list. Press <kbd>Space</kbd> to finish it and start the next one.</p>
+              <div class="key-examples" aria-label="Direct typing examples">
+                <div><kbd>namaste</kbd><span aria-hidden="true">→</span><strong lang="ne">नमस्ते</strong></div>
+                <div><kbd>nepal</kbd><span aria-hidden="true">→</span><strong lang="ne">नेपाल</strong></div>
+              </div>
+              <p>While a word is active, <kbd>Backspace</kbd> removes the last Roman key and updates the Nepali result.</p>
+            </section>
+
+            <section class="guide-card">
+              <span class="guide-number">02 / Vowels</span>
+              <h3>Length changes the word</h3>
+              <p>A consonant starts half and a vowel completes it: <kbd>k</kbd> gives <span lang="ne">क्</span>, then <kbd>ka</kbd> gives <span lang="ne">क</span>. Use <kbd>aa</kbd> for long <span lang="ne">आ</span>, as in <span lang="ne">का</span>. <kbd>ii</kbd> or <kbd>ee</kbd> make sounds like <span lang="ne">की</span>; <kbd>uu</kbd> or <kbd>oo</kbd> make sounds like <span lang="ne">कू</span>.</p>
+              <div class="key-examples" aria-label="Short and long vowel examples">
+                <div><kbd>pani</kbd><span aria-hidden="true">→</span><strong lang="ne">पनि</strong></div>
+                <div><kbd>paani</kbd><span aria-hidden="true">→</span><strong lang="ne">पानी</strong></div>
+                <div><kbd>k</kbd><span aria-hidden="true">→</span><strong lang="ne">क्</strong></div>
+                <div><kbd>ka</kbd><span aria-hidden="true">→</span><strong lang="ne">क</strong></div>
+                <div><kbd>kaa</kbd><span aria-hidden="true">→</span><strong lang="ne">का</strong></div>
+              </div>
+            </section>
+
+            <section class="guide-card" id="half-sounds-guide">
+              <span class="guide-number">03 / Half sounds</span>
+              <h3>Half until a vowel arrives</h3>
+              <p>Consonants without a following vowel remain half, even at the end of a word. Adjacent consonants join automatically. A vowel completes the last consonant.</p>
+              <div class="key-examples" aria-label="Consonant cluster examples">
+                <div><kbd>kr</kbd><span aria-hidden="true">→</span><strong lang="ne">क्र्</strong></div>
+                <div><kbd>kra</kbd><span aria-hidden="true">→</span><strong lang="ne">क्र</strong></div>
+                <div><kbd>kri</kbd><span aria-hidden="true">→</span><strong lang="ne">क्रि</strong></div>
+                <div><kbd>shakti</kbd><span aria-hidden="true">→</span><strong lang="ne">शक्ति</strong></div>
+              </div>
+              <p><kbd>Space</kbd> keeps the displayed half form. Use <kbd>/</kbd> when you want an explicit halant after a vowel: <kbd>ka/</kbd> → <span lang="ne">क्</span>. Use <kbd>/=</kbd> for a visible half form: <kbd>par/=yo</kbd> → <span lang="ne">पर्‍यो</span>. Known words may follow the built-in word list, for example <kbd>kam</kbd> → <span lang="ne">कम</span> and <kbd>paryo</kbd> → <span lang="ne">पर्‍यो</span>.</p>
+            </section>
+
+            <section class="guide-card">
+              <span class="guide-number">04 / T and D sounds</span>
+              <h3>Shift changes the tongue position</h3>
+              <p>Lowercase <kbd>t</kbd> and <kbd>d</kbd> give dental sounds. Capital <kbd>T</kbd> and <kbd>D</kbd> give retroflex sounds. Keep the <kbd>h</kbd> lowercase for aspirated pairs.</p>
+              <table class="sound-table" aria-label="Dental and retroflex sound pairs">
+                <thead><tr><th scope="col">Default</th><th scope="col">With Shift</th></tr></thead>
+                <tbody>
+                  <tr><td><kbd>ta</kbd> <span lang="ne">त</span></td><td><kbd>Ta</kbd> <span lang="ne">ट</span></td></tr>
+                  <tr><td><kbd>tha</kbd> <span lang="ne">थ</span></td><td><kbd>Tha</kbd> <span lang="ne">ठ</span></td></tr>
+                  <tr><td><kbd>da</kbd> <span lang="ne">द</span></td><td><kbd>Da</kbd> <span lang="ne">ड</span></td></tr>
+                  <tr><td><kbd>dha</kbd> <span lang="ne">ध</span></td><td><kbd>Dha</kbd> <span lang="ne">ढ</span></td></tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section class="guide-card">
+              <span class="guide-number">05 / More Shift sounds</span>
+              <h3>Type ऋ, ष, and visarga</h3>
+              <p>Capital <kbd>R</kbd> gives <span lang="ne">ऋ</span> on its own or the <span lang="ne">ृ</span> sign after a consonant. Lowercase <kbd>ri</kbd> and <kbd>kri</kbd> keep their ordinary sounds.</p>
+              <div class="key-examples" aria-label="R vowel examples">
+                <div><kbd>R</kbd><span aria-hidden="true">→</span><strong lang="ne">ऋ</strong></div>
+                <div><kbd>kR</kbd><span aria-hidden="true">→</span><strong lang="ne">कृ</strong></div>
+                <div><kbd>ri</kbd><span aria-hidden="true">→</span><strong lang="ne">रि</strong></div>
+                <div><kbd>kri</kbd><span aria-hidden="true">→</span><strong lang="ne">क्रि</strong></div>
+              </div>
+              <p>Capital <kbd>S</kbd> or <kbd>Sh</kbd> chooses <span lang="ne">ष</span>; lowercase <kbd>sh</kbd> gives <span lang="ne">श</span>. As with other consonants, add a vowel to complete it: <kbd>Sa</kbd> or <kbd>Sha</kbd> → <span lang="ne">ष</span>, while <kbd>sha</kbd> → <span lang="ne">श</span>.</p>
+              <p>Capital <kbd>H</kbd> after a vowel adds visarga <span lang="ne">ः</span>. Lowercase <kbd>h</kbd> still types <span lang="ne">ह</span>, and <kbd>:</kbd> stays an English colon.</p>
+              <p>Known words may keep their listed spelling when capitalized: <kbd>Ram</kbd> → <span lang="ne">राम</span> and <kbd>Sita</kbd> → <span lang="ne">सीता</span>.</p>
+              <div class="key-examples" aria-label="Visarga examples">
+                <div><kbd>kaH</kbd><span aria-hidden="true">→</span><strong lang="ne">कः</strong></div>
+                <div><kbd>duHkha</kbd><span aria-hidden="true">→</span><strong lang="ne">दुःख</strong></div>
+                <div><kbd>ha</kbd><span aria-hidden="true">→</span><strong lang="ne">ह</strong></div>
+                <div><kbd>ka:</kbd><span aria-hidden="true">→</span><strong lang="ne">क:</strong></div>
+              </div>
+            </section>
+
+            <section class="guide-card">
+              <span class="guide-number">06 / Nasal marks</span>
+              <h3>Choose the mark explicitly</h3>
+              <p>Type <kbd>^</kbd> after a syllable for <span lang="ne">बिन्दु ं</span>, or <kbd>~</kbd> for <span lang="ne">चन्द्रबिन्दु ँ</span>. The letters <kbd>n</kbd> and <kbd>m</kbd> still make consonants.</p>
+              <div class="key-examples" aria-label="Nasal mark examples">
+                <div><kbd>ka^</kbd><span aria-hidden="true">→</span><strong lang="ne">कं</strong></div>
+                <div><kbd>kaa~</kbd><span aria-hidden="true">→</span><strong lang="ne">काँ</strong></div>
+              </div>
+            </section>
+
+            <section class="guide-card">
+              <span class="guide-number">07 / Punctuation</span>
+              <h3>Period or <span lang="ne">पूर्णविराम</span></h3>
+              <p>The <kbd>.</kbd> key always types an English period, including after a Nepali word and in decimals. Type <kbd>|</kbd> for <span lang="ne">।</span> anywhere, including after a number. Pasted text follows the same rule.</p>
+              <div class="key-examples" aria-label="Full stop and decimal examples">
+                <div><kbd>namaste.</kbd><span aria-hidden="true">→</span><strong lang="ne">नमस्ते.</strong></div>
+                <div><kbd>namaste|</kbd><span aria-hidden="true">→</span><strong lang="ne">नमस्ते।</strong></div>
+                <div><kbd>3.14</kbd><span aria-hidden="true">→</span><strong>3.14</strong></div>
+                <div><kbd>3.14|</kbd><span aria-hidden="true">→</span><strong lang="ne">3.14।</strong></div>
+              </div>
+            </section>
+
+            <section class="guide-card">
+              <span class="guide-number">08 / Alternatives</span>
+              <h3>Choose only when needed</h3>
+              <p>Ambiguous words show a readings dropdown. The first reading appears in the editor; pick another from the dropdown or press <kbd>Alt</kbd> + <kbd>1</kbd>, <kbd>2</kbd>, and so on. Press <kbd>Space</kbd> to keep the displayed reading and finish the word.</p>
+              <div class="key-examples" aria-label="Alternative reading example">
+                <div><kbd>kam</kbd><span aria-hidden="true">→</span><strong lang="ne">कम / काम</strong></div>
+              </div>
+            </section>
+
+            <section class="guide-card">
+              <span class="guide-number">09 / Editor controls</span>
+              <h3>Switch, copy, or clear</h3>
+              <p>Use <strong>Nepali on/off</strong> to switch between conversion and literal English typing. The <kbd>.</kbd> key stays a period in both modes. With Nepali off, shortcut keys such as <kbd>^</kbd>, <kbd>~</kbd>, <kbd>/</kbd>, and <kbd>|</kbd> stay literal. <strong>Copy</strong> copies the editor text; <strong>Clear</strong> starts again.</p>
+              <p>The text you enter remains editable in the same field, including text you paste or type on a phone.</p>
+            </section>
+          </div>
+        </section>
+
+        <section class="developer-note" aria-label="Developer API">
+          <div>
+            <h2>Built for web developers</h2>
+            <p>The engine can convert a word without the editor. This page adds the direct typing behavior.</p>
+          </div>
+          <code>convertWord("paani").text <span aria-hidden="true">→</span> "पानी"</code>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
