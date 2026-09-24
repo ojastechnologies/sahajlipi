@@ -1,21 +1,34 @@
 # SahajLipi documentation
 
-SahajLipi is an early, MIT-licensed Nepali typing engine and textarea adapter. The [live demo](https://ojastechnologies.github.io/sahajlipi/demo/) shows the current interaction. The [repository README](../README.md) has a quick start and examples.
+Choose the guide for the part of SahajLipi you are using. The **package** provides conversion and an optional textarea adapter. The **demo** is a static playground built with that package.
+
+## Reusable package
 
 | Read | For |
 | --- | --- |
-| [Typing reference](typing-reference.md) | Exact key behavior, half forms, marks, punctuation, and alternatives. |
-| [API reference](api.md) | Core and textarea APIs, examples, types, and integration limits. |
-| [Architecture](architecture.md) | Data flow, module boundaries, Unicode handling, and editor event paths. |
-| [Benchmarks](benchmarks.md) | Reproducible seed cases, metrics, provenance, results, and limits. |
-| [Development](development.md) | Local setup, testing, contributing, CI, and release readiness. |
-| [Status and roadmap](status-and-roadmap.md) | Shipped capabilities, known gaps, and priorities. |
-| [Contributing](../CONTRIBUTING.md) | A short path for proposing a word or behavior fix. |
-| [Security policy](../SECURITY.md) | Supported state and private vulnerability reporting. |
+| [Package overview](package/README.md) | Entry points, scope, and current distribution status. |
+| [API reference](package/api.md) | Core engine and textarea adapter APIs, examples, and TypeScript declarations. |
+| [Typing reference](package/typing-reference.md) | Exact Roman-key behavior, half forms, marks, punctuation, and candidates. |
+| [Architecture](package/architecture.md) | Conversion flow, module boundaries, Unicode, and adapter event handling. |
+| [Benchmarks](package/benchmarks.md) | Reproducible engine cases, metrics, provenance, baseline, and limitations. |
+
+## Browser demo
+
+| Read | For |
+| --- | --- |
+| [Demo guide](demo/README.md) | Live and local access, editor controls, candidate dropdown, and Pages hosting. |
+| [Live demo](https://ojastechnologies.github.io/sahajlipi/demo/) | Try typing in the hosted playground; its on-page guide shows the keys. |
+
+The demo is one consumer of the package. Its Copy and Clear buttons, character count, and dropdown rendering are demo UI; the conversion rules and reusable adapter API are documented under the package.
+
+## Project and community
+
+| Read | For |
+| --- | --- |
+| [Development guide](development.md) | Repository workflow, tests, CI, and release readiness. |
+| [Status and roadmap](status-and-roadmap.md) | Current capabilities, limits, and priorities. |
+| [Contributing](../CONTRIBUTING.md) | Reporting a typing issue or proposing a focused change. |
+| [Security policy](../SECURITY.md) | Private vulnerability reporting and support status. |
 | [MIT license](../LICENSE) | Terms for code and documentation. |
 
-## Reading results responsibly
-
-The current automated tests protect specific behavior. The seed benchmark is a named set of examples and exploratory failures. Neither establishes population-wide Nepali typing accuracy. Any future accuracy or comparison claim should identify the corpus, who reviewed expected spellings, how examples were collected, the exact version tested, and the misses. See the [benchmark protocol](benchmarks.md).
-
-Documentation describes the current source and is updated in the same pull request as a changed API or key behavior. The demo's on-page guide remains the quick reference for people trying the editor.
+The current automated tests protect specific behavior. The seed benchmark uses selected examples and reports unreviewed proposals separately; neither establishes population-wide Nepali typing accuracy. See the [benchmark protocol](package/benchmarks.md) before interpreting its results.
