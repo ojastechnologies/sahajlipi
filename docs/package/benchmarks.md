@@ -62,3 +62,7 @@ Include common and uncommon words, inflections, names, short and long vowels, co
 ## Performance protocol for a future report
 
 There is **no performance result yet**. A future engine timing report should state the SahajLipi commit, benchmark corpus version, Node.js version, operating system, CPU, and run command. Warm up the engine, run a fixed mix of word and text inputs repeatedly, and report median and 95th-percentile time per conversion across repeated trials. Keep cold-start timing separate from steady-state timing and record variation between trials. Browser input latency needs its own experiment with real browsers and devices; Node.js `convertWord` timing cannot stand in for key-to-display latency or mobile composition behavior.
+
+## External language data
+
+The [external evaluation guide](external-evaluation.md) gives pinned download commands, file hashes, scoring rules, source licenses, a reproducible Aksharantar Nepali word baseline, and a separate Bhasha-Abhijnaanam sentence review queue. Its word result is descriptive. The sentence queue contains unreviewed source pairs and has no score. Neither changes the seed contract gate above.
