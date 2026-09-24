@@ -24,9 +24,9 @@ body {
   color: var(--ink);
 }
 
-button, textarea { font: inherit; }
+button, textarea, input { font: inherit; }
 button { cursor: pointer; }
-button:focus-visible, textarea:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+button:focus-visible, textarea:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 
 .page { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
 
@@ -126,6 +126,23 @@ button:focus-visible, textarea:focus-visible, a:focus-visible { outline: 3px sol
 .editor-footer { display: flex; justify-content: space-between; gap: 12px; padding: 13px 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; line-height: 1.5; }
 .character-count { white-space: nowrap; }
 
+.integration { margin: 48px 0 0; padding: 27px; border: 1px solid #c8dfe1; border-radius: 16px; background: #eaf4f4; }
+.integration-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 430px); align-items: end; gap: 22px; }
+.integration h2 { margin: 7px 0 0; font-size: clamp(27px, 3vw, 36px); line-height: 1.18; letter-spacing: -0.04em; }
+.integration-heading p { margin: 0 0 2px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.integration-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 22px; }
+.integration-fields, .integration-code { min-width: 0; padding: 20px; border: 1px solid var(--line); border-radius: 11px; background: var(--paper); }
+.integration-fields { display: grid; gap: 15px; }
+.sample-field { display: grid; gap: 7px; min-width: 0; }
+.sample-field span, .code-label { color: var(--ink); font-size: 12px; font-weight: 700; }
+.sample-field input { width: 100%; min-height: 43px; padding: 9px 12px; border: 1px solid #bdcfd7; border-radius: 7px; background: #fcfefe; color: var(--ink); font-family: "Noto Sans Devanagari", "Kohinoor Devanagari", "Mangal", ui-sans-serif, sans-serif; font-size: 17px; }
+.sample-field input[type="email"] { font-family: inherit; }
+.sample-field input::placeholder { color: #8298a3; opacity: 1; }
+.sample-field input:focus-visible { border-color: var(--accent); outline: 3px solid var(--focus); outline-offset: 2px; }
+.integration-code { display: flex; flex-direction: column; }
+.integration-code pre { overflow: auto; margin: 13px 0 14px; padding: 14px; border-radius: 7px; background: #192d3e; color: #eff8f8; font: 12px/1.75 ui-monospace, SFMono-Regular, Menlo, monospace; tab-size: 2; }
+.integration-code p { margin: auto 0 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
+
 .guide { margin: 54px 0 0; }
 .guide-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 470px); align-items: end; gap: 30px; margin-bottom: 22px; }
 .section-label, .guide-number { color: var(--accent); font-size: 11px; font-weight: 750; letter-spacing: 0.1em; text-transform: uppercase; }
@@ -156,7 +173,7 @@ kbd { padding: 2px 5px; border: 1px solid var(--line); border-radius: 4px; backg
 .developer-link:hover { background: #d8eeec; }
 
 @media (max-width: 850px) {
-  .guide-heading { grid-template-columns: 1fr; gap: 10px; }
+  .guide-heading, .integration-heading { grid-template-columns: 1fr; gap: 10px; }
 }
 
 @media (max-width: 600px) {
@@ -172,6 +189,9 @@ kbd { padding: 2px 5px; border: 1px solid var(--line); border-radius: 4px; backg
   .editor-footer { flex-wrap: wrap; padding: 12px 13px; }
   .candidate-panel { flex-wrap: wrap; padding: 12px 13px; }
   .candidate-select { width: 100%; }
+  .integration { margin-top: 36px; padding: 17px; }
+  .integration-layout { grid-template-columns: 1fr; }
+  .integration-fields, .integration-code { padding: 16px; }
   .guide { margin-top: 42px; }
   .guide-grid { grid-template-columns: 1fr; }
   .guide-card { padding: 20px 19px; }

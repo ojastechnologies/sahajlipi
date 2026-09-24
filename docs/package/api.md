@@ -7,7 +7,7 @@ The public surface has two entry points:
 | Entry point | Source | Purpose |
 | --- | --- | --- |
 | Core | [`src/index.js`](../../src/index.js), types in [`src/index.d.ts`](../../src/index.d.ts) | Convert Roman input without a DOM. |
-| Browser adapters | [`src/dom.js`](../../src/dom.js), types in [`src/dom.d.ts`](../../src/dom.d.ts) | Add live typing to one field or all opted-in fields in a page region. |
+| Browser adapters | [`src/dom.js`](../../src/dom.js), types in [`src/dom.d.ts`](../../src/dom.d.ts) | Add live typing to one field or a configurable set of fields in a document or page region. |
 
 ## Core engine
 
@@ -65,46 +65,109 @@ convertWord('kam').text;           // 'कम' — the default engine is unchang
 
 The browser module is optional. It uses the default `convertWord` and `convertText` functions unless you supply your own. The core entry point can still run without a DOM. Supported fields are `<textarea>`, `<input type="text">`, and `<input type="search">`. Password, email, number, other input types, and `contenteditable` are outside this adapter.
 
-### Opt in several fields with one call
+### Choose an integration scope
 
-Mark the fields that should transliterate:
+`attachNepaliInputs(root = document, options?)` creates a manager for a document or element. Configure that manager once for the fields it owns:
+
+| Goal | Setup |
+| --- | --- |
+| Selected fields (default) | Add `data-sahajlipi` to each field, then call `attachNepaliInputs()`. |
+| Every supported field in one document | Call `attachNepaliInputs(document, { scope: 'all' })`. |
+| Every supported field in one page region | Pass the region element as `root` with `{ scope: 'all' }`. |
+| An app-specific group of fields | Pass `{ selector: '[your-selector]' }`; this overrides the scope's field selection. |
+
+A manager covers only supported `<textarea>`, `<input type="text">`, and `<input type="search">` elements. The default scope is `'marked'`, with selector `[data-sahajlipi]`. In any scope, fields matching `[data-sahajlipi-ignore]` are excluded by default. This makes all-fields mode usable in mixed Nepali and English forms; email, password, number, and other unsupported input types are never attached.
+
+#### Selected fields
 
 ```html
 <textarea id="message" data-sahajlipi></textarea>
 <input type="text" name="name" data-sahajlipi>
-<input type="search" name="query" data-sahajlipi>
+<input type="text" name="englishName">
 <input type="email" name="email">
 ```
-
-Then initialize once after the fields are available:
 
 ```js
 import { attachNepaliInputs } from './src/dom.js';
 
-const manager = attachNepaliInputs();
-
-const message = document.querySelector('#message');
-manager.getController(message)?.setEnabled(false);
-
-// When the page or containing app is torn down:
-manager.destroy();
+const manager = attachNepaliInputs(); // Only marked supported fields.
+// Later, when the page or containing app is torn down:
+// manager.destroy();
 ```
 
-The default selector is `[data-sahajlipi]`. The unmarked email field above is left alone. The manager watches additions, removals, and marker or input-type changes with `MutationObserver`, attaching or detaching eligible fields as needed. `manager.refresh()` rescans on demand; use it when a page changes in an environment without `MutationObserver`. `manager.getController(field)` returns that field's controller, or `null` when it is not attached. `manager.destroy()` stops observing and detaches every field managed by this call.
+#### All supported fields in an app or page
 
-Pass a container to limit where it scans, or an explicit selector if your app already marks Nepali fields another way:
+```html
+<textarea name="message"></textarea>
+<input type="text" name="nepaliName">
+<input type="text" name="englishName" data-sahajlipi-ignore>
+<input type="email" name="email">
+```
+
+```js
+import { attachNepaliInputs } from './src/dom.js';
+
+const appTyping = attachNepaliInputs(document, { scope: 'all' });
+// Nepali typing applies to the textarea and nepaliName.
+// englishName and email stay as normal browser inputs.
+```
+
+For a page or component region, pass its container instead of `document`:
+
+```js
+const page = document.querySelector('#profile-page');
+const pageTyping = attachNepaliInputs(page, { scope: 'all' });
+```
+
+Keep manager roots from overlapping. A second attachment to a field raises `TypeError`; a page manager and an app manager should target separate regions or use exclusions. A document-wide manager scans that document's ordinary DOM tree; it does not cross into shadow roots or iframe documents.
+
+#### Options and controls
+
+| Option | Default | Behavior |
+| --- | --- | --- |
+| `scope` | `'marked'` | `'marked'` selects fields with `data-sahajlipi`; `'all'` selects all supported fields under the root. |
+| `selector` | Scope selection | A nonempty CSS selector that replaces the scope's selection rule. Unsupported input types remain ignored. |
+| `excludeSelector` | `'[data-sahajlipi-ignore]'` | A CSS selector for fields to leave untouched, including in `'all'` mode. |
+| `enabled` | `true` | Initial Nepali mode for every field this manager attaches. |
+| `convertWord` / `convertText` | Built-in Nepali engine | Shared conversion functions for all fields managed by this call. |
+| `onStateChange(state, field)` | No callback | Receives an initial state for each field and later state updates; render candidate choices in your UI if desired. |
 
 ```js
 const form = document.querySelector('#nepali-form');
 const manager = attachNepaliInputs(form, {
-  selector: '[data-language="ne"]',
+  selector: '[data-language="ne"]', // Overrides scope selection.
+  excludeSelector: '[data-language="en"]',
+  enabled: false, // Start in literal English mode.
   onStateChange(state, field) {
-    // Render candidates for this field when state.candidates.length > 1.
+    // Render state.candidates near this field when alternatives exist.
   },
+});
+
+manager.setEnabled(true); // Switch all current fields and future attachments on.
+manager.getEnabled();     // true
+const controller = manager.getController(form.querySelector('[data-language="ne"]'));
+controller?.setEnabled(false); // Override one field without switching the others.
+```
+
+The manager watches additions, removals, marker and exclusion changes, and input-type changes with `MutationObserver` when available. `manager.refresh()` rescans on demand, including in environments without `MutationObserver`. `manager.getController(field)` returns the attached field's controller or `null`. `manager.setEnabled(boolean)` updates all currently managed fields and the initial mode of fields attached later; `manager.getEnabled()` reads that shared mode. `manager.destroy()` stops observation and detaches every controller this manager owns.
+
+The manager's `onStateChange(state, field)` callback receives an initial state after the field's controller is registered, then updates after adapter actions. `getController(field)` is available inside the callback. The adapter provides ordered candidates and keyboard selection; rendering an alternatives dropdown belongs to the host app.
+
+Use one custom engine for every field in a manager by passing its conversion functions:
+
+```js
+import { createEngine } from './src/index.js';
+import { attachNepaliInputs } from './src/dom.js';
+
+const engine = createEngine({ entries: { myname: ['मेरोनाम'] } });
+const manager = attachNepaliInputs(document, {
+  scope: 'all',
+  convertWord: engine.convertWord,
+  convertText: engine.convertText,
 });
 ```
 
-Only supported fields matching the selector are attached. The callback receives an initial state for each attached field after its controller is registered, then updates after adapter actions. `manager.getController(field)` is available inside that callback. It is the app's job to render an alternatives dropdown; the adapter provides ordered candidates and keyboard selection.
+Configuration belongs to the returned manager, not to a mutable module-wide singleton. Separate, nonoverlapping roots can use different scopes, converters, callbacks, and enabled states without changing each other's behavior.
 
 ### Attach one field directly
 
@@ -128,7 +191,7 @@ const controller = attachNepaliInput(field, {
 controller.destroy();
 ```
 
-`attachNepaliInput(field)` without an options object uses the built-in converters and needs no callback. A custom engine can be passed through the two converter options shown above. A field with an unsupported type or an invalid converter option causes the direct API to throw `TypeError`; the manager simply ignores unsupported fields.
+`attachNepaliInput(field)` without an options object starts in Nepali mode with the built-in converters and needs no callback. Pass `{ enabled: false }` to start that field in literal English mode; `setEnabled(true)` turns its subsequent conversion on. A custom engine can be passed through the two converter options shown above. A field with an unsupported type or an invalid converter option causes the direct API to throw `TypeError`; the manager simply ignores unsupported fields.
 
 `activeRoman` is the spelling of the word currently being edited at the caret. `candidates` is empty unless that active word has visible alternatives. `enabled` controls conversion of subsequent typing and paste; toggling it does not rewrite existing text.
 

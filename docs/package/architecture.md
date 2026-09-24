@@ -1,6 +1,6 @@
 # Architecture
 
-SahajLipi is currently a small, dependency-free **Nepali** transliteration prototype. A pure conversion engine chooses a default Devanagari rendering for Roman input; separate browser adapters apply that engine to opted-in text fields as the user types. The project name leaves room for other Devanagari languages, but no other language implementation exists today.
+SahajLipi is currently a small, dependency-free **Nepali** transliteration prototype. A pure conversion engine chooses a default Devanagari rendering for Roman input; separate browser adapters apply that engine to configured text fields as the user types. The project name leaves room for other Devanagari languages, but no other language implementation exists today.
 
 This page describes the code as it is implemented. For supported keys and examples, see the [typing reference](typing-reference.md). For evaluation methods and current results, see [benchmarks](benchmarks.md).
 
@@ -12,7 +12,7 @@ flowchart LR
   L[Starter lexicon<br/>src/lexicon.js] --> B
   P[Phonetic fallback<br/>src/phonetic.js] --> B
   B --> C[Unicode text and<br/>ordered candidates]
-  M[Opt-in field manager<br/>src/dom.js] --> E[Per-field adapter<br/>src/dom.js]
+  M[Scoped field manager<br/>src/dom.js] --> E[Per-field adapter<br/>src/dom.js]
   D[Text-field events] --> E
   B --> E
   E --> D
@@ -24,7 +24,7 @@ flowchart LR
 | [`src/index.js`](../../src/index.js) | Public core API; lexicon lookup, explicit shortcut handling, candidate generation, and whole-text conversion. |
 | [`src/lexicon.js`](../../src/lexicon.js) | Small, reviewable map of Roman spellings to preferred output and any alternatives. |
 | [`src/phonetic.js`](../../src/phonetic.js) | Deterministic token-to-Devanagari fallback for words absent from the lexicon. |
-| [`src/dom.js`](../../src/dom.js) | Optional text-field integration: opt-in discovery and lifecycle, live replacement, caret and active-word state, suggestions, paste, composition, and undo. |
+| [`src/dom.js`](../../src/dom.js) | Optional text-field integration: scoped discovery and lifecycle, live replacement, caret and active-word state, suggestions, paste, composition, and undo. |
 | [`src/index.d.ts`](../../src/index.d.ts), [`src/dom.d.ts`](../../src/dom.d.ts) | TypeScript declarations for the core and browser adapters. |
 
 The core imports only the lexicon and phonetic modules. It does not access the DOM or make network requests. The browser module uses the default converters unless custom functions are passed, so an independent engine can drive the same input behavior. The package is an ES module with `.` and `./dom` export paths and no runtime dependencies; it currently has `private: true` and is **not published to npm** ([`package.json`](../../package.json)). Node.js 18 or newer is declared for development and tests.
@@ -50,9 +50,11 @@ The [starter lexicon](../../src/lexicon.js) handles spellings that simple phonet
 
 ## Browser input adapters
 
-`attachNepaliInputs(root = document, options?)` scans a document or container for fields matching `[data-sahajlipi]` by default. It attaches one controller to each supported field and watches changes with `MutationObserver`. A scan also removes controllers for fields that no longer qualify. Its `refresh()` method scans on demand, `getController(field)` finds the controller for a managed field, and `destroy()` disconnects observation and removes those controllers. A custom `selector` and shared conversion functions can be passed in `options`. The manager's `onStateChange(state, field)` identifies the field behind a state update.
+`attachNepaliInputs(root = document, options?)` creates a manager scoped to a document or container. Its default `scope: 'marked'` selects fields with `data-sahajlipi`; `scope: 'all'` selects every supported text field under that root. A custom `selector` replaces either selection rule. Matching `excludeSelector` fields are left untouched (default `[data-sahajlipi-ignore]`), so an app-wide manager can coexist with English fields on the same page. This is configuration on a manager instance; there is no mutable module-wide setting. Overlapping managers are rejected with `TypeError` to prevent double conversion. A document-wide scan does not enter shadow roots or iframe documents.
 
-`attachNepaliInput(field, options?)` attaches a single `<textarea>`, `<input type="text">`, or `<input type="search">` and returns a controller with `getState`, `chooseCandidate`, `setEnabled`, `setText`, `insertPunctuation`, `insertMark`, `undo`, `redo`, and `destroy`. The default converters work without options; passing `convertWord` and `convertText` connects a custom engine. Its `onStateChange(state)` callback receives an initial state and later updates. Unsupported field types are ignored by the manager and rejected by the direct API. The adapter does not implement `contenteditable`.
+The manager attaches one controller per eligible field and watches changes with `MutationObserver`. A scan also removes controllers for fields that no longer qualify. `refresh()` scans on demand, `getController(field)` finds a managed field's controller, and `destroy()` disconnects observation and removes those controllers. `enabled` sets the initial mode of attached fields. `setEnabled(boolean)` updates every current controller and the default for fields added later; `getEnabled()` reads that shared mode. Shared conversion functions can be passed in `options`, and `onStateChange(state, field)` identifies the field behind a state update.
+
+`attachNepaliInput(field, options?)` attaches a single `<textarea>`, `<input type="text">`, or `<input type="search">` and returns a controller with `getState`, `chooseCandidate`, `setEnabled`, `setText`, `insertPunctuation`, `insertMark`, `undo`, `redo`, and `destroy`. The default converters work without options; passing `convertWord` and `convertText` connects a custom engine. `enabled` chooses the initial mode for that one field. Its `onStateChange(state)` callback receives an initial state and later updates. Unsupported field types are ignored by the manager and rejected by the direct API. The adapter does not implement `contenteditable`.
 
 The per-field adapter's **active word** records the Roman keys typed, the start and end of the currently rendered Nepali span, ordered candidates, ambiguity, and whether suggestions were dismissed. When another Roman key arrives at the active span's end, the adapter reconverts the accumulated Roman spelling and replaces that span. This matters because one Roman key can change several Unicode characters; for example, Backspace on an active `ka` removes `a` and rerenders `k` as `क्`. A space or punctuation commits the visible reading and clears active-word state. A suggestion is exposed through `onStateChange` only while the active word has distinct alternatives and has not been dismissed. Choosing one replaces that span, keeps the Roman spelling editable, and suppresses candidates until the word changes. A host interface can render those candidates and connect its own controls to the returned controller.
 

@@ -90,12 +90,20 @@ class FakeNode extends EventTarget {
 
   matches(selector) {
     return selector.split(",").some((part) => {
-      const term = part.trim().toLowerCase();
-      const attribute = term.match(/\[([a-z][a-z0-9-]*)\]/)?.[1];
-      if (!attribute || !this.hasAttribute(attribute)) return false;
-      if (term.startsWith("textarea")) return this.tagName === "TEXTAREA";
-      if (term.startsWith("input")) return this.tagName === "INPUT";
-      return true;
+      let term = part.trim().toLowerCase();
+      const negated = [...term.matchAll(/:not\(\[([a-z][a-z0-9-]*)\]\)/g)];
+      if (negated.some(([, name]) => this.hasAttribute(name))) return false;
+      term = term.replace(/:not\(\[[a-z][a-z0-9-]*\]\)/g, "");
+      const tag = term.match(/^[a-z]+/)?.[0];
+      if (tag && this.tagName.toLowerCase() !== tag) return false;
+      const attributes = [...term.matchAll(/\[([a-z][a-z0-9-]*)(?:=["']?([a-z0-9-]+)["']?)?\]/g)];
+      if (!tag && !attributes.length) return false;
+      return attributes.every(([, name, value]) => {
+        if (name === "type") return this.tagName === "INPUT" &&
+          (value === undefined ? this.hasAttribute(name) : this.type === value);
+        return this.hasAttribute(name) &&
+          (value === undefined || this.attributes.get(name).toLowerCase() === value);
+      });
     });
   }
 
@@ -461,4 +469,264 @@ test("unmarked DOM subtrees do not rescan the default selector", async (t) => {
   document.removeChild(section);
   await mutationsFlush();
   assert.equal(scans, scansAfterSetup, "removing an unrelated subtree triggered a rescan");
+});
+
+
+test("a single field can start disabled and enable without rewriting existing text", (t) => {
+  const document = setup();
+  const input = field(document, "input", "text");
+  const controller = attachNepaliInput(input, { enabled: false });
+  t.after(() => { controller.destroy(); document.cleanup(); });
+
+  assert.equal(controller.getState().enabled, false);
+  type(input, "pani");
+  assert.equal(input.value, "pani");
+  controller.setEnabled(true);
+  assert.equal(input.value, "pani");
+  type(input, " paani");
+  assert.equal(input.value, "pani पानी");
+});
+
+test("a manager starts disabled and bulk toggles all current fields", (t) => {
+  const document = setup();
+  const textarea = field(document, "textarea", "text", true);
+  const search = field(document, "input", "search", true);
+  const manager = attachNepaliInputs(document, { enabled: false });
+  t.after(() => { manager.destroy(); document.cleanup(); });
+
+  assert.equal(manager.getEnabled(), false);
+  assert.equal(manager.getController(textarea).getState().enabled, false);
+  assert.equal(manager.getController(search).getState().enabled, false);
+  type(textarea, "pani");
+  type(search, "ghar");
+  assert.equal(textarea.value, "pani");
+  assert.equal(search.value, "ghar");
+
+  manager.setEnabled(true);
+  assert.equal(manager.getEnabled(), true);
+  assert.equal(manager.getController(textarea).getState().enabled, true);
+  assert.equal(manager.getController(search).getState().enabled, true);
+  assert.equal(textarea.value, "pani", "toggling must leave existing text alone");
+  assert.equal(search.value, "ghar", "toggling must leave existing text alone");
+  type(textarea, " paani");
+  type(search, " pani");
+  assert.equal(textarea.value, "pani पानी");
+  assert.equal(search.value, "ghar पनि");
+
+  manager.setEnabled(false);
+  type(textarea, " ghar");
+  assert.equal(textarea.value, "pani पानी ghar");
+});
+
+test("fields added later inherit the manager's current mode", async (t) => {
+  const document = setup();
+  const manager = attachNepaliInputs(document, { enabled: false });
+  t.after(() => { manager.destroy(); document.cleanup(); });
+
+  const first = field(document, "input", "text", true);
+  await mutationsFlush();
+  assert.equal(manager.getController(first).getState().enabled, false);
+  type(first, "pani");
+  assert.equal(first.value, "pani");
+
+  manager.setEnabled(true);
+  const second = field(document, "textarea", "text", true);
+  await mutationsFlush();
+  assert.equal(manager.getController(second).getState().enabled, true);
+  type(second, "pani");
+  assert.equal(second.value, "पनि");
+});
+
+test("root managers have independent modes and a field can still be toggled alone", (t) => {
+  const document = setup();
+  const firstRoot = new FakeNode("section");
+  const secondRoot = new FakeNode("section");
+  document.appendChild(firstRoot);
+  document.appendChild(secondRoot);
+  const first = new FakeField("input", "text");
+  first.setAttribute("data-sahajlipi");
+  firstRoot.appendChild(first);
+  const second = new FakeField("input", "text");
+  second.setAttribute("data-sahajlipi");
+  secondRoot.appendChild(second);
+  const firstManager = attachNepaliInputs(firstRoot);
+  const secondManager = attachNepaliInputs(secondRoot);
+  t.after(() => { firstManager.destroy(); secondManager.destroy(); document.cleanup(); });
+
+  firstManager.setEnabled(false);
+  assert.equal(firstManager.getEnabled(), false);
+  assert.equal(secondManager.getEnabled(), true);
+  type(first, "pani");
+  type(second, "pani");
+  assert.equal(first.value, "pani");
+  assert.equal(second.value, "पनि");
+
+  firstManager.getController(first).setEnabled(true);
+  assert.equal(firstManager.getEnabled(), false);
+  type(first, " paani");
+  assert.equal(first.value, "pani पानी");
+});
+
+test("enabled must be a boolean for both adapter entry points", (t) => {
+  const document = setup();
+  const input = field(document, "input", "text", true);
+  let controller;
+  let manager;
+  t.after(() => { controller?.destroy(); manager?.destroy(); document.cleanup(); });
+  assert.throws(() => { controller = attachNepaliInput(input, { enabled: "false" }); }, TypeError);
+  assert.throws(() => { manager = attachNepaliInputs(document, { enabled: 0 }); }, TypeError);
+});
+
+test("page scope attaches all supported fields while an ignore marker leaves English fields alone", (t) => {
+  const document = setup();
+  const textarea = field(document, "textarea");
+  const textInput = field(document, "input", "text");
+  const search = field(document, "input", "search");
+  const english = field(document, "input", "text");
+  english.setAttribute("data-sahajlipi-ignore");
+  const email = field(document, "input", "email");
+  const manager = attachNepaliInputs(document, { scope: "all" });
+  t.after(() => { manager.destroy(); document.cleanup(); });
+
+  assert.ok(manager.getController(textarea));
+  assert.ok(manager.getController(textInput));
+  assert.ok(manager.getController(search));
+  assert.equal(manager.getController(english), null);
+  assert.equal(manager.getController(email), null);
+  for (const input of [textarea, textInput, search, english, email]) type(input, "pani");
+  for (const input of [textarea, textInput, search]) assert.equal(input.value, "पनि");
+  assert.equal(english.value, "pani");
+  assert.equal(email.value, "pani");
+});
+
+test("page scope on an element stays inside that root", (t) => {
+  const document = setup();
+  const section = new FakeNode("section");
+  document.appendChild(section);
+  const inside = new FakeField("input", "text");
+  section.appendChild(inside);
+  const outside = field(document, "input", "text");
+  const manager = attachNepaliInputs(section, { scope: "all" });
+  t.after(() => { manager.destroy(); document.cleanup(); });
+
+  assert.ok(manager.getController(inside));
+  assert.equal(manager.getController(outside), null);
+  type(inside, "pani");
+  type(outside, "pani");
+  assert.equal(inside.value, "पनि");
+  assert.equal(outside.value, "pani");
+});
+
+test("page scope notices dynamic fields and ignore marker changes", async (t) => {
+  const document = setup();
+  const manager = attachNepaliInputs(document, { scope: "all" });
+  t.after(() => { manager.destroy(); document.cleanup(); });
+  const dynamic = field(document, "input", "text");
+  await mutationsFlush();
+  assert.ok(manager.getController(dynamic));
+  type(dynamic, "pani");
+  assert.equal(dynamic.value, "पनि");
+
+  dynamic.setAttribute("data-sahajlipi-ignore");
+  await mutationsFlush();
+  assert.equal(manager.getController(dynamic), null);
+  dynamic.value = "";
+  dynamic.setSelectionRange(0, 0);
+  type(dynamic, "pani");
+  assert.equal(dynamic.value, "pani");
+
+  dynamic.removeAttribute("data-sahajlipi-ignore");
+  await mutationsFlush();
+  assert.ok(manager.getController(dynamic));
+  dynamic.value = "";
+  dynamic.setSelectionRange(0, 0);
+  type(dynamic, "pani");
+  assert.equal(dynamic.value, "पनि");
+});
+
+test("custom selector controls discovery in page scope and a custom exclusion still applies", (t) => {
+  const document = setup();
+  const selected = field(document, "input", "text");
+  selected.setAttribute("data-nepali-input");
+  const excluded = field(document, "input", "text");
+  excluded.setAttribute("data-nepali-input");
+  excluded.setAttribute("data-english-input");
+  const ordinary = field(document, "input", "text");
+  const manager = attachNepaliInputs(document, {
+    scope: "all",
+    selector: "[data-nepali-input]",
+    excludeSelector: "[data-english-input]",
+  });
+  t.after(() => { manager.destroy(); document.cleanup(); });
+
+  assert.ok(manager.getController(selected));
+  assert.equal(manager.getController(excluded), null);
+  assert.equal(manager.getController(ordinary), null);
+});
+
+test("page scope options reject invalid scope and exclusion selector", (t) => {
+  const document = setup();
+  let manager;
+  t.after(() => { manager?.destroy(); document.cleanup(); });
+  assert.throws(() => { manager = attachNepaliInputs(document, { scope: "everything" }); }, TypeError);
+  assert.throws(() => { manager = attachNepaliInputs(document, { excludeSelector: "" }); }, TypeError);
+  assert.throws(() => { manager = attachNepaliInputs(document, { excludeSelector: 1 }); }, TypeError);
+});
+
+
+test("a second manager rejects overlapping fields before attaching any other field", (t) => {
+  const document = setup();
+  const fresh = field(document, "input", "text");
+  const section = new FakeNode("section");
+  document.appendChild(section);
+  const shared = new FakeField("input", "text");
+  section.appendChild(shared);
+  const first = attachNepaliInputs(section, { scope: "all" });
+  let second;
+  t.after(() => { second?.destroy(); first.destroy(); document.cleanup(); });
+
+  let freshListeners = 0;
+  const addFreshListener = fresh.addEventListener.bind(fresh);
+  fresh.addEventListener = (...args) => {
+    freshListeners++;
+    return addFreshListener(...args);
+  };
+  assert.throws(
+    () => { second = attachNepaliInputs(document, { scope: "all" }); },
+    (error) => error instanceof TypeError && /already (attached|managed)|already has/i.test(error.message),
+  );
+  assert.equal(second, undefined);
+  assert.equal(freshListeners, 0, "failed setup installed listeners on another field");
+  type(fresh, "pani");
+  type(shared, "pani");
+  assert.equal(fresh.value, "pani");
+  assert.equal(shared.value, "पनि", "the first manager must remain active");
+});
+
+test("a directly attached field cannot be attached twice and is released on destroy", (t) => {
+  const document = setup();
+  const input = field(document, "input", "text");
+  const first = attachNepaliInput(input);
+  let second;
+  t.after(() => { second?.destroy(); first.destroy(); document.cleanup(); });
+
+  let extraListeners = 0;
+  const addListener = input.addEventListener.bind(input);
+  input.addEventListener = (...args) => {
+    extraListeners++;
+    return addListener(...args);
+  };
+  assert.throws(
+    () => { second = attachNepaliInput(input); },
+    (error) => error instanceof TypeError && /already (attached|managed)|already has/i.test(error.message),
+  );
+  assert.equal(second, undefined);
+  assert.equal(extraListeners, 0);
+  type(input, "pani");
+  assert.equal(input.value, "पनि");
+
+  first.destroy();
+  second = attachNepaliInput(input);
+  type(input, " paani");
+  assert.equal(input.value, "पनि पानी");
 });

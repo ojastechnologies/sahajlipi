@@ -9,6 +9,6 @@ SahajLipi provides a dependency-free Nepali transliteration engine and optional 
 | [Typing reference](typing-reference.md) | Current Nepali key mappings, half forms, marks, punctuation, and alternatives. |
 | [Benchmarks](benchmarks.md) | Reproducible engine cases, metrics, provenance, results, and evaluation limits. |
 
-To add live typing to a page, mark intended text fields with `data-sahajlipi` and call `attachNepaliInputs()` once. The [API reference](api.md#browser-input-adapters) explains how to use one field, manage candidates, and clean up a dynamic app.
+For live typing, choose an integration scope: mark selected fields with `data-sahajlipi` and call `attachNepaliInputs()`; pass a page element as the root; or use `attachNepaliInputs(document, { scope: 'all' })` for every supported text field in that document. Add `data-sahajlipi-ignore` to fields that must stay English in an all-fields scope. The [API reference](api.md#browser-input-adapters) explains configuration, field-level controls, candidates, and cleanup.
 
 The package is still private in [`package.json`](../../package.json), so these examples import from a repository checkout. The [project status](../status-and-roadmap.md) tracks what is and is not implemented.
