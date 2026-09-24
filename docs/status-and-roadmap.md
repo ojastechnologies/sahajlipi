@@ -13,7 +13,7 @@ The [package](package/README.md) includes a deterministic word and text converte
 | Mixed English | `convertText` treats Latin-letter runs as Roman Nepali; it does not detect English words automatically. |
 | Input surface | The reusable adapter targets `<textarea>`. Tests simulate editor events, but there is no published real-browser or phone compatibility matrix. |
 | Other languages | Mappings and lexicon entries are Nepali-specific. No other Devanagari language profile exists yet. |
-| Evaluation | The [seed benchmark](package/benchmarks.md) tracks selected behavior contracts and unreviewed proposals, not representative accuracy. |
+| Evaluation | The [seed benchmark](package/benchmarks.md) tracks selected behavior contracts. A separate [external word baseline and sentence review queue](package/external-evaluation.md) exist, but there is no representative real-typing accuracy estimate. |
 
 The [architecture](package/architecture.md), [API reference](package/api.md), and [typing reference](package/typing-reference.md) describe the package as implemented.
 
