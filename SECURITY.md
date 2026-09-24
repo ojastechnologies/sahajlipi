@@ -13,4 +13,4 @@ Use **Report a vulnerability** on the repository's [Security Advisories page](ht
 
 For ordinary typing bugs or feature requests, open a [public issue](https://github.com/ojastechnologies/sahajlipi/issues) and follow [CONTRIBUTING.md](CONTRIBUTING.md). A misspelled conversion is usually a correctness issue rather than a security vulnerability.
 
-The current engine has no network or persistent storage code. Applications embedding it and the static demo's hosting environment have their own security boundaries; see the [architecture](docs/architecture.md) and [development guide](docs/development.md).
+The package engine has no network or persistent-storage code. Applications embedding it and the static demo's hosting environment have their own security boundaries; see the [package architecture](docs/package/architecture.md), [demo guide](docs/demo/README.md), and [development guide](docs/development.md).

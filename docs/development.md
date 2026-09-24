@@ -1,19 +1,17 @@
 # Development and contribution workflow
 
-This page describes the workflow that exists today. SahajLipi is an MIT-licensed prototype, and the npm package is still marked private. For the public API, see the [API reference](api.md); for current behavior, see the [typing reference](typing-reference.md).
+This guide covers the repository workflow. For the reusable code, start with the [package documentation](package/README.md). For the hosted playground and local server commands, use the [demo guide](demo/README.md).
 
-## Run the project
+## Run the checks
 
-- Node.js 18 or later runs the tests and benchmark. There are no runtime packages to install.
-- Python 3 is needed only to serve the static demo locally.
+Node.js 18 or later runs the tests and engine benchmark. There are no runtime packages to install.
 
 ```sh
 npm test
 npm run benchmark -- --check
-npm run demo
 ```
 
-Open `http://127.0.0.1:4173/demo/` after starting the demo server. The [published demo](https://ojastechnologies.github.io/sahajlipi/demo/) comes from `main`. To test from another device on the same network, run `npm run demo:lan -- YOUR_LAN_IP` after substituting your computer's private IPv4 address. Only one server can use port 4173 at a time.
+The benchmark gates only named behavior contracts. Its exploratory proposals are reported separately and do not count as verified Nepali spellings or an accuracy score; see the [benchmark protocol](package/benchmarks.md).
 
 ## Where changes belong
 
@@ -21,38 +19,32 @@ Open `http://127.0.0.1:4173/demo/` after starting the demo server. The [publishe
 | --- | --- | --- |
 | Word readings | [`src/lexicon.js`](../src/lexicon.js) | Add a reviewed Roman spelling or reorder valid candidates. |
 | General phonetics | [`src/phonetic.js`](../src/phonetic.js) | Change a rule that should apply to many words. |
-| Engine API and precedence | [`src/index.js`](../src/index.js), [`src/index.d.ts`](../src/index.d.ts) | Change lookup, explicit marks, or an exported type. |
-| Textarea editing | [`src/dom.js`](../src/dom.js), [`src/dom.d.ts`](../src/dom.d.ts) | Change caret, composition, paste, candidates, or undo behavior. |
-| Demo | [`demo/`](../demo/) | Explain or show the existing typing behavior. |
-| Regression tests | [`test/engine.test.js`](../test/engine.test.js), [`demo/input-adapter.test.js`](../demo/input-adapter.test.js) | Lock down an observed output or key-event sequence. |
-| Seed benchmark | [`benchmark/`](../benchmark/) | Track named behavior contracts and separately labeled exploratory cases. |
+| Engine API | [`src/index.js`](../src/index.js), [`src/index.d.ts`](../src/index.d.ts) | Change lookup, explicit marks, or a public type. |
+| Reusable textarea adapter | [`src/dom.js`](../src/dom.js), [`src/dom.d.ts`](../src/dom.d.ts) | Change caret, composition, paste, candidates, or undo behavior. |
+| Browser demo | [`demo/`](../demo/) | Change the playground UI or its on-page guide. |
+| Package tests | [`test/`](../test/) | Lock down engine output or adapter events. |
+| Seed benchmark | [`benchmark/`](../benchmark/) | Track named contracts and clearly labeled exploratory cases. |
 
 ## Report a typing problem
 
-Include the exact Roman keys, the intended Nepali text, the actual text, and whether the problem appeared in `convertWord`, `convertText`, or the live editor. For editor problems, include the caret position, selection, mode, and the action that triggered it (typing, paste, Backspace, undo, or mobile composition). A short example is more useful than a large word list.
+Include the exact Roman keys, intended Unicode Nepali text, actual text, and whether the problem appears in `convertWord`, `convertText`, or the demo editor. For editor problems, include the caret position, selection, mode, and the action that triggered it (typing, paste, Backspace, undo, or composition). If a hidden joiner matters, paste the Unicode text rather than relying only on a screenshot.
 
-Unicode shape matters. For a spelling such as `पर्‍यो`, include the text itself rather than only a screenshot. If a hidden joiner is involved, the code points can help:
-
-```js
-Array.from('पर्‍यो', ch => `U+${ch.codePointAt(0).toString(16).toUpperCase()}`);
-```
-
-Do not submit a bulk dictionary copied from another tool without its license, provenance, and a way to review its accuracy. See [CONTRIBUTING.md](../CONTRIBUTING.md) for the short word-contribution path and [benchmark guidance](benchmarks.md) for evaluation-case provenance.
+Do not submit a bulk dictionary copied from another tool without its license, provenance, and a way to review its accuracy. See [CONTRIBUTING.md](../CONTRIBUTING.md) for a focused contribution path.
 
 ## Make a change
 
-1. Open an issue or describe one concrete behavior: Roman input, intended output, and any valid alternatives.
-2. Add a focused regression test that fails for the reported case. For editor behavior, test the event sequence and caret or suggestion state.
-3. Change the smallest appropriate layer. Use a lexicon entry for a specific spelling; change phonetic rules only when the rule is broadly valid.
-4. Run `npm test` and `npm run benchmark -- --check`, then try the affected behavior in the demo.
-5. Update the [typing reference](typing-reference.md), [API reference](api.md), or [architecture](architecture.md) when a documented contract changes. Explain any changed benchmark case in the pull request.
+1. Describe one reproducible behavior and the expected Unicode output or UI state.
+2. Add a focused regression test. For editor behavior, capture the event sequence and caret or suggestion state.
+3. Change the smallest appropriate layer. Use a lexicon entry for a specific spelling; change phonetic rules only when broadly valid.
+4. Run `npm test` and `npm run benchmark -- --check`. Try the [demo](demo/README.md) when a typing or UI interaction changes.
+5. Update the [package docs](package/README.md) when an API or key behavior changes, or the [demo guide](demo/README.md) when the playground changes. Explain any changed benchmark case in the pull request.
 
-Pull requests to `main` run the [CI workflow](../.github/workflows/ci.yml) on Node 18, 20, 22, and 24. The repository rules require the four checks and resolved review threads before merge. GitHub Pages publishes the demo from the root of `main` after changes merge. The CI and Pages jobs establish that code runs and deploys; they are not a linguistic accuracy certification.
+Pull requests to `main` run the [CI workflow](../.github/workflows/ci.yml) on Node 18, 20, 22, and 24. Repository rules require those checks and resolved review threads before merge. GitHub Pages is configured to serve the root of `main`; that publishing source is a repository setting, not a Pages workflow file in this repository.
 
 ## Release status
 
-The GitHub repository and demo are public, but there is **no npm release process yet**. [`package.json`](../package.json) has `"private": true`, so `npm publish` is blocked. Before a first alpha release, the maintainers need to review the public API and TypeScript declarations, package contents, supported runtimes, license and provenance of data, benchmark evidence, versioning, and a release checklist. Removing `private` alone would not complete those tasks.
+The GitHub repository and demo are public, but there is **no npm release process yet**. [`package.json`](../package.json) has `"private": true`, so `npm publish` is blocked. Before an alpha release, maintainers need to review the public API and TypeScript declarations, package contents, supported runtimes, license and data provenance, evaluation evidence, versioning, and a release checklist.
 
 ## Privacy and trust boundaries
 
-The current engine does not make network requests or persist typed text. The textarea adapter keeps up to 200 edit snapshots in memory for undo; the demo's Copy button writes to the clipboard only when clicked. GitHub Pages serves the static files; this statement does not cover browser extensions, hosting access logs, or applications that embed the library. The [architecture](architecture.md) lists the components and data flow so these claims can be checked against source.
+The package engine has no network or persistent-storage code. The textarea adapter keeps up to 200 edit snapshots in memory for undo. The [demo guide](demo/README.md) describes its Copy button and static hosting. These source-level observations do not cover browser extensions, hosting access logs, or applications embedding the package; see the [package architecture](package/architecture.md) for its data flow.

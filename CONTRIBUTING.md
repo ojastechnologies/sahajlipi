@@ -1,6 +1,6 @@
 # Contributing to SahajLipi
 
-SahajLipi is an early Nepali typing prototype. Small, reproducible improvements are welcome. Start with the [documentation index](docs/README.md), [typing reference](docs/typing-reference.md), and [development guide](docs/development.md). The project is MIT-licensed; contributions should be suitable for inclusion under that license.
+SahajLipi is an early Nepali typing prototype. Small, reproducible improvements are welcome. Start with the [documentation index](docs/README.md), [package typing reference](docs/package/typing-reference.md), and [development guide](docs/development.md). The project is MIT-licensed; contributions should be suitable for inclusion under that license.
 
 ## Report a word or typing problem
 
@@ -24,6 +24,6 @@ npm test
 npm run benchmark -- --check
 ```
 
-Try affected behavior in the [live demo](https://ojastechnologies.github.io/sahajlipi/demo/) or a local demo (`npm run demo`). The [seed benchmark](docs/benchmarks.md) tracks named contracts and separately marked exploratory cases; it is not a general accuracy score. Do not change an expected output solely to make a benchmark pass. Explain corrections and their linguistic evidence in the pull request.
+Try affected typing behavior in the [live demo](https://ojastechnologies.github.io/sahajlipi/demo/); the [demo guide](docs/demo/README.md) explains local access. The [seed benchmark](docs/package/benchmarks.md) tracks named contracts and separately marked exploratory cases; it is not a general accuracy score. Do not change an expected output solely to make a benchmark pass. Explain corrections and their linguistic evidence in the pull request.
 
-Update the [typing reference](docs/typing-reference.md) and the demo guide when keys change, the [API reference](docs/api.md) when exports or controller behavior change, and the [architecture](docs/architecture.md) when module boundaries or event flow change. Pull requests to `main` run CI on Node 18, 20, 22, and 24.
+Update the [package typing reference](docs/package/typing-reference.md) when key behavior changes; update the [demo guide](docs/demo/README.md) and on-page guide when the playground changes. Update the [API reference](docs/package/api.md) for exported behavior and the [package architecture](docs/package/architecture.md) for module boundaries or event flow. Pull requests to `main` run CI on Node 18, 20, 22, and 24.

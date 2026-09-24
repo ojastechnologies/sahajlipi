@@ -26,7 +26,7 @@ body {
 
 button, textarea { font: inherit; }
 button { cursor: pointer; }
-button:focus-visible, textarea:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+button:focus-visible, textarea:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 
 .page { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
 
@@ -152,7 +152,8 @@ kbd { padding: 2px 5px; border: 1px solid var(--line); border-radius: 4px; backg
 .developer-note { display: flex; align-items: center; justify-content: space-between; gap: 30px; margin: 56px 0 70px; padding-top: 25px; border-top: 1px solid var(--line); }
 .developer-note h2 { margin: 0 0 5px; font-size: 16px; }
 .developer-note p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
-.developer-note code { flex: none; padding: 13px 16px; border: 1px solid var(--line); border-radius: 7px; background: white; color: var(--accent-deep); font-size: 12px; }
+.developer-link { flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 11px 15px; border: 1px solid var(--accent); border-radius: 7px; background: var(--accent-light); color: var(--accent-deep); font-size: 13px; font-weight: 650; text-decoration: none; }
+.developer-link:hover { background: #d8eeec; }
 
 @media (max-width: 850px) {
   .guide-heading { grid-template-columns: 1fr; gap: 10px; }
@@ -175,5 +176,5 @@ kbd { padding: 2px 5px; border: 1px solid var(--line); border-radius: 4px; backg
   .guide-grid { grid-template-columns: 1fr; }
   .guide-card { padding: 20px 19px; }
   .developer-note { display: block; margin-top: 44px; }
-  .developer-note code { display: inline-block; max-width: 100%; margin-top: 17px; overflow-x: auto; }
+  .developer-link { margin-top: 17px; }
 }
