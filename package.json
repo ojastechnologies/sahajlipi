@@ -17,6 +17,7 @@
   "types": "./src/index.d.ts",
   "scripts": {
     "test": "node --test",
+    "benchmark": "node benchmark/run.js",
     "demo": "python3 -m http.server 4173 --bind 127.0.0.1",
     "demo:lan": "python3 -m http.server 4173 --bind"
   },

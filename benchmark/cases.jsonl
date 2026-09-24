@@ -1,0 +1,30 @@
+{"id":"pani","status":"contract","mode":"word","category":"lexicon","input":"pani","expectedTop":"पनि","expectedCandidates":["पनि"],"provenance":"user decision: pani and paani are distinct"}
+{"id":"paani","status":"contract","mode":"word","category":"lexicon","input":"paani","expectedTop":"पानी","expectedCandidates":["पानी"],"provenance":"user decision: pani and paani are distinct"}
+{"id":"paryo","status":"contract","mode":"word","category":"lexicon","input":"paryo","expectedTop":"पर्‍यो","expectedCandidates":["पर्‍यो"],"provenance":"user-confirmed spelling for paryo"}
+{"id":"kam-alternatives","status":"contract","mode":"word","category":"ambiguity","input":"kam","expectedTop":"कम","expectedCandidates":["कम","काम"],"provenance":"existing engine test: distinct alternatives"}
+{"id":"half-k","status":"contract","mode":"word","category":"phonetic","input":"k","expectedTop":"क्","expectedCandidates":["क्"],"provenance":"existing engine test: half consonants"}
+{"id":"full-ka","status":"contract","mode":"word","category":"phonetic","input":"ka","expectedTop":"क","expectedCandidates":["क"],"provenance":"existing engine test: vowel completes consonant"}
+{"id":"half-kr","status":"contract","mode":"word","category":"phonetic","input":"kr","expectedTop":"क्र्","expectedCandidates":["क्र्"],"provenance":"existing engine test: half conjunct"}
+{"id":"full-kra","status":"contract","mode":"word","category":"phonetic","input":"kra","expectedTop":"क्र","expectedCandidates":["क्र"],"provenance":"existing engine test: vowel completes conjunct"}
+{"id":"kri","status":"contract","mode":"word","category":"phonetic","input":"kri","expectedTop":"क्रि","expectedCandidates":["क्रि"],"provenance":"existing engine test: ordinary ri"}
+{"id":"vocalic-r","status":"contract","mode":"word","category":"shift","input":"R","expectedTop":"ऋ","expectedCandidates":["ऋ"],"provenance":"existing engine test: Shift R"}
+{"id":"vocalic-r-sign","status":"contract","mode":"word","category":"shift","input":"kR","expectedTop":"कृ","expectedCandidates":["कृ"],"provenance":"existing engine test: Shift R after consonant"}
+{"id":"dental-t","status":"contract","mode":"word","category":"shift","input":"ta","expectedTop":"त","expectedCandidates":["त"],"provenance":"existing engine test: dental and retroflex"}
+{"id":"retroflex-t","status":"contract","mode":"word","category":"shift","input":"Ta","expectedTop":"ट","expectedCandidates":["ट"],"provenance":"existing engine test: dental and retroflex"}
+{"id":"dental-d","status":"contract","mode":"word","category":"shift","input":"da","expectedTop":"द","expectedCandidates":["द"],"provenance":"existing engine test: dental and retroflex"}
+{"id":"retroflex-d","status":"contract","mode":"word","category":"shift","input":"Da","expectedTop":"ड","expectedCandidates":["ड"],"provenance":"existing engine test: dental and retroflex"}
+{"id":"dental-th","status":"contract","mode":"word","category":"shift","input":"tha","expectedTop":"थ","expectedCandidates":["थ"],"provenance":"existing engine test: dental and retroflex"}
+{"id":"retroflex-th","status":"contract","mode":"word","category":"shift","input":"Tha","expectedTop":"ठ","expectedCandidates":["ठ"],"provenance":"existing engine test: dental and retroflex"}
+{"id":"dental-dh","status":"contract","mode":"word","category":"shift","input":"dha","expectedTop":"ध","expectedCandidates":["ध"],"provenance":"existing engine test: dental and retroflex"}
+{"id":"retroflex-dh","status":"contract","mode":"word","category":"shift","input":"Dha","expectedTop":"ढ","expectedCandidates":["ढ"],"provenance":"existing engine test: dental and retroflex"}
+{"id":"palatal-sha","status":"contract","mode":"word","category":"shift","input":"sha","expectedTop":"श","expectedCandidates":["श"],"provenance":"existing engine test: Shift S"}
+{"id":"retroflex-sha","status":"contract","mode":"word","category":"shift","input":"Sha","expectedTop":"ष","expectedCandidates":["ष"],"provenance":"existing engine test: Shift S"}
+{"id":"visarga","status":"contract","mode":"word","category":"shift","input":"kaH","expectedTop":"कः","expectedCandidates":["कः"],"provenance":"existing engine test: Shift H"}
+{"id":"bindu","status":"contract","mode":"word","category":"marks","input":"ka^","expectedTop":"कं","expectedCandidates":["कं"],"provenance":"existing engine test: bindu shortcut"}
+{"id":"chandrabindu","status":"contract","mode":"word","category":"marks","input":"kaa~","expectedTop":"काँ","expectedCandidates":["काँ"],"provenance":"existing engine test: chandrabindu shortcut"}
+{"id":"explicit-halant","status":"contract","mode":"word","category":"explicit","input":"k/","expectedTop":"क्","expectedCandidates":["क्"],"provenance":"existing engine test: explicit halant"}
+{"id":"explicit-joiner","status":"contract","mode":"word","category":"explicit","input":"par/=yo","expectedTop":"पर्‍यो","expectedCandidates":["पर्‍यो"],"provenance":"existing engine test: explicit joiner"}
+{"id":"period-decimal-danda","status":"contract","mode":"text","category":"punctuation","input":"pani. 3.14 paani|","expectedTop":"पनि. 3.14 पानी।","provenance":"existing engine tests: period remains English and pipe becomes danda"}
+{"id":"mixed-punctuation","status":"contract","mode":"text","category":"punctuation","input":"namaste, nepal!","expectedTop":"नमस्ते, नेपाल!","provenance":"existing engine test: preserves punctuation"}
+{"id":"janchu-proposal","status":"exploratory","mode":"word","category":"proposed-spelling","input":"janchu","expectedTop":"जान्छु","expectedCandidates":["जान्छु"],"provenance":"prior assistant hypothesis; needs Nepali speaker review"}
+{"id":"padhchhu-proposal","status":"exploratory","mode":"word","category":"proposed-spelling","input":"padhchhu","expectedTop":"पढ्छु","expectedCandidates":["पढ्छु"],"provenance":"prior assistant hypothesis; needs Nepali speaker review"}
