@@ -4,14 +4,14 @@ SahajLipi is an early, MIT-licensed Roman Nepali to Unicode typing project. The 
 
 ## Package status
 
-The [package](package/README.md) includes a deterministic word and text converter, a small starter lexicon with ordered alternatives for selected spellings, and an optional textarea adapter for direct typing. It has TypeScript declarations and no runtime dependencies. The package is marked `private` and is **not published to npm**.
+The [package](package/README.md) includes a deterministic word and text converter, a small starter lexicon with ordered alternatives for selected spellings, and browser adapters for direct typing in configured text fields. It has TypeScript declarations and no runtime dependencies. The package is marked `private` and is **not published to npm**.
 
 | Area | Current limit |
 | --- | --- |
 | Nepali accuracy | The lexicon is small and the fallback is deterministic. An output may look plausible while spelling the intended word incorrectly. There is no context-aware ranking or population-wide accuracy estimate. |
 | Alternatives | Only explicit multi-reading entries return multiple candidates. The engine does not generate every valid spelling. |
 | Mixed English | `convertText` treats Latin-letter runs as Roman Nepali; it does not detect English words automatically. |
-| Input surface | The reusable adapter targets `<textarea>`. Tests simulate editor events, but there is no published real-browser or phone compatibility matrix. |
+| Input surface | The reusable adapter supports `<textarea>` and text/search inputs; one manager can cover marked fields, a page region, or all supported fields in a document, with English fields excluded. Tests simulate editor events, but there is no published real-browser or phone compatibility matrix. `contenteditable` and other input types are unsupported. |
 | Other languages | Mappings and lexicon entries are Nepali-specific. No other Devanagari language profile exists yet. |
 | Evaluation | The [seed benchmark](package/benchmarks.md) tracks selected behavior contracts. A separate [external word baseline and sentence review queue](package/external-evaluation.md) exist, but there is no representative real-typing accuracy estimate. |
 

@@ -1,6 +1,6 @@
 # Nepali typing reference
 
-SahajLipi currently converts Roman Nepali to Unicode Devanagari. The core returns a preferred reading and, where listed, alternatives. The optional textarea adapter renders that preferred reading as you type and reports alternatives to the host interface. This reference describes the **current prototype**, not a standardized Romanization scheme.
+SahajLipi currently converts Roman Nepali to Unicode Devanagari. The core returns a preferred reading and, where listed, alternatives. The optional browser adapters render that preferred reading in opted-in text fields as you type and report alternatives to the host interface. This reference describes the **current prototype**, not a standardized Romanization scheme.
 
 The [starter lexicon](../../src/lexicon.js) takes priority over the [phonetic fallback](../../src/phonetic.js). This matters for words such as `cha`: the fallback token `ch` represents च, but the listed word `cha` defaults to छ and offers च as an alternative. Custom entries can replace a built-in entry in one engine instance. See the [engine source](../../src/index.js) for the lookup order.
 
@@ -90,11 +90,11 @@ Type `^` after a syllable for bindu/anusvara ं, or `~` for chandrabindu ँ. T
 | `ka^` | कं |
 | `kaa~` | काँ |
 
-The period `.` always stays an English period, including in `3.14`. Type `|` for Nepali पूर्णविराम `।`: `pani|` → पनि। and `3.14|` → 3.14।. The same rule applies to `convertText` and text pasted into the attached textarea while Nepali mode is on. The DOM controller also exposes `insertPunctuation('।')` and `insertPunctuation('॥')`; `|` types the single danda `।` only.
+The period `.` always stays an English period, including in `3.14`. Type `|` for Nepali पूर्णविराम `।`: `pani|` → पनि। and `3.14|` → 3.14।. The same rule applies to `convertText` and text pasted into an attached field while Nepali mode is on. The DOM controller also exposes `insertPunctuation('।')` and `insertPunctuation('॥')`; `|` types the single danda `।` only.
 
-## Alternatives and textarea editing
+## Alternatives and field editing
 
-The engine returns candidates in preferred order. For example, `kam` gives कम first and काम second. The textarea adapter shows the first reading inline and reports alternatives through `onStateChange` only while an ambiguous word is active. An integrating app can show a dropdown and call `chooseCandidate(index)`; the adapter also handles Alt+1, Alt+2, and so on. Press Space to finish the word with the displayed reading. While a word is active, Backspace edits its original Roman sequence and recalculates the Nepali output.
+The engine returns candidates in preferred order. For example, `kam` gives कम first and काम second. The field adapter shows the first reading inline and reports alternatives through `onStateChange` only while an ambiguous word is active. An integrating app can show a dropdown and call `chooseCandidate(index)`; the adapter also handles Alt+1, Alt+2, and so on. Press Space to finish the word with the displayed reading. While a word is active, Backspace edits its original Roman sequence and recalculates the Nepali output.
 
 The controller’s `setEnabled(false)` switches subsequent input to literal typing; `setEnabled(true)` resumes conversion. When conversion is disabled, keys such as `^`, `~`, `/`, and `|` remain literal. Switching modes does not rewrite text already in the field. `convertText` always uses the first reading of each converted word and returns plain text without candidate data.
 
@@ -102,7 +102,7 @@ The controller’s `setEnabled(false)` switches subsequent input to literal typi
 
 - The starter lexicon is small. Unknown words use deterministic phonetic rules, which can give incorrect Nepali spelling. There is no context-sensitive ranking or language detection.
 - `convertText` converts Latin-letter runs regardless of whether they are Nepali or English. Review mixed-language text before using its output.
-- The provided browser adapter attaches to a textarea. It handles keyboard input, paste, and composition events, but this reference is not a browser compatibility guarantee.
+- The browser adapter attaches to `<textarea>` and text/search inputs, directly or through an opt-in field manager. It handles keyboard input, paste, and composition events, but this reference is not a browser compatibility guarantee.
 - The prototype does not offer a dedicated keyboard shortcut for every Devanagari character, mark, or accent. A future language profile would need its own reviewed mappings; current behavior is Nepali-specific.
 
-The implementation and regression examples are in [phonetic rules](../../src/phonetic.js), [lexicon](../../src/lexicon.js), [engine](../../src/index.js), [textarea adapter](../../src/dom.js), [engine tests](../../test/engine.test.js), and [adapter tests](../../test/dom.test.js). The [Unicode Indic FAQ](https://www.unicode.org/faq/indic.html) explains why character sequences and rendered Devanagari shapes must be considered separately.
+The implementation and regression examples are in [phonetic rules](../../src/phonetic.js), [lexicon](../../src/lexicon.js), [engine](../../src/index.js), [browser adapters](../../src/dom.js), [engine tests](../../test/engine.test.js), and [adapter tests](../../test/dom.test.js). The [Unicode Indic FAQ](https://www.unicode.org/faq/indic.html) explains why character sequences and rendered Devanagari shapes must be considered separately.

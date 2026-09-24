@@ -1,17 +1,51 @@
+import { convertText as defaultConvertText, convertWord as defaultConvertWord } from "./index.js";
+
+const MARKED_SELECTOR = "[data-sahajlipi]";
+const ALL_FIELDS_SELECTOR = "textarea, input";
+const DEFAULT_EXCLUDE_SELECTOR = "[data-sahajlipi-ignore]";
+const attachedFields = new WeakSet();
+
+function isSupportedField(input) {
+  if (!input || typeof input.value !== "string" ||
+      typeof input.setRangeText !== "function" ||
+      typeof input.setSelectionRange !== "function") return false;
+  const tagName = input.tagName?.toUpperCase();
+  return tagName === "TEXTAREA" ||
+    tagName === "INPUT" && (input.type === "text" || input.type === "search");
+}
+
 /**
- * Attach inline Roman Nepali conversion to a textarea.
+ * Attach inline Roman Nepali conversion to one textarea or text/search input.
  *
  * The adapter keeps the Roman spelling of the word at the caret. This lets
  * Backspace edit that spelling even when its Nepali rendering has a different
- * number of characters. The engine is injected so the input behavior can be
- * reused and tested independently.
+ * number of characters. Pass an engine's conversion functions to customize
+ * the mapping; the built-in Nepali engine is used by default.
  */
-export function attachNepaliInput(input, { convertWord, convertText, onStateChange = () => {} }) {
-  if (!input || typeof input.setRangeText !== "function") {
-    throw new TypeError("attachNepaliInput expects a textarea");
+export function attachNepaliInput(input, {
+  convertWord = defaultConvertWord,
+  convertText = defaultConvertText,
+  onStateChange = () => {},
+  enabled: initialEnabled = true,
+} = {}) {
+  if (!isSupportedField(input)) {
+    throw new TypeError("attachNepaliInput expects a textarea or text/search input");
+  }
+  if (attachedFields.has(input)) {
+    throw new TypeError("This field already has a SahajLipi adapter attached");
   }
   if (typeof convertWord !== "function" || typeof convertText !== "function") {
     throw new TypeError("convertWord and convertText must be functions");
+  }
+  if (typeof onStateChange !== "function") {
+    throw new TypeError("onStateChange must be a function");
+  }
+  if (typeof initialEnabled !== "boolean") {
+    throw new TypeError("enabled must be a boolean");
+  }
+  const ownerDocument = input.ownerDocument ?? globalThis.document;
+  if (!ownerDocument || typeof ownerDocument.addEventListener !== "function") {
+    throw new TypeError("attachNepaliInput expects a field with an owner document");
   }
 
   const segmenter = typeof Intl.Segmenter === "function"
@@ -19,11 +53,13 @@ export function attachNepaliInput(input, { convertWord, convertText, onStateChan
     : null;
   const undoStack = [];
   const redoStack = [];
-  let enabled = true;
+  let enabled = initialEnabled;
   let active = null;
   let composing = false;
   let compositionBefore = null;
+  let compositionTimer = null;
   let mutating = false;
+  let destroyed = false;
 
   const snapshot = () => ({
     value: input.value,
@@ -45,7 +81,7 @@ export function attachNepaliInput(input, { convertWord, convertText, onStateChan
   }
 
   function emit() {
-    onStateChange(state());
+    if (!destroyed) onStateChange(state());
   }
 
   function remember(before) {
@@ -214,6 +250,11 @@ export function attachNepaliInput(input, { convertWord, convertText, onStateChan
       return;
     }
     if (kind === "insertLineBreak" || kind === "insertParagraph") {
+      if (input.tagName === "INPUT") {
+        active = null;
+        emit();
+        return;
+      }
       event.preventDefault();
       replace(input.selectionStart, input.selectionEnd, "\n");
       return;
@@ -335,7 +376,7 @@ export function attachNepaliInput(input, { convertWord, convertText, onStateChan
   }
 
   function onSelectionChange() {
-    if (document.activeElement !== input || !active) return;
+    if (ownerDocument.activeElement !== input || !active) return;
     if (input.selectionStart !== active.end || input.selectionEnd !== active.end) {
       active = null;
       emit();
@@ -343,6 +384,8 @@ export function attachNepaliInput(input, { convertWord, convertText, onStateChan
   }
 
   function onCompositionStart() {
+    if (compositionTimer !== null) clearTimeout(compositionTimer);
+    compositionTimer = null;
     compositionBefore = snapshot();
     composing = true;
     active = null;
@@ -352,8 +395,9 @@ export function attachNepaliInput(input, { convertWord, convertText, onStateChan
   function onCompositionEnd() {
     composing = false;
     // Some mobile keyboards dispatch their final input event after compositionend.
-    setTimeout(() => {
-      if (!compositionBefore) return;
+    compositionTimer = setTimeout(() => {
+      compositionTimer = null;
+      if (destroyed || !compositionBefore) return;
       const before = compositionBefore;
       compositionBefore = null;
       const oldText = before.value;
@@ -446,6 +490,17 @@ export function attachNepaliInput(input, { convertWord, convertText, onStateChan
     else replace(input.selectionStart, input.selectionEnd, mark);
   }
 
+  function removeListeners() {
+    input.removeEventListener("beforeinput", onBeforeInput);
+    input.removeEventListener("input", onInput);
+    input.removeEventListener("paste", onPaste);
+    input.removeEventListener("cut", onCut);
+    input.removeEventListener("keydown", onKeyDown);
+    input.removeEventListener("compositionstart", onCompositionStart);
+    input.removeEventListener("compositionend", onCompositionEnd);
+    ownerDocument.removeEventListener("selectionchange", onSelectionChange);
+  }
+
   input.addEventListener("beforeinput", onBeforeInput);
   input.addEventListener("input", onInput);
   input.addEventListener("paste", onPaste);
@@ -453,8 +508,15 @@ export function attachNepaliInput(input, { convertWord, convertText, onStateChan
   input.addEventListener("keydown", onKeyDown);
   input.addEventListener("compositionstart", onCompositionStart);
   input.addEventListener("compositionend", onCompositionEnd);
-  document.addEventListener("selectionchange", onSelectionChange);
-  emit();
+  ownerDocument.addEventListener("selectionchange", onSelectionChange);
+  attachedFields.add(input);
+  try {
+    emit();
+  } catch (error) {
+    removeListeners();
+    attachedFields.delete(input);
+    throw error;
+  }
 
   return {
     getState: state,
@@ -466,14 +528,167 @@ export function attachNepaliInput(input, { convertWord, convertText, onStateChan
     undo,
     redo,
     destroy() {
-      input.removeEventListener("beforeinput", onBeforeInput);
-      input.removeEventListener("input", onInput);
-      input.removeEventListener("paste", onPaste);
-      input.removeEventListener("cut", onCut);
-      input.removeEventListener("keydown", onKeyDown);
-      input.removeEventListener("compositionstart", onCompositionStart);
-      input.removeEventListener("compositionend", onCompositionEnd);
-      document.removeEventListener("selectionchange", onSelectionChange);
+      if (destroyed) return;
+      destroyed = true;
+      if (compositionTimer !== null) clearTimeout(compositionTimer);
+      compositionTimer = null;
+      compositionBefore = null;
+      removeListeners();
+      attachedFields.delete(input);
+    },
+  };
+}
+
+/**
+ * Attach the browser adapter to eligible fields within a document or element root.
+ * A MutationObserver keeps dynamically added and removed fields in sync.
+ */
+export function attachNepaliInputs(root = globalThis.document, {
+  scope = "marked",
+  selector,
+  excludeSelector = DEFAULT_EXCLUDE_SELECTOR,
+  enabled: initialEnabled = true,
+  convertWord = defaultConvertWord,
+  convertText = defaultConvertText,
+  onStateChange,
+} = {}) {
+  if (!root || typeof root.querySelectorAll !== "function") {
+    throw new TypeError("attachNepaliInputs expects a document or element root");
+  }
+  if (scope !== "marked" && scope !== "all") {
+    throw new TypeError("scope must be 'marked' or 'all'");
+  }
+  const fieldSelector = selector ?? (scope === "all" ? ALL_FIELDS_SELECTOR : MARKED_SELECTOR);
+  if (typeof fieldSelector !== "string" || !fieldSelector.trim()) {
+    throw new TypeError("selector must be a non-empty CSS selector");
+  }
+  if (typeof excludeSelector !== "string" || !excludeSelector.trim()) {
+    throw new TypeError("excludeSelector must be a non-empty CSS selector");
+  }
+  if (typeof initialEnabled !== "boolean") {
+    throw new TypeError("enabled must be a boolean");
+  }
+  if (typeof convertWord !== "function" || typeof convertText !== "function") {
+    throw new TypeError("convertWord and convertText must be functions");
+  }
+  if (onStateChange !== undefined && typeof onStateChange !== "function") {
+    throw new TypeError("onStateChange must be a function");
+  }
+
+  const controllers = new Map();
+  let enabled = initialEnabled;
+  let destroyed = false;
+  const isExcluded = (field) => typeof field.matches === "function" &&
+    field.matches(excludeSelector);
+
+  function refresh() {
+    if (destroyed) return;
+    const matches = new Set(root.querySelectorAll(fieldSelector));
+    if (typeof root.matches === "function" && root.matches(fieldSelector)) matches.add(root);
+    const eligible = [...matches].filter((field) => isSupportedField(field) && !isExcluded(field));
+    for (const field of eligible) {
+      if (!controllers.has(field) && attachedFields.has(field)) {
+        throw new TypeError("This field already has a SahajLipi adapter attached");
+      }
+    }
+    for (const field of eligible) {
+      if (!controllers.has(field)) {
+        let registered = false;
+        let pendingInitial = false;
+        const controller = attachNepaliInput(field, {
+          convertWord,
+          convertText,
+          enabled,
+          onStateChange: onStateChange
+            ? (state) => {
+                if (!registered) pendingInitial = true;
+                else {
+                  pendingInitial = false;
+                  onStateChange(state, field);
+                }
+              }
+            : undefined,
+        });
+        controllers.set(field, controller);
+        registered = true;
+        if (onStateChange) {
+          queueMicrotask(() => {
+            if (pendingInitial && !destroyed && controllers.get(field) === controller) {
+              pendingInitial = false;
+              onStateChange(controller.getState(), field);
+            }
+          });
+        }
+      }
+    }
+    for (const [field, controller] of controllers) {
+      if (!matches.has(field) || !isSupportedField(field) || isExcluded(field)) {
+        controller.destroy();
+        controllers.delete(field);
+      }
+    }
+  }
+
+  refresh();
+  function containsEligibleOrManaged(node) {
+    if (controllers.has(node)) return true;
+    if (typeof node.matches === "function" && node.matches(fieldSelector) &&
+        isSupportedField(node)) return true;
+    if (typeof node.querySelectorAll === "function" &&
+        [...node.querySelectorAll(fieldSelector)].some(isSupportedField)) return true;
+    for (const field of controllers.keys()) {
+      if (typeof node.contains === "function" && node.contains(field)) return true;
+    }
+    return false;
+  }
+
+  function onMutations(records) {
+    if (records.some((record) => {
+      if (record.type === "attributes") return containsEligibleOrManaged(record.target);
+      if (record.type === "childList") {
+        return [...record.addedNodes, ...record.removedNodes]
+          .some(containsEligibleOrManaged);
+      }
+      return false;
+    })) refresh();
+  }
+
+  const Observer = root.defaultView?.MutationObserver ??
+    root.ownerDocument?.defaultView?.MutationObserver ??
+    globalThis.MutationObserver;
+  const observer = typeof Observer === "function"
+    ? new Observer(onMutations)
+    : null;
+  const observeOptions = { childList: true, subtree: true, attributes: true };
+  if (selector === undefined && excludeSelector === DEFAULT_EXCLUDE_SELECTOR) {
+    observeOptions.attributeFilter = scope === "marked"
+      ? ["data-sahajlipi", "data-sahajlipi-ignore", "type"]
+      : ["data-sahajlipi-ignore", "type"];
+  }
+  observer?.observe(root, observeOptions);
+
+  return {
+    refresh,
+    getController(field) {
+      return controllers.get(field) ?? null;
+    },
+    getEnabled() {
+      return enabled;
+    },
+    setEnabled(next) {
+      if (typeof next !== "boolean") {
+        throw new TypeError("setEnabled expects a boolean");
+      }
+      if (destroyed) return;
+      enabled = next;
+      for (const controller of controllers.values()) controller.setEnabled(enabled);
+    },
+    destroy() {
+      if (destroyed) return;
+      destroyed = true;
+      observer?.disconnect();
+      for (const controller of controllers.values()) controller.destroy();
+      controllers.clear();
     },
   };
 }

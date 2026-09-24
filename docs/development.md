@@ -20,7 +20,7 @@ The benchmark gates only named behavior contracts. Its exploratory proposals are
 | Word readings | [`src/lexicon.js`](../src/lexicon.js) | Add a reviewed Roman spelling or reorder valid candidates. |
 | General phonetics | [`src/phonetic.js`](../src/phonetic.js) | Change a rule that should apply to many words. |
 | Engine API | [`src/index.js`](../src/index.js), [`src/index.d.ts`](../src/index.d.ts) | Change lookup, explicit marks, or a public type. |
-| Reusable textarea adapter | [`src/dom.js`](../src/dom.js), [`src/dom.d.ts`](../src/dom.d.ts) | Change caret, composition, paste, candidates, or undo behavior. |
+| Reusable browser adapters | [`src/dom.js`](../src/dom.js), [`src/dom.d.ts`](../src/dom.d.ts) | Change field discovery, caret, composition, paste, candidates, or undo behavior. |
 | Browser demo | [`demo/`](../demo/) | Change the playground UI or its on-page guide. |
 | Package tests | [`test/`](../test/) | Lock down engine output or adapter events. |
 | Seed benchmark | [`benchmark/`](../benchmark/) | Track named contracts and clearly labeled exploratory cases. |
@@ -47,4 +47,4 @@ The GitHub repository and demo are public, but there is **no npm release process
 
 ## Privacy and trust boundaries
 
-The package engine has no network or persistent-storage code. The textarea adapter keeps up to 200 edit snapshots in memory for undo. The [demo guide](demo/README.md) describes its Copy button and static hosting. These source-level observations do not cover browser extensions, hosting access logs, or applications embedding the package; see the [package architecture](package/architecture.md) for its data flow.
+The package engine has no network or persistent-storage code. Each attached text field keeps up to 200 edit snapshots in memory for undo. The opt-in manager observes the supplied page region until it is destroyed. The [demo guide](demo/README.md) describes its Copy button and static hosting. These source-level observations do not cover browser extensions, hosting access logs, or applications embedding the package; see the [package architecture](package/architecture.md) for its data flow.

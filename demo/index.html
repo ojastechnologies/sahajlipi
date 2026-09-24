@@ -42,6 +42,7 @@
 
             <textarea
               id="typing-field"
+              data-sahajlipi
               aria-label="Type Roman Nepali here"
               aria-describedby="typing-hint"
               placeholder="Try typing: namaste mero ghar"
@@ -64,6 +65,50 @@
             </div>
           </section>
         </div>
+
+        <section class="integration" aria-labelledby="integration-title">
+          <div class="integration-heading">
+            <div>
+              <span class="section-label">Developer preview</span>
+              <h2 id="integration-title">One setup, every marked field.</h2>
+            </div>
+            <p>Mark the fields that should type Nepali. The same page-level initializer powers the editor above and the text and search fields here.</p>
+          </div>
+
+          <div class="integration-layout">
+            <div class="integration-fields" aria-label="Try SahajLipi in form fields">
+              <label class="sample-field" for="sample-name">
+                <span>Name in Nepali</span>
+                <input id="sample-name" type="text" data-sahajlipi placeholder="Try: mero naam" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" />
+              </label>
+              <label class="sample-field" for="sample-search">
+                <span>Search in Nepali</span>
+                <input id="sample-search" type="search" data-sahajlipi placeholder="Try: nepal" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" />
+              </label>
+              <label class="sample-field" for="sample-english">
+                <span>English notes stay in English</span>
+                <input id="sample-english" type="text" placeholder="Type English here" autocomplete="off" />
+              </label>
+              <label class="sample-field" for="sample-email">
+                <span>Email stays in English</span>
+                <input id="sample-email" type="email" placeholder="name@example.com" autocomplete="email" />
+              </label>
+            </div>
+
+            <div class="integration-code">
+              <span class="code-label">Page setup</span>
+              <pre><code>&lt;input type="text" data-sahajlipi&gt;
+&lt;input type="search" data-sahajlipi&gt;
+
+&lt;script type="module"&gt;
+  import { attachNepaliInputs } from "../src/dom.js";
+  const typing = attachNepaliInputs(document, { enabled: true });
+  // typing.setEnabled(false) switches every marked field.
+&lt;/script&gt;</code></pre>
+              <p>Textareas work too. The unmarked English and email fields above remain unchanged.</p>
+            </div>
+          </div>
+        </section>
 
         <section class="guide" aria-labelledby="guide-title">
           <div class="guide-heading">
@@ -182,7 +227,7 @@
             <section class="guide-card">
               <span class="guide-number">09 / Editor controls</span>
               <h3>Switch, copy, or clear</h3>
-              <p>Use <strong>Nepali on/off</strong> to switch between conversion and literal English typing. The <kbd>.</kbd> key stays a period in both modes. With Nepali off, shortcut keys such as <kbd>^</kbd>, <kbd>~</kbd>, <kbd>/</kbd>, and <kbd>|</kbd> stay literal. <strong>Copy</strong> copies the editor text; <strong>Clear</strong> starts again.</p>
+              <p>Use <strong>Nepali on/off</strong> to switch between conversion and literal English typing in the editor and marked form fields. The <kbd>.</kbd> key stays a period in both modes. With Nepali off, shortcut keys such as <kbd>^</kbd>, <kbd>~</kbd>, <kbd>/</kbd>, and <kbd>|</kbd> stay literal. <strong>Copy</strong> copies the editor text; <strong>Clear</strong> starts again.</p>
               <p>The text you enter remains editable in the same field, including text you paste or type on a phone.</p>
             </section>
           </div>
@@ -191,7 +236,7 @@
         <section class="developer-note" aria-labelledby="developer-docs-title">
           <div>
             <h2 id="developer-docs-title">Building with SahajLipi?</h2>
-            <p>Explore the reusable engine, textarea adapter, API, architecture, and benchmark documentation.</p>
+            <p>Explore the reusable engine, browser adapter, API, architecture, and benchmark documentation.</p>
           </div>
           <a class="developer-link" href="https://github.com/ojastechnologies/sahajlipi/blob/main/docs/package/README.md">Read package docs <span aria-hidden="true">↗</span></a>
         </section>

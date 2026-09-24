@@ -1,5 +1,4 @@
-import { convertText, convertWord } from "../src/index.js";
-import { attachNepaliInput } from "../src/dom.js";
+import { attachNepaliInputs } from "../src/dom.js";
 
 const field = document.querySelector("#typing-field");
 const candidatePanel = document.querySelector("#candidate-panel");
@@ -9,8 +8,6 @@ const characterCount = document.querySelector("#character-count");
 const modeButton = document.querySelector("#mode-button");
 const copyButton = document.querySelector("#copy-button");
 const clearButton = document.querySelector("#clear-button");
-
-let controller;
 
 function render({ text, enabled, activeRoman, candidates }) {
   characterCount.textContent = `${Array.from(text).length} ${Array.from(text).length === 1 ? "character" : "characters"}`;
@@ -28,14 +25,20 @@ function render({ text, enabled, activeRoman, candidates }) {
   });
 }
 
-controller = attachNepaliInput(field, { convertWord, convertText, onStateChange: render });
+// One manager attaches every marked field, including the form examples below.
+const manager = attachNepaliInputs(document, {
+  onStateChange(state, changedField) {
+    if (changedField === field) render(state);
+  },
+});
+const controller = manager.getController(field);
 
 candidateSelect.addEventListener("change", () => {
   controller.chooseCandidate(Number(candidateSelect.value));
 });
 
 modeButton.addEventListener("click", () => {
-  controller.setEnabled(!controller.getState().enabled);
+  manager.setEnabled(!controller.getState().enabled);
   field.focus();
 });
 

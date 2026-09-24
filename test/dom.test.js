@@ -4,6 +4,7 @@ import { attachNepaliInput } from "../src/dom.js";
 import { convertText, convertWord } from "../src/index.js";
 
 class FakeTextarea extends EventTarget {
+  tagName = "TEXTAREA";
   value = "";
   selectionStart = 0;
   selectionEnd = 0;
