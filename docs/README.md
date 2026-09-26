@@ -10,7 +10,18 @@ Choose the guide for the part of SahajLipi you are using. The **package** provid
 | [API reference](package/api.md) | Core engine and browser input APIs, one-call setup, and TypeScript declarations. |
 | [Typing reference](package/typing-reference.md) | Exact Roman-key behavior, half forms, marks, punctuation, and candidates. |
 | [Architecture](package/architecture.md) | Conversion flow, module boundaries, Unicode, and adapter event handling. |
-| [Benchmarks](package/benchmarks.md) | Reproducible engine cases, metrics, provenance, baseline, and limitations. |
+
+## Evaluation and review
+
+| Read | For |
+| --- | --- |
+| [Seed benchmark](package/benchmarks.md) | Run behavior checks; inspect the recorded baseline, scoring rules, and exclusions. |
+| [External evaluation](package/external-evaluation.md) | Reproduce the pinned word baseline and prepare sentence proposals for review. |
+| [Development review guide](package/review-batch.md) | Generate the 100-case development batch and record independent Nepali-language decisions. |
+| [Development batch report](package/review-batch-baseline.md) | Inspect dated source-proposal agreement and diagnostic signals, with review limitations. |
+| [Run manifest](../benchmark/reports/nepali-review-001.json) | Verify source pins, selected IDs, engine/tool hashes, and artifact hashes for the recorded development run. |
+
+The repository [Evaluation status](../README.md#evaluation-status) summarizes dated baselines. The linked reports provide the evidence and limits behind each result. Unreviewed proposal agreement is not a language-accuracy score.
 
 ## Browser demo
 
