@@ -13,7 +13,7 @@ The [package](package/README.md) includes a deterministic word and text converte
 | Mixed English | `convertText` treats Latin-letter runs as Roman Nepali; it does not detect English words automatically. |
 | Input surface | The reusable adapter supports `<textarea>` and text/search inputs; one manager can cover marked fields, a page region, or all supported fields in a document, with English fields excluded. Tests simulate editor events, but there is no published real-browser or phone compatibility matrix. `contenteditable` and other input types are unsupported. |
 | Other languages | Mappings and lexicon entries are Nepali-specific. No other Devanagari language profile exists yet. |
-| Evaluation | The [seed benchmark](package/benchmarks.md) tracks selected behavior contracts. A separate [external word baseline and sentence review queue](package/external-evaluation.md) exist, but there is no representative real-typing accuracy estimate. |
+| Evaluation | The [seed benchmark](package/benchmarks.md) tracks selected behavior contracts. A separate [external word baseline and sentence review queue](package/external-evaluation.md) and a [100-case development review batch](package/review-batch.md) exist. The batch starts unreviewed; there is no representative real-typing accuracy estimate. |
 
 The [architecture](package/architecture.md), [API reference](package/api.md), and [typing reference](package/typing-reference.md) describe the package as implemented.
 
@@ -23,7 +23,7 @@ The [live demo](https://ojastechnologies.github.io/sahajlipi/demo/) is a static 
 
 ## Priorities
 
-1. **Reviewed Nepali evaluation corpus.** Collect consented real typing examples with intended Unicode, valid alternatives, provenance, and independent Nepali-language review. Keep these separate from tests written to fit the implementation.
+1. **Reviewed Nepali evaluation corpus.** Independently review and reconcile the [first development batch](package/review-batch.md) before using it for correctness fixes. Collect consented real typing examples with intended Unicode, valid alternatives, and provenance, and reserve a separate reviewed held-out set. Keep these separate from tests written to fit the implementation.
 2. **High-frequency correctness fixes.** Use that corpus to choose lexical entries and broadly valid phonetic changes. Report ambiguity and trade-offs rather than silently changing defaults.
 3. **Browser input compatibility.** Test real browsers, mobile keyboards, composition, selection, paste, and assistive technology. Publish a tested support matrix.
 4. **Developer alpha release.** Stabilize the package API, declarations, and package contents; define versioning and release steps; publish with an honest quality baseline.
