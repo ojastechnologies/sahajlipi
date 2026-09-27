@@ -42,6 +42,7 @@ The demo is one consumer of the package. Its Copy and Clear buttons, character c
 | --- | --- |
 | [Development guide](development.md) | Repository workflow, tests, CI, and release readiness. |
 | [Status and roadmap](status-and-roadmap.md) | Current capabilities, limits, and priorities. |
+| [Brand guide](brand.md) | Name, message, logo assets, colors, typography and repository identity. |
 | [Contributing](../CONTRIBUTING.md) | Reporting a typing issue or proposing a focused change. |
 | [Security policy](../SECURITY.md) | Private vulnerability reporting and support status. |
 | [MIT license](../LICENSE) | Terms for code and documentation. |

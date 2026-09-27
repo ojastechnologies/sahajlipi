@@ -1,4 +1,11 @@
-# SahajLipi
+<h1>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/brand/logo-dark.svg">
+    <img src="assets/brand/logo.svg" alt="SahajLipi" width="380" height="82">
+  </picture>
+</h1>
+
+**Roman keys. Native script.**
 
 [![CI](https://github.com/ojastechnologies/sahajlipi/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ojastechnologies/sahajlipi/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -81,3 +88,5 @@ npm run benchmark -- --check
 ```
 
 See the [documentation index](docs/README.md), [development guide](docs/development.md), [contribution guide](CONTRIBUTING.md), [project status](docs/status-and-roadmap.md), [security policy](SECURITY.md), and [MIT license](LICENSE). The seed benchmark is a regression set, not a population-wide accuracy measure. See the [external evaluation guide](docs/package/external-evaluation.md) for the pinned Nepali word baseline and sentence review process.
+
+Project logos, browser icons, social preview artwork and usage rules are available in the [brand guide](docs/brand.md).
