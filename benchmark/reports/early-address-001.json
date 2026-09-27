@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "reportId": "early-address-001",
+  "recordedAt": "2026-09-27T11:07:52.138Z",
+  "purpose": "Same-fixture conformance to project-authored early-address software contracts; not linguistic accuracy, address validity or timing",
+  "baseline": {
+    "gitCommit": "c0679b5e41a56eb5bab762a422243a400adefe1f",
+    "snapshotMethod": "git archive of immutable prior mixed-text implementation",
+    "coreFileSha256": {
+      "src/index.js": "d7b2fc67ebc08c93534e09b16f64a998ecafb761c16bda096bcdf071ea84411d",
+      "src/index.d.ts": "97fd8f3a1dbd76c591facf353fe59fc2edbf52270aa743b5f484bdeaaae4f7c5",
+      "src/text-policy.js": "83e6c3019d54dae11b4185bbed8d1acd13eda7e718f0ce999967a54232da461c",
+      "src/lexicon.js": "0e5c26111dcebac1fe43bc4ae2d14a236653b42e6f676f43dbc549983f6806c0",
+      "src/phonetic.js": "dec43061ce47d8456092b661a4b1ea7b5d366d2c7969a4f2b6f3b1b0c20ff1ff"
+    }
+  },
+  "after": {
+    "identity": "Working tree correction based on c0679b5e41a56eb5bab762a422243a400adefe1f; core identity pinned by hashes without assigning an uncreated commit",
+    "coreFileSha256": {
+      "src/index.js": "d7b2fc67ebc08c93534e09b16f64a998ecafb761c16bda096bcdf071ea84411d",
+      "src/index.d.ts": "97fd8f3a1dbd76c591facf353fe59fc2edbf52270aa743b5f484bdeaaae4f7c5",
+      "src/text-policy.js": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa",
+      "src/lexicon.js": "0e5c26111dcebac1fe43bc4ae2d14a236653b42e6f676f43dbc549983f6806c0",
+      "src/phonetic.js": "dec43061ce47d8456092b661a4b1ea7b5d366d2c7969a4f2b6f3b1b0c20ff1ff"
+    }
+  },
+  "environment": {
+    "nodeVersion": "v22.22.3",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "25.6.0"
+  },
+  "fixture": {
+    "path": "benchmark/cases.jsonl",
+    "sha256": "2b3d794b761dc8e9d459becb85bbed1be39a7f6bfbdae48b2cfe6d14dc876cc6",
+    "total": 127,
+    "contractCount": 125,
+    "exploratoryCount": 2,
+    "priorFixtureSha256": "3e2674bc1bc9c0acd58fcc159eecd6f4666b94897761d33512c76f2fd8addb16",
+    "priorRowCount": 121,
+    "priorBytesPreserved": true,
+    "newCaseIds": [
+      "mixed-early-http-scheme",
+      "mixed-early-http-userinfo",
+      "mixed-early-www",
+      "mixed-early-email",
+      "mixed-early-domain",
+      "mixed-early-ordinary-text"
+    ]
+  },
+  "originalContract": {
+    "before": {
+      "passed": 119,
+      "total": 119,
+      "wordTop": 102,
+      "wordTotal": 102,
+      "textTop": 17,
+      "textTotal": 17
+    },
+    "after": {
+      "passed": 119,
+      "total": 119,
+      "wordTop": 102,
+      "wordTotal": 102,
+      "textTop": 17,
+      "textTotal": 17
+    }
+  },
+  "expandedContract": {
+    "before": {
+      "passed": 120,
+      "total": 125,
+      "wordTop": 102,
+      "wordTotal": 102,
+      "textTop": 18,
+      "textTotal": 23
+    },
+    "after": {
+      "passed": 125,
+      "total": 125,
+      "wordTop": 102,
+      "wordTotal": 102,
+      "textTop": 23,
+      "textTotal": 23
+    }
+  },
+  "addedEarlyAddressContract": {
+    "before": {
+      "passed": 1,
+      "total": 6,
+      "wordTop": 0,
+      "wordTotal": 0,
+      "textTop": 1,
+      "textTotal": 6
+    },
+    "after": {
+      "passed": 6,
+      "total": 6,
+      "wordTop": 0,
+      "wordTotal": 0,
+      "textTop": 6,
+      "textTotal": 6
+    }
+  },
+  "exploratory": {
+    "before": {
+      "passed": 0,
+      "total": 2,
+      "wordTop": 0,
+      "wordTotal": 2,
+      "textTop": 0,
+      "textTotal": 0
+    },
+    "after": {
+      "passed": 0,
+      "total": 2,
+      "wordTop": 0,
+      "wordTotal": 2,
+      "textTop": 0,
+      "textTotal": 0
+    },
+    "excludedFromGate": true,
+    "labelsRemainUnreviewed": true
+  },
+  "changedOutputCaseIds": [
+    "mixed-early-http-scheme",
+    "mixed-early-http-userinfo",
+    "mixed-early-www",
+    "mixed-early-email",
+    "mixed-early-domain"
+  ],
+  "newCaseResults": [
+    {
+      "id": "mixed-early-http-scheme",
+      "input": "namaste HTTP: Https:/ paani|",
+      "expectedTop": "नमस्ते HTTP: Https:/ पानी।",
+      "before": "नमस्ते ह्ट्ट्प्: ह्त्त्प्स्:/ पानी।",
+      "after": "नमस्ते HTTP: Https:/ पानी।",
+      "beforePass": false,
+      "afterPass": true
+    },
+    {
+      "id": "mixed-early-http-userinfo",
+      "input": "https://User:pass https://User:pass@ paani|",
+      "expectedTop": "https://User:pass https://User:pass@ पानी।",
+      "before": "https://User:पस्स् ह्त्त्प्स्://उसेर्:पस्स्@ पानी।",
+      "after": "https://User:pass https://User:pass@ पानी।",
+      "beforePass": false,
+      "afterPass": true
+    },
+    {
+      "id": "mixed-early-www",
+      "input": "www. www.c camera|",
+      "expectedTop": "www. www.c क्यामेरा।",
+      "before": "व्व्व्. व्व्व्.च् क्यामेरा।",
+      "after": "www. www.c क्यामेरा।",
+      "beforePass": false,
+      "afterPass": true
+    },
+    {
+      "id": "mixed-early-email",
+      "input": "User.Name+tag@ user@camera. paani|",
+      "expectedTop": "User.Name+tag@ user@camera. पानी।",
+      "before": "उसेर्.नमे+तग्@ उसेर्@क्यामेरा. पानी।",
+      "after": "User.Name+tag@ user@camera. पानी।",
+      "beforePass": false,
+      "afterPass": true
+    },
+    {
+      "id": "mixed-early-domain",
+      "input": "camera.c camera.co- camera.c1 paani|",
+      "expectedTop": "camera.c camera.co- camera.c1 पानी।",
+      "before": "क्यामेरा.च् क्यामेरा.चो- क्यामेरा.च्1 पानी।",
+      "after": "camera.c camera.co- camera.c1 पानी।",
+      "beforePass": false,
+      "afterPass": true
+    },
+    {
+      "id": "mixed-early-ordinary-text",
+      "input": "camera camera. 3.14 par/=yo T D|",
+      "expectedTop": "क्यामेरा क्यामेरा. 3.14 पर्‍यो ट् ड्।",
+      "before": "क्यामेरा क्यामेरा. 3.14 पर्‍यो ट् ड्।",
+      "after": "क्यामेरा क्यामेरा. 3.14 पर्‍यो ट् ड्।",
+      "beforePass": true,
+      "afterPass": true
+    }
+  ],
+  "commands": {
+    "baselineExpanded": {
+      "command": "node /private/tmp/sahajlipi-early-address-baseline-c0679b5/benchmark/run.js --fixtures /private/tmp/sahajlipi-mixed-text/benchmark/cases.jsonl --check",
+      "exitCode": 1
+    },
+    "afterExpanded": {
+      "command": "node /private/tmp/sahajlipi-mixed-text/benchmark/run.js --fixtures /private/tmp/sahajlipi-mixed-text/benchmark/cases.jsonl --check",
+      "exitCode": 0
+    },
+    "baselineOriginal": {
+      "command": "node /private/tmp/sahajlipi-early-address-baseline-c0679b5/benchmark/run.js --fixtures /private/tmp/sahajlipi-early-address-baseline-c0679b5/benchmark/cases.jsonl --check",
+      "exitCode": 0
+    },
+    "afterOriginal": {
+      "command": "node /private/tmp/sahajlipi-mixed-text/benchmark/run.js --fixtures /private/tmp/sahajlipi-early-address-baseline-c0679b5/benchmark/cases.jsonl --check",
+      "exitCode": 0
+    }
+  },
+  "benchmarkToolSha256": "02f76258dece93e9ec8e54cd484dddc9456d4a64c4162114221c4794b8d87f31",
+  "measurementScriptSha256": "b305d6d72840c3ce8a4ee5e2029c66acc8a1ddaa011302a2ab2e455e8c88333e",
+  "reproduction": {
+    "baselineSnapshot": "git archive c0679b5e41a56eb5bab762a422243a400adefe1f | tar -x -C <baseline-directory>",
+    "comparison": "Run archived baseline and after benchmark/run.js with the same frozen expanded benchmark/cases.jsonl through --fixtures <absolute-fixture-path> --check. For original contracts, use the archived baseline fixture with each engine. Verify fixture, core and tool hashes above.",
+    "coreHashScope": "src/index.js, src/index.d.ts, src/text-policy.js, src/lexicon.js, src/phonetic.js. No DOM/browser result is measured by this report."
+  },
+  "limits": [
+    "Six additions are software behavior contracts, with zero independently reviewed linguistic labels; no population accuracy or clean held-out improvement claim.",
+    "HTTP(S):, www. and an ordinary ASCII email local-part followed by @ are typing cues even for incomplete or malformed addresses. No DNS, network, public-suffix check or full address validation occurs.",
+    "Bare dotted tokens become recognizable with an alphabetic start to the rightmost label; unfinished hyphens or digits in that label remain literal. Plain camera and camera. still convert, and decimals are unchanged.",
+    "Text before the earliest recognizable cue still follows ordinary conversion; this report does not claim to predict an email local-part or website before a distinguishing character is typed.",
+    "All 121 prior rows remain byte-for-byte unchanged. The original 119 and expanded 125 contract denominators are separate; two exploratory proposals remain excluded.",
+    "Only default convertText is measured. Per-engine opt-out, live typing, composition, paste, cursor edits and undo are separately tested; no mobile browser or assistive technology support is certified.",
+    "The prior mixed-text-001 report remains an immutable historical record whose after-engine is c0679b5e41a56eb5bab762a422243a400adefe1f, rather than this corrected working tree."
+  ]
+}

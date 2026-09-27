@@ -22,10 +22,10 @@ Replace `YOUR_LAN_IP` with that address, then open `http://YOUR_LAN_IP:4173/demo
 
 ## Use the page
 
-- **Type in the editor.** Roman letters turn into Nepali in the same textarea. Space commits the displayed word; Backspace can edit the active Roman spelling. The on-page **How to type** guide shows examples for vowels, half consonants, `cha`/`chha`, the two र्य/र्‍य forms, listed word shortcuts, English loanwords, full English month names, Shift sounds, marks, punctuation, and alternatives. The [package typing reference](../package/typing-reference.md) documents the complete rules and the scope of those word entries.
+- **Type in the editor.** Roman letters turn into Nepali in the same textarea. Space commits the displayed word; Backspace can edit the active Roman spelling. The on-page **How to type** guide shows examples for vowels, half consonants, `cha`/`chha`, the two र्य/र्‍य forms, listed word shortcuts, English loanwords, full English month names, Shift sounds, marks, punctuation, mixed text, and alternatives. The [package typing reference](../package/typing-reference.md) documents the complete rules and the scope of those word entries.
 - **Choose a reading.** When the active spelling has multiple listed readings, a dropdown appears below the textarea. The first reading is displayed by default. Choose another from the dropdown or press `Alt` + a number from `1` through `9` while the word is active.
-- **Switch mode.** **Nepali on/off** controls conversion of subsequent typing and paste in every marked field on this page: the main editor and the two form examples. Existing text stays as it is when you switch modes.
-- **Try form fields.** The text and search examples below the editor use the same conversion setup. The unmarked text and email fields stay in English. The alternatives dropdown and character count belong to the main editor; in the form fields, `Alt` + a number can select an available alternative.
+- **Switch mode.** The button shows **Nepali mode** when conversion is on and **English mode** when input is literal. It controls subsequent typing and paste in every marked field on this page: the main editor and the three form examples. Existing text stays as it is when you switch modes.
+- **Try form fields.** The two marked text fields and marked search field below the editor use the same conversion setup. The mixed-text field lets you try Nepali beside a link or email address. The unmarked text and email fields stay in English. The alternatives dropdown and character count belong to the main editor; in the form fields, `Alt` + a number can select an available alternative.
 - **Copy or clear.** **Copy** writes the main editor value to the clipboard when the browser permits it. If clipboard access fails, the page selects the text for manual copying. **Clear** empties the main editor. The character count updates with its displayed text.
 
 The fields keep text and their undo snapshots in browser memory while the page is open. The demo does not provide accounts or cloud storage. Its core and adapter do not make network requests to convert text; the browser still requests the static page files from the hosting server.
@@ -71,7 +71,7 @@ Use the lowercase spellings in the table. Incidental capitals such as `Camera` a
 
 ### English month names
 
-All 12 full English month names work automatically with Nepali on, in the editor and both marked form fields. Each has one preferred spelling, so no readings dropdown appears for these entries. The normal title-case forms also work, including `September` and `December`.
+All 12 full English month names work automatically in Nepali mode, in the editor and all three marked form fields. Each has one preferred spelling, so no readings dropdown appears for these entries. The normal title-case forms also work, including `September` and `December`.
 
 | English keys | Nepali spelling |
 | --- | --- |
@@ -90,15 +90,33 @@ All 12 full English month names work automatically with Nepali on, in the editor
 
 Try `January February March` → **जनवरी फेब्रुअरी मार्च** or `September December` → **सेप्टेम्बर डिसेम्बर**. These source-assisted project spellings are documented with their evidence in the [month reference](../package/month-names.md); independent human linguistic review remains pending.
 
-`May` and `may` both give **मे**. The engine cannot recognize English modal-verb uses of “may”; use Nepali off or an English field for them. Native Roman input such as `maya` keeps its existing behavior. The month entries match full words only: abbreviations such as `jan`, `feb` and `sep`, and attached forms such as `januaryma`, keep ordinary conversion. There is no general all-capital or mixed-case English matching; reserved Shift keys still select sounds. The feature spells month names and does not convert dates to the Bikram Sambat calendar.
+`May` and `may` both give **मे**. The engine cannot recognize English modal-verb uses of “may”; use English mode or an English field for them. Native Roman input such as `maya` keeps its existing behavior. The month entries match full words only: abbreviations such as `jan`, `feb` and `sep`, and attached forms such as `januaryma`, keep ordinary conversion. There is no general all-capital or mixed-case English matching; reserved Shift keys still select sounds. The feature spells month names and does not convert dates to the Bikram Sambat calendar.
 
-### Keep English text literal
+### Nepali beside links and email
 
-Use **Nepali off** or the unmarked English notes field for text that must stay literal. The demo's unmarked email field also preserves what you type. URLs, email addresses, code, acronyms, and arbitrary English spans are not automatically protected inside a Nepali-enabled field; a string such as `camera.com` can still be converted. Switching modes affects subsequent typing and paste without rewriting existing text.
+In **Nepali mode**, recognizable HTTP(S) links, `www.` addresses, ASCII domain-shaped hosts, and ordinary ASCII email addresses stay literal automatically. Original case, paths, query strings, and fragments stay intact. Try these by typing continuously or pasting them into the editor or mixed-text form field:
+
+```text
+namaste camera.com name+tag@example.com
+→ नमस्ते camera.com name+tag@example.com
+
+namaste https://Example.com/a|b?q=camera#may pani|
+→ नमस्ते https://Example.com/a|b?q=camera#may पनि।
+```
+
+The converter switches the current token back to Roman text as soon as an early address cue appears: `http:`, `https:`, `www.`, an ordinary ASCII local part followed by `@`, or the first letter after a domain dot. It preserves `https:`, `www.`, `name@`, `name@example`, and `camera.c` before they are complete addresses. The same examples stay literal when pasted.
+
+Before a cue, letters still type Nepali: `camera` becomes `क्यामेरा` and `camera.` remains `क्यामेरा.` A trailing period alone is sentence punctuation. The current token can be restored while you type continuously; previously committed text cannot be reconstructed into Roman input. Switch to **English mode before the first key** if you want a fragment to stay literal from its beginning.
+
+The policy checks a shape, not whether the address exists: `pani.paani` and its unfinished form `pani.p` also stay literal. It accepts unfinished addresses without validating them and has ASCII scope; internationalized addresses and arbitrary English, code, or filenames are outside the automatic handling. A pipe after a bare domain gives danda (`camera.com|` → `camera.com।`), but inside a URL suffix it stays literal (`camera.com/a|` stays as typed). Add a space before the pipe for sentence punctuation after a path: `camera.com/a |` → `camera.com/a ।`. The [package API guide](../package/api.md#links-domains-and-email-addresses) defines the full policy.
+
+### Keep an English phrase literal
+
+Switch to **English mode** before typing or pasting an English phrase, acronym, or code fragment; switch back to **Nepali mode** when ready to continue Nepali. The button controls all marked fields together, and it leaves existing text as it is. In English mode, shortcut characters such as `^`, `~`, `/`, and `|` stay literal too. The unmarked English notes and email-only fields always preserve what you type.
 
 ## How the demo connects to the package
 
-[`demo/index.html`](../../demo/index.html) defines the editor, controls, candidate dropdown, marked form fields, and on-page guide. [`demo/style.css`](../../demo/style.css) styles them. [`demo/main.js`](../../demo/main.js) imports `attachNepaliInputs` from `src/dom.js` and calls it once for all fields marked `data-sahajlipi`. The manager supplies the main editor's controller for its candidate dropdown and clear control; its `setEnabled()` method switches Nepali typing for every marked field. Copy reads the main editor's value. The unmarked English text and email fields have no adapter. Editing and conversion behavior lives in the [package code](../package/README.md), so the demo exercises the same functions that developers can embed in their own apps.
+[`demo/index.html`](../../demo/index.html) defines the editor, controls, candidate dropdown, three marked form fields, and on-page guide. [`demo/style.css`](../../demo/style.css) styles them. [`demo/main.js`](../../demo/main.js) imports `attachNepaliInputs` from `src/dom.js` and calls it once for all fields marked `data-sahajlipi`. The manager supplies the main editor's controller for its candidate dropdown and clear control; its `setEnabled()` method switches Nepali typing for every marked field. Copy reads the main editor's value. The unmarked English text and email fields have no adapter. Editing and conversion behavior lives in the [package code](../package/README.md), so the demo exercises the same functions that developers can embed in their own apps.
 
 ## Brand assets
 

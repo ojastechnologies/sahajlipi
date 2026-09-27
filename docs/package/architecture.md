@@ -11,6 +11,8 @@ flowchart LR
   A[Roman word or text] --> B[Core API<br/>src/index.js]
   L[Starter lexicon<br/>src/lexicon.js] --> B
   P[Phonetic fallback<br/>src/phonetic.js] --> B
+  T[Technical-span policy<br/>src/text-policy.js] --> B
+  T --> E
   B --> C[Unicode text and<br/>ordered candidates]
   M[Scoped field manager<br/>src/dom.js] --> E[Per-field adapter<br/>src/dom.js]
   D[Text-field events] --> E
@@ -24,14 +26,15 @@ flowchart LR
 | [`src/index.js`](../../src/index.js) | Public core API; lexicon lookup, explicit shortcut handling, candidate generation, and whole-text conversion. |
 | [`src/lexicon.js`](../../src/lexicon.js) | Small, reviewable map of Roman spellings to preferred output and any alternatives. |
 | [`src/phonetic.js`](../../src/phonetic.js) | Deterministic token-to-Devanagari fallback for words absent from the lexicon. |
+| [`src/text-policy.js`](../../src/text-policy.js) | Shared technical-span recognition with UTF-16 offsets, used by whole-text conversion and browser typing. |
 | [`src/dom.js`](../../src/dom.js) | Optional text-field integration: scoped discovery and lifecycle, live replacement, caret and active-word state, suggestions, paste, composition, and undo. |
 | [`src/index.d.ts`](../../src/index.d.ts), [`src/dom.d.ts`](../../src/dom.d.ts) | TypeScript declarations for the core and browser adapters. |
 
-The core imports only the lexicon and phonetic modules. It does not access the DOM or make network requests. The browser module uses the default converters unless custom functions are passed, so an independent engine can drive the same input behavior. The package is an ES module with `.` and `./dom` export paths and no runtime dependencies; it currently has `private: true` and is **not published to npm** ([`package.json`](../../package.json)). Node.js 18 or newer is declared for development and tests.
+The core imports the lexicon, phonetic, and text-policy modules. It does not access the DOM or make network requests. The browser module uses the default converters unless custom functions are passed, so an independent engine can drive the same input behavior. The package is an ES module with `.` and `./dom` export paths and no runtime dependencies; it currently has `private: true` and is **not published to npm** ([`package.json`](../../package.json)). Node.js 18 or newer is declared for development and tests.
 
 ## Core conversion flow
 
-[`createEngine({ entries })`](../../src/index.js) returns an independent object with `convertWord` and `convertText`. Each engine clones the starter lexicon and replaces entries with the same normalized Roman key from `entries`. Each custom value must be a nonempty array of nonempty strings. A word's first value is its default output; later distinct values are alternatives. The module also exports `convertWord` and `convertText` from one default engine instance. Customizing an engine does not alter that default instance.
+[`createEngine({ entries, preserveTechnicalText })`](../../src/index.js) returns an independent object with `convertWord` and `convertText`. Each engine clones the starter lexicon and replaces entries with the same normalized Roman key from `entries`. Each custom value must be a nonempty array of nonempty strings. A word's first value is its default output; later distinct values are alternatives. The module also exports `convertWord` and `convertText` from one default engine instance. Customizing an engine does not alter that default instance. `preserveTechnicalText` defaults to `true`; setting it to `false` opts that engine’s whole-text converter out of technical-span preservation without changing its single-word converter.
 
 For `convertWord(roman)`, the order is:
 
@@ -42,7 +45,11 @@ For `convertWord(roman)`, the order is:
 
 The fallback matches the longest available consonant or vowel token at each position ([`src/phonetic.js`](../../src/phonetic.js)). A consonant first emits its Unicode letter plus virama `्`, making an unvoweled consonant half by default: `k` → `क्`. A following vowel replaces the trailing virama with the appropriate dependent vowel sign; `a` supplies no sign, so `ka` → `क`. A vowel not following a consonant emits its independent letter. Consecutive consonants therefore form clusters: `kr` → `क्र्`, then `kra` → `क्र`. Characters with no matching token are copied through. This is a deterministic character rule, **not** a spelling model.
 
-`convertText(text)` finds runs of ASCII Roman letters and shortcut characters, applies `convertWord` to each run, then maps every `|` to danda `।` ([`src/index.js`](../../src/index.js)). It preserves `.` (including decimal points), whitespace, digits, other punctuation, and existing Devanagari. It does not detect whether an ASCII word is English; an English word in a matching run can be transliterated.
+`convertText(text)` first obtains protected spans from [`findProtectedSpans`](../../src/text-policy.js), which returns UTF-16 ranges for recognizable HTTP(S) and `www.` links, ASCII domain-shaped hosts, ordinary ASCII email addresses, and their unfinished forms once an address cue appears. It copies those ranges literally, including their spelling and case. Outside those ranges, it applies `convertWord` to ASCII Roman-letter and shortcut runs, and maps `|` to danda `।`. Periods (including decimal points), whitespace, digits, other punctuation, and existing Devanagari pass through.
+
+The same scanner preserves unfinished forms from `http:`, `https:`, `www.`, an ordinary ASCII local part followed by `@`, or the first ASCII letter after a domain dot. It does not wait for a complete host or email address. Plain `camera` and a trailing sentence period in `camera.` still convert; English mode is needed to keep a fragment literal before any cue. The policy recognizes patterns without network requests, DNS lookups, or public-suffix validation. A dotted spelling such as `pani.paani` is preserved whether or not it is a real domain. It has ASCII scope rather than full internationalized URL/email parsing; arbitrary English and code outside recognized spans remain convertible. `convertWord` still operates on a single Roman word and does not use this policy.
+
+Trailing sentence punctuation and enclosing wrappers sit outside the matched span; balanced parentheses can remain within a URL path. A pipe after a bare domain is outside, while `/`, `?`, or `#` begins a URL suffix whose shortcut characters stay literal. A trailing pipe within such a suffix is therefore literal; whitespace before a sentence danda disambiguates it. The [API reference](api.md#links-domains-and-email-addresses) gives examples and the opt-out behavior.
 
 ### Word-level decisions and examples
 
@@ -58,17 +65,19 @@ The manager attaches one controller per eligible field and watches changes with 
 
 The per-field adapter's **active word** records the Roman keys typed, the start and end of the currently rendered Nepali span, ordered candidates, ambiguity, and whether suggestions were dismissed. When another Roman key arrives at the active span's end, the adapter reconverts the accumulated Roman spelling and replaces that span. This matters because one Roman key can change several Unicode characters; for example, Backspace on an active `ka` removes `a` and rerenders `k` as `क्`. A space or punctuation commits the visible reading and clears active-word state. A suggestion is exposed through `onStateChange` only while the active word has distinct alternatives and has not been dismissed. Choosing one replaces that span, keeps the Roman spelling editable, and suppresses candidates until the word changes. A host interface can render those candidates and connect its own controls to the returned controller.
 
+Separately, the adapter keeps the original input of the current whitespace-delimited token during uninterrupted typing, with its rendered range. That token lets it restore letters previously shown as Nepali as soon as an early address cue appears, then retain the unfinished address in Roman text. Backspacing away the cue lets ordinary conversion resume. The same scanner is used by bulk conversion and pasted text, so there is no separate browser-only definition of an address. Committed Nepali text cannot be reconstructed into its original Roman spelling.
+
 ### Event paths and editing state
 
 | Event path | Current behavior |
 | --- | --- |
-| Cancelable `beforeinput` | Intercepts text insertion, deletion, and history operations. It inserts line breaks only in textareas; Enter keeps its native behavior in single-line inputs. Roman letters and shortcuts join the active word in Nepali mode; other inserted text goes through `convertText` or stays literal in English mode. |
-| Native `input` fallback | Compares previous and current field values to locate an insertion when `beforeinput` did not handle it, then rerenders the inserted Roman text or converts a larger inserted fragment. |
-| `paste` and `cut` | Paste converts the full pasted text in Nepali mode, inserts it at the selection, and clears active-word state. Cut copies the selected plain text and removes that range. |
-| `compositionstart` / `compositionend` | Leaves the browser's composition process alone, then defers conversion to the next event-loop turn to allow a final input event; current simulated tests cover selected mobile event sequences. |
+| Cancelable `beforeinput` | Intercepts text insertion, deletion, and history operations. It inserts line breaks only in textareas; Enter keeps its native behavior in single-line inputs. Roman letters and shortcuts update the active word and raw token in Nepali mode; recognized technical spans render literally. English mode inserts text literally. |
+| Native `input` fallback | Compares previous and current field values to locate an insertion when `beforeinput` did not handle it, then uses the same insertion and technical-span policy to rerender it. |
+| `paste` and `cut` | Paste converts the pasted text with the same technical-span policy in Nepali mode and inserts it at the selection; English mode keeps it literal. Cut copies the selected plain text and removes that range. |
+| `compositionstart` / `compositionend` | Leaves the browser's composition process alone, then defers conversion to the next event-loop turn to allow a final input event and applies the shared text policy; simulated tests cover selected mobile event sequences. |
 | `keydown` and `selectionchange` | Handles Ctrl/Cmd+Z, Ctrl/Cmd+Y or Shift+Z, Alt+1–9 candidate selection, Escape dismissal, and cancellation of active-word state when the caret moves away. |
 
-The adapter stores value, selection, and active-word snapshots for undo and redo; its own history is capped at 200 snapshots. It dispatches a synthetic bubbling `input` event after programmatic replacements so ordinary listeners see the converted value, and guards against handling its own event twice. `setEnabled(false)` affects subsequent typing; it does not reverse already converted text. `destroy()` removes the listeners. These paths are in [`src/dom.js`](../../src/dom.js).
+The adapter stores value, selection, active-word, and current-token snapshots for undo and redo; its own history is capped at 200 snapshots. It dispatches a synthetic bubbling `input` event after programmatic replacements so ordinary listeners see the converted value, and guards against handling its own event twice. `setEnabled(false)` affects subsequent typing; it does not reverse already converted text. `destroy()` removes the listeners. These paths are in [`src/dom.js`](../../src/dom.js).
 
 ## Unicode and caret handling
 
@@ -78,11 +87,12 @@ Text-field selections and replacement ranges use JavaScript string indices, whic
 
 ## Verification and current limits
 
-Run `npm test` to execute the Node built-in test runner. [`test/engine.test.js`](../../test/engine.test.js) covers lexicon and fallback conversion, shifted sounds, half consonants, explicit marks, punctuation, candidates, and custom entries. [`test/ry.test.js`](../../test/ry.test.js) adds exact word-specific joiner forms, ordinary-conjunct controls, vowel distinctions, and reserved Shift lookup checks. The [single-field adapter tests](../../test/dom.test.js) and [multi-field integration tests](../../test/dom-manager.test.js) exercise simulated editing, suggestions, paste, input types, dynamic field discovery, teardown, native-input fallback, and composition. [CI](../../.github/workflows/ci.yml) runs the suite on Node 18, 20, 22, and 24. These are regression tests, not a linguistic quality benchmark or a cross-browser compatibility matrix.
+Run `npm test` to execute the Node built-in test runner. [`test/engine.test.js`](../../test/engine.test.js) covers lexicon and fallback conversion, shifted sounds, half consonants, explicit marks, punctuation, candidates, and custom entries. [`test/ry.test.js`](../../test/ry.test.js) adds exact word-specific joiner forms, ordinary-conjunct controls, vowel distinctions, and reserved Shift lookup checks. The [single-field adapter tests](../../test/dom.test.js) and [multi-field integration tests](../../test/dom-manager.test.js) exercise simulated editing, suggestions, paste, input types, dynamic field discovery, teardown, native-input fallback, and composition. The [mixed-text core tests](../../test/mixed-text.test.js) cover recognized address shapes, punctuation boundaries, custom entries, and the engine opt-out; [mixed-text adapter tests](../../test/dom-mixed-text.test.js) cover live editing and event paths. [CI](../../.github/workflows/ci.yml) runs the suite on Node 18, 20, 22, and 24. These are regression tests, not a linguistic quality benchmark or a cross-browser compatibility matrix.
 
 Current limits to account for in integrations and evaluations:
 
 - The lexicon is small and manually curated. Unknown words, names, English text, and informal Roman spellings can convert incorrectly.
+- Technical-span preservation uses ASCII pattern cues and accepts unfinished addresses; it does not infer the intent of plain Roman letters before a cue. It does not check whether a domain exists, fully parse internationalized addresses, or identify arbitrary English or code.
 - Candidate order is the supplied lexicon order. There is no statistical ranking, sentence context, or automatic correction.
 - The DOM adapter supports textareas and text/search inputs. Mobile composition has simulated tests, but device and browser compatibility has not been systematically measured. `contenteditable` and other input types remain unsupported.
 - The seed [benchmark](benchmarks.md) checks named behavior contracts and separately reports exploratory cases. There is no independently reviewed real-typing corpus or population-wide accuracy estimate yet.

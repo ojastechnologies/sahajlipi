@@ -131,7 +131,7 @@ This spells a borrowed word rather than translating its meaning: `school` produc
 
 `Camera` and `Computer` match their lowercase entries. Reserved Shift keys still apply, so `Doctor`, `School`, `CAMERA` and `COMPUTER` are not blanket-lowercased aliases. Attached forms such as `camerako`, `cameramaa`, `mobilema` and `schoolma` are unlisted and keep the fallback; this pilot does not infer suffixes. Hyphenated `e-mail` is split by text conversion and is not the `email` alias.
 
-Keep an entire English field literal by leaving it unattached, marking it `data-sahajlipi-ignore` or disabling conversion. URLs, email addresses, code and English spans **inside** a Nepali-enabled field are not automatically protected. The tokenizer can match `camera` inside `camera.com`, `camera_file` and `camera123`; review mixed text before using the result.
+Keep an entire English field literal by leaving it unattached, marking it `data-sahajlipi-ignore`, or disabling conversion. Text conversion and attached fields preserve recognized links, ASCII domain-shaped hosts, and ordinary ASCII email addresses by default: `camera` becomes क्यामेरा, while `camera.com` stays literal. Ordinary English phrases, code, and filenames still need explicit literal handling; `camera_file` and `camera123` can still be converted. See [mixed text](#mixed-text-and-literal-english).
 
 ## English month names
 
@@ -148,7 +148,7 @@ These 12 full English month names automatically use the listed Nepali spellings.
 
 Try `January February March` → जनवरी फेब्रुअरी मार्च and `September December` → सेप्टेम्बर डिसेम्बर. Other uses of reserved Shift keys still select sounds; there is no general folding of all-capital or mixed-case English. For example, `SEPTEMBER` and `DECEMBER` are not month aliases.
 
-`May` and `may` both select the month spelling मे. The engine cannot distinguish the English modal verb “may” from the month name. Native Roman Nepali such as `maya` keeps its existing behavior. Unlisted abbreviations such as `jan`, `feb` and `sep` and attached forms such as `januaryma` do not inherit month entries. This feature spells Gregorian month names; it does not translate an English sentence or convert dates to Bikram Sambat. English spans and URLs inside Nepali-enabled fields still have no automatic protection.
+`May` and `may` both select the month spelling मे. The engine cannot distinguish the English modal verb “may” from the month name. Native Roman Nepali such as `maya` keeps its existing behavior. Unlisted abbreviations such as `jan`, `feb` and `sep` and attached forms such as `januaryma` do not inherit month entries. This feature spells Gregorian month names; it does not translate an English sentence or convert dates to Bikram Sambat. Recognized links and email addresses stay literal under the shared text policy; ordinary English phrases still require explicit literal handling.
 
 ## Nasal marks and punctuation
 
@@ -159,7 +159,7 @@ Type `^` after a syllable for bindu/anusvara ं, or `~` for chandrabindu ँ. T
 | `ka^` | कं |
 | `kaa~` | काँ |
 
-The period `.` always stays an English period, including in `3.14`. Type `|` for Nepali पूर्णविराम `।`: `pani|` → पनि। and `3.14|` → 3.14।. The same rule applies to `convertText` and text pasted into an attached field while Nepali mode is on. The DOM controller also exposes `insertPunctuation('।')` and `insertPunctuation('॥')`; `|` types the single danda `।` only.
+The period `.` always stays an English period, including in `3.14`. Type `|` for Nepali पूर्णविराम `।`: `pani|` → पनि। and `3.14|` → 3.14।. The same rule applies to `convertText` and text pasted into an attached field while Nepali mode is on, outside recognized technical spans. A pipe after a bare domain converts (`camera.com|` → `camera.com।`), but a pipe inside a URL path, query, or fragment stays literal (`camera.com/a|` stays as typed). Separate a URL suffix and sentence danda with whitespace: `camera.com/a |` → `camera.com/a ।`. The DOM controller also exposes `insertPunctuation('।')` and `insertPunctuation('॥')`; `|` types the single danda `।` only.
 
 ## Alternatives and field editing
 
@@ -167,10 +167,38 @@ The engine returns candidates in preferred order. For example, `kam` gives क�
 
 The controller’s `setEnabled(false)` switches subsequent input to literal typing; `setEnabled(true)` resumes conversion. When conversion is disabled, keys such as `^`, `~`, `/`, and `|` remain literal. Switching modes does not rewrite text already in the field. `convertText` always uses the first reading of each converted word and returns plain text without candidate data.
 
+## Mixed text and literal English
+
+The default `convertText` and browser adapters preserve recognizable HTTP(S) links, `www.` links, ASCII domain-shaped hosts, and ordinary ASCII email addresses, including plus tags and subdomains. Their original spelling and case stay intact, while Nepali around them converts normally:
+
+```text
+namaste camera.com name+tag@example.com
+→ नमस्ते camera.com name+tag@example.com
+
+namaste https://Example.com/a|b?q=camera#may pani|
+→ नमस्ते https://Example.com/a|b?q=camera#may पनि।
+```
+
+Preservation starts at an early address cue: `http:`, `https:`, `www.`, an ordinary ASCII local part followed by `@`, or the first letter after a domain dot. These incomplete examples already stay literal in live typing, paste, and whole-text conversion:
+
+| Type | Output |
+| --- | --- |
+| `https:` | `https:` |
+| `www.` | `www.` |
+| `name@` | `name@` |
+| `name@example` | `name@example` |
+| `camera.c` | `camera.c` |
+
+Before a cue appears, ordinary words still convert: `camera` → `क्यामेरा` and `camera.` → `क्यामेरा.` A trailing period alone does not select an address. During uninterrupted typing, the current token returns to Roman text as soon as the cue appears; it does not wait for a complete address. A space finishes the token. The adapter cannot recover Roman spellings for previously committed text. Switch to English mode before the first key for text that must stay literal from its beginning.
+
+Address recognition is a pattern heuristic: no DNS or public-suffix check is performed, and preserved unfinished addresses are not validated. `pani.paani` and the unfinished `pani.p` stay literal because they look like domains. This policy has ASCII scope and does not provide full Unicode/internationalized address parsing or general English, code, or filename detection. `convertWord` remains a single-Roman-word converter; use `convertText` for mixed strings. A custom engine can disable preservation with `createEngine({ preserveTechnicalText: false })`.
+
+For an English phrase or code fragment, switch the field’s controller to `setEnabled(false)` before typing or pasting it, then use `setEnabled(true)` to resume Nepali. A manager’s `setEnabled()` switches every field it owns. No existing text is rewritten. For fixed literal names, custom entries such as `{ github: ['GitHub'] }` provide a configured spelling; for arbitrary English in bulk text, let the host app convert only its chosen Nepali chunks. See [API examples](api.md#keeping-english-literal).
+
 ## Current limits
 
 - The starter lexicon is small. Unknown words use deterministic phonetic rules, which can give incorrect Nepali spelling. There is no context-sensitive ranking or language detection.
-- `convertText` converts Latin-letter runs regardless of whether they are Nepali or English. The 20 loanword entries and 12 month names cover their listed keys and aliases; they add no language detection, attached-form inference or automatic URL/code protection.
+- `convertText` preserves recognized technical spans, then converts Latin-letter runs outside them regardless of whether they are Nepali or English. The 20 loanword entries and 12 month names cover their listed keys and aliases; they add no language detection or attached-form inference. Arbitrary English and code remain outside automatic preservation.
 - The browser adapter attaches to `<textarea>` and text/search inputs, directly or through an opt-in field manager. It handles keyboard input, paste, and composition events, but this reference is not a browser compatibility guarantee.
 - The prototype does not offer a dedicated keyboard shortcut for every Devanagari character, mark, or accent. A future language profile would need its own reviewed mappings; current behavior is Nepali-specific.
 

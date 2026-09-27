@@ -16,6 +16,7 @@ Choose the guide for the part of SahajLipi you are using. The **package** provid
 | Read | For |
 | --- | --- |
 | [Seed benchmark](package/benchmarks.md) | Run behavior checks; inspect the recorded baseline, scoring rules, and exclusions. |
+| [Mixed-text and early-address records](package/mixed-text-benchmarks.md) | Reproduce dated address-preservation comparisons with frozen fixtures, engine identities, and scope limits. |
 | [External evaluation](package/external-evaluation.md) | Reproduce the pinned word baseline and prepare sentence proposals for review. |
 | [Development review guide](package/review-batch.md) | Generate the 100-case development batch and record independent Nepali-language decisions. |
 | [Development batch report](package/review-batch-baseline.md) | Inspect dated source-proposal agreement and diagnostic signals, with review limitations. |
