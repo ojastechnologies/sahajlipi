@@ -8,6 +8,7 @@
 **Roman keys. Native script.**
 
 [![CI](https://github.com/ojastechnologies/sahajlipi/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ojastechnologies/sahajlipi/actions/workflows/ci.yml)
+[![Browser tests](https://github.com/ojastechnologies/sahajlipi/actions/workflows/browser.yml/badge.svg?branch=main)](https://github.com/ojastechnologies/sahajlipi/actions/workflows/browser.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 SahajLipi is a Roman Nepali → Unicode typing prototype for web developers. Its code is MIT-licensed; the [CLDR month-name data](docs/package/month-names.md) uses [Unicode-3.0](LICENSES/Unicode-3.0.txt). This repository contains a **reusable package** and a **separate browser demo**. Only Nepali is implemented today; other Devanagari languages are a future goal.
@@ -16,10 +17,11 @@ SahajLipi is a Roman Nepali → Unicode typing prototype for web developers. Its
 
 ## Evaluation status
 
-The CI badge shows the current `main` branch status. CI runs automated tests and the seed contract benchmark on pull requests and pushes to `main`, across Node.js 18, 20, 22, and 24. The table below contains **dated recorded results**, with methods and provenance linked from each row.
+The badges show current `main` workflow status. Node CI runs automated tests and the seed contract benchmark on pull requests and pushes to `main`, across Node.js 18, 20, 22, and 24. The separate browser workflow runs Chromium, Firefox, and WebKit on Ubuntu with Node.js 22; its [compatibility guide](docs/package/browser-compatibility.md) records tested environments, commands, and limits. Check a pull request's own checks for its results. The table below contains **dated recorded results**, with methods and provenance linked from each row.
 
 | Evaluation | Recorded result | Run date | Interpretation |
 | --- | --- | --- | --- |
+| [Recorded desktop browser regressions](docs/package/browser-compatibility.md#recorded-run--2026-09-27) | 36/36 checks: 12 scenarios in each of Chromium, Firefox, and WebKit | 2026-09-27 | Automated headless desktop engines on macOS arm64; paste/composition/native-input cases use injected events. No mobile or installed-browser certification. |
 | [Latest early-address contracts](docs/package/mixed-text-benchmarks.md#early-address-follow-up--2026-09-27) | 125/125 contracts; baseline 120/125 on the same expanded fixture | 2026-09-27 | Six software contracts for incomplete address cues; prior 119 contracts preserved. No linguistic accuracy or timing result. |
 | [Recorded first mixed-text contracts](docs/package/mixed-text-benchmarks.md#recorded-results) | 119/119 contracts; baseline 110/119 on the same expanded fixture | 2026-09-27 | Ten technical-text software contracts; original 109 contracts preserved. |
 | [Recorded Gregorian month contracts](docs/package/month-benchmarks.md#recorded-results) | 109/109 recorded contracts; baseline 91/109 on the same expanded fixture | 2026-09-27 | Twelve CLDR-assisted month defaults and focused case/date guards; original 85 contracts preserved. |
@@ -87,12 +89,22 @@ Use the [live typing demo](https://ojastechnologies.github.io/sahajlipi/demo/) t
 
 ## Work on the project
 
-Node.js 18 or later runs the automated checks from the repository root:
+Node.js 18 or later runs the Node tests and engine checks from the repository root:
 
 ```sh
 npm test
 npm run benchmark -- --check
 ```
+
+For desktop browser tests, use Node.js 20 or later, npm, and Python 3:
+
+```sh
+npm ci
+npx playwright install chromium firefox webkit
+npm run test:browser
+```
+
+On Linux, add `--with-deps` to the browser installation command. The suite starts its own local server. See the [browser compatibility guide](docs/package/browser-compatibility.md) for running one engine, opening reports, and distinguishing keyboard checks from injected event tests. Playwright is a development dependency; the package has no runtime dependencies.
 
 See the [documentation index](docs/README.md), [development guide](docs/development.md), [contribution guide](CONTRIBUTING.md), [project status](docs/status-and-roadmap.md), [security policy](SECURITY.md), and [MIT license](LICENSE). The seed benchmark is a regression set, not a population-wide accuracy measure. See the [external evaluation guide](docs/package/external-evaluation.md) for the pinned Nepali word baseline and sentence review process.
 

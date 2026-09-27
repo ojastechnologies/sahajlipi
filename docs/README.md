@@ -10,11 +10,13 @@ Choose the guide for the part of SahajLipi you are using. The **package** provid
 | [API reference](package/api.md) | Core engine and browser input APIs, one-call setup, and TypeScript declarations. |
 | [Typing reference](package/typing-reference.md) | Exact Roman-key behavior, half forms, marks, punctuation, and candidates. |
 | [Architecture](package/architecture.md) | Conversion flow, module boundaries, Unicode, and adapter event handling. |
+| [Browser adapter compatibility](package/browser-compatibility.md) | Desktop browser checks, reproducible setup, engine matrix, CI artifacts, and coverage limits. |
 
 ## Evaluation and review
 
 | Read | For |
 | --- | --- |
+| [Desktop browser run record](../browser/reports/desktop-001.json) | Inspect the dated desktop-engine results, test names, source hashes, environment, and scope limits. |
 | [Seed benchmark](package/benchmarks.md) | Run behavior checks; inspect the recorded baseline, scoring rules, and exclusions. |
 | [Mixed-text and early-address records](package/mixed-text-benchmarks.md) | Reproduce dated address-preservation comparisons with frozen fixtures, engine identities, and scope limits. |
 | [External evaluation](package/external-evaluation.md) | Reproduce the pinned word baseline and prepare sentence proposals for review. |
@@ -48,4 +50,4 @@ The demo is one consumer of the package. Its Copy and Clear buttons, character c
 | [Security policy](../SECURITY.md) | Private vulnerability reporting and support status. |
 | [MIT license](../LICENSE) | Terms for code and documentation. |
 
-The current automated tests protect specific behavior. The seed benchmark uses selected examples and reports unreviewed proposals separately; neither establishes population-wide Nepali typing accuracy. See the [benchmark protocol](package/benchmarks.md) before interpreting its results.
+The current Node and desktop-browser tests protect specific software behavior. The browser guide distinguishes keyboard tests from injected paste/composition events and records the tested environments. The seed benchmark uses selected examples and reports unreviewed proposals separately; these checks do not establish population-wide Nepali typing accuracy. See the [benchmark protocol](package/benchmarks.md) before interpreting its results.

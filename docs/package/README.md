@@ -6,6 +6,7 @@ SahajLipi provides a dependency-free Nepali transliteration engine and optional 
 | --- | --- |
 | [API reference](api.md) | Core and browser input APIs, one-call setup, mixed-text preservation, literal English controls, and integration limits. |
 | [Architecture](architecture.md) | Module boundaries, conversion flow, Unicode, and editor events. |
+| [Browser adapter compatibility](browser-compatibility.md) | Desktop engine matrix, browser test setup, editing contracts, CI reports, and testing limits. |
 | [Typing reference](typing-reference.md) | Current Nepali key mappings, half forms, marks, punctuation, and alternatives. |
 | [Benchmarks](benchmarks.md) | Reproducible engine cases, metrics, provenance, results, and evaluation limits. |
 | [Mixed-text benchmark record](mixed-text-benchmarks.md) | Separate dated mixed-text and early-address contracts, preserved prior rows, identities, reproduction commands, and scope limits. |
