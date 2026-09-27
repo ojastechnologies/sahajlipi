@@ -1,0 +1,14 @@
+SahajLipi
+https://github.com/ojastechnologies/sahajlipi
+
+Code is licensed under the MIT License; see LICENSE.
+
+The twelve built-in Nepali Gregorian month-name preferences in src/lexicon.js
+are derived from Unicode CLDR JSON 48.2.1 Nepali calendar data, distributed under
+the Unicode License v3. The complete license is in LICENSES/Unicode-3.0.txt.
+Source provenance, mappings, and limits are documented at:
+https://github.com/ojastechnologies/sahajlipi/blob/main/docs/package/month-names.md
+
+The prototype's word entries are project preferences, not a reviewed dictionary
+or a guarantee of linguistic accuracy. Research datasets and development review
+material are not included in the npm package.

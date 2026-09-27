@@ -1,0 +1,126 @@
+{
+  "index.md": {
+    "title": "SahajLipi | Nepali Typing Library for JavaScript",
+    "description": "Open-source Nepali typing for JavaScript and TypeScript apps. Convert Roman Nepali to Unicode with direct typing, optional candidates, and browser adapters."
+  },
+  "docs/index.md": {
+    "title": "SahajLipi Documentation | Developer Guides and Evidence",
+    "description": "Explore SahajLipi developer guides, API reference, typing rules, browser integration, architecture, benchmark evidence, and release status."
+  },
+  "docs/package/index.md": {
+    "title": "SahajLipi Package | Nepali Conversion and Browser APIs",
+    "description": "Learn how SahajLipi converts Roman Nepali to Unicode and adds live typing to browser fields, with configuration, public APIs, and documented limits."
+  },
+  "docs/package/getting-started.md": {
+    "title": "Getting Started with SahajLipi | JavaScript and TypeScript",
+    "description": "Install the unreleased SahajLipi prototype locally, convert Roman Nepali, configure browser fields, and use the public JavaScript and TypeScript APIs."
+  },
+  "docs/package/integration-recipes.md": {
+    "title": "SahajLipi Integration Recipes | Browser and React Examples",
+    "description": "Integrate SahajLipi with candidate choices, shared engine settings, TypeScript fields, and an uncontrolled React textarea with explicit cleanup."
+  },
+  "docs/package/api.md": {
+    "title": "SahajLipi API Reference | Core Engine and Browser Adapters",
+    "description": "Reference SahajLipi conversion functions, engine options, field managers, candidates, English mode, digits, address preservation, and controller cleanup."
+  },
+  "docs/package/architecture.md": {
+    "title": "SahajLipi Architecture | Conversion and Browser Editing",
+    "description": "Understand SahajLipi module boundaries, phonetic conversion, Unicode handling, candidate lookup, browser events, caret state, and in-memory undo."
+  },
+  "docs/package/typing-reference.md": {
+    "title": "Nepali Typing Reference | SahajLipi Keys and Unicode",
+    "description": "Find SahajLipi Roman Nepali keys for vowels, consonants, half forms, Shift sounds, bindu, chandrabindu, punctuation, digits, and word alternatives."
+  },
+  "docs/package/browser-compatibility.md": {
+    "title": "SahajLipi Browser Compatibility | Tests and Limits",
+    "description": "Run SahajLipi desktop browser checks, inspect tested engines and installed-package examples, and understand clipboard, IME, mobile, and framework limits."
+  },
+  "docs/package/benchmarks.md": {
+    "title": "SahajLipi Benchmarks | Methods, Contracts, and Limits",
+    "description": "Run SahajLipi behavior benchmarks and interpret their metrics, provenance, exclusions, reproducible results, and separation from linguistic accuracy."
+  },
+  "docs/package/digits-benchmarks.md": {
+    "title": "SahajLipi Digit Benchmarks | Devanagari and Latin Contracts",
+    "description": "Inspect the recorded Devanagari digit change, declared numeric expectations, Latin compatibility, engine identities, and reproducible software checks."
+  },
+  "docs/package/mixed-text-benchmarks.md": {
+    "title": "SahajLipi Mixed-Text Benchmarks | Address Preservation",
+    "description": "Reproduce SahajLipi mixed-text and early-address checks with frozen fixtures, source hashes, disclosed case additions, and explicit evidence limits."
+  },
+  "docs/package/external-evaluation.md": {
+    "title": "SahajLipi External Evaluation | Nepali Dataset Evidence",
+    "description": "Explore pinned Nepali evaluation sources, reproduce word comparisons, and prepare sentence review proposals with provenance and accuracy limitations."
+  },
+  "docs/package/review-batch.md": {
+    "title": "SahajLipi Language Review | Development Batch Instructions",
+    "description": "Review the SahajLipi development word and sentence batch, record independent decisions, reconcile alternatives, and keep evaluation provenance intact."
+  },
+  "docs/package/review-batch-baseline.md": {
+    "title": "SahajLipi Review Baseline | Source-Proposal Agreement",
+    "description": "Inspect the dated development-batch baseline, source proposals, engine identities, diagnostic signals, and the limits of unreviewed label agreement."
+  },
+  "docs/package/assisted-online-review.md": {
+    "title": "SahajLipi Online Review | Sources and Pending Decisions",
+    "description": "Read source-assisted Nepali spelling research, draft case recommendations, attribution, uncertainty, and the independent language review still needed."
+  },
+  "docs/package/ry-review.md": {
+    "title": "SahajLipi Ra-Ya Review | Unicode Joiners and Word Cases",
+    "description": "Review SahajLipi ra-ya spellings, word-specific joiner preferences, Shift behavior, source-quality findings, regression records, and remaining limits."
+  },
+  "docs/package/loanword-review.md": {
+    "title": "SahajLipi Loanword Review | English Spellings in Nepali",
+    "description": "See SahajLipi English-spelling loanword defaults, spelling evidence, pending variants, custom entries, and limits for English and attached word forms."
+  },
+  "docs/package/loanword-benchmarks.md": {
+    "title": "SahajLipi Loanword Benchmarks | Defaults and Cha Checks",
+    "description": "Inspect dated loanword and cha behavior checks, unchanged-label external comparisons, case provenance, overlap disclosures, and reproduction steps."
+  },
+  "docs/package/month-names.md": {
+    "title": "SahajLipi Month Names | Nepali Gregorian Spellings",
+    "description": "See SahajLipi full English month names in Nepali, title-case aliases, custom overrides, CLDR provenance, and the limits of calendar-name conversion."
+  },
+  "docs/package/month-benchmarks.md": {
+    "title": "SahajLipi Month Benchmarks | CLDR-Assisted Name Contracts",
+    "description": "Reproduce recorded Gregorian month-name checks, compare pinned engine versions, and inspect source identities and separate external evaluation evidence."
+  },
+  "docs/demo/index.md": {
+    "title": "SahajLipi Demo Guide | Typing Controls and Local Setup",
+    "description": "Learn the SahajLipi demo controls, candidates, Nepali and English modes, typing examples, local server setup, hosting, and playground limitations."
+  },
+  "docs/development.md": {
+    "title": "SahajLipi Development | Tests, Package Checks, and CI",
+    "description": "Contribute to SahajLipi, run engine and browser checks, verify local tarball consumers, build examples and the website, and inspect CI evidence."
+  },
+  "docs/release.md": {
+    "title": "SahajLipi Release Policy | Alpha Checklist and Compatibility",
+    "description": "Review SahajLipi package boundaries, compatibility evidence, versioning, migration rules, and the alpha checklist before any npm publication."
+  },
+  "docs/status-and-roadmap.md": {
+    "title": "SahajLipi Status and Roadmap | Scope and Next Steps",
+    "description": "Understand the current SahajLipi prototype, Nepali typing limits, package and demo status, review priorities, and plans before a developer alpha."
+  },
+  "docs/brand.md": {
+    "title": "SahajLipi Brand Guide | Name, Logo, Colors, and Assets",
+    "description": "Use SahajLipi logos, mark, wordmark, colors, typography, social preview, and accessible names consistently across the repository and package website."
+  },
+  "docs/website-and-seo.md": {
+    "title": "SahajLipi Website and SEO | Build, Metadata, and Publishing",
+    "description": "Maintain the SahajLipi package website, Markdown docs, canonical links, sitemap, social metadata, GitHub discoverability, and post-deployment checks."
+  },
+  "docs/contributing.md": {
+    "title": "Contributing to SahajLipi | Issues and Focused Changes",
+    "description": "Help improve SahajLipi with reproducible typing reports, focused code changes, reviewed spelling evidence, tests, and clear contribution practices."
+  },
+  "docs/security.md": {
+    "title": "SahajLipi Security Policy | Private Vulnerability Reports",
+    "description": "Find SahajLipi vulnerability reporting instructions and prototype support status, with private disclosure guidance for project security issues."
+  },
+  "docs/changelog.md": {
+    "title": "SahajLipi Changelog | Unreleased Changes and Version Notes",
+    "description": "Track unreleased SahajLipi documentation, packaging, integration checks, and future version notes without implying an npm release has occurred."
+  },
+  "demo/index.html": {
+    "title": "SahajLipi Live Demo | Type Roman Nepali to Unicode",
+    "description": "Try SahajLipi phonetic Nepali typing in your browser, choose available spellings, switch to English mode, and explore Unicode keys and field examples."
+  }
+}

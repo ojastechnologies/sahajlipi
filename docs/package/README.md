@@ -4,6 +4,8 @@ SahajLipi provides a dependency-free Nepali transliteration engine and optional 
 
 | Read | For |
 | --- | --- |
+| [Getting started](getting-started.md) | Install the unreleased prototype locally, import the public entry points, choose a typing scope, and use TypeScript. |
+| [Integration recipes](integration-recipes.md) | Complete candidate dropdowns, shared engines, DOM types, dynamic fields, and an uncontrolled React example. |
 | [API reference](api.md) | Core and browser input APIs, one-call setup, mixed-text preservation, literal English controls, and integration limits. |
 | [Architecture](architecture.md) | Module boundaries, conversion flow, Unicode, and editor events. |
 | [Browser adapter compatibility](browser-compatibility.md) | Desktop engine matrix, browser test setup, editing contracts, CI reports, and testing limits. |
@@ -28,4 +30,4 @@ For live typing, choose an integration scope: mark selected fields with `data-sa
 
 Recognizable HTTP(S) and `www.` links, ASCII domain-shaped hosts, and ordinary ASCII email addresses stay literal by default in text conversion and attached fields. Preservation begins at early cues such as `https:`, `www.`, `name@`, and `camera.c`, without waiting for a complete address. The policy preserves original case and punctuation within URL suffixes, without checking whether the addresses exist. Plain `camera` still converts; use English mode before the first key if a fragment must stay literal throughout. Ordinary English and code still require host-selected literal spans or the existing mode controls. The [API guide](api.md#links-domains-and-email-addresses) defines the recognized cues and scope, punctuation boundaries, and `preserveTechnicalText` opt-out.
 
-The package is still private in [`package.json`](../../package.json), so these examples import from a repository checkout. The [project status](../status-and-roadmap.md) tracks what is and is not implemented.
+The package is still private in [`package.json`](../../package.json) and is not published to npm. The [getting started guide](getting-started.md) shows local tarball and checkout-folder installations that resolve the public `sahajlipi` and `sahajlipi/dom` imports. The [project status](../status-and-roadmap.md) tracks what is and is not implemented.
