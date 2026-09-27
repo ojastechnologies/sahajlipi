@@ -53,10 +53,23 @@ html { scroll-padding-top: 90px; }
 .vp-doc a { text-underline-offset: 3px; }
 .VPHome { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 
-:where(a, button, input, select, textarea):focus-visible {
+:where(a, button):focus-visible {
   outline: 3px solid var(--vp-c-brand-1);
   outline-offset: 4px;
 }
+
+:is(input, select, textarea):focus {
+  outline: 3px solid var(--sahaj-gold-ink);
+  outline-offset: 4px;
+}
+
+.VPLocalSearchBox form.search-bar:focus-within {
+  border-color: var(--sahaj-gold-ink);
+  outline: 3px solid var(--sahaj-gold-ink);
+  outline-offset: 3px;
+}
+
+.VPLocalSearchBox form.search-bar input:focus { outline: none; }
 
 .sahaj-home {
   width: min(1152px, calc(100% - 64px));
@@ -137,7 +150,7 @@ html { scroll-padding-top: 90px; }
   line-height: 1.4;
   background: transparent;
 }
-.word-preview-writing input:focus-visible { border-color: var(--vp-c-brand-1); outline-offset: 5px; }
+.word-preview-writing input:focus { border-color: var(--sahaj-gold-ink); outline-offset: 5px; }
 .word-preview-separator { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 16px 0; color: var(--vp-c-text-3); }
 .word-preview-separator span { height: 1px; width: 28px; background: var(--vp-c-divider); }
 .word-preview-writing output {
@@ -233,7 +246,7 @@ html { scroll-padding-top: 90px; }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
 
-/* Gold highlights keep the text and keyboard focus in readable ink or teal. */
+/* Gold highlights keep text readable; links and buttons retain teal focus. */
 ::selection { background: #e5ad3e; color: #192d3e; }
 .word-preview-writing input { caret-color: var(--sahaj-gold-ink); }
 .word-preview-examples { background: var(--sahaj-gold-soft); }

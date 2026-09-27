@@ -17,6 +17,7 @@ No npm versions have been published. `0.1.0` is the private repository prototype
 
 ### Fixed
 
+- Gold focus rings on the demo editor, form fields, homepage preview, and documentation search, with light and dark theme colors.
 - Restored gold highlights on typing surfaces, selected text, active navigation, and keyboard examples across the website and demo.
 - Local demo startup now builds and serves the complete package website, keeping Home, logo, and documentation navigation available.
 - Legacy local `/` and `/demo/` entry paths redirect to the project homepage and demo under `/sahajlipi/`.

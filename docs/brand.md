@@ -66,7 +66,7 @@ Use `alt="SahajLipi"` for a logo that identifies the project. Use `alt=""` when 
 | Light teal | `#E8F6F5` | Quiet panels and supporting surfaces. |
 | Gold | `#E5AD3E` | Typing caret and decorative accents. |
 
-Use ink or teal for text on light surfaces. Gold highlights typing surfaces, active navigation, keyboard examples, and selected text. Pair bright gold (`#E5AD3E`) with ink text; use pale gold (`#FFF6E2`) behind dark labels and darker gold (`#8A5B0B`) for carets on light backgrounds. Dark-mode carets can use bright gold. Keep deep teal for keyboard focus on light surfaces. Pair color with labels or shape to communicate state, and preserve readable text contrast.
+Use ink or teal for text on light surfaces. Gold highlights typing surfaces, active navigation, keyboard examples, and selected text. Pair bright gold (`#E5AD3E`) with ink text; use pale gold (`#FFF6E2`) behind dark labels and darker gold (`#8A5B0B`) for carets and input focus rings on light backgrounds. Dark-mode carets and input focus rings use bright gold. Keep deep teal for button and link focus on light surfaces. Pair color with labels or shape to communicate state, and preserve readable text contrast.
 
 ## Typography
 
