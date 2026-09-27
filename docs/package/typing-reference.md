@@ -1,6 +1,6 @@
 # Nepali typing reference
 
-SahajLipi currently converts Roman Nepali and 20 listed English-spelling loanwords to Unicode Devanagari. The core returns a preferred reading and, where listed, alternatives. The optional browser adapters render that preferred reading in opted-in text fields as you type and report alternatives to the host interface. This reference describes the **current prototype**, not a standardized Romanization scheme.
+SahajLipi currently converts Roman Nepali, 20 listed English-spelling loanwords and 12 full English month names to Unicode Devanagari. The core returns a preferred reading and, where listed, alternatives. The optional browser adapters render that preferred reading in opted-in text fields as you type and report alternatives to the host interface. This reference describes the **current prototype**, not a standardized Romanization scheme.
 
 The [starter lexicon](../../src/lexicon.js) takes priority over the [phonetic fallback](../../src/phonetic.js). The listed word `cha` defaults to च and offers छ as an alternative; `chha` returns only छ. The fallback tokens remain `ch` → च and `chh` → छ. Custom entries can replace a built-in entry in one engine instance. See the [engine source](../../src/index.js) for the lookup order.
 
@@ -62,7 +62,7 @@ Lowercase `t` and `d` produce dental sounds; capital `T` and `D` produce retrofl
 | `da` → द | `Da` → ड |
 | `dha` → ध | `Dha` → ढ |
 
-Capital `S` or `Sh` selects ष (`Sa` or `Sha` → ष), while lowercase `sh` selects श (`sha` → श). Capital `H` **after a vowel** adds visarga ः: `kaH` → कः and `duHkha` → दुःख. Lowercase `h` remains ह (`ha` → ह), and `:` remains a colon. Other capitals become lowercase before lookup. The reserved sound keys `T`, `D`, `S`, `R`, and vowel-following `H` bypass lowercase word lookup; an exact cased entry can override them. For example, `Saryo` → षर्यो, `gaRyo` → गऋयो, and `baHini` → बःइनि follow explicit Shift input. The existing names `Ram` → राम and `Sita` → सीता are retained as explicit built-in aliases; replacing lowercase `ram` or `sita` also updates that alias unless you supply an exact cased override.
+Capital `S` or `Sh` selects ष (`Sa` or `Sha` → ष), while lowercase `sh` selects श (`sha` → श). Capital `H` **after a vowel** adds visarga ः: `kaH` → कः and `duHkha` → दुःख. Lowercase `h` remains ह (`ha` → ह), and `:` remains a colon. Other capitals become lowercase before lookup. The reserved sound keys `T`, `D`, `S`, `R`, and vowel-following `H` bypass lowercase word lookup; an exact cased entry can override them. For example, `Saryo` → षर्यो, `gaRyo` → गऋयो, and `baHini` → बःइनि follow explicit Shift input. The names `Ram` → राम and `Sita` → सीता and the month names `September` → सेप्टेम्बर and `December` → डिसेम्बर are explicit built-in aliases. Replacing their lowercase entries also updates those aliases unless you supply an exact cased override.
 
 ## Half consonants and conjuncts
 
@@ -133,6 +133,23 @@ This spells a borrowed word rather than translating its meaning: `school` produc
 
 Keep an entire English field literal by leaving it unattached, marking it `data-sahajlipi-ignore` or disabling conversion. URLs, email addresses, code and English spans **inside** a Nepali-enabled field are not automatically protected. The tokenizer can match `camera` inside `camera.com`, `camera_file` and `camera123`; review mixed text before using the result.
 
+## English month names
+
+These 12 full English month names automatically use the listed Nepali spellings. Each has one candidate and works in core conversion and in attached fields while Nepali mode is on. Normal title case also works, including the exact aliases `September` and `December`. The [month reference](month-names.md) records the spelling evidence and scope; these are authorized source-assisted project preferences, with independent human linguistic review pending.
+
+| English key | Preferred output | English key | Preferred output |
+| --- | --- | --- | --- |
+| `january` | जनवरी | `february` | फेब्रुअरी |
+| `march` | मार्च | `april` | अप्रिल |
+| `may` | मे | `june` | जुन |
+| `july` | जुलाई | `august` | अगस्ट |
+| `september` | सेप्टेम्बर | `october` | अक्टोबर |
+| `november` | नोभेम्बर | `december` | डिसेम्बर |
+
+Try `January February March` → जनवरी फेब्रुअरी मार्च and `September December` → सेप्टेम्बर डिसेम्बर. Other uses of reserved Shift keys still select sounds; there is no general folding of all-capital or mixed-case English. For example, `SEPTEMBER` and `DECEMBER` are not month aliases.
+
+`May` and `may` both select the month spelling मे. The engine cannot distinguish the English modal verb “may” from the month name. Native Roman Nepali such as `maya` keeps its existing behavior. Unlisted abbreviations such as `jan`, `feb` and `sep` and attached forms such as `januaryma` do not inherit month entries. This feature spells Gregorian month names; it does not translate an English sentence or convert dates to Bikram Sambat. English spans and URLs inside Nepali-enabled fields still have no automatic protection.
+
 ## Nasal marks and punctuation
 
 Type `^` after a syllable for bindu/anusvara ं, or `~` for chandrabindu ँ. These are explicit marks, so `n` and `m` still type consonants.
@@ -153,7 +170,7 @@ The controller’s `setEnabled(false)` switches subsequent input to literal typi
 ## Current limits
 
 - The starter lexicon is small. Unknown words use deterministic phonetic rules, which can give incorrect Nepali spelling. There is no context-sensitive ranking or language detection.
-- `convertText` converts Latin-letter runs regardless of whether they are Nepali or English. The 20 loanword entries cover only their listed normalized keys; they add no language detection, attached-form inference or automatic URL/code protection.
+- `convertText` converts Latin-letter runs regardless of whether they are Nepali or English. The 20 loanword entries and 12 month names cover their listed keys and aliases; they add no language detection, attached-form inference or automatic URL/code protection.
 - The browser adapter attaches to `<textarea>` and text/search inputs, directly or through an opt-in field manager. It handles keyboard input, paste, and composition events, but this reference is not a browser compatibility guarantee.
 - The prototype does not offer a dedicated keyboard shortcut for every Devanagari character, mark, or accent. A future language profile would need its own reviewed mappings; current behavior is Nepali-specific.
 

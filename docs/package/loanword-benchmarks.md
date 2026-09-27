@@ -18,7 +18,7 @@ Run date: 2026-09-27; Node.js v22.22.3. The baseline is `43b5a008366c943309f44be
 | Frozen development source proposals | 7/100 | 7/100 | 7/80 word matches, 0/20 sentence matches, 7/80 word references in candidates |
 | Pinned Aksharantar test | 279/4,101 | 281/4,101 | Top and candidate agreement; descriptive public-test comparison |
 
-The expanded fixture has **87 rows: 85 contracts and two exploratory cases**. The 35 additions cover 20 exact loanword mappings, `cha` and `chha`, two incidental-capital examples, four reserved Shift controls, two suffix fallback controls, three collision controls, and two text integration cases. Expectations are literal fixture values, independent of the production lexicon. All 20 loanword defaults return exactly one candidate. `cha` now returns `['च', 'छ']`, while `chha` retains `['छ']`.
+The dated loanword fixture has **87 rows: 85 contracts and two exploratory cases**. The 35 additions cover 20 exact loanword mappings, `cha` and `chha`, two incidental-capital examples, four reserved Shift controls, two suffix fallback controls, three collision controls, and two text integration cases. Expectations are literal fixture values, independent of the production lexicon. All 20 loanword defaults return exactly one candidate. `cha` now returns `['च', 'छ']`, while `chha` retains `['छ']`.
 
 The seed runner measures coverage of required candidates. It does not score suggestion precision or establish that every valid linguistic reading is listed. Exact candidate arrays and their order are also asserted by the functional tests.
 
@@ -34,25 +34,42 @@ AI4Bharat's Aksharantar CC BY attribution and the development sentence data term
 
 ## Reproduce
 
-Run from a repository checkout with Node.js 18 or later. Create a temporary baseline from the recorded commit, then use the **current final fixture for both engines**:
+This is a dated 85-contract record. Use two immutable snapshots and the recorded after snapshot's fixture for both engines; the current fixture may contain later contracts. Run from a repository checkout with Node.js 18 or later:
 
 ```sh
-LOANWORD_BASELINE_DIR="$(mktemp -d /tmp/sahajlipi-loanword-baseline.XXXXXX)"
-mkdir -p "$LOANWORD_BASELINE_DIR/src" "$LOANWORD_BASELINE_DIR/benchmark"
-for file in package.json src/index.js src/lexicon.js src/phonetic.js benchmark/run.js benchmark/aksharantar.js benchmark/aksharantar-core.js benchmark/review-batch-core.js; do
-  git show "43b5a008366c943309f44bebfbae4e6df24f6173:$file" > "$LOANWORD_BASELINE_DIR/$file"
-done
-git show 43b5a008366c943309f44bebfbae4e6df24f6173:benchmark/cases.jsonl > "$LOANWORD_BASELINE_DIR/benchmark/cases.jsonl"
-node "$LOANWORD_BASELINE_DIR/benchmark/run.js" --fixtures "$PWD/benchmark/cases.jsonl" --check
-npm run benchmark -- --check
+LOANWORD_BASELINE_DIR="$(mktemp -d /tmp/sahajlipi-loanword-before.XXXXXX)"
+LOANWORD_AFTER_DIR="$(mktemp -d /tmp/sahajlipi-loanword-after.XXXXXX)"
+git archive 43b5a008366c943309f44bebfbae4e6df24f6173 | tar -x -C "$LOANWORD_BASELINE_DIR"
+git archive 264f24945d150d8aa084f42522e859d2fabd216c | tar -x -C "$LOANWORD_AFTER_DIR"
 ```
 
-The baseline command intentionally exits with code 1: it passes 60 of the 85 expanded contracts. The after command exits with code 0. To check the original 50-contract denominator separately:
+`264f249` adds historical documentation after the loanword implementation at `20f4fee`; its engine and fixture bytes match the recorded after hashes. Verify both engine identities and the frozen 85-contract fixture against the original report:
+
+```sh
+node --input-type=module - "$LOANWORD_BASELINE_DIR" "$LOANWORD_AFTER_DIR" <<'JS'
+import { readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+const report = JSON.parse(await readFile(process.argv[3] + '/benchmark/reports/nepali-loanwords-001.json', 'utf8'));
+const hash = async (path) => createHash('sha256').update(await readFile(path)).digest('hex');
+for (const [root, identity] of [[process.argv[2], report.baseline], [process.argv[3], report.after]]) {
+  for (const [file, expected] of Object.entries(identity.engineFileHashes)) {
+    if (await hash(root + '/' + file) !== expected) throw new Error('Engine differs: ' + file);
+  }
+}
+if (await hash(process.argv[3] + '/benchmark/cases.jsonl') !== report.projectContractConformance.sameFinalFixture.sha256) {
+  throw new Error('The recorded loanword fixture differs');
+}
+JS
+node "$LOANWORD_BASELINE_DIR/benchmark/run.js" --fixtures "$LOANWORD_AFTER_DIR/benchmark/cases.jsonl" --check
+node "$LOANWORD_AFTER_DIR/benchmark/run.js" --fixtures "$LOANWORD_AFTER_DIR/benchmark/cases.jsonl" --check
+```
+
+The baseline command intentionally exits with code 1: it passes 60 of the 85 recorded expanded contracts. The after command exits with code 0. Run the two benchmark commands separately if the shell is configured to stop on the expected baseline failure. To check the original 50-contract denominator and the dated after functional suite:
 
 ```sh
 node "$LOANWORD_BASELINE_DIR/benchmark/run.js" --fixtures "$LOANWORD_BASELINE_DIR/benchmark/cases.jsonl" --check
-node benchmark/run.js --fixtures "$LOANWORD_BASELINE_DIR/benchmark/cases.jsonl" --check
-npm test
+node "$LOANWORD_AFTER_DIR/benchmark/run.js" --fixtures "$LOANWORD_BASELINE_DIR/benchmark/cases.jsonl" --check
+(cd "$LOANWORD_AFTER_DIR" && npm test)
 ```
 
 For the public word comparison, obtain and verify the pinned data using the [external evaluation guide](external-evaluation.md), then run:
@@ -60,15 +77,15 @@ For the public word comparison, obtain and verify the pinned data using the [ext
 ```sh
 LOANWORD_TEST_FILE="$PWD/benchmark/data/nep_test.json"
 node "$LOANWORD_BASELINE_DIR/benchmark/aksharantar.js" --data "$LOANWORD_TEST_FILE" --examples 0
-npm run benchmark:aksharantar -- --data "$LOANWORD_TEST_FILE" --examples 0
+node "$LOANWORD_AFTER_DIR/benchmark/aksharantar.js" --data "$LOANWORD_TEST_FILE" --examples 0
 ```
 
-The external CLI's revision label reads the command's current Git directory. Use the recorded engine file hashes to identify the extracted baseline and modified after engine precisely.
+The external CLI's revision label reads the command's current Git directory. The checked engine file hashes identify these extracted snapshots precisely.
 
-For the unchanged 100-case cohort, use the original ignored `benchmark/data/review-batch-001/cases.jsonl` generated by the [review batch protocol](review-batch.md). Its SHA-256 must remain `2f92bcf5a16d35b6a31dca052e4e358ffe417b5dcec0e8cc704d17f8acbf23e3`. This command loads each engine's existing diagnostic module against those same original cases:
+For the unchanged 100-case cohort, use the original ignored `benchmark/data/review-batch-001/cases.jsonl` generated by the [review batch protocol](review-batch.md). Its SHA-256 must remain `2f92bcf5a16d35b6a31dca052e4e358ffe417b5dcec0e8cc704d17f8acbf23e3`. This command loads each snapshot's diagnostic module against those same original cases:
 
 ```sh
-node --input-type=module - "$LOANWORD_BASELINE_DIR" "$PWD" "$PWD/benchmark/data/review-batch-001/cases.jsonl" <<'JS'
+node --input-type=module - "$LOANWORD_BASELINE_DIR" "$LOANWORD_AFTER_DIR" "$PWD/benchmark/data/review-batch-001/cases.jsonl" <<'JS'
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { pathToFileURL } from 'node:url';

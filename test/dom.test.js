@@ -449,3 +449,21 @@ test("loanword paste converts in Nepali mode and stays literal after disabling c
   insertPaste();
   assert.equal(field.value, "क्यामेरा कम्प्युटर 3.14। camera computer 3.14|");
 });
+
+test("month titles convert while typing without confusing a completed date with a different calendar", (t) => {
+  const { field, controller, type, beforeInput } = setup(t);
+  type("September");
+  assert.equal(field.value, "सेप्टेम्बर");
+  assert.equal(controller.getState().activeRoman, "September");
+  assert.deepEqual(controller.getState().candidates, []);
+  type(" 27, 2026 December");
+  assert.equal(field.value, "सेप्टेम्बर 27, 2026 डिसेम्बर");
+  beforeInput("deleteContentBackward");
+  assert.equal(field.value, "सेप्टेम्बर 27, 2026 डेचेम्बे");
+  assert.equal(controller.getState().activeRoman, "Decembe");
+  type("r");
+  assert.equal(field.value, "सेप्टेम्बर 27, 2026 डिसेम्बर");
+  controller.setEnabled(false);
+  type(" December");
+  assert.equal(field.value, "सेप्टेम्बर 27, 2026 डिसेम्बर December");
+});

@@ -45,7 +45,7 @@
               data-sahajlipi
               aria-label="Type Roman Nepali here"
               aria-describedby="typing-hint"
-              placeholder="Try typing: namaste camera computer"
+              placeholder="Try typing: namaste january camera"
               autocapitalize="off"
               autocomplete="off"
               autocorrect="off"
@@ -60,7 +60,7 @@
             </div>
 
             <div class="editor-footer">
-              <span id="typing-hint">Type Roman Nepali directly. Space finishes a word; the guide below shows vowels, half sounds, English loanwords, marks, and punctuation.</span>
+              <span id="typing-hint">Type Roman Nepali directly. Space finishes a word; the guide below shows vowels, half sounds, English loanwords, month names, marks, and punctuation.</span>
               <span id="character-count" class="character-count">0 characters</span>
             </div>
           </section>
@@ -284,8 +284,33 @@
               <p>Incidental capitals can work: <kbd>Camera</kbd> and <kbd>Computer</kbd> use the listed spelling. Capitals <kbd>T</kbd>, <kbd>D</kbd>, <kbd>S</kbd>, <kbd>R</kbd>, and contextual <kbd>H</kbd> still select sounds. <kbd>Doctor</kbd>, <kbd>School</kbd>, <kbd>CAMERA</kbd>, and <kbd>COMPUTER</kbd> do not automatically match the lowercase loanword keys.</p>
             </section>
 
+            <section class="guide-card" id="english-months-guide" aria-labelledby="month-guide-title">
+              <span class="guide-number">11 / English months</span>
+              <h3 id="month-guide-title">All twelve month names</h3>
+              <p>Type a full English month name while <strong>Nepali on</strong> is selected. Lowercase and normal title case both work, including <kbd>September</kbd> and <kbd>December</kbd>.</p>
+              <table class="sound-table" aria-label="Full English month-name spellings">
+                <thead><tr><th scope="col">English keys</th><th scope="col">Nepali spelling</th></tr></thead>
+                <tbody>
+                  <tr><td><kbd>january</kbd></td><td><span lang="ne">जनवरी</span></td></tr>
+                  <tr><td><kbd>february</kbd></td><td><span lang="ne">फेब्रुअरी</span></td></tr>
+                  <tr><td><kbd>march</kbd></td><td><span lang="ne">मार्च</span></td></tr>
+                  <tr><td><kbd>april</kbd></td><td><span lang="ne">अप्रिल</span></td></tr>
+                  <tr><td><kbd>may</kbd></td><td><span lang="ne">मे</span></td></tr>
+                  <tr><td><kbd>june</kbd></td><td><span lang="ne">जुन</span></td></tr>
+                  <tr><td><kbd>july</kbd></td><td><span lang="ne">जुलाई</span></td></tr>
+                  <tr><td><kbd>august</kbd></td><td><span lang="ne">अगस्ट</span></td></tr>
+                  <tr><td><kbd>september</kbd></td><td><span lang="ne">सेप्टेम्बर</span></td></tr>
+                  <tr><td><kbd>october</kbd></td><td><span lang="ne">अक्टोबर</span></td></tr>
+                  <tr><td><kbd>november</kbd></td><td><span lang="ne">नोभेम्बर</span></td></tr>
+                  <tr><td><kbd>december</kbd></td><td><span lang="ne">डिसेम्बर</span></td></tr>
+                </tbody>
+              </table>
+              <p>Each month has one reading, so no readings dropdown appears. <kbd>May</kbd> and <kbd>may</kbd> both give <span lang="ne">मे</span>; use <strong>Nepali off</strong> or an English field when you mean the English word “may”.</p>
+              <p>Use the full names: abbreviations such as <kbd>jan</kbd> and attached forms such as <kbd>januaryma</kbd> are unlisted. This spells month names and does not convert dates to the Bikram Sambat calendar. Other reserved Shift sounds still work.</p>
+            </section>
+
             <section class="guide-card">
-              <span class="guide-number">11 / Nasal marks</span>
+              <span class="guide-number">12 / Nasal marks</span>
               <h3>Choose the mark explicitly</h3>
               <p>Type <kbd>^</kbd> after a syllable for <span lang="ne">बिन्दु ं</span>, or <kbd>~</kbd> for <span lang="ne">चन्द्रबिन्दु ँ</span>. The letters <kbd>n</kbd> and <kbd>m</kbd> still make consonants.</p>
               <div class="key-examples" aria-label="Nasal mark examples">
@@ -295,7 +320,7 @@
             </section>
 
             <section class="guide-card">
-              <span class="guide-number">12 / Punctuation</span>
+              <span class="guide-number">13 / Punctuation</span>
               <h3>Period or <span lang="ne">पूर्णविराम</span></h3>
               <p>The <kbd>.</kbd> key always types an English period, including after a Nepali word and in decimals. Type <kbd>|</kbd> for <span lang="ne">।</span> anywhere, including after a number. Pasted text follows the same rule.</p>
               <div class="key-examples" aria-label="Full stop and decimal examples">
@@ -307,7 +332,7 @@
             </section>
 
             <section class="guide-card">
-              <span class="guide-number">13 / Alternatives</span>
+              <span class="guide-number">14 / Alternatives</span>
               <h3>Choose only when needed</h3>
               <p>Ambiguous words show a readings dropdown. The first reading appears in the editor; pick another from the dropdown or press <kbd>Alt</kbd> + <kbd>1</kbd>, <kbd>2</kbd>, and so on. Press <kbd>Space</kbd> to keep the displayed reading and finish the word.</p>
               <div class="key-examples" aria-label="Alternative reading example">
@@ -316,7 +341,7 @@
             </section>
 
             <section class="guide-card">
-              <span class="guide-number">14 / Editor controls</span>
+              <span class="guide-number">15 / Editor controls</span>
               <h3>Switch, copy, or clear</h3>
               <p>Use <strong>Nepali on/off</strong> to switch between conversion and literal English typing in the editor and marked form fields. The <kbd>.</kbd> key stays a period in both modes. With Nepali off, shortcut keys such as <kbd>^</kbd>, <kbd>~</kbd>, <kbd>/</kbd>, and <kbd>|</kbd> stay literal. <strong>Copy</strong> copies the editor text; <strong>Clear</strong> starts again.</p>
               <p>Use <strong>Nepali off</strong> or an English field for URLs, email addresses, code, and other text that must stay literal. English spans are not automatically protected inside a field with Nepali on.</p>

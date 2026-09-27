@@ -1,0 +1,212 @@
+{
+  "subject": "SahajLipi full English Gregorian month word aliases in Nepali mode",
+  "accessedDate": "2026-09-27",
+  "accessScope": "Public official Unicode sources: complete pinned JSON, package metadata, README and license downloaded and parsed. Official release/status/LDML pages and government HTML excerpts read on 2026-09-27.",
+  "primarySource": {
+    "publisher": "Unicode Consortium / unicode-org",
+    "repository": "unicode-org/cldr-json",
+    "tag": "48.2.1",
+    "commit": "26a79cb42bfcc90def764102aa2af126d9ef3108",
+    "package": "cldr-dates-full",
+    "packageVersion": "48.2.1",
+    "sourcePath": "cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+    "sourceUrl": "https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+    "rawSourceUrl": "https://raw.githubusercontent.com/unicode-org/cldr-json/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+    "sha256": "cb31c68c4b999191d8eaee6262d8d205f68a7b0a99df6b0cda94e422963e5d9b",
+    "jsonPath": "main.ne.dates.calendars.gregorian.months.format.wide",
+    "calendar": "gregorian",
+    "width": "wide",
+    "releaseStatus": "Stable tagged JSON package patch release 48.2.1 (2026-07-08), following stable CLDR 48.2 (2026-03-17); patch release addresses updated time-zone rules, according to its release note.",
+    "releaseUrl": "https://github.com/unicode-org/cldr-json/releases/tag/48.2.1",
+    "cldrReleaseNotesUrl": "https://cldr.unicode.org/downloads/cldr-48",
+    "cldrReleasesUrl": "https://cldr.unicode.org/index/downloads",
+    "newerDevelopmentStatus": "CLDR 49 beta announced 2026-09-25; not used for selected month outputs.",
+    "newerDevelopmentStatusUrl": "https://blog.unicode.org/2026/09/unicode-cldr-49-beta-available-for.html",
+    "generationStatus": "JSON is generated from official XML using CLDR tooling; pinned README says included data meet contributed or approved draft threshold. This does not establish independent human review for the project.",
+    "readmeUrl": "https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/README.md",
+    "packageMetadataUrl": "https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/package.json",
+    "xmlCrossCheckUrl": "https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/main/ne.xml",
+    "xmlCrossCheckScope": "Gregorian format wide nodes 1 through 12 observed in official release-48-2 XML; raw standalone wide nodes use inheritance markers. Resolved standalone spellings verified in the pinned JSON."
+  },
+  "license": {
+    "spdx": "Unicode-3.0",
+    "name": "Unicode License V3",
+    "copyright": "Copyright © 2015-2024 Unicode, Inc.",
+    "url": "https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/LICENSE",
+    "rawUrl": "https://raw.githubusercontent.com/unicode-org/cldr-json/26a79cb42bfcc90def764102aa2af126d9ef3108/LICENSE",
+    "noticeRequirement": "Include the copyright and permission notice with copies of the data/software or in associated documentation.",
+    "noticePath": "LICENSES/Unicode-3.0.txt"
+  },
+  "selectedOutputs": {
+    "january": "जनवरी",
+    "february": "फेब्रुअरी",
+    "march": "मार्च",
+    "april": "अप्रिल",
+    "may": "मे",
+    "june": "जुन",
+    "july": "जुलाई",
+    "august": "अगस्ट",
+    "september": "सेप्टेम्बर",
+    "october": "अक्टोबर",
+    "november": "नोभेम्बर",
+    "december": "डिसेम्बर"
+  },
+  "monthRecords": [
+    {
+      "number": 1,
+      "english": "January",
+      "alias": "january",
+      "output": "जनवरी"
+    },
+    {
+      "number": 2,
+      "english": "February",
+      "alias": "february",
+      "output": "फेब्रुअरी"
+    },
+    {
+      "number": 3,
+      "english": "March",
+      "alias": "march",
+      "output": "मार्च"
+    },
+    {
+      "number": 4,
+      "english": "April",
+      "alias": "april",
+      "output": "अप्रिल"
+    },
+    {
+      "number": 5,
+      "english": "May",
+      "alias": "may",
+      "output": "मे"
+    },
+    {
+      "number": 6,
+      "english": "June",
+      "alias": "june",
+      "output": "जुन"
+    },
+    {
+      "number": 7,
+      "english": "July",
+      "alias": "july",
+      "output": "जुलाई"
+    },
+    {
+      "number": 8,
+      "english": "August",
+      "alias": "august",
+      "output": "अगस्ट"
+    },
+    {
+      "number": 9,
+      "english": "September",
+      "alias": "september",
+      "output": "सेप्टेम्बर"
+    },
+    {
+      "number": 10,
+      "english": "October",
+      "alias": "october",
+      "output": "अक्टोबर"
+    },
+    {
+      "number": 11,
+      "english": "November",
+      "alias": "november",
+      "output": "नोभेम्बर"
+    },
+    {
+      "number": 12,
+      "english": "December",
+      "alias": "december",
+      "output": "डिसेम्बर"
+    }
+  ],
+  "contextComparison": {
+    "formatWide": {
+      "1": "जनवरी",
+      "2": "फेब्रुअरी",
+      "3": "मार्च",
+      "4": "अप्रिल",
+      "5": "मे",
+      "6": "जुन",
+      "7": "जुलाई",
+      "8": "अगस्ट",
+      "9": "सेप्टेम्बर",
+      "10": "अक्टोबर",
+      "11": "नोभेम्बर",
+      "12": "डिसेम्बर"
+    },
+    "standaloneWide": {
+      "1": "जनवरी",
+      "2": "फेब्रुअरी",
+      "3": "मार्च",
+      "4": "अप्रिल",
+      "5": "मे",
+      "6": "जुन",
+      "7": "जुलाई",
+      "8": "अगस्ट",
+      "9": "सेप्टेम्बर",
+      "10": "अक्टोबर",
+      "11": "नोभेम्बर",
+      "12": "डिसेम्बर"
+    },
+    "allWideFormsEqual": true,
+    "allAbbreviatedFormsEqualWide": true,
+    "interpretation": "CLDR format is used within complete date patterns; stand-alone is for independent date elements such as calendar headers and can reflect different grammatical forms in some languages. Nepali wide values are identical for all twelve in this pinned release.",
+    "ldmlSpecificationUrl": "https://unicode.org/reports/tr35/tr35-dates.html#months",
+    "ldmlSpecificationVersionObserved": "48.2",
+    "ordinalAndGenderScope": "No ordinal/gender variants are encoded in these twelve selected month values. Do not infer ordinal rules or gender forms from this month table."
+  },
+  "governmentCorroboration": [
+    {
+      "publisher": "Government of Nepal, Ministry of Foreign Affairs",
+      "title": "Proactive Disclosure 2081 Shrawan- Ashoj",
+      "url": "https://mofa.gov.np/content/664/information-of-automatically-publishing-2081/",
+      "publicationDateObserved": "2024-10-17",
+      "accessedDate": "2026-09-27",
+      "accessScope": "Direct Unicode HTML body; individual date occurrences, not a normative orthography standard.",
+      "confirmedSelectedSpellings": [
+        "अगस्ट",
+        "सेप्टेम्बर",
+        "अक्टोबर"
+      ],
+      "shortDateExcerpts": [
+        "२०२४ अगस्ट ७",
+        "२२ सेप्टेम्बर २०२४",
+        "7-8 अक्टोबर 2024"
+      ]
+    },
+    {
+      "publisher": "Government of Nepal, Department of Postal Service",
+      "title": "Department of Postal Service homepage notice",
+      "url": "https://www.nepalpost.gov.np/",
+      "accessedDate": "2026-09-27",
+      "accessScope": "Direct Unicode homepage notice title for 2025 campaign; linked notice page was inaccessible through web, so only homepage title is claimed.",
+      "confirmedSelectedSpellings": [
+        "नोभेम्बर",
+        "डिसेम्बर"
+      ],
+      "shortDateExcerpt": "२५ नोभेम्बर देखि १० डिसेम्बर, २०२५"
+    }
+  ],
+  "variantsPending": [
+    {
+      "english": "July",
+      "observedText": "जुलार्इ",
+      "sourceUrl": "https://mofa.gov.np/content/664/information-of-automatically-publishing-2081/",
+      "accessScope": "Direct Unicode body occurrence in two 2024 date references.",
+      "decision": "Record as an observed alternate encoding/spelling only; no alias or selected output change. Its intended spelling and human orthographic endorsement are unverified."
+    }
+  ],
+  "scopeLimitations": [
+    "Selected outputs are a sourced project default; this evidence does not establish a uniquely universal Nepali orthography.",
+    "No independent human language review was performed.",
+    "Gregorian month names only; no Bikram Sambat date conversion or Bikram Sambat month substitution.",
+    "Twelve full English word aliases only; no abbreviated input aliases.",
+    "English title-case handling and explicit September/December exceptions to reserved Shift keys are SahajLipi implementation choices."
+  ]
+}

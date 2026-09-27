@@ -22,7 +22,7 @@ Replace `YOUR_LAN_IP` with that address, then open `http://YOUR_LAN_IP:4173/demo
 
 ## Use the page
 
-- **Type in the editor.** Roman letters turn into Nepali in the same textarea. Space commits the displayed word; Backspace can edit the active Roman spelling. The on-page **How to type** guide shows examples for vowels, half consonants, `cha`/`chha`, the two र्य/र्‍य forms, listed word shortcuts, English loanwords, Shift sounds, marks, punctuation, and alternatives. The [package typing reference](../package/typing-reference.md) documents the complete rules and the scope of those word entries.
+- **Type in the editor.** Roman letters turn into Nepali in the same textarea. Space commits the displayed word; Backspace can edit the active Roman spelling. The on-page **How to type** guide shows examples for vowels, half consonants, `cha`/`chha`, the two र्य/र्‍य forms, listed word shortcuts, English loanwords, full English month names, Shift sounds, marks, punctuation, and alternatives. The [package typing reference](../package/typing-reference.md) documents the complete rules and the scope of those word entries.
 - **Choose a reading.** When the active spelling has multiple listed readings, a dropdown appears below the textarea. The first reading is displayed by default. Choose another from the dropdown or press `Alt` + a number from `1` through `9` while the word is active.
 - **Switch mode.** **Nepali on/off** controls conversion of subsequent typing and paste in every marked field on this page: the main editor and the two form examples. Existing text stays as it is when you switch modes.
 - **Try form fields.** The text and search examples below the editor use the same conversion setup. The unmarked text and email fields stay in English. The alternatives dropdown and character count belong to the main editor; in the form fields, `Alt` + a number can select an available alternative.
@@ -68,6 +68,29 @@ Try `camera computer mobile phone` to get **क्यामेरा कम्�
 The entry matches only the complete key. Appending letters or a suffix, as in `cameraa`, `camerako`, or `mobilema`, recomputes the active word using ordinary phonetic conversion. Attached Nepali forms are not part of this pilot. Space keeps the currently displayed spelling and starts a new word; Backspace can return a longer active spelling to a listed key.
 
 Use the lowercase spellings in the table. Incidental capitals such as `Camera` and `Computer` match too, but `T`, `D`, `S`, `R`, and contextual `H` still select sounds. `Doctor`, `School`, `CAMERA`, and `COMPUTER` do not automatically match the lowercase loanword entries. Existing explicit name aliases, such as `Ram` and `Sita`, keep their listed readings.
+
+### English month names
+
+All 12 full English month names work automatically with Nepali on, in the editor and both marked form fields. Each has one preferred spelling, so no readings dropdown appears for these entries. The normal title-case forms also work, including `September` and `December`.
+
+| English keys | Nepali spelling |
+| --- | --- |
+| `january` | जनवरी |
+| `february` | फेब्रुअरी |
+| `march` | मार्च |
+| `april` | अप्रिल |
+| `may` | मे |
+| `june` | जुन |
+| `july` | जुलाई |
+| `august` | अगस्ट |
+| `september` | सेप्टेम्बर |
+| `october` | अक्टोबर |
+| `november` | नोभेम्बर |
+| `december` | डिसेम्बर |
+
+Try `January February March` → **जनवरी फेब्रुअरी मार्च** or `September December` → **सेप्टेम्बर डिसेम्बर**. These source-assisted project spellings are documented with their evidence in the [month reference](../package/month-names.md); independent human linguistic review remains pending.
+
+`May` and `may` both give **मे**. The engine cannot recognize English modal-verb uses of “may”; use Nepali off or an English field for them. Native Roman input such as `maya` keeps its existing behavior. The month entries match full words only: abbreviations such as `jan`, `feb` and `sep`, and attached forms such as `januaryma`, keep ordinary conversion. There is no general all-capital or mixed-case English matching; reserved Shift keys still select sounds. The feature spells month names and does not convert dates to the Bikram Sambat calendar.
 
 ### Keep English text literal
 

@@ -4,13 +4,13 @@ SahajLipi is an early, MIT-licensed Roman Nepali to Unicode typing project. The 
 
 ## Package status
 
-The [package](package/README.md) includes a deterministic word and text converter, a small starter lexicon with ordered alternatives for selected spellings and 20 English-spelling loanword preferences, and browser adapters for direct typing in configured text fields. It has TypeScript declarations and no runtime dependencies. The package is marked `private` and is **not published to npm**.
+The [package](package/README.md) includes a deterministic word and text converter, a small starter lexicon with ordered alternatives for selected spellings, 20 English-spelling loanword preferences and 12 full English month names, and browser adapters for direct typing in configured text fields. It has TypeScript declarations and no runtime dependencies. The package is marked `private` and is **not published to npm**.
 
 | Area | Current limit |
 | --- | --- |
 | Nepali accuracy | The lexicon is small and the fallback is deterministic. An output may look plausible while spelling the intended word incorrectly. There is no context-aware ranking or population-wide accuracy estimate. |
 | Alternatives | Only explicit multi-reading entries return multiple candidates. The engine does not generate every valid spelling. |
-| Mixed English | The 20 listed loanword keys convert automatically in Nepali mode. `convertText` still treats Latin-letter runs as convertible text without language detection; URLs, code and English spans inside a Nepali field are not protected automatically. Whole-field English exclusions and disabled conversion remain available. |
+| Mixed English | The 20 listed loanword keys and 12 full month names convert automatically in Nepali mode. `may` has the month reading मे even in English modal-verb use. `convertText` still treats Latin-letter runs as convertible text without language detection; URLs, code and English spans inside a Nepali field are not protected automatically. Whole-field English exclusions and disabled conversion remain available. |
 | Input surface | The reusable adapter supports `<textarea>` and text/search inputs; one manager can cover marked fields, a page region, or all supported fields in a document, with English fields excluded. Tests simulate editor events, but there is no published real-browser or phone compatibility matrix. `contenteditable` and other input types are unsupported. |
 | Other languages | Mappings and lexicon entries are Nepali-specific. No other Devanagari language profile exists yet. |
 | Evaluation | The [seed benchmark](package/benchmarks.md) tracks selected behavior contracts. A separate [external word baseline and sentence review queue](package/external-evaluation.md) and a [100-case development review batch](package/review-batch.md) exist. The batch starts unreviewed; there is no representative real-typing accuracy estimate. |
@@ -18,6 +18,12 @@ The [package](package/README.md) includes a deterministic word and text converte
 The [architecture](package/architecture.md), [API reference](package/api.md), and [typing reference](package/typing-reference.md) describe the package as implemented.
 
 ## Latest core improvement
+
+The [2026-09-27 month-name extension](package/month-names.md) adds all 12 full English month names, including `january` → जनवरी, `february` → फेब्रुअरी and `december` → डिसेम्बर. Each has one source-assisted project spelling and supports normal title case. Explicit `September` and `December` aliases preserve those familiar forms while the other reserved Shift keys keep selecting sounds. Lowercase custom entries update these aliases unless a separate exact cased override is supplied.
+
+These month entries have their own evidence and regression scope. They do not expand the original 20-loanword pilot or its 34-entry research catalogue, admit independent human-reviewed corpus labels, infer abbreviations or attached suffixes, protect English spans, or convert Gregorian dates to Bikram Sambat. `May` and `may` both use मे without context-sensitive English meaning detection. The [typing guide](package/typing-reference.md#english-month-names) and demo show the full list.
+
+## Earlier English loanword pilot
 
 The [2026-09-27 loanword pilot](package/loanword-review.md) adds exactly 20 normalized English-spelling keys, including `camera` → क्यामेरा, `computer` → कम्प्युटर and `school` → स्कुल. These defaults are authorized source-assisted project preferences, each with one candidate. The research catalogue has 34 entries; the remaining 14 proposals and all observed loanword variants remain pending or deferred. This update also makes `cha` prefer च with छ as an alternative, while `chha` remains the single छ reading. Reserved Shift keys, custom-entry replacement and the unknown-word fallback retain their existing behavior.
 
