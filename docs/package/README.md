@@ -9,6 +9,7 @@ SahajLipi provides a dependency-free Nepali transliteration engine and optional 
 | [Browser adapter compatibility](browser-compatibility.md) | Desktop engine matrix, browser test setup, editing contracts, CI reports, and testing limits. |
 | [Typing reference](typing-reference.md) | Current Nepali key mappings, half forms, marks, punctuation, and alternatives. |
 | [Benchmarks](benchmarks.md) | Reproducible engine cases, metrics, provenance, results, and evaluation limits. |
+| [Digit benchmark record](digits-benchmarks.md) | Revised numeric contracts, historical Latin compatibility, declared expectation changes, identities, and reproduction. |
 | [Mixed-text benchmark record](mixed-text-benchmarks.md) | Separate dated mixed-text and early-address contracts, preserved prior rows, identities, reproduction commands, and scope limits. |
 | [External evaluation](external-evaluation.md) | Pinned Nepali word data, source discrepancies, initial baseline, and sentence review process. |
 | [Development review batch](review-batch.md) | Reproducible 100-case review batch, independent review sheets, and diagnostic limits. |
@@ -20,6 +21,8 @@ SahajLipi provides a dependency-free Nepali transliteration engine and optional 
 The built-in engine includes 20 exact English-spelling loanwords, such as `camera` → क्यामेरा and `school` → स्कुल. They convert automatically in Nepali mode and have one candidate each. These are authorized source-assisted project preferences; observed variants and independent human linguistic review remain pending. The [typing reference](typing-reference.md#english-spelling-loanwords) lists the mappings and the [review ledger](loanword-review.md) records their source scopes.
 
 The engine also accepts all 12 full English month names, from `january` → जनवरी to `december` → डिसेम्बर, with their normal title-case forms such as `September` → सेप्टेम्बर. Each has one preferred spelling. The [month reference](month-names.md) records these source-assisted project preferences separately from the 20-word loanword pilot. This converts month names; it does not convert Gregorian dates to the Bikram Sambat calendar.
+
+ASCII number keys produce Devanagari digits by default: `123` → `१२३` and `3.14` → `३.१४`. Recognized addresses retain their original digits; English mode keeps input literal. Set `createEngine({ digits: 'latin' })` for ASCII digits and pass both engine functions to a field adapter or manager. Existing Devanagari digits remain unchanged in either style. The [digit configuration guide](api.md#digits-and-shared-field-configuration) shows a shared app/page setup.
 
 For live typing, choose an integration scope: mark selected fields with `data-sahajlipi` and call `attachNepaliInputs()`; pass a page element as the root; or use `attachNepaliInputs(document, { scope: 'all' })` for every supported text field in that document. Add `data-sahajlipi-ignore` to fields that must stay English in an all-fields scope. The [API reference](api.md#browser-input-adapters) explains configuration, field-level controls, candidates, and cleanup.
 

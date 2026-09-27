@@ -32,7 +32,7 @@ convertWord('cha');
 // { text: 'च', candidates: ['च', 'छ'], ambiguous: true }
 
 convertText('pani. 3.14|');
-// 'पनि. 3.14।'
+// 'पनि. ३.१४।'
 
 convertText('namaste camera.com name+tag@example.com');
 // 'नमस्ते camera.com name+tag@example.com'
@@ -60,7 +60,7 @@ The month entries use the same whole-word lookup. Abbreviations such as `jan` an
 
 ### `convertText(text)`
 
-Preserves recognizable technical spans first, then converts ASCII Latin-letter runs outside them using `convertWord`, including the supported `^`, `~`, `/`, and `=` shortcuts. Outside protected spans, `|` becomes `।`; periods, digits, whitespace, other punctuation, and existing Devanagari pass through. It returns one string without word-level candidates.
+Preserves recognizable technical spans first, then converts ASCII Latin-letter runs outside them using `convertWord`, including the supported `^`, `~`, `/`, and `=` shortcuts. Outside protected spans, ASCII digits `0–9` become Devanagari `०–९` by default and `|` becomes `।`; periods, whitespace, other punctuation, and existing Devanagari pass through. The engine-level `digits` option can retain ASCII digits instead. It returns one string without word-level candidates.
 
 #### Links, domains, and email addresses
 
@@ -94,6 +94,8 @@ convertText('camera. pani.');
 
 Sentence-ending punctuation and enclosing wrappers remain outside the recognized span. Balanced parentheses within a URL path can remain part of it. A pipe immediately after a bare domain stays outside: `camera.com|` → `camera.com।`. Once a URL has a `/`, `?`, or `#` suffix, shortcut characters within that suffix stay literal, including a final pipe: `camera.com/a|` stays `camera.com/a|`. To add Nepali danda after such a URL, separate it with whitespace, for example `camera.com/a |` → `camera.com/a ।`.
 
+Digits inside protected spans also retain their original spelling: `name123@example.com` and `https://example.com:8080/a2?q=2026` stay literal. Before an address cue appears, ordinary digits use the configured style; continuously typing `name123@` restores that current token to its original ASCII address spelling.
+
 Before an address cue appears, ordinary letters still convert: `camera` becomes `क्यामेरा` and `camera.` remains `क्यामेरा.` Once `camera.c` or `camera@` is typed continuously, the adapter restores the current token to Roman text and preserves its following address characters. A trailing period alone is not an address cue, so sentence periods keep their existing behavior. Use English mode before the first key when an entire fragment must stay literal from its beginning.
 
 Unusual credential punctuation in an unfinished URL authority can be ambiguous with sentence punctuation. For example, `!` before a later `@` may be treated as a boundary until the credential context is clear. Use English mode before the first key when every intermediate character must remain literal.
@@ -102,9 +104,11 @@ This is an ASCII pattern policy, not a full URL or email parser. Unicode hostnam
 
 <a id="createengine-entries"></a>
 
-### `createEngine({ entries, preserveTechnicalText })`
+### `createEngine({ entries, preserveTechnicalText, digits })`
 
-Creates an independent engine. `preserveTechnicalText` defaults to `true` and controls technical-span preservation in that engine’s `convertText`. Set it to `false` to use the earlier Latin-run conversion throughout the input, including inside addresses. It must be a boolean; other values throw `TypeError`. It does not change `convertWord` or disable Nepali conversion. An `entries` object replaces a starter entry for the same normalized Roman key in that engine instance. Values must be a non-empty array of non-empty strings, ordered from the preferred reading to alternatives; malformed values throw `TypeError`. The engine does not validate the script or Unicode normalization of those strings. Duplicate outputs are removed when a word is converted.
+Creates an independent engine. `digits` accepts only `'devanagari'` (the default) or `'latin'`; another value throws `TypeError`. It chooses the rendering of ASCII digits in returned word candidates and in whole-text conversion outside protected spans. Existing Devanagari digits remain unchanged in either style. Candidate digit rendering happens before deduplication, so custom outputs `1` and `१` become one candidate under the default style. Neither style parses numbers, changes their value, or converts calendars.
+
+`preserveTechnicalText` defaults to `true` and controls technical-span preservation in that engine’s `convertText`. Set it to `false` to convert throughout the input, including inside addresses. Digit rendering is independent: use both `digits: 'latin'` and `preserveTechnicalText: false` to recover the earlier ASCII-digit, unprotected-text behavior. It must be a boolean; other values throw `TypeError`. It does not change `convertWord` or disable Nepali conversion. An `entries` object replaces a starter entry for the same normalized Roman key in that engine instance. Values must be a non-empty array of non-empty strings, ordered from the preferred reading to alternatives; malformed values throw `TypeError`. The engine does not validate the script or Unicode normalization of those strings. Duplicate outputs are removed when a word is converted.
 
 This replacement also applies to built-in loanwords: `createEngine({ entries: { camera: ['क्यामरा'] } })` replaces the entire `camera` candidate list in that instance. Such a custom choice does not admit the spelling as a built-in candidate or a reviewed corpus label.
 
@@ -141,9 +145,41 @@ const legacy = createEngine({ preserveTechnicalText: false });
 legacy.convertText('camera.com'); // 'क्यामेरा.चोम्'
 ```
 
+#### Digits and shared field configuration
+
+```js
+convertWord('123');
+// { text: '१२३', candidates: ['१२३'], ambiguous: false }
+
+convertText('September 27, 2026 3.14|');
+// 'सेप्टेम्बर २७, २०२६ ३.१४।'
+
+const latin = createEngine({ digits: 'latin' });
+latin.convertText('pani 123 3.14|'); // 'पनि 123 3.14।'
+latin.convertText('१२३');          // '१२३' — existing Devanagari is unchanged
+```
+
+Configure one engine for the fields managed by an app, page, or selector. Pass **both** converters so live words, digits, paste, and completed composition use the same style:
+
+```js
+import { createEngine } from './src/index.js';
+import { attachNepaliInputs } from './src/dom.js';
+
+const engine = createEngine({ digits: 'latin' });
+const appTyping = attachNepaliInputs(document, {
+  scope: 'all',
+  convertWord: engine.convertWord,
+  convertText: engine.convertText,
+});
+```
+
+Use a page element instead of `document`, or a `selector`, to limit these defaults to that region or set of fields. English fields can keep `data-sahajlipi-ignore`. For one field, pass the same pair to `attachNepaliInput`. `digits` is a **core engine option**, not an adapter option or mutable module-wide setting. The adapter's English mode bypasses conversion and keeps ASCII digits literal. Mode or engine choices do not rewrite existing field text.
+
+If `preserveTechnicalText: false` is also selected, address text is no longer protected and its digits follow the configured style too. `digits: 'latin'` changes digits only; it still converts Roman letters to Nepali.
+
 #### Keeping English literal
 
-For a fixed name or acronym, supply a literal custom output. This retains the configured spelling whenever that normalized key matches; it is not arbitrary English detection:
+For a fixed name or acronym, supply a literal custom output. This retains the configured letters whenever that normalized key matches; digits still use the engine’s selected style. It is not arbitrary English detection:
 
 ```js
 const names = createEngine({ entries: { github: ['GitHub'] } });
@@ -159,7 +195,7 @@ const result = 'Project SahajLipi: ' + convertText('namaste camera|');
 
 Browser integrations can use the existing mode controls described below to type or paste English spans. There are no new delimiters or keyboard shortcuts for literal fragments.
 
-`createEngine` configures entries and the text-preservation policy. The phonetic token tables and special-key behavior remain fixed in the Nepali implementation; there is no language-profile API yet.
+`createEngine` configures entries, digit rendering, and the text-preservation policy. The phonetic token tables and special-key behavior remain fixed in the Nepali implementation; there is no language-profile API yet.
 
 ## Browser input adapters
 

@@ -9,6 +9,8 @@
     <h1>Browser adapter test fixture</h1>
     <label for="direct-field">Single-field adapter</label>
     <textarea id="direct-field" spellcheck="false"></textarea>
+    <label for="latin-digits-field">Latin digit engine</label>
+    <input id="latin-digits-field" type="text" spellcheck="false" />
     <section id="managed-root" aria-label="Managed fields">
       <label for="managed-field">Marked field</label>
       <input id="managed-field" type="text" data-sahajlipi spellcheck="false" />
@@ -18,6 +20,10 @@
     <script type="module">
       import { attachNepaliInput, attachNepaliInputs } from '../../src/dom.js';
 
+      import { createEngine } from '../../src/index.js';
+
+      const latinController = attachNepaliInput(document.querySelector('#latin-digits-field'),
+        createEngine({ digits: 'latin' }));
       const field = document.querySelector('#direct-field');
       const controller = attachNepaliInput(field);
       const inputValues = [];
@@ -27,6 +33,7 @@
       const manager = attachNepaliInputs(root);
       window.browserFixture = {
         controller,
+        latinController,
         manager,
         inputValues,
         addMarkedField(id) {

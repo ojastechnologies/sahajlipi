@@ -62,7 +62,7 @@ test('types visarga with Shift H after a vowel and preserves ordinary colon punc
   assert.equal(convertWord('duHkha').text, 'दुःख');
   assert.equal(convertWord('ha').text, 'ह');
   assert.equal(convertWord('Hamro').text, 'हाम्रो');
-  assert.equal(convertText('duHkha 3:14'), 'दुःख 3:14');
+  assert.equal(convertText('duHkha 3:14'), 'दुःख ३:१४');
 });
 
 test('keeps short and long a distinct in pani and paani', () => {
@@ -109,7 +109,7 @@ test('makes conjuncts automatically and types an explicit halant with slash', ()
   assert.equal(convertWord('ka/').text, 'क्');
   assert.equal(convertWord('th/').text, 'थ्');
   assert.equal(convertWord('k/ta').text, 'क्त');
-  assert.equal(convertText('k/ ka/ 3/4 a/'), 'क् क् 3/4 अ/');
+  assert.equal(convertText('k/ ka/ 3/4 a/'), 'क् क् ३/४ अ/');
 });
 
 test('forces a visible half form with slash-equals after the halant', () => {
@@ -119,8 +119,8 @@ test('forces a visible half form with slash-equals after the halant', () => {
 });
 
 test('types explicit danda with pipe, including after a decimal', () => {
-  assert.equal(convertText('3.14|'), '3.14।');
-  assert.equal(convertText('12| pani.'), '12। पनि.');
+  assert.equal(convertText('3.14|'), '३.१४।');
+  assert.equal(convertText('12| pani.'), '१२। पनि.');
 });
 
 test('only marks a word ambiguous when it has distinct useful alternatives', () => {
@@ -139,8 +139,8 @@ test('only marks a word ambiguous when it has distinct useful alternatives', () 
 
 test('preserves English periods and converts only pipe to Nepali full stop', () => {
   assert.equal(convertText('namaste, nepal!\nहामी'), 'नमस्ते, नेपाल!\nहामी');
-  assert.equal(convertText('pani. 3.14 paani.'), 'पनि. 3.14 पानी.');
-  assert.equal(convertText('pani| 3.14|'), 'पनि। 3.14।');
+  assert.equal(convertText('pani. 3.14 paani.'), 'पनि. ३.१४ पानी.');
+  assert.equal(convertText('pani| 3.14|'), 'पनि। ३.१४।');
   assert.equal(convertText('३.१४।'), '३.१४।');
 });
 

@@ -124,14 +124,16 @@ The six appended IDs are `mixed-early-http-scheme`, `mixed-early-http-userinfo`,
 
 ### Reproduce the early-address comparison
 
-Use Node.js 18 or later, and a checkout with the after engine and fixture matching the report's hashes. The baseline is archived from its immutable commit; the after run below uses the selected checkout. Hash checks stop the comparison if later code or fixtures differ. The earlier 119-contract comparison remains reproducible from its own immutable snapshots above.
+Use Node.js 18 or later and archive both immutable engines below. Commit `995909554efa84691f5a481a0d27def58e308d2f` contains the corrected after engine, frozen fixture, and report matching this dated record. Hash checks stop the comparison if the selected sources differ. The earlier 119-contract comparison remains reproducible from its own immutable snapshots above.
 
 ```sh
 EARLY_BASELINE_DIR=$(mktemp -d)
+EARLY_AFTER_DIR=$(mktemp -d)
 EARLY_FIXTURE_FILE=$(mktemp)
 git archive c0679b5e41a56eb5bab762a422243a400adefe1f | tar -x -C "$EARLY_BASELINE_DIR"
-cp benchmark/cases.jsonl "$EARLY_FIXTURE_FILE"
-node --input-type=module - "$EARLY_BASELINE_DIR" "$PWD" "$EARLY_FIXTURE_FILE" <<'JS'
+git archive 995909554efa84691f5a481a0d27def58e308d2f | tar -x -C "$EARLY_AFTER_DIR"
+cp "$EARLY_AFTER_DIR/benchmark/cases.jsonl" "$EARLY_FIXTURE_FILE"
+node --input-type=module - "$EARLY_BASELINE_DIR" "$EARLY_AFTER_DIR" "$EARLY_FIXTURE_FILE" <<'JS'
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 const report = JSON.parse(await readFile(process.argv[3] + '/benchmark/reports/early-address-001.json', 'utf8'));
@@ -155,14 +157,14 @@ Run the commands separately if the shell stops on a nonzero exit status:
 
 ```sh
 node "$EARLY_BASELINE_DIR/benchmark/run.js" --fixtures "$EARLY_FIXTURE_FILE" --check
-node benchmark/run.js --fixtures "$EARLY_FIXTURE_FILE" --check
+node "$EARLY_AFTER_DIR/benchmark/run.js" --fixtures "$EARLY_FIXTURE_FILE" --check
 ```
 
 The baseline intentionally exits **1** for **120/125** contracts; the matching after engine exits **0** for **125/125**. Check the unchanged prior denominator with:
 
 ```sh
 node "$EARLY_BASELINE_DIR/benchmark/run.js" --fixtures "$EARLY_BASELINE_DIR/benchmark/cases.jsonl" --check
-node benchmark/run.js --fixtures "$EARLY_BASELINE_DIR/benchmark/cases.jsonl" --check
+node "$EARLY_AFTER_DIR/benchmark/run.js" --fixtures "$EARLY_BASELINE_DIR/benchmark/cases.jsonl" --check
 ```
 
 Both pass **119/119** prior contracts. These two dated reports retain distinct fixture and engine identities; use `npm run benchmark -- --check` for the latest checkout rather than a historical result.

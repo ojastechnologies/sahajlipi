@@ -16,8 +16,10 @@ Choose the guide for the part of SahajLipi you are using. The **package** provid
 
 | Read | For |
 | --- | --- |
+| [Digit desktop browser record](../browser/reports/desktop-002.json) | Inspect the later 42-check digit/configuration run, source identities, named flows, and limits. |
 | [Desktop browser run record](../browser/reports/desktop-001.json) | Inspect the dated desktop-engine results, test names, source hashes, environment, and scope limits. |
 | [Seed benchmark](package/benchmarks.md) | Run behavior checks; inspect the recorded baseline, scoring rules, and exclusions. |
+| [Digit rendering record](package/digits-benchmarks.md) | Reproduce the revised default-digit contracts and separate historical Latin compatibility result. |
 | [Mixed-text and early-address records](package/mixed-text-benchmarks.md) | Reproduce dated address-preservation comparisons with frozen fixtures, engine identities, and scope limits. |
 | [External evaluation](package/external-evaluation.md) | Reproduce the pinned word baseline and prepare sentence proposals for review. |
 | [Development review guide](package/review-batch.md) | Generate the 100-case development batch and record independent Nepali-language decisions. |

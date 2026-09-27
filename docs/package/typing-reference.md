@@ -150,6 +150,22 @@ Try `January February March` → जनवरी फेब्रुअरी म
 
 `May` and `may` both select the month spelling मे. The engine cannot distinguish the English modal verb “may” from the month name. Native Roman Nepali such as `maya` keeps its existing behavior. Unlisted abbreviations such as `jan`, `feb` and `sep` and attached forms such as `januaryma` do not inherit month entries. This feature spells Gregorian month names; it does not translate an English sentence or convert dates to Bikram Sambat. Recognized links and email addresses stay literal under the shared text policy; ordinary English phrases still require explicit literal handling.
 
+## Digits
+
+In Nepali mode, ASCII number keys produce Devanagari digits by default:
+
+| Type | Output |
+| --- | --- |
+| `0123456789` | ०१२३४५६७८९ |
+| `3.14` | ३.१४ |
+| `September 27, 2026` | सेप्टेम्बर २७, २०२६ |
+| `name123@example.com` | name123@example.com |
+| `https://example.com:8080/a2?q=2026` | https://example.com:8080/a2?q=2026 |
+
+The decimal point, commas, signs, slashes, and spaces keep their existing punctuation behavior; only digit characters change. The converter does not parse a number or change its value, date, or calendar. Recognized links and email addresses keep their original digits. Before an address cue appears, digits use the normal Nepali style; uninterrupted typing of the cue restores the current token to its original address spelling.
+
+Existing Devanagari digits remain unchanged. Developers can choose ASCII digits with `createEngine({ digits: 'latin' })`, then pass that engine's `convertWord` and `convertText` functions to the browser adapter. This still converts Roman letters to Nepali. See [digit configuration](api.md#digits-and-shared-field-configuration) for app, page, and field setup. English mode keeps all input literal, including `0–9`, and does not rewrite earlier text.
+
 ## Nasal marks and punctuation
 
 Type `^` after a syllable for bindu/anusvara ं, or `~` for chandrabindu ँ. These are explicit marks, so `n` and `m` still type consonants.
@@ -159,13 +175,13 @@ Type `^` after a syllable for bindu/anusvara ं, or `~` for chandrabindu ँ. T
 | `ka^` | कं |
 | `kaa~` | काँ |
 
-The period `.` always stays an English period, including in `3.14`. Type `|` for Nepali पूर्णविराम `।`: `pani|` → पनि। and `3.14|` → 3.14।. The same rule applies to `convertText` and text pasted into an attached field while Nepali mode is on, outside recognized technical spans. A pipe after a bare domain converts (`camera.com|` → `camera.com।`), but a pipe inside a URL path, query, or fragment stays literal (`camera.com/a|` stays as typed). Separate a URL suffix and sentence danda with whitespace: `camera.com/a |` → `camera.com/a ।`. The DOM controller also exposes `insertPunctuation('।')` and `insertPunctuation('॥')`; `|` types the single danda `।` only.
+The period `.` always stays an English period, including in `3.14`. Type `|` for Nepali पूर्णविराम `।`: `pani|` → पनि। and `3.14|` → ३.१४।. The same rule applies to `convertText` and text pasted into an attached field while Nepali mode is on, outside recognized technical spans. A pipe after a bare domain converts (`camera.com|` → `camera.com।`), but a pipe inside a URL path, query, or fragment stays literal (`camera.com/a|` stays as typed). Separate a URL suffix and sentence danda with whitespace: `camera.com/a |` → `camera.com/a ।`. The DOM controller also exposes `insertPunctuation('।')` and `insertPunctuation('॥')`; `|` types the single danda `।` only.
 
 ## Alternatives and field editing
 
 The engine returns candidates in preferred order. For example, `kam` gives कम first and काम second; `cha` gives च first and छ second. Use `chha` for the single छ reading. The field adapter shows the first reading inline and reports alternatives through `onStateChange` only while an ambiguous word is active. An integrating app can show a dropdown and call `chooseCandidate(index)`; the adapter also handles Alt+1, Alt+2, and so on. Press Space to finish the word with the displayed reading. While a word is active, Backspace edits its original Roman sequence and recalculates the Nepali output.
 
-The controller’s `setEnabled(false)` switches subsequent input to literal typing; `setEnabled(true)` resumes conversion. When conversion is disabled, keys such as `^`, `~`, `/`, and `|` remain literal. Switching modes does not rewrite text already in the field. `convertText` always uses the first reading of each converted word and returns plain text without candidate data.
+The controller’s `setEnabled(false)` switches subsequent input to literal typing; `setEnabled(true)` resumes conversion. When conversion is disabled, ASCII digits and keys such as `^`, `~`, `/`, and `|` remain literal. Switching modes does not rewrite text already in the field. `convertText` always uses the first reading of each converted word and returns plain text without candidate data.
 
 ## Mixed text and literal English
 

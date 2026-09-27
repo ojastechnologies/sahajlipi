@@ -41,7 +41,7 @@ for (const [roman, expected] of loanwords) {
 
 test('loanwords coexist with Nepali vowels, half sounds and explicit punctuation', () => {
   assert.equal(convertText('camera pani paani k ka ch chh cha chha| 3.14'),
-    'क्यामेरा पनि पानी क् क च् छ् च छ। 3.14');
+    'क्यामेरा पनि पानी क् क च् छ् च छ। ३.१४');
 });
 
 test('loanword lookup ignores incidental capitals while preserving reserved Shift sounds', () => {

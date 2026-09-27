@@ -113,7 +113,7 @@ test("a listed ry word remains editable as its Roman keys cross the lookup bound
 test("multi-character input keeps maryo and maaryo distinct beside ordinary conjuncts", (t) => {
   const { field, beforeInput } = setup(t);
   beforeInput("insertText", "maryo maaryo kaarya suurya. 3.14|");
-  assert.equal(field.value, "मर्\u200dयो मार्\u200dयो कार्य सूर्य. 3.14।");
+  assert.equal(field.value, "मर्\u200dयो मार्\u200dयो कार्य सूर्य. ३.१४।");
   assert.equal(field.selectionStart, field.value.length);
 });
 
@@ -170,7 +170,7 @@ test("undo restores the Roman spelling when an explicit halant leaves the text u
 test("pipe types full stop after numbers while slash stays literal in dates", (t) => {
   const { field, type } = setup(t);
   type("3.14| 3/4");
-  assert.equal(field.value, "3.14। 3/4");
+  assert.equal(field.value, "३.१४। ३/४");
 });
 
 test("Shift distinguishes retroflex T and D from dental t and d while typing", (t) => {
@@ -205,9 +205,9 @@ test("the period key stays English and finishes the active word", (t) => {
 test("period after a digit stays decimal and explicit full stop works after a number", (t) => {
   const { field, controller, type } = setup(t);
   type("3.14 pani.");
-  assert.equal(field.value, "3.14 पनि.");
+  assert.equal(field.value, "३.१४ पनि.");
   controller.insertPunctuation("।");
-  assert.equal(field.value, "3.14 पनि.।");
+  assert.equal(field.value, "३.१४ पनि.।");
   controller.setText("३");
   type(".१४");
   assert.equal(field.value, "३.१४");
@@ -218,7 +218,7 @@ test("period after a digit stays decimal and explicit full stop works after a nu
 test("a multi-character keyboard insertion converts words and punctuation", (t) => {
   const { field, beforeInput } = setup(t);
   beforeInput("insertText", "pani. 3.14|");
-  assert.equal(field.value, "पनि. 3.14।");
+  assert.equal(field.value, "पनि. ३.१४।");
 });
 
 test("native period input stays English after a Nepali word", (t) => {
@@ -238,7 +238,7 @@ test("native multi-character input keeps period and converts pipe", (t) => {
   const event = new Event("input");
   Object.defineProperty(event, "inputType", { value: "insertText" });
   field.dispatchEvent(event);
-  assert.equal(field.value, "पनि. 3.14।");
+  assert.equal(field.value, "पनि. ३.१४।");
 });
 
 test("a composed mobile period stays English", async (t) => {
@@ -259,7 +259,7 @@ test("a composed mobile phrase keeps periods and converts pipe", async (t) => {
   field.setSelectionRange(field.value.length, field.value.length);
   field.dispatchEvent(new Event("compositionend"));
   await new Promise((resolve) => setTimeout(resolve, 5));
-  assert.equal(field.value, "पनि. 3.14।");
+  assert.equal(field.value, "पनि. ३.१४।");
 });
 
 test("choosing an alternate keeps Backspace tied to the Roman spelling", (t) => {
@@ -321,7 +321,7 @@ test("pasted periods stay English and pipe becomes Nepali full stop", (t) => {
     value: { getData: () => "pani. 3.14|" },
   });
   field.dispatchEvent(paste);
-  assert.equal(field.value, "पनि. 3.14।");
+  assert.equal(field.value, "पनि. ३.१४।");
 });
 
 test("English mode keeps Roman input literal", (t) => {
@@ -442,12 +442,12 @@ test("loanword paste converts in Nepali mode and stays literal after disabling c
     assert.equal(paste.defaultPrevented, true);
   };
   insertPaste();
-  assert.equal(field.value, "क्यामेरा कम्प्युटर 3.14।");
+  assert.equal(field.value, "क्यामेरा कम्प्युटर ३.१४।");
   assert.deepEqual(controller.getState().candidates, []);
   controller.setEnabled(false);
   beforeInput("insertText", " ");
   insertPaste();
-  assert.equal(field.value, "क्यामेरा कम्प्युटर 3.14। camera computer 3.14|");
+  assert.equal(field.value, "क्यामेरा कम्प्युटर ३.१४। camera computer 3.14|");
 });
 
 test("month titles convert while typing without confusing a completed date with a different calendar", (t) => {
@@ -457,13 +457,13 @@ test("month titles convert while typing without confusing a completed date with 
   assert.equal(controller.getState().activeRoman, "September");
   assert.deepEqual(controller.getState().candidates, []);
   type(" 27, 2026 December");
-  assert.equal(field.value, "सेप्टेम्बर 27, 2026 डिसेम्बर");
+  assert.equal(field.value, "सेप्टेम्बर २७, २०२६ डिसेम्बर");
   beforeInput("deleteContentBackward");
-  assert.equal(field.value, "सेप्टेम्बर 27, 2026 डेचेम्बे");
+  assert.equal(field.value, "सेप्टेम्बर २७, २०२६ डेचेम्बे");
   assert.equal(controller.getState().activeRoman, "Decembe");
   type("r");
-  assert.equal(field.value, "सेप्टेम्बर 27, 2026 डिसेम्बर");
+  assert.equal(field.value, "सेप्टेम्बर २७, २०२६ डिसेम्बर");
   controller.setEnabled(false);
   type(" December");
-  assert.equal(field.value, "सेप्टेम्बर 27, 2026 डिसेम्बर December");
+  assert.equal(field.value, "सेप्टेम्बर २७, २०२६ डिसेम्बर December");
 });

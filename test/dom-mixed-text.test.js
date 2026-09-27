@@ -67,7 +67,7 @@ test('live email and URL typing preserve case, tags, paths and query punctuation
 test('sentence punctuation and words outside a domain remain convertible', (t) => {
   const { field, type } = setup(t);
   type('namaste(camera.com),pani| 3.14 par/=yo');
-  assert.equal(field.value, 'नमस्ते(camera.com),पनि। 3.14 पर्‍यो');
+  assert.equal(field.value, 'नमस्ते(camera.com),पनि। ३.१४ पर्‍यो');
 });
 
 test('a selected alternative survives punctuation and following technical text', (t) => {
@@ -354,7 +354,7 @@ test('native input, paste, and composition preserve unfinished email prefixes', 
 test('earlier recognition keeps a sentence period and the engine opt-out intact', (t) => {
   const { field, controller, type } = setup(t);
   type('pani. camera. 3.14|');
-  assert.equal(field.value, 'पनि. क्यामेरा. 3.14।');
+  assert.equal(field.value, 'पनि. क्यामेरा. ३.१४।');
   controller.setText('');
   const custom = setup(t, createEngine({ preserveTechnicalText: false }));
   custom.type('camera@ camera.c');

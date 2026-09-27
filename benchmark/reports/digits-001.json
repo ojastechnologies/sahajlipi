@@ -1,0 +1,574 @@
+{
+  "schemaVersion": 1,
+  "reportId": "digits-001",
+  "recordedAt": "2026-09-27T13:56:12.410Z",
+  "purpose": "Conformance to an explicitly revised default-digit software contract, with historical Latin compatibility measured separately; not linguistic accuracy, calendar conversion or timing",
+  "baseline": {
+    "gitCommit": "660d088ed60410feb0c6ad4c43d33214c24296f9",
+    "snapshotMethod": "git archive of immutable pre-digit implementation and fixture",
+    "coreFileSha256": {
+      "src/index.js": "d7b2fc67ebc08c93534e09b16f64a998ecafb761c16bda096bcdf071ea84411d",
+      "src/index.d.ts": "97fd8f3a1dbd76c591facf353fe59fc2edbf52270aa743b5f484bdeaaae4f7c5",
+      "src/text-policy.js": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa",
+      "src/lexicon.js": "0e5c26111dcebac1fe43bc4ae2d14a236653b42e6f676f43dbc549983f6806c0",
+      "src/phonetic.js": "dec43061ce47d8456092b661a4b1ea7b5d366d2c7969a4f2b6f3b1b0c20ff1ff"
+    }
+  },
+  "after": {
+    "identity": "Working tree based on 660d088ed60410feb0c6ad4c43d33214c24296f9; source identity pinned by hashes without assigning an uncreated commit",
+    "defaultDigits": "devanagari",
+    "coreFileSha256": {
+      "src/index.js": "efc2ed4719f209fd45e850d80d5ee8d3f6b8ef3862c70268aac8d46e8eab9627",
+      "src/index.d.ts": "48be479797841978cabab3ba96fe9b77caa8c814238866908aa515619ab7cd17",
+      "src/text-policy.js": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa",
+      "src/lexicon.js": "0e5c26111dcebac1fe43bc4ae2d14a236653b42e6f676f43dbc549983f6806c0",
+      "src/phonetic.js": "dec43061ce47d8456092b661a4b1ea7b5d366d2c7969a4f2b6f3b1b0c20ff1ff"
+    }
+  },
+  "environment": {
+    "nodeVersion": "v22.22.3",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "25.6.0"
+  },
+  "fixture": {
+    "path": "benchmark/cases.jsonl",
+    "sha256": "c5d2b7bbca573368a7531b7d21a5b989f7ca67d937ff0ae49cc3b3d923449fe7",
+    "total": 135,
+    "contractCount": 133,
+    "exploratoryCount": 2,
+    "priorFixtureSha256": "2b3d794b761dc8e9d459becb85bbed1be39a7f6bfbdae48b2cfe6d14dc876cc6",
+    "priorRowCount": 127,
+    "priorByteIdenticalRowCount": 120,
+    "priorBytesPreserved": false,
+    "revisedExpectedCaseIds": [
+      "period-decimal-danda",
+      "ry-vowels-and-punctuation",
+      "loanword-text-cha-vowels-punctuation",
+      "month-gregorian-date",
+      "month-gregorian-year-boundary",
+      "mixed-ordinary-marks-and-decimal",
+      "mixed-early-ordinary-text"
+    ],
+    "revisionScope": "Seven historical expectedTop strings change only ASCII digit code points, and their provenance appends an explicit dated policy revision; all IDs, inputs, categories, statuses and prior provenance text are retained. All other historical rows remain byte-identical.",
+    "newCaseIds": [
+      "digits-all-ten",
+      "digits-decimal-danda",
+      "digits-date-time-fraction",
+      "digits-existing-devanagari",
+      "digits-word-api",
+      "digits-technical-spans",
+      "digits-before-address-cue",
+      "digits-mixed-scripts"
+    ]
+  },
+  "historicalContract": {
+    "beforeDefault": {
+      "passed": 125,
+      "total": 125,
+      "wordTop": 102,
+      "wordTotal": 102,
+      "candidateHits": 104,
+      "candidateTotal": 104,
+      "textTop": 23,
+      "textTotal": 23,
+      "mismatchCaseIds": []
+    },
+    "afterDefault": {
+      "passed": 118,
+      "total": 125,
+      "wordTop": 102,
+      "wordTotal": 102,
+      "candidateHits": 104,
+      "candidateTotal": 104,
+      "textTop": 16,
+      "textTotal": 23,
+      "mismatchCaseIds": [
+        "period-decimal-danda",
+        "ry-vowels-and-punctuation",
+        "loanword-text-cha-vowels-punctuation",
+        "month-gregorian-date",
+        "month-gregorian-year-boundary",
+        "mixed-ordinary-marks-and-decimal",
+        "mixed-early-ordinary-text"
+      ]
+    },
+    "afterLatin": {
+      "passed": 125,
+      "total": 125,
+      "wordTop": 102,
+      "wordTotal": 102,
+      "candidateHits": 104,
+      "candidateTotal": 104,
+      "textTop": 23,
+      "textTotal": 23,
+      "mismatchCaseIds": []
+    },
+    "intentionalDefaultMismatchCaseIds": [
+      "period-decimal-danda",
+      "ry-vowels-and-punctuation",
+      "loanword-text-cha-vowels-punctuation",
+      "month-gregorian-date",
+      "month-gregorian-year-boundary",
+      "mixed-ordinary-marks-and-decimal",
+      "mixed-early-ordinary-text"
+    ]
+  },
+  "revisedContract": {
+    "beforeDefault": {
+      "passed": 119,
+      "total": 133,
+      "wordTop": 102,
+      "wordTotal": 103,
+      "candidateHits": 104,
+      "candidateTotal": 105,
+      "textTop": 17,
+      "textTotal": 30,
+      "mismatchCaseIds": [
+        "period-decimal-danda",
+        "ry-vowels-and-punctuation",
+        "loanword-text-cha-vowels-punctuation",
+        "month-gregorian-date",
+        "month-gregorian-year-boundary",
+        "mixed-ordinary-marks-and-decimal",
+        "mixed-early-ordinary-text",
+        "digits-all-ten",
+        "digits-decimal-danda",
+        "digits-date-time-fraction",
+        "digits-word-api",
+        "digits-technical-spans",
+        "digits-before-address-cue",
+        "digits-mixed-scripts"
+      ]
+    },
+    "afterDefault": {
+      "passed": 133,
+      "total": 133,
+      "wordTop": 103,
+      "wordTotal": 103,
+      "candidateHits": 105,
+      "candidateTotal": 105,
+      "textTop": 30,
+      "textTotal": 30,
+      "mismatchCaseIds": []
+    }
+  },
+  "addedDigitContract": {
+    "beforeDefault": {
+      "passed": 1,
+      "total": 8,
+      "wordTop": 0,
+      "wordTotal": 1,
+      "candidateHits": 0,
+      "candidateTotal": 1,
+      "textTop": 1,
+      "textTotal": 7,
+      "mismatchCaseIds": [
+        "digits-all-ten",
+        "digits-decimal-danda",
+        "digits-date-time-fraction",
+        "digits-word-api",
+        "digits-technical-spans",
+        "digits-before-address-cue",
+        "digits-mixed-scripts"
+      ]
+    },
+    "afterDefault": {
+      "passed": 8,
+      "total": 8,
+      "wordTop": 1,
+      "wordTotal": 1,
+      "candidateHits": 1,
+      "candidateTotal": 1,
+      "textTop": 7,
+      "textTotal": 7,
+      "mismatchCaseIds": []
+    }
+  },
+  "exploratory": {
+    "beforeDefault": {
+      "passed": 0,
+      "total": 2,
+      "wordTop": 0,
+      "wordTotal": 2,
+      "candidateHits": 0,
+      "candidateTotal": 2,
+      "textTop": 0,
+      "textTotal": 0,
+      "mismatchCaseIds": [
+        "janchu-proposal",
+        "padhchhu-proposal"
+      ]
+    },
+    "afterDefault": {
+      "passed": 0,
+      "total": 2,
+      "wordTop": 0,
+      "wordTotal": 2,
+      "candidateHits": 0,
+      "candidateTotal": 2,
+      "textTop": 0,
+      "textTotal": 0,
+      "mismatchCaseIds": [
+        "janchu-proposal",
+        "padhchhu-proposal"
+      ]
+    },
+    "afterLatin": {
+      "passed": 0,
+      "total": 2,
+      "wordTop": 0,
+      "wordTotal": 2,
+      "candidateHits": 0,
+      "candidateTotal": 2,
+      "textTop": 0,
+      "textTotal": 0,
+      "mismatchCaseIds": [
+        "janchu-proposal",
+        "padhchhu-proposal"
+      ]
+    },
+    "excludedFromGate": true,
+    "labelsRemainUnreviewed": true
+  },
+  "revisedHistoricalCaseResults": [
+    {
+      "id": "period-decimal-danda",
+      "input": "pani. 3.14 paani|",
+      "historicalExpectedTop": "पनि. 3.14 पानी।",
+      "revisedExpectedTop": "पनि. ३.१४ पानी।",
+      "beforeDefault": {
+        "actualTop": "पनि. 3.14 पानी।",
+        "actualCandidates": null,
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "पनि. ३.१४ पानी।",
+        "actualCandidates": null,
+        "pass": true
+      },
+      "afterLatinAgainstHistorical": {
+        "actualTop": "पनि. 3.14 पानी।",
+        "actualCandidates": null,
+        "pass": true
+      }
+    },
+    {
+      "id": "ry-vowels-and-punctuation",
+      "input": "maryo maaryo pani paani. 3.14| kaarya suurya",
+      "historicalExpectedTop": "मर्‍यो मार्‍यो पनि पानी. 3.14। कार्य सूर्य",
+      "revisedExpectedTop": "मर्‍यो मार्‍यो पनि पानी. ३.१४। कार्य सूर्य",
+      "beforeDefault": {
+        "actualTop": "मर्‍यो मार्‍यो पनि पानी. 3.14। कार्य सूर्य",
+        "actualCandidates": null,
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "मर्‍यो मार्‍यो पनि पानी. ३.१४। कार्य सूर्य",
+        "actualCandidates": null,
+        "pass": true
+      },
+      "afterLatinAgainstHistorical": {
+        "actualTop": "मर्‍यो मार्‍यो पनि पानी. 3.14। कार्य सूर्य",
+        "actualCandidates": null,
+        "pass": true
+      }
+    },
+    {
+      "id": "loanword-text-cha-vowels-punctuation",
+      "input": "Camera email; cha chha pani paani. 3.14|",
+      "historicalExpectedTop": "क्यामेरा इमेल; च छ पनि पानी. 3.14।",
+      "revisedExpectedTop": "क्यामेरा इमेल; च छ पनि पानी. ३.१४।",
+      "beforeDefault": {
+        "actualTop": "क्यामेरा इमेल; च छ पनि पानी. 3.14।",
+        "actualCandidates": null,
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "क्यामेरा इमेल; च छ पनि पानी. ३.१४।",
+        "actualCandidates": null,
+        "pass": true
+      },
+      "afterLatinAgainstHistorical": {
+        "actualTop": "क्यामेरा इमेल; च छ पनि पानी. 3.14।",
+        "actualCandidates": null,
+        "pass": true
+      }
+    },
+    {
+      "id": "month-gregorian-date",
+      "input": "September 27, 2026",
+      "historicalExpectedTop": "सेप्टेम्बर 27, 2026",
+      "revisedExpectedTop": "सेप्टेम्बर २७, २०२६",
+      "beforeDefault": {
+        "actualTop": "सेप्टेम्बर 27, 2026",
+        "actualCandidates": null,
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "सेप्टेम्बर २७, २०२६",
+        "actualCandidates": null,
+        "pass": true
+      },
+      "afterLatinAgainstHistorical": {
+        "actualTop": "सेप्टेम्बर 27, 2026",
+        "actualCandidates": null,
+        "pass": true
+      }
+    },
+    {
+      "id": "month-gregorian-year-boundary",
+      "input": "December 31, 2026| january 1, 2027",
+      "historicalExpectedTop": "डिसेम्बर 31, 2026। जनवरी 1, 2027",
+      "revisedExpectedTop": "डिसेम्बर ३१, २०२६। जनवरी १, २०२७",
+      "beforeDefault": {
+        "actualTop": "डिसेम्बर 31, 2026। जनवरी 1, 2027",
+        "actualCandidates": null,
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "डिसेम्बर ३१, २०२६। जनवरी १, २०२७",
+        "actualCandidates": null,
+        "pass": true
+      },
+      "afterLatinAgainstHistorical": {
+        "actualTop": "डिसेम्बर 31, 2026। जनवरी 1, 2027",
+        "actualCandidates": null,
+        "pass": true
+      }
+    },
+    {
+      "id": "mixed-ordinary-marks-and-decimal",
+      "input": "3.14 par/=yo ka^ kaa~ camera_file camera123|",
+      "historicalExpectedTop": "3.14 पर्‍यो कं काँ क्यामेरा_फाइल क्यामेरा123।",
+      "revisedExpectedTop": "३.१४ पर्‍यो कं काँ क्यामेरा_फाइल क्यामेरा१२३।",
+      "beforeDefault": {
+        "actualTop": "3.14 पर्‍यो कं काँ क्यामेरा_फाइल क्यामेरा123।",
+        "actualCandidates": null,
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "३.१४ पर्‍यो कं काँ क्यामेरा_फाइल क्यामेरा१२३।",
+        "actualCandidates": null,
+        "pass": true
+      },
+      "afterLatinAgainstHistorical": {
+        "actualTop": "3.14 पर्‍यो कं काँ क्यामेरा_फाइल क्यामेरा123।",
+        "actualCandidates": null,
+        "pass": true
+      }
+    },
+    {
+      "id": "mixed-early-ordinary-text",
+      "input": "camera camera. 3.14 par/=yo T D|",
+      "historicalExpectedTop": "क्यामेरा क्यामेरा. 3.14 पर्‍यो ट् ड्।",
+      "revisedExpectedTop": "क्यामेरा क्यामेरा. ३.१४ पर्‍यो ट् ड्।",
+      "beforeDefault": {
+        "actualTop": "क्यामेरा क्यामेरा. 3.14 पर्‍यो ट् ड्।",
+        "actualCandidates": null,
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "क्यामेरा क्यामेरा. ३.१४ पर्‍यो ट् ड्।",
+        "actualCandidates": null,
+        "pass": true
+      },
+      "afterLatinAgainstHistorical": {
+        "actualTop": "क्यामेरा क्यामेरा. 3.14 पर्‍यो ट् ड्।",
+        "actualCandidates": null,
+        "pass": true
+      }
+    }
+  ],
+  "newCaseResults": [
+    {
+      "id": "digits-all-ten",
+      "input": "0123456789",
+      "expectedTop": "०१२३४५६७८९",
+      "beforeDefault": {
+        "actualTop": "0123456789",
+        "actualCandidates": null,
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "०१२३४५६७८९",
+        "actualCandidates": null,
+        "pass": true
+      }
+    },
+    {
+      "id": "digits-decimal-danda",
+      "input": "pani. -3.14 +0.5|",
+      "expectedTop": "पनि. -३.१४ +०.५।",
+      "beforeDefault": {
+        "actualTop": "पनि. -3.14 +0.5।",
+        "actualCandidates": null,
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "पनि. -३.१४ +०.५।",
+        "actualCandidates": null,
+        "pass": true
+      }
+    },
+    {
+      "id": "digits-date-time-fraction",
+      "input": "2026-09-27 12:30 1/2 1,234.50",
+      "expectedTop": "२०२६-०९-२७ १२:३० १/२ १,२३४.५०",
+      "beforeDefault": {
+        "actualTop": "2026-09-27 12:30 1/2 1,234.50",
+        "actualCandidates": null,
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "२०२६-०९-२७ १२:३० १/२ १,२३४.५०",
+        "actualCandidates": null,
+        "pass": true
+      }
+    },
+    {
+      "id": "digits-existing-devanagari",
+      "input": "१२३ ३.१४ २०२६-०९-२७",
+      "expectedTop": "१२३ ३.१४ २०२६-०९-२७",
+      "beforeDefault": {
+        "actualTop": "१२३ ३.१४ २०२६-०९-२७",
+        "actualCandidates": null,
+        "pass": true
+      },
+      "afterDefault": {
+        "actualTop": "१२३ ३.१४ २०२६-०९-२७",
+        "actualCandidates": null,
+        "pass": true
+      }
+    },
+    {
+      "id": "digits-word-api",
+      "input": "123",
+      "expectedTop": "१२३",
+      "beforeDefault": {
+        "actualTop": "123",
+        "actualCandidates": [
+          "123"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "१२३",
+        "actualCandidates": [
+          "१२३"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "digits-technical-spans",
+      "input": "User123+4@camera.com https://192.168.1.70:8080/path123?q=3.14 camera2026.com 42|",
+      "expectedTop": "User123+4@camera.com https://192.168.1.70:8080/path123?q=3.14 camera2026.com ४२।",
+      "beforeDefault": {
+        "actualTop": "User123+4@camera.com https://192.168.1.70:8080/path123?q=3.14 camera2026.com 42।",
+        "actualCandidates": null,
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "User123+4@camera.com https://192.168.1.70:8080/path123?q=3.14 camera2026.com ४२।",
+        "actualCandidates": null,
+        "pass": true
+      }
+    },
+    {
+      "id": "digits-before-address-cue",
+      "input": "camera123 camera123@ camera123.c",
+      "expectedTop": "क्यामेरा१२३ camera123@ camera123.c",
+      "beforeDefault": {
+        "actualTop": "क्यामेरा123 camera123@ camera123.c",
+        "actualCandidates": null,
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "क्यामेरा१२३ camera123@ camera123.c",
+        "actualCandidates": null,
+        "pass": true
+      }
+    },
+    {
+      "id": "digits-mixed-scripts",
+      "input": "नमस्ते १२3 ४5|",
+      "expectedTop": "नमस्ते १२३ ४५।",
+      "beforeDefault": {
+        "actualTop": "नमस्ते १२3 ४5।",
+        "actualCandidates": null,
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "नमस्ते १२३ ४५।",
+        "actualCandidates": null,
+        "pass": true
+      }
+    }
+  ],
+  "commands": {
+    "beforeHistorical": {
+      "command": "node /private/tmp/sahajlipi-digits-baseline-660d088/benchmark/run.js --fixtures /private/tmp/sahajlipi-digits-baseline-660d088/benchmark/cases.jsonl --check",
+      "exitCode": 0,
+      "contract": {
+        "passed": 125,
+        "total": 125
+      }
+    },
+    "afterHistorical": {
+      "command": "node /private/tmp/sahajlipi-mixed-text/benchmark/run.js --fixtures /private/tmp/sahajlipi-digits-baseline-660d088/benchmark/cases.jsonl --check",
+      "exitCode": 1,
+      "contract": {
+        "passed": 118,
+        "total": 125
+      }
+    },
+    "beforeRevised": {
+      "command": "node /private/tmp/sahajlipi-digits-baseline-660d088/benchmark/run.js --fixtures /private/tmp/sahajlipi-mixed-text/benchmark/cases.jsonl --check",
+      "exitCode": 1,
+      "contract": {
+        "passed": 119,
+        "total": 133
+      }
+    },
+    "afterRevised": {
+      "command": "node /private/tmp/sahajlipi-mixed-text/benchmark/run.js --fixtures /private/tmp/sahajlipi-mixed-text/benchmark/cases.jsonl --check",
+      "exitCode": 0,
+      "contract": {
+        "passed": 133,
+        "total": 133
+      }
+    },
+    "latinHistorical": {
+      "method": "Programmatic createEngine({ digits: 'latin' }) with the archived historical fixture, using the same exact-output and expected-candidate checks; the default-engine CLI does not accept engine injection"
+    }
+  },
+  "benchmarkToolSha256": {
+    "before": "02f76258dece93e9ec8e54cd484dddc9456d4a64c4162114221c4794b8d87f31",
+    "after": "02f76258dece93e9ec8e54cd484dddc9456d4a64c4162114221c4794b8d87f31"
+  },
+  "measurementTool": {
+    "path": "benchmark/measure-digits.js",
+    "sha256": "1f181534a1a42faa9b4a850f53975e7917d218c232d5e35f8200b5ccb53e57ea"
+  },
+  "historicalReportSha256": {
+    "benchmark/reports/mixed-text-001.json": "5b488efc1ccad07c6ccd15e455822da67bdad472d99e140ccb6b2784b7b6fe10",
+    "benchmark/reports/early-address-001.json": "082f661778813c2b5943ed0c525458de011b27be919857a0b8339151e38c8695"
+  },
+  "reproduction": {
+    "baselineSnapshot": "git archive 660d088ed60410feb0c6ad4c43d33214c24296f9 | tar -x -C <baseline-directory>",
+    "command": "node benchmark/measure-digits.js <absolute-baseline-directory>",
+    "optionalOutput": "Append --output <report-path> to write a new measurement; do not overwrite immutable historical reports.",
+    "verification": "Verify the fixture, core, runner and measurement hashes before comparing summaries. The timestamp and host command paths change when reproduced; expected outputs and denominators remain the same.",
+    "coreHashScope": "src/index.js, src/index.d.ts, src/text-policy.js, src/lexicon.js, src/phonetic.js; no DOM/browser result is measured."
+  },
+  "limits": [
+    "Default conversion intentionally changes seven prior ASCII-number contracts; historical 125/125 and revised 133/133 are different expectations, not a performance improvement on unchanged labels.",
+    "Eight additions are project-authored software behavior contracts with zero independently reviewed linguistic labels; no population accuracy or held-out improvement claim.",
+    "The explicit digits: 'latin' engine restores the historical 125-contract exact outputs and candidate requirements; existing Devanagari digits are not converted back to ASCII.",
+    "Digits within scanner-recognized ASCII URL/email spans remain literal; text before a distinguishing address cue still follows ordinary conversion.",
+    "Decimal points, dates, times and separators retain their meaning and punctuation; this maps ASCII digit code points without number parsing, locale formatting or Gregorian/Bikram Sambat calendar conversion.",
+    "The historical fixture is frozen in the baseline commit; seven live expectedTop fields and dated provenance suffixes are revised explicitly, while all other prior rows and historical reports remain unchanged.",
+    "Two exploratory proposals remain unreviewed and excluded from --check. Live typing, English mode, numeric input exclusions, composition, paste, cursor edits and undo require separate DOM/browser checks."
+  ]
+}
