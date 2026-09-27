@@ -53,6 +53,12 @@ The 28 contract cases cover the current starter lexicon, an ambiguous word, half
 
 The 28/28 contract result says only that this small, handpicked set matches the current behavior. It is **not** a population accuracy score, a measure of word coverage, or evidence that SahajLipi outperforms another input tool. Functional test counts from `npm test` have the same limitation.
 
+## Ra-ya regression update — 2026-09-27
+
+The [dated ra-ya review](ry-review.md) records the word-specific mappings, reserved Shift lookup correction, remaining spelling ambiguities, commands and [machine report](../../benchmark/reports/nepali-ry-001.json). The current seed has **50 contracts and two exploratory cases**. On the same final fixture file, baseline `e029d02` passes **38/50** contracts and the updated engine passes **50/50**; both pass the original 28 contracts and both retain the two exploratory misses.
+
+These are source-assisted project behavior contracts authorized for implementation, not independently reviewed Nepali corpus labels. The unchanged 100-case development cohort still has 7/100 exact source-proposal matches, and the pinned public word test remains 279/4,101 top and candidate matches. The report preserves these results and discloses the lack of admitted human labels. It makes no population accuracy or performance claim.
+
 ## Building a credible evaluation corpus
 
 Before publishing an accuracy claim, collect a separate set of real Roman input and intended Unicode output from consenting typists. Keep a record of each item's source, license or permission, keyboard and language context where known, and whether the input was typed naturally or created to test a rule. Ask proficient Nepali reviewers to verify the intended spelling and record disagreements. Where one Roman spelling has multiple plausible words, include enough sentence context to identify the typist's intended result; do not declare one word universally correct without context.

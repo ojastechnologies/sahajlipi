@@ -22,7 +22,7 @@ Replace `YOUR_LAN_IP` with that address, then open `http://YOUR_LAN_IP:4173/demo
 
 ## Use the page
 
-- **Type in the editor.** Roman letters turn into Nepali in the same textarea. Space commits the displayed word; Backspace can edit the active Roman spelling. The on-page **How to type** guide shows examples for vowels, half consonants, Shift sounds, marks, punctuation, and alternatives.
+- **Type in the editor.** Roman letters turn into Nepali in the same textarea. Space commits the displayed word; Backspace can edit the active Roman spelling. The on-page **How to type** guide shows examples for vowels, half consonants, the two र्य/र्‍य forms, listed word shortcuts, Shift sounds, marks, punctuation, and alternatives. The [package typing reference](../package/typing-reference.md) documents the complete rules and the scope of those word entries.
 - **Choose a reading.** When the active spelling has multiple listed readings, a dropdown appears below the textarea. The first reading is displayed by default. Choose another from the dropdown or press `Alt` + a number from `1` through `9` while the word is active.
 - **Switch mode.** **Nepali on/off** controls conversion of subsequent typing and paste in every marked field on this page: the main editor and the two form examples. Existing text stays as it is when you switch modes.
 - **Try form fields.** The text and search examples below the editor use the same conversion setup. The unmarked text and email fields stay in English. The alternatives dropdown and character count belong to the main editor; in the form fields, `Alt` + a number can select an available alternative.
