@@ -73,6 +73,15 @@ The package website presents the library and renders these Markdown guides as se
 
 Use the [live typing demo](https://ojastechnologies.github.io/sahajlipi/demo/) to try the current interaction. Its editor, candidate dropdown, controls, local setup, and Pages hosting are described in the [demo guide](docs/demo/README.md). The demo consumes the package; it is not a separate conversion engine.
 
+To run the full website and demo locally, use Node.js 20 or later, npm, and Python 3:
+
+```sh
+npm ci
+npm run demo
+```
+
+Open [the local demo](http://127.0.0.1:4173/sahajlipi/demo/) or [the package homepage](http://127.0.0.1:4173/sahajlipi/). This builds the generated website so Home and documentation links work. The previous local `/demo/` URL redirects to the complete demo route. Source-only examples use the separate `npm run examples:serve` command on port 4177.
+
 ## Evaluation status
 
 The badges show current `main` workflow status. Node CI runs automated tests and the seed contract benchmark on pull requests and pushes to `main`, across Node.js 18, 20, 22, and 24. The separate browser workflow runs Chromium, Firefox, and WebKit on Ubuntu with Node.js 22; its [compatibility guide](docs/package/browser-compatibility.md) records tested environments, commands, and limits. Check a pull request's own checks for its results. The table below contains **dated recorded results**, with methods and provenance linked from each row.

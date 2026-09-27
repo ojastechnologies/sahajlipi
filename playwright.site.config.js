@@ -21,7 +21,7 @@ export default defineConfig({
   },
   projects: [{ name: 'chromium', use: { browserName: 'chromium' } }],
   webServer: {
-    command: 'python3 -m http.server 4181 --bind 127.0.0.1 --directory .site-dist',
+    command: 'python3 tools/serve-site.py --port 4181',
     url: 'http://127.0.0.1:4181/sahajlipi/',
     reuseExistingServer: false,
     timeout: 15_000,

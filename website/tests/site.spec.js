@@ -103,3 +103,58 @@ test('published benchmark downloads and sitemap remain reachable', async ({ requ
   expect(image.ok()).toBe(true);
   expect(image.headers()['content-type']).toContain('image/png');
 });
+
+test('site logos return home from the demo and nested docs at desktop and mobile widths', async ({ page }) => {
+  for (const width of [1280, 375]) {
+    await page.setViewportSize({ width, height: 812 });
+    for (const route of ['demo/', 'docs/package/api.html', 'docs/package/architecture.html']) {
+      await page.goto(route);
+      const logo = route.startsWith('demo') ? page.locator('.identity') : page.locator('.VPNavBarTitle a');
+      await logo.click();
+      await expect(page).toHaveURL('http://127.0.0.1:4181/sahajlipi/');
+      await expect(page.getByRole('heading', { level: 1 })).toHaveText('Nepali typing for your web app.');
+    }
+  }
+});
+
+test('Home navigation works from documentation and demo on desktop and mobile', async ({ page }) => {
+  for (const width of [1280, 375]) {
+    await page.setViewportSize({ width, height: 812 });
+    await page.goto('docs/package/api.html');
+    let navigation = page.locator('.VPNavBar');
+    if (width === 375) {
+      await page.getByRole('button', { name: 'mobile navigation' }).click();
+      navigation = page.locator('.VPNavScreen');
+    }
+    await navigation.getByRole('link', { name: 'Home', exact: true }).click();
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Nepali typing for your web app.');
+    await page.goto('demo/');
+    await page.getByRole('link', { name: 'Home', exact: true }).click();
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Nepali typing for your web app.');
+  }
+});
+
+test('documentation body links load the standalone demo and return home', async ({ page }) => {
+  for (const route of ['docs/demo/', 'docs/development.html', 'docs/website-and-seo.html']) {
+    await page.goto(route);
+    const link = page.locator('.vp-doc a[href="/sahajlipi/demo/index.html"], .vp-doc a[href="/sahajlipi/demo/"]').first();
+    await expect(link).toBeVisible();
+    await link.click();
+    await expect(page.locator('#typing-field')).toBeVisible();
+    await page.locator('.identity').click();
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Nepali typing for your web app.');
+  }
+});
+
+test('legacy local root and demo addresses redirect into the complete website', async ({ page }) => {
+  await page.goto('http://127.0.0.1:4181/');
+  await expect(page).toHaveURL('http://127.0.0.1:4181/sahajlipi/');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Nepali typing for your web app.');
+  await page.goto('http://127.0.0.1:4181/demo/?from=bookmark');
+  await expect(page).toHaveURL('http://127.0.0.1:4181/sahajlipi/demo/?from=bookmark');
+  await expect(page.locator('#typing-field')).toBeVisible();
+  await page.getByRole('link', { name: 'Docs', exact: true }).click();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Getting started');
+  await page.locator('.VPNavBarTitle a').click();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Nepali typing for your web app.');
+});

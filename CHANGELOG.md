@@ -13,7 +13,15 @@ No npm versions have been published. `0.1.0` is the private repository prototype
 - Release checklist, compatibility scope, versioning, and migration policy.
 - Package website with static developer documentation generated from the existing Markdown, local search, and the preserved interactive demo route.
 - Unique page titles and descriptions, canonical URLs, social preview metadata, sitemap, and documented discoverability limits.
-- GitHub Pages artifact workflow with pull-request checks and main-only deployment, plus seven dedicated Chromium website scenarios.
+- GitHub Pages artifact workflow with pull-request checks and main-only deployment, plus eleven dedicated Chromium website scenarios.
+
+### Fixed
+
+- Restored gold highlights on typing surfaces, selected text, active navigation, and keyboard examples across the website and demo.
+- Local demo startup now builds and serves the complete package website, keeping Home, logo, and documentation navigation available.
+- Legacy local `/` and `/demo/` entry paths redirect to the project homepage and demo under `/sahajlipi/`.
+- Documentation-body demo links load the static demo rather than passing it through the documentation router.
+- Source-only vanilla example instructions use the separate repository example server on port 4177.
 
 ### Packaging
 
@@ -21,4 +29,4 @@ No npm versions have been published. `0.1.0` is the private repository prototype
 - Distributed MIT and Unicode-3.0 licenses plus a NOTICE for CLDR-derived month-name data.
 - Pinned example/compiler and VitePress website development dependencies; no runtime dependencies added.
 
-The existing prototype includes direct phonetic typing, selected word alternatives, configurable field scopes, loanwords, Gregorian month spellings, technical-text preservation, and configurable Devanagari/Latin digits. Their implementation history and dated evidence remain in the package guides. These onboarding and website updates do not change conversion rules or publish a package. The GitHub Pages source transition is pending until the website workflow is available on `main`.
+The existing prototype includes direct phonetic typing, selected word alternatives, configurable field scopes, loanwords, Gregorian month spellings, technical-text preservation, and configurable Devanagari/Latin digits. Their implementation history and dated evidence remain in the package guides. These onboarding and website updates do not change conversion rules or publish a package. GitHub Pages now uses the Actions publishing source for the generated website artifact.

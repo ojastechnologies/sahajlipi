@@ -55,6 +55,25 @@ for (const directory of publicRoots) {
 }
 for (const filename of ['LICENSE', 'NOTICE']) await cp(path.join(root, filename), path.join(publicDirectory, filename));
 
+// Copied HTML apps are not VitePress routes. Keep their inventory available to
+// both Markdown rendering and the final output check, including directory URLs.
+const staticHtmlRoutes = new Set();
+for (const file of await filesIn(publicDirectory)) {
+  if (!file.endsWith('.html')) continue;
+  const route = '/' + path.relative(publicDirectory, file).split(path.sep).join('/');
+  staticHtmlRoutes.add(route);
+  if (route.endsWith('/index.html')) staticHtmlRoutes.add(route.slice(0, -'index.html'.length));
+}
+
+function isStaticHtmlLink(reference) {
+  let url;
+  try { url = new URL(reference, hostname + base); } catch { return false; }
+  if (url.origin !== hostname) return false;
+  let route = decodeURIComponent(url.pathname);
+  if (route.startsWith(base)) route = '/' + route.slice(base.length);
+  return staticHtmlRoutes.has(route);
+}
+
 function rewriteTarget(target, source, rawHtml = false) {
   if (!target || target.startsWith('#') || /^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(target)) return target;
   const split = target.match(/^([^?#]*)([?#].*)?$/);
@@ -107,12 +126,19 @@ function rewriteMarkdown(markdown, source) {
       if (!parts) return _match;
       return prefix + rewriteTarget(parts[1], source) + parts[2] + end;
     });
-    return line.replace(/\b(href|src|srcset)=(['"])(.*?)\2/g, (_match, attribute, quote, value) => {
+    line = line.replace(/\b(href|src|srcset)=(['"])(.*?)\2/g, (_match, attribute, quote, value) => {
       const rewritten = rewriteTarget(value, source, true);
       // A bound constant avoids Vue interpreting a copied public image URL as
       // a source import, while preserving the Pages base in the rendered HTML.
       if (attribute !== 'href') return `:${attribute}=${quote}${escapeAttribute(JSON.stringify(rewritten))}${quote}`;
       return `${attribute}=${quote}${rewritten}${quote}`;
+    });
+    return line.replace(/<a\b([^>]*)>/gi, (tag, attributes) => {
+      const values = new Map([...attributes.matchAll(/([\w:-]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>]+)))?/g)]
+        .map(match => [match[1].toLowerCase(), match[2] ?? match[3] ?? match[4] ?? '']));
+      const href = values.get('href');
+      if (!href || !isStaticHtmlLink(href) || values.has('target') || values.has('download')) return tag;
+      return `<a${attributes} target="_self">`;
     });
   }).join('\n');
 }
@@ -160,7 +186,7 @@ for (const file of await filesIn(publicDirectory)) {
   publicFiles.push({ path: relative, sha256: createHash('sha256').update(await readFile(file)).digest('hex') });
 }
 const manifest = {
-  base, hostname,
+  base, hostname, staticHtmlRoutes: [...staticHtmlRoutes].sort(),
   pages: [...pages].map(([source, generatedPath]) => ({ source, generatedPath, route: pageRoute(generatedPath), canonical: hostname + base.slice(0, -1) + pageRoute(generatedPath) })),
   publicFiles,
 };
