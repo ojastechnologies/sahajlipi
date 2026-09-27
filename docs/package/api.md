@@ -64,15 +64,16 @@ Preserves recognizable technical spans first, then converts ASCII Latin-letter r
 
 #### Links, domains, and email addresses
 
-The default policy preserves recognizable HTTP(S) links, `www.` addresses, ASCII domain-shaped hosts such as `camera.com` and `nepal.gov.np`, and ordinary ASCII email addresses such as `name+tag@mail.example.com`. `mailto:` addresses and their query strings are also recognized. Matching spans retain their original spelling and case, including URL paths, query strings, and fragments. No network request, DNS lookup, public-suffix validation, or language detection is involved. A domain-shaped spelling such as `pani.paani` is preserved even if it was intended as two Nepali words.
+The default policy preserves recognizable HTTP(S) links, `www.` addresses, ASCII domain-shaped hosts such as `camera.com` and `nepal.gov.np`, and ordinary ASCII email addresses such as `name+tag@mail.example.com`. `mailto:` addresses and their query strings are also recognized. Matching spans retain their original spelling and case, including URL paths, query strings, and fragments. No network request, DNS lookup, public-suffix validation, or language detection is involved. A domain-shaped spelling such as `pani.paani`, or its unfinished form `pani.p`, is preserved even if it was intended as Nepali words separated by a period.
 
 | Recognized shape | Scope |
 | --- | --- |
-| HTTP(S) link | An ASCII host, including localhost or IP-shaped hosts when the scheme is present; optional printable ASCII user information before a single `@`, numeric port, and `/`, `?`, or `#` suffix. Percent-encoded user information stays literal. This recognizes a shape rather than validating a URL. |
-| Bare domain or `www.` address | Dot-separated ASCII labels; final label has at least two letters or an ASCII `xn--` form. No public-suffix or DNS check. |
-| Email | ASCII dot-separated local parts containing letters, digits, `_`, `%`, `+`, or `-`, followed by `@` and a domain-shaped host. Optional `mailto:` prefix and its query string. Quoted or Unicode local parts are outside this scope. |
+| HTTP(S) link or unfinished prefix | Preservation begins at `http:` or `https:`, before a host is complete. The scheme and recognizable slash/authority text stay literal, including a single slash while typing. Complete links can have ASCII hosts, including localhost or IP-shaped hosts, user information, numeric ports, and `/`, `?`, or `#` suffixes. |
+| `www.` address or unfinished prefix | Preservation begins at the exact `www.` prefix, before the following host has been typed. |
+| Bare domain or unfinished domain | Dot-separated ASCII labels; preservation begins with the first ASCII letter after a dot, as in `camera.c`. A final ASCII `xn--` form is also recognized. No public-suffix or DNS check. |
+| Email or unfinished mailbox | An ordinary ASCII local part containing letters, digits, `_`, `%`, `+`, or `-`, with dots between its parts, followed by `@`. Preservation begins at `@`, before the host is complete, so `name@` and `name@example` stay literal. Optional `mailto:` prefix and its query string. Quoted or Unicode local parts are outside this scope. |
 
-Host/domain recognition uses ASCII characters; a recognized URL's suffix is copied literally and can include Unicode. The policy does not perform IDNA conversion.
+These cues use the same policy for bulk conversion, pasted text, and live typing. An unfinished address is preserved because the text supplies an address cue; preservation does not mean the address is valid. Host/domain recognition uses ASCII characters; a recognized URL's suffix is copied literally and can include Unicode. The policy does not perform IDNA conversion.
 
 ```js
 convertText('camera camera.com may may.com');
@@ -83,11 +84,21 @@ convertText('namaste https://Example.com/a|b?q=camera#may pani|');
 
 convertText('(camera.com), name+tag@example.com!');
 // '(camera.com), name+tag@example.com!'
+
+convertText('https: www. name@ camera.c');
+// 'https: www. name@ camera.c'
+
+convertText('camera. pani.');
+// 'क्यामेरा. पनि.'
 ```
 
 Sentence-ending punctuation and enclosing wrappers remain outside the recognized span. Balanced parentheses within a URL path can remain part of it. A pipe immediately after a bare domain stays outside: `camera.com|` → `camera.com।`. Once a URL has a `/`, `?`, or `#` suffix, shortcut characters within that suffix stay literal, including a final pipe: `camera.com/a|` stays `camera.com/a|`. To add Nepali danda after such a URL, separate it with whitespace, for example `camera.com/a |` → `camera.com/a ।`.
 
-This is a conservative ASCII policy, not a full URL or email parser. Unicode hostnames/mailboxes, bare localhost names or IP addresses, other URL schemes, arbitrary code, filenames, acronyms, and ordinary English phrases have no general preservation guarantee. The converter can still match `camera` within `camera_file` and `camera123`. Hyphenated `e-mail` is split and does not become the `email` alias. Use the literal-text controls below when the text must remain unchanged.
+Before an address cue appears, ordinary letters still convert: `camera` becomes `क्यामेरा` and `camera.` remains `क्यामेरा.` Once `camera.c` or `camera@` is typed continuously, the adapter restores the current token to Roman text and preserves its following address characters. A trailing period alone is not an address cue, so sentence periods keep their existing behavior. Use English mode before the first key when an entire fragment must stay literal from its beginning.
+
+Unusual credential punctuation in an unfinished URL authority can be ambiguous with sentence punctuation. For example, `!` before a later `@` may be treated as a boundary until the credential context is clear. Use English mode before the first key when every intermediate character must remain literal.
+
+This is an ASCII pattern policy, not a full URL or email parser. Unicode hostnames/mailboxes, bare localhost names or IP addresses, other URL schemes, arbitrary code, filenames, acronyms, and ordinary English phrases have no general preservation guarantee. The converter can still match `camera` within `camera_file` and `camera123`. Hyphenated `e-mail` is split and does not become the `email` alias. Use the literal-text controls below when the text must remain unchanged.
 
 <a id="createengine-entries"></a>
 
@@ -299,7 +310,7 @@ controller.destroy();
 | `undo()` / `redo()` | Move through the adapter's edit snapshots. |
 | `destroy()` | Remove listeners installed by this controller. Call it during UI teardown. |
 
-The field adapter uses `beforeinput` where possible, an `input` fallback, paste/cut and composition events, and its own undo history. An active word keeps its Roman spelling so Backspace can edit the spelling even after the visible text changes. During uninterrupted typing, the adapter also keeps the current whitespace-delimited token’s original input: a partial address may first appear as Nepali, then return to its original spelling once the address pattern is recognizable. Typing, native input, paste, and completed composition use the shared text policy. This does not recover the Roman spelling of text already committed or supplied as literal text. Once the word is committed, deletion uses `Intl.Segmenter` for grapheme boundaries when available, with a code-point fallback. See [architecture](architecture.md) for the event flow.
+The field adapter uses `beforeinput` where possible, an `input` fallback, paste/cut and composition events, and its own undo history. An active word keeps its Roman spelling so Backspace can edit the spelling even after the visible text changes. During uninterrupted typing, the adapter also keeps the current whitespace-delimited token’s original input: letters before an address cue still convert, but the token returns to its original spelling as soon as `http:`, `https:`, `www.`, an ordinary ASCII local part followed by `@`, or the first letter after a domain dot appears. It does not wait for a complete host or email address. Typing, native input, paste, and completed composition use the shared text policy. This does not recover the Roman spelling of text already committed or supplied as literal text. Once the word is committed, deletion uses `Intl.Segmenter` for grapheme boundaries when available, with a code-point fallback. See [architecture](architecture.md) for the event flow.
 
 Automated input tests use simulated fields; a cross-browser and real-device compatibility matrix has not been established. Framework-controlled fields can re-render their values, so test their event and teardown behavior in the host app.
 

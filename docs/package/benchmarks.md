@@ -75,11 +75,15 @@ The frozen 100-case development cohort stays at 7/100 source-proposal matches; t
 
 ## Mixed-text update — 2026-09-27
 
-The current seed has **119 contracts and two exploratory cases**. The [mixed-text benchmark record](mixed-text-benchmarks.md) and [machine report](../../benchmark/reports/mixed-text-001.json) compare baseline `4e6cc4e` with the modified engine on the same frozen fixture: **110/119 → 119/119** full contracts, **102/102 → 102/102** word top output, and **8/17 → 17/17** exact text output. Both engines pass the original **109/109** contracts. All 111 prior rows remain byte-for-byte intact, including the two exploratory misses that remain excluded from the gate.
+The dated first mixed-text seed has **119 contracts and two exploratory cases**. The [mixed-text benchmark record](mixed-text-benchmarks.md) and [machine report](../../benchmark/reports/mixed-text-001.json) compare baseline `4e6cc4e` with the modified engine on the same frozen fixture: **110/119 → 119/119** full contracts, **102/102 → 102/102** word top output, and **8/17 → 17/17** exact text output. Both engines pass the original **109/109** contracts. All 111 prior rows remain byte-for-byte intact, including the two exploratory misses that remain excluded from the gate.
 
 The ten added text contracts score URL case and ports, email plus tags, `www.` and bare domains, URL suffix shortcut characters, wrappers and balanced path parentheses, Unicode boundaries, dotted Roman spellings, ordinary marks and decimal controls, and month names beside a domain or `mailto:` address. The baseline passes the ordinary-mark control (**1/10** new contracts); the updated engine passes **10/10**. Nine selected strings intentionally change output to preserve their recognizable technical spans.
 
 These are project-authored software contracts with no independent linguistic labels. This report does not measure population-wide Nepali accuracy, external-corpus improvement, performance, or browser/device compatibility. Opt-out behavior, custom entries, the unchanged word API, and live editing are covered by separate functional tests. Historical month, loanword, ra-ya, and initial report counts remain dated records. The [new record](mixed-text-benchmarks.md#reproduce-the-recorded-comparison) pins core/fixture/tool hashes and explains reproduction without silently comparing a later engine or fixture.
+
+### Early-address follow-up — 2026-09-27
+
+The [early-address follow-up](mixed-text-benchmarks.md#early-address-follow-up--2026-09-27) and [machine report](../../benchmark/reports/early-address-001.json) record the next **six software contracts** for unfinished scheme, `www.`, email and dotted-domain cues, plus an unchanged ordinary-text control. Baseline `c0679b5` and the corrected engine use the same expanded fixture: **120/125 → 125/125** full contracts and **18/23 → 23/23** text output, with **102/102** word output unchanged. Both retain **119/119** prior contracts. All 121 previous rows remain byte-for-byte unchanged, including the two exploratory exclusions. The selected additions improve from **1/6 → 6/6**; no independent language labels, external-corpus results, timing, or browser support claim are added. The report's core, fixture, and tool hashes distinguish this correction from the first mixed-text implementation.
 
 ## Building a credible evaluation corpus
 

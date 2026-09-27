@@ -104,9 +104,11 @@ namaste https://Example.com/a|b?q=camera#may pani|
 → नमस्ते https://Example.com/a|b?q=camera#may पनि।
 ```
 
-An address prefix may first appear as Nepali while you type. As soon as the current uninterrupted token matches an address pattern, it returns to its original spelling. This does not recover the Roman input of previously committed text.
+The converter switches the current token back to Roman text as soon as an early address cue appears: `http:`, `https:`, `www.`, an ordinary ASCII local part followed by `@`, or the first letter after a domain dot. It preserves `https:`, `www.`, `name@`, `name@example`, and `camera.c` before they are complete addresses. The same examples stay literal when pasted.
 
-The policy checks a shape, not whether the address exists: `pani.paani` also stays literal. It has conservative ASCII scope; internationalized addresses and arbitrary English, code, or filenames are outside the automatic handling. A pipe after a bare domain gives danda (`camera.com|` → `camera.com।`), but inside a URL suffix it stays literal (`camera.com/a|` stays as typed). Add a space before the pipe for sentence punctuation after a path: `camera.com/a |` → `camera.com/a ।`. The [package API guide](../package/api.md#links-domains-and-email-addresses) defines the full policy.
+Before a cue, letters still type Nepali: `camera` becomes `क्यामेरा` and `camera.` remains `क्यामेरा.` A trailing period alone is sentence punctuation. The current token can be restored while you type continuously; previously committed text cannot be reconstructed into Roman input. Switch to **English mode before the first key** if you want a fragment to stay literal from its beginning.
+
+The policy checks a shape, not whether the address exists: `pani.paani` and its unfinished form `pani.p` also stay literal. It accepts unfinished addresses without validating them and has ASCII scope; internationalized addresses and arbitrary English, code, or filenames are outside the automatic handling. A pipe after a bare domain gives danda (`camera.com|` → `camera.com।`), but inside a URL suffix it stays literal (`camera.com/a|` stays as typed). Add a space before the pipe for sentence punctuation after a path: `camera.com/a |` → `camera.com/a ।`. The [package API guide](../package/api.md#links-domains-and-email-addresses) defines the full policy.
 
 ### Keep an English phrase literal
 

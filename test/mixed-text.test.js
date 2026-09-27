@@ -45,7 +45,7 @@ test('recognizes ASCII domain shapes, punycode labels, and HTTP localhost or IP 
 });
 
 test('does not classify decimals, explicit marks, or ordinary mixed identifiers as technical text', () => {
-  assert.deepEqual(findProtectedSpans('3.14 par/=yo ka^ kaa~ camera_file camera123 camera.c camera.123 -camera.com camera-.com'), []);
+  assert.deepEqual(findProtectedSpans('3.14 par/=yo ka^ kaa~ camera_file camera123 camera.123 -camera.com camera-.com'), []);
   assert.equal(convertText('3.14 par/=yo ka^ kaa~ camera_file camera123|'), '3.14 पर्‍यो कं काँ क्यामेरा_फाइल क्यामेरा123।');
   assert.equal(convertText('pani. paani|'), 'पनि. पानी।');
 });
@@ -76,4 +76,74 @@ test('HTTP URL credentials remain part of the literal authority and path', () =>
   const input = 'namaste https://user:pass@Example.com:8080/camera?q=ka^|two#kaa~ http://user%40tag:p%3Aword@localhost/path| paani|';
   assert.equal(convertText(input), 'नमस्ते https://user:pass@Example.com:8080/camera?q=ka^|two#kaa~ http://user%40tag:p%3Aword@localhost/path| पानी।');
   assert.deepEqual(protectedText('(https://user:pass@example.com/camera).'), ['https://user:pass@example.com/camera']);
+});
+
+
+test('explicit HTTP prefixes stay literal from the colon through unfinished authority typing', () => {
+  const values = ['http:', 'HTTP:', 'https:', 'Https:', 'http:/', 'https:/', 'http://', 'https://',
+    'https://c', 'https://camera.', 'https://user:', 'https://user:pass',
+    'https://user:pass@', 'https://user:pass@camera.'];
+  for (const value of values) {
+    assert.equal(findProtectedSpans(value)[0]?.start, 0, value);
+    assert.equal(convertText(value), value, value);
+  }
+  assert.equal(convertText('https:| paani|'), 'https:। पानी।');
+  assert.equal(convertText('(https:/), paani|'), '(https:/), पानी।');
+  assert.equal(convertText('https://user:pass@camera.c/?q=ka^|two paani|'),
+    'https://user:pass@camera.c/?q=ka^|two पानी।');
+});
+
+test('www and email prefixes stay literal before a full address is available', () => {
+  for (const value of ['www.', 'WWW.', 'www.c', 'www.camera.', 'user@', 'User.Name+tag@',
+    'user@c', 'user@camera.', 'user@camera.c', 'mailto:user@', 'mailto:user@c']) {
+    assert.equal(findProtectedSpans(value)[0]?.start, 0, value);
+    assert.equal(convertText(value), value, value);
+  }
+  assert.equal(convertText('user@| paani|'), 'user@। पानी।');
+  assert.equal(convertText('"www." (user@) paani|'), '"www." (user@) पानी।');
+});
+
+test('bare domains are recognizable at the first alphabetic label after a dot', () => {
+  for (const value of ['camera.c', 'camera.co', 'camera.co-', 'camera.co-np', 'camera.c1', 'camera.com', 'camera.co.n', 'camera.co.np']) {
+    assert.equal(findProtectedSpans(value)[0]?.start, 0, value);
+    assert.equal(convertText(value), value, value);
+  }
+  assert.deepEqual(protectedText('camera camera. 3.14 camera.123'), []);
+  assert.equal(convertText('camera camera. 3.14 par/=yo ka^ kaa~ T D'),
+    'क्यामेरा क्यामेरा. 3.14 पर्‍यो कं काँ ट् ड्');
+});
+
+test('early recognition respects sentence boundaries and the per-engine opt-out', () => {
+  assert.deepEqual(protectedText('"https:" [www.] (user@) camera.c!'),
+    ['https:', 'www.', 'user@', 'camera.c']);
+  const legacy = createEngine({ preserveTechnicalText: false });
+  const text = 'https: www. user@ camera.c';
+  assert.equal(legacy.convertText(text), 'ह्त्त्प्स्: व्व्व्. उसेर्@ क्यामेरा.च्');
+  assert.notEqual(convertText(text), legacy.convertText(text));
+});
+
+
+test('every suffix typed after an explicit address cue keeps the intended ASCII spelling', () => {
+  const samples = [
+    ['https://User:pass@example.com:8080/camera?q=ka^|two', 'https:'.length],
+    ['www.camera-test.com/path', 'www.'.length],
+    ['User.Name+tag@camera-test.com', 'User.Name+tag@'.length],
+    ['camera.co-np/path', 'camera.c'.length],
+  ];
+  for (const [value, firstCue] of samples) {
+    for (let length = firstCue; length <= value.length; length += 1) {
+      const prefix = value.slice(0, length);
+      assert.equal(convertText(prefix), prefix, prefix);
+    }
+  }
+});
+
+
+test('HTTP authority punctuation stops before neighboring Nepali words', () => {
+  assert.equal(convertText('(https://camera.com),pani| https://camera.com!pani|'),
+    '(https://camera.com),पनि। https://camera.com!पनि।');
+  assert.equal(convertText('https://camera.com,pani| https://camera.com;pani|'),
+    'https://camera.com,पनि। https://camera.com;पनि।');
+  assert.equal(convertText('https://user:pa!ss@example.com/camera paani|'),
+    'https://user:pa!ss@example.com/camera पानी।');
 });

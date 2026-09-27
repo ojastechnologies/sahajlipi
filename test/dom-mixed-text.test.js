@@ -90,19 +90,19 @@ test('recognition can supersede a selected candidate when it becomes a domain', 
   assert.equal(field.value, 'kam.com');
 });
 
-test('Backspace and undo restore the raw token across the recognition boundary', (t) => {
+test('Backspace and undo restore the raw token across the first domain letter', (t) => {
   const { field, controller, type, insert } = setup(t);
-  type('camera.c');
-  assert.equal(field.value, 'क्यामेरा.च्');
-  type('o');
-  assert.equal(field.value, 'camera.co');
+  type('camera.');
+  assert.equal(field.value, 'क्यामेरा.');
+  type('c');
+  assert.equal(field.value, 'camera.c');
   controller.undo();
-  assert.equal(field.value, 'क्यामेरा.च्');
+  assert.equal(field.value, 'क्यामेरा.');
   controller.redo();
-  assert.equal(field.value, 'camera.co');
+  assert.equal(field.value, 'camera.c');
   insert('deleteContentBackward');
-  assert.equal(field.value, 'क्यामेरा.च्');
-  type('om');
+  assert.equal(field.value, 'क्यामेरा.');
+  type('com');
   assert.equal(field.value, 'camera.com');
 });
 
@@ -270,4 +270,99 @@ test('a complete pasted address does not absorb the previous chosen word', (t) =
   controller.chooseCandidate(1);
   native('camera.com', 'insertFromPaste');
   assert.equal(field.value, 'कामcamera.com');
+});
+
+test('an email stays literal from the at-sign through each unfinished host character', (t) => {
+  const { field, controller, type } = setup(t);
+  type('camera');
+  assert.equal(field.value, 'क्यामेरा');
+  let roman = 'camera@';
+  type('@');
+  assert.equal(field.value, roman);
+  for (const key of 'sub-domain.example.com') {
+    type(key);
+    roman += key;
+    assert.equal(field.value, roman, 'unfinished email ' + roman);
+    assert.equal(field.selectionStart, roman.length);
+    assert.equal(controller.getState().activeRoman, '');
+  }
+});
+
+test('explicit URL prefixes stay literal while the scheme and authority are unfinished', (t) => {
+  const { field, controller, type } = setup(t);
+  for (const scheme of ['http', 'https']) {
+    controller.setText('');
+    type(scheme + ':');
+    let roman = scheme + ':';
+    assert.equal(field.value, roman);
+    for (const key of '//User:pass@example.com/a?q=ka^|b') {
+      type(key);
+      roman += key;
+      assert.equal(field.value, roman, 'unfinished URL ' + roman);
+      assert.deepEqual(controller.getState().candidates, []);
+    }
+  }
+});
+
+test('www prefix and the first domain letter restore text before a complete suffix', (t) => {
+  const { field, controller, type } = setup(t);
+  type('www.');
+  assert.equal(field.value, 'www.');
+  let roman = 'www.';
+  for (const key of 'camera.com') {
+    type(key);
+    roman += key;
+    assert.equal(field.value, roman);
+  }
+  controller.setText('');
+  type('camera.c');
+  assert.equal(field.value, 'camera.c');
+  assert.equal(controller.getState().activeRoman, '');
+});
+
+test('Backspace across an email cue restores Nepali and undo restores the literal prefix', (t) => {
+  const { field, controller, type, insert } = setup(t);
+  type('camera@');
+  assert.equal(field.value, 'camera@');
+  insert('deleteContentBackward');
+  assert.equal(field.value, 'क्यामेरा');
+  assert.equal(controller.getState().activeRoman, 'camera');
+  controller.undo();
+  assert.equal(field.value, 'camera@');
+  type('e');
+  assert.equal(field.value, 'camera@e');
+});
+
+test('native input, paste, and composition preserve unfinished email prefixes', async (t) => {
+  const { field, controller, native, paste, type } = setup(t);
+  for (const key of 'camera@e') native(key);
+  assert.equal(field.value, 'camera@e');
+  controller.setText('');
+  paste('camera@');
+  assert.equal(field.value, 'camera@');
+  type('e');
+  assert.equal(field.value, 'camera@e');
+  controller.setText('');
+  type('camera');
+  field.dispatchEvent(new Event('compositionstart'));
+  native('@');
+  field.dispatchEvent(new Event('compositionend'));
+  await new Promise(resolve => setTimeout(resolve, 5));
+  assert.equal(field.value, 'camera@');
+});
+
+test('earlier recognition keeps a sentence period and the engine opt-out intact', (t) => {
+  const { field, controller, type } = setup(t);
+  type('pani. camera. 3.14|');
+  assert.equal(field.value, 'पनि. क्यामेरा. 3.14।');
+  controller.setText('');
+  const custom = setup(t, createEngine({ preserveTechnicalText: false }));
+  custom.type('camera@ camera.c');
+  assert.equal(custom.field.value, 'क्यामेरा@ क्यामेरा.च्');
+});
+
+test('an HTTP authority does not swallow adjacent sentence wrappers and Nepali words', (t) => {
+  const { field, type } = setup(t);
+  type('(https://camera.com),pani| https://camera.com!pani|');
+  assert.equal(field.value, '(https://camera.com),पनि। https://camera.com!पनि।');
 });

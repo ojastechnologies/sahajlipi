@@ -1,32 +1,28 @@
 // A shape-based text policy, shared by bulk conversion and the DOM adapter.
 // No host lookup or URL validation is performed. Offsets use JavaScript UTF-16.
-const startPattern = /https?:\/\/|mailto:|[A-Za-z0-9_%+-][A-Za-z0-9_%+@.-]*/gi;
+const startPattern = /https?:|mailto:|[A-Za-z0-9_%+-][A-Za-z0-9_%+@.-]*/gi;
 const addressCharacter = /[A-Za-z0-9_%+@.-]/;
-const hostCharacter = /[A-Za-z0-9.-]/;
 const blockedBoundary = /[A-Za-z0-9_%+@.-]/;
 const suffixBoundary = /[\s"'<>`«»“”‘’]/u;
 const sentencePunctuation = /[.,!?;:]/;
 
-function validLabels(host) {
-  if (!host || host.length > 253) return false;
-  return host.split('.').every((label) => label.length <= 63
-    && /^[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?$/.test(label));
-}
-
 function domainShape(host) {
-  if (!validLabels(host)) return false;
+  if (!host || host.length > 253) return false;
   const labels = host.split('.');
-  const last = labels[labels.length - 1];
-  return labels.length > 1 && (/^[A-Za-z]{2,}$/.test(last)
-    || /^xn--[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?$/i.test(last));
+  const last = labels.pop();
+  // One alphabetic character after a dot is already an address cue. A final
+  // label may still be in progress (for example camera.co- or camera.c1).
+  return labels.length > 0 && /^[A-Za-z][A-Za-z0-9-]*$/.test(last)
+    && last.length <= 63 && labels.every((label) => label.length <= 63
+      && /^[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?$/.test(label));
 }
 
-function emailShape(address) {
+function emailPrefix(address) {
   const at = address.indexOf('@');
   if (at <= 0 || at !== address.lastIndexOf('@')) return false;
   const local = address.slice(0, at);
   return local.split('.').every((part) => /^[A-Za-z0-9_%+-]+$/.test(part))
-    && domainShape(address.slice(at + 1));
+    && (address.slice(at + 1) === '' || /^[A-Za-z0-9][A-Za-z0-9.-]*$/.test(address.slice(at + 1)));
 }
 
 function readRun(text, start, character) {
@@ -56,17 +52,29 @@ function trimSuffix(text, start, end) {
   return end;
 }
 
-function authorityHostStart(text, start) {
-  let end = start;
-  while (end < text.length && /[!-~]/.test(text[end])
-    && !suffixBoundary.test(text[end]) && !/[/?#]/.test(text[end])) end += 1;
-  const authority = text.slice(start, end);
+function readHttpPrefix(text, start, prefixEnd) {
+  // A scheme is an explicit typing cue. Preserve unfinished slashes, host,
+  // port and ordinary credentials without requiring a completed authority.
+  let end = prefixEnd;
+  for (let count = 0; count < 2 && text[end] === '/'; count += 1) end += 1;
+  const authorityStart = end;
+  let authorityEnd = end;
+  while (authorityEnd < text.length && /[!-~]/.test(text[authorityEnd])
+    && !suffixBoundary.test(text[authorityEnd]) && !/[/?#|]/.test(text[authorityEnd])) authorityEnd += 1;
+  const authority = text.slice(authorityStart, authorityEnd);
   const at = authority.indexOf('@');
-  // Userinfo is only inferred within an explicit HTTP(S) authority. A single
-  // separator and printable ASCII credentials preserve their exact spelling.
-  if (at < 0) return start;
-  if (at === 0 || at !== authority.lastIndexOf('@')) return null;
-  return start + at + 1;
+  // An explicit userinfo separator also preserves reserved ASCII credential
+  // characters. Without it, commas and enclosing punctuation end the host.
+  if (at > 0 && at === authority.lastIndexOf('@')) end = authorityStart + at + 1;
+  if (text[end] === '[') {
+    end += 1;
+    while (end < text.length && /[0-9A-Fa-f:.]/.test(text[end])) end += 1;
+    if (text[end] === ']') end += 1;
+  }
+  while (end < text.length && /[A-Za-z0-9._~%+@:-]/.test(text[end])) end += 1;
+  if (/[/?#]/.test(text[end] ?? '')) return extendUrl(text, start, end);
+  // The cue's colon belongs to the prefix even when it is the last character.
+  return Math.max(prefixEnd, trimSuffix(text, start, end));
 }
 
 function extendUrl(text, start, end) {
@@ -91,26 +99,18 @@ export function findProtectedSpans(text) {
     if (start > 0 && blockedBoundary.test(text[start - 1])) continue;
     const prefix = match[0].toLowerCase();
     let end;
-    if (prefix === 'http://' || prefix === 'https://') {
-      const hostStart = authorityHostStart(text, start + match[0].length);
-      if (hostStart === null) continue;
-      if (text[hostStart] === '[') {
-        let close = hostStart + 1;
-        while (close < text.length && /[0-9A-Fa-f:.]/.test(text[close])) close += 1;
-        if (close === hostStart + 1 || text[close] !== ']') continue;
-        end = close + 1;
-      } else {
-        end = readRun(text, hostStart, hostCharacter);
-        if (!validLabels(text.slice(hostStart, end)) || /[_%+@-]/.test(text[end] ?? '')) continue;
-      }
-      end = extendUrl(text, start, end);
+    if (prefix === 'http:' || prefix === 'https:') {
+      end = readHttpPrefix(text, start, start + match[0].length);
     } else {
       const addressStart = prefix === 'mailto:' ? start + match[0].length : start;
       end = readRun(text, addressStart, addressCharacter);
       const address = text.slice(addressStart, end);
-      if (emailShape(address)) {
-        // A plain email ends at its address; mailto URLs may have a query.
+      if (emailPrefix(address)) {
+        // An @ is a useful typing cue even with an empty or partial host.
         if (prefix === 'mailto:' && text[end] === '?') end = extendUrl(text, start, end);
+      } else if (prefix !== 'mailto:' && prefix.startsWith('www.')) {
+        // Unlike a generic trailing dot, www. explicitly signals a website.
+        end = Math.max(start + 4, extendUrl(text, start, Math.max(start + 4, end)));
       } else if (prefix !== 'mailto:' && domainShape(address)) {
         end = extendUrl(text, start, end);
       } else continue;

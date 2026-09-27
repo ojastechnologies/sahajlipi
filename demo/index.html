@@ -373,8 +373,9 @@
                 <span aria-hidden="true">↓</span>
                 <strong lang="ne">नमस्ते camera.com name@example.com</strong>
               </div>
-              <p>While typing, a partial address may first appear as Nepali. Once its address shape is recognizable, the current token returns to its original spelling. A space finishes it. A pipe after a bare domain gives <span lang="ne">।</span>; a pipe within a URL path stays literal. Add a space before <kbd>|</kbd> to end a sentence after a URL path.</p>
-              <p>This uses address patterns without checking whether a domain exists. A dotted spelling such as <code>pani.paani</code> also stays literal. Internationalized addresses and arbitrary English or code are outside this automatic handling; use <strong>English mode</strong> for those.</p>
+              <p>Preservation starts early: <code>http:</code>, <code>https:</code>, <code>www.</code>, <code>name@</code>, and <code>camera.c</code> already stay Roman before the address is complete. The same rule applies to typing and paste. Before a cue appears, <code>camera</code> still becomes <span lang="ne">क्यामेरा</span>, and a trailing period alone stays sentence punctuation. Use <strong>English mode before the first key</strong> to keep a fragment literal from its beginning.</p>
+              <p>During continuous typing, an address cue restores the current token to its original spelling. A space finishes it. A pipe after a bare domain gives <span lang="ne">।</span>; a pipe within a URL path stays literal. Add a space before <kbd>|</kbd> to end a sentence after a URL path.</p>
+              <p>This uses address patterns and accepts unfinished addresses without checking whether they are valid or a domain exists. A dotted spelling such as <code>pani.paani</code> or its unfinished form <code>pani.p</code> also stays literal. Internationalized addresses and arbitrary English or code are outside this automatic handling; use <strong>English mode</strong> for those.</p>
             </section>
 
             <section class="guide-card">

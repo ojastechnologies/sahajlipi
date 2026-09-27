@@ -179,9 +179,19 @@ namaste https://Example.com/a|b?q=camera#may pani|
 → नमस्ते https://Example.com/a|b?q=camera#may पनि।
 ```
 
-During uninterrupted live typing, an address prefix may first appear as Nepali. When enough of the current token has been typed to recognize the address pattern, the token returns to its original spelling. A space finishes the token. This does not recover Roman spellings for previously committed text.
+Preservation starts at an early address cue: `http:`, `https:`, `www.`, an ordinary ASCII local part followed by `@`, or the first letter after a domain dot. These incomplete examples already stay literal in live typing, paste, and whole-text conversion:
 
-Domain recognition is a pattern heuristic: no DNS or public-suffix check is performed. `pani.paani` stays literal because it looks like a domain. This policy has conservative ASCII scope and does not provide full Unicode/internationalized address parsing or general English, code, or filename detection. `convertWord` remains a single-Roman-word converter; use `convertText` for mixed strings. A custom engine can disable preservation with `createEngine({ preserveTechnicalText: false })`.
+| Type | Output |
+| --- | --- |
+| `https:` | `https:` |
+| `www.` | `www.` |
+| `name@` | `name@` |
+| `name@example` | `name@example` |
+| `camera.c` | `camera.c` |
+
+Before a cue appears, ordinary words still convert: `camera` → `क्यामेरा` and `camera.` → `क्यामेरा.` A trailing period alone does not select an address. During uninterrupted typing, the current token returns to Roman text as soon as the cue appears; it does not wait for a complete address. A space finishes the token. The adapter cannot recover Roman spellings for previously committed text. Switch to English mode before the first key for text that must stay literal from its beginning.
+
+Address recognition is a pattern heuristic: no DNS or public-suffix check is performed, and preserved unfinished addresses are not validated. `pani.paani` and the unfinished `pani.p` stay literal because they look like domains. This policy has ASCII scope and does not provide full Unicode/internationalized address parsing or general English, code, or filename detection. `convertWord` remains a single-Roman-word converter; use `convertText` for mixed strings. A custom engine can disable preservation with `createEngine({ preserveTechnicalText: false })`.
 
 For an English phrase or code fragment, switch the field’s controller to `setEnabled(false)` before typing or pasting it, then use `setEnabled(true)` to resume Nepali. A manager’s `setEnabled()` switches every field it owns. No existing text is rewritten. For fixed literal names, custom entries such as `{ github: ['GitHub'] }` provide a configured spelling; for arbitrary English in bulk text, let the host app convert only its chosen Nepali chunks. See [API examples](api.md#keeping-english-literal).
 
