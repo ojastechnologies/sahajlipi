@@ -920,7 +920,16 @@
       "needsHumanReview": true,
       "sourceCategory": "IndicCorp",
       "purpose": "development",
-      "proposedEngineMutation": false
+      "proposedEngineMutation": false,
+      "currentTriage": {
+        "status": "suspected-source-misspelling-or-malformed-token",
+        "basis": "Maintainer source-quality flag and the existing source-assisted analysis.",
+        "eligibleForNewSpellingContract": false,
+        "converterDefectEstablished": false,
+        "blocksTargetedRyChange": false,
+        "correctedOutputApproved": false,
+        "canonicalExclusionAdmitted": false
+      }
     },
     {
       "id": "nep1699",
@@ -949,7 +958,16 @@
       "needsHumanReview": true,
       "sourceCategory": "IndicCorp",
       "purpose": "development",
-      "proposedEngineMutation": false
+      "proposedEngineMutation": false,
+      "currentTriage": {
+        "status": "suspected-source-misspelling-or-malformed-token",
+        "basis": "Maintainer source-quality flag and the existing source-assisted analysis.",
+        "eligibleForNewSpellingContract": false,
+        "converterDefectEstablished": false,
+        "blocksTargetedRyChange": false,
+        "correctedOutputApproved": false,
+        "canonicalExclusionAdmitted": false
+      }
     },
     {
       "id": "nep1952",
@@ -1000,7 +1018,16 @@
       "needsHumanReview": true,
       "sourceCategory": "IndicCorp",
       "purpose": "development",
-      "proposedEngineMutation": false
+      "proposedEngineMutation": false,
+      "currentTriage": {
+        "status": "suspected-source-misspelling-or-malformed-token",
+        "basis": "Maintainer source-quality flag and the existing source-assisted analysis.",
+        "eligibleForNewSpellingContract": false,
+        "converterDefectEstablished": false,
+        "blocksTargetedRyChange": false,
+        "correctedOutputApproved": false,
+        "canonicalExclusionAdmitted": false
+      }
     },
     {
       "id": "nep2212",
@@ -1134,7 +1161,16 @@
       "needsHumanReview": true,
       "sourceCategory": "IndicCorp",
       "purpose": "development",
-      "proposedEngineMutation": false
+      "proposedEngineMutation": false,
+      "currentTriage": {
+        "status": "suspected-source-misspelling-or-malformed-token",
+        "basis": "Maintainer source-quality flag and the existing source-assisted analysis.",
+        "eligibleForNewSpellingContract": false,
+        "converterDefectEstablished": false,
+        "blocksTargetedRyChange": false,
+        "correctedOutputApproved": false,
+        "canonicalExclusionAdmitted": false
+      }
     },
     {
       "id": "nep2294",
@@ -1175,7 +1211,16 @@
       "needsHumanReview": true,
       "sourceCategory": "IndicCorp",
       "purpose": "development",
-      "proposedEngineMutation": false
+      "proposedEngineMutation": false,
+      "currentTriage": {
+        "status": "contextual-word-with-literary-usage",
+        "basis": "Maintainer source-quality flag and the existing source-assisted analysis.",
+        "eligibleForNewSpellingContract": false,
+        "converterDefectEstablished": false,
+        "blocksTargetedRyChange": false,
+        "correctedOutputApproved": false,
+        "canonicalExclusionAdmitted": false
+      }
     },
     {
       "id": "nep2387",
@@ -1216,7 +1261,16 @@
       "needsHumanReview": true,
       "sourceCategory": "IndicCorp",
       "purpose": "development",
-      "proposedEngineMutation": false
+      "proposedEngineMutation": false,
+      "currentTriage": {
+        "status": "suspected-source-misspelling-or-malformed-token",
+        "basis": "Maintainer source-quality flag and the existing source-assisted analysis.",
+        "eligibleForNewSpellingContract": false,
+        "converterDefectEstablished": false,
+        "blocksTargetedRyChange": false,
+        "correctedOutputApproved": false,
+        "canonicalExclusionAdmitted": false
+      }
     },
     {
       "id": "nep2412",
@@ -1257,7 +1311,16 @@
       "needsHumanReview": true,
       "sourceCategory": "IndicCorp",
       "purpose": "development",
-      "proposedEngineMutation": false
+      "proposedEngineMutation": false,
+      "currentTriage": {
+        "status": "suspected-source-misspelling-or-malformed-token",
+        "basis": "Maintainer source-quality flag and the existing source-assisted analysis.",
+        "eligibleForNewSpellingContract": false,
+        "converterDefectEstablished": false,
+        "blocksTargetedRyChange": false,
+        "correctedOutputApproved": false,
+        "canonicalExclusionAdmitted": false
+      }
     }
   ],
   "browserInputCheck": {
@@ -1289,7 +1352,7 @@
   "limits": [
     "Source usage attests spellings, not a unique intended Roman mapping or an independently reviewed accuracy corpus.",
     "Whole-word aliases do not infer compounds or inflections.",
-    "Seven ambiguous validation tokens remain held for contextual review; printed legacy-font evidence does not settle Unicode joiner bytes.",
+    "Six original unresolved validation tokens are suspected source misspellings or malformed tokens; dharyo remains contextual with literary usage. None establishes an engine defect or blocks this targeted change. All seven remain outside new spelling contracts, with no benchmark filtering or admitted corrected labels. Printed legacy-font evidence does not settle Unicode joiner bytes.",
     "Two earlier exploratory seed cases still fail and remain excluded from the gate.",
     "No performance or cross-browser compatibility claim is made.",
     "Raw corpora, full source sentences and private reviewer sheets are excluded from this report."
@@ -1309,5 +1372,44 @@
       "use": "Unreviewed development source proposals; no full source sentence redistributed."
     }
   },
-  "reproduce": "See docs/package/ry-review.md for fixed-fixture baseline, current benchmark, source-cohort and pinned external-data commands."
+  "reproduce": "See docs/package/ry-review.md for fixed-fixture baseline, current benchmark, source-cohort and pinned external-data commands.",
+  "datasetQualityTriage": {
+    "date": "2026-09-27",
+    "maintainerFeedback": {
+      "author": "project maintainer",
+      "text": "these look like misspellings to me",
+      "scope": "Source-quality flag; no explicit corrected outputs or canonical admission decisions supplied."
+    },
+    "triageAuthor": "assistant",
+    "originalUnresolvedIds": [
+      "nep1528",
+      "nep1699",
+      "nep1952",
+      "nep2271",
+      "nep2294",
+      "nep2387",
+      "nep2412"
+    ],
+    "suspectedSourceErrorIds": [
+      "nep1528",
+      "nep1699",
+      "nep1952",
+      "nep2271",
+      "nep2387",
+      "nep2412"
+    ],
+    "contextualWordIds": [
+      "nep2294"
+    ],
+    "scope": "Keep these seven unconfirmed source pairs outside new spelling contracts. Six appear malformed; literary usage of dharyo requires separate context. These observations alone establish no converter defect and do not block the targeted ra-ya change.",
+    "originalSourceRecordsChanged": false,
+    "historicalClassificationsChanged": false,
+    "benchmarkCohortsChanged": false,
+    "benchmarkDenominatorsChanged": false,
+    "engineMappingsChanged": false,
+    "admittedCorrectedOutputs": 0,
+    "admittedCanonicalExclusions": 0,
+    "admittedIndependentHumanReviews": 0,
+    "alphaReviewRequirementsSatisfied": false
+  }
 }
