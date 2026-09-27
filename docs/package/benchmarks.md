@@ -67,11 +67,19 @@ The 35 new contracts cover 20 source-assisted, user-authorized loanword defaults
 
 ## Gregorian month update — 2026-09-27
 
-The current seed has **109 contracts and two exploratory cases**. The [month benchmark record](month-benchmarks.md) and [machine report](../../benchmark/reports/nepali-months-001.json) compare pinned baseline `264f249` with the modified engine on the same frozen fixture: **91/109 → 109/109** full contracts, **86/102 → 102/102** word top output, **88/104 → 104/104** required candidate coverage, and **5/7 → 7/7** text output. Both engines pass the original 85/85 contracts. All 87 existing rows and IDs remain byte-for-byte intact, including the two exploratory misses.
+The dated month seed has **109 contracts and two exploratory cases**. The [month benchmark record](month-benchmarks.md) and [machine report](../../benchmark/reports/nepali-months-001.json) compare pinned baseline `264f249` with the modified engine on the same frozen fixture: **91/109 → 109/109** full contracts, **86/102 → 102/102** word top output, **88/104 → 104/104** required candidate coverage, and **5/7 → 7/7** text output. Both engines pass the original 85/85 contracts. All 87 existing rows and IDs remain byte-for-byte intact, including the two exploratory misses.
 
 The 24 additions cover twelve literal CLDR-assisted Gregorian month spellings, four focused Title Case checks (including `September` and `December`), standalone reserved `S`/`D` sounds, unchanged `Jan`/`Sep` abbreviations, internal/all-capital Shift guards and two date strings retaining ASCII digits, commas and Gregorian years. Functional tests cover all twelve Title Case forms and custom-entry precedence. These are project behavior contracts, not independently reviewed linguistic labels or calendar conversion.
 
 The frozen 100-case development cohort stays at 7/100 source-proposal matches; the public word test stays at 281/4,101 top and candidate matches. The twelve month mappings have no Roman-key or native-output overlap with that public test, and no audited word or Roman text-token overlap with the cohort. The month spellings were chosen from CLDR before external evaluation. This selected regression set and public-test comparison still do not establish held-out or population accuracy. The older loanword, ra-ya and initial reports retain their dated denominators and results.
+
+## Mixed-text update — 2026-09-27
+
+The current seed has **119 contracts and two exploratory cases**. The [mixed-text benchmark record](mixed-text-benchmarks.md) and [machine report](../../benchmark/reports/mixed-text-001.json) compare baseline `4e6cc4e` with the modified engine on the same frozen fixture: **110/119 → 119/119** full contracts, **102/102 → 102/102** word top output, and **8/17 → 17/17** exact text output. Both engines pass the original **109/109** contracts. All 111 prior rows remain byte-for-byte intact, including the two exploratory misses that remain excluded from the gate.
+
+The ten added text contracts score URL case and ports, email plus tags, `www.` and bare domains, URL suffix shortcut characters, wrappers and balanced path parentheses, Unicode boundaries, dotted Roman spellings, ordinary marks and decimal controls, and month names beside a domain or `mailto:` address. The baseline passes the ordinary-mark control (**1/10** new contracts); the updated engine passes **10/10**. Nine selected strings intentionally change output to preserve their recognizable technical spans.
+
+These are project-authored software contracts with no independent linguistic labels. This report does not measure population-wide Nepali accuracy, external-corpus improvement, performance, or browser/device compatibility. Opt-out behavior, custom entries, the unchanged word API, and live editing are covered by separate functional tests. Historical month, loanword, ra-ya, and initial report counts remain dated records. The [new record](mixed-text-benchmarks.md#reproduce-the-recorded-comparison) pins core/fixture/tool hashes and explains reproduction without silently comparing a later engine or fixture.
 
 ## Building a credible evaluation corpus
 

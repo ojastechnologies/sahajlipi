@@ -11,7 +11,9 @@ const clearButton = document.querySelector("#clear-button");
 
 function render({ text, enabled, activeRoman, candidates }) {
   characterCount.textContent = `${Array.from(text).length} ${Array.from(text).length === 1 ? "character" : "characters"}`;
-  modeButton.textContent = enabled ? "Nepali on" : "Nepali off";
+  modeButton.textContent = enabled ? "Nepali mode" : "English mode";
+  modeButton.title = `Switch all marked fields to ${enabled ? "English" : "Nepali"} mode`;
+  field.setAttribute("aria-label", enabled ? "Type Roman Nepali here" : "Type literal English here");
   modeButton.setAttribute("aria-pressed", String(enabled));
 
   candidatePanel.hidden = candidates.length < 2;

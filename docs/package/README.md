@@ -4,10 +4,11 @@ SahajLipi provides a dependency-free Nepali transliteration engine and optional 
 
 | Read | For |
 | --- | --- |
-| [API reference](api.md) | Core and browser input APIs, one-call setup, examples, and integration limits. |
+| [API reference](api.md) | Core and browser input APIs, one-call setup, mixed-text preservation, literal English controls, and integration limits. |
 | [Architecture](architecture.md) | Module boundaries, conversion flow, Unicode, and editor events. |
 | [Typing reference](typing-reference.md) | Current Nepali key mappings, half forms, marks, punctuation, and alternatives. |
 | [Benchmarks](benchmarks.md) | Reproducible engine cases, metrics, provenance, results, and evaluation limits. |
+| [Mixed-text benchmark record](mixed-text-benchmarks.md) | Same-fixture technical-text contracts, preserved prior rows, identities, reproduction commands, and scope limits. |
 | [External evaluation](external-evaluation.md) | Pinned Nepali word data, source discrepancies, initial baseline, and sentence review process. |
 | [Development review batch](review-batch.md) | Reproducible 100-case review batch, independent review sheets, and diagnostic limits. |
 | [Source-assisted online review](assisted-online-review.md) | All 100 draft case recommendations, spelling evidence, source links and pending human confirmation. |
@@ -20,5 +21,7 @@ The built-in engine includes 20 exact English-spelling loanwords, such as `camer
 The engine also accepts all 12 full English month names, from `january` → जनवरी to `december` → डिसेम्बर, with their normal title-case forms such as `September` → सेप्टेम्बर. Each has one preferred spelling. The [month reference](month-names.md) records these source-assisted project preferences separately from the 20-word loanword pilot. This converts month names; it does not convert Gregorian dates to the Bikram Sambat calendar.
 
 For live typing, choose an integration scope: mark selected fields with `data-sahajlipi` and call `attachNepaliInputs()`; pass a page element as the root; or use `attachNepaliInputs(document, { scope: 'all' })` for every supported text field in that document. Add `data-sahajlipi-ignore` to fields that must stay English in an all-fields scope. The [API reference](api.md#browser-input-adapters) explains configuration, field-level controls, candidates, and cleanup.
+
+Recognizable HTTP(S) and `www.` links, ASCII domain-shaped hosts, and ordinary ASCII email addresses stay literal by default in text conversion and attached fields. The policy preserves their original case and punctuation within URL suffixes, without checking whether the addresses exist. Ordinary English and code still require host-selected literal spans or the existing mode controls. The [API guide](api.md#links-domains-and-email-addresses) defines the conservative scope, punctuation boundaries, and `preserveTechnicalText` opt-out.
 
 The package is still private in [`package.json`](../../package.json), so these examples import from a repository checkout. The [project status](../status-and-roadmap.md) tracks what is and is not implemented.

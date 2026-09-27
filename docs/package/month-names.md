@@ -35,7 +35,7 @@ The existing `createEngine({ entries })` API can replace any month entry's full 
 - Only full month names are listed. Abbreviations such as `jan`, `feb`, `mar` and `sep` do not inherit these entries. `may` is already the full name of a month.
 - Attached forms such as `januaryma` and `decemberko` use the existing phonetic fallback. Entries do not infer stems or suffixes.
 - Month names do not convert Gregorian dates to Bikram Sambat or substitute Bikram Sambat month names. Digits and date punctuation retain their existing conversion behavior.
-- URLs, email addresses, code and English spans inside Nepali-enabled fields have no automatic protection. `convertText('may.com')`, for example, can convert the `may` run. Leave whole English fields unattached, mark them `data-sahajlipi-ignore`, or disable conversion when literal text is required.
+- The later [shared mixed-text policy](api.md#links-domains-and-email-addresses) preserves recognizable links, ASCII domain-shaped hosts, and ordinary ASCII email addresses. `convertText('may.com')` now stays `may.com` by default, while the standalone month `may` still gives मे. This policy is separate from the month-name extension and its dated evidence. Arbitrary English or code remains convertible: leave whole English fields unattached, mark them `data-sahajlipi-ignore`, or disable conversion while typing or pasting literal fragments.
 
 ## Source evidence
 

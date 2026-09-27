@@ -47,7 +47,7 @@ Explicit `^`, `~`, `/`, `=` and contextual `H` retain their existing behavior. T
 
 Leave an entire English field unattached, exclude it with `data-sahajlipi-ignore`, or disable conversion with the existing controller/manager `setEnabled(false)`. Supported all-fields setup still excludes password, email, number and URL input types. Disabling conversion affects subsequent typing and paste without rewriting existing text.
 
-Inside a Nepali-enabled field, URLs, email addresses, code and arbitrary English spans are not automatically protected. The current tokenizer can recognize `camera` within `camera.com`, `camera_file` or `camera123`; adding a dictionary entry does not preserve those larger strings. Hyphenated input such as `e-mail` is split by `convertText` and is not an alias for `email`. A shared token/span policy and attached-form review remain separate work.
+The later [shared mixed-text policy](api.md#links-domains-and-email-addresses) preserves recognizable links, ASCII domain-shaped hosts, and ordinary ASCII email addresses in text conversion and attached fields. `camera.com` now stays literal by default. This is separate from the 20-word loanword pilot and does not change its dated evidence or word-level mappings. Arbitrary English, code, and filenames are not detected; `camera_file` and `camera123` can still convert. Switch conversion off while typing or pasting a literal fragment, then resume it. Hyphenated input such as `e-mail` is split by `convertText` and is not an alias for `email`. Attached-form review remains separate work.
 
 ## Unshipped research queue
 

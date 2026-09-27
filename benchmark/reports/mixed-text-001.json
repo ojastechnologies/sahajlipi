@@ -1,0 +1,405 @@
+{
+  "schemaVersion": 1,
+  "reportId": "mixed-text-001",
+  "recordedAt": "2026-09-27T10:40:43.927Z",
+  "purpose": "Same-fixture conformance to selected mixed-text software behavior contracts; not linguistic accuracy or timing",
+  "baseline": {
+    "gitCommit": "4e6cc4eed855f0d97bff366c619e5f4eff50e2a8",
+    "snapshotMethod": "git archive of immutable baseline commit into a temporary directory",
+    "coreFileSha256": {
+      "src/index.js": "4095d0dde6d98a4c8c90bff1971a88b0d68f814c6a744b12ef7d77b8f1a0c1b0",
+      "src/index.d.ts": "e993a3847b9348a29f9e9e526bc4473c236458934281f530192a47e021d221fe",
+      "src/text-policy.js": null,
+      "src/lexicon.js": "0e5c26111dcebac1fe43bc4ae2d14a236653b42e6f676f43dbc549983f6806c0",
+      "src/phonetic.js": "dec43061ce47d8456092b661a4b1ea7b5d366d2c7969a4f2b6f3b1b0c20ff1ff"
+    }
+  },
+  "after": {
+    "identity": "Modified working tree based on 4e6cc4eed855f0d97bff366c619e5f4eff50e2a8; core identity pinned by file hashes without assigning an uncreated commit",
+    "coreFileSha256": {
+      "src/index.js": "d7b2fc67ebc08c93534e09b16f64a998ecafb761c16bda096bcdf071ea84411d",
+      "src/index.d.ts": "97fd8f3a1dbd76c591facf353fe59fc2edbf52270aa743b5f484bdeaaae4f7c5",
+      "src/text-policy.js": "83e6c3019d54dae11b4185bbed8d1acd13eda7e718f0ce999967a54232da461c",
+      "src/lexicon.js": "0e5c26111dcebac1fe43bc4ae2d14a236653b42e6f676f43dbc549983f6806c0",
+      "src/phonetic.js": "dec43061ce47d8456092b661a4b1ea7b5d366d2c7969a4f2b6f3b1b0c20ff1ff"
+    }
+  },
+  "environment": {
+    "nodeVersion": "v22.22.3",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "25.6.0"
+  },
+  "fixture": {
+    "path": "benchmark/cases.jsonl",
+    "sha256": "3e2674bc1bc9c0acd58fcc159eecd6f4666b94897761d33512c76f2fd8addb16",
+    "total": 121,
+    "contractCount": 119,
+    "exploratoryCount": 2,
+    "priorFixtureSha256": "2ed3e1aba19bfaaf2c48fa8b07f9dac9de3639ced2c6048648c206d486aa99ac",
+    "priorRowCount": 111,
+    "priorBytesPreserved": true,
+    "newCaseIds": [
+      "mixed-url-case-port",
+      "mixed-email-tag",
+      "mixed-www-path",
+      "mixed-bare-domain-loanword",
+      "mixed-query-explicit-marks",
+      "mixed-path-wrappers",
+      "mixed-unicode-boundary",
+      "mixed-dotted-roman-shape",
+      "mixed-ordinary-marks-and-decimal",
+      "mixed-month-domain"
+    ]
+  },
+  "originalContract": {
+    "before": {
+      "passed": 109,
+      "total": 109,
+      "wordTop": 102,
+      "wordTotal": 102,
+      "textTop": 7,
+      "textTotal": 7
+    },
+    "after": {
+      "passed": 109,
+      "total": 109,
+      "wordTop": 102,
+      "wordTotal": 102,
+      "textTop": 7,
+      "textTotal": 7
+    }
+  },
+  "expandedContract": {
+    "before": {
+      "passed": 110,
+      "total": 119,
+      "wordTop": 102,
+      "wordTotal": 102,
+      "textTop": 8,
+      "textTotal": 17
+    },
+    "after": {
+      "passed": 119,
+      "total": 119,
+      "wordTop": 102,
+      "wordTotal": 102,
+      "textTop": 17,
+      "textTotal": 17
+    }
+  },
+  "addedMixedTextContract": {
+    "before": {
+      "passed": 1,
+      "total": 10,
+      "wordTop": 0,
+      "wordTotal": 0,
+      "textTop": 1,
+      "textTotal": 10
+    },
+    "after": {
+      "passed": 10,
+      "total": 10,
+      "wordTop": 0,
+      "wordTotal": 0,
+      "textTop": 10,
+      "textTotal": 10
+    }
+  },
+  "exploratory": {
+    "before": {
+      "passed": 0,
+      "total": 2,
+      "wordTop": 0,
+      "wordTotal": 2,
+      "textTop": 0,
+      "textTotal": 0
+    },
+    "after": {
+      "passed": 0,
+      "total": 2,
+      "wordTop": 0,
+      "wordTotal": 2,
+      "textTop": 0,
+      "textTotal": 0
+    },
+    "excludedFromGate": true,
+    "labelsRemainUnreviewed": true
+  },
+  "changedOutputCaseIds": [
+    "mixed-url-case-port",
+    "mixed-email-tag",
+    "mixed-www-path",
+    "mixed-bare-domain-loanword",
+    "mixed-query-explicit-marks",
+    "mixed-path-wrappers",
+    "mixed-unicode-boundary",
+    "mixed-dotted-roman-shape",
+    "mixed-month-domain"
+  ],
+  "newCaseResults": [
+    {
+      "id": "mixed-url-case-port",
+      "input": "namaste https://Example.COM:8080/Camera",
+      "expectedTop": "नमस्ते https://Example.COM:8080/Camera",
+      "before": {
+        "id": "mixed-url-case-port",
+        "status": "contract",
+        "mode": "text",
+        "actualTop": "नमस्ते ह्त्त्प्स्://एxअम्प्ले.चोम्:8080/क्यामेरा",
+        "topMatch": false,
+        "candidateHits": 0,
+        "pass": false
+      },
+      "after": {
+        "id": "mixed-url-case-port",
+        "status": "contract",
+        "mode": "text",
+        "actualTop": "नमस्ते https://Example.COM:8080/Camera",
+        "topMatch": true,
+        "candidateHits": 0,
+        "pass": true
+      }
+    },
+    {
+      "id": "mixed-email-tag",
+      "input": "email User.Name+tag@camera.com|",
+      "expectedTop": "इमेल User.Name+tag@camera.com।",
+      "before": {
+        "id": "mixed-email-tag",
+        "status": "contract",
+        "mode": "text",
+        "actualTop": "इमेल उसेर्.नमे+तग्@क्यामेरा.चोम्।",
+        "topMatch": false,
+        "candidateHits": 0,
+        "pass": false
+      },
+      "after": {
+        "id": "mixed-email-tag",
+        "status": "contract",
+        "mode": "text",
+        "actualTop": "इमेल User.Name+tag@camera.com।",
+        "topMatch": true,
+        "candidateHits": 0,
+        "pass": true
+      }
+    },
+    {
+      "id": "mixed-www-path",
+      "input": "www.camera.com/path paani.",
+      "expectedTop": "www.camera.com/path पानी.",
+      "before": {
+        "id": "mixed-www-path",
+        "status": "contract",
+        "mode": "text",
+        "actualTop": "व्व्व्.क्यामेरा.चोम्पथ् पानी.",
+        "topMatch": false,
+        "candidateHits": 0,
+        "pass": false
+      },
+      "after": {
+        "id": "mixed-www-path",
+        "status": "contract",
+        "mode": "text",
+        "actualTop": "www.camera.com/path पानी.",
+        "topMatch": true,
+        "candidateHits": 0,
+        "pass": true
+      }
+    },
+    {
+      "id": "mixed-bare-domain-loanword",
+      "input": "camera camera.co.np phone",
+      "expectedTop": "क्यामेरा camera.co.np फोन",
+      "before": {
+        "id": "mixed-bare-domain-loanword",
+        "status": "contract",
+        "mode": "text",
+        "actualTop": "क्यामेरा क्यामेरा.चो.न्प् फोन",
+        "topMatch": false,
+        "candidateHits": 0,
+        "pass": false
+      },
+      "after": {
+        "id": "mixed-bare-domain-loanword",
+        "status": "contract",
+        "mode": "text",
+        "actualTop": "क्यामेरा camera.co.np फोन",
+        "topMatch": true,
+        "candidateHits": 0,
+        "pass": true
+      }
+    },
+    {
+      "id": "mixed-query-explicit-marks",
+      "input": "https://camera.com/?x=ka^&y=kaa~|two#par/=yo paani|",
+      "expectedTop": "https://camera.com/?x=ka^&y=kaa~|two#par/=yo पानी।",
+      "before": {
+        "id": "mixed-query-explicit-marks",
+        "status": "contract",
+        "mode": "text",
+        "actualTop": "ह्त्त्प्स्://क्यामेरा.चोम्?x=कं&य्=काँ।त्वो#पर्‍यो पानी।",
+        "topMatch": false,
+        "candidateHits": 0,
+        "pass": false
+      },
+      "after": {
+        "id": "mixed-query-explicit-marks",
+        "status": "contract",
+        "mode": "text",
+        "actualTop": "https://camera.com/?x=ka^&y=kaa~|two#par/=yo पानी।",
+        "topMatch": true,
+        "candidateHits": 0,
+        "pass": true
+      }
+    },
+    {
+      "id": "mixed-path-wrappers",
+      "input": "namaste (https://camera.com/a(b)). user@camera.com!",
+      "expectedTop": "नमस्ते (https://camera.com/a(b)). user@camera.com!",
+      "before": {
+        "id": "mixed-path-wrappers",
+        "status": "contract",
+        "mode": "text",
+        "actualTop": "नमस्ते (ह्त्त्प्स्://क्यामेरा.चोम्अ(ब्)). उसेर्@क्यामेरा.चोम्!",
+        "topMatch": false,
+        "candidateHits": 0,
+        "pass": false
+      },
+      "after": {
+        "id": "mixed-path-wrappers",
+        "status": "contract",
+        "mode": "text",
+        "actualTop": "नमस्ते (https://camera.com/a(b)). user@camera.com!",
+        "topMatch": true,
+        "candidateHits": 0,
+        "pass": true
+      }
+    },
+    {
+      "id": "mixed-unicode-boundary",
+      "input": "😀हामीcamera.comबाट «user@camera.com» paani",
+      "expectedTop": "😀हामीcamera.comबाट «user@camera.com» पानी",
+      "before": {
+        "id": "mixed-unicode-boundary",
+        "status": "contract",
+        "mode": "text",
+        "actualTop": "😀हामीक्यामेरा.चोम्बाट «उसेर्@क्यामेरा.चोम्» पानी",
+        "topMatch": false,
+        "candidateHits": 0,
+        "pass": false
+      },
+      "after": {
+        "id": "mixed-unicode-boundary",
+        "status": "contract",
+        "mode": "text",
+        "actualTop": "😀हामीcamera.comबाट «user@camera.com» पानी",
+        "topMatch": true,
+        "candidateHits": 0,
+        "pass": true
+      }
+    },
+    {
+      "id": "mixed-dotted-roman-shape",
+      "input": "pani.paani pani paani",
+      "expectedTop": "pani.paani पनि पानी",
+      "before": {
+        "id": "mixed-dotted-roman-shape",
+        "status": "contract",
+        "mode": "text",
+        "actualTop": "पनि.पानी पनि पानी",
+        "topMatch": false,
+        "candidateHits": 0,
+        "pass": false
+      },
+      "after": {
+        "id": "mixed-dotted-roman-shape",
+        "status": "contract",
+        "mode": "text",
+        "actualTop": "pani.paani पनि पानी",
+        "topMatch": true,
+        "candidateHits": 0,
+        "pass": true
+      }
+    },
+    {
+      "id": "mixed-ordinary-marks-and-decimal",
+      "input": "3.14 par/=yo ka^ kaa~ camera_file camera123|",
+      "expectedTop": "3.14 पर्‍यो कं काँ क्यामेरा_फाइल क्यामेरा123।",
+      "before": {
+        "id": "mixed-ordinary-marks-and-decimal",
+        "status": "contract",
+        "mode": "text",
+        "actualTop": "3.14 पर्‍यो कं काँ क्यामेरा_फाइल क्यामेरा123।",
+        "topMatch": true,
+        "candidateHits": 0,
+        "pass": true
+      },
+      "after": {
+        "id": "mixed-ordinary-marks-and-decimal",
+        "status": "contract",
+        "mode": "text",
+        "actualTop": "3.14 पर्‍यो कं काँ क्यामेरा_फाइल क्यामेरा123।",
+        "topMatch": true,
+        "candidateHits": 0,
+        "pass": true
+      }
+    },
+    {
+      "id": "mixed-month-domain",
+      "input": "September camera.com December mailto:User+tag@camera.com|",
+      "expectedTop": "सेप्टेम्बर camera.com डिसेम्बर mailto:User+tag@camera.com।",
+      "before": {
+        "id": "mixed-month-domain",
+        "status": "contract",
+        "mode": "text",
+        "actualTop": "सेप्टेम्बर क्यामेरा.चोम् डिसेम्बर मैल्तो:उसेर्+तग्@क्यामेरा.चोम्।",
+        "topMatch": false,
+        "candidateHits": 0,
+        "pass": false
+      },
+      "after": {
+        "id": "mixed-month-domain",
+        "status": "contract",
+        "mode": "text",
+        "actualTop": "सेप्टेम्बर camera.com डिसेम्बर mailto:User+tag@camera.com।",
+        "topMatch": true,
+        "candidateHits": 0,
+        "pass": true
+      }
+    }
+  ],
+  "commands": {
+    "baselineExpanded": {
+      "command": "node /private/tmp/sahajlipi-mixed-baseline-4e6cc4e/benchmark/run.js --fixtures /private/tmp/sahajlipi-mixed-text/benchmark/cases.jsonl --check",
+      "exitCode": 1
+    },
+    "afterExpanded": {
+      "command": "node /private/tmp/sahajlipi-mixed-text/benchmark/run.js --fixtures /private/tmp/sahajlipi-mixed-text/benchmark/cases.jsonl --check",
+      "exitCode": 0
+    },
+    "baselineOriginal": {
+      "command": "node /private/tmp/sahajlipi-mixed-baseline-4e6cc4e/benchmark/run.js --fixtures /private/tmp/sahajlipi-mixed-baseline-4e6cc4e/benchmark/cases.jsonl --check",
+      "exitCode": 0
+    },
+    "afterOriginal": {
+      "command": "node /private/tmp/sahajlipi-mixed-text/benchmark/run.js --fixtures /private/tmp/sahajlipi-mixed-baseline-4e6cc4e/benchmark/cases.jsonl --check",
+      "exitCode": 0
+    }
+  },
+  "benchmarkToolSha256": "02f76258dece93e9ec8e54cd484dddc9456d4a64c4162114221c4794b8d87f31",
+  "measurementScriptSha256": "ee8c3cda4b91c3a325693d86436c65452e0e90fc8d7fbf55ee86e8210a482e1a",
+  "reproduction": {
+    "baselineSnapshot": "git archive 4e6cc4eed855f0d97bff366c619e5f4eff50e2a8 | tar -x -C <baseline-directory>",
+    "comparison": "Run each baseline and after benchmark/run.js with the same frozen benchmark/cases.jsonl via --fixtures <absolute-fixture-path> --check. Original-contract comparison uses the archived baseline fixture. Verify core, fixture and tool digests above.",
+    "coreHashScope": "src/index.js, src/index.d.ts, src/text-policy.js, src/lexicon.js, src/phonetic.js. No DOM/browser result is measured by this report."
+  },
+  "limits": [
+    "The ten additions are project-authored software contracts, with zero independently reviewed linguistic labels; no population accuracy or clean held-out improvement claim.",
+    "Recognizable addresses are inferred from text shape; dotted Roman words such as pani.paani may be preserved without DNS, public-suffix, URL validation or network access.",
+    "Unrecognized identifiers, code and arbitrary English still follow the normal Roman conversion rules. This report does not establish language detection.",
+    "Only default convertText behavior is benchmarked here. Opt-out, custom-entry precedence, word API behavior and live editing are separate functional tests.",
+    "All 111 prior rows remain byte-for-byte unchanged. Original 109-contract and expanded 119-contract denominators are reported separately; two exploratory rows remain excluded.",
+    "convertWord semantics and phonetic/lexicon source files are unchanged. No external linguistic benchmark, mobile browser, assistive technology or performance result is claimed."
+  ]
+}

@@ -1,12 +1,16 @@
 import { starterEntries } from './lexicon.js';
 import { normalizeRoman, phoneticWord } from './phonetic.js';
+import { findProtectedSpans } from './text-policy.js';
 
 /**
  * Create an independent engine. Custom entries replace starter entries for
  * the same Roman spelling; each value is ordered from preferred to alternate.
- * @param {{entries?: Record<string, string[]>}} [options]
+ * @param {{entries?: Record<string, string[]>, preserveTechnicalText?: boolean}} [options]
  */
-export function createEngine({ entries = {} } = {}) {
+export function createEngine({ entries = {}, preserveTechnicalText = true } = {}) {
+  if (typeof preserveTechnicalText !== 'boolean') {
+    throw new TypeError('preserveTechnicalText must be a boolean');
+  }
   const dictionary = new Map(
     Object.entries(starterEntries).map(([key, values]) => [key, [...values]]),
   );
@@ -73,9 +77,20 @@ export function createEngine({ entries = {} } = {}) {
     return { text: candidates[0], candidates, ambiguous: candidates.length > 1 };
   }
 
-  function convertText(text) {
+  function convertSegment(text) {
     const converted = text.replace(/[A-Za-z\^~\/=]+/g, (word) => convertWord(word).text);
     return converted.replace(/\|/g, '।');
+  }
+
+  function convertText(text) {
+    if (!preserveTechnicalText) return convertSegment(text);
+    let output = '';
+    let cursor = 0;
+    for (const { start, end } of findProtectedSpans(text)) {
+      output += convertSegment(text.slice(cursor, start)) + text.slice(start, end);
+      cursor = end;
+    }
+    return output + convertSegment(text.slice(cursor));
   }
 
   return { convertWord, convertText };

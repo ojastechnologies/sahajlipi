@@ -54,7 +54,7 @@
                 <span>Live editor</span>
               </div>
               <div class="toolbar-actions">
-                <button id="mode-button" class="mode-button" type="button" aria-pressed="true">Nepali on</button>
+                <button id="mode-button" class="mode-button" type="button" aria-pressed="true" aria-label="Nepali conversion for all marked fields" title="Switch all marked fields to English mode">Nepali mode</button>
                 <button id="copy-button" class="quiet-button" type="button">Copy</button>
                 <button id="clear-button" class="quiet-button" type="button">Clear</button>
               </div>
@@ -80,7 +80,7 @@
             </div>
 
             <div class="editor-footer">
-              <span id="typing-hint">Type Roman Nepali directly. Space finishes a word; the guide below shows vowels, half sounds, English loanwords, month names, marks, and punctuation.</span>
+              <span id="typing-hint">Type Roman Nepali directly. Space finishes a word. Links and email addresses stay literal; the mode button controls the editor and all marked form fields.</span>
               <span id="character-count" class="character-count">0 characters</span>
             </div>
           </section>
@@ -92,7 +92,7 @@
               <span class="section-label">Developer preview</span>
               <h2 id="integration-title">One setup, every marked field.</h2>
             </div>
-            <p>Mark the fields that should type Nepali. The same page-level initializer powers the editor above and the text and search fields here.</p>
+            <p>Mark the fields that should type Nepali. The same page-level initializer powers the editor above and the three marked text and search fields here. English notes and the email-only field stay literal.</p>
           </div>
 
           <div class="integration-layout">
@@ -104,6 +104,10 @@
               <label class="sample-field" for="sample-search">
                 <span>Search in Nepali</span>
                 <input id="sample-search" type="search" data-sahajlipi placeholder="Try: school" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" />
+              </label>
+              <label class="sample-field" for="sample-mixed">
+                <span>Nepali with a link or email address</span>
+                <input id="sample-mixed" type="text" data-sahajlipi placeholder="Try: namaste camera.com name@example.com" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" />
               </label>
               <label class="sample-field" for="sample-english">
                 <span>English notes stay in English</span>
@@ -263,7 +267,7 @@
             <section class="guide-card">
               <span class="guide-number">09 / English loanwords</span>
               <h3>Devices and digital words</h3>
-              <p>These listed English spellings automatically produce a Nepali loanword while <strong>Nepali on</strong> is selected. Use the lowercase keys shown here:</p>
+              <p>These listed English spellings automatically produce a Nepali loanword while <strong>Nepali mode</strong> is selected. Use the lowercase keys shown here:</p>
               <table class="sound-table" aria-label="Technology loanword spellings">
                 <thead><tr><th scope="col">English keys</th><th scope="col">Nepali spelling</th></tr></thead>
                 <tbody>
@@ -307,7 +311,7 @@
             <section class="guide-card" id="english-months-guide" aria-labelledby="month-guide-title">
               <span class="guide-number">11 / English months</span>
               <h3 id="month-guide-title">All twelve month names</h3>
-              <p>Type a full English month name while <strong>Nepali on</strong> is selected. Lowercase and normal title case both work, including <kbd>September</kbd> and <kbd>December</kbd>.</p>
+              <p>Type a full English month name while <strong>Nepali mode</strong> is selected. Lowercase and normal title case both work, including <kbd>September</kbd> and <kbd>December</kbd>.</p>
               <table class="sound-table" aria-label="Full English month-name spellings">
                 <thead><tr><th scope="col">English keys</th><th scope="col">Nepali spelling</th></tr></thead>
                 <tbody>
@@ -325,7 +329,7 @@
                   <tr><td><kbd>december</kbd></td><td><span lang="ne">डिसेम्बर</span></td></tr>
                 </tbody>
               </table>
-              <p>Each month has one reading, so no readings dropdown appears. <kbd>May</kbd> and <kbd>may</kbd> both give <span lang="ne">मे</span>; use <strong>Nepali off</strong> or an English field when you mean the English word “may”.</p>
+              <p>Each month has one reading, so no readings dropdown appears. <kbd>May</kbd> and <kbd>may</kbd> both give <span lang="ne">मे</span>; use <strong>English mode</strong> or an English field when you mean the English word “may”.</p>
               <p>Use the full names: abbreviations such as <kbd>jan</kbd> and attached forms such as <kbd>januaryma</kbd> are unlisted. This spells month names and does not convert dates to the Bikram Sambat calendar. Other reserved Shift sounds still work.</p>
             </section>
 
@@ -342,7 +346,7 @@
             <section class="guide-card">
               <span class="guide-number">13 / Punctuation</span>
               <h3>Period or <span lang="ne">पूर्णविराम</span></h3>
-              <p>The <kbd>.</kbd> key always types an English period, including after a Nepali word and in decimals. Type <kbd>|</kbd> for <span lang="ne">।</span> anywhere, including after a number. Pasted text follows the same rule.</p>
+              <p>The <kbd>.</kbd> key always types an English period, including after a Nepali word and in decimals. Type <kbd>|</kbd> for <span lang="ne">।</span> after Nepali text or a number. Inside a recognized link or email address, punctuation stays literal. Pasted text follows the same rule.</p>
               <div class="key-examples" aria-label="Full stop and decimal examples">
                 <div><kbd>namaste.</kbd><span aria-hidden="true">→</span><strong lang="ne">नमस्ते.</strong></div>
                 <div><kbd>namaste|</kbd><span aria-hidden="true">→</span><strong lang="ne">नमस्ते।</strong></div>
@@ -360,12 +364,25 @@
               </div>
             </section>
 
+            <section class="guide-card" id="mixed-text-guide">
+              <span class="guide-number">15 / Mixed text</span>
+              <h3>Links and email stay readable</h3>
+              <p>Recognizable links and ordinary ASCII email addresses stay as you typed them in <strong>Nepali mode</strong>, including case, paths, and query strings. Try an HTTP(S) link, a <code>www.</code> address, a domain such as <code>camera.com</code>, or <code>name+tag@example.com</code>.</p>
+              <div class="mixed-text-example" aria-label="Mixed Nepali and address example">
+                <code>namaste camera.com name@example.com</code>
+                <span aria-hidden="true">↓</span>
+                <strong lang="ne">नमस्ते camera.com name@example.com</strong>
+              </div>
+              <p>While typing, a partial address may first appear as Nepali. Once its address shape is recognizable, the current token returns to its original spelling. A space finishes it. A pipe after a bare domain gives <span lang="ne">।</span>; a pipe within a URL path stays literal. Add a space before <kbd>|</kbd> to end a sentence after a URL path.</p>
+              <p>This uses address patterns without checking whether a domain exists. A dotted spelling such as <code>pani.paani</code> also stays literal. Internationalized addresses and arbitrary English or code are outside this automatic handling; use <strong>English mode</strong> for those.</p>
+            </section>
+
             <section class="guide-card">
-              <span class="guide-number">15 / Editor controls</span>
+              <span class="guide-number">16 / Editor controls</span>
               <h3>Switch, copy, or clear</h3>
-              <p>Use <strong>Nepali on/off</strong> to switch between conversion and literal English typing in the editor and marked form fields. The <kbd>.</kbd> key stays a period in both modes. With Nepali off, shortcut keys such as <kbd>^</kbd>, <kbd>~</kbd>, <kbd>/</kbd>, and <kbd>|</kbd> stay literal. <strong>Copy</strong> copies the editor text; <strong>Clear</strong> starts again.</p>
-              <p>Use <strong>Nepali off</strong> or an English field for URLs, email addresses, code, and other text that must stay literal. English spans are not automatically protected inside a field with Nepali on.</p>
-              <p>The text you enter remains editable in the same field, including text you paste or type on a phone.</p>
+              <p>The mode button shows <strong>Nepali mode</strong> when conversion is enabled and <strong>English mode</strong> when typing is literal. It switches the editor and all three marked form fields together. Existing text stays as it is.</p>
+              <p>Use <strong>English mode</strong> to type or paste an English phrase or code fragment, then switch back to continue Nepali typing. In English mode, shortcut keys such as <kbd>^</kbd>, <kbd>~</kbd>, <kbd>/</kbd>, and <kbd>|</kbd> stay literal. The <kbd>.</kbd> key stays a period in both modes.</p>
+              <p><strong>Copy</strong> copies the main editor text; <strong>Clear</strong> starts that editor again. English notes and the email-only field always stay literal.</p>
             </section>
           </div>
         </section>

@@ -1,4 +1,5 @@
 import { convertText as defaultConvertText, convertWord as defaultConvertWord } from "./index.js";
+import { findProtectedSpans } from "./text-policy.js";
 
 const MARKED_SELECTOR = "[data-sahajlipi]";
 const ALL_FIELDS_SELECTOR = "textarea, input";
@@ -55,17 +56,24 @@ export function attachNepaliInput(input, {
   const redoStack = [];
   let enabled = initialEnabled;
   let active = null;
+  // Retain the source token across punctuation until its technical shape is clear.
+  let token = null;
   let composing = false;
   let compositionBefore = null;
   let compositionTimer = null;
   let mutating = false;
   let destroyed = false;
 
+  const cloneToken = (value) => value ? {
+    ...value,
+    choices: value.choices.map((choice) => ({ ...choice })),
+  } : null;
   const snapshot = () => ({
     value: input.value,
     start: input.selectionStart,
     end: input.selectionEnd,
     active: active ? { ...active, candidates: [...active.candidates] } : null,
+    token: cloneToken(token),
   });
   let lastSnapshot = snapshot();
 
@@ -96,7 +104,8 @@ export function attachNepaliInput(input, {
       before.active.candidates.every((candidate, index) => candidate === active.candidates[index]);
     if (before.value === input.value &&
         before.start === input.selectionStart &&
-        before.end === input.selectionEnd && sameActive) {
+        before.end === input.selectionEnd && sameActive &&
+        JSON.stringify(before.token) === JSON.stringify(token)) {
       lastSnapshot = snapshot();
       emit();
       return;
@@ -108,11 +117,13 @@ export function attachNepaliInput(input, {
     emit();
   }
 
-  function replace(start, end, text, nextActive = null) {
+  function replace(start, end, text, nextActive = null, nextToken = null, caret = start + text.length) {
     const before = snapshot();
     mutating = true;
     input.setRangeText(text, start, end, "end");
     active = nextActive;
+    token = nextToken;
+    input.setSelectionRange(caret, caret);
     input.dispatchEvent(new Event("input", { bubbles: true }));
     mutating = false;
     remember(before);
@@ -136,30 +147,149 @@ export function attachNepaliInput(input, {
     }
   }
 
-  function insertRoman(letters) {
-    const continuing = active &&
-      input.selectionStart === active.end &&
-      input.selectionEnd === active.end;
-    const start = continuing ? active.start : input.selectionStart;
-    const end = continuing ? active.end : input.selectionEnd;
-    const roman = (continuing ? active.roman : "") + letters;
-    const result = renderWord(roman);
-    replace(start, end, result.text, {
-      start,
-      end: start + result.text.length,
-      roman,
-      candidates: result.candidates,
-      ambiguous: result.ambiguous,
-      dismissed: false,
-    });
-  }
-
   function convertTyped(text) {
+    if (!text) return '';
     try { return convertText(text); } catch { return text; }
   }
 
-  function previousGraphemeStart(caret) {
-    const prefix = input.value.slice(0, caret);
+  function protectedSpans(text) {
+    // The supplied text converter remains authoritative, including its opt-out.
+    return findProtectedSpans(text).filter(({ start, end }) => {
+      const source = text.slice(start, end);
+      return convertTyped(source) === source;
+    });
+  }
+
+  function renderToken(roman, choices = [], wordConversion = true) {
+    const spans = protectedSpans(roman);
+    const validChoices = choices.filter((choice) => choice.end <= roman.length &&
+      !spans.some((span) => choice.start < span.end && choice.end > span.start));
+    function renderUntil(end) {
+      let output = '';
+      let cursor = 0;
+      for (const choice of validChoices) {
+        if (choice.end > end) break;
+        output += convertTyped(roman.slice(cursor, choice.start)) + choice.text;
+        cursor = choice.end;
+      }
+      return output + convertTyped(roman.slice(cursor, end));
+    }
+    const match = /[a-z\^~\/=]+$/i.exec(roman);
+    if (!wordConversion || !match || spans.some((span) => match.index < span.end && roman.length > span.start)) {
+      return { text: renderUntil(roman.length), active: null, choices: validChoices };
+    }
+    const prefix = renderUntil(match.index);
+    const word = renderWord(match[0]);
+    const chosen = validChoices.find((choice) => choice.start === match.index && choice.end === roman.length);
+    const text = prefix + (chosen?.text ?? word.text);
+    return { text, choices: validChoices, active: {
+      start: prefix.length,
+      end: text.length,
+      roman: match[0],
+      candidates: word.candidates,
+      ambiguous: word.ambiguous,
+      dismissed: Boolean(chosen?.dismissed),
+      rawStart: match.index,
+    } };
+  }
+
+  function insertionContext(start, end) {
+    if (token && start === token.end && end === token.end) {
+      return { ...cloneToken(token), suffix: '' };
+    }
+    // Existing literal addresses can be edited, including after paste or caret movement.
+    let left = start;
+    let right = end;
+    while (left > 0 && !/\s/u.test(input.value[left - 1])) left--;
+    while (right < input.value.length && !/\s/u.test(input.value[right])) right++;
+    const visible = input.value.slice(left, right);
+    const span = protectedSpans(visible).find((item) =>
+      start >= left + item.start && end <= left + item.end &&
+      (start < left + item.end || start === end));
+    if (!span) return { start, end, roman: '', choices: [], suffix: '' };
+    const spanStart = left + span.start;
+    const spanEnd = left + span.end;
+    return {
+      start: spanStart, end: spanEnd,
+      roman: input.value.slice(spanStart, start),
+      suffix: input.value.slice(end, spanEnd),
+      choices: [],
+    };
+  }
+
+  function insertText(text, commit = false) {
+    const start = input.selectionStart;
+    const end = input.selectionEnd;
+    if (!enabled) {
+      replace(start, end, text);
+      return;
+    }
+    const context = insertionContext(start, end);
+    const prefix = context.roman;
+    const raw = prefix + text + context.suffix;
+    if (commit && (protectedSpans(text).some((span) => span.start === 0) ||
+        !protectedSpans(raw).some((span) => span.start < prefix.length && span.end > prefix.length))) {
+      // A normal paste is a complete text operation, not another sound in the
+      // active word. Only an address crossing the caret needs source restoration.
+      replace(start, end, convertTyped(text));
+      return;
+    }
+    // Appending a sound edits the active word; a candidate choice remains committed
+    // when punctuation or whitespace follows it.
+    const choices = context.choices.filter((choice) =>
+      !(choice.end === prefix.length && /^[a-z\^~\/=]/i.test(text)));
+    if (active && token && context.start === token.start && !/^[a-z\^~\/=]/i.test(text)) {
+      const rawStart = active.rawStart;
+      const rawEnd = rawStart + active.roman.length;
+      if (!choices.some((choice) => choice.start === rawStart && choice.end === rawEnd)) {
+        choices.push({ start: rawStart, end: rawEnd,
+          text: input.value.slice(active.start, active.end), dismissed: active.dismissed });
+      }
+    }
+    if (commit || text.length > 1 && !/^[a-z\^~\/=]+$/i.test(text)) {
+      const result = renderToken(raw, choices, false);
+      const caret = context.suffix && result.text.endsWith(context.suffix)
+        ? context.start + result.text.length - context.suffix.length
+        : context.start + result.text.length;
+      replace(context.start, context.end, result.text, null, null, caret);
+      return;
+    }
+    let output = '';
+    let nextToken = null;
+    let nextActive = null;
+    for (const part of raw.matchAll(/\s+|\S+/gu)) {
+      if (/^\s/u.test(part[0])) {
+        output += convertTyped(part[0]);
+        nextToken = null;
+        nextActive = null;
+        continue;
+      }
+      const partChoices = choices.filter((choice) =>
+        choice.start >= part.index && choice.end <= part.index + part[0].length)
+        .map((choice) => ({ ...choice, start: choice.start - part.index, end: choice.end - part.index }));
+      const result = renderToken(part[0], partChoices);
+      const partStart = context.start + output.length;
+      output += result.text;
+      nextToken = { start: partStart, end: context.start + output.length,
+        roman: part[0], choices: result.choices };
+      nextActive = result.active ? { ...result.active,
+        start: partStart + result.active.start, end: partStart + result.active.end } : null;
+    }
+    let caret = context.start + output.length;
+    if (context.suffix) {
+      // Protected text is byte-for-byte literal, so an interior caret keeps its offset.
+      caret = context.start + (output.endsWith(context.suffix)
+        ? output.length - context.suffix.length : convertTyped(prefix + text).length);
+      nextActive = null;
+      nextToken = null;
+    }
+    replace(context.start, context.end, output, nextActive, nextToken, caret);
+  }
+
+  function insertRoman(letters) { insertText(letters); }
+
+  function previousGraphemeStart(caret, text = input.value) {
+    const prefix = text.slice(0, caret);
     if (!prefix) return caret;
     if (segmenter) {
       let previous = 0;
@@ -181,20 +311,17 @@ export function attachNepaliInput(input, {
     const end = input.selectionEnd;
     if (start !== end) {
       replace(start, end, "");
-    } else if (active && end === active.end) {
-      const roman = active.roman.slice(0, -1);
+    } else if (enabled && token && end === token.end) {
+      const roman = token.roman.slice(0, previousGraphemeStart(token.roman.length, token.roman));
       if (!roman) {
-        replace(active.start, active.end, "");
+        replace(token.start, token.end, '');
       } else {
-        const result = renderWord(roman);
-        replace(active.start, active.end, result.text, {
-          start: active.start,
-          end: active.start + result.text.length,
-          roman,
-          candidates: result.candidates,
-          ambiguous: result.ambiguous,
-          dismissed: false,
-        });
+        const result = renderToken(roman, token.choices.filter((choice) => choice.end < token.roman.length));
+        const nextToken = { ...cloneToken(token), roman,
+          end: token.start + result.text.length, choices: result.choices };
+        const nextActive = result.active ? { ...result.active,
+          start: token.start + result.active.start, end: token.start + result.active.end } : null;
+        replace(token.start, token.end, result.text, nextActive, nextToken);
       }
     } else if (start > 0) {
       replace(previousGraphemeStart(start), start, "");
@@ -213,6 +340,7 @@ export function attachNepaliInput(input, {
     input.value = saved.value;
     input.setSelectionRange(saved.start, saved.end);
     active = saved.active ? { ...saved.active, candidates: [...saved.active.candidates] } : null;
+    token = cloneToken(saved.token);
     input.dispatchEvent(new Event("input", { bubbles: true }));
     mutating = false;
     lastSnapshot = snapshot();
@@ -244,14 +372,13 @@ export function attachNepaliInput(input, {
     }
     if (kind === "insertText" && typeof event.data === "string") {
       event.preventDefault();
-      if (enabled && /^[a-z\^~\/=]+$/i.test(event.data)) insertRoman(event.data);
-      else replace(input.selectionStart, input.selectionEnd,
-        enabled ? convertTyped(event.data) : event.data);
+      insertText(event.data);
       return;
     }
     if (kind === "insertLineBreak" || kind === "insertParagraph") {
       if (input.tagName === "INPUT") {
         active = null;
+        token = null;
         emit();
         return;
       }
@@ -270,12 +397,16 @@ export function attachNepaliInput(input, {
     }
   }
 
-  function onInput(event) {
-    if (mutating || composing || compositionBefore) return;
-    if (input.value === lastSnapshot.value) return;
-    const before = lastSnapshot;
+  function reconcileNative(before, eventType) {
     const oldText = before.value;
     const newText = input.value;
+    if (oldText === newText) {
+      active = before.active;
+      token = cloneToken(before.token);
+      lastSnapshot = snapshot();
+      emit();
+      return;
+    }
     let prefix = 0;
     while (prefix < oldText.length && prefix < newText.length && oldText[prefix] === newText[prefix]) prefix++;
     let oldEnd = oldText.length;
@@ -284,56 +415,46 @@ export function attachNepaliInput(input, {
       oldEnd--;
       newEnd--;
     }
-    const inserted = newText.slice(prefix, newEnd);
-    if (enabled && /^[a-z\^~\/=]+$/i.test(inserted) &&
-        input.selectionStart === newEnd && input.selectionEnd === newEnd) {
-      const continuing = active && oldEnd === prefix && prefix === active.end;
-      const start = continuing ? active.start : prefix;
-      const roman = (continuing ? active.roman : "") + inserted;
-      const result = renderWord(roman);
-      mutating = true;
-      input.setRangeText(result.text, start, newEnd, "end");
-      active = {
-        start,
-        end: start + result.text.length,
-        roman,
-        candidates: result.candidates,
-        ambiguous: result.ambiguous,
-        dismissed: false,
-      };
-      input.dispatchEvent(new Event("input", { bubbles: true }));
-      mutating = false;
-    } else if (enabled && inserted && /[a-z.\^~\/=|]/i.test(inserted) &&
-               (event.inputType === "insertFromPaste" || /[^a-z\^~\/=]/i.test(inserted))) {
-      try {
-        const converted = event.inputType === "insertFromPaste"
-          ? convertText(inserted)
-          : convertTyped(inserted);
-        mutating = true;
-        input.setRangeText(converted, prefix, newEnd, "end");
-        input.dispatchEvent(new Event("input", { bubbles: true }));
-        mutating = false;
-      } catch { mutating = false; }
-      active = null;
-    } else {
-      active = null;
+    // A string diff alone can place repeated letters on the wrong side of the
+    // caret. Prefer the caret when the surrounding text proves a pure insertion.
+    const growth = newText.length - oldText.length;
+    const caret = input.selectionStart;
+    const insertionStart = caret - growth;
+    if (growth > 0 && input.selectionEnd === caret && insertionStart >= 0 &&
+        oldText.slice(0, insertionStart) === newText.slice(0, insertionStart) &&
+        oldText.slice(insertionStart) === newText.slice(caret)) {
+      prefix = insertionStart;
+      oldEnd = insertionStart;
+      newEnd = caret;
     }
-    undoStack.push(before);
-    if (undoStack.length > 200) undoStack.shift();
-    redoStack.length = 0;
-    lastSnapshot = snapshot();
-    emit();
+    const inserted = newText.slice(prefix, newEnd);
+    const atInsertion = input.selectionStart === newEnd && input.selectionEnd === newEnd;
+    if (enabled && inserted && atInsertion) {
+      input.value = oldText;
+      input.setSelectionRange(prefix, oldEnd);
+      active = before.active;
+      token = cloneToken(before.token);
+      insertText(inserted, eventType === 'insertFromPaste');
+      // Native insertion should undo to the selection before the browser's edit.
+      undoStack[undoStack.length - 1] = before;
+      return;
+    }
+    active = null;
+    token = null;
+    remember(before);
+  }
+
+  function onInput(event) {
+    if (mutating || composing || compositionBefore) return;
+    if (input.value === lastSnapshot.value) return;
+    reconcileNative(lastSnapshot, event.inputType);
   }
 
   function onPaste(event) {
     const pasted = event.clipboardData?.getData("text/plain");
     if (typeof pasted !== "string") return;
     event.preventDefault();
-    let text = pasted;
-    if (enabled) {
-      try { text = convertText(pasted); } catch { /* Keep the original paste. */ }
-    }
-    replace(input.selectionStart, input.selectionEnd, text);
+    insertText(pasted, true);
   }
 
   function onCut(event) {
@@ -369,16 +490,19 @@ export function attachNepaliInput(input, {
       active.dismissed = true;
       emit();
     }
-    if (/^(Arrow|Home|End|Page)/.test(event.key) && active) {
+    if (/^(Arrow|Home|End|Page)/.test(event.key) && (active || token)) {
       active = null;
+      token = null;
       emit();
     }
   }
 
   function onSelectionChange() {
-    if (ownerDocument.activeElement !== input || !active) return;
-    if (input.selectionStart !== active.end || input.selectionEnd !== active.end) {
+    if (ownerDocument.activeElement !== input || (!active && !token)) return;
+    const end = token?.end ?? active.end;
+    if (input.selectionStart !== end || input.selectionEnd !== end) {
       active = null;
+      token = null;
       emit();
     }
   }
@@ -400,54 +524,7 @@ export function attachNepaliInput(input, {
       if (destroyed || !compositionBefore) return;
       const before = compositionBefore;
       compositionBefore = null;
-      const oldText = before.value;
-      const newText = input.value;
-      if (oldText === newText) {
-        active = before.active;
-        lastSnapshot = snapshot();
-        emit();
-        return;
-      }
-      let prefix = 0;
-      while (prefix < oldText.length && prefix < newText.length && oldText[prefix] === newText[prefix]) prefix++;
-      let oldEnd = oldText.length;
-      let newEnd = newText.length;
-      while (oldEnd > prefix && newEnd > prefix && oldText[oldEnd - 1] === newText[newEnd - 1]) {
-        oldEnd--;
-        newEnd--;
-      }
-      const inserted = newText.slice(prefix, newEnd);
-      if (enabled && /^[a-z\^~\/=]+$/i.test(inserted)) {
-        const continuing = before.active && before.start === before.end &&
-          oldEnd === prefix && prefix === before.active.end;
-        const start = continuing ? before.active.start : prefix;
-        const roman = (continuing ? before.active.roman : "") + inserted;
-        const result = renderWord(roman);
-        mutating = true;
-        input.setRangeText(result.text, start, newEnd, "end");
-        active = {
-          start,
-          end: start + result.text.length,
-          roman,
-          candidates: result.candidates,
-          ambiguous: result.ambiguous,
-          dismissed: false,
-        };
-        input.dispatchEvent(new Event("input", { bubbles: true }));
-        mutating = false;
-      } else if (enabled && /[a-z.\^~\/=|]/i.test(inserted)) {
-        try {
-          mutating = true;
-          input.setRangeText(convertTyped(inserted), prefix, newEnd, "end");
-          input.dispatchEvent(new Event("input", { bubbles: true }));
-          mutating = false;
-        } catch { mutating = false; }
-      }
-      undoStack.push(before);
-      if (undoStack.length > 200) undoStack.shift();
-      redoStack.length = 0;
-      lastSnapshot = snapshot();
-      emit();
+      reconcileNative(before, 'insertCompositionText');
     }, 0);
   }
 
@@ -460,13 +537,20 @@ export function attachNepaliInput(input, {
       end: active.start + candidate.length,
       dismissed: true,
     };
-    replace(active.start, active.end, candidate, nextActive);
+    const nextToken = cloneToken(token);
+    if (nextToken) {
+      nextToken.choices = nextToken.choices.filter((choice) => choice.end <= active.rawStart);
+      nextToken.choices.push({ start: active.rawStart, end: active.rawStart + active.roman.length, text: candidate, dismissed: true });
+      nextToken.end += candidate.length - (active.end - active.start);
+    }
+    replace(active.start, active.end, candidate, nextActive, nextToken);
     input.focus();
   }
 
   function setEnabled(next) {
     enabled = Boolean(next);
     active = null;
+    token = null;
     lastSnapshot = snapshot();
     emit();
   }

@@ -153,6 +153,10 @@ kbd { padding: 2px 5px; border: 1px solid var(--line); border-radius: 4px; backg
 .key-examples kbd { width: fit-content; }
 .key-examples > div > span { color: var(--accent); font-size: 18px; text-align: center; }
 .key-examples strong { font: 650 19px "Noto Sans Devanagari", "Kohinoor Devanagari", sans-serif; }
+.guide-card code { font: 12px/1.65 ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }
+.mixed-text-example { display: grid; gap: 8px; margin: 15px 0; padding: 12px 13px; border-left: 3px solid var(--accent); background: #f0f6f7; overflow-wrap: anywhere; }
+.mixed-text-example > span { color: var(--accent); }
+.mixed-text-example strong { font: 650 17px/1.7 "Noto Sans Devanagari", "Kohinoor Devanagari", sans-serif; }
 .sound-table { width: 100%; margin-top: 13px; border-collapse: collapse; font-size: 13px; }
 .sound-table th { padding: 7px 6px 7px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 11px; font-weight: 650; text-align: left; }
 .sound-table td { padding: 7px 6px 7px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
