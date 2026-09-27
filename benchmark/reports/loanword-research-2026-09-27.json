@@ -1,0 +1,2093 @@
+{
+  "schemaVersion": 1,
+  "ledgerId": "loanword-research-2026-09-27",
+  "researchedOn": "2026-09-27",
+  "project": "SahajLipi",
+  "scope": "English-spelling Nepali loanwords: 20 authorized built-in preferences and 14 unshipped research proposals.",
+  "approvalKind": "User authorization to implement the source-assisted 20-word pilot with automatic conversion in Nepali mode.",
+  "reviewKind": "assistant-source-assisted",
+  "independentHumanReview": false,
+  "admittedHumanReviewedCorpusLabels": 0,
+  "catalogueEntryCount": 34,
+  "acceptedPilotEntryCount": 20,
+  "pendingOrDeferredEntryCount": 14,
+  "sourceUrlCount": 29,
+  "pilotOrderMeaning": "Implementation selection order, not a measured word-frequency ranking.",
+  "candidatePolicy": "Each accepted loanword has exactly one candidate. Observed variants are pending review and are not dropdown candidates.",
+  "measurementScope": "Source provenance and project acceptance only. Regression measurements are recorded separately; historical benchmark records are unchanged.",
+  "sources": [
+    {
+      "id": "S01",
+      "publisher": "National Statistics Office, Nepal",
+      "title": "Nepal Living Standards Survey 2022-2023, Fourth round — s06a_desc variable",
+      "url": "https://microdata.nsonepal.gov.np/index.php/catalog/149/variable/F47/V716?name=s06a_desc",
+      "accessedOn": "2026-09-27",
+      "accessScope": "full_page_unicode_html",
+      "limitations": "The counts beside category labels are survey-file counts, not word-frequency measurements; they must not be used to rank everyday loanword usage."
+    },
+    {
+      "id": "S02",
+      "publisher": "नेपाल राष्ट्रिय आधारभुत विद्यालय घारिवन,सुर्खेत",
+      "title": "पाठ २ हार्डवयर (Hardware) | कम्प्युटर शिक्षा कक्षा ६",
+      "url": "https://www.nrasg.edu.np/2022/02/hardware.html",
+      "accessedOn": "2026-09-27",
+      "accessScope": "full_page_unicode_html",
+      "limitations": "Institutional classroom usage rather than a normative spelling dictionary. The page itself uses multiple keyboard variants."
+    },
+    {
+      "id": "S03",
+      "publisher": "Nepal Police",
+      "title": "लुटपाटमा संलग्न रहेको अभियोगमा चार जना पक्राउ",
+      "url": "https://www.nepalpolice.gov.np/news/3008/",
+      "accessedOn": "2026-09-27",
+      "accessScope": "full_page_unicode_html",
+      "limitations": "The same article uses both मोबाइल and मोबाईल; this is evidence of variation, not proof that both are equally preferred."
+    },
+    {
+      "id": "S04",
+      "publisher": "Australian Government, Act Now. Stay Secure.",
+      "title": "नेपाली / Nepali | Act Now. Stay Secure.",
+      "url": "https://www.actnowstaysecure.gov.au/translated/nepali",
+      "accessedOn": "2026-09-27",
+      "accessScope": "full_page_unicode_html",
+      "limitations": "Official Nepali-language usage from a foreign government; corroboration only for Nepal-specific lexical decisions, not a Nepal normative source."
+    },
+    {
+      "id": "S05",
+      "publisher": "Ministry of Social Development, Bagamati Province, career guidance system",
+      "title": "कम्प्युटर अपरेटर (Computer Operator) — CareerDetail",
+      "url": "https://cgs.mosd.bagamati.gov.np/Home/CareerDetail?CareerId=92",
+      "accessedOn": "2026-09-27",
+      "accessScope": "search_result_snippet_only",
+      "limitations": "Use only as provisional corroboration, not as independently opened full-page evidence."
+    },
+    {
+      "id": "S06",
+      "publisher": "Nepal Telecommunications Authority",
+      "title": "Cyber Security Public Advisory — सार्वजनिक वाइफाइ (Free/Public WiFi) प्रयोग गरेर इन्टरनेट चलाउँदा कसरी सुरक्षित रहने ?",
+      "url": "https://nta.gov.np/uploads/contents/NTA%27s%20Cyber%20Security%20Public%20Advisory.pdf",
+      "accessedOn": "2026-09-27",
+      "accessScope": "search_result_snippet_only",
+      "limitations": "Provisional Nepal-specific corroboration for wifi, password, laptop and other internet terms."
+    },
+    {
+      "id": "S07",
+      "publisher": "Electricity Regulatory Commission, Nepal",
+      "title": "खरिद सम्बन्धि सूचना / Procurement Notice",
+      "url": "https://www.erc.gov.np/procurement-notice",
+      "accessedOn": "2026-09-27",
+      "accessScope": "search_result_snippet_only",
+      "limitations": "Provisional corroboration only."
+    },
+    {
+      "id": "S08",
+      "publisher": "Kathmandu Metropolitan City, Metro News",
+      "title": "काठमाडौँमा एआइ (आर्टिफिसियल इन्टेलिजेन्ट) फिचरका सीसीटिभी क्यामरा जडान",
+      "url": "https://metronews.kathmandu.gov.np/news/detail/733",
+      "accessedOn": "2026-09-27",
+      "accessScope": "search_result_snippet_only",
+      "limitations": "Attests an alternative spelling; no frequency or normative conclusion."
+    },
+    {
+      "id": "S09",
+      "publisher": "Film Development Board, Nepal",
+      "title": "ड्रोन (Drone) क्यामेरा प्रशिक्षण सम्बन्धी १० (दश) दिने निःशुल्क कार्यशालामा सहभागिता सम्बन्धी सूचना",
+      "url": "https://www.film.gov.np/notices/125/?page=33",
+      "accessedOn": "2026-09-27",
+      "accessScope": "search_result_snippet_only",
+      "limitations": "Variant corroboration only."
+    },
+    {
+      "id": "S10",
+      "publisher": "Bagmati Province Ministry of Industry, Tourism, Labour and Transport",
+      "title": "प्रदेश भित्र सञ्‍चालन हुने (ट्याक्सी बाहेकका) साना यात्रु वाहक सार्वजनिक सवारी साधनको गुणस्तर, सञ्‍चालन तथा व्यवस्थापन सम्बन्धी मापदण्ड, २०७९",
+      "url": "https://molet.bagamati.gov.np/content/4/small-passengers-of-small-passengers--operations--operations-/",
+      "accessedOn": "2026-09-27",
+      "accessScope": "full_page_title",
+      "limitations": "Usage evidence, not a normative spelling decision."
+    },
+    {
+      "id": "S11",
+      "publisher": "Transport Management Office Siraha",
+      "title": "सवारी तथा यातायात व्यवस्था नियमावली excerpt (descriptive title)",
+      "url": "https://sirahatmo.dotm.gov.np/Files/NoticePDF/yenad91fcd9-0782-447f-bdbe-e6f790c723e4_12025-09-08_12-45-27-944.pdf",
+      "accessedOn": "2026-09-27",
+      "accessScope": "search_snippet",
+      "limitations": "Official indexed PDF, not fetched."
+    },
+    {
+      "id": "S12",
+      "publisher": "Transport Management Office Baglung, Gandaki Province",
+      "title": "निर्देशिका र कार्यविधि",
+      "url": "https://tmobaglung.gandaki.gov.np/page/directive-working-procedure",
+      "accessedOn": "2026-09-27",
+      "accessScope": "search_snippet",
+      "limitations": "Full page fetch timed out."
+    },
+    {
+      "id": "S13",
+      "publisher": "Nepal Rastra Bank",
+      "title": "वितिय ग्राहक संरक्षण Archives",
+      "url": "https://www.nrb.org.np/category/faqs/faq_bfr/faq_bfr-grahak-sanrakchyan/",
+      "accessedOn": "2026-09-27",
+      "accessScope": "full_page_text",
+      "limitations": "Actual financial cheque noun usage."
+    },
+    {
+      "id": "S14",
+      "publisher": "Ministry of Finance Nepal",
+      "title": "भूमिका/कार्य/जिम्मेवारी",
+      "url": "https://mof.gov.np/pages/responsibility-17/",
+      "accessedOn": "2026-09-27",
+      "accessScope": "search_snippet",
+      "limitations": "Full fetch timed out."
+    },
+    {
+      "id": "S15",
+      "publisher": "Film Development Board Nepal",
+      "title": "सूचनाको हक विवरण, २०८२ माघ–चैत्र (descriptive title)",
+      "url": "https://film.gov.np/notices/310/?page=16",
+      "accessedOn": "2026-09-27",
+      "accessScope": "full_page_text",
+      "limitations": "Usage evidence, not a normative spelling decision."
+    },
+    {
+      "id": "S16",
+      "publisher": "Kathmandu Valley Crime Investigation Office Nepal Police",
+      "title": "अनलाईन मार्फत ठगी गर्ने नेपाली तथा चिनियाँ नागरिकहरु पक्राउ",
+      "url": "https://kvcio.nepalpolice.gov.np/news/401/",
+      "accessedOn": "2026-09-27",
+      "accessScope": "search_snippet",
+      "limitations": "Not fetched full page."
+    },
+    {
+      "id": "S17",
+      "publisher": "Office of the Nepal Trust",
+      "title": "स्वागतम् | नेपाल ट्रष्टको कार्यालय",
+      "url": "https://www.nepaltrust.gov.np/",
+      "accessedOn": "2026-09-27",
+      "accessScope": "search_snippet",
+      "limitations": "Official gallery label; full fetch timed out."
+    },
+    {
+      "id": "S18",
+      "publisher": "National Statistics Office Government of Nepal",
+      "title": "Report of the National Hotel and Restaurant Survey 2023/24",
+      "url": "https://giwmscdnone.gov.np/media/pdf_upload/Hotel%20and%20restaurant%20final%20report_vyvvh6g.pdf",
+      "accessedOn": "2026-09-27",
+      "accessScope": "search_snippet_for_devanagari",
+      "limitations": "Full 150-page PDF fetched; cover confirms NSO, December 2024. Extracted text did not locate these Devanagari strings, so exact spelling evidence remains indexed snippet."
+    },
+    {
+      "id": "S19",
+      "publisher": "Office of Food Technology and Quality Control Janakpur",
+      "title": "खाद्य स्वच्छताको आधारमा होटेल रेस्टुरेन्ट स्तरीकरण गर्ने निर्देशिका २०७४",
+      "url": "https://ftqcojanakpur.gov.np/content/7/guidelines-for-classifying-hotels-and-restaurants-on/",
+      "accessedOn": "2026-09-27",
+      "accessScope": "search_snippet_title",
+      "limitations": "Full fetch failed."
+    },
+    {
+      "id": "S20",
+      "publisher": "Kathmandu Metropolitan City Metro News",
+      "title": "रेष्टुरेन्ट र मिठाई पसलको भान्छामा सरसफाईको समस्या",
+      "url": "https://metronews.kathmandu.gov.np/news/detail/201",
+      "accessedOn": "2026-09-27",
+      "accessScope": "full_page_text",
+      "limitations": "Usage evidence, not a normative spelling decision."
+    },
+    {
+      "id": "S21",
+      "publisher": "National Assembly Federal Parliament Nepal",
+      "title": "University bill amendment text, schools and colleges (descriptive title)",
+      "url": "https://na.parliament.gov.np/uploads/attachments/nls0lydfk67nspo5.pdf",
+      "accessedOn": "2026-09-27",
+      "accessScope": "search_snippet",
+      "limitations": "Not fetched full PDF."
+    },
+    {
+      "id": "S22",
+      "publisher": "Department of Health Services Government of Nepal",
+      "title": "दायरा",
+      "url": "https://dohs.gov.np/pages/scopes/",
+      "accessedOn": "2026-09-27",
+      "accessScope": "full_page_text",
+      "limitations": "Usage evidence, not a normative spelling decision."
+    },
+    {
+      "id": "S23",
+      "publisher": "Nepal Police",
+      "title": "खेलकुद क्षेत्रमा विशिष्ट योगदान दिँदै नेपाल प्रहरी",
+      "url": "https://nepalpolice.gov.np/news/5436/",
+      "accessedOn": "2026-09-27",
+      "accessScope": "full_page_text",
+      "limitations": "Usage evidence, not a normative spelling decision."
+    },
+    {
+      "id": "S24",
+      "publisher": "Office of the President Nepal",
+      "title": "Address at the eighth national President Running Shield and school sports competition २०७२ (descriptive title)",
+      "url": "https://president.gov.np/%E0%A4%B0%E0%A4%BE%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%AF-%E0%A4%96%E0%A5%87%E0%A4%B2%E0%A4%95%E0%A5%82%E0%A4%A6-%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%B7%E0%A4%A6%E0%A5%8D%E0%A4%B5/",
+      "accessedOn": "2026-09-27",
+      "accessScope": "search_snippet",
+      "limitations": "Not fetched full page."
+    },
+    {
+      "id": "S25",
+      "publisher": "Nepal Insurance Authority",
+      "title": "सम्पत्ति बीमा निर्देशन, २०८०",
+      "url": "https://nia.gov.np/Admin/images/Law/Directive/65fd164964b9e_1711085129.pdf",
+      "accessedOn": "2026-09-27",
+      "accessScope": "search_snippet",
+      "limitations": "Exact bilingual gloss; full fetch failed."
+    },
+    {
+      "id": "S26",
+      "publisher": "House of Representatives Federal Parliament Nepal",
+      "title": "Railway bill text (descriptive title)",
+      "url": "https://hr.parliament.gov.np/uploads/attachments/ebfbuw1xahvo14fn.pdf",
+      "accessedOn": "2026-09-27",
+      "accessScope": "search_snippet",
+      "limitations": "Official passenger-transport use of रेल; not fetched full PDF."
+    },
+    {
+      "id": "S27",
+      "publisher": "Barahathawa Municipality",
+      "title": "बरहथवा न.पा. वार्ड नं. - २ मा FREE WIFI सेवा संचालन मा रहेको सम्बन्धि जानकारी गराईन्छ !!",
+      "url": "https://barhathwamun.gov.np/ne/node/181",
+      "accessedOn": "2026-09-27",
+      "accessScope": "snippet_only",
+      "limitations": "Usage evidence, not a normative spelling decision."
+    },
+    {
+      "id": "S28",
+      "publisher": "Centre for Education and Human Resource Development, Nepal",
+      "title": "Generative AI, chatbots and how they differ from search / Nepali lesson",
+      "url": "https://learning.cehrd.gov.np/mod/page/view.php?id=1132",
+      "accessedOn": "2026-09-27",
+      "accessScope": "full_page_unicode_html",
+      "limitations": "Official educational usage; does not establish a unique normative spelling."
+    },
+    {
+      "id": "S29",
+      "publisher": "Kamal Kumar Poudel and Netra Prasad Sharma, The Researcher (NepJOL)",
+      "title": "Major Tendencies of Lexical Borrowing from English to Oral Business Nepali: Implications for Translators and Language Teacher",
+      "url": "https://www.nepjol.info/index.php/RESEARCHER/article/view/34611",
+      "accessedOn": "2026-09-27",
+      "accessScope": "full_article_and_pdf",
+      "limitations": "A study of oral business Nepali, not a population word-frequency ranking or normative dictionary."
+    }
+  ],
+  "entries": [
+    {
+      "normalizedRomanKey": "camera",
+      "pilotOrder": 1,
+      "status": "source-assisted-project-preference-authorized-for-implementation",
+      "preferredOutput": "क्यामेरा",
+      "proposedOutput": null,
+      "outputCodePoints": [
+        "U+0915",
+        "U+094D",
+        "U+092F",
+        "U+093E",
+        "U+092E",
+        "U+0947",
+        "U+0930",
+        "U+093E"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [
+        "क्यामेरा"
+      ],
+      "senseOrContext": "camera device",
+      "preferredSpellingEvidence": [
+        {
+          "location": "line 223",
+          "occurrence": "standalone noun in coordinated label and noun in a compound",
+          "sources": [
+            {
+              "sourceId": "S01",
+              "url": "https://microdata.nsonepal.gov.np/index.php/catalog/149/variable/F47/V716?name=s06a_desc",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        },
+        {
+          "location": "line 155",
+          "occurrence": "compound only",
+          "sources": [
+            {
+              "sourceId": "S02",
+              "url": "https://www.nrasg.edu.np/2022/02/hardware.html",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [
+        {
+          "spelling": "क्यामरा",
+          "sources": [
+            {
+              "sourceId": "S08",
+              "url": "https://metronews.kathmandu.gov.np/news/detail/733",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_result_snippet_only"
+            }
+          ],
+          "observationAccessScope": "snippet_only",
+          "status": "pending-variant-review",
+          "acceptedAsCandidate": false
+        }
+      ],
+      "collisionDecision": "Add only this exact normalized whole key; preserve reserved T/D/S/R/contextual H, native entries, and custom-entry replacement.",
+      "notes": "क्यामरा is an observed pending variant; the sources do not establish a uniquely mandatory spelling.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "computer",
+      "pilotOrder": 2,
+      "status": "source-assisted-project-preference-authorized-for-implementation",
+      "preferredOutput": "कम्प्युटर",
+      "proposedOutput": null,
+      "outputCodePoints": [
+        "U+0915",
+        "U+092E",
+        "U+094D",
+        "U+092A",
+        "U+094D",
+        "U+092F",
+        "U+0941",
+        "U+091F",
+        "U+0930"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [
+        "कम्प्युटर"
+      ],
+      "senseOrContext": "computer device",
+      "preferredSpellingEvidence": [
+        {
+          "location": "line 218",
+          "occurrence": "complete standalone noun in a truncated coordinated label",
+          "sources": [
+            {
+              "sourceId": "S01",
+              "url": "https://microdata.nsonepal.gov.np/index.php/catalog/149/variable/F47/V716?name=s06a_desc",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        },
+        {
+          "location": "lines 121 and 181",
+          "occurrence": "standalone noun in prose",
+          "sources": [
+            {
+              "sourceId": "S02",
+              "url": "https://www.nrasg.edu.np/2022/02/hardware.html",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [
+        {
+          "spelling": "कम्प्यूटर",
+          "sources": [
+            {
+              "sourceId": "S02",
+              "url": "https://www.nrasg.edu.np/2022/02/hardware.html",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ],
+          "observationAccessScope": "full_page",
+          "status": "pending-variant-review",
+          "acceptedAsCandidate": false
+        }
+      ],
+      "collisionDecision": "Add only this exact normalized whole key; preserve reserved T/D/S/R/contextual H, native entries, and custom-entry replacement.",
+      "notes": "The कम्प्यूटर vowel-length variant is attested and remains pending. कम्प्युटर is the authorized project default.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "mobile",
+      "pilotOrder": 3,
+      "status": "source-assisted-project-preference-authorized-for-implementation",
+      "preferredOutput": "मोबाइल",
+      "proposedOutput": null,
+      "outputCodePoints": [
+        "U+092E",
+        "U+094B",
+        "U+092C",
+        "U+093E",
+        "U+0907",
+        "U+0932"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [
+        "मोबाइल"
+      ],
+      "senseOrContext": "mobile device",
+      "preferredSpellingEvidence": [
+        {
+          "location": "line 243",
+          "occurrence": "standalone noun in coordinated label",
+          "sources": [
+            {
+              "sourceId": "S01",
+              "url": "https://microdata.nsonepal.gov.np/index.php/catalog/149/variable/F47/V716?name=s06a_desc",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        },
+        {
+          "location": "lines 68 and 70",
+          "occurrence": "noun modifying shop and unsuffixed standalone device noun",
+          "sources": [
+            {
+              "sourceId": "S03",
+              "url": "https://www.nepalpolice.gov.np/news/3008/",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [
+        {
+          "spelling": "मोबाईल",
+          "sources": [
+            {
+              "sourceId": "S03",
+              "url": "https://www.nepalpolice.gov.np/news/3008/",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ],
+          "observationAccessScope": "full_page",
+          "status": "pending-variant-review",
+          "acceptedAsCandidate": false
+        }
+      ],
+      "collisionDecision": "Add only this exact normalized whole key; preserve reserved T/D/S/R/contextual H, native entries, and custom-entry replacement.",
+      "notes": "मोबाइल and मोबाईल occur on the same official page; no relative-frequency inference is made.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "phone",
+      "pilotOrder": 4,
+      "status": "source-assisted-project-preference-authorized-for-implementation",
+      "preferredOutput": "फोन",
+      "proposedOutput": null,
+      "outputCodePoints": [
+        "U+092B",
+        "U+094B",
+        "U+0928"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [
+        "फोन"
+      ],
+      "senseOrContext": "phone device",
+      "preferredSpellingEvidence": [
+        {
+          "location": "line 310",
+          "occurrence": "complete noun within a truncated coordinated label",
+          "sources": [
+            {
+              "sourceId": "S01",
+              "url": "https://microdata.nsonepal.gov.np/index.php/catalog/149/variable/F47/V716?name=s06a_desc",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        },
+        {
+          "location": "line 191",
+          "occurrence": "standalone noun in prose",
+          "sources": [
+            {
+              "sourceId": "S02",
+              "url": "https://www.nrasg.edu.np/2022/02/hardware.html",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "Add only this exact normalized whole key; preserve reserved T/D/S/R/contextual H, native entries, and custom-entry replacement.",
+      "notes": "टेलिफोन is a separately attested longer lexical form, not a spelling variant of फोन.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "charger",
+      "pilotOrder": 5,
+      "status": "source-assisted-project-preference-authorized-for-implementation",
+      "preferredOutput": "चार्जर",
+      "proposedOutput": null,
+      "outputCodePoints": [
+        "U+091A",
+        "U+093E",
+        "U+0930",
+        "U+094D",
+        "U+091C",
+        "U+0930"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [
+        "चार्जर"
+      ],
+      "senseOrContext": "device charger",
+      "preferredSpellingEvidence": [
+        {
+          "location": "lines 68 and 70",
+          "occurrence": "unsuffixed standalone noun in a list; also used after a possessive watch modifier",
+          "sources": [
+            {
+              "sourceId": "S03",
+              "url": "https://www.nepalpolice.gov.np/news/3008/",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "Add only this exact normalized whole key; preserve reserved T/D/S/R/contextual H, native entries, and custom-entry replacement.",
+      "notes": "The consulted police context explicitly concerns device charging; turbo-charger occurrences are not used to infer this sense.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "printer",
+      "pilotOrder": 6,
+      "status": "source-assisted-project-preference-authorized-for-implementation",
+      "preferredOutput": "प्रिन्टर",
+      "proposedOutput": null,
+      "outputCodePoints": [
+        "U+092A",
+        "U+094D",
+        "U+0930",
+        "U+093F",
+        "U+0928",
+        "U+094D",
+        "U+091F",
+        "U+0930"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [
+        "प्रिन्टर"
+      ],
+      "senseOrContext": "printer device",
+      "preferredSpellingEvidence": [
+        {
+          "location": "lines 117, 121 and 170",
+          "occurrence": "heading and standalone noun; explicit English Printer pairing",
+          "sources": [
+            {
+              "sourceId": "S02",
+              "url": "https://www.nrasg.edu.np/2022/02/hardware.html",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        },
+        {
+          "location": "line 218",
+          "occurrence": "complete noun in truncated coordinated label",
+          "sources": [
+            {
+              "sourceId": "S01",
+              "url": "https://microdata.nsonepal.gov.np/index.php/catalog/149/variable/F47/V716?name=s06a_desc",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "Add only this exact normalized whole key; preserve reserved T/D/S/R/contextual H, native entries, and custom-entry replacement.",
+      "notes": "The sources establish device-spelling usage, with no unique normative or frequency conclusion.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "mouse",
+      "pilotOrder": 7,
+      "status": "source-assisted-project-preference-authorized-for-implementation",
+      "preferredOutput": "माउस",
+      "proposedOutput": null,
+      "outputCodePoints": [
+        "U+092E",
+        "U+093E",
+        "U+0909",
+        "U+0938"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [
+        "माउस"
+      ],
+      "senseOrContext": "computer input device",
+      "preferredSpellingEvidence": [
+        {
+          "location": "lines 133 and 149",
+          "occurrence": "standalone computer-device noun; explicit English Mouse pairing",
+          "sources": [
+            {
+              "sourceId": "S02",
+              "url": "https://www.nrasg.edu.np/2022/02/hardware.html",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [
+        {
+          "sources": [
+            {
+              "sourceId": "S05",
+              "url": "https://cgs.mosd.bagamati.gov.np/Home/CareerDetail?CareerId=92",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_result_snippet_only"
+            }
+          ],
+          "observationAccessScope": "snippet_only"
+        }
+      ],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "Add only this exact normalized whole key; preserve reserved T/D/S/R/contextual H, native entries, and custom-entry replacement.",
+      "notes": "The accepted reading concerns the computer device; it does not translate the animal sense.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "internet",
+      "pilotOrder": 8,
+      "status": "source-assisted-project-preference-authorized-for-implementation",
+      "preferredOutput": "इन्टरनेट",
+      "proposedOutput": null,
+      "outputCodePoints": [
+        "U+0907",
+        "U+0928",
+        "U+094D",
+        "U+091F",
+        "U+0930",
+        "U+0928",
+        "U+0947",
+        "U+091F"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [
+        "इन्टरनेट"
+      ],
+      "senseOrContext": "internet access",
+      "preferredSpellingEvidence": [
+        {
+          "location": "line 310",
+          "occurrence": "complete noun in truncated coordinated category label",
+          "sources": [
+            {
+              "sourceId": "S01",
+              "url": "https://microdata.nsonepal.gov.np/index.php/catalog/149/variable/F47/V716?name=s06a_desc",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        },
+        {
+          "location": "line 482",
+          "occurrence": "standalone noun in prose",
+          "sources": [
+            {
+              "sourceId": "S04",
+              "url": "https://www.actnowstaysecure.gov.au/translated/nepali",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [
+        {
+          "sources": [
+            {
+              "sourceId": "S06",
+              "url": "https://nta.gov.np/uploads/contents/NTA%27s%20Cyber%20Security%20Public%20Advisory.pdf",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_result_snippet_only"
+            }
+          ],
+          "observationAccessScope": "snippet_only"
+        }
+      ],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "Add only this exact normalized whole key; preserve reserved T/D/S/R/contextual H, native entries, and custom-entry replacement.",
+      "notes": "The sources establish usage, not a unique normative spelling or absence of a Nepali equivalent.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "email",
+      "pilotOrder": 9,
+      "status": "source-assisted-project-preference-authorized-for-implementation",
+      "preferredOutput": "इमेल",
+      "proposedOutput": null,
+      "outputCodePoints": [
+        "U+0907",
+        "U+092E",
+        "U+0947",
+        "U+0932"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [
+        "इमेल"
+      ],
+      "senseOrContext": "electronic mail",
+      "preferredSpellingEvidence": [
+        {
+          "location": "line 191",
+          "occurrence": "standalone noun in prose",
+          "sources": [
+            {
+              "sourceId": "S02",
+              "url": "https://www.nrasg.edu.np/2022/02/hardware.html",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        },
+        {
+          "location": "lines 367 and 493",
+          "occurrence": "standalone noun in prose",
+          "sources": [
+            {
+              "sourceId": "S04",
+              "url": "https://www.actnowstaysecure.gov.au/translated/nepali",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        },
+        {
+          "location": "HTML lines 207 (video) and 236 (email)",
+          "sources": [
+            {
+              "sourceId": "S28",
+              "url": "https://learning.cehrd.gov.np/mod/page/view.php?id=1132",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [
+        {
+          "spelling": "ई-मेल",
+          "sources": [
+            {
+              "sourceId": "S09",
+              "url": "https://www.film.gov.np/notices/125/?page=33",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_result_snippet_only"
+            }
+          ],
+          "observationAccessScope": "snippet_only",
+          "status": "pending-variant-review",
+          "acceptedAsCandidate": false
+        }
+      ],
+      "collisionDecision": "Add only this exact normalized whole key; preserve reserved T/D/S/R/contextual H, native entries, and custom-entry replacement.",
+      "notes": "Only joined English email is accepted. Hyphenated input and vowel-length variants need separate review.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "software",
+      "pilotOrder": 10,
+      "status": "source-assisted-project-preference-authorized-for-implementation",
+      "preferredOutput": "सफ्टवेयर",
+      "proposedOutput": null,
+      "outputCodePoints": [
+        "U+0938",
+        "U+092B",
+        "U+094D",
+        "U+091F",
+        "U+0935",
+        "U+0947",
+        "U+092F",
+        "U+0930"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [
+        "सफ्टवेयर"
+      ],
+      "senseOrContext": "software",
+      "preferredSpellingEvidence": [
+        {
+          "location": "line 226",
+          "occurrence": "unsuffixed borrowed noun modified by a possessive",
+          "sources": [
+            {
+              "sourceId": "S01",
+              "url": "https://microdata.nsonepal.gov.np/index.php/catalog/149/variable/F47/V716?name=s06a_desc",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        },
+        {
+          "location": "lines 57, 70 and 122",
+          "occurrence": "standalone noun in prose and a section heading",
+          "sources": [
+            {
+              "sourceId": "S04",
+              "url": "https://www.actnowstaysecure.gov.au/translated/nepali",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "Add only this exact normalized whole key; preserve reserved T/D/S/R/contextual H, native entries, and custom-entry replacement.",
+      "notes": "The Nepal source is a survey category; foreign official Nepali guidance corroborates the standalone spelling.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "scanner",
+      "pilotOrder": 11,
+      "status": "source-assisted-project-preference-authorized-for-implementation",
+      "preferredOutput": "स्क्यानर",
+      "proposedOutput": null,
+      "outputCodePoints": [
+        "U+0938",
+        "U+094D",
+        "U+0915",
+        "U+094D",
+        "U+092F",
+        "U+093E",
+        "U+0928",
+        "U+0930"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [
+        "स्क्यानर"
+      ],
+      "senseOrContext": "scanner device",
+      "preferredSpellingEvidence": [
+        {
+          "location": "line 153",
+          "occurrence": "standalone noun; explicit English Scanner pairing",
+          "sources": [
+            {
+              "sourceId": "S02",
+              "url": "https://www.nrasg.edu.np/2022/02/hardware.html",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [
+        {
+          "sources": [
+            {
+              "sourceId": "S05",
+              "url": "https://cgs.mosd.bagamati.gov.np/Home/CareerDetail?CareerId=92",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_result_snippet_only"
+            }
+          ],
+          "observationAccessScope": "snippet_only"
+        }
+      ],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "Add only this exact normalized whole key; preserve reserved T/D/S/R/contextual H, native entries, and custom-entry replacement.",
+      "notes": "Opened educational evidence supports the device spelling; pilot inclusion reflects coverage, not measured frequency.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "video",
+      "pilotOrder": 12,
+      "status": "source-assisted-project-preference-authorized-for-implementation",
+      "preferredOutput": "भिडियो",
+      "proposedOutput": null,
+      "outputCodePoints": [
+        "U+092D",
+        "U+093F",
+        "U+0921",
+        "U+093F",
+        "U+092F",
+        "U+094B"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [
+        "भिडियो"
+      ],
+      "senseOrContext": "video recording or content",
+      "preferredSpellingEvidence": [
+        {
+          "location": "line 223",
+          "occurrence": "compound only",
+          "sources": [
+            {
+              "sourceId": "S01",
+              "url": "https://microdata.nsonepal.gov.np/index.php/catalog/149/variable/F47/V716?name=s06a_desc",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        },
+        {
+          "location": "lines 161 and 461",
+          "occurrence": "standalone noun",
+          "sources": [
+            {
+              "sourceId": "S04",
+              "url": "https://www.actnowstaysecure.gov.au/translated/nepali",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        },
+        {
+          "location": "HTML lines 207 (video) and 236 (email)",
+          "sources": [
+            {
+              "sourceId": "S28",
+              "url": "https://learning.cehrd.gov.np/mod/page/view.php?id=1132",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "Add only this exact normalized whole key; preserve reserved T/D/S/R/contextual H, native entries, and custom-entry replacement.",
+      "notes": "CEHRD educational usage supports भिडियो; NSO also attests the word only within भिडियो क्यामेरा.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "taxi",
+      "pilotOrder": 13,
+      "status": "source-assisted-project-preference-authorized-for-implementation",
+      "preferredOutput": "ट्याक्सी",
+      "proposedOutput": null,
+      "outputCodePoints": [
+        "U+091F",
+        "U+094D",
+        "U+092F",
+        "U+093E",
+        "U+0915",
+        "U+094D",
+        "U+0938",
+        "U+0940"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [
+        "ट्याक्सी"
+      ],
+      "senseOrContext": "taxi transport",
+      "preferredSpellingEvidence": [
+        {
+          "sources": [
+            {
+              "sourceId": "S10",
+              "url": "https://molet.bagamati.gov.np/content/4/small-passengers-of-small-passengers--operations--operations-/",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_title"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "Add only this exact normalized whole key; preserve reserved T/D/S/R/contextual H, native entries, and custom-entry replacement.",
+      "notes": "The opened provincial page title provides usage evidence, not a normative spelling decision.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "bank",
+      "pilotOrder": 14,
+      "status": "source-assisted-project-preference-authorized-for-implementation",
+      "preferredOutput": "बैंक",
+      "proposedOutput": null,
+      "outputCodePoints": [
+        "U+092C",
+        "U+0948",
+        "U+0902",
+        "U+0915"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [
+        "बैंक"
+      ],
+      "senseOrContext": "banking institution",
+      "preferredSpellingEvidence": [
+        {
+          "sources": [
+            {
+              "sourceId": "S13",
+              "url": "https://www.nrb.org.np/category/faqs/faq_bfr/faq_bfr-grahak-sanrakchyan/",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_text"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [
+        {
+          "spelling": "बैङ्क",
+          "sources": [
+            {
+              "sourceId": "S14",
+              "url": "https://mof.gov.np/pages/responsibility-17/",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_snippet"
+            }
+          ],
+          "status": "pending-variant-review",
+          "acceptedAsCandidate": false
+        }
+      ],
+      "collisionDecision": "Add only this exact normalized whole key; preserve reserved T/D/S/R/contextual H, native entries, and custom-entry replacement.",
+      "notes": "बैंक is the authorized project preference from central-bank FAQ usage; observed बैङ्क remains pending.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "cheque",
+      "pilotOrder": 15,
+      "status": "source-assisted-project-preference-authorized-for-implementation",
+      "preferredOutput": "चेक",
+      "proposedOutput": null,
+      "outputCodePoints": [
+        "U+091A",
+        "U+0947",
+        "U+0915"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [
+        "चेक"
+      ],
+      "senseOrContext": "banking cheque noun",
+      "preferredSpellingEvidence": [
+        {
+          "sources": [
+            {
+              "sourceId": "S13",
+              "url": "https://www.nrb.org.np/category/faqs/faq_bfr/faq_bfr-grahak-sanrakchyan/",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_text"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "Add only this exact normalized whole key; preserve reserved T/D/S/R/contextual H, native entries, and custom-entry replacement.",
+      "notes": "The evidence concerns the banking noun. English check requires separate alias and sense review.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "file",
+      "pilotOrder": 16,
+      "status": "source-assisted-project-preference-authorized-for-implementation",
+      "preferredOutput": "फाइल",
+      "proposedOutput": null,
+      "outputCodePoints": [
+        "U+092B",
+        "U+093E",
+        "U+0907",
+        "U+0932"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [
+        "फाइल"
+      ],
+      "senseOrContext": "file noun",
+      "preferredSpellingEvidence": [
+        {
+          "sources": [
+            {
+              "sourceId": "S15",
+              "url": "https://film.gov.np/notices/310/?page=16",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_text"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "Add only this exact normalized whole key; preserve reserved T/D/S/R/contextual H, native entries, and custom-entry replacement.",
+      "notes": "Only file is accepted. phail and fail are separate possible readings and are not added as aliases.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "school",
+      "pilotOrder": 17,
+      "status": "source-assisted-project-preference-authorized-for-implementation",
+      "preferredOutput": "स्कुल",
+      "proposedOutput": null,
+      "outputCodePoints": [
+        "U+0938",
+        "U+094D",
+        "U+0915",
+        "U+0941",
+        "U+0932"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [
+        "स्कुल"
+      ],
+      "senseOrContext": "school institution",
+      "preferredSpellingEvidence": [
+        {
+          "sources": [
+            {
+              "sourceId": "S01",
+              "url": "https://microdata.nsonepal.gov.np/index.php/catalog/149/variable/F47/V716?name=s06a_desc",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [
+        {
+          "spelling": "स्कूल",
+          "sources": [
+            {
+              "sourceId": "S21",
+              "url": "https://na.parliament.gov.np/uploads/attachments/nls0lydfk67nspo5.pdf",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_snippet"
+            }
+          ],
+          "status": "pending-variant-review",
+          "acceptedAsCandidate": false
+        }
+      ],
+      "collisionDecision": "Add only this exact normalized whole key; preserve reserved T/D/S/R/contextual H, native entries, and custom-entry replacement.",
+      "notes": "स्कुल is the project loanword spelling preference. विद्यालय is a semantic equivalent and is not substituted; स्कूल remains pending.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "college",
+      "pilotOrder": 18,
+      "status": "source-assisted-project-preference-authorized-for-implementation",
+      "preferredOutput": "कलेज",
+      "proposedOutput": null,
+      "outputCodePoints": [
+        "U+0915",
+        "U+0932",
+        "U+0947",
+        "U+091C"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [
+        "कलेज"
+      ],
+      "senseOrContext": "college institution",
+      "preferredSpellingEvidence": [
+        {
+          "sources": [
+            {
+              "sourceId": "S01",
+              "url": "https://microdata.nsonepal.gov.np/index.php/catalog/149/variable/F47/V716?name=s06a_desc",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        },
+        {
+          "sources": [
+            {
+              "sourceId": "S21",
+              "url": "https://na.parliament.gov.np/uploads/attachments/nls0lydfk67nspo5.pdf",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_snippet"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "Add only this exact normalized whole key; preserve reserved T/D/S/R/contextual H, native entries, and custom-entry replacement.",
+      "notes": "The survey label supplies directly opened evidence; the parliamentary PDF corroboration is snippet-only.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "doctor",
+      "pilotOrder": 19,
+      "status": "source-assisted-project-preference-authorized-for-implementation",
+      "preferredOutput": "डाक्टर",
+      "proposedOutput": null,
+      "outputCodePoints": [
+        "U+0921",
+        "U+093E",
+        "U+0915",
+        "U+094D",
+        "U+091F",
+        "U+0930"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [
+        "डाक्टर"
+      ],
+      "senseOrContext": "medical practitioner",
+      "preferredSpellingEvidence": [
+        {
+          "sources": [
+            {
+              "sourceId": "S22",
+              "url": "https://dohs.gov.np/pages/scopes/",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_text"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "Add only this exact normalized whole key; preserve reserved T/D/S/R/contextual H, native entries, and custom-entry replacement.",
+      "notes": "डाक्टर is the loanword spelling preference; the existence of चिकित्सक is not a reason to translate the input automatically.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "nurse",
+      "pilotOrder": 20,
+      "status": "source-assisted-project-preference-authorized-for-implementation",
+      "preferredOutput": "नर्स",
+      "proposedOutput": null,
+      "outputCodePoints": [
+        "U+0928",
+        "U+0930",
+        "U+094D",
+        "U+0938"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [
+        "नर्स"
+      ],
+      "senseOrContext": "nursing practitioner",
+      "preferredSpellingEvidence": [
+        {
+          "sources": [
+            {
+              "sourceId": "S22",
+              "url": "https://dohs.gov.np/pages/scopes/",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_text"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "Add only this exact normalized whole key; preserve reserved T/D/S/R/contextual H, native entries, and custom-entry replacement.",
+      "notes": "The health-department page provides usage evidence, not a unique normative spelling decision.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "bus",
+      "pilotOrder": null,
+      "status": "pending-project-review",
+      "preferredOutput": null,
+      "proposedOutput": "बस",
+      "outputCodePoints": [
+        "U+092C",
+        "U+0938"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [],
+      "senseOrContext": "Research observation only; lexical sense and acceptance remain pending.",
+      "preferredSpellingEvidence": [
+        {
+          "sources": [
+            {
+              "sourceId": "S11",
+              "url": "https://sirahatmo.dotm.gov.np/Files/NoticePDF/yenad91fcd9-0782-447f-bdbe-e6f790c723e4_12025-09-08_12-45-27-944.pdf",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_snippet"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "No new built-in alias is authorized.",
+      "notes": "बस can also be native sit/live. Identical Devanagari output makes this less risky than a different-glyph collision; bas should not be labelled always borrowed.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "cricket",
+      "pilotOrder": null,
+      "status": "pending-project-review",
+      "preferredOutput": null,
+      "proposedOutput": "क्रिकेट",
+      "outputCodePoints": [
+        "U+0915",
+        "U+094D",
+        "U+0930",
+        "U+093F",
+        "U+0915",
+        "U+0947",
+        "U+091F"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [],
+      "senseOrContext": "Research observation only; lexical sense and acceptance remain pending.",
+      "preferredSpellingEvidence": [
+        {
+          "sources": [
+            {
+              "sourceId": "S23",
+              "url": "https://nepalpolice.gov.np/news/5436/",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_text"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "No new built-in alias is authorized.",
+      "notes": "Spelling preference remains a project review decision.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "football",
+      "pilotOrder": null,
+      "status": "pending-project-review",
+      "preferredOutput": null,
+      "proposedOutput": "फुटबल",
+      "outputCodePoints": [
+        "U+092B",
+        "U+0941",
+        "U+091F",
+        "U+092C",
+        "U+0932"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [],
+      "senseOrContext": "Research observation only; lexical sense and acceptance remain pending.",
+      "preferredSpellingEvidence": [
+        {
+          "sources": [
+            {
+              "sourceId": "S23",
+              "url": "https://nepalpolice.gov.np/news/5436/",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_text"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [
+        {
+          "spelling": "फूटबल",
+          "sources": [
+            {
+              "sourceId": "S24",
+              "url": "https://president.gov.np/%E0%A4%B0%E0%A4%BE%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%AF-%E0%A4%96%E0%A5%87%E0%A4%B2%E0%A4%95%E0%A5%82%E0%A4%A6-%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%B7%E0%A4%A6%E0%A5%8D%E0%A4%B5/",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_snippet"
+            }
+          ],
+          "status": "pending-variant-review",
+          "acceptedAsCandidate": false
+        }
+      ],
+      "collisionDecision": "No new built-in alias is authorized.",
+      "notes": "Spelling preference remains a project review decision.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "hotel",
+      "pilotOrder": null,
+      "status": "pending-project-review",
+      "preferredOutput": null,
+      "proposedOutput": "होटल",
+      "outputCodePoints": [
+        "U+0939",
+        "U+094B",
+        "U+091F",
+        "U+0932"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [],
+      "senseOrContext": "Research observation only; lexical sense and acceptance remain pending.",
+      "preferredSpellingEvidence": [
+        {
+          "sources": [
+            {
+              "sourceId": "S20",
+              "url": "https://metronews.kathmandu.gov.np/news/detail/201",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_text"
+            }
+          ]
+        },
+        {
+          "sources": [
+            {
+              "sourceId": "S18",
+              "url": "https://giwmscdnone.gov.np/media/pdf_upload/Hotel%20and%20restaurant%20final%20report_vyvvh6g.pdf",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_snippet_for_devanagari"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [
+        {
+          "spelling": "होटेल",
+          "sources": [
+            {
+              "sourceId": "S18",
+              "url": "https://giwmscdnone.gov.np/media/pdf_upload/Hotel%20and%20restaurant%20final%20report_vyvvh6g.pdf",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_snippet_for_devanagari"
+            },
+            {
+              "sourceId": "S19",
+              "url": "https://ftqcojanakpur.gov.np/content/7/guidelines-for-classifying-hotels-and-restaurants-on/",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_snippet_title"
+            }
+          ],
+          "status": "pending-variant-review",
+          "acceptedAsCandidate": false
+        }
+      ],
+      "collisionDecision": "No new built-in alias is authorized.",
+      "notes": "Spelling preference remains a project review decision.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "keyboard",
+      "pilotOrder": null,
+      "status": "pending-project-review",
+      "preferredOutput": null,
+      "proposedOutput": "किबोर्ड",
+      "outputCodePoints": [
+        "U+0915",
+        "U+093F",
+        "U+092C",
+        "U+094B",
+        "U+0930",
+        "U+094D",
+        "U+0921"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [],
+      "senseOrContext": "Research observation only; lexical sense and acceptance remain pending.",
+      "preferredSpellingEvidence": [
+        {
+          "location": "lines 133 and 147",
+          "occurrence": "standalone noun; explicit English Keyboard pairing",
+          "sources": [
+            {
+              "sourceId": "S02",
+              "url": "https://www.nrasg.edu.np/2022/02/hardware.html",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [
+        {
+          "sources": [
+            {
+              "sourceId": "S05",
+              "url": "https://cgs.mosd.bagamati.gov.np/Home/CareerDetail?CareerId=92",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_result_snippet_only"
+            }
+          ],
+          "observationAccessScope": "snippet_only"
+        }
+      ],
+      "observedVariantsPendingReview": [
+        {
+          "spelling": "कि-बोर्ड",
+          "sources": [
+            {
+              "sourceId": "S02",
+              "url": "https://www.nrasg.edu.np/2022/02/hardware.html",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ],
+          "observationAccessScope": "full_page",
+          "status": "pending-variant-review",
+          "acceptedAsCandidate": false
+        },
+        {
+          "spelling": "कि बोर्ड",
+          "sources": [
+            {
+              "sourceId": "S02",
+              "url": "https://www.nrasg.edu.np/2022/02/hardware.html",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ],
+          "observationAccessScope": "full_page",
+          "status": "pending-variant-review",
+          "acceptedAsCandidate": false
+        }
+      ],
+      "collisionDecision": "No new built-in alias is authorized.",
+      "notes": "The same instructional page has joined, spaced and hyphenated forms. A one-token alias is useful, but multi-token input handling needs a separate policy.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "laptop",
+      "pilotOrder": null,
+      "status": "pending-project-review",
+      "preferredOutput": null,
+      "proposedOutput": "ल्यापटप",
+      "outputCodePoints": [
+        "U+0932",
+        "U+094D",
+        "U+092F",
+        "U+093E",
+        "U+092A",
+        "U+091F",
+        "U+092A"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [],
+      "senseOrContext": "Research observation only; lexical sense and acceptance remain pending.",
+      "preferredSpellingEvidence": [
+        {
+          "location": "lines 103 and 142",
+          "occurrence": "standalone noun",
+          "sources": [
+            {
+              "sourceId": "S04",
+              "url": "https://www.actnowstaysecure.gov.au/translated/nepali",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        },
+        {
+          "location": "related-news title and summary at line 78",
+          "occurrence": "standalone noun; secondary article listing on opened official page",
+          "sources": [
+            {
+              "sourceId": "S03",
+              "url": "https://www.nepalpolice.gov.np/news/3008/",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [
+        {
+          "sources": [
+            {
+              "sourceId": "S07",
+              "url": "https://www.erc.gov.np/procurement-notice",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_result_snippet_only"
+            }
+          ],
+          "observationAccessScope": "snippet_only"
+        }
+      ],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "No new built-in alias is authorized.",
+      "notes": "Nepal-specific full-page evidence here is a related-news listing; the main laptop police article could not be opened. Foreign official Nepali guidance directly corroborates the whole word.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "microphone",
+      "pilotOrder": null,
+      "status": "pending-project-review",
+      "preferredOutput": null,
+      "proposedOutput": "माइक्रोफोन",
+      "outputCodePoints": [
+        "U+092E",
+        "U+093E",
+        "U+0907",
+        "U+0915",
+        "U+094D",
+        "U+0930",
+        "U+094B",
+        "U+092B",
+        "U+094B",
+        "U+0928"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [],
+      "senseOrContext": "Research observation only; lexical sense and acceptance remain pending.",
+      "preferredSpellingEvidence": [
+        {
+          "location": "line 151",
+          "occurrence": "standalone noun; explicit English Microphone pairing",
+          "sources": [
+            {
+              "sourceId": "S02",
+              "url": "https://www.nrasg.edu.np/2022/02/hardware.html",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        },
+        {
+          "location": "line 460",
+          "occurrence": "unsuffixed noun before a possessive particle",
+          "sources": [
+            {
+              "sourceId": "S04",
+              "url": "https://www.actnowstaysecure.gov.au/translated/nepali",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [
+        {
+          "sources": [
+            {
+              "sourceId": "S05",
+              "url": "https://cgs.mosd.bagamati.gov.np/Home/CareerDetail?CareerId=92",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_result_snippet_only"
+            }
+          ],
+          "observationAccessScope": "snippet_only"
+        }
+      ],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "No new built-in alias is authorized.",
+      "notes": "Strong educational occurrence; choose input aliases explicitly if allowing shortened mic.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "office",
+      "pilotOrder": null,
+      "status": "pending-project-review",
+      "preferredOutput": null,
+      "proposedOutput": "अफिस",
+      "outputCodePoints": [
+        "U+0905",
+        "U+092B",
+        "U+093F",
+        "U+0938"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [],
+      "senseOrContext": "Research observation only; lexical sense and acceptance remain pending.",
+      "preferredSpellingEvidence": [
+        {
+          "sources": [
+            {
+              "sourceId": "S16",
+              "url": "https://kvcio.nepalpolice.gov.np/news/401/",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_snippet"
+            }
+          ]
+        },
+        {
+          "sources": [
+            {
+              "sourceId": "S17",
+              "url": "https://www.nepaltrust.gov.np/",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_snippet"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "No new built-in alias is authorized.",
+      "notes": "कार्यालय exists and is used by the same institutions; no claim that Nepali lacks an equivalent.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "password",
+      "pilotOrder": null,
+      "status": "pending-project-review",
+      "preferredOutput": null,
+      "proposedOutput": "पासवर्ड",
+      "outputCodePoints": [
+        "U+092A",
+        "U+093E",
+        "U+0938",
+        "U+0935",
+        "U+0930",
+        "U+094D",
+        "U+0921"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [],
+      "senseOrContext": "Research observation only; lexical sense and acceptance remain pending.",
+      "preferredSpellingEvidence": [
+        {
+          "location": "lines 220, 361 and 491",
+          "occurrence": "standalone noun in prose",
+          "sources": [
+            {
+              "sourceId": "S04",
+              "url": "https://www.actnowstaysecure.gov.au/translated/nepali",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [
+        {
+          "sources": [
+            {
+              "sourceId": "S06",
+              "url": "https://nta.gov.np/uploads/contents/NTA%27s%20Cyber%20Security%20Public%20Advisory.pdf",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_result_snippet_only"
+            }
+          ],
+          "observationAccessScope": "snippet_only"
+        }
+      ],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "No new built-in alias is authorized.",
+      "notes": "Nepal primary NTA occurrence is snippet-only; foreign official Nepali page fully corroborates the word. Passphrase is a separate lexical item, not a spelling variant.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "restaurant",
+      "pilotOrder": null,
+      "status": "pending-project-review",
+      "preferredOutput": null,
+      "proposedOutput": "रेस्टुरेन्ट",
+      "outputCodePoints": [
+        "U+0930",
+        "U+0947",
+        "U+0938",
+        "U+094D",
+        "U+091F",
+        "U+0941",
+        "U+0930",
+        "U+0947",
+        "U+0928",
+        "U+094D",
+        "U+091F"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [],
+      "senseOrContext": "Research observation only; lexical sense and acceptance remain pending.",
+      "preferredSpellingEvidence": [
+        {
+          "sources": [
+            {
+              "sourceId": "S18",
+              "url": "https://giwmscdnone.gov.np/media/pdf_upload/Hotel%20and%20restaurant%20final%20report_vyvvh6g.pdf",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_snippet_for_devanagari"
+            }
+          ]
+        },
+        {
+          "sources": [
+            {
+              "sourceId": "S19",
+              "url": "https://ftqcojanakpur.gov.np/content/7/guidelines-for-classifying-hotels-and-restaurants-on/",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_snippet_title"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [
+        {
+          "spelling": "रेष्टुरेन्ट",
+          "sources": [
+            {
+              "sourceId": "S20",
+              "url": "https://metronews.kathmandu.gov.np/news/detail/201",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_text"
+            }
+          ],
+          "status": "pending-variant-review",
+          "acceptedAsCandidate": false
+        }
+      ],
+      "collisionDecision": "No new built-in alias is authorized.",
+      "notes": "रेस्टुरेन्ट supported by NSO and food-control titles; रेष्टुरेन्ट verified in Kathmandu city article. Preferred output is a product choice, not universal normative claim.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "speaker",
+      "pilotOrder": null,
+      "status": "pending-project-review",
+      "preferredOutput": null,
+      "proposedOutput": "स्पिकर",
+      "outputCodePoints": [
+        "U+0938",
+        "U+094D",
+        "U+092A",
+        "U+093F",
+        "U+0915",
+        "U+0930"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [],
+      "senseOrContext": "Research observation only; lexical sense and acceptance remain pending.",
+      "preferredSpellingEvidence": [
+        {
+          "location": "lines 122, 126 and 172",
+          "occurrence": "standalone device noun; explicit English Speaker pairing",
+          "sources": [
+            {
+              "sourceId": "S02",
+              "url": "https://www.nrasg.edu.np/2022/02/hardware.html",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [
+        {
+          "spelling": "स्पीकर",
+          "sources": [
+            {
+              "sourceId": "S05",
+              "url": "https://cgs.mosd.bagamati.gov.np/Home/CareerDetail?CareerId=92",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_result_snippet_only"
+            }
+          ],
+          "observationAccessScope": "snippet_only",
+          "status": "pending-variant-review",
+          "acceptedAsCandidate": false
+        }
+      ],
+      "collisionDecision": "No new built-in alias is authorized.",
+      "notes": "Device sense only; English speaker may also denote a person or an official. Vowel-length variant is provisional until full-page Nepal source review.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "ticket",
+      "pilotOrder": null,
+      "status": "pending-project-review",
+      "preferredOutput": null,
+      "proposedOutput": "टिकट",
+      "outputCodePoints": [
+        "U+091F",
+        "U+093F",
+        "U+0915",
+        "U+091F"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [],
+      "senseOrContext": "Research observation only; lexical sense and acceptance remain pending.",
+      "preferredSpellingEvidence": [
+        {
+          "sources": [
+            {
+              "sourceId": "S12",
+              "url": "https://tmobaglung.gandaki.gov.np/page/directive-working-procedure",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_snippet"
+            }
+          ]
+        },
+        {
+          "sources": [
+            {
+              "sourceId": "S11",
+              "url": "https://sirahatmo.dotm.gov.np/Files/NoticePDF/yenad91fcd9-0782-447f-bdbe-e6f790c723e4_12025-09-08_12-45-27-944.pdf",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_snippet"
+            }
+          ]
+        },
+        {
+          "sources": [
+            {
+              "sourceId": "S26",
+              "url": "https://hr.parliament.gov.np/uploads/attachments/ebfbuw1xahvo14fn.pdf",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_snippet"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "No new built-in alias is authorized.",
+      "notes": "Spelling preference remains a project review decision.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "train",
+      "pilotOrder": null,
+      "status": "deferred-lexical-choice",
+      "preferredOutput": null,
+      "proposedOutput": "ट्रेन",
+      "outputCodePoints": [
+        "U+091F",
+        "U+094D",
+        "U+0930",
+        "U+0947",
+        "U+0928"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [],
+      "senseOrContext": "Research observation only; lexical sense and acceptance remain pending.",
+      "preferredSpellingEvidence": [
+        {
+          "sources": [
+            {
+              "sourceId": "S25",
+              "url": "https://nia.gov.np/Admin/images/Law/Directive/65fd164964b9e_1711085129.pdf",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_snippet"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [],
+      "observedVariantsPendingReview": [],
+      "collisionDecision": "No new built-in alias is authorized.",
+      "notes": "ट्रेन has official bilingual snippet evidence, but रेल is also normal official transport usage. Mapping train to रेल is semantic translation, so keep it separate from direct loan spelling.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    },
+    {
+      "normalizedRomanKey": "wifi",
+      "pilotOrder": null,
+      "status": "pending-project-review",
+      "preferredOutput": null,
+      "proposedOutput": "वाइफाइ",
+      "outputCodePoints": [
+        "U+0935",
+        "U+093E",
+        "U+0907",
+        "U+092B",
+        "U+093E",
+        "U+0907"
+      ],
+      "outputIsNfc": true,
+      "acceptedCandidates": [],
+      "senseOrContext": "Research observation only; lexical sense and acceptance remain pending.",
+      "preferredSpellingEvidence": [
+        {
+          "location": "lines 467, 480 and 487",
+          "occurrence": "whole noun in prose and heading",
+          "sources": [
+            {
+              "sourceId": "S04",
+              "url": "https://www.actnowstaysecure.gov.au/translated/nepali",
+              "accessedOn": "2026-09-27",
+              "accessScope": "full_page_unicode_html"
+            }
+          ]
+        }
+      ],
+      "provisionalCorroboration": [
+        {
+          "sources": [
+            {
+              "sourceId": "S06",
+              "url": "https://nta.gov.np/uploads/contents/NTA%27s%20Cyber%20Security%20Public%20Advisory.pdf",
+              "accessedOn": "2026-09-27",
+              "accessScope": "search_result_snippet_only"
+            }
+          ],
+          "observationAccessScope": "snippet_only"
+        }
+      ],
+      "observedVariantsPendingReview": [
+        {
+          "spelling": "वाइफाई",
+          "sources": [
+            {
+              "sourceId": "S27",
+              "url": "https://barhathwamun.gov.np/ne/node/181",
+              "accessedOn": "2026-09-27",
+              "accessScope": "snippet_only"
+            }
+          ],
+          "observationAccessScope": "snippet_only",
+          "status": "pending-variant-review",
+          "acceptedAsCandidate": false
+        }
+      ],
+      "collisionDecision": "No new built-in alias is authorized.",
+      "notes": "Full official translation supports वाइफाइ; Nepal authority evidence is currently snippet-only. English input forms wifi, wi-fi and WiFi should be deliberate aliases.",
+      "independentHumanReview": false,
+      "admittedAsHumanReviewedCorpusLabel": false
+    }
+  ],
+  "limits": [
+    "Source occurrence does not establish a unique normative spelling, a preferred Roman input, measured frequency, or absence of a Nepali equivalent.",
+    "Source-assisted implementation authorization is separate from independent human linguistic review.",
+    "A normalized complete key uses the dictionary; unlisted spellings and attached forms such as camerako retain the existing phonetic fallback.",
+    "Reserved T/D/S/R and contextual H behavior is preserved; no blanket lowercasing or new cased aliases are authorized.",
+    "Whole-field English exclusion and disabled conversion work; URLs, code, addresses and English spans inside a Nepali field are not automatically protected.",
+    "Only source metadata and observations are redistributed here; no raw source datasets or bulk source text are included."
+  ]
+}

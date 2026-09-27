@@ -91,39 +91,55 @@ The textbook occurrence of लेप्र्याउँदै was visually che
 
 ## Reproduce the checks
 
-Use the same current fixture file for both engines. From a checkout containing this change:
+This dated record uses two frozen revisions and the **recorded after revision's 50-contract fixture**. The current engine and fixture have since changed; see the [loanword benchmark record](loanword-benchmarks.md) for the latest 85-contract results. Run the following from a checkout containing both recorded commits. The snapshots are extracted into temporary directories and do not change the caller's checkout:
 
 ```sh
 RY_BASELINE_DIR="$(mktemp -d /tmp/sahajlipi-ry-baseline.XXXXXX)"
-git worktree add --detach "$RY_BASELINE_DIR" e029d02af98f3af5fde2b656fc0a0f1a5cb86912
-node "$RY_BASELINE_DIR/benchmark/run.js" --fixtures "$PWD/benchmark/cases.jsonl" --check
-npm test
-npm run benchmark -- --check
+RY_RECORDED_AFTER_DIR="$(mktemp -d /tmp/sahajlipi-ry-recorded-after.XXXXXX)"
+git archive e029d02af98f3af5fde2b656fc0a0f1a5cb86912 | tar -x -C "$RY_BASELINE_DIR"
+git archive 43b5a008366c943309f44bebfbae4e6df24f6173 | tar -x -C "$RY_RECORDED_AFTER_DIR"
+node "$RY_BASELINE_DIR/benchmark/run.js" --fixtures "$RY_RECORDED_AFTER_DIR/benchmark/cases.jsonl" --check
+node "$RY_RECORDED_AFTER_DIR/benchmark/run.js" --fixtures "$RY_RECORDED_AFTER_DIR/benchmark/cases.jsonl" --check
+(cd "$RY_RECORDED_AFTER_DIR" && npm test)
 ```
 
-The baseline command exits 1 because the newly added contracts deliberately differ from the older engine. The current contract command exits 0. Both report two exploratory misses. The original benchmark result can be reproduced by running the baseline runner with its own fixture file.
+The baseline seed command exits 1 and reports **38/50** contracts. The recorded after seed command exits 0 and reports **50/50** contracts; both retain the two exploratory misses. The test command runs the recorded after revision's **122 tests**. The frozen fixture SHA-256 is `437646bd9dd22c32d382318997906e29dce4b8087b458c901ec010d956f04eee`. To reproduce the original 28-contract baseline separately, run the baseline runner with its own fixture:
 
-For the pinned public word comparison, download and verify the data using the [external evaluation guide](external-evaluation.md), then run:
+```sh
+node "$RY_BASELINE_DIR/benchmark/run.js" --check
+```
+
+For the pinned public word comparison, download and verify the data using the [external evaluation guide](external-evaluation.md), then use each snapshot's own scorer:
 
 ```sh
 RY_TEST_FILE="$PWD/benchmark/data/nep_test.json"
 (cd "$RY_BASELINE_DIR" && node benchmark/aksharantar.js --data "$RY_TEST_FILE" --examples 0)
-npm run benchmark:aksharantar -- --data "$RY_TEST_FILE" --examples 0
+(cd "$RY_RECORDED_AFTER_DIR" && node benchmark/aksharantar.js --data "$RY_TEST_FILE" --examples 0)
 ```
 
-For the original development agreement, regenerate or use the preserved batch as described in the [review guide](review-batch.md). Its case file must match the SHA-256 recorded in the machine report. Evaluate the unchanged cohort with each engine:
+Both frozen engines report **279/4,101** top and candidate matches. Extracted snapshots have no Git metadata. The scorer's optional revision lookup prints a `not a git repository` diagnostic and an unavailable revision label; the two commits above and the machine report's engine file hashes identify these engines. These counts reproduce the dated public-test comparison.
+
+For the original development agreement, regenerate or use the preserved batch as described in the [review guide](review-batch.md). Its original case file must have SHA-256 `2f92bcf5a16d35b6a31dca052e4e358ffe417b5dcec0e8cc704d17f8acbf23e3`. Evaluate that same unchanged cohort with each snapshot's own diagnostic module:
 
 ```sh
-node --input-type=module - "$RY_BASELINE_DIR" "$PWD/benchmark/data/review-batch-001/cases.jsonl" <<'JS'
-import { readFile } from "node:fs/promises";
-import { pathToFileURL } from "node:url";
-const { diagnoseReviewBatch } = await import(pathToFileURL(process.argv[2] + "/benchmark/review-batch-core.js").href);
-const cases = (await readFile(process.argv[3], "utf8")).split(/\r?\n/).filter(Boolean).map(JSON.parse);
-console.log(JSON.stringify(diagnoseReviewBatch(cases).summary, null, 2));
+node --input-type=module - "$RY_BASELINE_DIR" "$RY_RECORDED_AFTER_DIR" "$PWD/benchmark/data/review-batch-001/cases.jsonl" <<'JS'
+import { readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { pathToFileURL } from 'node:url';
+const bytes = await readFile(process.argv[4]);
+const expected = '2f92bcf5a16d35b6a31dca052e4e358ffe417b5dcec0e8cc704d17f8acbf23e3';
+if (createHash('sha256').update(bytes).digest('hex') !== expected) {
+  throw new Error('The original source-proposal cohort changed');
+}
+const cases = bytes.toString('utf8').split(/\r?\n/).filter(Boolean).map(JSON.parse);
+for (const root of process.argv.slice(2, 4)) {
+  const { diagnoseReviewBatch } = await import(pathToFileURL(root + '/benchmark/review-batch-core.js'));
+  console.log(JSON.stringify(diagnoseReviewBatch(cases).summary, null, 2));
+}
 JS
 ```
 
-Repeat the last command with `"$PWD"` as its first argument to use the current engine. This prints aggregate counts without source sentences. Preserve edited reviewer sheets when creating or reusing a batch. Remove the temporary baseline with `git worktree remove "$RY_BASELINE_DIR"` when finished.
+Both report **7/100** exact source-proposal matches, with 7/80 word matches and 0/20 sentence matches. This prints aggregate counts without source sentences. Preserve source cases and edited reviewer sheets when creating or reusing a batch. The two temporary snapshot directories may be deleted when finished.
 
 ## Before a developer alpha
 

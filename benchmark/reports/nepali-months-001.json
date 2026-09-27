@@ -1,0 +1,1886 @@
+{
+  "schemaVersion": 1,
+  "reportId": "nepali-months-001",
+  "recordedAt": "2026-09-27T08:59:36.634Z",
+  "purpose": "project behavior regression and descriptive unchanged-label external comparison",
+  "baseline": {
+    "gitCommit": "264f24945d150d8aa084f42522e859d2fabd216c",
+    "snapshotMethod": "git archive of the immutable pre-months commit into a temporary directory",
+    "engineFileHashes": {
+      "src/index.js": "fdcbd9a89a465825bde899f356ca783adba81e8f4da37d904fab1daf3a78f4d6",
+      "src/lexicon.js": "cf4ff5fc17ef1cdaf01fc7db3a8a30dfc7143e8bab22919ac61bd139971d4930",
+      "src/phonetic.js": "dec43061ce47d8456092b661a4b1ea7b5d366d2c7969a4f2b6f3b1b0c20ff1ff",
+      "src/dom.js": "306560266b2ebdb5a1fb6c9d92a40cdc6fd67ab97346bbbd62150193230e884d",
+      "src/index.d.ts": "e993a3847b9348a29f9e9e526bc4473c236458934281f530192a47e021d221fe",
+      "src/dom.d.ts": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1"
+    }
+  },
+  "after": {
+    "identity": "modified working tree based on 264f24945d150d8aa084f42522e859d2fabd216c; identified by engine file hashes, no uncreated commit ID assigned",
+    "engineFileHashes": {
+      "src/index.js": "4095d0dde6d98a4c8c90bff1971a88b0d68f814c6a744b12ef7d77b8f1a0c1b0",
+      "src/lexicon.js": "0e5c26111dcebac1fe43bc4ae2d14a236653b42e6f676f43dbc549983f6806c0",
+      "src/phonetic.js": "dec43061ce47d8456092b661a4b1ea7b5d366d2c7969a4f2b6f3b1b0c20ff1ff",
+      "src/dom.js": "306560266b2ebdb5a1fb6c9d92a40cdc6fd67ab97346bbbd62150193230e884d",
+      "src/index.d.ts": "e993a3847b9348a29f9e9e526bc4473c236458934281f530192a47e021d221fe",
+      "src/dom.d.ts": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1"
+    }
+  },
+  "environment": {
+    "nodeVersion": "v22.22.3",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "25.6.0",
+    "recordedOn": "2026-09-27"
+  },
+  "sourceReview": {
+    "researchDate": "2026-09-27",
+    "projectAuthorizationDate": "2026-09-27",
+    "reviewKind": "official CLDR-assisted project spelling choices, without independent human linguistic review",
+    "implementedEntryCount": 12,
+    "sourceData": {
+      "publisher": "Unicode Consortium / unicode-org",
+      "repository": "unicode-org/cldr-json",
+      "tag": "48.2.1",
+      "commit": "26a79cb42bfcc90def764102aa2af126d9ef3108",
+      "package": "cldr-dates-full",
+      "packageVersion": "48.2.1",
+      "sourcePath": "cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+      "sourceUrl": "https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+      "rawSourceUrl": "https://raw.githubusercontent.com/unicode-org/cldr-json/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+      "sha256": "cb31c68c4b999191d8eaee6262d8d205f68a7b0a99df6b0cda94e422963e5d9b",
+      "jsonPath": "main.ne.dates.calendars.gregorian.months.format.wide",
+      "calendar": "gregorian",
+      "width": "wide",
+      "releaseStatus": "Stable tagged JSON package patch release 48.2.1 (2026-07-08), following stable CLDR 48.2 (2026-03-17); patch release addresses updated time-zone rules, according to its release note.",
+      "releaseUrl": "https://github.com/unicode-org/cldr-json/releases/tag/48.2.1",
+      "cldrReleaseNotesUrl": "https://cldr.unicode.org/downloads/cldr-48",
+      "cldrReleasesUrl": "https://cldr.unicode.org/index/downloads",
+      "newerDevelopmentStatus": "CLDR 49 beta announced 2026-09-25; not used for selected month outputs.",
+      "newerDevelopmentStatusUrl": "https://blog.unicode.org/2026/09/unicode-cldr-49-beta-available-for.html",
+      "generationStatus": "JSON is generated from official XML using CLDR tooling; pinned README says included data meet contributed or approved draft threshold. This does not establish independent human review for the project.",
+      "readmeUrl": "https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/README.md",
+      "packageMetadataUrl": "https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/package.json",
+      "xmlCrossCheckUrl": "https://raw.githubusercontent.com/unicode-org/cldr/release-48-2/common/main/ne.xml",
+      "xmlCrossCheckScope": "Gregorian format wide nodes 1 through 12 observed in official release-48-2 XML; raw standalone wide nodes use inheritance markers. Resolved standalone spellings verified in the pinned JSON."
+    },
+    "researchRecord": "benchmark/reports/month-research-2026-09-27.json",
+    "researchRecordSha256": "d3672780680fc6414788fdd6d75d2503baaeb624d22f5a1e6d017f204ae658cb",
+    "sourceSelectionBeforeExternalEvaluation": true,
+    "entriesSelectedFromTestMisses": false,
+    "humanVerified": false,
+    "independentHumanReview": false,
+    "admittedCanonicalReviews": 0
+  },
+  "implementedEntries": [
+    {
+      "input": "january",
+      "titleCaseInput": "January",
+      "output": "जनवरी",
+      "codePoints": [
+        "U+091C",
+        "U+0928",
+        "U+0935",
+        "U+0930",
+        "U+0940"
+      ]
+    },
+    {
+      "input": "february",
+      "titleCaseInput": "February",
+      "output": "फेब्रुअरी",
+      "codePoints": [
+        "U+092B",
+        "U+0947",
+        "U+092C",
+        "U+094D",
+        "U+0930",
+        "U+0941",
+        "U+0905",
+        "U+0930",
+        "U+0940"
+      ]
+    },
+    {
+      "input": "march",
+      "titleCaseInput": "March",
+      "output": "मार्च",
+      "codePoints": [
+        "U+092E",
+        "U+093E",
+        "U+0930",
+        "U+094D",
+        "U+091A"
+      ]
+    },
+    {
+      "input": "april",
+      "titleCaseInput": "April",
+      "output": "अप्रिल",
+      "codePoints": [
+        "U+0905",
+        "U+092A",
+        "U+094D",
+        "U+0930",
+        "U+093F",
+        "U+0932"
+      ]
+    },
+    {
+      "input": "may",
+      "titleCaseInput": "May",
+      "output": "मे",
+      "codePoints": [
+        "U+092E",
+        "U+0947"
+      ]
+    },
+    {
+      "input": "june",
+      "titleCaseInput": "June",
+      "output": "जुन",
+      "codePoints": [
+        "U+091C",
+        "U+0941",
+        "U+0928"
+      ]
+    },
+    {
+      "input": "july",
+      "titleCaseInput": "July",
+      "output": "जुलाई",
+      "codePoints": [
+        "U+091C",
+        "U+0941",
+        "U+0932",
+        "U+093E",
+        "U+0908"
+      ]
+    },
+    {
+      "input": "august",
+      "titleCaseInput": "August",
+      "output": "अगस्ट",
+      "codePoints": [
+        "U+0905",
+        "U+0917",
+        "U+0938",
+        "U+094D",
+        "U+091F"
+      ]
+    },
+    {
+      "input": "september",
+      "titleCaseInput": "September",
+      "output": "सेप्टेम्बर",
+      "codePoints": [
+        "U+0938",
+        "U+0947",
+        "U+092A",
+        "U+094D",
+        "U+091F",
+        "U+0947",
+        "U+092E",
+        "U+094D",
+        "U+092C",
+        "U+0930"
+      ]
+    },
+    {
+      "input": "october",
+      "titleCaseInput": "October",
+      "output": "अक्टोबर",
+      "codePoints": [
+        "U+0905",
+        "U+0915",
+        "U+094D",
+        "U+091F",
+        "U+094B",
+        "U+092C",
+        "U+0930"
+      ]
+    },
+    {
+      "input": "november",
+      "titleCaseInput": "November",
+      "output": "नोभेम्बर",
+      "codePoints": [
+        "U+0928",
+        "U+094B",
+        "U+092D",
+        "U+0947",
+        "U+092E",
+        "U+094D",
+        "U+092C",
+        "U+0930"
+      ]
+    },
+    {
+      "input": "december",
+      "titleCaseInput": "December",
+      "output": "डिसेम्बर",
+      "codePoints": [
+        "U+0921",
+        "U+093F",
+        "U+0938",
+        "U+0947",
+        "U+092E",
+        "U+094D",
+        "U+092C",
+        "U+0930"
+      ]
+    }
+  ],
+  "titleCaseContract": {
+    "supportedFullNames": 12,
+    "explicitReservedInitialAliases": [
+      "September",
+      "December"
+    ],
+    "customLowercaseReplacementInherited": true,
+    "exactNormalizedCasedCustomEntryTakesPriority": true,
+    "blanketCaseFolding": false,
+    "otherReservedShiftInputsRetainPhoneticBehavior": true,
+    "basis": "Explicit whole-word aliases use the same constructor inheritance behavior as existing Ram/Sita aliases; no public API added."
+  },
+  "projectContractConformance": {
+    "originalCurrentFixture": {
+      "sha256": "400b680734b6c26b1f1ca838ea4955132766af406e1facb138633a4d2cbf5b64",
+      "rowCount": 87,
+      "before": {
+        "contract": {
+          "total": 85,
+          "passed": 85,
+          "wordTotal": 80,
+          "wordTop": 80,
+          "candidateTotal": 82,
+          "candidateHits": 82,
+          "textTotal": 5,
+          "textTop": 5,
+          "categories": {
+            "lexicon": {
+              "total": 3,
+              "passed": 3
+            },
+            "ambiguity": {
+              "total": 1,
+              "passed": 1
+            },
+            "phonetic": {
+              "total": 5,
+              "passed": 5
+            },
+            "shift": {
+              "total": 16,
+              "passed": 16
+            },
+            "marks": {
+              "total": 2,
+              "passed": 2
+            },
+            "explicit": {
+              "total": 4,
+              "passed": 4
+            },
+            "punctuation": {
+              "total": 2,
+              "passed": 2
+            },
+            "ry-lexicon": {
+              "total": 10,
+              "passed": 10
+            },
+            "ry-phonetic": {
+              "total": 6,
+              "passed": 6
+            },
+            "ry-text": {
+              "total": 1,
+              "passed": 1
+            },
+            "loanword-lexicon": {
+              "total": 20,
+              "passed": 20
+            },
+            "ch-cha": {
+              "total": 2,
+              "passed": 2
+            },
+            "loanword-case": {
+              "total": 2,
+              "passed": 2
+            },
+            "loanword-shift": {
+              "total": 4,
+              "passed": 4
+            },
+            "loanword-boundary": {
+              "total": 2,
+              "passed": 2
+            },
+            "loanword-collision": {
+              "total": 3,
+              "passed": 3
+            },
+            "loanword-text": {
+              "total": 2,
+              "passed": 2
+            }
+          }
+        },
+        "exploratory": {
+          "total": 2,
+          "passed": 0,
+          "wordTotal": 2,
+          "wordTop": 0,
+          "candidateTotal": 2,
+          "candidateHits": 0,
+          "textTotal": 0,
+          "textTop": 0,
+          "categories": {
+            "proposed-spelling": {
+              "total": 2,
+              "passed": 0
+            }
+          }
+        }
+      },
+      "after": {
+        "contract": {
+          "total": 85,
+          "passed": 85,
+          "wordTotal": 80,
+          "wordTop": 80,
+          "candidateTotal": 82,
+          "candidateHits": 82,
+          "textTotal": 5,
+          "textTop": 5,
+          "categories": {
+            "lexicon": {
+              "total": 3,
+              "passed": 3
+            },
+            "ambiguity": {
+              "total": 1,
+              "passed": 1
+            },
+            "phonetic": {
+              "total": 5,
+              "passed": 5
+            },
+            "shift": {
+              "total": 16,
+              "passed": 16
+            },
+            "marks": {
+              "total": 2,
+              "passed": 2
+            },
+            "explicit": {
+              "total": 4,
+              "passed": 4
+            },
+            "punctuation": {
+              "total": 2,
+              "passed": 2
+            },
+            "ry-lexicon": {
+              "total": 10,
+              "passed": 10
+            },
+            "ry-phonetic": {
+              "total": 6,
+              "passed": 6
+            },
+            "ry-text": {
+              "total": 1,
+              "passed": 1
+            },
+            "loanword-lexicon": {
+              "total": 20,
+              "passed": 20
+            },
+            "ch-cha": {
+              "total": 2,
+              "passed": 2
+            },
+            "loanword-case": {
+              "total": 2,
+              "passed": 2
+            },
+            "loanword-shift": {
+              "total": 4,
+              "passed": 4
+            },
+            "loanword-boundary": {
+              "total": 2,
+              "passed": 2
+            },
+            "loanword-collision": {
+              "total": 3,
+              "passed": 3
+            },
+            "loanword-text": {
+              "total": 2,
+              "passed": 2
+            }
+          }
+        },
+        "exploratory": {
+          "total": 2,
+          "passed": 0,
+          "wordTotal": 2,
+          "wordTop": 0,
+          "candidateTotal": 2,
+          "candidateHits": 0,
+          "textTotal": 0,
+          "textTop": 0,
+          "categories": {
+            "proposed-spelling": {
+              "total": 2,
+              "passed": 0
+            }
+          }
+        }
+      },
+      "all87OriginalRowsPreservedByteForByte": true
+    },
+    "sameFinalFixture": {
+      "sha256": "2ed3e1aba19bfaaf2c48fa8b07f9dac9de3639ced2c6048648c206d486aa99ac",
+      "rowCount": 111,
+      "before": {
+        "contract": {
+          "total": 109,
+          "passed": 91,
+          "wordTotal": 102,
+          "wordTop": 86,
+          "candidateTotal": 104,
+          "candidateHits": 88,
+          "textTotal": 7,
+          "textTop": 5,
+          "categories": {
+            "lexicon": {
+              "total": 3,
+              "passed": 3
+            },
+            "ambiguity": {
+              "total": 1,
+              "passed": 1
+            },
+            "phonetic": {
+              "total": 5,
+              "passed": 5
+            },
+            "shift": {
+              "total": 16,
+              "passed": 16
+            },
+            "marks": {
+              "total": 2,
+              "passed": 2
+            },
+            "explicit": {
+              "total": 4,
+              "passed": 4
+            },
+            "punctuation": {
+              "total": 2,
+              "passed": 2
+            },
+            "ry-lexicon": {
+              "total": 10,
+              "passed": 10
+            },
+            "ry-phonetic": {
+              "total": 6,
+              "passed": 6
+            },
+            "ry-text": {
+              "total": 1,
+              "passed": 1
+            },
+            "loanword-lexicon": {
+              "total": 20,
+              "passed": 20
+            },
+            "ch-cha": {
+              "total": 2,
+              "passed": 2
+            },
+            "loanword-case": {
+              "total": 2,
+              "passed": 2
+            },
+            "loanword-shift": {
+              "total": 4,
+              "passed": 4
+            },
+            "loanword-boundary": {
+              "total": 2,
+              "passed": 2
+            },
+            "loanword-collision": {
+              "total": 3,
+              "passed": 3
+            },
+            "loanword-text": {
+              "total": 2,
+              "passed": 2
+            },
+            "month-lexicon": {
+              "total": 12,
+              "passed": 0
+            },
+            "month-case": {
+              "total": 4,
+              "passed": 0
+            },
+            "month-shift": {
+              "total": 4,
+              "passed": 4
+            },
+            "month-boundary": {
+              "total": 2,
+              "passed": 2
+            },
+            "month-text": {
+              "total": 2,
+              "passed": 0
+            }
+          }
+        },
+        "exploratory": {
+          "total": 2,
+          "passed": 0,
+          "wordTotal": 2,
+          "wordTop": 0,
+          "candidateTotal": 2,
+          "candidateHits": 0,
+          "textTotal": 0,
+          "textTop": 0,
+          "categories": {
+            "proposed-spelling": {
+              "total": 2,
+              "passed": 0
+            }
+          }
+        }
+      },
+      "after": {
+        "contract": {
+          "total": 109,
+          "passed": 109,
+          "wordTotal": 102,
+          "wordTop": 102,
+          "candidateTotal": 104,
+          "candidateHits": 104,
+          "textTotal": 7,
+          "textTop": 7,
+          "categories": {
+            "lexicon": {
+              "total": 3,
+              "passed": 3
+            },
+            "ambiguity": {
+              "total": 1,
+              "passed": 1
+            },
+            "phonetic": {
+              "total": 5,
+              "passed": 5
+            },
+            "shift": {
+              "total": 16,
+              "passed": 16
+            },
+            "marks": {
+              "total": 2,
+              "passed": 2
+            },
+            "explicit": {
+              "total": 4,
+              "passed": 4
+            },
+            "punctuation": {
+              "total": 2,
+              "passed": 2
+            },
+            "ry-lexicon": {
+              "total": 10,
+              "passed": 10
+            },
+            "ry-phonetic": {
+              "total": 6,
+              "passed": 6
+            },
+            "ry-text": {
+              "total": 1,
+              "passed": 1
+            },
+            "loanword-lexicon": {
+              "total": 20,
+              "passed": 20
+            },
+            "ch-cha": {
+              "total": 2,
+              "passed": 2
+            },
+            "loanword-case": {
+              "total": 2,
+              "passed": 2
+            },
+            "loanword-shift": {
+              "total": 4,
+              "passed": 4
+            },
+            "loanword-boundary": {
+              "total": 2,
+              "passed": 2
+            },
+            "loanword-collision": {
+              "total": 3,
+              "passed": 3
+            },
+            "loanword-text": {
+              "total": 2,
+              "passed": 2
+            },
+            "month-lexicon": {
+              "total": 12,
+              "passed": 12
+            },
+            "month-case": {
+              "total": 4,
+              "passed": 4
+            },
+            "month-shift": {
+              "total": 4,
+              "passed": 4
+            },
+            "month-boundary": {
+              "total": 2,
+              "passed": 2
+            },
+            "month-text": {
+              "total": 2,
+              "passed": 2
+            }
+          }
+        },
+        "exploratory": {
+          "total": 2,
+          "passed": 0,
+          "wordTotal": 2,
+          "wordTop": 0,
+          "candidateTotal": 2,
+          "candidateHits": 0,
+          "textTotal": 0,
+          "textTop": 0,
+          "categories": {
+            "proposed-spelling": {
+              "total": 2,
+              "passed": 0
+            }
+          }
+        }
+      }
+    },
+    "newContractIds": [
+      "month-january",
+      "month-february",
+      "month-march",
+      "month-april",
+      "month-may",
+      "month-june",
+      "month-july",
+      "month-august",
+      "month-september",
+      "month-october",
+      "month-november",
+      "month-december",
+      "month-title-january",
+      "month-title-may",
+      "month-title-september",
+      "month-title-december",
+      "month-shift-s",
+      "month-shift-d",
+      "month-short-jan",
+      "month-short-sep",
+      "month-internal-shift-r",
+      "month-all-caps",
+      "month-gregorian-date",
+      "month-gregorian-year-boundary"
+    ],
+    "newContractResults": {
+      "before": [
+        {
+          "id": "month-january",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "january",
+          "expectedTop": "जनवरी",
+          "expectedCandidates": [
+            "जनवरी"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "जनुअर्य्",
+          "actualCandidates": [
+            "जनुअर्य्"
+          ],
+          "topMatch": false,
+          "candidateHits": 0,
+          "pass": false
+        },
+        {
+          "id": "month-february",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "february",
+          "expectedTop": "फेब्रुअरी",
+          "expectedCandidates": [
+            "फेब्रुअरी"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "फेब्रुअर्य्",
+          "actualCandidates": [
+            "फेब्रुअर्य्"
+          ],
+          "topMatch": false,
+          "candidateHits": 0,
+          "pass": false
+        },
+        {
+          "id": "month-march",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "march",
+          "expectedTop": "मार्च",
+          "expectedCandidates": [
+            "मार्च"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "मर्च्",
+          "actualCandidates": [
+            "मर्च्"
+          ],
+          "topMatch": false,
+          "candidateHits": 0,
+          "pass": false
+        },
+        {
+          "id": "month-april",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "april",
+          "expectedTop": "अप्रिल",
+          "expectedCandidates": [
+            "अप्रिल"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "अप्रिल्",
+          "actualCandidates": [
+            "अप्रिल्"
+          ],
+          "topMatch": false,
+          "candidateHits": 0,
+          "pass": false
+        },
+        {
+          "id": "month-may",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "may",
+          "expectedTop": "मे",
+          "expectedCandidates": [
+            "मे"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "मय्",
+          "actualCandidates": [
+            "मय्"
+          ],
+          "topMatch": false,
+          "candidateHits": 0,
+          "pass": false
+        },
+        {
+          "id": "month-june",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "june",
+          "expectedTop": "जुन",
+          "expectedCandidates": [
+            "जुन"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "जुने",
+          "actualCandidates": [
+            "जुने"
+          ],
+          "topMatch": false,
+          "candidateHits": 0,
+          "pass": false
+        },
+        {
+          "id": "month-july",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "july",
+          "expectedTop": "जुलाई",
+          "expectedCandidates": [
+            "जुलाई"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "जुल्य्",
+          "actualCandidates": [
+            "जुल्य्"
+          ],
+          "topMatch": false,
+          "candidateHits": 0,
+          "pass": false
+        },
+        {
+          "id": "month-august",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "august",
+          "expectedTop": "अगस्ट",
+          "expectedCandidates": [
+            "अगस्ट"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "औगुस्त्",
+          "actualCandidates": [
+            "औगुस्त्"
+          ],
+          "topMatch": false,
+          "candidateHits": 0,
+          "pass": false
+        },
+        {
+          "id": "month-september",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "september",
+          "expectedTop": "सेप्टेम्बर",
+          "expectedCandidates": [
+            "सेप्टेम्बर"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "सेप्तेम्बेर्",
+          "actualCandidates": [
+            "सेप्तेम्बेर्"
+          ],
+          "topMatch": false,
+          "candidateHits": 0,
+          "pass": false
+        },
+        {
+          "id": "month-october",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "october",
+          "expectedTop": "अक्टोबर",
+          "expectedCandidates": [
+            "अक्टोबर"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "ओच्तोबेर्",
+          "actualCandidates": [
+            "ओच्तोबेर्"
+          ],
+          "topMatch": false,
+          "candidateHits": 0,
+          "pass": false
+        },
+        {
+          "id": "month-november",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "november",
+          "expectedTop": "नोभेम्बर",
+          "expectedCandidates": [
+            "नोभेम्बर"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "नोवेम्बेर्",
+          "actualCandidates": [
+            "नोवेम्बेर्"
+          ],
+          "topMatch": false,
+          "candidateHits": 0,
+          "pass": false
+        },
+        {
+          "id": "month-december",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "december",
+          "expectedTop": "डिसेम्बर",
+          "expectedCandidates": [
+            "डिसेम्बर"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "देचेम्बेर्",
+          "actualCandidates": [
+            "देचेम्बेर्"
+          ],
+          "topMatch": false,
+          "candidateHits": 0,
+          "pass": false
+        },
+        {
+          "id": "month-title-january",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-case",
+          "input": "January",
+          "expectedTop": "जनवरी",
+          "expectedCandidates": [
+            "जनवरी"
+          ],
+          "provenance": "project Title Case month behavior authorized 2026-09-27; September/December exact aliases preserve other Shift keys; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "जनुअर्य्",
+          "actualCandidates": [
+            "जनुअर्य्"
+          ],
+          "topMatch": false,
+          "candidateHits": 0,
+          "pass": false
+        },
+        {
+          "id": "month-title-may",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-case",
+          "input": "May",
+          "expectedTop": "मे",
+          "expectedCandidates": [
+            "मे"
+          ],
+          "provenance": "project Title Case month behavior authorized 2026-09-27; September/December exact aliases preserve other Shift keys; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "मय्",
+          "actualCandidates": [
+            "मय्"
+          ],
+          "topMatch": false,
+          "candidateHits": 0,
+          "pass": false
+        },
+        {
+          "id": "month-title-september",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-case",
+          "input": "September",
+          "expectedTop": "सेप्टेम्बर",
+          "expectedCandidates": [
+            "सेप्टेम्बर"
+          ],
+          "provenance": "project Title Case month behavior authorized 2026-09-27; September/December exact aliases preserve other Shift keys; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "षेप्तेम्बेर्",
+          "actualCandidates": [
+            "षेप्तेम्बेर्"
+          ],
+          "topMatch": false,
+          "candidateHits": 0,
+          "pass": false
+        },
+        {
+          "id": "month-title-december",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-case",
+          "input": "December",
+          "expectedTop": "डिसेम्बर",
+          "expectedCandidates": [
+            "डिसेम्बर"
+          ],
+          "provenance": "project Title Case month behavior authorized 2026-09-27; September/December exact aliases preserve other Shift keys; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "डेचेम्बेर्",
+          "actualCandidates": [
+            "डेचेम्बेर्"
+          ],
+          "topMatch": false,
+          "candidateHits": 0,
+          "pass": false
+        },
+        {
+          "id": "month-shift-s",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-shift",
+          "input": "S",
+          "expectedTop": "ष्",
+          "expectedCandidates": [
+            "ष्"
+          ],
+          "provenance": "existing reserved Shift sound key; month Title Case aliases must preserve standalone key behavior",
+          "actualTop": "ष्",
+          "actualCandidates": [
+            "ष्"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-shift-d",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-shift",
+          "input": "D",
+          "expectedTop": "ड्",
+          "expectedCandidates": [
+            "ड्"
+          ],
+          "provenance": "existing reserved Shift sound key; month Title Case aliases must preserve standalone key behavior",
+          "actualTop": "ड्",
+          "actualCandidates": [
+            "ड्"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-short-jan",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-boundary",
+          "input": "Jan",
+          "expectedTop": "जन्",
+          "expectedCandidates": [
+            "जन्"
+          ],
+          "provenance": "existing phonetic result retained; Gregorian month abbreviations are outside the exact full-name defaults",
+          "actualTop": "जन्",
+          "actualCandidates": [
+            "जन्"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-short-sep",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-boundary",
+          "input": "Sep",
+          "expectedTop": "षेप्",
+          "expectedCandidates": [
+            "षेप्"
+          ],
+          "provenance": "existing phonetic result retained; Gregorian month abbreviations are outside the exact full-name defaults",
+          "actualTop": "षेप्",
+          "actualCandidates": [
+            "षेप्"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-internal-shift-r",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-shift",
+          "input": "septembeR",
+          "expectedTop": "सेप्तेम्बेऋ",
+          "expectedCandidates": [
+            "सेप्तेम्बेऋ"
+          ],
+          "provenance": "existing case-sensitive phonetic result retained; no blanket case folding for full month names",
+          "actualTop": "सेप्तेम्बेऋ",
+          "actualCandidates": [
+            "सेप्तेम्बेऋ"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-all-caps",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-shift",
+          "input": "SEPTEMBER",
+          "expectedTop": "षेप्टेम्बेऋ",
+          "expectedCandidates": [
+            "षेप्टेम्बेऋ"
+          ],
+          "provenance": "existing case-sensitive phonetic result retained; no blanket case folding for full month names",
+          "actualTop": "षेप्टेम्बेऋ",
+          "actualCandidates": [
+            "षेप्टेम्बेऋ"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-gregorian-date",
+          "status": "contract",
+          "mode": "text",
+          "category": "month-text",
+          "input": "September 27, 2026",
+          "expectedTop": "सेप्टेम्बर 27, 2026",
+          "provenance": "project exact month default in Gregorian date text; ASCII digits, year and comma preserved; no calendar conversion",
+          "actualTop": "षेप्तेम्बेर् 27, 2026",
+          "actualCandidates": null,
+          "topMatch": false,
+          "candidateHits": 0,
+          "pass": false
+        },
+        {
+          "id": "month-gregorian-year-boundary",
+          "status": "contract",
+          "mode": "text",
+          "category": "month-text",
+          "input": "December 31, 2026| january 1, 2027",
+          "expectedTop": "डिसेम्बर 31, 2026। जनवरी 1, 2027",
+          "provenance": "project exact Title Case/lowercase month defaults with date punctuation; ASCII digits and Gregorian years retained across year boundary; pipe remains danda, no Bikram Sambat conversion",
+          "actualTop": "डेचेम्बेर् 31, 2026। जनुअर्य् 1, 2027",
+          "actualCandidates": null,
+          "topMatch": false,
+          "candidateHits": 0,
+          "pass": false
+        }
+      ],
+      "after": [
+        {
+          "id": "month-january",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "january",
+          "expectedTop": "जनवरी",
+          "expectedCandidates": [
+            "जनवरी"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "जनवरी",
+          "actualCandidates": [
+            "जनवरी"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-february",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "february",
+          "expectedTop": "फेब्रुअरी",
+          "expectedCandidates": [
+            "फेब्रुअरी"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "फेब्रुअरी",
+          "actualCandidates": [
+            "फेब्रुअरी"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-march",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "march",
+          "expectedTop": "मार्च",
+          "expectedCandidates": [
+            "मार्च"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "मार्च",
+          "actualCandidates": [
+            "मार्च"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-april",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "april",
+          "expectedTop": "अप्रिल",
+          "expectedCandidates": [
+            "अप्रिल"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "अप्रिल",
+          "actualCandidates": [
+            "अप्रिल"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-may",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "may",
+          "expectedTop": "मे",
+          "expectedCandidates": [
+            "मे"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "मे",
+          "actualCandidates": [
+            "मे"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-june",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "june",
+          "expectedTop": "जुन",
+          "expectedCandidates": [
+            "जुन"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "जुन",
+          "actualCandidates": [
+            "जुन"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-july",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "july",
+          "expectedTop": "जुलाई",
+          "expectedCandidates": [
+            "जुलाई"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "जुलाई",
+          "actualCandidates": [
+            "जुलाई"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-august",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "august",
+          "expectedTop": "अगस्ट",
+          "expectedCandidates": [
+            "अगस्ट"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "अगस्ट",
+          "actualCandidates": [
+            "अगस्ट"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-september",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "september",
+          "expectedTop": "सेप्टेम्बर",
+          "expectedCandidates": [
+            "सेप्टेम्बर"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "सेप्टेम्बर",
+          "actualCandidates": [
+            "सेप्टेम्बर"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-october",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "october",
+          "expectedTop": "अक्टोबर",
+          "expectedCandidates": [
+            "अक्टोबर"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "अक्टोबर",
+          "actualCandidates": [
+            "अक्टोबर"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-november",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "november",
+          "expectedTop": "नोभेम्बर",
+          "expectedCandidates": [
+            "नोभेम्बर"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "नोभेम्बर",
+          "actualCandidates": [
+            "नोभेम्बर"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-december",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-lexicon",
+          "input": "december",
+          "expectedTop": "डिसेम्बर",
+          "expectedCandidates": [
+            "डिसेम्बर"
+          ],
+          "provenance": "project month default authorized 2026-09-27; Gregorian wide month names in Unicode CLDR JSON 48.2.1; source-assisted project contract, no independent human labels; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "डिसेम्बर",
+          "actualCandidates": [
+            "डिसेम्बर"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-title-january",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-case",
+          "input": "January",
+          "expectedTop": "जनवरी",
+          "expectedCandidates": [
+            "जनवरी"
+          ],
+          "provenance": "project Title Case month behavior authorized 2026-09-27; September/December exact aliases preserve other Shift keys; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "जनवरी",
+          "actualCandidates": [
+            "जनवरी"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-title-may",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-case",
+          "input": "May",
+          "expectedTop": "मे",
+          "expectedCandidates": [
+            "मे"
+          ],
+          "provenance": "project Title Case month behavior authorized 2026-09-27; September/December exact aliases preserve other Shift keys; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "मे",
+          "actualCandidates": [
+            "मे"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-title-september",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-case",
+          "input": "September",
+          "expectedTop": "सेप्टेम्बर",
+          "expectedCandidates": [
+            "सेप्टेम्बर"
+          ],
+          "provenance": "project Title Case month behavior authorized 2026-09-27; September/December exact aliases preserve other Shift keys; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "सेप्टेम्बर",
+          "actualCandidates": [
+            "सेप्टेम्बर"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-title-december",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-case",
+          "input": "December",
+          "expectedTop": "डिसेम्बर",
+          "expectedCandidates": [
+            "डिसेम्बर"
+          ],
+          "provenance": "project Title Case month behavior authorized 2026-09-27; September/December exact aliases preserve other Shift keys; https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+          "actualTop": "डिसेम्बर",
+          "actualCandidates": [
+            "डिसेम्बर"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-shift-s",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-shift",
+          "input": "S",
+          "expectedTop": "ष्",
+          "expectedCandidates": [
+            "ष्"
+          ],
+          "provenance": "existing reserved Shift sound key; month Title Case aliases must preserve standalone key behavior",
+          "actualTop": "ष्",
+          "actualCandidates": [
+            "ष्"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-shift-d",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-shift",
+          "input": "D",
+          "expectedTop": "ड्",
+          "expectedCandidates": [
+            "ड्"
+          ],
+          "provenance": "existing reserved Shift sound key; month Title Case aliases must preserve standalone key behavior",
+          "actualTop": "ड्",
+          "actualCandidates": [
+            "ड्"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-short-jan",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-boundary",
+          "input": "Jan",
+          "expectedTop": "जन्",
+          "expectedCandidates": [
+            "जन्"
+          ],
+          "provenance": "existing phonetic result retained; Gregorian month abbreviations are outside the exact full-name defaults",
+          "actualTop": "जन्",
+          "actualCandidates": [
+            "जन्"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-short-sep",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-boundary",
+          "input": "Sep",
+          "expectedTop": "षेप्",
+          "expectedCandidates": [
+            "षेप्"
+          ],
+          "provenance": "existing phonetic result retained; Gregorian month abbreviations are outside the exact full-name defaults",
+          "actualTop": "षेप्",
+          "actualCandidates": [
+            "षेप्"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-internal-shift-r",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-shift",
+          "input": "septembeR",
+          "expectedTop": "सेप्तेम्बेऋ",
+          "expectedCandidates": [
+            "सेप्तेम्बेऋ"
+          ],
+          "provenance": "existing case-sensitive phonetic result retained; no blanket case folding for full month names",
+          "actualTop": "सेप्तेम्बेऋ",
+          "actualCandidates": [
+            "सेप्तेम्बेऋ"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-all-caps",
+          "status": "contract",
+          "mode": "word",
+          "category": "month-shift",
+          "input": "SEPTEMBER",
+          "expectedTop": "षेप्टेम्बेऋ",
+          "expectedCandidates": [
+            "षेप्टेम्बेऋ"
+          ],
+          "provenance": "existing case-sensitive phonetic result retained; no blanket case folding for full month names",
+          "actualTop": "षेप्टेम्बेऋ",
+          "actualCandidates": [
+            "षेप्टेम्बेऋ"
+          ],
+          "topMatch": true,
+          "candidateHits": 1,
+          "pass": true
+        },
+        {
+          "id": "month-gregorian-date",
+          "status": "contract",
+          "mode": "text",
+          "category": "month-text",
+          "input": "September 27, 2026",
+          "expectedTop": "सेप्टेम्बर 27, 2026",
+          "provenance": "project exact month default in Gregorian date text; ASCII digits, year and comma preserved; no calendar conversion",
+          "actualTop": "सेप्टेम्बर 27, 2026",
+          "actualCandidates": null,
+          "topMatch": true,
+          "candidateHits": 0,
+          "pass": true
+        },
+        {
+          "id": "month-gregorian-year-boundary",
+          "status": "contract",
+          "mode": "text",
+          "category": "month-text",
+          "input": "December 31, 2026| january 1, 2027",
+          "expectedTop": "डिसेम्बर 31, 2026। जनवरी 1, 2027",
+          "provenance": "project exact Title Case/lowercase month defaults with date punctuation; ASCII digits and Gregorian years retained across year boundary; pipe remains danda, no Bikram Sambat conversion",
+          "actualTop": "डिसेम्बर 31, 2026। जनवरी 1, 2027",
+          "actualCandidates": null,
+          "topMatch": true,
+          "candidateHits": 0,
+          "pass": true
+        }
+      ]
+    },
+    "singleCandidateMonthCount": 12,
+    "interpretation": "Conformance to the same frozen literal 109-contract fixture; selected project behavior, not a population accuracy estimate. The original 85-contract denominator is reported separately, and two exploratory proposals remain excluded. Candidate coverage permits extra suggestions."
+  },
+  "functionalRegressionChecks": {
+    "command": "npm test",
+    "before": {
+      "passed": 151,
+      "total": 151
+    },
+    "after": {
+      "passed": 168,
+      "total": 168
+    },
+    "nodeVersion": "v22.22.3",
+    "provenance": "Fresh independent runs captured at /private/tmp/sahajlipi-months-baseline-tests.txt and /private/tmp/sahajlipi-months-after-tests.txt; root also independently confirmed after 168/168.",
+    "interpretation": "Software tests, not linguistic accuracy"
+  },
+  "sourceProposalAgreement": {
+    "sourceCasesSha256": "2f92bcf5a16d35b6a31dca052e4e358ffe417b5dcec0e8cc704d17f8acbf23e3",
+    "allRemainUnreviewed": true,
+    "before": {
+      "total": 100,
+      "wordCount": 80,
+      "textCount": 20,
+      "exactTopMatches": 7,
+      "wordCandidateMatches": 7,
+      "primarySignals": {
+        "exact-match": 7,
+        "candidate-only": 0,
+        "formatting-only": 0,
+        "punctuation-only": 0,
+        "final-virama": 31,
+        "vowel-marks-only": 18,
+        "shift-convention": 9,
+        "other-mismatch": 35
+      },
+      "flags": {
+        "exact-match": 7,
+        "candidate-only": 0,
+        "formatting-only": 0,
+        "punctuation-only": 0,
+        "final-virama": 31,
+        "vowel-marks-only": 18,
+        "shift-convention": 14,
+        "other-mismatch": 35,
+        "roman-collision": 0,
+        "token-count-difference": 8
+      }
+    },
+    "after": {
+      "total": 100,
+      "wordCount": 80,
+      "textCount": 20,
+      "exactTopMatches": 7,
+      "wordCandidateMatches": 7,
+      "primarySignals": {
+        "exact-match": 7,
+        "candidate-only": 0,
+        "formatting-only": 0,
+        "punctuation-only": 0,
+        "final-virama": 31,
+        "vowel-marks-only": 18,
+        "shift-convention": 9,
+        "other-mismatch": 35
+      },
+      "flags": {
+        "exact-match": 7,
+        "candidate-only": 0,
+        "formatting-only": 0,
+        "punctuation-only": 0,
+        "final-virama": 31,
+        "vowel-marks-only": 18,
+        "shift-convention": 14,
+        "other-mismatch": 35,
+        "roman-collision": 0,
+        "token-count-difference": 8
+      }
+    },
+    "changedOutputCaseIds": [],
+    "sourceLabelsEdited": false,
+    "comparisonUses": "unchanged original source proposals, not CLDR/research recommendations",
+    "interpretation": "Exact agreement with 100 unreviewed development source proposals; no admitted linguistic labels."
+  },
+  "pinnedWordTestDescriptiveAgreement": {
+    "source": "AI4Bharat Aksharantar",
+    "revision": "e418c1fc928d9f5393af33268472cf20c1891be8",
+    "sourceSha256": "172c759fcbb9faeda0a23765ccd12ad0520fb535a05dca42dd9c9923ee5f554e",
+    "before": {
+      "overall": {
+        "total": 4101,
+        "top": 281,
+        "candidate": 281
+      },
+      "categories": {
+        "AK-Freq": {
+          "total": 2108,
+          "top": 246,
+          "candidate": 246
+        },
+        "AK-NEF": {
+          "total": 817,
+          "top": 10,
+          "candidate": 10
+        },
+        "AK-NEI": {
+          "total": 1176,
+          "top": 25,
+          "candidate": 25
+        }
+      }
+    },
+    "after": {
+      "overall": {
+        "total": 4101,
+        "top": 281,
+        "candidate": 281
+      },
+      "categories": {
+        "AK-Freq": {
+          "total": 2108,
+          "top": 246,
+          "candidate": 246
+        },
+        "AK-NEF": {
+          "total": 817,
+          "top": 10,
+          "candidate": 10
+        },
+        "AK-NEI": {
+          "total": 1176,
+          "top": 25,
+          "candidate": 25
+        }
+      }
+    },
+    "changedOutputCount": 0,
+    "changedOutputCaseIds": [],
+    "labelsEdited": false,
+    "examplesPrinted": 0,
+    "interpretation": "Strict Unicode agreement with the same pinned 4101 source labels, unchanged at 281/4101. Public-test descriptive comparison without a clean held-out or population accuracy claim. Historical 279/4101 initial/loanword baselines remain separately recorded."
+  },
+  "separationAudit": {
+    "requestedEntryCount": 12,
+    "publicRomanOverlap": {
+      "count": 0,
+      "ids": []
+    },
+    "publicNativeOverlap": {
+      "count": 0,
+      "ids": []
+    },
+    "publicNativeOverlapNfcIgnoringJoiners": {
+      "count": 0,
+      "ids": []
+    },
+    "cohortRomanWordOverlap": {
+      "count": 0,
+      "ids": []
+    },
+    "cohortNativeWordOverlap": {
+      "count": 0,
+      "ids": []
+    },
+    "cohortRomanTextTokenOverlap": {
+      "count": 0,
+      "ids": []
+    },
+    "entriesSelectedFromTestMisses": false,
+    "sourceSelectionBeforeExternalEvaluation": true,
+    "scope": "Twelve exact lowercase Roman month keys and native outputs. Public Roman keys compare after lowercase conversion; native outputs compare both exactly and after NFC plus removal of U+200C/U+200D. Cohort word Roman keys/native source proposals compare exactly after Roman lowercase; Roman sentence tokens use /[a-z]+/gi. No native sentence-substring overlap assertion.",
+    "admittedHumanReviews": 0,
+    "totalPublicTestRows": 4101,
+    "cleanHeldOutImprovementClaim": false,
+    "restriction": "No external rows filtered or relabeled; no raw external reference text redistributed."
+  },
+  "moduleChanges": {
+    "src/index.js": {
+      "byteForByteUnchanged": false
+    },
+    "src/lexicon.js": {
+      "byteForByteUnchanged": false
+    },
+    "src/phonetic.js": {
+      "byteForByteUnchanged": true
+    },
+    "src/dom.js": {
+      "byteForByteUnchanged": true
+    },
+    "src/index.d.ts": {
+      "byteForByteUnchanged": true
+    },
+    "src/dom.d.ts": {
+      "byteForByteUnchanged": true
+    }
+  },
+  "implementationScope": "Twelve lexicon entries and two explicit month Title Case aliases in src/index.js constructor setup; conversion/tokenization function bodies unchanged. No suffix rules, abbreviations, blanket all-caps fold, calendar/digit conversion or API added.",
+  "toolsSha256": {
+    "benchmark/run.js": "02f76258dece93e9ec8e54cd484dddc9456d4a64c4162114221c4794b8d87f31",
+    "benchmark/aksharantar.js": "3836a01e006b5bf9fee0ff2ef32673003438226e50fa0cd810de6a9714780de1",
+    "benchmark/aksharantar-core.js": "3e1dcce9585d2d8dcaa7f8eb7aa7a09ac69d7d581ec8725a6c25dfb18dde58b2",
+    "benchmark/review-batch-core.js": "e94bb2786b3ec568ac1b9f01dec32ff3460b6b200aa21ba7630eb8a2aca88666"
+  },
+  "measurementScriptsSha256": {
+    "sahajlipi-months-measure.mjs": "555a115322d41e200f9f6ebcf34a6968295383adf5054c3b6c2eb3c8798ba4aa"
+  },
+  "commands": {
+    "baselineExpanded": "node /private/tmp/sahajlipi-months-baseline-264f249/benchmark/run.js --fixtures /private/tmp/sahajlipi-months-final-cases.jsonl --check",
+    "baselineExpandedExitCode": 1,
+    "afterExpanded": "node benchmark/run.js --fixtures /private/tmp/sahajlipi-months-final-cases.jsonl --check",
+    "afterExpandedExitCode": 0,
+    "baselineOriginal": "node /private/tmp/sahajlipi-months-baseline-264f249/benchmark/run.js --fixtures /private/tmp/sahajlipi-months-baseline-264f249/benchmark/cases.jsonl --check",
+    "afterOriginal": "node benchmark/run.js --fixtures /private/tmp/sahajlipi-months-baseline-264f249/benchmark/cases.jsonl --check",
+    "baselineExternal": "node /private/tmp/sahajlipi-months-baseline-264f249/benchmark/aksharantar.js --data /Users/maheshn/Work/ojastech/sahajlipi/benchmark/data/nep_test.json --examples 0",
+    "afterExternal": "node benchmark/aksharantar.js --data /Users/maheshn/Work/ojastech/sahajlipi/benchmark/data/nep_test.json --examples 0",
+    "fixedFixtureMachineMeasurements": "node /private/tmp/sahajlipi-months-measure.mjs <before-root> <after-root> <same-frozen-fixture> <pinned-public-test> <unchanged-cohort> <output-path>",
+    "reproduce": "docs/package/month-benchmarks.md#reproduce"
+  },
+  "limits": [
+    "Selected CLDR spellings are source-assisted project defaults, without independent human review or a universal orthography claim.",
+    "All 87 prior fixture rows and their IDs are preserved byte-for-byte; both exploratory targets remain unreviewed and outside the gate.",
+    "Original 85 and expanded 109 contract denominators are separate.",
+    "Zero audited overlaps for the 12 month mappings do not establish a clean held-out corpus or population accuracy. Existing loanword overlap disclosures remain historical.",
+    "Gregorian full month words only; no Bikram Sambat conversion, shortened month aliases, suffix/compound inference, digit/ordinal/gender rules or new public API.",
+    "No timing or population accuracy claim. Raw external data and private reviewer sheets are not redistributed.",
+    "Desktop Chromium interaction check with narrow viewport does not establish mobile keyboard, assistive technology or cross-browser support."
+  ],
+  "attribution": {
+    "monthData": {
+      "publisher": "Unicode Consortium / unicode-org",
+      "dataset": "CLDR JSON cldr-dates-full 48.2.1",
+      "sourceUrl": "https://github.com/unicode-org/cldr-json/blob/26a79cb42bfcc90def764102aa2af126d9ef3108/cldr-json/cldr-dates-full/main/ne/ca-gregorian.json",
+      "license": "Unicode-3.0",
+      "licenseNotice": "LICENSES/Unicode-3.0.txt",
+      "licenseNoticeSha256": "220ba0e1c43b99530d2d5bdb892a99dca0989414f51ab695ecd90163eaa1ec3b",
+      "separateFromCodeMitLicense": true
+    },
+    "wordData": {
+      "author": "AI4Bharat",
+      "dataset": "Aksharantar",
+      "url": "https://huggingface.co/datasets/ai4bharat/Aksharantar",
+      "license": "CC BY as stated by its card and paper; separate from the code MIT license"
+    },
+    "sentenceData": {
+      "author": "AI4Bharat",
+      "dataset": "Bhasha-Abhijnaanam",
+      "url": "https://huggingface.co/datasets/ai4bharat/Bhasha-Abhijnaanam",
+      "revision": "c54a95d9b9d62c891a03bd5da60715df7176b097",
+      "use": "Unreviewed development source proposals; full source sentences omitted."
+    }
+  },
+  "browserInputCheck": {
+    "checkedAt": "2026-09-27T09:00:41.067Z",
+    "browser": "Chromium 151.0.7922.34",
+    "url": "http://127.0.0.1:4174/demo/",
+    "passed": true,
+    "checks": [
+      "Key-by-key typing of all 12 lowercase and 12 title-case Gregorian month names",
+      "September and December Backspace prefix restoration and caret position",
+      "Gregorian date text preserves ASCII digits, years, commas and period; pipe emits danda",
+      "Reserved Shift keys, internal reserved capitals and SEPTEMBER keep fallback behavior",
+      "Unlisted lowercase jan/sep abbreviations and existing maya output",
+      "Literal English mode",
+      "Marked Nepali field and unmarked English field",
+      "Custom lowercase and explicit title override precedence",
+      "390px viewport without horizontal overflow",
+      "No page errors",
+      "Demo month guide has 12 correct mappings, a labelled heading, sequential sections and no character-insertion buttons",
+      "Updated guide at 390px has no horizontal overflow or page errors"
+    ],
+    "limitations": [
+      "One desktop Chromium check with narrow viewport; no mobile keyboard, assistive technology or cross-browser claim."
+    ],
+    "guideCheckedAt": "2026-09-27T09:02:30.180Z"
+  }
+}

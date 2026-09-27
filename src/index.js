@@ -20,9 +20,13 @@ export function createEngine({ entries = {} } = {}) {
     customKeys.add(normalized);
   }
 
-  // Legacy name aliases inherit replacements of their lowercase entries,
-  // unless the caller supplied an exact normalized alias of their own.
-  for (const [alias, key] of [['Ram', 'ram'], ['Sita', 'sita']]) {
+  // Explicit name and month titles inherit lowercase replacements, unless
+  // the caller supplied an exact normalized alias of their own. These complete
+  // word exceptions do not lowercase other reserved Shift spellings.
+  for (const [alias, key] of [
+    ['Ram', 'ram'], ['Sita', 'sita'],
+    ['September', 'september'], ['December', 'december'],
+  ]) {
     if (!customKeys.has(alias)) dictionary.set(alias, [...dictionary.get(key)]);
   }
 

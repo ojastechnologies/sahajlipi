@@ -22,6 +22,15 @@ convertWord('paani');
 convertWord('kam');
 // { text: 'कम', candidates: ['कम', 'काम'], ambiguous: true }
 
+convertWord('camera');
+// { text: 'क्यामेरा', candidates: ['क्यामेरा'], ambiguous: false }
+
+convertWord('September');
+// { text: 'सेप्टेम्बर', candidates: ['सेप्टेम्बर'], ambiguous: false }
+
+convertWord('cha');
+// { text: 'च', candidates: ['च', 'छ'], ambiguous: true }
+
 convertText('pani. 3.14|');
 // 'पनि. 3.14।'
 ```
@@ -38,13 +47,40 @@ Returns `{ text, candidates, ambiguous }`:
 
 An empty input returns empty text and candidates. The engine checks the starter lexicon first, then interprets explicit marks, then applies deterministic phonetic rules. An unknown spelling still returns a result; it is **not** evidence that the result is linguistically correct. See [architecture](architecture.md) and [benchmarks](benchmarks.md).
 
+The built-in lexicon includes 20 exact English-spelling loanwords, including `camera` → क्यामेरा, `computer` → कम्प्युटर and `school` → स्कुल. Each has one candidate, so source-observed variants are not exposed as built-in alternatives. These are authorized source-assisted project preferences, with independent human linguistic review still pending. The [loanword review](loanword-review.md) lists all accepted mappings, source evidence and the unshipped research queue. This spells a borrowed word rather than translating it to a Nepali equivalent.
+
+It also includes the 12 full English month names, each with one preferred candidate: `january` → जनवरी, `may` → मे and `december` → डिसेम्बर, for example. All normal title-case month names work; `September` and `December` are explicit aliases because their initial capitals otherwise select reserved sounds. The [month reference](month-names.md) lists every mapping and its source scope. These are source-assisted project preferences, with independent human linguistic review pending.
+
+Lookup keeps the existing normalization and reserved `T`, `D`, `S`, `R` and contextual `H` sound keys. `Camera` matches `camera`; `Doctor`, `School` and all-capital spellings that retain a reserved key are not automatic English aliases. Unlisted attached forms such as `camerako` use the existing fallback rather than inheriting a loanword stem. `cha` now returns `['च', 'छ']`; `chha` returns only `['छ']`.
+
+The month entries use the same whole-word lookup. Abbreviations such as `jan` and attached forms such as `januaryma` are unlisted. Both `May` and `may` give मे; the engine does not detect whether “may” is a month or an English modal verb. Native Roman input such as `maya` keeps its existing behavior. The entries convert month names, not calendar dates; there is no Gregorian-to-Bikram-Sambat conversion or new API option.
+
 ### `convertText(text)`
 
 Converts each ASCII Latin-letter run, including the supported `^`, `~`, `/`, and `=` shortcuts, using `convertWord`. It also converts `|` to `।`. Periods, digits, spaces, other punctuation, and existing Devanagari pass through. It does not detect language: English words in a mixed-language paste will also be transliterated. `convertText` returns one string and does not expose word-level candidates.
 
+Loanword and month keys also match within the runs extracted from strings such as `camera.com`, `camera_file`, `camera123` and `may.com`. URLs, addresses, code and English fragments inside Nepali text are not automatically protected. Hyphenated `e-mail` is split and does not become the `email` alias.
+
 ### `createEngine({ entries })`
 
 Creates an independent engine. An `entries` object replaces a starter entry for the same normalized Roman key in that engine instance. Values must be a non-empty array of non-empty strings, ordered from the preferred reading to alternatives; malformed values throw `TypeError`. The engine does not validate the script or Unicode normalization of those strings. Duplicate outputs are removed when a word is converted.
+
+This replacement also applies to built-in loanwords: `createEngine({ entries: { camera: ['क्यामरा'] } })` replaces the entire `camera` candidate list in that instance. Such a custom choice does not admit the spelling as a built-in candidate or a reviewed corpus label.
+
+Month entries use the same API. A lowercase replacement for `september` or `december` also updates its built-in title-case alias; supplying an exact `September` or `December` entry overrides that alias separately. The existing `Ram` and `Sita` aliases follow the same rule. For example:
+
+```js
+const months = createEngine({ entries: { september: ['सेप्टेम्वर'] } });
+months.convertWord('september').text; // 'सेप्टेम्वर'
+months.convertWord('September').text; // 'सेप्टेम्वर'
+
+const casedMonths = createEngine({
+  entries: { september: ['सेप्टेम्वर'], September: ['सेप्टेम्बर'] },
+});
+casedMonths.convertWord('September').text; // 'सेप्टेम्बर'
+```
+
+The alternate spelling in this example is an instance-specific choice, not a built-in linguistic recommendation.
 
 ```js
 const engine = createEngine({
@@ -168,6 +204,8 @@ const manager = attachNepaliInputs(document, {
 ```
 
 Configuration belongs to the returned manager, not to a mutable module-wide singleton. Separate, nonoverlapping roots can use different scopes, converters, callbacks, and enabled states without changing each other's behavior.
+
+The built-in loanword entries convert automatically while Nepali mode is on. Keep a whole English field literal with exclusions or `setEnabled(false)`; those controls do not protect English spans inside a Nepali-enabled field. To use a custom loanword preference, pass the custom engine's two conversion functions as above. There is no `engine` adapter option, `loanwords` option or module-global configuration API.
 
 ### Attach one field directly
 

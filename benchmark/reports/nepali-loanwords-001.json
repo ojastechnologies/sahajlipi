@@ -1,0 +1,1376 @@
+{
+  "schemaVersion": 1,
+  "reportId": "nepali-loanwords-001",
+  "recordedAt": "2026-09-27T07:57:02.440Z",
+  "purpose": "project behavior regression and descriptive external comparison",
+  "baseline": {
+    "gitCommit": "43b5a008366c943309f44bebfbae4e6df24f6173",
+    "snapshotMethod": "git show 43b5a00:<file> into a temporary snapshot, including source engine modules and benchmark runners",
+    "engineFileHashes": {
+      "src/index.js": "fdcbd9a89a465825bde899f356ca783adba81e8f4da37d904fab1daf3a78f4d6",
+      "src/phonetic.js": "dec43061ce47d8456092b661a4b1ea7b5d366d2c7969a4f2b6f3b1b0c20ff1ff",
+      "src/lexicon.js": "7e63c53cf13e9c35652c83ff5a9e1bc8d5f18caa1f6a593ea5d4d63cd935e811"
+    }
+  },
+  "after": {
+    "identity": "modified working tree based on 43b5a008366c943309f44bebfbae4e6df24f6173; no after commit was created for this report",
+    "engineFileHashes": {
+      "src/index.js": "fdcbd9a89a465825bde899f356ca783adba81e8f4da37d904fab1daf3a78f4d6",
+      "src/phonetic.js": "dec43061ce47d8456092b661a4b1ea7b5d366d2c7969a4f2b6f3b1b0c20ff1ff",
+      "src/lexicon.js": "cf4ff5fc17ef1cdaf01fc7db3a8a30dfc7143e8bab22919ac61bd139971d4930"
+    }
+  },
+  "environment": {
+    "nodeVersion": "v22.22.3",
+    "recordedOn": "2026-09-27"
+  },
+  "sourceReview": {
+    "researchDate": "2026-09-27",
+    "projectAuthorizationDate": "2026-09-27",
+    "reviewKind": "source-assisted project defaults authorized for implementation",
+    "researchedEntryCount": 34,
+    "implementedPilotEntryCount": 20,
+    "researchEvidenceSha256": "53862aef86c65e99577fee25c1a10609f4fbeb9a0897df42ffc315c286dab4f8",
+    "researchEvidenceSnapshotStatus": "Research demonstrates institutional usage. Preferred defaults and dropdown variants still need explicit project acceptance; no independent human labels have been created.",
+    "researchSnapshotStatusInterpretation": "The prior research file records proposals. Subsequent user authorization admits these 20 project defaults, not independent human linguistic labels.",
+    "humanVerified": false,
+    "independentHumanReview": false,
+    "admittedCanonicalReviews": 0,
+    "details": "docs/package/loanword-review.md"
+  },
+  "implementedEntries": [
+    {
+      "input": "camera",
+      "preferred": "क्यामेरा",
+      "codePoints": [
+        "U+0915",
+        "U+094D",
+        "U+092F",
+        "U+093E",
+        "U+092E",
+        "U+0947",
+        "U+0930",
+        "U+093E"
+      ],
+      "before": {
+        "text": "चमेर",
+        "candidates": [
+          "चमेर"
+        ]
+      },
+      "after": {
+        "text": "क्यामेरा",
+        "candidates": [
+          "क्यामेरा"
+        ]
+      },
+      "approvalKind": "user authorization to implement a source-assisted project default",
+      "independentHumanReview": false,
+      "sourceIds": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "input": "computer",
+      "preferred": "कम्प्युटर",
+      "codePoints": [
+        "U+0915",
+        "U+092E",
+        "U+094D",
+        "U+092A",
+        "U+094D",
+        "U+092F",
+        "U+0941",
+        "U+091F",
+        "U+0930"
+      ],
+      "before": {
+        "text": "चोम्पुतेर्",
+        "candidates": [
+          "चोम्पुतेर्"
+        ]
+      },
+      "after": {
+        "text": "कम्प्युटर",
+        "candidates": [
+          "कम्प्युटर"
+        ]
+      },
+      "approvalKind": "user authorization to implement a source-assisted project default",
+      "independentHumanReview": false,
+      "sourceIds": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "input": "mobile",
+      "preferred": "मोबाइल",
+      "codePoints": [
+        "U+092E",
+        "U+094B",
+        "U+092C",
+        "U+093E",
+        "U+0907",
+        "U+0932"
+      ],
+      "before": {
+        "text": "मोबिले",
+        "candidates": [
+          "मोबिले"
+        ]
+      },
+      "after": {
+        "text": "मोबाइल",
+        "candidates": [
+          "मोबाइल"
+        ]
+      },
+      "approvalKind": "user authorization to implement a source-assisted project default",
+      "independentHumanReview": false,
+      "sourceIds": [
+        "S01",
+        "S03"
+      ]
+    },
+    {
+      "input": "phone",
+      "preferred": "फोन",
+      "codePoints": [
+        "U+092B",
+        "U+094B",
+        "U+0928"
+      ],
+      "before": {
+        "text": "फोने",
+        "candidates": [
+          "फोने"
+        ]
+      },
+      "after": {
+        "text": "फोन",
+        "candidates": [
+          "फोन"
+        ]
+      },
+      "approvalKind": "user authorization to implement a source-assisted project default",
+      "independentHumanReview": false,
+      "sourceIds": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "input": "charger",
+      "preferred": "चार्जर",
+      "codePoints": [
+        "U+091A",
+        "U+093E",
+        "U+0930",
+        "U+094D",
+        "U+091C",
+        "U+0930"
+      ],
+      "before": {
+        "text": "चर्गेर्",
+        "candidates": [
+          "चर्गेर्"
+        ]
+      },
+      "after": {
+        "text": "चार्जर",
+        "candidates": [
+          "चार्जर"
+        ]
+      },
+      "approvalKind": "user authorization to implement a source-assisted project default",
+      "independentHumanReview": false,
+      "sourceIds": [
+        "S03"
+      ]
+    },
+    {
+      "input": "printer",
+      "preferred": "प्रिन्टर",
+      "codePoints": [
+        "U+092A",
+        "U+094D",
+        "U+0930",
+        "U+093F",
+        "U+0928",
+        "U+094D",
+        "U+091F",
+        "U+0930"
+      ],
+      "before": {
+        "text": "प्रिन्तेर्",
+        "candidates": [
+          "प्रिन्तेर्"
+        ]
+      },
+      "after": {
+        "text": "प्रिन्टर",
+        "candidates": [
+          "प्रिन्टर"
+        ]
+      },
+      "approvalKind": "user authorization to implement a source-assisted project default",
+      "independentHumanReview": false,
+      "sourceIds": [
+        "S02",
+        "S01"
+      ]
+    },
+    {
+      "input": "mouse",
+      "preferred": "माउस",
+      "codePoints": [
+        "U+092E",
+        "U+093E",
+        "U+0909",
+        "U+0938"
+      ],
+      "before": {
+        "text": "मोउसे",
+        "candidates": [
+          "मोउसे"
+        ]
+      },
+      "after": {
+        "text": "माउस",
+        "candidates": [
+          "माउस"
+        ]
+      },
+      "approvalKind": "user authorization to implement a source-assisted project default",
+      "independentHumanReview": false,
+      "sourceIds": [
+        "S02"
+      ]
+    },
+    {
+      "input": "internet",
+      "preferred": "इन्टरनेट",
+      "codePoints": [
+        "U+0907",
+        "U+0928",
+        "U+094D",
+        "U+091F",
+        "U+0930",
+        "U+0928",
+        "U+0947",
+        "U+091F"
+      ],
+      "before": {
+        "text": "इन्तेर्नेत्",
+        "candidates": [
+          "इन्तेर्नेत्"
+        ]
+      },
+      "after": {
+        "text": "इन्टरनेट",
+        "candidates": [
+          "इन्टरनेट"
+        ]
+      },
+      "approvalKind": "user authorization to implement a source-assisted project default",
+      "independentHumanReview": false,
+      "sourceIds": [
+        "S01",
+        "S04"
+      ]
+    },
+    {
+      "input": "email",
+      "preferred": "इमेल",
+      "codePoints": [
+        "U+0907",
+        "U+092E",
+        "U+0947",
+        "U+0932"
+      ],
+      "before": {
+        "text": "एमैल्",
+        "candidates": [
+          "एमैल्"
+        ]
+      },
+      "after": {
+        "text": "इमेल",
+        "candidates": [
+          "इमेल"
+        ]
+      },
+      "approvalKind": "user authorization to implement a source-assisted project default",
+      "independentHumanReview": false,
+      "sourceIds": [
+        "S02",
+        "S04",
+        "S28"
+      ]
+    },
+    {
+      "input": "software",
+      "preferred": "सफ्टवेयर",
+      "codePoints": [
+        "U+0938",
+        "U+092B",
+        "U+094D",
+        "U+091F",
+        "U+0935",
+        "U+0947",
+        "U+092F",
+        "U+0930"
+      ],
+      "before": {
+        "text": "सोफ्त्वरे",
+        "candidates": [
+          "सोफ्त्वरे"
+        ]
+      },
+      "after": {
+        "text": "सफ्टवेयर",
+        "candidates": [
+          "सफ्टवेयर"
+        ]
+      },
+      "approvalKind": "user authorization to implement a source-assisted project default",
+      "independentHumanReview": false,
+      "sourceIds": [
+        "S01",
+        "S04"
+      ]
+    },
+    {
+      "input": "scanner",
+      "preferred": "स्क्यानर",
+      "codePoints": [
+        "U+0938",
+        "U+094D",
+        "U+0915",
+        "U+094D",
+        "U+092F",
+        "U+093E",
+        "U+0928",
+        "U+0930"
+      ],
+      "before": {
+        "text": "स्चणेर्",
+        "candidates": [
+          "स्चणेर्"
+        ]
+      },
+      "after": {
+        "text": "स्क्यानर",
+        "candidates": [
+          "स्क्यानर"
+        ]
+      },
+      "approvalKind": "user authorization to implement a source-assisted project default",
+      "independentHumanReview": false,
+      "sourceIds": [
+        "S02"
+      ]
+    },
+    {
+      "input": "video",
+      "preferred": "भिडियो",
+      "codePoints": [
+        "U+092D",
+        "U+093F",
+        "U+0921",
+        "U+093F",
+        "U+092F",
+        "U+094B"
+      ],
+      "before": {
+        "text": "विदेओ",
+        "candidates": [
+          "विदेओ"
+        ]
+      },
+      "after": {
+        "text": "भिडियो",
+        "candidates": [
+          "भिडियो"
+        ]
+      },
+      "approvalKind": "user authorization to implement a source-assisted project default",
+      "independentHumanReview": false,
+      "sourceIds": [
+        "S01",
+        "S04",
+        "S28"
+      ]
+    },
+    {
+      "input": "taxi",
+      "preferred": "ट्याक्सी",
+      "codePoints": [
+        "U+091F",
+        "U+094D",
+        "U+092F",
+        "U+093E",
+        "U+0915",
+        "U+094D",
+        "U+0938",
+        "U+0940"
+      ],
+      "before": {
+        "text": "तxइ",
+        "candidates": [
+          "तxइ"
+        ]
+      },
+      "after": {
+        "text": "ट्याक्सी",
+        "candidates": [
+          "ट्याक्सी"
+        ]
+      },
+      "approvalKind": "user authorization to implement a source-assisted project default",
+      "independentHumanReview": false,
+      "sourceIds": [
+        "S10"
+      ]
+    },
+    {
+      "input": "bank",
+      "preferred": "बैंक",
+      "codePoints": [
+        "U+092C",
+        "U+0948",
+        "U+0902",
+        "U+0915"
+      ],
+      "before": {
+        "text": "बन्क्",
+        "candidates": [
+          "बन्क्"
+        ]
+      },
+      "after": {
+        "text": "बैंक",
+        "candidates": [
+          "बैंक"
+        ]
+      },
+      "approvalKind": "user authorization to implement a source-assisted project default",
+      "independentHumanReview": false,
+      "sourceIds": [
+        "S13"
+      ]
+    },
+    {
+      "input": "cheque",
+      "preferred": "चेक",
+      "codePoints": [
+        "U+091A",
+        "U+0947",
+        "U+0915"
+      ],
+      "before": {
+        "text": "चेqउए",
+        "candidates": [
+          "चेqउए"
+        ]
+      },
+      "after": {
+        "text": "चेक",
+        "candidates": [
+          "चेक"
+        ]
+      },
+      "approvalKind": "user authorization to implement a source-assisted project default",
+      "independentHumanReview": false,
+      "sourceIds": [
+        "S13"
+      ]
+    },
+    {
+      "input": "file",
+      "preferred": "फाइल",
+      "codePoints": [
+        "U+092B",
+        "U+093E",
+        "U+0907",
+        "U+0932"
+      ],
+      "before": {
+        "text": "फिले",
+        "candidates": [
+          "फिले"
+        ]
+      },
+      "after": {
+        "text": "फाइल",
+        "candidates": [
+          "फाइल"
+        ]
+      },
+      "approvalKind": "user authorization to implement a source-assisted project default",
+      "independentHumanReview": false,
+      "sourceIds": [
+        "S15"
+      ]
+    },
+    {
+      "input": "school",
+      "preferred": "स्कुल",
+      "codePoints": [
+        "U+0938",
+        "U+094D",
+        "U+0915",
+        "U+0941",
+        "U+0932"
+      ],
+      "before": {
+        "text": "स्चूल्",
+        "candidates": [
+          "स्चूल्"
+        ]
+      },
+      "after": {
+        "text": "स्कुल",
+        "candidates": [
+          "स्कुल"
+        ]
+      },
+      "approvalKind": "user authorization to implement a source-assisted project default",
+      "independentHumanReview": false,
+      "sourceIds": [
+        "S01"
+      ]
+    },
+    {
+      "input": "college",
+      "preferred": "कलेज",
+      "codePoints": [
+        "U+0915",
+        "U+0932",
+        "U+0947",
+        "U+091C"
+      ],
+      "before": {
+        "text": "चोल्लेगे",
+        "candidates": [
+          "चोल्लेगे"
+        ]
+      },
+      "after": {
+        "text": "कलेज",
+        "candidates": [
+          "कलेज"
+        ]
+      },
+      "approvalKind": "user authorization to implement a source-assisted project default",
+      "independentHumanReview": false,
+      "sourceIds": [
+        "S01",
+        "S21"
+      ]
+    },
+    {
+      "input": "doctor",
+      "preferred": "डाक्टर",
+      "codePoints": [
+        "U+0921",
+        "U+093E",
+        "U+0915",
+        "U+094D",
+        "U+091F",
+        "U+0930"
+      ],
+      "before": {
+        "text": "दोच्तोर्",
+        "candidates": [
+          "दोच्तोर्"
+        ]
+      },
+      "after": {
+        "text": "डाक्टर",
+        "candidates": [
+          "डाक्टर"
+        ]
+      },
+      "approvalKind": "user authorization to implement a source-assisted project default",
+      "independentHumanReview": false,
+      "sourceIds": [
+        "S22"
+      ]
+    },
+    {
+      "input": "nurse",
+      "preferred": "नर्स",
+      "codePoints": [
+        "U+0928",
+        "U+0930",
+        "U+094D",
+        "U+0938"
+      ],
+      "before": {
+        "text": "नुर्से",
+        "candidates": [
+          "नुर्से"
+        ]
+      },
+      "after": {
+        "text": "नर्स",
+        "candidates": [
+          "नर्स"
+        ]
+      },
+      "approvalKind": "user authorization to implement a source-assisted project default",
+      "independentHumanReview": false,
+      "sourceIds": [
+        "S22"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "S01",
+      "publisher": "National Statistics Office, Nepal",
+      "title": "Nepal Living Standards Survey 2022-2023, Fourth round — s06a_desc variable",
+      "url": "https://microdata.nsonepal.gov.np/index.php/catalog/149/variable/F47/V716?name=s06a_desc",
+      "access": "full_page_unicode_html",
+      "researched_on": "2026-09-27",
+      "limitations": "The counts beside category labels are survey-file counts, not word-frequency measurements; they must not be used to rank everyday loanword usage."
+    },
+    {
+      "id": "S02",
+      "publisher": "नेपाल राष्ट्रिय आधारभुत विद्यालय घारिवन,सुर्खेत",
+      "title": "पाठ २ हार्डवयर (Hardware) | कम्प्युटर शिक्षा कक्षा ६",
+      "url": "https://www.nrasg.edu.np/2022/02/hardware.html",
+      "access": "full_page_unicode_html",
+      "researched_on": "2026-09-27",
+      "limitations": "Institutional classroom usage rather than a normative spelling dictionary. The page itself uses multiple keyboard variants."
+    },
+    {
+      "id": "S03",
+      "publisher": "Nepal Police",
+      "title": "लुटपाटमा संलग्न रहेको अभियोगमा चार जना पक्राउ",
+      "url": "https://www.nepalpolice.gov.np/news/3008/",
+      "access": "full_page_unicode_html",
+      "researched_on": "2026-09-27",
+      "limitations": "The same article uses both मोबाइल and मोबाईल; this is evidence of variation, not proof that both are equally preferred."
+    },
+    {
+      "id": "S04",
+      "publisher": "Australian Government, Act Now. Stay Secure.",
+      "title": "नेपाली / Nepali | Act Now. Stay Secure.",
+      "url": "https://www.actnowstaysecure.gov.au/translated/nepali",
+      "access": "full_page_unicode_html",
+      "researched_on": "2026-09-27",
+      "limitations": "Official Nepali-language usage from a foreign government; corroboration only for Nepal-specific lexical decisions, not a Nepal normative source."
+    },
+    {
+      "id": "S10",
+      "publisher": "Bagmati Province Ministry of Industry, Tourism, Labour and Transport",
+      "title": "प्रदेश भित्र सञ्‍चालन हुने (ट्याक्सी बाहेकका) साना यात्रु वाहक सार्वजनिक सवारी साधनको गुणस्तर, सञ्‍चालन तथा व्यवस्थापन सम्बन्धी मापदण्ड, २०७९",
+      "url": "https://molet.bagamati.gov.np/content/4/small-passengers-of-small-passengers--operations--operations-/",
+      "access": "full_page_title",
+      "researched_on": "2026-09-27",
+      "limitations": "Usage evidence, not a normative spelling decision."
+    },
+    {
+      "id": "S13",
+      "publisher": "Nepal Rastra Bank",
+      "title": "वितिय ग्राहक संरक्षण Archives",
+      "url": "https://www.nrb.org.np/category/faqs/faq_bfr/faq_bfr-grahak-sanrakchyan/",
+      "access": "full_page_text",
+      "researched_on": "2026-09-27",
+      "limitations": "Actual financial cheque noun usage."
+    },
+    {
+      "id": "S15",
+      "publisher": "Film Development Board Nepal",
+      "title": "सूचनाको हक विवरण, २०८२ माघ–चैत्र (descriptive title)",
+      "url": "https://film.gov.np/notices/310/?page=16",
+      "access": "full_page_text",
+      "researched_on": "2026-09-27",
+      "limitations": "Usage evidence, not a normative spelling decision."
+    },
+    {
+      "id": "S21",
+      "publisher": "National Assembly Federal Parliament Nepal",
+      "title": "University bill amendment text, schools and colleges (descriptive title)",
+      "url": "https://na.parliament.gov.np/uploads/attachments/nls0lydfk67nspo5.pdf",
+      "access": "search_snippet",
+      "researched_on": "2026-09-27",
+      "limitations": "Not fetched full PDF."
+    },
+    {
+      "id": "S22",
+      "publisher": "Department of Health Services Government of Nepal",
+      "title": "दायरा",
+      "url": "https://dohs.gov.np/pages/scopes/",
+      "access": "full_page_text",
+      "researched_on": "2026-09-27",
+      "limitations": "Usage evidence, not a normative spelling decision."
+    },
+    {
+      "id": "S28",
+      "publisher": "Centre for Education and Human Resource Development, Nepal",
+      "title": "Generative AI, chatbots and how they differ from search / Nepali lesson",
+      "url": "https://learning.cehrd.gov.np/mod/page/view.php?id=1132",
+      "access": "full_page_unicode_html",
+      "researched_on": "2026-09-27",
+      "limitations": "Official educational usage; does not establish a unique normative spelling."
+    }
+  ],
+  "chaContract": {
+    "input": "cha",
+    "before": {
+      "text": "छ",
+      "candidates": [
+        "छ",
+        "च"
+      ]
+    },
+    "after": {
+      "text": "च",
+      "candidates": [
+        "च",
+        "छ"
+      ]
+    },
+    "chhaBefore": {
+      "text": "छ",
+      "candidates": [
+        "छ"
+      ]
+    },
+    "chhaAfter": {
+      "text": "छ",
+      "candidates": [
+        "छ"
+      ]
+    },
+    "basis": "user-authorized typing-key contract; cha prefers च with छ alternate, and chha prefers छ"
+  },
+  "projectContractConformance": {
+    "originalCurrentFixture": {
+      "sha256": "437646bd9dd22c32d382318997906e29dce4b8087b458c901ec010d956f04eee",
+      "before": {
+        "contract": {
+          "total": 50,
+          "passed": 50,
+          "wordTotal": 47,
+          "wordTop": 47,
+          "candidateTotal": 48,
+          "candidateHits": 48,
+          "textTotal": 3,
+          "textTop": 3,
+          "categories": {
+            "lexicon": {
+              "total": 3,
+              "passed": 3
+            },
+            "ambiguity": {
+              "total": 1,
+              "passed": 1
+            },
+            "phonetic": {
+              "total": 5,
+              "passed": 5
+            },
+            "shift": {
+              "total": 16,
+              "passed": 16
+            },
+            "marks": {
+              "total": 2,
+              "passed": 2
+            },
+            "explicit": {
+              "total": 4,
+              "passed": 4
+            },
+            "punctuation": {
+              "total": 2,
+              "passed": 2
+            },
+            "ry-lexicon": {
+              "total": 10,
+              "passed": 10
+            },
+            "ry-phonetic": {
+              "total": 6,
+              "passed": 6
+            },
+            "ry-text": {
+              "total": 1,
+              "passed": 1
+            }
+          }
+        },
+        "exploratory": {
+          "total": 2,
+          "passed": 0,
+          "wordTotal": 2,
+          "wordTop": 0,
+          "candidateTotal": 2,
+          "candidateHits": 0,
+          "textTotal": 0,
+          "textTop": 0,
+          "categories": {
+            "proposed-spelling": {
+              "total": 2,
+              "passed": 0
+            }
+          }
+        }
+      },
+      "after": {
+        "contract": {
+          "total": 50,
+          "passed": 50,
+          "wordTotal": 47,
+          "wordTop": 47,
+          "candidateTotal": 48,
+          "candidateHits": 48,
+          "textTotal": 3,
+          "textTop": 3,
+          "categories": {
+            "lexicon": {
+              "total": 3,
+              "passed": 3
+            },
+            "ambiguity": {
+              "total": 1,
+              "passed": 1
+            },
+            "phonetic": {
+              "total": 5,
+              "passed": 5
+            },
+            "shift": {
+              "total": 16,
+              "passed": 16
+            },
+            "marks": {
+              "total": 2,
+              "passed": 2
+            },
+            "explicit": {
+              "total": 4,
+              "passed": 4
+            },
+            "punctuation": {
+              "total": 2,
+              "passed": 2
+            },
+            "ry-lexicon": {
+              "total": 10,
+              "passed": 10
+            },
+            "ry-phonetic": {
+              "total": 6,
+              "passed": 6
+            },
+            "ry-text": {
+              "total": 1,
+              "passed": 1
+            }
+          }
+        },
+        "exploratory": {
+          "total": 2,
+          "passed": 0,
+          "wordTotal": 2,
+          "wordTop": 0,
+          "candidateTotal": 2,
+          "candidateHits": 0,
+          "textTotal": 0,
+          "textTop": 0,
+          "categories": {
+            "proposed-spelling": {
+              "total": 2,
+              "passed": 0
+            }
+          }
+        }
+      },
+      "all52OriginalRowsPreservedByteForByte": true
+    },
+    "sameFinalFixture": {
+      "sha256": "400b680734b6c26b1f1ca838ea4955132766af406e1facb138633a4d2cbf5b64",
+      "before": {
+        "contract": {
+          "total": 85,
+          "passed": 60,
+          "wordTotal": 80,
+          "wordTop": 57,
+          "candidateTotal": 82,
+          "candidateHits": 60,
+          "textTotal": 5,
+          "textTop": 3,
+          "categories": {
+            "lexicon": {
+              "total": 3,
+              "passed": 3
+            },
+            "ambiguity": {
+              "total": 1,
+              "passed": 1
+            },
+            "phonetic": {
+              "total": 5,
+              "passed": 5
+            },
+            "shift": {
+              "total": 16,
+              "passed": 16
+            },
+            "marks": {
+              "total": 2,
+              "passed": 2
+            },
+            "explicit": {
+              "total": 4,
+              "passed": 4
+            },
+            "punctuation": {
+              "total": 2,
+              "passed": 2
+            },
+            "ry-lexicon": {
+              "total": 10,
+              "passed": 10
+            },
+            "ry-phonetic": {
+              "total": 6,
+              "passed": 6
+            },
+            "ry-text": {
+              "total": 1,
+              "passed": 1
+            },
+            "loanword-lexicon": {
+              "total": 20,
+              "passed": 0
+            },
+            "ch-cha": {
+              "total": 2,
+              "passed": 1
+            },
+            "loanword-case": {
+              "total": 2,
+              "passed": 0
+            },
+            "loanword-shift": {
+              "total": 4,
+              "passed": 4
+            },
+            "loanword-boundary": {
+              "total": 2,
+              "passed": 2
+            },
+            "loanword-collision": {
+              "total": 3,
+              "passed": 3
+            },
+            "loanword-text": {
+              "total": 2,
+              "passed": 0
+            }
+          }
+        },
+        "exploratory": {
+          "total": 2,
+          "passed": 0,
+          "wordTotal": 2,
+          "wordTop": 0,
+          "candidateTotal": 2,
+          "candidateHits": 0,
+          "textTotal": 0,
+          "textTop": 0,
+          "categories": {
+            "proposed-spelling": {
+              "total": 2,
+              "passed": 0
+            }
+          }
+        }
+      },
+      "after": {
+        "contract": {
+          "total": 85,
+          "passed": 85,
+          "wordTotal": 80,
+          "wordTop": 80,
+          "candidateTotal": 82,
+          "candidateHits": 82,
+          "textTotal": 5,
+          "textTop": 5,
+          "categories": {
+            "lexicon": {
+              "total": 3,
+              "passed": 3
+            },
+            "ambiguity": {
+              "total": 1,
+              "passed": 1
+            },
+            "phonetic": {
+              "total": 5,
+              "passed": 5
+            },
+            "shift": {
+              "total": 16,
+              "passed": 16
+            },
+            "marks": {
+              "total": 2,
+              "passed": 2
+            },
+            "explicit": {
+              "total": 4,
+              "passed": 4
+            },
+            "punctuation": {
+              "total": 2,
+              "passed": 2
+            },
+            "ry-lexicon": {
+              "total": 10,
+              "passed": 10
+            },
+            "ry-phonetic": {
+              "total": 6,
+              "passed": 6
+            },
+            "ry-text": {
+              "total": 1,
+              "passed": 1
+            },
+            "loanword-lexicon": {
+              "total": 20,
+              "passed": 20
+            },
+            "ch-cha": {
+              "total": 2,
+              "passed": 2
+            },
+            "loanword-case": {
+              "total": 2,
+              "passed": 2
+            },
+            "loanword-shift": {
+              "total": 4,
+              "passed": 4
+            },
+            "loanword-boundary": {
+              "total": 2,
+              "passed": 2
+            },
+            "loanword-collision": {
+              "total": 3,
+              "passed": 3
+            },
+            "loanword-text": {
+              "total": 2,
+              "passed": 2
+            }
+          }
+        },
+        "exploratory": {
+          "total": 2,
+          "passed": 0,
+          "wordTotal": 2,
+          "wordTop": 0,
+          "candidateTotal": 2,
+          "candidateHits": 0,
+          "textTotal": 0,
+          "textTop": 0,
+          "categories": {
+            "proposed-spelling": {
+              "total": 2,
+              "passed": 0
+            }
+          }
+        }
+      },
+      "rowCount": 87
+    },
+    "newContractIds": [
+      "loanword-camera",
+      "loanword-computer",
+      "loanword-mobile",
+      "loanword-phone",
+      "loanword-charger",
+      "loanword-printer",
+      "loanword-mouse",
+      "loanword-internet",
+      "loanword-email",
+      "loanword-software",
+      "loanword-scanner",
+      "loanword-video",
+      "loanword-taxi",
+      "loanword-bank",
+      "loanword-cheque",
+      "loanword-file",
+      "loanword-school",
+      "loanword-college",
+      "loanword-doctor",
+      "loanword-nurse",
+      "cha-default-order",
+      "chha-default",
+      "loanword-camera-capitalized",
+      "loanword-email-capitalized",
+      "loanword-reserved-taxi",
+      "loanword-reserved-doctor",
+      "loanword-reserved-school",
+      "loanword-reserved-vocalic-r",
+      "loanword-bank-suffix-fallback",
+      "loanword-file-suffix-fallback",
+      "loanword-check-collision",
+      "loanword-fail-collision",
+      "loanword-phail-collision",
+      "loanword-text-all-pilot",
+      "loanword-text-cha-vowels-punctuation"
+    ],
+    "interpretation": "Conformance to literal project behavior fixtures, not a population accuracy estimate. Both engines used the same final 85-contract fixture. Candidate coverage allows extra candidates; all 20 pilot outputs were also checked to have exactly one candidate.",
+    "singleCandidatePilotCount": 20
+  },
+  "functionalRegressionChecks": {
+    "command": "npm test",
+    "before": {
+      "passed": 122,
+      "total": 122
+    },
+    "after": {
+      "passed": 151,
+      "total": 151
+    },
+    "nodeVersion": "v22.22.3",
+    "provenance": "Fresh parent-agent npm test runs; after log /private/tmp/sahajlipi-loanword-research/full-tests.txt",
+    "interpretation": "Software tests, not language accuracy"
+  },
+  "sourceProposalAgreement": {
+    "sourceCasesSha256": "2f92bcf5a16d35b6a31dca052e4e358ffe417b5dcec0e8cc704d17f8acbf23e3",
+    "allRemainUnreviewed": true,
+    "before": {
+      "total": 100,
+      "wordCount": 80,
+      "textCount": 20,
+      "exactTopMatches": 7,
+      "wordCandidateMatches": 7,
+      "primarySignals": {
+        "exact-match": 7,
+        "candidate-only": 0,
+        "formatting-only": 0,
+        "punctuation-only": 0,
+        "final-virama": 31,
+        "vowel-marks-only": 18,
+        "shift-convention": 9,
+        "other-mismatch": 35
+      },
+      "flags": {
+        "exact-match": 7,
+        "candidate-only": 0,
+        "formatting-only": 0,
+        "punctuation-only": 0,
+        "final-virama": 31,
+        "vowel-marks-only": 18,
+        "shift-convention": 14,
+        "other-mismatch": 35,
+        "roman-collision": 0,
+        "token-count-difference": 8
+      }
+    },
+    "after": {
+      "total": 100,
+      "wordCount": 80,
+      "textCount": 20,
+      "exactTopMatches": 7,
+      "wordCandidateMatches": 7,
+      "primarySignals": {
+        "exact-match": 7,
+        "candidate-only": 0,
+        "formatting-only": 0,
+        "punctuation-only": 0,
+        "final-virama": 31,
+        "vowel-marks-only": 18,
+        "shift-convention": 9,
+        "other-mismatch": 35
+      },
+      "flags": {
+        "exact-match": 7,
+        "candidate-only": 0,
+        "formatting-only": 0,
+        "punctuation-only": 0,
+        "final-virama": 31,
+        "vowel-marks-only": 18,
+        "shift-convention": 14,
+        "other-mismatch": 35,
+        "roman-collision": 0,
+        "token-count-difference": 8
+      }
+    },
+    "changedOutputCaseIds": [],
+    "sourceLabelsEdited": false,
+    "comparisonUses": "unchanged original source proposals, not research suggestions",
+    "interpretation": "Exact agreement with the unchanged 100 unreviewed source proposals; assisted recommendations are not labels."
+  },
+  "pinnedWordTestDescriptiveAgreement": {
+    "source": "AI4Bharat Aksharantar",
+    "revision": "e418c1fc928d9f5393af33268472cf20c1891be8",
+    "sourceSha256": "172c759fcbb9faeda0a23765ccd12ad0520fb535a05dca42dd9c9923ee5f554e",
+    "before": {
+      "overall": {
+        "total": 4101,
+        "top": 279,
+        "candidate": 279
+      },
+      "categories": {
+        "AK-Freq": {
+          "total": 2108,
+          "top": 245,
+          "candidate": 245
+        },
+        "AK-NEF": {
+          "total": 817,
+          "top": 9,
+          "candidate": 9
+        },
+        "AK-NEI": {
+          "total": 1176,
+          "top": 25,
+          "candidate": 25
+        }
+      }
+    },
+    "after": {
+      "overall": {
+        "total": 4101,
+        "top": 281,
+        "candidate": 281
+      },
+      "categories": {
+        "AK-Freq": {
+          "total": 2108,
+          "top": 246,
+          "candidate": 246
+        },
+        "AK-NEF": {
+          "total": 817,
+          "top": 10,
+          "candidate": 10
+        },
+        "AK-NEI": {
+          "total": 1176,
+          "top": 25,
+          "candidate": 25
+        }
+      }
+    },
+    "changedOutputCount": 2,
+    "changedOutputCaseIds": [
+      "nep1190",
+      "nep2895"
+    ],
+    "labelsEdited": false,
+    "examplesPrinted": 0,
+    "interpretation": "Strict Unicode agreement with the unchanged pinned 4101 source labels; descriptive comparison. Two pilot entries overlap this public test, so this change is not a clean held-out improvement claim. The historical 279/4101 baseline is retained."
+  },
+  "separationAudit": {
+    "requestedEntryCount": 20,
+    "romanOverlap": {
+      "count": 2,
+      "ids": [
+        "nep1190",
+        "nep2895"
+      ]
+    },
+    "nativeOverlapIgnoringJoiners": {
+      "count": 2,
+      "ids": [
+        "nep1190",
+        "nep2895"
+      ]
+    },
+    "entriesSelectedFromTestMisses": false,
+    "scope": "20 authorized pilot mappings selected from prior usage research; cha key contract reported separately",
+    "restriction": "No held-out reference text or unrequested Roman spelling is emitted; no test rows are filtered or relabeled.",
+    "admittedHumanReviews": 0,
+    "totalPublicTestRows": 4101,
+    "cleanHeldOutImprovementClaim": false
+  },
+  "unchangedImplementation": {
+    "src/index.js": true,
+    "src/phonetic.js": true,
+    "scope": "20 exact starter lexicon entries plus cha candidate order; no suffix rules or new API"
+  },
+  "toolsSha256": {
+    "benchmark/run.js": "02f76258dece93e9ec8e54cd484dddc9456d4a64c4162114221c4794b8d87f31",
+    "benchmark/aksharantar-core.js": "3e1dcce9585d2d8dcaa7f8eb7aa7a09ac69d7d581ec8725a6c25dfb18dde58b2",
+    "benchmark/review-batch-core.js": "e94bb2786b3ec568ac1b9f01dec32ff3460b6b200aa21ba7630eb8a2aca88666"
+  },
+  "measurementScriptsSha256": {
+    "sahajlipi-loanwords-record.mjs": "d5f4afa58f8f9f8f757d475ca702a65b65f2421c630f078e27f0c82d6a56aba4",
+    "sahajlipi-loanwords-compare.mjs": "1347ccac41ae3bbb223c67eba51b2815bcd15ec8b1223e1378c19b984d0b045c",
+    "sahajlipi-loanwords-browser-check.mjs": "94a37e479afc181a04ea9c13319bf31167bb2b9b4b66f9c02010a8681b291e5d"
+  },
+  "commands": {
+    "baselineExpanded": "node /private/tmp/sahajlipi-loanwords-baseline-43b5a00/benchmark/run.js --fixtures /private/tmp/sahajlipi-ry-forms/benchmark/cases.jsonl --check",
+    "baselineExpandedExitCode": 1,
+    "afterExpanded": "node benchmark/run.js --check",
+    "afterExpandedExitCode": 0,
+    "baselineOriginal": "node /private/tmp/sahajlipi-loanwords-baseline-43b5a00/benchmark/run.js --fixtures /private/tmp/sahajlipi-loanwords-baseline-43b5a00/benchmark/cases.jsonl --check",
+    "afterOriginal": "node benchmark/run.js --fixtures /private/tmp/sahajlipi-loanwords-baseline-43b5a00/benchmark/cases.jsonl --check",
+    "baselineExternal": "node /private/tmp/sahajlipi-loanwords-baseline-43b5a00/benchmark/aksharantar.js --data /Users/maheshn/Work/ojastech/sahajlipi/benchmark/data/nep_test.json --examples 0",
+    "afterExternal": "node benchmark/aksharantar.js --data /Users/maheshn/Work/ojastech/sahajlipi/benchmark/data/nep_test.json --examples 0",
+    "fixedFixtureMachineMeasurements": "node /private/tmp/sahajlipi-loanwords-record.mjs <engine-root> <fixture-path> <output-path>",
+    "cohortAndPinnedTestMachineComparison": "node /private/tmp/sahajlipi-loanwords-compare.mjs",
+    "reproduce": "docs/package/loanword-benchmarks.md#reproduce"
+  },
+  "limits": [
+    "The 20 preferred spellings are source-assisted project defaults. Published usage does not prove a unique intended Roman mapping or independent linguistic correctness.",
+    "All 52 existing fixture rows and their stable IDs are preserved; the two unreviewed exploratory proposals remain outside the contract gate.",
+    "The original 50-contract and expanded 85-contract denominators are reported separately.",
+    "The pinned public word test has two pilot-entry overlaps; no original test labels or development proposals were modified, filtered, or promoted to reviewed labels.",
+    "Whole-word aliases do not infer suffixes or compounds. Reserved Shift keys preserve phonetic behavior.",
+    "No timing or population-wide accuracy claim is made. Raw corpora and human reviewer sheets are not redistributed.",
+    "The browser check used desktop Chromium and a narrow viewport, not a mobile keyboard or cross-browser test. Paste used a DOM ClipboardEvent, not the operating system clipboard."
+  ],
+  "attribution": {
+    "wordData": {
+      "author": "AI4Bharat",
+      "dataset": "Aksharantar",
+      "url": "https://huggingface.co/datasets/ai4bharat/Aksharantar",
+      "license": "CC BY as stated by its card and paper; separate from the code MIT license"
+    },
+    "sentenceData": {
+      "author": "AI4Bharat",
+      "dataset": "Bhasha-Abhijnaanam",
+      "url": "https://huggingface.co/datasets/ai4bharat/Bhasha-Abhijnaanam",
+      "revision": "c54a95d9b9d62c891a03bd5da60715df7176b097",
+      "use": "Unreviewed development source proposals; full source sentences omitted."
+    }
+  },
+  "browserInputCheck": {
+    "checkedAt": "2026-09-27T07:58:47.955Z",
+    "browser": "Chromium 151.0.7922.34",
+    "url": "/demo/",
+    "passed": true,
+    "checks": [
+      "Key-by-key typing of all 20 accepted loanword defaults",
+      "Backspace across dictionary and longer-word boundaries, with caret at the end",
+      "cha defaults to च; dropdown selects छ; Backspace permits editing into chha",
+      "Incidental capitalization and reserved Shift sounds",
+      "Existing vowel lengths, half sounds, period, decimal and pipe punctuation",
+      "Paste through a DOM ClipboardEvent",
+      "Literal English mode",
+      "Marked Nepali field and unmarked English and email fields",
+      "390-pixel viewport without horizontal overflow",
+      "No browser page errors"
+    ],
+    "limitations": [
+      "One desktop Chromium check with narrow viewport; no mobile keyboard, assistive technology or cross-browser claim.",
+      "Paste used a DOM ClipboardEvent rather than the OS clipboard."
+    ]
+  }
+}
