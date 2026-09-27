@@ -12,6 +12,9 @@ SahajLipi provides a dependency-free Nepali transliteration engine and optional 
 | [Development review batch](review-batch.md) | Reproducible 100-case review batch, independent review sheets, and diagnostic limits. |
 | [Source-assisted online review](assisted-online-review.md) | All 100 draft case recommendations, spelling evidence, source links and pending human confirmation. |
 | [Ra-ya review and changes](ry-review.md) | Word-specific joiner preferences, Shift lookup, fixed-fixture results and source-quality triage. |
+| [English loanword preferences and review](loanword-review.md) | The 20 built-in loanword defaults, the 34-key source catalogue, pending variants, and English-field limits. |
+
+The built-in engine includes 20 exact English-spelling loanwords, such as `camera` → क्यामेरा and `school` → स्कुल. They convert automatically in Nepali mode and have one candidate each. These are authorized source-assisted project preferences; observed variants and independent human linguistic review remain pending. The [typing reference](typing-reference.md#english-spelling-loanwords) lists the mappings and the [review ledger](loanword-review.md) records their source scopes.
 
 For live typing, choose an integration scope: mark selected fields with `data-sahajlipi` and call `attachNepaliInputs()`; pass a page element as the root; or use `attachNepaliInputs(document, { scope: 'all' })` for every supported text field in that document. Add `data-sahajlipi-ignore` to fields that must stay English in an all-fields scope. The [API reference](api.md#browser-input-adapters) explains configuration, field-level controls, candidates, and cleanup.
 

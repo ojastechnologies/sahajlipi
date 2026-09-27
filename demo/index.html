@@ -45,7 +45,7 @@
               data-sahajlipi
               aria-label="Type Roman Nepali here"
               aria-describedby="typing-hint"
-              placeholder="Try typing: namaste mero ghar"
+              placeholder="Try typing: namaste camera computer"
               autocapitalize="off"
               autocomplete="off"
               autocorrect="off"
@@ -60,7 +60,7 @@
             </div>
 
             <div class="editor-footer">
-              <span id="typing-hint">Type Roman Nepali directly. Space finishes a word; the typing guide below shows vowels, half sounds, marks, and punctuation.</span>
+              <span id="typing-hint">Type Roman Nepali directly. Space finishes a word; the guide below shows vowels, half sounds, English loanwords, marks, and punctuation.</span>
               <span id="character-count" class="character-count">0 characters</span>
             </div>
           </section>
@@ -83,7 +83,7 @@
               </label>
               <label class="sample-field" for="sample-search">
                 <span>Search in Nepali</span>
-                <input id="sample-search" type="search" data-sahajlipi placeholder="Try: nepal" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" />
+                <input id="sample-search" type="search" data-sahajlipi placeholder="Try: school" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" />
               </label>
               <label class="sample-field" for="sample-english">
                 <span>English notes stay in English</span>
@@ -158,7 +158,23 @@
             </section>
 
             <section class="guide-card">
-              <span class="guide-number">04 / R and Y forms</span>
+              <span class="guide-number">04 / Ch and Chh sounds</span>
+              <h3><span lang="ne">च</span> or <span lang="ne">छ</span></h3>
+              <p>Use <kbd>ch</kbd> for <span lang="ne">च्</span> and <kbd>chh</kbd> for the aspirated <span lang="ne">छ्</span>. Add a vowel to complete the consonant:</p>
+              <table class="sound-table" aria-label="Ch and Chh consonant sounds">
+                <thead><tr><th scope="col">Keys</th><th scope="col">Default result</th></tr></thead>
+                <tbody>
+                  <tr><td><kbd>ch</kbd></td><td><span lang="ne">च्</span></td></tr>
+                  <tr><td><kbd>cha</kbd></td><td><span lang="ne">च</span></td></tr>
+                  <tr><td><kbd>chh</kbd></td><td><span lang="ne">छ्</span></td></tr>
+                  <tr><td><kbd>chha</kbd></td><td><span lang="ne">छ</span></td></tr>
+                </tbody>
+              </table>
+              <p><kbd>cha</kbd> offers <span lang="ne">छ</span> as an alternative in the readings dropdown. Type <kbd>chha</kbd> to get <span lang="ne">छ</span> directly. Listed complete words can keep their own spelling, such as <kbd>huncha</kbd> → <span lang="ne">हुन्छ</span>.</p>
+            </section>
+
+            <section class="guide-card">
+              <span class="guide-number">05 / R and Y forms</span>
               <h3><span lang="ne">र्य</span> or <span lang="ne">र्‍य</span></h3>
               <p>Ordinary <kbd>ry</kbd> forms <span lang="ne">र्य</span>, as in <kbd>kaarya</kbd> → <span lang="ne">कार्य</span>, <kbd>suurya</kbd> → <span lang="ne">सूर्य</span>, <kbd>saundarya</kbd> → <span lang="ne">सौन्दर्य</span>, and <kbd>aachaarya</kbd> → <span lang="ne">आचार्य</span>. These complete listed words automatically use <span lang="ne">र्‍य</span>:</p>
               <div class="key-examples" aria-label="Listed R and Y word examples">
@@ -174,7 +190,7 @@
             </section>
 
             <section class="guide-card">
-              <span class="guide-number">05 / Listed word shortcuts</span>
+              <span class="guide-number">06 / Listed word shortcuts</span>
               <h3>Two informal spellings</h3>
               <p>The word list accepts these shortcuts and their explicit long-vowel spellings:</p>
               <div class="key-examples" aria-label="Informal and explicit word spellings">
@@ -189,7 +205,7 @@
             </section>
 
             <section class="guide-card">
-              <span class="guide-number">06 / T and D sounds</span>
+              <span class="guide-number">07 / T and D sounds</span>
               <h3>Shift changes the tongue position</h3>
               <p>Lowercase <kbd>t</kbd> and <kbd>d</kbd> give dental sounds. Capital <kbd>T</kbd> and <kbd>D</kbd> give retroflex sounds. Keep the <kbd>h</kbd> lowercase for aspirated pairs.</p>
               <table class="sound-table" aria-label="Dental and retroflex sound pairs">
@@ -204,7 +220,7 @@
             </section>
 
             <section class="guide-card">
-              <span class="guide-number">07 / More Shift sounds</span>
+              <span class="guide-number">08 / More Shift sounds</span>
               <h3>Type ऋ, ष, and visarga</h3>
               <p>Capital <kbd>R</kbd> gives <span lang="ne">ऋ</span> on its own or the <span lang="ne">ृ</span> sign after a consonant. Lowercase <kbd>ri</kbd> and <kbd>kri</kbd> keep their ordinary sounds.</p>
               <div class="key-examples" aria-label="R vowel examples">
@@ -225,7 +241,51 @@
             </section>
 
             <section class="guide-card">
-              <span class="guide-number">08 / Nasal marks</span>
+              <span class="guide-number">09 / English loanwords</span>
+              <h3>Devices and digital words</h3>
+              <p>These listed English spellings automatically produce a Nepali loanword while <strong>Nepali on</strong> is selected. Use the lowercase keys shown here:</p>
+              <table class="sound-table" aria-label="Technology loanword spellings">
+                <thead><tr><th scope="col">English keys</th><th scope="col">Nepali spelling</th></tr></thead>
+                <tbody>
+                  <tr><td><kbd>camera</kbd></td><td><span lang="ne">क्यामेरा</span></td></tr>
+                  <tr><td><kbd>computer</kbd></td><td><span lang="ne">कम्प्युटर</span></td></tr>
+                  <tr><td><kbd>mobile</kbd></td><td><span lang="ne">मोबाइल</span></td></tr>
+                  <tr><td><kbd>phone</kbd></td><td><span lang="ne">फोन</span></td></tr>
+                  <tr><td><kbd>charger</kbd></td><td><span lang="ne">चार्जर</span></td></tr>
+                  <tr><td><kbd>printer</kbd></td><td><span lang="ne">प्रिन्टर</span></td></tr>
+                  <tr><td><kbd>mouse</kbd></td><td><span lang="ne">माउस</span></td></tr>
+                  <tr><td><kbd>internet</kbd></td><td><span lang="ne">इन्टरनेट</span></td></tr>
+                  <tr><td><kbd>email</kbd></td><td><span lang="ne">इमेल</span></td></tr>
+                  <tr><td><kbd>software</kbd></td><td><span lang="ne">सफ्टवेयर</span></td></tr>
+                  <tr><td><kbd>scanner</kbd></td><td><span lang="ne">स्क्यानर</span></td></tr>
+                  <tr><td><kbd>video</kbd></td><td><span lang="ne">भिडियो</span></td></tr>
+                </tbody>
+              </table>
+              <p>Each pilot entry has one preferred spelling, so it does not open the readings dropdown. Additional spellings need review before becoming alternatives. These entries spell borrowed words; they do not translate English sentences.</p>
+            </section>
+
+            <section class="guide-card">
+              <span class="guide-number">10 / More English loanwords</span>
+              <h3>Everyday words</h3>
+              <table class="sound-table" aria-label="Everyday loanword spellings">
+                <thead><tr><th scope="col">English keys</th><th scope="col">Nepali spelling</th></tr></thead>
+                <tbody>
+                  <tr><td><kbd>taxi</kbd></td><td><span lang="ne">ट्याक्सी</span></td></tr>
+                  <tr><td><kbd>bank</kbd></td><td><span lang="ne">बैंक</span></td></tr>
+                  <tr><td><kbd>cheque</kbd></td><td><span lang="ne">चेक</span></td></tr>
+                  <tr><td><kbd>file</kbd></td><td><span lang="ne">फाइल</span></td></tr>
+                  <tr><td><kbd>school</kbd></td><td><span lang="ne">स्कुल</span></td></tr>
+                  <tr><td><kbd>college</kbd></td><td><span lang="ne">कलेज</span></td></tr>
+                  <tr><td><kbd>doctor</kbd></td><td><span lang="ne">डाक्टर</span></td></tr>
+                  <tr><td><kbd>nurse</kbd></td><td><span lang="ne">नर्स</span></td></tr>
+                </tbody>
+              </table>
+              <p>Only the complete listed key matches. Adding letters or a suffix, as in <kbd>cameraa</kbd>, <kbd>camerako</kbd>, or <kbd>mobilema</kbd>, uses ordinary phonetic conversion. Attached Nepali forms are not included in this pilot.</p>
+              <p>Incidental capitals can work: <kbd>Camera</kbd> and <kbd>Computer</kbd> use the listed spelling. Capitals <kbd>T</kbd>, <kbd>D</kbd>, <kbd>S</kbd>, <kbd>R</kbd>, and contextual <kbd>H</kbd> still select sounds. <kbd>Doctor</kbd>, <kbd>School</kbd>, <kbd>CAMERA</kbd>, and <kbd>COMPUTER</kbd> do not automatically match the lowercase loanword keys.</p>
+            </section>
+
+            <section class="guide-card">
+              <span class="guide-number">11 / Nasal marks</span>
               <h3>Choose the mark explicitly</h3>
               <p>Type <kbd>^</kbd> after a syllable for <span lang="ne">बिन्दु ं</span>, or <kbd>~</kbd> for <span lang="ne">चन्द्रबिन्दु ँ</span>. The letters <kbd>n</kbd> and <kbd>m</kbd> still make consonants.</p>
               <div class="key-examples" aria-label="Nasal mark examples">
@@ -235,7 +295,7 @@
             </section>
 
             <section class="guide-card">
-              <span class="guide-number">09 / Punctuation</span>
+              <span class="guide-number">12 / Punctuation</span>
               <h3>Period or <span lang="ne">पूर्णविराम</span></h3>
               <p>The <kbd>.</kbd> key always types an English period, including after a Nepali word and in decimals. Type <kbd>|</kbd> for <span lang="ne">।</span> anywhere, including after a number. Pasted text follows the same rule.</p>
               <div class="key-examples" aria-label="Full stop and decimal examples">
@@ -247,7 +307,7 @@
             </section>
 
             <section class="guide-card">
-              <span class="guide-number">10 / Alternatives</span>
+              <span class="guide-number">13 / Alternatives</span>
               <h3>Choose only when needed</h3>
               <p>Ambiguous words show a readings dropdown. The first reading appears in the editor; pick another from the dropdown or press <kbd>Alt</kbd> + <kbd>1</kbd>, <kbd>2</kbd>, and so on. Press <kbd>Space</kbd> to keep the displayed reading and finish the word.</p>
               <div class="key-examples" aria-label="Alternative reading example">
@@ -256,9 +316,10 @@
             </section>
 
             <section class="guide-card">
-              <span class="guide-number">11 / Editor controls</span>
+              <span class="guide-number">14 / Editor controls</span>
               <h3>Switch, copy, or clear</h3>
               <p>Use <strong>Nepali on/off</strong> to switch between conversion and literal English typing in the editor and marked form fields. The <kbd>.</kbd> key stays a period in both modes. With Nepali off, shortcut keys such as <kbd>^</kbd>, <kbd>~</kbd>, <kbd>/</kbd>, and <kbd>|</kbd> stay literal. <strong>Copy</strong> copies the editor text; <strong>Clear</strong> starts again.</p>
+              <p>Use <strong>Nepali off</strong> or an English field for URLs, email addresses, code, and other text that must stay literal. English spans are not automatically protected inside a field with Nepali on.</p>
               <p>The text you enter remains editable in the same field, including text you paste or type on a phone.</p>
             </section>
           </div>

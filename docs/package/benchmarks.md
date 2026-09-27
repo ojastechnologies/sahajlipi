@@ -55,9 +55,15 @@ The 28/28 contract result says only that this small, handpicked set matches the 
 
 ## Ra-ya regression update — 2026-09-27
 
-The [dated ra-ya review](ry-review.md) records the word-specific mappings, reserved Shift lookup correction, source-quality triage, commands and [machine report](../../benchmark/reports/nepali-ry-001.json). The current seed has **50 contracts and two exploratory cases**. On the same final fixture file, baseline `e029d02` passes **38/50** contracts and the updated engine passes **50/50**; both pass the original 28 contracts and both retain the two exploratory misses.
+The [dated ra-ya review](ry-review.md) records the word-specific mappings, reserved Shift lookup correction, source-quality triage, commands and [machine report](../../benchmark/reports/nepali-ry-001.json). The recorded ra-ya fixture has **50 contracts and two exploratory cases**. On the same final fixture file, baseline `e029d02` passes **38/50** contracts and the updated engine passes **50/50**; both pass the original 28 contracts and both retain the two exploratory misses.
 
-These are source-assisted project behavior contracts authorized for implementation, not independently reviewed Nepali corpus labels. The unchanged 100-case development cohort still has 7/100 exact source-proposal matches, and the pinned public word test remains 279/4,101 top and candidate matches. The report preserves these results and discloses the lack of admitted human labels. It makes no population accuracy or performance claim.
+These are source-assisted project behavior contracts authorized for implementation, not independently reviewed Nepali corpus labels. At that recorded update, the unchanged 100-case development cohort had 7/100 exact source-proposal matches, and the pinned public word test had 279/4,101 top and candidate matches. The report preserves these results and discloses the lack of admitted human labels. It makes no population accuracy or performance claim.
+
+## Loanword and cha update — 2026-09-27
+
+The current seed has **85 contracts and two exploratory cases**. The [loanword benchmark record](loanword-benchmarks.md) and [machine report](../../benchmark/reports/nepali-loanwords-001.json) compare baseline `43b5a00` with the modified engine on the same final fixture: **60/85 → 85/85** full contracts, **57/80 → 80/80** word top output, **60/82 → 82/82** required candidate coverage, and **3/5 → 5/5** exact text output. Both engines preserve the original 50/50 contracts and the two exploratory misses. All 52 existing fixture rows and IDs are retained.
+
+The 35 new contracts cover 20 source-assisted, user-authorized loanword defaults, the `cha`/`chha` distinction, incidental capitalization, reserved Shift sounds, whole-word suffix boundaries, collision controls and text integration. These are literal project behavior targets, not independent human linguistic labels. The unchanged development cohort remains at 7/100 source-proposal matches. The pinned public word test changes from the recorded 279/4,101 baseline to 281/4,101 exact top and candidate matches. Two pilot mappings overlap that public test, so this descriptive gain is not a clean held-out improvement claim. The dated ra-ya and initial baseline reports remain historical records.
 
 ## Building a credible evaluation corpus
 

@@ -190,3 +190,13 @@ test('rejects empty or malformed custom entries rather than returning undefined 
   assert.throws(() => createEngine({ entries: { name: [''] } }), TypeError);
   assert.throws(() => createEngine({ entries: { name: 'नाम' } }), TypeError);
 });
+
+test('cha prefers the unaspirated sound while chha explicitly selects the aspirated sound', () => {
+  assert.deepEqual(convertWord('cha'), { text: 'च', candidates: ['च', 'छ'], ambiguous: true });
+  assert.deepEqual(convertWord('chha'), { text: 'छ', candidates: ['छ'], ambiguous: false });
+  assert.equal(convertWord('ch').text, 'च्');
+  assert.equal(convertWord('chh').text, 'छ्');
+  assert.equal(convertText('cha chha'), 'च छ');
+  const custom = createEngine({ entries: { cha: ['छ', 'च'] } });
+  assert.equal(custom.convertWord('cha').text, 'छ');
+});

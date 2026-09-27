@@ -9,17 +9,19 @@ SahajLipi is an MIT-licensed Roman Nepali → Unicode typing prototype for web d
 
 ## Evaluation status
 
-The CI badge shows the current `main` branch status. CI runs automated tests and the seed contract benchmark on pull requests and pushes to `main`, across Node.js 18, 20, 22, and 24. The table below contains **dated baselines**, with methods and provenance linked from each row.
+The CI badge shows the current `main` branch status. CI runs automated tests and the seed contract benchmark on pull requests and pushes to `main`, across Node.js 18, 20, 22, and 24. The table below contains **dated recorded results**, with methods and provenance linked from each row.
 
 | Evaluation | Recorded result | Run date | Interpretation |
 | --- | --- | --- | --- |
-| [Seed behavior contracts](docs/package/benchmarks.md#initial-seed-baseline) | 28/28 full contract cases | 2026-09-24 | Regression coverage for selected project behaviors. Two unreviewed exploratory cases are excluded from the gate. |
-| [Ra-ya behavior update](docs/package/ry-review.md#recorded-results) | 50/50 current seed contracts; baseline 38/50 on the same final fixture | 2026-09-27 | Source-assisted project preferences and regression guards; independent human linguistic review pending. |
-| [External word baseline](docs/package/external-evaluation.md#initial-baseline) | 279/4,101 default matches; 279/4,101 references in candidates (6.80% each) | 2026-09-24 | Exact Unicode agreement with the pinned Aksharantar word test. |
+| [Latest loanword and cha contracts](docs/package/loanword-benchmarks.md#recorded-results) | 85/85 current contracts; baseline 60/85 on the same expanded fixture | 2026-09-27 | Source-assisted project defaults; original 50 contracts preserved and two exploratory cases excluded. |
+| [Latest public word comparison](docs/package/loanword-benchmarks.md#external-comparisons-and-separation) | 281/4,101 top and candidate matches (6.85%); baseline 279/4,101 | 2026-09-27 | Descriptive unchanged-label comparison; two pilot mappings overlap this public test. |
+| [Initial seed behavior contracts](docs/package/benchmarks.md#initial-seed-baseline) | 28/28 full contract cases | 2026-09-24 | Regression coverage for selected project behaviors. Two unreviewed exploratory cases are excluded from the gate. |
+| [Recorded ra-ya behavior update](docs/package/ry-review.md#recorded-results) | 50/50 recorded seed contracts; baseline 38/50 on the same final fixture | 2026-09-27 | Source-assisted project preferences and regression guards; independent human linguistic review pending. |
+| [Initial external word baseline](docs/package/external-evaluation.md#initial-baseline) | 279/4,101 default matches; 279/4,101 references in candidates (6.80% each) | 2026-09-24 | Exact Unicode agreement with the pinned Aksharantar word test. |
 | [Development review batch](docs/package/review-batch-baseline.md) | Default matches: 7/80 words, 0/20 sentences; 7/80 word proposals in candidates | 2026-09-26 | 100 unreviewed development source proposals; no accepted labels yet. |
 | [Source-assisted online review](docs/package/assisted-online-review.md) | 100 draft recommendations: 67 accept, 12 correct/add alternatives, 21 hold/exclude | 2026-09-27 | Research notes with 107 distinct evidence URLs; no canonical labels admitted or accuracy score. |
 
-These results do not establish population-wide Nepali typing accuracy. The external word set uses lowercase Roman inputs and does not exercise Shift shortcuts. The development batch still needs independent Nepali-language review before its proposals become accepted linguistic labels. Source-assisted project preferences are documented separately in the ra-ya report. Full reports record source revisions, engine commits, exclusions, and review status; the [review guide](docs/package/review-batch.md) explains how to contribute language review.
+These results do not establish population-wide Nepali typing accuracy. The external word set uses lowercase Roman inputs and does not exercise Shift shortcuts. The development batch still needs independent Nepali-language review before its proposals become accepted linguistic labels. Source-assisted project preferences are documented in the [loanword review](docs/package/loanword-review.md) and [ra-ya report](docs/package/ry-review.md). The latest public word comparison retains all 4,101 original labels and discloses its two pilot-entry overlaps. Full reports record source revisions, engine identities and file hashes, exclusions, and review status; the [review guide](docs/package/review-batch.md) explains how to contribute language review.
 
 ## Use the package
 
@@ -58,6 +60,8 @@ convertWord('paani');
 convertText('pani. paani|');
 // 'पनि. पानी।'
 ```
+
+The default engine also converts 20 exact English-spelling loanwords, such as `camera` → क्यामेरा and `bank` → बैंक. Browser fields use these defaults when Nepali mode is enabled. See the [loanword defaults and limits](docs/package/loanword-review.md).
 
 Start with the [package documentation](docs/package/README.md) for the [API](docs/package/api.md), [typing rules](docs/package/typing-reference.md), [architecture](docs/package/architecture.md), and [benchmark protocol](docs/package/benchmarks.md). The package is still marked `private` and is **not published to npm**; these examples import from a repository checkout.
 

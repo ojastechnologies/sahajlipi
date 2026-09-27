@@ -1,8 +1,8 @@
 # Nepali typing reference
 
-SahajLipi currently converts Roman Nepali to Unicode Devanagari. The core returns a preferred reading and, where listed, alternatives. The optional browser adapters render that preferred reading in opted-in text fields as you type and report alternatives to the host interface. This reference describes the **current prototype**, not a standardized Romanization scheme.
+SahajLipi currently converts Roman Nepali and 20 listed English-spelling loanwords to Unicode Devanagari. The core returns a preferred reading and, where listed, alternatives. The optional browser adapters render that preferred reading in opted-in text fields as you type and report alternatives to the host interface. This reference describes the **current prototype**, not a standardized Romanization scheme.
 
-The [starter lexicon](../../src/lexicon.js) takes priority over the [phonetic fallback](../../src/phonetic.js). This matters for words such as `cha`: the fallback token `ch` represents च, but the listed word `cha` defaults to छ and offers च as an alternative. Custom entries can replace a built-in entry in one engine instance. See the [engine source](../../src/index.js) for the lookup order.
+The [starter lexicon](../../src/lexicon.js) takes priority over the [phonetic fallback](../../src/phonetic.js). The listed word `cha` defaults to च and offers छ as an alternative; `chha` returns only छ. The fallback tokens remain `ch` → च and `chh` → छ. Custom entries can replace a built-in entry in one engine instance. See the [engine source](../../src/index.js) for the lookup order.
 
 ## Vowels
 
@@ -110,6 +110,29 @@ These entries match whole words; they do not infer stems, suffixes, or compound 
 
 Online usage supports the listed Nepali spellings: [नेपाल कानून पत्रिका uses गर्‍यो](https://nkp.gov.np/full_detail/9337) and [मर्‍यो and मार्‍यो](https://nkp.gov.np/full_detail/9028); [Nagarik uses भर्‍यो](https://nagariknews.nagariknetwork.com/opinion/171387-1550462880.html), [Nepal magazine uses तर्‍यो](https://nepalmag.com.np/feeling/2017/01/23/20170123180759), and [Gorkhapatra uses सर्‍यो](https://gorkhapatraonline.com/news/64479). The [District Administration Office, Parsa uses पुर्‍याउनु in a notice heading](https://daoparsa.moha.gov.np/en/post/saraka-ra-jaga-ga-pa-ra-pa-ta-gara-tha-pa-ra-ya-una-para-na-va-thha-pa-raka-ya), and [नेपाल कानून पत्रिका uses भर्‍याङ](https://nkp.gov.np/full_detail/9853). These are assisted checks of published spellings, not independent human verification of the Roman mappings; that review remains pending. The [dated review and benchmark report](ry-review.md) records these decisions, checks, remaining ambiguities, and limitations.
 
+## English-spelling loanwords
+
+These 20 exact keys automatically use the listed Nepali loanword forms. The browser adapters apply them while Nepali mode is on, and the core conversion functions use them directly. Each new entry has **one candidate**; observed variants remain pending review. The defaults are source-assisted project preferences authorized for implementation, with independent human linguistic review still pending. The [loanword review](loanword-review.md) records source URLs, access scopes, pending variants and the remaining 14 unshipped research proposals.
+
+| English key | Preferred output | English key | Preferred output |
+| --- | --- | --- | --- |
+| `camera` | क्यामेरा | `computer` | कम्प्युटर |
+| `mobile` | मोबाइल | `phone` | फोन |
+| `charger` | चार्जर | `printer` | प्रिन्टर |
+| `mouse` | माउस | `internet` | इन्टरनेट |
+| `email` | इमेल | `software` | सफ्टवेयर |
+| `scanner` | स्क्यानर | `video` | भिडियो |
+| `taxi` | ट्याक्सी | `bank` | बैंक |
+| `cheque` | चेक | `file` | फाइल |
+| `school` | स्कुल | `college` | कलेज |
+| `doctor` | डाक्टर | `nurse` | नर्स |
+
+This spells a borrowed word rather than translating its meaning: `school` produces स्कुल rather than विद्यालय. `mouse` uses the computer-device reading. A developer can replace a key's full candidate list with the existing `createEngine({ entries })` API.
+
+`Camera` and `Computer` match their lowercase entries. Reserved Shift keys still apply, so `Doctor`, `School`, `CAMERA` and `COMPUTER` are not blanket-lowercased aliases. Attached forms such as `camerako`, `cameramaa`, `mobilema` and `schoolma` are unlisted and keep the fallback; this pilot does not infer suffixes. Hyphenated `e-mail` is split by text conversion and is not the `email` alias.
+
+Keep an entire English field literal by leaving it unattached, marking it `data-sahajlipi-ignore` or disabling conversion. URLs, email addresses, code and English spans **inside** a Nepali-enabled field are not automatically protected. The tokenizer can match `camera` inside `camera.com`, `camera_file` and `camera123`; review mixed text before using the result.
+
 ## Nasal marks and punctuation
 
 Type `^` after a syllable for bindu/anusvara ं, or `~` for chandrabindu ँ. These are explicit marks, so `n` and `m` still type consonants.
@@ -123,14 +146,14 @@ The period `.` always stays an English period, including in `3.14`. Type `|` for
 
 ## Alternatives and field editing
 
-The engine returns candidates in preferred order. For example, `kam` gives कम first and काम second. The field adapter shows the first reading inline and reports alternatives through `onStateChange` only while an ambiguous word is active. An integrating app can show a dropdown and call `chooseCandidate(index)`; the adapter also handles Alt+1, Alt+2, and so on. Press Space to finish the word with the displayed reading. While a word is active, Backspace edits its original Roman sequence and recalculates the Nepali output.
+The engine returns candidates in preferred order. For example, `kam` gives कम first and काम second; `cha` gives च first and छ second. Use `chha` for the single छ reading. The field adapter shows the first reading inline and reports alternatives through `onStateChange` only while an ambiguous word is active. An integrating app can show a dropdown and call `chooseCandidate(index)`; the adapter also handles Alt+1, Alt+2, and so on. Press Space to finish the word with the displayed reading. While a word is active, Backspace edits its original Roman sequence and recalculates the Nepali output.
 
 The controller’s `setEnabled(false)` switches subsequent input to literal typing; `setEnabled(true)` resumes conversion. When conversion is disabled, keys such as `^`, `~`, `/`, and `|` remain literal. Switching modes does not rewrite text already in the field. `convertText` always uses the first reading of each converted word and returns plain text without candidate data.
 
 ## Current limits
 
 - The starter lexicon is small. Unknown words use deterministic phonetic rules, which can give incorrect Nepali spelling. There is no context-sensitive ranking or language detection.
-- `convertText` converts Latin-letter runs regardless of whether they are Nepali or English. Review mixed-language text before using its output.
+- `convertText` converts Latin-letter runs regardless of whether they are Nepali or English. The 20 loanword entries cover only their listed normalized keys; they add no language detection, attached-form inference or automatic URL/code protection.
 - The browser adapter attaches to `<textarea>` and text/search inputs, directly or through an opt-in field manager. It handles keyboard input, paste, and composition events, but this reference is not a browser compatibility guarantee.
 - The prototype does not offer a dedicated keyboard shortcut for every Devanagari character, mark, or accent. A future language profile would need its own reviewed mappings; current behavior is Nepali-specific.
 

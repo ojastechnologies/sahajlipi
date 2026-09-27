@@ -396,3 +396,56 @@ test("intercepted edits notify ordinary input listeners with converted text", (t
   assert.equal(observed.length, 4);
   assert.equal(observed.at(-1), "पनि");
 });
+
+test("loanword typing keeps Roman keys editable across dictionary and longer-word boundaries", (t) => {
+  const { field, controller, type, beforeInput } = setup(t);
+  type("camera");
+  assert.equal(field.value, "क्यामेरा");
+  assert.equal(controller.getState().activeRoman, "camera");
+  assert.deepEqual(controller.getState().candidates, []);
+  beforeInput("deleteContentBackward");
+  assert.equal(field.value, "चमेर्");
+  assert.equal(controller.getState().activeRoman, "camer");
+  type("ako");
+  assert.equal(field.value, "चमेरको");
+  assert.equal(controller.getState().activeRoman, "camerako");
+  beforeInput("deleteContentBackward");
+  beforeInput("deleteContentBackward");
+  assert.equal(field.value, "क्यामेरा");
+  assert.equal(controller.getState().activeRoman, "camera");
+  assert.equal(field.selectionStart, field.value.length);
+  assert.equal(field.selectionEnd, field.value.length);
+});
+
+test("cha defaults to च and selecting छ remains editable into explicit chha", (t) => {
+  const { field, controller, type, beforeInput } = setup(t);
+  type("cha");
+  assert.equal(field.value, "च");
+  assert.deepEqual(controller.getState().candidates, ["च", "छ"]);
+  controller.chooseCandidate(1);
+  assert.equal(field.value, "छ");
+  beforeInput("deleteContentBackward");
+  assert.equal(field.value, "च्");
+  assert.equal(controller.getState().activeRoman, "ch");
+  type("ha");
+  assert.equal(field.value, "छ");
+  assert.equal(controller.getState().activeRoman, "chha");
+  assert.deepEqual(controller.getState().candidates, []);
+});
+
+test("loanword paste converts in Nepali mode and stays literal after disabling conversion", (t) => {
+  const { field, controller, beforeInput } = setup(t);
+  const insertPaste = () => {
+    const paste = new Event("paste", { cancelable: true });
+    Object.defineProperty(paste, "clipboardData", { value: { getData: () => "camera computer 3.14|" } });
+    field.dispatchEvent(paste);
+    assert.equal(paste.defaultPrevented, true);
+  };
+  insertPaste();
+  assert.equal(field.value, "क्यामेरा कम्प्युटर 3.14।");
+  assert.deepEqual(controller.getState().candidates, []);
+  controller.setEnabled(false);
+  beforeInput("insertText", " ");
+  insertPaste();
+  assert.equal(field.value, "क्यामेरा कम्प्युटर 3.14। camera computer 3.14|");
+});
