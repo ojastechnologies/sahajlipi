@@ -15,7 +15,7 @@ SahajLipi helps people type Nepali with Roman keys in web applications. Its iden
 | Repository and package identifier | `sahajlipi` — lowercase. |
 | Tagline | **Roman keys. Native script.** |
 | Supporting line | **Open-source Nepali typing for the web.** |
-| Current product description | Roman Nepali to Unicode typing prototype, with a reusable package and a browser demo. |
+| Current product description | Open-source JavaScript library with TypeScript declarations for Roman Nepali to Unicode typing; an experimental package with a website and demo. |
 
 Use plain, specific language. Explain the keys, the resulting script, and the next action. In issue reports and release notes, show an actual input and output. Keep buttons direct: “Copy”, “Clear”, and “Try the demo”.
 
@@ -78,7 +78,11 @@ Interface and documentation text should use the existing readable system sans-se
 
 Use the logo in this repository's README and its social preview. GitHub's owner avatar represents the [organization profile](https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/customizing-your-organizations-profile); replacing it would change the Ojas Technologies identity across the organization.
 
-To install the repository preview, open [the repository settings](https://github.com/ojastechnologies/sahajlipi/settings), then **Social preview → Edit → Upload an image…** and select `assets/brand/social-preview.png` from your checkout. GitHub accepts PNG, JPG or GIF files under 1 MB and recommends 1280 × 640 pixels, with 640 × 320 as the minimum recommendation. See [GitHub's social preview instructions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/customizing-your-repositorys-social-media-preview).
+The website metadata uses the supplied social preview. GitHub currently uses its default generated repository preview; a custom image has not been uploaded. To optionally install the repository preview, open [the repository settings](https://github.com/ojastechnologies/sahajlipi/settings), then **Social preview → Edit → Upload an image…** and select `assets/brand/social-preview.png` from your checkout. GitHub accepts PNG, JPG or GIF files under 1 MB and recommends 1280 × 640 pixels, with 640 × 320 as the minimum recommendation. See [GitHub's social preview instructions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/customizing-your-repositorys-social-media-preview).
+
+## Package website identity
+
+The package homepage and documentation use the same mark, wordmark, colors, and browser icons as the demo. Page previews use `assets/brand/social-preview.png`; preserve the meaningful project name in visible text and accessible image names. Page titles and descriptions live in `website/page-meta.json`, with the implemented Nepali scope and prototype release status stated plainly. The [website and SEO guide](website-and-seo.md) explains canonical URLs, social metadata, and repository discovery.
 
 ## Contributing artwork
 

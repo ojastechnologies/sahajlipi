@@ -27,7 +27,12 @@
     "test:browser:report": "playwright show-report",
     "verify:package": "node tools/verify-package.js",
     "examples:build": "node tools/build-examples.js",
-    "examples:serve": "python3 -m http.server 4177 --bind 127.0.0.1"
+    "examples:serve": "python3 -m http.server 4177 --bind 127.0.0.1",
+    "site:dev": "node tools/prepare-site.js && vitepress dev website --host 127.0.0.1 --port 4178",
+    "site:build": "node tools/prepare-site.js && vitepress build website",
+    "site:check": "node tools/verify-site.js",
+    "site:preview": "python3 -m http.server 4178 --bind 127.0.0.1 --directory .site-dist",
+    "test:site": "npm run site:build && npm run site:check && playwright test -c playwright.site.config.js"
   },
   "engines": {
     "node": ">=18"
@@ -40,13 +45,14 @@
     "esbuild": "0.28.2",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "vitepress": "1.6.4"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ojastechnologies/sahajlipi.git"
   },
-  "homepage": "https://github.com/ojastechnologies/sahajlipi#readme",
+  "homepage": "https://ojastechnologies.github.io/sahajlipi/",
   "bugs": {
     "url": "https://github.com/ojastechnologies/sahajlipi/issues"
   },

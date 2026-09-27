@@ -1,9 +1,9 @@
-<h1>
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/brand/logo-dark.svg">
-    <img src="assets/brand/logo.svg" alt="SahajLipi" width="380" height="82">
-  </picture>
-</h1>
+# SahajLipi
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/brand/logo-dark.svg">
+  <img src="assets/brand/logo.svg" alt="SahajLipi" width="380" height="82">
+</picture>
 
 **Roman keys. Native script.**
 
@@ -11,9 +11,9 @@
 [![Browser tests](https://github.com/ojastechnologies/sahajlipi/actions/workflows/browser.yml/badge.svg?branch=main)](https://github.com/ojastechnologies/sahajlipi/actions/workflows/browser.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-SahajLipi is a Roman Nepali → Unicode typing prototype for web developers. Its code is MIT-licensed; the [CLDR month-name data](docs/package/month-names.md) uses [Unicode-3.0](LICENSES/Unicode-3.0.txt). This repository contains a **reusable package** and a **separate browser demo**. Only Nepali is implemented today; other Devanagari languages are a future goal.
+SahajLipi is an open-source JavaScript library with TypeScript declarations for phonetic Roman Nepali → Unicode typing in web applications. The reusable package is an experimental prototype. Its code is MIT-licensed; the [CLDR month-name data](docs/package/month-names.md) uses [Unicode-3.0](LICENSES/Unicode-3.0.txt). This repository contains a **reusable package** and a **separate browser demo**. Only Nepali is implemented today; other Devanagari languages are a future goal.
 
-[Live demo](https://ojastechnologies.github.io/sahajlipi/demo/) · [Getting started](docs/package/getting-started.md) · [Documentation](docs/README.md) · [Evaluation](#evaluation-status) · [Contributing](CONTRIBUTING.md)
+[Package website](https://ojastechnologies.github.io/sahajlipi/) · [Getting started](docs/package/getting-started.md) · [Documentation](docs/README.md) · [Live demo](https://ojastechnologies.github.io/sahajlipi/demo/) · [Evaluation](#evaluation-status) · [Contributing](CONTRIBUTING.md)
 
 ## Use the package
 
@@ -67,7 +67,9 @@ Recognizable links, ASCII domain-shaped hosts and ordinary ASCII email addresses
 
 Start with the [package documentation](docs/package/README.md) for the [API](docs/package/api.md), [typing rules](docs/package/typing-reference.md), [architecture](docs/package/architecture.md), and [benchmark protocol](docs/package/benchmarks.md). The package is still marked `private` and is **not published to npm**; the snippets above use checkout imports. A locally packed installation can use the public package imports; see [Getting started](docs/package/getting-started.md).
 
-## Try the demo
+## Package website and demo
+
+The package website presents the library and renders these Markdown guides as searchable documentation. Website updates publish after merge and a successful GitHub Pages deployment. See the [website and SEO guide](docs/website-and-seo.md) for local builds, canonical URLs, sitemap, publishing, and search-verification limits.
 
 Use the [live typing demo](https://ojastechnologies.github.io/sahajlipi/demo/) to try the current interaction. Its editor, candidate dropdown, controls, local setup, and Pages hosting are described in the [demo guide](docs/demo/README.md). The demo consumes the package; it is not a separate conversion engine.
 
@@ -114,7 +116,7 @@ npm run test:browser
 
 On Linux, add `--with-deps` to the browser installation command. The suite starts its own local server. See the [browser compatibility guide](docs/package/browser-compatibility.md) for running one engine, opening reports, and distinguishing keyboard checks from injected event tests. Playwright is a development dependency; the package has no runtime dependencies.
 
-The [release policy](docs/release.md) and [changelog](CHANGELOG.md) track alpha preparation; publishing is still blocked.
+The [release policy](docs/release.md) and [changelog](CHANGELOG.md) track alpha preparation; npm publishing is still blocked.
 
 See the [documentation index](docs/README.md), [development guide](docs/development.md), [contribution guide](CONTRIBUTING.md), [project status](docs/status-and-roadmap.md), [security policy](SECURITY.md), and [MIT license](LICENSE). The seed benchmark is a regression set, not a population-wide accuracy measure. See the [external evaluation guide](docs/package/external-evaluation.md) for the pinned Nepali word baseline and sentence review process.
 

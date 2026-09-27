@@ -7,3 +7,9 @@ playwright-report/
 test-results/
 browser/.generated/
 *.tgz
+website/.generated/
+website/.generated-public/
+website/.vitepress/cache/
+.site-dist/
+site-test-results/
+site-playwright-report/
