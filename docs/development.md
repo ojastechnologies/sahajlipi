@@ -23,6 +23,20 @@ npm run test:browser
 
 On Linux, use `npx playwright install --with-deps chromium firefox webkit`. The suite automatically starts an isolated Python server on port 4180. `npm run test:browser -- --project=chromium` runs one engine, and `npm run test:browser:report` opens the latest HTML report. The [browser compatibility guide](package/browser-compatibility.md) defines the coverage, report interpretation, and limits.
 
+## Verify the package and developer examples
+
+With Node.js 20 or later and `npm ci` completed:
+
+```sh
+npm run verify:package
+npm run examples:build
+npm run examples:serve
+```
+
+The package check packs the actual file allowlist and installs the tarball offline into a temporary standalone ESM app. It checks public JavaScript imports, declaration resolution in strict TypeScript NodeNext/Bundler configurations, and the tutorial output. The example builder type-checks and bundles vanilla and React consumers against that installed package. The generated files are ignored by Git; they contain a development React build for StrictMode checks. Open `/browser/.generated/vanilla/` or `/browser/.generated/react/` on `http://127.0.0.1:4177`. Stop the example server before another process uses that port. [Example instructions](../examples/README.md) explain the source and packaged paths.
+
+`npm run test:browser` builds these consumers before the desktop suite. Package verification also runs as separate CI jobs on Node 20, 22, and 24. Development tools are not runtime or peer dependencies of SahajLipi.
+
 ## Where changes belong
 
 | Area | Files | Typical change |
@@ -54,7 +68,7 @@ Pull requests to `main` run the [Node CI workflow](../.github/workflows/ci.yml) 
 
 ## Release status
 
-The GitHub repository and demo are public, but there is **no npm release process yet**. [`package.json`](../package.json) has `"private": true`, so `npm publish` is blocked. Before an alpha release, maintainers need to review the public API and TypeScript declarations, package contents, supported runtimes, license and data provenance, evaluation evidence, versioning, and a release checklist.
+The repository and demo are public; npm publishing is still blocked by `"private": true`. The [release policy](release.md) now defines compatibility scope, versioning, migration notes, and an alpha checklist. There is no npm publishing workflow, registry release, or stable API promise. See [CHANGELOG.md](../CHANGELOG.md) for unreleased changes and [Getting started](package/getting-started.md) for local package installation.
 
 ## Privacy and trust boundaries
 

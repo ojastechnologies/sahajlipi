@@ -5,3 +5,5 @@ coverage/
 benchmark/data/
 playwright-report/
 test-results/
+browser/.generated/
+*.tgz

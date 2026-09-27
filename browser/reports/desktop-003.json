@@ -1,0 +1,506 @@
+{
+  "schemaVersion": 1,
+  "reportId": "desktop-003",
+  "recordedAt": "2026-09-27T15:45:24.314Z",
+  "purpose": "Installed-package developer integration evidence alongside existing desktop regressions; no language accuracy or throughput claim.",
+  "source": {
+    "baseCommit": "2c3958ce135723b52dec4aeefb30edabe173ec39",
+    "identity": "Modified working tree identified by file hashes; core and demo sources match desktop-002. Historical records are unchanged.",
+    "productionChangedFiles": [],
+    "fileSha256": {
+      ".github/workflows/browser.yml": "3236443963fbd406034d89637b76af0caa67e01c203960a00db6e49682fa4141",
+      ".github/workflows/ci.yml": "2570d11ace684fe933316f5cbcefc0785fa6d406b5e78934a247d611e223dbe2",
+      "LICENSE": "84abe5cb282f83d7da4f1bc92e19b28f64e89036877cad5fe5cb9b8f35ee84ad",
+      "LICENSES/Unicode-3.0.txt": "220ba0e1c43b99530d2d5bdb892a99dca0989414f51ab695ecd90163eaa1ec3b",
+      "NOTICE": "56f72e63edd18ecb0708c7e2d8afb057e98c7014c3d510bd8888d138ce05eda5",
+      "README.md": "0a4ac3223ce3f02405c0d981f0094001dcba34e54a743dc566081cc90752354b",
+      "browser/developer-examples.spec.js": "7ce276f6bfe63871914fa89908cbc6e2b569f0d5c621dbd099abca14001f7afb",
+      "browser/fixtures/adapters.html": "016c31fad9739619847b7fdcfb9f9042cc7575d4cdf4274a878139981019c0fd",
+      "browser/typing.spec.js": "044b4b8a7dcf66b1c5260bd23dafc5b2768b720cf1a5fc27d7fa0dfc3d6fd963",
+      "demo/index.html": "9cbeedc8a01a74c0598bf9f0ac6b5425fc11698f9d9b92ed75491af4e82f43ee",
+      "demo/main.js": "58fc7e5262f4a1399447964c9c5dfe71dd9989096ebc147b8d90ea3db5abcab4",
+      "demo/style.css": "7c6cdba73432cdc1983be2816984f08fa0ff3b726534425fee137e88923572f4",
+      "examples/README.md": "ac3eb91d26e05939fe86627e6027d4e3f0ce4e02ea31a0729606101112567523",
+      "examples/react/NepaliInput.tsx": "2e2f68329c13e2be52c3e447273ac962be9fd2857cc64a4df6338e7343cd5055",
+      "examples/react/index.html": "944e3a2c86be09a8469b59a669422dd2500609739ef80da95f15d1d39aff8c0e",
+      "examples/react/main.tsx": "e0dc98294e8912c32902aa0c05fab8a329a8c0742cf4df94ef17232fb2bf48b9",
+      "examples/typescript/browser.ts": "3709682c135b4d6ce027db50ddc3f84f37ecbe7c95b1e8326b2f83ac59ff2839",
+      "examples/typescript/core.mts": "65a0d0a3c2b54821eb424a3ce95e2d0f058624fbb2c458acaa1b6650c0fddb17",
+      "examples/vanilla/index.html": "ac7bfbaf05c158fdc33c8f3b6ce3d83ddd3d3cd227bd69797aee58a78e595e46",
+      "examples/vanilla/main.js": "4c9e9f56c07fe56c20b7f96d2f86dfcd070f23ec15466ce1c19e6cc1abe2fdb1",
+      "package-lock.json": "fd71f533876770f291ddf6369f562544fe1c8ba90c1d1889c3607c6f7de285bc",
+      "package.json": "8fd3f16d5227ea08ddec50db3f2fb92e2aca12d1cf5dea566ce9fd70d1215238",
+      "playwright.config.js": "63e7088707ab5629e1b7cc76975bcace6270778a4b60780e188f2b4d4800e96a",
+      "src/dom.d.ts": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1",
+      "src/dom.js": "6e84385a02ec7a79b8550de417b701b23ea3c3b36ab46e6408f1c7dfa7c233b2",
+      "src/index.d.ts": "48be479797841978cabab3ba96fe9b77caa8c814238866908aa515619ab7cd17",
+      "src/index.js": "efc2ed4719f209fd45e850d80d5ee8d3f6b8ef3862c70268aac8d46e8eab9627",
+      "src/lexicon.js": "0e5c26111dcebac1fe43bc4ae2d14a236653b42e6f676f43dbc549983f6806c0",
+      "src/phonetic.js": "dec43061ce47d8456092b661a4b1ea7b5d366d2c7969a4f2b6f3b1b0c20ff1ff",
+      "src/text-policy.js": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa",
+      "tools/build-examples.js": "48daa41e9c5cd1b2d0669707574609070ceae9673595f91d3c1dccfebf7f6526",
+      "tools/verify-package.js": "4c77b31069bdc5fc4b46ec8a3edb518bd71ac08f282d527e7fe0836b1617a24b",
+      "verification/consumer/browser.ts": "149bc638c4bf11cb09bbb7ff9e65635d5e9402f08dea5ffe3c20ba31c3c2c36e",
+      "verification/consumer/core.ts": "b469eddf3251f71e38002af78b66f744ebe908ab027c01c20f3c665c07e33679",
+      "verification/consumer/runtime.mjs": "9140b08ed855cc1b3f66287e057ea2dc6becd2e6696e55c79886ca80cf755e07"
+    }
+  },
+  "environment": {
+    "node": "v22.22.3",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "actualWorkers": 2,
+    "osRelease": "25.6.0",
+    "playwright": "1.63.0",
+    "typescript": "5.9.3",
+    "react": "19.3.0",
+    "reactDOM": "19.3.0",
+    "esbuild": "0.28.2",
+    "headless": true,
+    "workers": 2,
+    "retries": 0
+  },
+  "command": "npm run test:browser",
+  "totals": {
+    "passed": 51,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "scenarios": 17,
+    "projects": 3
+  },
+  "projects": [
+    {
+      "project": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "project": "firefox",
+      "browserVersion": "155.0",
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "project": "webkit",
+      "browserVersion": "26.6",
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "tests": [
+    {
+      "title": "installed vanilla consumer converts marked fields, exposes candidates, and preserves English",
+      "file": "developer-examples.spec.js",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "installed vanilla consumer teardown leaves text literal and disables its controls",
+      "file": "developer-examples.spec.js",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "installed React uncontrolled consumer handles StrictMode, callbacks, mode, and remount cleanup",
+      "file": "developer-examples.spec.js",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "installed vanilla consumer converts marked fields, exposes candidates, and preserves English",
+      "file": "developer-examples.spec.js",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "installed vanilla consumer teardown leaves text literal and disables its controls",
+      "file": "developer-examples.spec.js",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "installed React uncontrolled consumer handles StrictMode, callbacks, mode, and remount cleanup",
+      "file": "developer-examples.spec.js",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "installed vanilla consumer converts marked fields, exposes candidates, and preserves English",
+      "file": "developer-examples.spec.js",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "installed vanilla consumer teardown leaves text literal and disables its controls",
+      "file": "developer-examples.spec.js",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "installed React uncontrolled consumer handles StrictMode, callbacks, mode, and remount cleanup",
+      "file": "developer-examples.spec.js",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "real keyboard keeps an active half consonant editable and notifies input listeners",
+      "file": "typing.spec.js",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "real keyboard preserves the ra-ya joiner, Shift sounds, bindu and chandrabindu",
+      "file": "typing.spec.js",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "addresses remain literal at every intermediate key after the first recognition cue",
+      "file": "typing.spec.js",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "periods stay ordinary until a domain cue, and cue deletion supports undo and redo",
+      "file": "typing.spec.js",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "the candidate dropdown and Alt shortcut preserve a selected reading through later edits",
+      "file": "typing.spec.js",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "real keyboard edits an email at its caret and replaces a selected Nepali word",
+      "file": "typing.spec.js",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "real keyboard separates URL punctuation neighbors and preserves decimals and query pipes",
+      "file": "typing.spec.js",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "demo manager covers textarea, text and search while retaining English and email exclusions",
+      "file": "typing.spec.js",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "real MutationObserver attaches dynamic fields, detaches exclusions and removals, and stops after destroy",
+      "file": "typing.spec.js",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "synthetic clipboard paste restores an address prefix and emits converted input to host listeners",
+      "file": "typing.spec.js",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "synthetic composition reconciles a final input after compositionend and undoes the composition together",
+      "file": "typing.spec.js",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "synthetic native input fallback handles an active vowel and a mixed-text paste without beforeinput",
+      "file": "typing.spec.js",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "real keyboard uses Nepali digits, keeps decimal separators and restores numeric address prefixes",
+      "file": "typing.spec.js",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "digit configuration and English exclusions apply consistently to typing and synthetic paste",
+      "file": "typing.spec.js",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "real keyboard keeps an active half consonant editable and notifies input listeners",
+      "file": "typing.spec.js",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "real keyboard preserves the ra-ya joiner, Shift sounds, bindu and chandrabindu",
+      "file": "typing.spec.js",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "addresses remain literal at every intermediate key after the first recognition cue",
+      "file": "typing.spec.js",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "periods stay ordinary until a domain cue, and cue deletion supports undo and redo",
+      "file": "typing.spec.js",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "the candidate dropdown and Alt shortcut preserve a selected reading through later edits",
+      "file": "typing.spec.js",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "real keyboard edits an email at its caret and replaces a selected Nepali word",
+      "file": "typing.spec.js",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "real keyboard separates URL punctuation neighbors and preserves decimals and query pipes",
+      "file": "typing.spec.js",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "demo manager covers textarea, text and search while retaining English and email exclusions",
+      "file": "typing.spec.js",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "real MutationObserver attaches dynamic fields, detaches exclusions and removals, and stops after destroy",
+      "file": "typing.spec.js",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "synthetic clipboard paste restores an address prefix and emits converted input to host listeners",
+      "file": "typing.spec.js",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "synthetic composition reconciles a final input after compositionend and undoes the composition together",
+      "file": "typing.spec.js",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "synthetic native input fallback handles an active vowel and a mixed-text paste without beforeinput",
+      "file": "typing.spec.js",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "real keyboard uses Nepali digits, keeps decimal separators and restores numeric address prefixes",
+      "file": "typing.spec.js",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "digit configuration and English exclusions apply consistently to typing and synthetic paste",
+      "file": "typing.spec.js",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "real keyboard keeps an active half consonant editable and notifies input listeners",
+      "file": "typing.spec.js",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "real keyboard preserves the ra-ya joiner, Shift sounds, bindu and chandrabindu",
+      "file": "typing.spec.js",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "addresses remain literal at every intermediate key after the first recognition cue",
+      "file": "typing.spec.js",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "periods stay ordinary until a domain cue, and cue deletion supports undo and redo",
+      "file": "typing.spec.js",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "the candidate dropdown and Alt shortcut preserve a selected reading through later edits",
+      "file": "typing.spec.js",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "real keyboard edits an email at its caret and replaces a selected Nepali word",
+      "file": "typing.spec.js",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "real keyboard separates URL punctuation neighbors and preserves decimals and query pipes",
+      "file": "typing.spec.js",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "demo manager covers textarea, text and search while retaining English and email exclusions",
+      "file": "typing.spec.js",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "real MutationObserver attaches dynamic fields, detaches exclusions and removals, and stops after destroy",
+      "file": "typing.spec.js",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "synthetic clipboard paste restores an address prefix and emits converted input to host listeners",
+      "file": "typing.spec.js",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "synthetic composition reconciles a final input after compositionend and undoes the composition together",
+      "file": "typing.spec.js",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "synthetic native input fallback handles an active vowel and a mixed-text paste without beforeinput",
+      "file": "typing.spec.js",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "real keyboard uses Nepali digits, keeps decimal separators and restores numeric address prefixes",
+      "file": "typing.spec.js",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "digit configuration and English exclusions apply consistently to typing and synthetic paste",
+      "file": "typing.spec.js",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    }
+  ],
+  "packageConsumer": {
+    "tarballSha256": "296f2d286be476df5c8b544c059b8ded54d79a6225d70d021448cbd25ad4d71a",
+    "packageFiles": [
+      "LICENSE",
+      "LICENSES/Unicode-3.0.txt",
+      "NOTICE",
+      "README.md",
+      "package.json",
+      "src/dom.d.ts",
+      "src/dom.js",
+      "src/index.d.ts",
+      "src/index.js",
+      "src/lexicon.js",
+      "src/phonetic.js",
+      "src/text-policy.js"
+    ],
+    "method": "npm pack and offline installation in a standalone temporary ESM app; public exports used by compiled and bundled examples.",
+    "checks": [
+      "JavaScript public imports and blocked internal exports",
+      "Strict TypeScript 5.9.3 NodeNext core without DOM declarations",
+      "Strict NodeNext and Bundler DOM consumers and tutorial files",
+      "Emitted TypeScript core tutorial executed in Node",
+      "Strict Bundler React TSX compilation",
+      "esbuild module-input validation requires installed SahajLipi and rejects checkout src"
+    ],
+    "dependencies": "No runtime, peer, or optional package dependencies; React and tooling are development dependencies."
+  },
+  "rawReport": {
+    "path": "test-results/browser-results.json",
+    "sha256": "8343ddf20ac708e786b0504fe67c157a61526d6c2a76ecb7e2b54ec1d9fdb8c4",
+    "committed": false,
+    "retention": "Generated reports ignored; CI artifacts retained for 14 days."
+  },
+  "otherChecks": {
+    "nodeTests": {
+      "passed": 227,
+      "failed": 0
+    },
+    "seedBehaviorContracts": {
+      "passed": 133,
+      "total": 133,
+      "excludedExploratoryCases": 2
+    }
+  },
+  "limitations": [
+    "Headless desktop engines; no installed application or physical device certification.",
+    "React 19.3.0 uncontrolled textarea recipe only; no controlled-value, form-library, SSR/hydration, or all-framework support claim.",
+    "Existing clipboard, composition, and native-input fallback tests inject events; no OS clipboard, real IME, or mobile keyboard certification.",
+    "No assistive-technology or accessibility-conformance claim.",
+    "Counts describe software checks; independent language review and held-out accuracy evaluation remain pending.",
+    "Source identities and tarball checksum describe this run only; later changes need their own record."
+  ]
+}

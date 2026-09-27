@@ -22,6 +22,8 @@ On Linux, install the browser system dependencies as well:
 npx playwright install --with-deps chromium firefox webkit
 ```
 
+`npm run test:browser` first builds the installed-package developer examples; a direct `npx playwright test` call requires `npm run examples:build` beforehand. The builder uses pinned React, TypeScript, and esbuild development dependencies without adding runtime dependencies to SahajLipi.
+
 The test configuration starts an isolated Python HTTP server on `127.0.0.1:4180` and stops it when the run finishes. Keep that port available: the configuration refuses to reuse a server already on port 4180, so stop the conflicting server before retrying. It does not depend on an already running demo server or change the demo's local port.
 
 Run one engine while developing a regression:
@@ -63,6 +65,18 @@ The suite distinguishes normal keyboard actions from injected event contracts:
 | Native-input fallback | Injected `input` events without `beforeinput` check active-vowel and mixed-paste handling and host input-listener notifications. They do not establish mobile keyboard or framework-controlled field behavior. |
 
 Use the test names and attached failure traces to identify exactly which flow failed. Assertions concern the selected software behavior; this is not a general browser support certification.
+
+## Installed-package developer examples
+
+[`browser/developer-examples.spec.js`](../../browser/developer-examples.spec.js) adds three consumer scenarios per engine:
+
+- Vanilla: marked-field conversion, candidate choices, Nepali/English switching, and English exclusions.
+- Vanilla: explicit teardown leaves subsequent text literal and removes its controls' behavior.
+- React: uncontrolled textarea state callbacks, candidate selection, modes, and effect cleanup/remount under development StrictMode.
+
+[`tools/build-examples.js`](../../tools/build-examples.js) packs and installs the actual tarball in a standalone temporary app, copies the example source there, type-checks the React files, and bundles public package imports. It checks esbuild's module inputs to require the installed package and reject checkout source bypasses. These generated fixtures are ignored by Git. React's pinned version is 19.3.0; this checks the named uncontrolled-field recipe only. Framework-controlled fields, SSR/hydration, physical mobile keyboards, and assistive technology remain unverified. See [integration recipes](integration-recipes.md) and [release compatibility scope](../release.md).
+
+The separate [desktop-003 record](../../browser/reports/desktop-003.json) captures the later 51-check run (17 scenarios per engine), including the nine consumer checks. It records package and test source identities, installed-tarball checksum, environment, and outcomes. The 36- and 42-check records below remain historical and immutable; their totals describe their original runs.
 
 ## Desktop engine matrix
 

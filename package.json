@@ -23,14 +23,37 @@
     "benchmark:aksharantar": "node benchmark/aksharantar.js",
     "benchmark:sentence-queue": "node benchmark/sentence-review.js",
     "benchmark:review-batch": "node benchmark/review-batch.js",
-    "test:browser": "playwright test",
-    "test:browser:report": "playwright show-report"
+    "test:browser": "node tools/build-examples.js && playwright test",
+    "test:browser:report": "playwright show-report",
+    "verify:package": "node tools/verify-package.js",
+    "examples:build": "node tools/build-examples.js",
+    "examples:serve": "python3 -m http.server 4177 --bind 127.0.0.1"
   },
   "engines": {
     "node": ">=18"
   },
   "license": "MIT",
   "devDependencies": {
-    "@playwright/test": "1.63.0"
-  }
+    "@playwright/test": "1.63.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "esbuild": "0.28.2",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "typescript": "5.9.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ojastechnologies/sahajlipi.git"
+  },
+  "homepage": "https://github.com/ojastechnologies/sahajlipi#readme",
+  "bugs": {
+    "url": "https://github.com/ojastechnologies/sahajlipi/issues"
+  },
+  "files": [
+    "src/",
+    "LICENSE",
+    "LICENSES/",
+    "NOTICE"
+  ]
 }

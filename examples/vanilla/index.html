@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SahajLipi vanilla JavaScript example</title>
+    <style>
+      body { max-width: 44rem; margin: 3rem auto; padding: 0 1rem; font: 1rem/1.6 system-ui, sans-serif; }
+      label { display: block; margin-top: 1rem; }
+      input, textarea { box-sizing: border-box; width: 100%; padding: .6rem; font: inherit; }
+      button { margin: .4rem .4rem .4rem 0; padding: .5rem .8rem; font: inherit; cursor: pointer; }
+      [hidden] { display: none; }
+      #candidate-options { padding: .5rem 0; }
+    </style>
+    <!-- Checkout/Pages-only mapping. Installed consumers import the same package names. -->
+    <script type="importmap">
+      { "imports": { "sahajlipi": "../../src/index.js", "sahajlipi/dom": "../../src/dom.js" } }
+    </script>
+  </head>
+  <body>
+    <h1>One initializer, selected fields</h1>
+    <p>Type <code>paani</code>, <code>kam</code>, or <code>123</code> in a Nepali field. Select an alternative for <code>kam</code>, or switch to English before typing an English fragment.</p>
+    <button id="mode-toggle" type="button">Switch to English</button>
+    <p id="adapter-status" role="status">Starting adapter…</p>
+    <form id="example-form">
+      <label for="nepali-message">Nepali message</label>
+      <textarea id="nepali-message" rows="4" data-sahajlipi></textarea>
+      <div id="candidate-options" role="group" aria-label="Spelling alternatives" hidden></div>
+      <label for="nepali-name">Another Nepali field</label>
+      <input id="nepali-name" type="text" data-sahajlipi>
+      <label for="english-message">English field (excluded)</label>
+      <input id="english-message" type="text" data-sahajlipi data-sahajlipi-ignore>
+    </form>
+    <button id="cleanup-button" type="button">Detach typing adapters</button>
+    <p>Detaching removes the typing adapters and their listeners. Existing text stays in the fields.</p>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

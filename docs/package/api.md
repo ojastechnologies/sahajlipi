@@ -1,20 +1,20 @@
 # API reference
 
-SahajLipi is an MIT-licensed prototype at version `0.1.0`. It is **not published to npm**: [`package.json`](../../package.json) has `"private": true`. The examples below import files from a checkout of this repository. The code is dependency-free ECMAScript modules; Node.js 18 or later is declared in the package metadata.
+SahajLipi is an MIT-licensed prototype at version `0.1.0`. It is **not published to npm**: [`package.json`](../../package.json) has `"private": true`. Install it from a local tarball or checkout folder using [getting started](getting-started.md); the examples below use its public package exports. The code is dependency-free ECMAScript modules; Node.js 18 or later is declared in the package metadata. See [integration recipes](integration-recipes.md) for complete candidate and component examples.
 
 The public surface has two entry points:
 
 | Entry point | Source | Purpose |
 | --- | --- | --- |
-| Core | [`src/index.js`](../../src/index.js), types in [`src/index.d.ts`](../../src/index.d.ts) | Convert Roman input without a DOM. |
-| Browser adapters | [`src/dom.js`](../../src/dom.js), types in [`src/dom.d.ts`](../../src/dom.d.ts) | Add live typing to one field or a configurable set of fields in a document or page region. |
+| `sahajlipi` | [`src/index.js`](../../src/index.js), types in [`src/index.d.ts`](../../src/index.d.ts) | Convert Roman input without a DOM. |
+| `sahajlipi/dom` | [`src/dom.js`](../../src/dom.js), types in [`src/dom.d.ts`](../../src/dom.d.ts) | Add live typing to one field or a configurable set of fields in a document or page region. |
 
 ## Core engine
 
-The following snippet assumes it runs from the repository root:
+The following snippet assumes SahajLipi is installed in an ESM application:
 
 ```js
-import { convertWord, convertText, createEngine } from './src/index.js';
+import { convertWord, convertText, createEngine } from 'sahajlipi';
 
 convertWord('paani');
 // { text: 'पानी', candidates: ['पानी'], ambiguous: false }
@@ -162,8 +162,8 @@ latin.convertText('१२३');          // '१२३' — existing Devanagari 
 Configure one engine for the fields managed by an app, page, or selector. Pass **both** converters so live words, digits, paste, and completed composition use the same style:
 
 ```js
-import { createEngine } from './src/index.js';
-import { attachNepaliInputs } from './src/dom.js';
+import { createEngine } from 'sahajlipi';
+import { attachNepaliInputs } from 'sahajlipi/dom';
 
 const engine = createEngine({ digits: 'latin' });
 const appTyping = attachNepaliInputs(document, {
@@ -224,7 +224,7 @@ A manager covers only supported `<textarea>`, `<input type="text">`, and `<input
 ```
 
 ```js
-import { attachNepaliInputs } from './src/dom.js';
+import { attachNepaliInputs } from 'sahajlipi/dom';
 
 const manager = attachNepaliInputs(); // Only marked supported fields.
 // Later, when the page or containing app is torn down:
@@ -241,7 +241,7 @@ const manager = attachNepaliInputs(); // Only marked supported fields.
 ```
 
 ```js
-import { attachNepaliInputs } from './src/dom.js';
+import { attachNepaliInputs } from 'sahajlipi/dom';
 
 const appTyping = attachNepaliInputs(document, { scope: 'all' });
 // Nepali typing applies to the textarea and nepaliName.
@@ -292,8 +292,8 @@ The manager's `onStateChange(state, field)` callback receives an initial state a
 Use one custom engine for every field in a manager by passing its conversion functions:
 
 ```js
-import { createEngine } from './src/index.js';
-import { attachNepaliInputs } from './src/dom.js';
+import { createEngine } from 'sahajlipi';
+import { attachNepaliInputs } from 'sahajlipi/dom';
 
 const engine = createEngine({ entries: { myname: ['मेरोनाम'] } });
 const manager = attachNepaliInputs(document, {
@@ -314,8 +314,8 @@ To use custom entries or opt out of technical-text preservation, pass both conve
 Use `attachNepaliInput` when a component owns one field or needs a custom engine:
 
 ```js
-import { createEngine } from './src/index.js';
-import { attachNepaliInput } from './src/dom.js';
+import { createEngine } from 'sahajlipi';
+import { attachNepaliInput } from 'sahajlipi/dom';
 
 const field = document.querySelector('#message');
 const engine = createEngine({ entries: { myname: ['मेरोनाम'] } });

@@ -6,6 +6,8 @@ Choose the guide for the part of SahajLipi you are using. The **package** provid
 
 | Read | For |
 | --- | --- |
+| [Getting started](package/getting-started.md) | Install locally, use public imports, and choose an integration scope. |
+| [Integration recipes](package/integration-recipes.md) | Working candidates, TypeScript, React uncontrolled fields, and cleanup. |
 | [Package overview](package/README.md) | Entry points, scope, and current distribution status. |
 | [API reference](package/api.md) | Core engine and browser input APIs, one-call setup, and TypeScript declarations. |
 | [Typing reference](package/typing-reference.md) | Exact Roman-key behavior, half forms, marks, punctuation, and candidates. |
@@ -16,6 +18,7 @@ Choose the guide for the part of SahajLipi you are using. The **package** provid
 
 | Read | For |
 | --- | --- |
+| [Developer consumer browser record](../browser/reports/desktop-003.json) | Inspect the later 51-check run, installed-package identity, and uncontrolled React lifecycle scope. |
 | [Digit desktop browser record](../browser/reports/desktop-002.json) | Inspect the later 42-check digit/configuration run, source identities, named flows, and limits. |
 | [Desktop browser run record](../browser/reports/desktop-001.json) | Inspect the dated desktop-engine results, test names, source hashes, environment, and scope limits. |
 | [Seed benchmark](package/benchmarks.md) | Run behavior checks; inspect the recorded baseline, scoring rules, and exclusions. |
@@ -45,6 +48,8 @@ The demo is one consumer of the package. Its Copy and Clear buttons, character c
 
 | Read | For |
 | --- | --- |
+| [Release policy](release.md) | Compatibility, versioning, migration, and the alpha release checklist. |
+| [Changelog](../CHANGELOG.md) | Unreleased changes and future published-version notes. |
 | [Development guide](development.md) | Repository workflow, tests, CI, and release readiness. |
 | [Status and roadmap](status-and-roadmap.md) | Current capabilities, limits, and priorities. |
 | [Brand guide](brand.md) | Name, message, logo assets, colors, typography and repository identity. |
