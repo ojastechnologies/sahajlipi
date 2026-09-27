@@ -1,6 +1,6 @@
 # Project status and roadmap
 
-SahajLipi is an early, MIT-licensed Roman Nepali to Unicode typing project. The repository contains a **reusable package** and a **static browser demo** that consumes it. This page records what exists and what remains before a stable developer release.
+SahajLipi is an early, MIT-licensed Roman Nepali to Unicode typing project. The repository contains a **reusable package**, a **package website with developer documentation**, and a **static browser demo** that consumes the engine. This page records what exists and what remains before a stable developer release.
 
 ## Package status
 
@@ -56,6 +56,12 @@ Following maintainer feedback, six of the original seven unresolved validation t
 The [getting-started guide](package/getting-started.md) explains local tarball installation and public imports before an npm release. [Integration recipes](package/integration-recipes.md) link runnable JavaScript, TypeScript, and React uncontrolled-field examples. Package validation installs the actual tarball in a standalone app, checks its allowed contents and exports, compiles strict TypeScript consumers, and executes the core tutorial. The browser suite also tests the installed-package examples, including React effect cleanup in development StrictMode. These checks do not establish controlled-field, mobile, SSR/hydration, or all-framework support.
 
 The [release policy](release.md) and [changelog](../CHANGELOG.md) define the remaining alpha review. Package preparation adds no runtime dependencies and changes no conversion rules. The package remains private and unpublished; corpus review remains independent work.
+
+## Website status
+
+The package website introduces the JavaScript library, builds searchable documentation from the existing Markdown, and preserves `/demo/` as a separate interactive playground. VitePress produces static HTML, with page titles, descriptions, canonical URLs, social metadata, and a sitemap. The [website guide](website-and-seo.md) records build commands, artifact publishing, GitHub repository discovery, and the GitHub Pages project-path limits for robots.txt.
+
+Website publishing is separate from npm publication. Search Console ownership verification and sitemap submission remain post-deployment maintainer tasks; no search ranking or indexing result is claimed. Dated evaluation reports remain unchanged.
 
 ## Demo status
 

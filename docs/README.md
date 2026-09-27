@@ -1,6 +1,6 @@
 # SahajLipi documentation
 
-Choose the guide for the part of SahajLipi you are using. The **package** provides conversion and optional browser input adapters. The **demo** is a static playground built with that package.
+Browse the [package website](https://ojastechnologies.github.io/sahajlipi/) for the library overview and searchable documentation, or read the Markdown guides here on GitHub. Choose the guide for the part of SahajLipi you are using. The **package** provides conversion and optional browser input adapters. The **demo** is a static playground built with that package.
 
 ## Reusable package
 
@@ -52,6 +52,7 @@ The demo is one consumer of the package. Its Copy and Clear buttons, character c
 | [Changelog](../CHANGELOG.md) | Unreleased changes and future published-version notes. |
 | [Development guide](development.md) | Repository workflow, tests, CI, and release readiness. |
 | [Status and roadmap](status-and-roadmap.md) | Current capabilities, limits, and priorities. |
+| [Website and SEO](website-and-seo.md) | Markdown site builds, metadata, sitemap, publishing, and discoverability limits. |
 | [Brand guide](brand.md) | Name, message, logo assets, colors, typography and repository identity. |
 | [Contributing](../CONTRIBUTING.md) | Reporting a typing issue or proposing a focused change. |
 | [Security policy](../SECURITY.md) | Private vulnerability reporting and support status. |

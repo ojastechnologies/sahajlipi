@@ -11,11 +11,14 @@ No npm versions have been published. `0.1.0` is the private repository prototype
 - Isolated tarball-consumer checks for JavaScript exports, strict TypeScript resolution, tutorial execution, and package contents.
 - Browser checks for installed-package vanilla and React integrations, including development StrictMode cleanup and remounting.
 - Release checklist, compatibility scope, versioning, and migration policy.
+- Package website with static developer documentation generated from the existing Markdown, local search, and the preserved interactive demo route.
+- Unique page titles and descriptions, canonical URLs, social preview metadata, sitemap, and documented discoverability limits.
+- GitHub Pages artifact workflow with pull-request checks and main-only deployment, plus seven dedicated Chromium website scenarios.
 
 ### Packaging
 
 - Explicit distribution file allowlist and repository/support metadata.
 - Distributed MIT and Unicode-3.0 licenses plus a NOTICE for CLDR-derived month-name data.
-- Pinned example/compiler development dependencies; no runtime dependencies added.
+- Pinned example/compiler and VitePress website development dependencies; no runtime dependencies added.
 
-The existing prototype includes direct phonetic typing, selected word alternatives, configurable field scopes, loanwords, Gregorian month spellings, technical-text preservation, and configurable Devanagari/Latin digits. Their implementation history and dated evidence remain in the package guides. This onboarding update does not change conversion rules or publish a package.
+The existing prototype includes direct phonetic typing, selected word alternatives, configurable field scopes, loanwords, Gregorian month spellings, technical-text preservation, and configurable Devanagari/Latin digits. Their implementation history and dated evidence remain in the package guides. These onboarding and website updates do not change conversion rules or publish a package. The GitHub Pages source transition is pending until the website workflow is available on `main`.
