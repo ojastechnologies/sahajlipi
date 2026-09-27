@@ -43,7 +43,7 @@ test('ordinary ra-ya words keep their conjunct instead of receiving a joiner', (
 
 test('text conversion preserves short and long vowels with joiners and punctuation', () => {
   assert.equal(convertText('maryo maaryo pani paani. 3.14| kaarya suurya'),
-    'मर्\u200dयो मार्\u200dयो पनि पानी. 3.14। कार्य सूर्य');
+    'मर्\u200dयो मार्\u200dयो पनि पानी. ३.१४। कार्य सूर्य');
 });
 
 test('explicit joiners still work for a listed word and a long-vowel spelling', () => {

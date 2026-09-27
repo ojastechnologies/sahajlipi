@@ -1,0 +1,371 @@
+{
+  "schemaVersion": 1,
+  "reportId": "desktop-002",
+  "recordedAt": "2026-09-27T13:55:31.892Z",
+  "purpose": "Bounded desktop browser editing and integration evidence after the authorized Nepali-digit default change; not linguistic accuracy or performance.",
+  "source": {
+    "baseCommit": "660d088ed60410feb0c6ad4c43d33214c24296f9",
+    "identity": "Modified working tree identified by file hashes; prior desktop-001 record unchanged.",
+    "productionChangedFiles": [
+      "src/index.d.ts",
+      "src/index.js"
+    ],
+    "fileSha256": {
+      "src/index.js": "efc2ed4719f209fd45e850d80d5ee8d3f6b8ef3862c70268aac8d46e8eab9627",
+      "src/index.d.ts": "48be479797841978cabab3ba96fe9b77caa8c814238866908aa515619ab7cd17",
+      "src/phonetic.js": "dec43061ce47d8456092b661a4b1ea7b5d366d2c7969a4f2b6f3b1b0c20ff1ff",
+      "src/lexicon.js": "0e5c26111dcebac1fe43bc4ae2d14a236653b42e6f676f43dbc549983f6806c0",
+      "src/text-policy.js": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa",
+      "src/dom.js": "6e84385a02ec7a79b8550de417b701b23ea3c3b36ab46e6408f1c7dfa7c233b2",
+      "src/dom.d.ts": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1",
+      "demo/index.html": "9cbeedc8a01a74c0598bf9f0ac6b5425fc11698f9d9b92ed75491af4e82f43ee",
+      "demo/main.js": "58fc7e5262f4a1399447964c9c5dfe71dd9989096ebc147b8d90ea3db5abcab4",
+      "demo/style.css": "7c6cdba73432cdc1983be2816984f08fa0ff3b726534425fee137e88923572f4",
+      "browser/typing.spec.js": "044b4b8a7dcf66b1c5260bd23dafc5b2768b720cf1a5fc27d7fa0dfc3d6fd963",
+      "browser/fixtures/adapters.html": "016c31fad9739619847b7fdcfb9f9042cc7575d4cdf4274a878139981019c0fd",
+      "playwright.config.js": "63e7088707ab5629e1b7cc76975bcace6270778a4b60780e188f2b4d4800e96a",
+      "package.json": "5c621e8838fa2d9c5cbac1453cc53046e45898b3f2f5715787b810b1f4f5d490",
+      "package-lock.json": "b4b45e47d574ae0cab78cd152f6980d19defee4853ac4c883a02bc892ae8f422",
+      ".github/workflows/browser.yml": "3236443963fbd406034d89637b76af0caa67e01c203960a00db6e49682fa4141"
+    }
+  },
+  "environment": {
+    "node": "v22.22.3",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "25.6.0",
+    "playwright": "1.63.0",
+    "headless": true,
+    "workers": 2,
+    "retries": 0
+  },
+  "command": "npm run test:browser",
+  "totals": {
+    "passed": 42,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "scenarios": 14,
+    "projects": 3
+  },
+  "projects": [
+    {
+      "project": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "project": "firefox",
+      "browserVersion": "155.0",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "project": "webkit",
+      "browserVersion": "26.6",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "tests": [
+    {
+      "title": "real keyboard keeps an active half consonant editable and notifies input listeners",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "real keyboard preserves the ra-ya joiner, Shift sounds, bindu and chandrabindu",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "addresses remain literal at every intermediate key after the first recognition cue",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "periods stay ordinary until a domain cue, and cue deletion supports undo and redo",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "the candidate dropdown and Alt shortcut preserve a selected reading through later edits",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "real keyboard edits an email at its caret and replaces a selected Nepali word",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "real keyboard separates URL punctuation neighbors and preserves decimals and query pipes",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "demo manager covers textarea, text and search while retaining English and email exclusions",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "real MutationObserver attaches dynamic fields, detaches exclusions and removals, and stops after destroy",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "synthetic clipboard paste restores an address prefix and emits converted input to host listeners",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "synthetic composition reconciles a final input after compositionend and undoes the composition together",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "synthetic native input fallback handles an active vowel and a mixed-text paste without beforeinput",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "real keyboard uses Nepali digits, keeps decimal separators and restores numeric address prefixes",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "digit configuration and English exclusions apply consistently to typing and synthetic paste",
+      "project": "chromium",
+      "status": "passed",
+      "browserVersion": "153.0.8010.12"
+    },
+    {
+      "title": "real keyboard keeps an active half consonant editable and notifies input listeners",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "real keyboard preserves the ra-ya joiner, Shift sounds, bindu and chandrabindu",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "addresses remain literal at every intermediate key after the first recognition cue",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "periods stay ordinary until a domain cue, and cue deletion supports undo and redo",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "the candidate dropdown and Alt shortcut preserve a selected reading through later edits",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "real keyboard edits an email at its caret and replaces a selected Nepali word",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "real keyboard separates URL punctuation neighbors and preserves decimals and query pipes",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "demo manager covers textarea, text and search while retaining English and email exclusions",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "real MutationObserver attaches dynamic fields, detaches exclusions and removals, and stops after destroy",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "synthetic clipboard paste restores an address prefix and emits converted input to host listeners",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "synthetic composition reconciles a final input after compositionend and undoes the composition together",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "synthetic native input fallback handles an active vowel and a mixed-text paste without beforeinput",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "real keyboard uses Nepali digits, keeps decimal separators and restores numeric address prefixes",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "digit configuration and English exclusions apply consistently to typing and synthetic paste",
+      "project": "firefox",
+      "status": "passed",
+      "browserVersion": "155.0"
+    },
+    {
+      "title": "real keyboard keeps an active half consonant editable and notifies input listeners",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "real keyboard preserves the ra-ya joiner, Shift sounds, bindu and chandrabindu",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "addresses remain literal at every intermediate key after the first recognition cue",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "periods stay ordinary until a domain cue, and cue deletion supports undo and redo",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "the candidate dropdown and Alt shortcut preserve a selected reading through later edits",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "real keyboard edits an email at its caret and replaces a selected Nepali word",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "real keyboard separates URL punctuation neighbors and preserves decimals and query pipes",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "demo manager covers textarea, text and search while retaining English and email exclusions",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "real MutationObserver attaches dynamic fields, detaches exclusions and removals, and stops after destroy",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "synthetic clipboard paste restores an address prefix and emits converted input to host listeners",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "synthetic composition reconciles a final input after compositionend and undoes the composition together",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "synthetic native input fallback handles an active vowel and a mixed-text paste without beforeinput",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "real keyboard uses Nepali digits, keeps decimal separators and restores numeric address prefixes",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    },
+    {
+      "title": "digit configuration and English exclusions apply consistently to typing and synthetic paste",
+      "project": "webkit",
+      "status": "passed",
+      "browserVersion": "26.6"
+    }
+  ],
+  "behaviorChanges": [
+    "Default ASCII digits become Devanagari in ordinary conversion; decimals retain an ASCII period.",
+    "Existing decimal expectation changes intentionally; two new scenarios check digit editing, numeric address cues, Latin engine configuration, English exclusions, and injected paste.",
+    "Recognized URL/email digit spans and English mode stay literal; the DOM adapter uses its existing shared engine callbacks."
+  ],
+  "rawReport": {
+    "path": "test-results/browser-results.json",
+    "sha256": "ede37ef3db39d39085269695d43617b09182e13b71d5a0dc22e5ea966f715ac2",
+    "committed": false,
+    "retention": "Generated reports are ignored locally; each CI engine report and failure traces are retained for 14 days."
+  },
+  "regressionDetection": {
+    "method": "Removed digit conversion in a separate throwaway copy; working tree source unchanged.",
+    "test": "real keyboard uses Nepali digits, keeps decimal separators and restores numeric address prefixes",
+    "project": "chromium",
+    "expectedFailureCount": 1,
+    "observedFailureCount": 1,
+    "exitCode": 1
+  },
+  "otherChecks": {
+    "nodeTests": {
+      "passed": 227,
+      "failed": 0
+    },
+    "seedBehaviorContracts": {
+      "passed": 133,
+      "total": 133,
+      "excludedExploratoryCases": 2
+    },
+    "historicalLatinCompatibility": {
+      "passed": 125,
+      "total": 125,
+      "source": "benchmark/reports/digits-001.json"
+    }
+  },
+  "limitations": [
+    "Playwright keyboard actions use headless desktop engine builds; no installed application or device certification.",
+    "Clipboard, composition, and native-input fallback cases inject events and do not establish OS clipboard, real IME, or mobile keyboard behavior.",
+    "No assistive technology, accessibility conformance, framework-controlled fields, or rich-text/contenteditable support is established.",
+    "These tests exercise an explicitly changed default digit contract; counts are not an accuracy improvement on unchanged linguistic labels.",
+    "Source hashes and pinned dependencies identify this run; later source changes require a separate dated record.",
+    "Durations are diagnostics, not performance benchmarks."
+  ]
+}

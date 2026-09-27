@@ -28,9 +28,9 @@ for (const [lowercase, titleCase, expected] of months) {
   });
 }
 
-test('month names preserve Gregorian numbers and separators without converting calendars', () => {
+test('month names use Nepali digits while retaining Gregorian date values and separators', () => {
   assert.equal(convertText('September 27, 2026; December 31. January 1|'),
-    'सेप्टेम्बर 27, 2026; डिसेम्बर 31. जनवरी 1।');
+    'सेप्टेम्बर २७, २०२६; डिसेम्बर ३१. जनवरी १।');
   assert.equal(convertText('may maya march'), 'मे माया मार्च');
 });
 

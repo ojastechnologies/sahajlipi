@@ -166,7 +166,7 @@ test('real keyboard separates URL punctuation neighbors and preserves decimals a
   await expect(field).toHaveValue('(https://camera.com),पनि। https://camera.com!पनि।');
   await clearDemo(page);
   await page.keyboard.type('pani. camera. 3.14| https://camera.com?q=ka^|b');
-  await expect(field).toHaveValue('पनि. क्यामेरा. 3.14। https://camera.com?q=ka^|b');
+  await expect(field).toHaveValue('पनि. क्यामेरा. ३.१४। https://camera.com?q=ka^|b');
 });
 
 test('demo manager covers textarea, text and search while retaining English and email exclusions', async ({ page }) => {
@@ -299,4 +299,46 @@ test('synthetic native input fallback handles an active vowel and a mixed-text p
   await expect(field).toHaveValue('नमस्ते camera.com user@example.com।');
   await expect.poll(() => page.evaluate(() => window.browserFixture.inputValues.at(-1)))
     .toBe('नमस्ते camera.com user@example.com।');
+});
+
+test('real keyboard uses Nepali digits, keeps decimal separators and restores numeric address prefixes', async ({ page }) => {
+  const field = await demo(page);
+  await page.keyboard.type('0123456789 3.14| September 27, 2026');
+  await expect(field).toHaveValue('०१२३४५६७८९ ३.१४। सेप्टेम्बर २७, २०२६');
+  await clearDemo(page);
+  await page.keyboard.type('123');
+  await expect(field).toHaveValue('१२३');
+  await expect.poll(() => field.evaluate(element => element.selectionStart)).toBe(3);
+  await page.keyboard.press('Backspace');
+  await expect(field).toHaveValue('१२');
+  await page.keyboard.press('Control+z');
+  await expect(field).toHaveValue('१२३');
+  await page.keyboard.type('@');
+  await expect(field).toHaveValue('123@');
+  await page.keyboard.press('Backspace');
+  await expect(field).toHaveValue('१२३');
+  await page.keyboard.press('Control+z');
+  await expect(field).toHaveValue('123@');
+  await page.keyboard.type('example.com https://127.0.0.1:8080/456?q=7');
+  await expect(field).toHaveValue('123@example.com https://127.0.0.1:8080/456?q=7');
+});
+
+test('digit configuration and English exclusions apply consistently to typing and synthetic paste', async ({ page }) => {
+  const field = await fixture(page);
+  await pasteText(field, 'pani 123 3.14| user123@example.com');
+  await expect(field).toHaveValue('पनि १२३ ३.१४। user123@example.com');
+  await page.locator('#latin-digits-field').focus();
+  await page.keyboard.type('pani 123 3.14|');
+  await expect(page.locator('#latin-digits-field')).toHaveValue('पनि 123 3.14।');
+  await pasteText(page.locator('#latin-digits-field'), ' 456');
+  await expect(page.locator('#latin-digits-field')).toHaveValue('पनि 123 3.14। 456');
+  await page.locator('#ignored-field').focus();
+  await page.keyboard.type('pani 123 3.14|');
+  await expect(page.locator('#ignored-field')).toHaveValue('pani 123 3.14|');
+  const demoField = await demo(page);
+  await page.keyboard.type('123');
+  await expect(demoField).toHaveValue('१२३');
+  await page.locator('#mode-button').click();
+  await page.keyboard.type(' 456');
+  await expect(demoField).toHaveValue('१२३ 456');
 });

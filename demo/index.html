@@ -344,19 +344,30 @@
             </section>
 
             <section class="guide-card">
-              <span class="guide-number">13 / Punctuation</span>
+              <span class="guide-number">13 / Digits</span>
+              <h3>Number keys type Nepali digits</h3>
+              <p>In <strong>Nepali mode</strong>, number keys produce <span lang="ne">०–९</span>. Decimal points, commas, signs, and date separators keep their punctuation. Numbers inside recognized links and email addresses stay as typed. Pasted numbers follow the same rule.</p>
+              <div class="key-examples" aria-label="Nepali digit examples">
+                <div><kbd>0123456789</kbd><span aria-hidden="true">→</span><strong lang="ne">०१२३४५६७८९</strong></div>
+                <div><kbd>3.14</kbd><span aria-hidden="true">→</span><strong lang="ne">३.१४</strong></div>
+              </div>
+              <p>Try <code>September 27, 2026</code> for <span lang="ne">सेप्टेम्बर २७, २०२६</span>. This changes digit characters and month spelling; it does not change the number, year, or calendar. Switch to <strong>English mode</strong> to keep <code>0–9</code> from the first key. Existing text stays as it is.</p>
+            </section>
+
+            <section class="guide-card">
+              <span class="guide-number">14 / Punctuation</span>
               <h3>Period or <span lang="ne">पूर्णविराम</span></h3>
               <p>The <kbd>.</kbd> key always types an English period, including after a Nepali word and in decimals. Type <kbd>|</kbd> for <span lang="ne">।</span> after Nepali text or a number. Inside a recognized link or email address, punctuation stays literal. Pasted text follows the same rule.</p>
               <div class="key-examples" aria-label="Full stop and decimal examples">
                 <div><kbd>namaste.</kbd><span aria-hidden="true">→</span><strong lang="ne">नमस्ते.</strong></div>
                 <div><kbd>namaste|</kbd><span aria-hidden="true">→</span><strong lang="ne">नमस्ते।</strong></div>
-                <div><kbd>3.14</kbd><span aria-hidden="true">→</span><strong>3.14</strong></div>
-                <div><kbd>3.14|</kbd><span aria-hidden="true">→</span><strong lang="ne">3.14।</strong></div>
+                <div><kbd>3.14</kbd><span aria-hidden="true">→</span><strong lang="ne">३.१४</strong></div>
+                <div><kbd>3.14|</kbd><span aria-hidden="true">→</span><strong lang="ne">३.१४।</strong></div>
               </div>
             </section>
 
             <section class="guide-card">
-              <span class="guide-number">14 / Alternatives</span>
+              <span class="guide-number">15 / Alternatives</span>
               <h3>Choose only when needed</h3>
               <p>Ambiguous words show a readings dropdown. The first reading appears in the editor; pick another from the dropdown or press <kbd>Alt</kbd> + <kbd>1</kbd>, <kbd>2</kbd>, and so on. Press <kbd>Space</kbd> to keep the displayed reading and finish the word.</p>
               <div class="key-examples" aria-label="Alternative reading example">
@@ -365,24 +376,24 @@
             </section>
 
             <section class="guide-card" id="mixed-text-guide">
-              <span class="guide-number">15 / Mixed text</span>
+              <span class="guide-number">16 / Mixed text</span>
               <h3>Links and email stay readable</h3>
-              <p>Recognizable links and ordinary ASCII email addresses stay as you typed them in <strong>Nepali mode</strong>, including case, paths, and query strings. Try an HTTP(S) link, a <code>www.</code> address, a domain such as <code>camera.com</code>, or <code>name+tag@example.com</code>.</p>
+              <p>Recognizable links and ordinary ASCII email addresses stay as you typed them in <strong>Nepali mode</strong>, including case, digits, paths, and query strings. Try an HTTP(S) link, a <code>www.</code> address, a domain such as <code>camera.com</code>, or <code>name+tag@example.com</code>.</p>
               <div class="mixed-text-example" aria-label="Mixed Nepali and address example">
                 <code>namaste camera.com name@example.com</code>
                 <span aria-hidden="true">↓</span>
                 <strong lang="ne">नमस्ते camera.com name@example.com</strong>
               </div>
               <p>Preservation starts early: <code>http:</code>, <code>https:</code>, <code>www.</code>, <code>name@</code>, and <code>camera.c</code> already stay Roman before the address is complete. The same rule applies to typing and paste. Before a cue appears, <code>camera</code> still becomes <span lang="ne">क्यामेरा</span>, and a trailing period alone stays sentence punctuation. Use <strong>English mode before the first key</strong> to keep a fragment literal from its beginning.</p>
-              <p>During continuous typing, an address cue restores the current token to its original spelling. A space finishes it. A pipe after a bare domain gives <span lang="ne">।</span>; a pipe within a URL path stays literal. Add a space before <kbd>|</kbd> to end a sentence after a URL path.</p>
+              <p>During continuous typing, an address cue restores the current token to its original spelling, including any digits that had appeared in Nepali before the cue. A space finishes it. A pipe after a bare domain gives <span lang="ne">।</span>; a pipe within a URL path stays literal. Add a space before <kbd>|</kbd> to end a sentence after a URL path.</p>
               <p>This uses address patterns and accepts unfinished addresses without checking whether they are valid or a domain exists. A dotted spelling such as <code>pani.paani</code> or its unfinished form <code>pani.p</code> also stays literal. Internationalized addresses and arbitrary English or code are outside this automatic handling; use <strong>English mode</strong> for those.</p>
             </section>
 
             <section class="guide-card">
-              <span class="guide-number">16 / Editor controls</span>
+              <span class="guide-number">17 / Editor controls</span>
               <h3>Switch, copy, or clear</h3>
               <p>The mode button shows <strong>Nepali mode</strong> when conversion is enabled and <strong>English mode</strong> when typing is literal. It switches the editor and all three marked form fields together. Existing text stays as it is.</p>
-              <p>Use <strong>English mode</strong> to type or paste an English phrase or code fragment, then switch back to continue Nepali typing. In English mode, shortcut keys such as <kbd>^</kbd>, <kbd>~</kbd>, <kbd>/</kbd>, and <kbd>|</kbd> stay literal. The <kbd>.</kbd> key stays a period in both modes.</p>
+              <p>Use <strong>English mode</strong> to type or paste an English phrase or code fragment, then switch back to continue Nepali typing. In English mode, digits and shortcut keys such as <kbd>^</kbd>, <kbd>~</kbd>, <kbd>/</kbd>, and <kbd>|</kbd> stay literal. The <kbd>.</kbd> key stays a period in both modes.</p>
               <p><strong>Copy</strong> copies the main editor text; <strong>Clear</strong> starts that editor again. English notes and the email-only field always stay literal.</p>
             </section>
           </div>

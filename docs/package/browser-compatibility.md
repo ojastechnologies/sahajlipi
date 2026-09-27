@@ -54,6 +54,7 @@ The suite distinguishes normal keyboard actions from injected event contracts:
 | Coverage | Evidence and boundary |
 | --- | --- |
 | Direct typing and word boundaries | Browser keyboard actions assert active half forms, the ra-ya joiner, Shift sounds, bindu/chandrabindu, displayed text, and caret behavior. |
+| Digits and configuration | Keyboard actions check Devanagari defaults, unchanged decimal periods, numeric address-cue restoration, editing, Latin engine configuration, English mode and excluded fields; paste contracts use injected events. |
 | Early address cues | Incremental keyboard input checks literal rendering after email, HTTP(S), `www.`, and domain cues. |
 | Selection, Backspace, undo, and redo | Keyboard and selection actions check the adapter's edit state, including crossing an address cue. |
 | Candidates and mode switches | Adapter and demo actions check selection of alternatives and continuation in Nepali or English mode. |
@@ -92,9 +93,12 @@ A separate negative control removed address preservation in a throwaway copy: th
 
 ### Verify the recorded source identity
 
-From a checkout containing the recorded files, verify every source hash before comparing a new run to this record:
+The immutable merged commit `660d088ed60410feb0c6ad4c43d33214c24296f9` contains the files matching desktop-001. Archive it before reproducing this historical run so later engine, demo, or spec changes cannot silently replace the recorded source. The hash check below covers each recorded file:
 
 ```sh
+BROWSER_RECORDED_DIR=$(mktemp -d)
+git archive 660d088ed60410feb0c6ad4c43d33214c24296f9 | tar -x -C "$BROWSER_RECORDED_DIR"
+cd "$BROWSER_RECORDED_DIR"
 node --input-type=module <<'NODE'
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -110,9 +114,45 @@ console.log('All recorded source hashes match.');
 NODE
 ```
 
-Then use the local setup commands above and compare project counts, engine versions, and platform with the record. Browser binaries are chosen by the pinned Playwright version and platform. A later source change or a different environment needs its own dated result; do not overwrite this record to match a new outcome.
+Then run the local setup commands above from that archived directory and compare project counts, engine versions, and platform with the record. Return to your working checkout afterward. Browser binaries are chosen by the pinned Playwright version and platform. A later source change or a different environment needs its own dated result; do not overwrite this record to match a new outcome.
 
 The full raw JSON/HTML outputs are generated files, not committed records. The compact record preserves their recorded JSON hash and relevant outcomes, while local report files can be replaced by the next test run. GitHub Actions report artifacts have the retention period described below.
+
+## Digit follow-up — 2026-09-27
+
+The separate [desktop-002 record](../../browser/reports/desktop-002.json) measures the digit-default change and retains desktop-001 unchanged. `npm run test:browser` began at **2026-09-27T13:55:31.892Z** on macOS arm64 (`darwin`, OS release `25.6.0`) with Node.js **22.22.3**, Playwright **1.63.0**, headless browsers, two workers, and no retries:
+
+| Project | Engine version | Passed | Failed | Skipped |
+| --- | --- | --- | --- | --- |
+| `chromium` | `153.0.8010.12` | 14/14 | 0 | 0 |
+| `firefox` | `155.0` | 14/14 | 0 | 0 |
+| `webkit` | `26.6` | 14/14 | 0 | 0 |
+| **Total** | 14 scenarios × 3 projects | **42/42** | **0** | **0** |
+
+There were no flaky outcomes. Two appended scenarios cover digit typing/editing, periods in decimals, restoration of numeric address prefixes, the configured Latin engine, English mode, excluded fields, and injected paste. Existing decimal assertions now use the explicitly chosen Devanagari default; these counts are selected editing regressions under that policy, not an accuracy comparison on unchanged linguistic labels. The [digit benchmark record](digits-benchmarks.md) separately discloses seven revised numeric expectations and historical Latin compatibility.
+
+The source is a modified working tree based on `660d088ed60410feb0c6ad4c43d33214c24296f9`, pinned by source, demo, spec, fixture, configuration, dependency, and workflow hashes. The production changes are `src/index.js` and its type declarations; the DOM adapter, lexicon, phonetic rules, and address scanner are unchanged. Separate checks passed **227/227** Node tests and **133/133** revised seed contracts. The explicit Latin engine also retains **125/125** historical contracts. The desktop and seed records measure separate test surfaces.
+
+A negative control removed digit conversion in a throwaway copy; the named numeric-keyboard test failed once in Chromium as expected. The working source was unchanged. This demonstrates detection of that removed behavior only.
+
+### Verify the digit-run source identity
+
+Use a checkout or archive matching desktop-002, then verify its hashes before reproducing the browser run. A later source or test change needs a separate dated record. From that matching source directory:
+
+```sh
+node --input-type=module <<'NODE'
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+const report = JSON.parse(readFileSync('browser/reports/desktop-002.json', 'utf8'));
+for (const [path, expected] of Object.entries(report.source.fileSha256)) {
+  const actual = createHash('sha256').update(readFileSync(path)).digest('hex');
+  if (actual !== expected) throw new Error('Recorded source differs: ' + path);
+}
+console.log('All desktop-002 source hashes match.');
+NODE
+```
+
+Run the local setup commands at the beginning of this guide from that directory. Compare the resulting individual outcomes, project counts, engine versions, and platform against desktop-002. The original 36-check run remains reproducible through its immutable archive commands above. Both records have the same desktop-engine and injected-event limits; neither establishes OS clipboard, real IME, mobile device, installed Safari, assistive technology, or framework-controlled input support.
 
 ## GitHub Actions and reports
 

@@ -5,12 +5,22 @@ import { findProtectedSpans } from './text-policy.js';
 /**
  * Create an independent engine. Custom entries replace starter entries for
  * the same Roman spelling; each value is ordered from preferred to alternate.
- * @param {{entries?: Record<string, string[]>, preserveTechnicalText?: boolean}} [options]
+ * @param {{entries?: Record<string, string[]>, preserveTechnicalText?: boolean, digits?: 'devanagari' | 'latin'}} [options]
  */
-export function createEngine({ entries = {}, preserveTechnicalText = true } = {}) {
+export function createEngine({ entries = {}, preserveTechnicalText = true, digits = 'devanagari' } = {}) {
   if (typeof preserveTechnicalText !== 'boolean') {
     throw new TypeError('preserveTechnicalText must be a boolean');
   }
+  if (digits !== 'devanagari' && digits !== 'latin') {
+    throw new TypeError('digits must be "devanagari" or "latin"');
+  }
+
+  function convertDigits(text) {
+    return digits === 'devanagari'
+      ? text.replace(/[0-9]/g, (digit) => '०१२३४५६७८९'[Number(digit)])
+      : text;
+  }
+
   const dictionary = new Map(
     Object.entries(starterEntries).map(([key, values]) => [key, [...values]]),
   );
@@ -73,13 +83,13 @@ export function createEngine({ entries = {}, preserveTechnicalText = true } = {}
       }
       readings = [output];
     }
-    const candidates = [...new Set(readings ?? [phoneticWord(roman)])];
+    const candidates = [...new Set((readings ?? [phoneticWord(roman)]).map(convertDigits))];
     return { text: candidates[0], candidates, ambiguous: candidates.length > 1 };
   }
 
   function convertSegment(text) {
     const converted = text.replace(/[A-Za-z\^~\/=]+/g, (word) => convertWord(word).text);
-    return converted.replace(/\|/g, '।');
+    return convertDigits(converted).replace(/\|/g, '।');
   }
 
   function convertText(text) {

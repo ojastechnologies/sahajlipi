@@ -46,7 +46,7 @@ test('recognizes ASCII domain shapes, punycode labels, and HTTP localhost or IP 
 
 test('does not classify decimals, explicit marks, or ordinary mixed identifiers as technical text', () => {
   assert.deepEqual(findProtectedSpans('3.14 par/=yo ka^ kaa~ camera_file camera123 camera.123 -camera.com camera-.com'), []);
-  assert.equal(convertText('3.14 par/=yo ka^ kaa~ camera_file camera123|'), '3.14 पर्‍यो कं काँ क्यामेरा_फाइल क्यामेरा123।');
+  assert.equal(convertText('3.14 par/=yo ka^ kaa~ camera_file camera123|'), '३.१४ पर्‍यो कं काँ क्यामेरा_फाइल क्यामेरा१२३।');
   assert.equal(convertText('pani. paani|'), 'पनि. पानी।');
 });
 
@@ -110,7 +110,7 @@ test('bare domains are recognizable at the first alphabetic label after a dot', 
   }
   assert.deepEqual(protectedText('camera camera. 3.14 camera.123'), []);
   assert.equal(convertText('camera camera. 3.14 par/=yo ka^ kaa~ T D'),
-    'क्यामेरा क्यामेरा. 3.14 पर्‍यो कं काँ ट् ड्');
+    'क्यामेरा क्यामेरा. ३.१४ पर्‍यो कं काँ ट् ड्');
 });
 
 test('early recognition respects sentence boundaries and the per-engine opt-out', () => {
