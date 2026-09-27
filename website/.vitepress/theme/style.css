@@ -59,13 +59,13 @@ html { scroll-padding-top: 90px; }
 }
 
 :is(input, select, textarea):focus {
-  outline: 3px solid var(--sahaj-gold-ink);
+  outline: 3px solid var(--sahaj-gold);
   outline-offset: 4px;
 }
 
 .VPLocalSearchBox form.search-bar:focus-within {
-  border-color: var(--sahaj-gold-ink);
-  outline: 3px solid var(--sahaj-gold-ink);
+  border-color: var(--sahaj-gold);
+  outline: 3px solid var(--sahaj-gold);
   outline-offset: 3px;
 }
 
@@ -150,7 +150,7 @@ html { scroll-padding-top: 90px; }
   line-height: 1.4;
   background: transparent;
 }
-.word-preview-writing input:focus { border-color: var(--sahaj-gold-ink); outline-offset: 5px; }
+.word-preview-writing input:focus { border-color: var(--sahaj-gold); outline-offset: 5px; }
 .word-preview-separator { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 16px 0; color: var(--vp-c-text-3); }
 .word-preview-separator span { height: 1px; width: 28px; background: var(--vp-c-divider); }
 .word-preview-writing output {
