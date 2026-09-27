@@ -100,6 +100,10 @@ Use **Nepali off** or the unmarked English notes field for text that must stay l
 
 [`demo/index.html`](../../demo/index.html) defines the editor, controls, candidate dropdown, marked form fields, and on-page guide. [`demo/style.css`](../../demo/style.css) styles them. [`demo/main.js`](../../demo/main.js) imports `attachNepaliInputs` from `src/dom.js` and calls it once for all fields marked `data-sahajlipi`. The manager supplies the main editor's controller for its candidate dropdown and clear control; its `setEnabled()` method switches Nepali typing for every marked field. Copy reads the main editor's value. The unmarked English text and email fields have no adapter. Editing and conversion behavior lives in the [package code](../package/README.md), so the demo exercises the same functions that developers can embed in their own apps.
 
+## Brand assets
+
+The demo header uses SahajLipi's vector [mark](../../assets/brand/mark.svg) beside the visible project name. Favicons and an Apple touch icon use the same mark; page metadata uses the shared [social preview](../../assets/brand/social-preview.png) when the demo is linked. The [brand guide](../brand.md) covers the logo variants, colors, and asset usage. The current demo supports Nepali typing.
+
 ## Published version and limits
 
 GitHub Pages serves the files from the root of the `main` branch at [`/demo/`](https://ojastechnologies.github.io/sahajlipi/demo/). Changes appear in the published demo after they merge to `main` and Pages finishes publishing. The automated tests cover engine and simulated field behavior, but there is not yet a tested browser and device compatibility matrix. The demo is a prototype, and unknown words can produce an incorrect spelling. The [package documentation](../package/README.md) explains the API, current typing rules, architecture, and evaluation evidence.

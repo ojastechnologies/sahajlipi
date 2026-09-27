@@ -1,0 +1,187 @@
+{
+  "project": "SahajLipi",
+  "date": "2026-09-27",
+  "artworkLicense": "MIT",
+  "markCharacter": {
+    "text": "स",
+    "unicode": "U+0938",
+    "name": "DEVANAGARI LETTER SA"
+  },
+  "palette": {
+    "teal": "#116B75",
+    "deepTeal": "#09515B",
+    "ink": "#192D3E",
+    "paper": "#F4F7FA",
+    "lightTeal": "#E8F6F5",
+    "gold": "#E5AD3E"
+  },
+  "fonts": [
+    {
+      "family": "Noto Sans Devanagari",
+      "weight": 700,
+      "repository": "google/fonts",
+      "commit": "23e54b51ddffbc7713c583748e3bd86f62b1fa4a",
+      "sourceUrl": "https://raw.githubusercontent.com/google/fonts/23e54b51ddffbc7713c583748e3bd86f62b1fa4a/ofl/notosansdevanagari/NotoSansDevanagari%5Bwdth%2Cwght%5D.ttf",
+      "sourceSha256": "14ec4af41f27482216d1c2229f417ff9b1425e1babb014e57d1d40d03229853e",
+      "license": "OFL-1.1",
+      "licenseSourceUrl": "https://raw.githubusercontent.com/google/fonts/23e54b51ddffbc7713c583748e3bd86f62b1fa4a/ofl/notosansdevanagari/OFL.txt",
+      "licenseNotice": "assets/brand/licenses/notosansdevanagari-OFL.txt",
+      "fontFileDistributed": false
+    },
+    {
+      "family": "Manrope",
+      "weight": 700,
+      "repository": "google/fonts",
+      "commit": "23e54b51ddffbc7713c583748e3bd86f62b1fa4a",
+      "sourceUrl": "https://raw.githubusercontent.com/google/fonts/23e54b51ddffbc7713c583748e3bd86f62b1fa4a/ofl/manrope/Manrope%5Bwght%5D.ttf",
+      "sourceSha256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6",
+      "license": "OFL-1.1",
+      "licenseSourceUrl": "https://raw.githubusercontent.com/google/fonts/23e54b51ddffbc7713c583748e3bd86f62b1fa4a/ofl/manrope/OFL.txt",
+      "licenseNotice": "assets/brand/licenses/manrope-OFL.txt",
+      "fontFileDistributed": false
+    }
+  ],
+  "fontArtworkLicenseReference": "https://openfontlicense.org/ofl-faq/",
+  "fontArtworkLicenseScope": "Logo artwork created with OFL fonts is not font software; original font notices are retained for source attribution. The fonts are not loaded at runtime or distributed as font files.",
+  "generation": {
+    "fontToolsVersion": "4.60.1",
+    "method": "Static font weight instances converted to SVG path outlines; PNG exports rendered from the SVG masters.",
+    "generator": "scripts/generate-brand-assets.py",
+    "runtimeDependenciesAdded": false,
+    "rasterGenerator": "scripts/render-brand-assets.mjs",
+    "sharpVersion": "0.35.4"
+  },
+  "assets": [
+    {
+      "file": "mark.svg",
+      "width": 100,
+      "height": 100,
+      "format": "SVG",
+      "role": "SahajLipi mark"
+    },
+    {
+      "file": "favicon.svg",
+      "width": 100,
+      "height": 100,
+      "format": "SVG",
+      "role": "SahajLipi"
+    },
+    {
+      "file": "logo.svg",
+      "width": 520,
+      "height": 112,
+      "format": "SVG",
+      "role": "SahajLipi"
+    },
+    {
+      "file": "logo-dark.svg",
+      "width": 520,
+      "height": 112,
+      "format": "SVG",
+      "role": "SahajLipi"
+    },
+    {
+      "file": "logo-mono.svg",
+      "width": 520,
+      "height": 112,
+      "format": "SVG",
+      "role": "SahajLipi"
+    },
+    {
+      "file": "wordmark.svg",
+      "width": 380,
+      "height": 112,
+      "format": "SVG",
+      "role": "SahajLipi"
+    },
+    {
+      "file": "social-preview.svg",
+      "width": 1280,
+      "height": 640,
+      "format": "SVG",
+      "role": "SahajLipi social preview"
+    },
+    {
+      "file": "brand-sheet.svg",
+      "width": 1600,
+      "height": 1020,
+      "format": "SVG",
+      "role": "SahajLipi brand identity"
+    },
+    {
+      "file": "avatar.png",
+      "width": 512,
+      "height": 512,
+      "format": "PNG",
+      "source": "mark.svg",
+      "role": "Square project icon"
+    },
+    {
+      "file": "icon-192.png",
+      "width": 192,
+      "height": 192,
+      "format": "PNG",
+      "source": "mark.svg",
+      "role": "Browser icon"
+    },
+    {
+      "file": "icon-512.png",
+      "width": 512,
+      "height": 512,
+      "format": "PNG",
+      "source": "mark.svg",
+      "role": "Browser icon"
+    },
+    {
+      "file": "apple-touch-icon.png",
+      "width": 180,
+      "height": 180,
+      "format": "PNG",
+      "source": "mark.svg",
+      "role": "Apple touch icon"
+    },
+    {
+      "file": "favicon-32.png",
+      "width": 32,
+      "height": 32,
+      "format": "PNG",
+      "source": "favicon.svg",
+      "role": "Browser favicon"
+    },
+    {
+      "file": "logo.png",
+      "width": 520,
+      "height": 112,
+      "format": "PNG",
+      "source": "logo.svg",
+      "role": "Primary horizontal logo"
+    },
+    {
+      "file": "social-preview.png",
+      "width": 1280,
+      "height": 640,
+      "format": "PNG",
+      "source": "social-preview.svg",
+      "role": "Repository and website social preview"
+    },
+    {
+      "file": "brand-sheet.png",
+      "width": 1600,
+      "height": 1020,
+      "format": "PNG",
+      "source": "brand-sheet.svg",
+      "role": "Brand identity contact sheet"
+    },
+    {
+      "file": "favicon.ico",
+      "sizes": [
+        16,
+        32,
+        48
+      ],
+      "format": "ICO",
+      "source": "favicon.svg",
+      "role": "Fallback browser favicon"
+    }
+  ]
+}
