@@ -4,13 +4,16 @@ The [live SahajLipi demo](https://ojastechnologies.github.io/sahajlipi/demo/) le
 
 ## Run it locally
 
-From the repository root, with Node.js/npm and Python 3 available:
+From the repository root, with Node.js 20 or later, npm, and Python 3 available:
 
 ```sh
+npm ci
 npm run demo
 ```
 
-Open <http://127.0.0.1:4173/demo/>. The command serves the repository root, which lets `demo/main.js` import the browser adapter from `src/`. There is no build step or dependency installation for the demo.
+Open [the local demo](http://127.0.0.1:4173/sahajlipi/demo/). The command builds and serves the complete package website, documentation, and demo together. Home and logo links therefore reach the package homepage, and documentation links open the generated guides. The earlier `http://127.0.0.1:4173/demo/` address redirects to this canonical local path; `/` redirects to the package homepage at `/sahajlipi/`.
+
+After a source change, restart `npm run demo` to rebuild the artifact. This command needs the website development dependencies installed by `npm ci`; it does not publish anything to npm or GitHub Pages.
 
 To try the demo on another device on the same local network, bind the server to your computer's current private IPv4 address:
 
@@ -18,7 +21,7 @@ To try the demo on another device on the same local network, bind the server to 
 npm run demo:lan -- YOUR_LAN_IP
 ```
 
-Replace `YOUR_LAN_IP` with that address, then open `http://YOUR_LAN_IP:4173/demo/` on the other device. The devices must be able to reach each other on the local network. Stop an existing server on port 4173 before starting another one.
+Replace `YOUR_LAN_IP` with that address, then open `http://YOUR_LAN_IP:4173/sahajlipi/demo/` on the other device. The command builds the same complete website before serving it; the older `/demo/` address also redirects correctly. The devices must be able to reach each other on the local network. Stop an existing server on port 4173 before starting another one.
 
 ## Use the page
 
@@ -132,4 +135,4 @@ The demo header uses SahajLipi's vector [mark](../../assets/brand/mark.svg) besi
 
 ## Published version and limits
 
-The generated package website keeps the interactive demo at [`/demo/`](https://ojastechnologies.github.io/sahajlipi/demo/). Its Pages artifact includes the demo, engine modules, and brand assets. Demo changes appear after they merge to `main` and the website deployment finishes. The source-only local server remains available without a website build; the [website guide](../website-and-seo.md) explains the production build and publishing source. The separate [browser adapter compatibility guide](../package/browser-compatibility.md) records automated desktop-engine editing checks and selected demo flows, with reproducible commands and CI reports. Injected paste/composition contracts do not test a real clipboard or IME. Real mobile keyboards, assistive technology, installed Safari, and framework-controlled fields remain unverified. The demo is a prototype, and unknown words can produce an incorrect spelling. The [package documentation](../package/README.md) explains the API, current typing rules, architecture, and evaluation evidence.
+The generated package website keeps the interactive demo at [`/demo/`](https://ojastechnologies.github.io/sahajlipi/demo/). Its Pages artifact includes the demo, engine modules, and brand assets. Demo changes appear after they merge to `main` and the website deployment finishes. The default local demo command also builds the complete website so its Home and documentation navigation works; the [website guide](../website-and-seo.md) explains the production build and publishing source. The separate [browser adapter compatibility guide](../package/browser-compatibility.md) records automated desktop-engine editing checks and selected demo flows, with reproducible commands and CI reports. Injected paste/composition contracts do not test a real clipboard or IME. Real mobile keyboards, assistive technology, installed Safari, and framework-controlled fields remain unverified. The demo is a prototype, and unknown words can produce an incorrect spelling. The [package documentation](../package/README.md) explains the API, current typing rules, architecture, and evaluation evidence.

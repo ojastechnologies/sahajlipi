@@ -61,7 +61,7 @@ The [release policy](release.md) and [changelog](../CHANGELOG.md) define the rem
 
 The package website introduces the JavaScript library, builds searchable documentation from the existing Markdown, and preserves `/demo/` as a separate interactive playground. VitePress produces static HTML, with page titles, descriptions, canonical URLs, social metadata, and a sitemap. The [website guide](website-and-seo.md) records build commands, artifact publishing, GitHub repository discovery, and the GitHub Pages project-path limits for robots.txt.
 
-Website publishing is separate from npm publication. Search Console ownership verification and sitemap submission remain post-deployment maintainer tasks; no search ranking or indexing result is claimed. Dated evaluation reports remain unchanged.
+GitHub Pages uses the Actions publishing source and the package homepage and documentation are public. The default local demo command builds the same complete website so Home and documentation navigation work. Website publishing is separate from npm publication. Search Console ownership verification and sitemap submission remain post-deployment maintainer tasks; no search ranking or indexing result is claimed. Dated evaluation reports remain unchanged.
 
 ## Demo status
 

@@ -6,6 +6,18 @@ const base = '/sahajlipi/';
 const siteUrl = 'https://ojastechnologies.github.io' + base;
 const repository = 'https://github.com/ojastechnologies/sahajlipi';
 const metadata = JSON.parse(readFileSync(new URL('../page-meta.json', import.meta.url), 'utf8'));
+const { staticHtmlRoutes } = JSON.parse(readFileSync(new URL('../.generated/site-manifest.json', import.meta.url), 'utf8'));
+const staticHtmlRouteSet = new Set(staticHtmlRoutes);
+
+function isStaticHtmlLink(reference) {
+  let url;
+  try { url = new URL(reference, siteUrl); } catch { return false; }
+  if (url.origin !== new URL(siteUrl).origin) return false;
+  let route = decodeURIComponent(url.pathname);
+  if (route.startsWith(base)) route = '/' + route.slice(base.length);
+  return staticHtmlRouteSet.has(route);
+}
+
 
 // Keep the existing GitHub documentation fragments when punctuation such as
 // an em dash appears in headings. Both anchors and outline use the same IDs.
@@ -61,7 +73,25 @@ export default defineConfig({
   description: 'An open-source Roman Nepali typing engine and browser input adapters for JavaScript applications.',
   lastUpdated: false,
   ignoreDeadLinks: false,
-  markdown: { anchor: { slugify }, headers: { slugify } },
+  markdown: {
+    anchor: { slugify }, headers: { slugify },
+    config(markdown) {
+      const renderLink = markdown.renderer.rules.link_open;
+      markdown.renderer.rules.link_open = (tokens, index, options, environment, renderer) => {
+        const link = tokens[index];
+        const href = link.attrGet('href');
+        // VitePress intercepts same-origin HTML links unless they have target
+        // or download. Copied static apps need a real document navigation.
+        if (href && isStaticHtmlLink(href) && link.attrIndex('target') < 0 && link.attrIndex('download') < 0) {
+          link.attrSet('target', '_self');
+          // The default link renderer normally adds base, but skips links
+          // that already have target. Keep public routes scoped to Pages here.
+          if (href.startsWith('/') && !href.startsWith(base)) link.attrSet('href', base.slice(0, -1) + href);
+        }
+        return renderLink ? renderLink(tokens, index, options, environment, renderer) : renderer.renderToken(tokens, index, options);
+      };
+    },
+  },
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: base + 'assets/brand/favicon.svg' }],
     ['link', { rel: 'apple-touch-icon', href: base + 'assets/brand/apple-touch-icon.png' }],
@@ -69,9 +99,12 @@ export default defineConfig({
   ],
   vite: { publicDir: fileURLToPath(new URL('../.generated-public', import.meta.url)) },
   themeConfig: {
-    logo: { light: '/assets/brand/logo.svg', dark: '/assets/brand/logo-dark.svg', alt: 'SahajLipi' },
+    logo: { light: '/assets/brand/logo.svg', dark: '/assets/brand/logo-dark.svg', alt: 'SahajLipi home' },
+    // VitePress does not normalize an explicit logoLink; include the Pages base.
+    logoLink: base,
     siteTitle: false,
     nav: [
+      { text: 'Home', link: '/', activeMatch: '^/$' },
       { text: 'Documentation', link: '/docs/package/getting-started.html', activeMatch: '^/docs/' },
       { text: 'Demo', link: '/demo/', target: '_self' },
       { text: 'GitHub', link: repository },

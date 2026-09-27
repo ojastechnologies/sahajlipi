@@ -40,10 +40,10 @@ The React build uses development mode so StrictMode exercises effect setup, clea
 ## Run vanilla JavaScript directly from the checkout
 
 ```sh
-npm run demo
+npm run examples:serve
 ```
 
-Open [the source vanilla example](http://127.0.0.1:4173/examples/vanilla/). Its HTML import map resolves the public package names to the checkout's source modules. This path is convenient for reading and trying the example; the packed-consumer verification and generated browser examples separately exercise installed package exports.
+Open [the source vanilla example](http://127.0.0.1:4177/examples/vanilla/). Its HTML import map resolves the public package names to the checkout's source modules. This path is convenient for reading and trying the example; the packed-consumer verification and generated browser examples separately exercise installed package exports.
 
 ## Browser integration checks
 

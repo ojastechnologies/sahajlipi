@@ -196,7 +196,7 @@ npm run examples:serve
 
 Open [the packed-package vanilla example](http://127.0.0.1:4177/browser/.generated/vanilla/) or [the React example](http://127.0.0.1:4177/browser/.generated/react/). The build installs a local tarball into an isolated consumer and bundles those examples from the package exports. Package verification checks JavaScript imports and TypeScript resolution; it does not publish anything.
 
-To run the source-only vanilla example without a build, run `npm run demo` and open [the vanilla example on port 4173](http://127.0.0.1:4173/examples/vanilla/). That import map resolves to the checkout source. See the [development guide](../development.md) for browser checks and tooling requirements.
+To run the source-only vanilla example without a build, run `npm run examples:serve` and open [the vanilla example on port 4177](http://127.0.0.1:4177/examples/vanilla/). That import map resolves to the checkout source. See the [development guide](../development.md) for browser checks and tooling requirements.
 
 ## Continue
 

@@ -56,6 +56,16 @@ async function allFiles(directory) {
 const files = await allFiles(output);
 const paths = new Set(files.map(file => path.relative(output, file).split(path.sep).join('/')));
 const publicPaths = new Set(manifest.publicFiles.map(file => file.path));
+const vitePressPages = new Set([...manifest.pages.map(page => routeFile(page.route)), '404.html']);
+const expectedStaticRoutes = new Set();
+for (const file of manifest.publicFiles) {
+  if (!file.path.endsWith('.html')) continue;
+  const route = '/' + file.path;
+  expectedStaticRoutes.add(route);
+  if (route.endsWith('/index.html')) expectedStaticRoutes.add(route.slice(0, -'index.html'.length));
+}
+assert.deepEqual(manifest.staticHtmlRoutes, [...expectedStaticRoutes].sort(), 'Static HTML route inventory must match the copied apps');
+
 for (const filename of paths) {
   assert(!/(^|\/)(?:data|datasets|node_modules|\.git|\.generated|test-results|playwright-report)(\/|$)/.test(filename), `Private/development directory leaked: ${filename}`);
   assert(!/\.(?:csv|jsonl|xlsx|tgz|map)$/.test(filename), `Unapproved data/archive/source map leaked: ${filename}`);
@@ -88,6 +98,7 @@ async function verifyLink(reference, owner, checkFragment = true) {
     assert(ids.includes(fragment), `Broken fragment: ${owner} → ${reference}`);
   }
   checkedLinks++;
+  return filename;
 }
 
 const titles = new Set();
@@ -168,7 +179,13 @@ for (const filename of paths) {
   const markup = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '').replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '');
   for (const tag of ['a', 'link', 'img', 'source']) {
     for (const attrs of tags(markup, tag)) {
-      if (attrs.href) await verifyLink(attrs.href, filename);
+      if (attrs.href) {
+        const destination = await verifyLink(attrs.href, filename);
+        if (tag === 'a' && vitePressPages.has(filename) && destination?.endsWith('.html') && !vitePressPages.has(destination)) {
+          assert(Object.hasOwn(attrs, 'target') || Object.hasOwn(attrs, 'download'),
+            `Static HTML link must bypass the VitePress router: ${filename} → ${attrs.href}`);
+        }
+      }
       if (attrs.src) await verifyLink(attrs.src, filename, false);
     }
   }

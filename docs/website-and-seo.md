@@ -16,7 +16,7 @@ The navigation is Home, Documentation, Demo, and GitHub. Package documentation s
 
 VitePress builds HTML from the existing Markdown. Edit a guide in `docs/`, then regenerate the site; do not maintain a second copy under `website/docs/`. The preparation tool maps each `README.md` to a directory index, rewrites Markdown links to published HTML paths, and points repository-only source links to GitHub. The four old moved-guide stubs are excluded in favor of their canonical `docs/package/` pages. Contribution, security, and changelog pages are generated from the root repository files.
 
-Generated Markdown, copied public assets, and the output directory are build artifacts. They are ignored by Git and must not be edited as source. The plain repository root `index.html` remains a convenience redirect for the source demo server; the production artifact uses the generated package homepage instead.
+Generated Markdown, copied public assets, and the output directory are build artifacts. They are ignored by Git and must not be edited as source. The production artifact uses the generated package homepage. The default local demo and preview commands serve that complete artifact, with redirects from `/` to `/sahajlipi/` and from `/demo/` to `/sahajlipi/demo/`. Serving only the repository source with a plain static server does not provide the generated homepage or documentation.
 
 ## Run and verify the website
 
@@ -27,7 +27,7 @@ npm ci
 npm run site:dev
 ```
 
-Open [the local package website](http://127.0.0.1:4178/sahajlipi/). Development mode prepares the current Markdown and starts VitePress. Stop this server before previewing on the same port. When adding a new source page, rerun preparation by restarting the command.
+Open [the local package website](http://127.0.0.1:4178/sahajlipi/). Development mode prepares the current Markdown and starts VitePress. Stop this server before previewing on the same port. After changing a Markdown source or adding a page, regenerate the prepared inputs by restarting the command.
 
 Verify the production artifact before proposing a website change:
 
@@ -37,9 +37,15 @@ npm run site:check
 npm run site:preview
 ```
 
-Preview again at [http://127.0.0.1:4178/sahajlipi/](http://127.0.0.1:4178/sahajlipi/), including its documentation and demo. The build writes the deployable project under `.site-dist/sahajlipi/`; the preview command serves `.site-dist/` so it exercises the `/sahajlipi/` base path.
+Preview again at [http://127.0.0.1:4178/sahajlipi/](http://127.0.0.1:4178/sahajlipi/), including its documentation and demo. The build writes the deployable project under `.site-dist/sahajlipi/`; the preview command uses the project preview server to serve `.site-dist/` and exercise the `/sahajlipi/` base path. It also accepts the older local `/` and `/demo/` entry paths through redirects.
 
 The site check validates the built pages, local links and assets, canonical URLs, metadata, sitemap, and the copied demo. These are software checks. They do not prove that a search engine has crawled, indexed, or ranked the website. Engine and browser regressions remain separate checks in the [development guide](development.md).
+
+### Local demo and source examples
+
+`npm run demo` builds the complete website before serving it on port 4173. Open `/sahajlipi/demo/`; the older `/demo/` entry redirects there. To serve the same artifact on your local network, run `npm run demo:lan -- YOUR_LAN_IP` and open `http://YOUR_LAN_IP:4173/sahajlipi/demo/`. Home, logo, and documentation navigation use the same project paths as production. Stop an existing server on that port before starting either command.
+
+For source-only vanilla examples, use `npm run examples:serve` and open `http://127.0.0.1:4177/examples/vanilla/`. That separate server exposes the checkout examples; it is not the complete package website. See the [demo guide](demo/README.md#run-it-locally) and [example instructions](../examples/README.md).
 
 ### Website browser checks
 
@@ -52,11 +58,12 @@ npm run test:site
 
 On Linux, install with `npx playwright install --with-deps chromium`. The same Node.js 20-or-later, npm, and Python 3 toolchain is required. `test:site` runs the production build and static artifact check before Playwright; the separate [website configuration](../playwright.site.config.js) serves `.site-dist/` on `127.0.0.1:4181` and refuses to reuse that port.
 
-The [seven website scenarios](../website/tests/site.spec.js) cover:
+The [eleven website scenarios](../website/tests/site.spec.js) cover:
 
 - Homepage content without JavaScript and the interactive converter preview.
 - Documentation links, canonical routes, and local search.
-- Demo links from the homepage and header, plus demo typing.
+- Demo links from the homepage, header, and documentation body, plus demo typing.
+- Desktop and mobile Home/logo navigation, with legacy local entry paths redirected to the complete site.
 - Homepage, docs, and demo at a mobile-sized browser viewport.
 - Reachable published benchmark downloads and the sitemap.
 
@@ -64,9 +71,9 @@ Results are written to `site-playwright-report/` (HTML) and `site-test-results/r
 
 ## GitHub Pages publishing
 
-The [website workflow](../.github/workflows/pages.yml) builds and checks the artifact for pull requests. Deployment is restricted to `main`; a pull request build does not publish a preview to the production URL. Website changes become public after merge, a successful workflow, and the Pages deployment finishing. GitHub Pages must use the GitHub Actions publishing source for this artifact workflow. The repository currently uses the legacy `main` branch-root publishing source; it does not run the website build. The transition to Actions is pending until the workflow is available on `main`.
+The [website workflow](../.github/workflows/pages.yml) builds and checks the artifact for pull requests. Deployment is restricted to `main`; a pull request build does not publish a preview to the production URL. Website changes become public after merge, a successful workflow, and the Pages deployment finishing. GitHub Pages is configured to use the GitHub Actions publishing source and the generated artifact. The package homepage and developer documentation are public alongside the preserved demo.
 
-To make the transition, first merge the reviewed website workflow into `main`, then change **Settings → Pages → Build and deployment → Source** to **GitHub Actions** and run the workflow on `main`. Verify the deployment result and public URLs. Staging this workflow in a pull request does not change the Pages source setting.
+The publishing source setting is under **Settings → Pages → Build and deployment → Source**. Keep it on **GitHub Actions** while using this artifact workflow. Verify the deployment result and public URLs; staging a future workflow change in a pull request does not change that setting.
 
 Keep `/demo/` available in the deployed project so existing bookmarks work. The build copies the demo, engine modules, and brand assets into the artifact; it adds demo metadata without changing conversion rules. Deployment requires the repository's Pages settings and workflow permissions to be configured, as described in the [VitePress GitHub Pages guide](https://vitepress.dev/guide/deploy#github-pages).
 

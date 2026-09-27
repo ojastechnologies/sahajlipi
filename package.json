@@ -18,8 +18,8 @@
   "scripts": {
     "test": "node --test",
     "benchmark": "node benchmark/run.js",
-    "demo": "python3 -m http.server 4173 --bind 127.0.0.1",
-    "demo:lan": "python3 -m http.server 4173 --bind",
+    "demo": "npm run site:build && python3 tools/serve-site.py --port 4173",
+    "demo:lan": "npm run site:build && python3 tools/serve-site.py --port 4173 --bind",
     "benchmark:aksharantar": "node benchmark/aksharantar.js",
     "benchmark:sentence-queue": "node benchmark/sentence-review.js",
     "benchmark:review-batch": "node benchmark/review-batch.js",
@@ -31,7 +31,7 @@
     "site:dev": "node tools/prepare-site.js && vitepress dev website --host 127.0.0.1 --port 4178",
     "site:build": "node tools/prepare-site.js && vitepress build website",
     "site:check": "node tools/verify-site.js",
-    "site:preview": "python3 -m http.server 4178 --bind 127.0.0.1 --directory .site-dist",
+    "site:preview": "python3 tools/serve-site.py --port 4178",
     "test:site": "npm run site:build && npm run site:check && playwright test -c playwright.site.config.js"
   },
   "engines": {
