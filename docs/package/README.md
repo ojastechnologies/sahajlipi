@@ -10,7 +10,8 @@ SahajLipi provides a dependency-free Nepali transliteration engine and optional 
 | [Benchmarks](benchmarks.md) | Reproducible engine cases, metrics, provenance, results, and evaluation limits. |
 | [External evaluation](external-evaluation.md) | Pinned Nepali word data, source discrepancies, initial baseline, and sentence review process. |
 | [Development review batch](review-batch.md) | Reproducible 100-case review batch, independent review sheets, and diagnostic limits. |
-| [Ra-ya review and changes](ry-review.md) | Word-specific joiner preferences, Shift lookup, fixed-fixture results and remaining spelling ambiguities. |
+| [Source-assisted online review](assisted-online-review.md) | All 100 draft case recommendations, spelling evidence, source links and pending human confirmation. |
+| [Ra-ya review and changes](ry-review.md) | Word-specific joiner preferences, Shift lookup, fixed-fixture results and source-quality triage. |
 
 For live typing, choose an integration scope: mark selected fields with `data-sahajlipi` and call `attachNepaliInputs()`; pass a page element as the root; or use `attachNepaliInputs(document, { scope: 'all' })` for every supported text field in that document. Add `data-sahajlipi-ignore` to fields that must stay English in an all-fields scope. The [API reference](api.md#browser-input-adapters) explains configuration, field-level controls, candidates, and cleanup.
 

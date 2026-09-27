@@ -21,7 +21,7 @@ The [architecture](package/architecture.md), [API reference](package/api.md), an
 
 The [2026-09-27 ra-ya update](package/ry-review.md) adds ten exact word spellings with explicit joiner forms and preserves reserved Shift keys during word lookup. The guide, demo and seed benchmark cover the new preferences and ordinary-conjunct controls. The external dataset result and original 100-case source-proposal agreement remain unchanged.
 
-Following maintainer feedback, six of the original seven unresolved validation tokens are tracked as suspected source misspellings or malformed tokens; `dharyo` remains contextual because literary usage was found. These source-quality cases establish no converter defect and do not block the targeted change. They remain outside new spelling contracts, with the original records and reported benchmark denominators preserved. These source-assisted changes have no admitted independent human corpus labels.
+Following maintainer feedback, six of the original seven unresolved validation tokens are tracked as suspected source misspellings or malformed tokens; `dharyo` remains contextual because literary usage was found. These source-quality cases establish no converter defect and do not block the targeted change. They remain outside new spelling contracts, with the original records and reported benchmark denominators preserved. These source-assisted changes have no admitted independent human corpus labels. The [published 100-case online review](package/assisted-online-review.md) makes all draft recommendations and their evidence available separately from the dated benchmark scores; it admits no canonical answers.
 
 ## Demo status
 

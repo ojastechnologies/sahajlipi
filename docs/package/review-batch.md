@@ -15,7 +15,7 @@ npm run benchmark:review-batch -- \
   --output benchmark/data/review-batch-001
 ```
 
-The generator refuses an existing output directory. Use a new path when rerunning so review edits remain intact. Raw inputs and generated review files live under the ignored `benchmark/data/` directory and are excluded from the distributed package.
+The generator refuses an existing output directory. Use a new path when rerunning so review edits remain intact. Raw inputs and generated review files live under the ignored `benchmark/data/` directory and are excluded from the distributed package. The [published source-assisted review](assisted-online-review.md) is a separate draft projection: it includes case recommendations and evidence, omits complete sentence texts and human worksheets, and admits no canonical decisions.
 
 ### Sources and selection
 
