@@ -45,4 +45,4 @@ The extra word-final virama and vowel-sign groups are useful places for reviewer
 
 Use the separate reviewer files described in the [review guide](review-batch.md). Reviewers should work independently, record accepted alternatives or exclusions, and reconcile disagreements. Confirmed cases remain development data; a separate reviewed held-out collection is still needed for future quality claims.
 
-Regenerate the local artifacts with the documented command. Source rows and reviewer files stay under the ignored `benchmark/data/` directory. Only aggregate counts and the manifest are committed. No engine or demo behavior changes are included in this batch.
+Regenerate the local artifacts with the documented command. Original source rows and human reviewer files stay under the ignored `benchmark/data/` directory. The [separate source-assisted review](assisted-online-review.md) publishes a draft projection with 100 recommendations, word examples and evidence links, omitting complete sentence texts and human worksheets. It does not admit labels or alter this dated baseline. No engine or demo behavior changes are included in this batch.

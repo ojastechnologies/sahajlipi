@@ -62,7 +62,7 @@ Lowercase `t` and `d` produce dental sounds; capital `T` and `D` produce retrofl
 | `da` → द | `Da` → ड |
 | `dha` → ध | `Dha` → ढ |
 
-Capital `S` or `Sh` selects ष (`Sa` or `Sha` → ष), while lowercase `sh` selects श (`sha` → श). Capital `H` **after a vowel** adds visarga ः: `kaH` → कः and `duHkha` → दुःख. Lowercase `h` remains ह (`ha` → ह), and `:` remains a colon. Other capital letters usually behave like lowercase, but an exact custom entry can preserve a distinct Shift spelling. A listed lowercase word can also match title case, for example `Ram` → राम.
+Capital `S` or `Sh` selects ष (`Sa` or `Sha` → ष), while lowercase `sh` selects श (`sha` → श). Capital `H` **after a vowel** adds visarga ः: `kaH` → कः and `duHkha` → दुःख. Lowercase `h` remains ह (`ha` → ह), and `:` remains a colon. Other capitals become lowercase before lookup. The reserved sound keys `T`, `D`, `S`, `R`, and vowel-following `H` bypass lowercase word lookup; an exact cased entry can override them. For example, `Saryo` → षर्यो, `gaRyo` → गऋयो, and `baHini` → बःइनि follow explicit Shift input. The existing names `Ram` → राम and `Sita` → सीता are retained as explicit built-in aliases; replacing lowercase `ram` or `sita` also updates that alias unless you supply an exact cased override.
 
 ## Half consonants and conjuncts
 
@@ -79,7 +79,36 @@ The fallback keeps an unvoweled consonant half, including at the end of an activ
 
 Type `/` to request a virama explicitly, especially after a vowel: `ka/` → क्. `k/` also yields क्, which is already the default for a bare `k`. The slash remains literal where no consonant can take a virama, such as `a/` → अ/, and in `3/4`.
 
-Type `/=` after a consonant when you need a zero width joiner after its virama: `par/=yo` → पर्‍यो. The lexicon also maps `paryo` to that same Unicode sequence; it is a **word-specific entry**, not a general rule for every `ry`. The inserted sequence is virama U+094D followed by zero width joiner U+200D. Unicode encodes these characters; the exact visible half form or conjunct depends on the browser's text shaping and font. See the [Unicode Indic FAQ on half forms and joiners](https://www.unicode.org/faq/indic.html).
+Type `/=` after a consonant when you need a zero width joiner after its virama: `par/=yo` → पर्‍यो. The inserted sequence is virama U+094D followed by zero width joiner U+200D. The exact visible half form or conjunct depends on the browser's text shaping and font. See the [Unicode Indic FAQ on half forms and joiners](https://www.unicode.org/faq/indic.html).
+
+### र्य and र्‍य
+
+The ordinary `ry` cluster uses र्य: र U+0930, virama U+094D, then य U+092F. The spelling र्‍य also includes zero width joiner U+200D between the virama and य to request the eyelash form of र. Unicode describes this mechanism in [chapter 12, rule R5a](https://www.unicode.org/versions/Unicode17.0.0/core-spec/chapter-12/). It does not specify which Nepali words should use it.
+
+The starter lexicon supplies र्‍य for these **exact listed words**:
+
+| Roman word | Preferred output |
+| --- | --- |
+| `paryo` | पर्‍यो |
+| `garyo` | गर्‍यो |
+| `maryo` | मर्‍यो |
+| `maaryo` | मार्‍यो |
+| `bharyo` | भर्‍यो |
+| `taryo` | तर्‍यो |
+| `saryo` | सर्‍यो |
+| `puryaunu` or `puryaaunu` | पुर्‍याउनु |
+| `bharyang` or `bharyaanga` | भर्‍याङ |
+
+Title case follows the same entries, for example `Garyo` → गर्‍यो. The reserved Shift keys still select their explicit sounds; `Saryo` is therefore षर्यो, while lowercase `saryo` is सर्‍यो. Short and long vowels remain distinct: `maryo` → मर्‍यो and `maaryo` → मार्‍यो, just as `pani` → पनि and `paani` → पानी.
+
+Two informal spellings have additional whole-word exceptions:
+
+- `puryaunu` supplies आ followed by independent उ in पुर्‍याउनु. Its `au` does **not** use the ordinary औ token. `puryaaunu` spells the long vowel explicitly. The fallback still converts `au` to औ, as in `kau` → कौ.
+- `bharyang` supplies the long आ and completes the final ङ in भर्‍याङ. `bharyaanga` explicitly includes `aa` and final `a`. Bare consonants in the fallback still remain half.
+
+These entries match whole words; they do not infer stems, suffixes, or compound spellings. Other words keep the ordinary cluster, including `kaarya` → कार्य, `suurya` → सूर्य, `saundarya` → सौन्दर्य, and `aachaarya` → आचार्य. For an unlisted form that needs र्‍य, type `/=` explicitly and supply its vowels: `gar/=yo` → गर्‍यो, `pur/=yaaunu` → पुर्‍याउनु, and `bhar/=yaanga` → भर्‍याङ.
+
+Online usage supports the listed Nepali spellings: [नेपाल कानून पत्रिका uses गर्‍यो](https://nkp.gov.np/full_detail/9337) and [मर्‍यो and मार्‍यो](https://nkp.gov.np/full_detail/9028); [Nagarik uses भर्‍यो](https://nagariknews.nagariknetwork.com/opinion/171387-1550462880.html), [Nepal magazine uses तर्‍यो](https://nepalmag.com.np/feeling/2017/01/23/20170123180759), and [Gorkhapatra uses सर्‍यो](https://gorkhapatraonline.com/news/64479). The [District Administration Office, Parsa uses पुर्‍याउनु in a notice heading](https://daoparsa.moha.gov.np/en/post/saraka-ra-jaga-ga-pa-ra-pa-ta-gara-tha-pa-ra-ya-una-para-na-va-thha-pa-raka-ya), and [नेपाल कानून पत्रिका uses भर्‍याङ](https://nkp.gov.np/full_detail/9853). These are assisted checks of published spellings, not independent human verification of the Roman mappings; that review remains pending. The [dated review and benchmark report](ry-review.md) records these decisions, checks, remaining ambiguities, and limitations.
 
 ## Nasal marks and punctuation
 

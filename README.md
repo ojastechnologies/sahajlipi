@@ -14,10 +14,12 @@ The CI badge shows the current `main` branch status. CI runs automated tests and
 | Evaluation | Recorded result | Run date | Interpretation |
 | --- | --- | --- | --- |
 | [Seed behavior contracts](docs/package/benchmarks.md#initial-seed-baseline) | 28/28 full contract cases | 2026-09-24 | Regression coverage for selected project behaviors. Two unreviewed exploratory cases are excluded from the gate. |
+| [Ra-ya behavior update](docs/package/ry-review.md#recorded-results) | 50/50 current seed contracts; baseline 38/50 on the same final fixture | 2026-09-27 | Source-assisted project preferences and regression guards; independent human linguistic review pending. |
 | [External word baseline](docs/package/external-evaluation.md#initial-baseline) | 279/4,101 default matches; 279/4,101 references in candidates (6.80% each) | 2026-09-24 | Exact Unicode agreement with the pinned Aksharantar word test. |
 | [Development review batch](docs/package/review-batch-baseline.md) | Default matches: 7/80 words, 0/20 sentences; 7/80 word proposals in candidates | 2026-09-26 | 100 unreviewed development source proposals; no accepted labels yet. |
+| [Source-assisted online review](docs/package/assisted-online-review.md) | 100 draft recommendations: 67 accept, 12 correct/add alternatives, 21 hold/exclude | 2026-09-27 | Research notes with 107 distinct evidence URLs; no canonical labels admitted or accuracy score. |
 
-These results do not establish population-wide Nepali typing accuracy. The external word set uses lowercase Roman inputs and does not exercise Shift shortcuts. The development batch needs independent Nepali-language review before its proposals can guide engine fixes. Full reports record source revisions, engine commits, exclusions, and review status; the [review guide](docs/package/review-batch.md) explains how to contribute language review.
+These results do not establish population-wide Nepali typing accuracy. The external word set uses lowercase Roman inputs and does not exercise Shift shortcuts. The development batch still needs independent Nepali-language review before its proposals become accepted linguistic labels. Source-assisted project preferences are documented separately in the ra-ya report. Full reports record source revisions, engine commits, exclusions, and review status; the [review guide](docs/package/review-batch.md) explains how to contribute language review.
 
 ## Use the package
 

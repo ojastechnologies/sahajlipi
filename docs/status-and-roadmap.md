@@ -17,13 +17,19 @@ The [package](package/README.md) includes a deterministic word and text converte
 
 The [architecture](package/architecture.md), [API reference](package/api.md), and [typing reference](package/typing-reference.md) describe the package as implemented.
 
+## Latest core improvement
+
+The [2026-09-27 ra-ya update](package/ry-review.md) adds ten exact word spellings with explicit joiner forms and preserves reserved Shift keys during word lookup. The guide, demo and seed benchmark cover the new preferences and ordinary-conjunct controls. The external dataset result and original 100-case source-proposal agreement remain unchanged.
+
+Following maintainer feedback, six of the original seven unresolved validation tokens are tracked as suspected source misspellings or malformed tokens; `dharyo` remains contextual because literary usage was found. These source-quality cases establish no converter defect and do not block the targeted change. They remain outside new spelling contracts, with the original records and reported benchmark denominators preserved. These source-assisted changes have no admitted independent human corpus labels. The [published 100-case online review](package/assisted-online-review.md) makes all draft recommendations and their evidence available separately from the dated benchmark scores; it admits no canonical answers.
+
 ## Demo status
 
 The [live demo](https://ojastechnologies.github.io/sahajlipi/demo/) is a static playground for trying the current package behavior. It adds a candidate dropdown, Nepali on/off control, Copy and Clear buttons, a character count, and an on-page typing guide. Its [separate guide](demo/README.md) covers usage, local hosting, and GitHub Pages. The demo is useful for exploration; it is not a browser compatibility certification or a separate conversion engine.
 
 ## Priorities
 
-1. **Reviewed Nepali evaluation corpus.** Independently review and reconcile the [first development batch](package/review-batch.md) before using it for correctness fixes. Collect consented real typing examples with intended Unicode, valid alternatives, and provenance, and reserve a separate reviewed held-out set. Keep these separate from tests written to fit the implementation.
+1. **Reviewed Nepali evaluation corpus.** Independently review and reconcile the [first development batch](package/review-batch.md) before admitting it as a linguistic evaluation corpus. Source-assisted project preferences can be implemented with their evidence and limits recorded separately; they do not count as independent language reviews. Collect consented real typing examples with intended Unicode, valid alternatives, and provenance, and reserve a separate reviewed held-out set. Keep these separate from tests written to fit the implementation.
 2. **High-frequency correctness fixes.** Use that corpus to choose lexical entries and broadly valid phonetic changes. Report ambiguity and trade-offs rather than silently changing defaults.
 3. **Browser input compatibility.** Test real browsers, mobile keyboards, composition, selection, paste, and assistive technology. Publish a tested support matrix.
 4. **Developer alpha release.** Stabilize the package API, declarations, and package contents; define versioning and release steps; publish with an honest quality baseline.

@@ -95,6 +95,28 @@ test("paryo uses the explicit ra-ya form without an incorrect alternative", (t) 
   assert.deepEqual(controller.getState().candidates, []);
 });
 
+test("a listed ry word remains editable as its Roman keys cross the lookup boundary", (t) => {
+  const { field, controller, type, beforeInput } = setup(t);
+  type("garyo");
+  assert.equal(field.value, "गर्\u200dयो");
+  assert.equal(field.selectionStart, field.value.length);
+  assert.equal(controller.getState().activeRoman, "garyo");
+  assert.deepEqual(controller.getState().candidates, []);
+  beforeInput("deleteContentBackward");
+  assert.equal(field.value, "गर्य्");
+  assert.equal(controller.getState().activeRoman, "gary");
+  type("o kaarya");
+  assert.equal(field.value, "गर्\u200dयो कार्य");
+  assert.equal(field.selectionStart, field.value.length);
+});
+
+test("multi-character input keeps maryo and maaryo distinct beside ordinary conjuncts", (t) => {
+  const { field, beforeInput } = setup(t);
+  beforeInput("insertText", "maryo maaryo kaarya suurya. 3.14|");
+  assert.equal(field.value, "मर्\u200dयो मार्\u200dयो कार्य सूर्य. 3.14।");
+  assert.equal(field.selectionStart, field.value.length);
+});
+
 test("bindu and chandrabindu type inline and remain editable by Backspace", (t) => {
   const { field, controller, type, beforeInput } = setup(t);
   type("ka^");

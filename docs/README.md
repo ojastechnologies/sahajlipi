@@ -20,6 +20,10 @@ Choose the guide for the part of SahajLipi you are using. The **package** provid
 | [Development review guide](package/review-batch.md) | Generate the 100-case development batch and record independent Nepali-language decisions. |
 | [Development batch report](package/review-batch-baseline.md) | Inspect dated source-proposal agreement and diagnostic signals, with review limitations. |
 | [Run manifest](../benchmark/reports/nepali-review-001.json) | Verify source pins, selected IDs, engine/tool hashes, and artifact hashes for the recorded development run. |
+| [Source-assisted online review](package/assisted-online-review.md) | Inspect 100 draft recommendations, evidence scope, source links and pending human review. |
+| [Source-assisted review records](../benchmark/reports/nepali-assisted-online-001.json) | Read the public per-case projection, attribution and research hashes; complete sentence texts are omitted. |
+| [Ra-ya review and changes](package/ry-review.md) | Inspect exact word preferences, Shift lookup, before/after results and source-quality triage. |
+| [Ra-ya machine report](../benchmark/reports/nepali-ry-001.json) | Verify exact engine/fixture hashes, recorded checks and evidence limits. |
 
 The repository [Evaluation status](../README.md#evaluation-status) summarizes dated baselines. The linked reports provide the evidence and limits behind each result. Unreviewed proposal agreement is not a language-accuracy score.
 

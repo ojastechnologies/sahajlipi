@@ -10,17 +10,28 @@ export function createEngine({ entries = {} } = {}) {
   const dictionary = new Map(
     Object.entries(starterEntries).map(([key, values]) => [key, [...values]]),
   );
+  const customKeys = new Set();
   for (const [key, values] of Object.entries(entries)) {
     if (!Array.isArray(values) || values.length === 0 || values.some((value) => typeof value !== 'string' || value.length === 0)) {
       throw new TypeError(`Entry for "${key}" must be a non-empty array of non-empty strings`);
     }
-    dictionary.set(normalizeRoman(key), [...values]);
+    const normalized = normalizeRoman(key);
+    dictionary.set(normalized, [...values]);
+    customKeys.add(normalized);
+  }
+
+  // Legacy name aliases inherit replacements of their lowercase entries,
+  // unless the caller supplied an exact normalized alias of their own.
+  for (const [alias, key] of [['Ram', 'ram'], ['Sita', 'sita']]) {
+    if (!customKeys.has(alias)) dictionary.set(alias, [...dictionary.get(key)]);
   }
 
   function lookup(roman) {
     const normalized = normalizeRoman(roman);
     const exact = dictionary.get(normalized);
-    if (exact || /[TD]/.test(normalized)) return exact;
+    // Normalization keeps only capitals that select a distinct sound.
+    // An explicitly cased entry can still override that sound.
+    if (exact || /[TDSRH]/.test(normalized)) return exact;
     return dictionary.get(normalized.toLowerCase());
   }
 

@@ -147,18 +147,49 @@
             <section class="guide-card" id="half-sounds-guide">
               <span class="guide-number">03 / Half sounds</span>
               <h3>Half until a vowel arrives</h3>
-              <p>Consonants without a following vowel remain half, even at the end of a word. Adjacent consonants join automatically. A vowel completes the last consonant.</p>
+              <p>In phonetic conversion, consonants without a following vowel remain half, even at the end of a word. Adjacent consonants join automatically. A vowel completes the last consonant. A known word can use its listed spelling.</p>
               <div class="key-examples" aria-label="Consonant cluster examples">
                 <div><kbd>kr</kbd><span aria-hidden="true">→</span><strong lang="ne">क्र्</strong></div>
                 <div><kbd>kra</kbd><span aria-hidden="true">→</span><strong lang="ne">क्र</strong></div>
                 <div><kbd>kri</kbd><span aria-hidden="true">→</span><strong lang="ne">क्रि</strong></div>
                 <div><kbd>shakti</kbd><span aria-hidden="true">→</span><strong lang="ne">शक्ति</strong></div>
               </div>
-              <p><kbd>Space</kbd> keeps the displayed half form. Use <kbd>/</kbd> when you want an explicit halant after a vowel: <kbd>ka/</kbd> → <span lang="ne">क्</span>. Use <kbd>/=</kbd> for a visible half form: <kbd>par/=yo</kbd> → <span lang="ne">पर्‍यो</span>. Known words may follow the built-in word list, for example <kbd>kam</kbd> → <span lang="ne">कम</span> and <kbd>paryo</kbd> → <span lang="ne">पर्‍यो</span>.</p>
+              <p><kbd>Space</kbd> keeps the displayed spelling. Use <kbd>/</kbd> when you want an explicit halant after a vowel: <kbd>ka/</kbd> → <span lang="ne">क्</span>. Use <kbd>/=</kbd> to add a joiner after the halant: <kbd>par/=yo</kbd> → <span lang="ne">पर्‍यो</span>. The font and browser determine the visible shape. Listed words can complete a final consonant, for example <kbd>kam</kbd> → <span lang="ne">कम</span>.</p>
             </section>
 
             <section class="guide-card">
-              <span class="guide-number">04 / T and D sounds</span>
+              <span class="guide-number">04 / R and Y forms</span>
+              <h3><span lang="ne">र्य</span> or <span lang="ne">र्‍य</span></h3>
+              <p>Ordinary <kbd>ry</kbd> forms <span lang="ne">र्य</span>, as in <kbd>kaarya</kbd> → <span lang="ne">कार्य</span>, <kbd>suurya</kbd> → <span lang="ne">सूर्य</span>, <kbd>saundarya</kbd> → <span lang="ne">सौन्दर्य</span>, and <kbd>aachaarya</kbd> → <span lang="ne">आचार्य</span>. These complete listed words automatically use <span lang="ne">र्‍य</span>:</p>
+              <div class="key-examples" aria-label="Listed R and Y word examples">
+                <div><kbd>paryo</kbd><span aria-hidden="true">→</span><strong lang="ne">पर्‍यो</strong></div>
+                <div><kbd>garyo</kbd><span aria-hidden="true">→</span><strong lang="ne">गर्‍यो</strong></div>
+                <div><kbd>maryo</kbd><span aria-hidden="true">→</span><strong lang="ne">मर्‍यो</strong></div>
+                <div><kbd>maaryo</kbd><span aria-hidden="true">→</span><strong lang="ne">मार्‍यो</strong></div>
+                <div><kbd>bharyo</kbd><span aria-hidden="true">→</span><strong lang="ne">भर्‍यो</strong></div>
+                <div><kbd>taryo</kbd><span aria-hidden="true">→</span><strong lang="ne">तर्‍यो</strong></div>
+                <div><kbd>saryo</kbd><span aria-hidden="true">→</span><strong lang="ne">सर्‍यो</strong></div>
+              </div>
+              <p><kbd>maryo</kbd> and <kbd>maaryo</kbd> keep their different vowels. Incidental title case works: <kbd>Garyo</kbd> → <span lang="ne">गर्‍यो</span>. Reserved Shift keys select their sounds: <kbd>Saryo</kbd> → <span lang="ne">षर्यो</span>. These are whole-word entries; adding a suffix does not automatically reuse them.</p>
+            </section>
+
+            <section class="guide-card">
+              <span class="guide-number">05 / Listed word shortcuts</span>
+              <h3>Two informal spellings</h3>
+              <p>The word list accepts these shortcuts and their explicit long-vowel spellings:</p>
+              <div class="key-examples" aria-label="Informal and explicit word spellings">
+                <div><kbd>puryaunu</kbd><span aria-hidden="true">→</span><strong lang="ne">पुर्‍याउनु</strong></div>
+                <div><kbd>puryaaunu</kbd><span aria-hidden="true">→</span><strong lang="ne">पुर्‍याउनु</strong></div>
+                <div><kbd>bharyang</kbd><span aria-hidden="true">→</span><strong lang="ne">भर्‍याङ</strong></div>
+                <div><kbd>bharyaanga</kbd><span aria-hidden="true">→</span><strong lang="ne">भर्‍याङ</strong></div>
+              </div>
+              <p>Only the listed <kbd>puryaunu</kbd> shortcut supplies long <span lang="ne">आ</span> followed by <span lang="ne">उ</span> where you typed <kbd>au</kbd>. In ordinary phonetic conversion, <kbd>au</kbd> still means <span lang="ne">औ</span>: <kbd>kau</kbd> → <span lang="ne">कौ</span>.</p>
+              <p>Only the listed <kbd>bharyang</kbd> shortcut fills in long <span lang="ne">आ</span> and a complete final <span lang="ne">ङ</span>. The explicit spelling <kbd>bharyaanga</kbd> includes <kbd>aa</kbd> and final <kbd>a</kbd>.</p>
+              <p>For an unlisted spelling, request <span lang="ne">र्‍य</span> with <kbd>/=</kbd> and type the vowels yourself. Examples: <kbd>gar/=yo</kbd> → <span lang="ne">गर्‍यो</span>, <kbd>pur/=yaaunu</kbd> → <span lang="ne">पुर्‍याउनु</span>, and <kbd>bhar/=yaanga</kbd> → <span lang="ne">भर्‍याङ</span>.</p>
+            </section>
+
+            <section class="guide-card">
+              <span class="guide-number">06 / T and D sounds</span>
               <h3>Shift changes the tongue position</h3>
               <p>Lowercase <kbd>t</kbd> and <kbd>d</kbd> give dental sounds. Capital <kbd>T</kbd> and <kbd>D</kbd> give retroflex sounds. Keep the <kbd>h</kbd> lowercase for aspirated pairs.</p>
               <table class="sound-table" aria-label="Dental and retroflex sound pairs">
@@ -173,7 +204,7 @@
             </section>
 
             <section class="guide-card">
-              <span class="guide-number">05 / More Shift sounds</span>
+              <span class="guide-number">07 / More Shift sounds</span>
               <h3>Type ऋ, ष, and visarga</h3>
               <p>Capital <kbd>R</kbd> gives <span lang="ne">ऋ</span> on its own or the <span lang="ne">ृ</span> sign after a consonant. Lowercase <kbd>ri</kbd> and <kbd>kri</kbd> keep their ordinary sounds.</p>
               <div class="key-examples" aria-label="R vowel examples">
@@ -194,7 +225,7 @@
             </section>
 
             <section class="guide-card">
-              <span class="guide-number">06 / Nasal marks</span>
+              <span class="guide-number">08 / Nasal marks</span>
               <h3>Choose the mark explicitly</h3>
               <p>Type <kbd>^</kbd> after a syllable for <span lang="ne">बिन्दु ं</span>, or <kbd>~</kbd> for <span lang="ne">चन्द्रबिन्दु ँ</span>. The letters <kbd>n</kbd> and <kbd>m</kbd> still make consonants.</p>
               <div class="key-examples" aria-label="Nasal mark examples">
@@ -204,7 +235,7 @@
             </section>
 
             <section class="guide-card">
-              <span class="guide-number">07 / Punctuation</span>
+              <span class="guide-number">09 / Punctuation</span>
               <h3>Period or <span lang="ne">पूर्णविराम</span></h3>
               <p>The <kbd>.</kbd> key always types an English period, including after a Nepali word and in decimals. Type <kbd>|</kbd> for <span lang="ne">।</span> anywhere, including after a number. Pasted text follows the same rule.</p>
               <div class="key-examples" aria-label="Full stop and decimal examples">
@@ -216,7 +247,7 @@
             </section>
 
             <section class="guide-card">
-              <span class="guide-number">08 / Alternatives</span>
+              <span class="guide-number">10 / Alternatives</span>
               <h3>Choose only when needed</h3>
               <p>Ambiguous words show a readings dropdown. The first reading appears in the editor; pick another from the dropdown or press <kbd>Alt</kbd> + <kbd>1</kbd>, <kbd>2</kbd>, and so on. Press <kbd>Space</kbd> to keep the displayed reading and finish the word.</p>
               <div class="key-examples" aria-label="Alternative reading example">
@@ -225,7 +256,7 @@
             </section>
 
             <section class="guide-card">
-              <span class="guide-number">09 / Editor controls</span>
+              <span class="guide-number">11 / Editor controls</span>
               <h3>Switch, copy, or clear</h3>
               <p>Use <strong>Nepali on/off</strong> to switch between conversion and literal English typing in the editor and marked form fields. The <kbd>.</kbd> key stays a period in both modes. With Nepali off, shortcut keys such as <kbd>^</kbd>, <kbd>~</kbd>, <kbd>/</kbd>, and <kbd>|</kbd> stay literal. <strong>Copy</strong> copies the editor text; <strong>Clear</strong> starts again.</p>
               <p>The text you enter remains editable in the same field, including text you paste or type on a phone.</p>
