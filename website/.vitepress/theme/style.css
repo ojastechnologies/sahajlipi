@@ -5,6 +5,9 @@
   --sahaj-paper: #f4f7fa;
   --sahaj-light: #e8f6f5;
   --sahaj-gold: #e5ad3e;
+  --sahaj-gold-soft: #fff6e2;
+  --sahaj-gold-ink: #8a5b0b;
+  --vp-code-tab-active-bar-color: var(--sahaj-gold);
   --vp-font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Devanagari', sans-serif;
   --vp-c-brand-1: var(--sahaj-teal);
   --vp-c-brand-2: var(--sahaj-deep);
@@ -24,6 +27,8 @@
 }
 
 .dark {
+  --sahaj-gold-soft: rgba(229, 173, 62, .12);
+  --sahaj-gold-ink: #e5ad3e;
   --sahaj-paper: #14232f;
   --sahaj-ink: #eef5f8;
   --sahaj-light: #19353b;
@@ -227,3 +232,13 @@ html { scroll-padding-top: 90px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* Gold highlights keep the text and keyboard focus in readable ink or teal. */
+::selection { background: #e5ad3e; color: #192d3e; }
+.word-preview-writing input { caret-color: var(--sahaj-gold-ink); }
+.word-preview-examples { background: var(--sahaj-gold-soft); }
+.word-preview-examples button { border-color: var(--sahaj-gold); background: var(--sahaj-gold-soft); }
+.sahaj-code-heading { background: var(--sahaj-gold-soft); color: var(--vp-c-text-1); box-shadow: inset 0 2px 0 var(--sahaj-gold); }
+.vp-doc :not(pre) > code, .vp-doc kbd { background: var(--sahaj-gold-soft); color: var(--vp-c-text-1); }
+.vp-doc .custom-block.tip, .vp-doc .custom-block.info { box-shadow: inset 3px 0 0 var(--sahaj-gold); }
+.VPNavBarMenuLink.active { box-shadow: inset 0 -2px 0 var(--sahaj-gold); }
