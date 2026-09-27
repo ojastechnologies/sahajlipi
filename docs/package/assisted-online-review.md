@@ -1682,4 +1682,3 @@ Consulted evidence:
 Consulted evidence:
 
 - [Knee injury decision — Nepal Supreme Court, Nepal Kanoon Patrika 10596](https://nkp.gov.np/full_detail/10596) (full-page): The consulted Supreme Court page uses घुँडा, supporting the body-part spelling; it does not certify the full transliteration or game rule.
-
