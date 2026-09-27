@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SahajLipi browser adapter fixture</title>
+  </head>
+  <body>
+    <h1>Browser adapter test fixture</h1>
+    <label for="direct-field">Single-field adapter</label>
+    <textarea id="direct-field" spellcheck="false"></textarea>
+    <section id="managed-root" aria-label="Managed fields">
+      <label for="managed-field">Marked field</label>
+      <input id="managed-field" type="text" data-sahajlipi spellcheck="false" />
+      <label for="ignored-field">Excluded field</label>
+      <input id="ignored-field" type="text" data-sahajlipi data-sahajlipi-ignore />
+    </section>
+    <script type="module">
+      import { attachNepaliInput, attachNepaliInputs } from '../../src/dom.js';
+
+      const field = document.querySelector('#direct-field');
+      const controller = attachNepaliInput(field);
+      const inputValues = [];
+      // Observe the public input event that host applications receive.
+      field.addEventListener('input', () => inputValues.push(field.value));
+      const root = document.querySelector('#managed-root');
+      const manager = attachNepaliInputs(root);
+      window.browserFixture = {
+        controller,
+        manager,
+        inputValues,
+        addMarkedField(id) {
+          const input = document.createElement('input');
+          input.id = id;
+          input.type = 'text';
+          input.spellcheck = false;
+          input.setAttribute('data-sahajlipi', '');
+          root.append(input);
+          return input;
+        },
+        detachedField: null,
+      };
+    </script>
+  </body>
+</html>

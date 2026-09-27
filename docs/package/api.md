@@ -312,7 +312,7 @@ controller.destroy();
 
 The field adapter uses `beforeinput` where possible, an `input` fallback, paste/cut and composition events, and its own undo history. An active word keeps its Roman spelling so Backspace can edit the spelling even after the visible text changes. During uninterrupted typing, the adapter also keeps the current whitespace-delimited token’s original input: letters before an address cue still convert, but the token returns to its original spelling as soon as `http:`, `https:`, `www.`, an ordinary ASCII local part followed by `@`, or the first letter after a domain dot appears. It does not wait for a complete host or email address. Typing, native input, paste, and completed composition use the shared text policy. This does not recover the Roman spelling of text already committed or supplied as literal text. Once the word is committed, deletion uses `Intl.Segmenter` for grapheme boundaries when available, with a code-point fallback. See [architecture](architecture.md) for the event flow.
 
-Automated input tests use simulated fields; a cross-browser and real-device compatibility matrix has not been established. Framework-controlled fields can re-render their values, so test their event and teardown behavior in the host app.
+The Node tests use simulated fields. A separate [browser compatibility suite](browser-compatibility.md) checks selected editing flows in headless Chromium, Firefox, and WebKit and records its versions and environment. Real device keyboards, operating system clipboard behavior, and installed IMEs remain unverified. Framework-controlled fields can re-render their values, so test their event and teardown behavior in the host app.
 
 ## Typing contract and limits
 

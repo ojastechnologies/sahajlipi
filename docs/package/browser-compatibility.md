@@ -1,0 +1,137 @@
+# Browser adapter compatibility
+
+This guide records how SahajLipi checks its reusable browser adapters in desktop browser engines. The adapter supports `<textarea>` and text/search inputs. The [API reference](api.md#browser-input-adapters) covers attachment, configuration, and cleanup; the separate [demo guide](../demo/README.md) describes the playground controls.
+
+The engine's [Unicode behavior contracts](benchmarks.md) and language-review records measure different things. Browser tests check editing and integration behavior. They do not establish Nepali linguistic accuracy.
+
+## Run locally
+
+The core engine and Node test suite run on **Node.js 18 or later** with no runtime dependencies. The browser test tooling requires **Node.js 20 or later**, npm, and Python 3. Playwright is a development dependency pinned to `1.63.0`; the lockfile records the dependency versions.
+
+From the repository root:
+
+```sh
+npm ci
+npx playwright install chromium firefox webkit
+npm run test:browser
+```
+
+On Linux, install the browser system dependencies as well:
+
+```sh
+npx playwright install --with-deps chromium firefox webkit
+```
+
+The test configuration starts an isolated Python HTTP server on `127.0.0.1:4180` and stops it when the run finishes. Keep that port available: the configuration refuses to reuse a server already on port 4180, so stop the conflicting server before retrying. It does not depend on an already running demo server or change the demo's local port.
+
+Run one engine while developing a regression:
+
+```sh
+npm run test:browser -- --project=chromium
+```
+
+Use `--project=firefox` or `--project=webkit` for the other configured engines. The HTML report is written to `playwright-report/`; the JSON report is `test-results/browser-results.json`. Failure screenshots and traces are kept under `test-results/`. These generated outputs are ignored by Git. Open the latest local HTML report with:
+
+```sh
+npm run test:browser:report
+```
+
+Run the Node checks separately:
+
+```sh
+npm test
+npm run benchmark -- --check
+```
+
+A browser test failure is an editing or integration regression to investigate; changing a linguistic benchmark's expected spelling does not resolve it.
+
+## Test surfaces and scope
+
+[`browser/typing.spec.js`](../../browser/typing.spec.js) exercises the adapters through a dedicated [`browser/fixtures/adapters.html`](../../browser/fixtures/adapters.html) page and the demo. The fixture is a test harness, not a package example or a public editor component. [`playwright.config.js`](../../playwright.config.js) specifies browser projects, the local server, and reporting.
+
+The suite distinguishes normal keyboard actions from injected event contracts:
+
+| Coverage | Evidence and boundary |
+| --- | --- |
+| Direct typing and word boundaries | Browser keyboard actions assert active half forms, the ra-ya joiner, Shift sounds, bindu/chandrabindu, displayed text, and caret behavior. |
+| Early address cues | Incremental keyboard input checks literal rendering after email, HTTP(S), `www.`, and domain cues. |
+| Selection, Backspace, undo, and redo | Keyboard and selection actions check the adapter's edit state, including crossing an address cue. |
+| Candidates and mode switches | Adapter and demo actions check selection of alternatives and continuation in Nepali or English mode. |
+| Managed fields | The fixture checks marked, excluded, and dynamically added supported fields, plus controller cleanup. |
+| Paste and completed composition | Injected clipboard/composition events check the adapter event contract. These events do not exercise the operating system clipboard or a real IME. |
+| Native-input fallback | Injected `input` events without `beforeinput` check active-vowel and mixed-paste handling and host input-listener notifications. They do not establish mobile keyboard or framework-controlled field behavior. |
+
+Use the test names and attached failure traces to identify exactly which flow failed. Assertions concern the selected software behavior; this is not a general browser support certification.
+
+## Desktop engine matrix
+
+| Playwright project | Browser under test | Status evidence |
+| --- | --- | --- |
+| `chromium` | Playwright's Chromium build | Inspect the recorded local run below or the matching GitHub Actions report. |
+| `firefox` | Playwright's Firefox build | Inspect the recorded local run below or the matching GitHub Actions report. |
+| `webkit` | Playwright's WebKit build | Inspect the recorded local run below or the matching GitHub Actions report. |
+
+A passing result applies to the named engine build, platform, source revision, and tests in that run. Playwright WebKit is not the installed Safari application. Results from one operating system do not establish results on another, even for the same project name. A skipped case is not a pass.
+
+### Recorded run — 2026-09-27
+
+The committed [desktop-001 record](../../browser/reports/desktop-001.json) contains the dated test outcomes, individual test names, source hashes, environment, and limits. `npm run test:browser` began at **2026-09-27T12:06:12.781Z** on **macOS arm64** (`darwin`, OS release `25.6.0`) with **Node.js 22.22.3**, **Playwright 1.63.0**, headless browsers, two workers, and no retries:
+
+| Project | Engine version | Passed | Failed | Skipped |
+| --- | --- | --- | --- | --- |
+| `chromium` | `153.0.8010.12` | 12/12 | 0 | 0 |
+| `firefox` | `155.0` | 12/12 | 0 | 0 |
+| `webkit` | `26.6` | 12/12 | 0 | 0 |
+| **Total** | 12 scenarios × 3 projects | **36/36** | **0** | **0** |
+
+The run recorded no flaky outcomes. These are automated desktop-engine results on this platform; Ubuntu CI results belong to their own workflow run. Keyboard actions come from Playwright. The three synthetic-event scenarios cover paste, composition, and the native-input fallback without establishing real clipboard or IME behavior.
+
+The source identity is a modified working tree based on commit `995909554efa84691f5a481a0d27def58e308d2f`, identified by SHA-256 hashes of the production modules, demo, spec, fixture, Playwright configuration, package manifests, lockfile, and browser workflow. Production source and linguistic benchmark files were unchanged from that base. Separate checks of the same source passed 212 Node tests and 125 seed behavior contracts; two existing exploratory cases remain outside the benchmark gate.
+
+A separate negative control removed address preservation in a throwaway copy: the intermediate-address keyboard test failed once as expected. This shows that the named regression test detects that removed behavior; it does not prove that every possible editing defect is detected. The working tree's production code was unchanged by that check.
+
+### Verify the recorded source identity
+
+From a checkout containing the recorded files, verify every source hash before comparing a new run to this record:
+
+```sh
+node --input-type=module <<'NODE'
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+
+const report = JSON.parse(readFileSync('browser/reports/desktop-001.json', 'utf8'));
+const mismatches = [];
+for (const [path, expected] of Object.entries(report.source.fileSha256)) {
+  const actual = createHash('sha256').update(readFileSync(path)).digest('hex');
+  if (actual !== expected) mismatches.push(path);
+}
+if (mismatches.length) throw new Error(`Recorded source differs: ${mismatches.join(', ')}`);
+console.log('All recorded source hashes match.');
+NODE
+```
+
+Then use the local setup commands above and compare project counts, engine versions, and platform with the record. Browser binaries are chosen by the pinned Playwright version and platform. A later source change or a different environment needs its own dated result; do not overwrite this record to match a new outcome.
+
+The full raw JSON/HTML outputs are generated files, not committed records. The compact record preserves their recorded JSON hash and relevant outcomes, while local report files can be replaced by the next test run. GitHub Actions report artifacts have the retention period described below.
+
+## GitHub Actions and reports
+
+The dedicated [browser workflow](../../.github/workflows/browser.yml) runs Chromium, Firefox, and WebKit as separate Ubuntu jobs using Node.js 22. It runs on pull requests and pushes to `main`; each job installs its own browser and Linux dependencies. The existing [Node workflow](../../.github/workflows/ci.yml) keeps the engine and seed-contract checks on Node.js 18, 20, 22, and 24.
+
+Open the workflow run associated with the pull request's exact head commit. Inspect each engine job's test summary; download `browser-results-chromium`, `browser-results-firefox`, or `browser-results-webkit` from the run's **Artifacts** section. Each artifact includes that job's HTML/JSON reports and collected failure traces/screenshots. Uploaded artifacts are retained for **14 days**. CI artifacts are operational evidence with limited retention, not immutable linguistic benchmark records. A permanently documented run must record its source identity and environment separately.
+
+The JSON report is useful for inspecting pass, failure, skip, retry, and duration data. The HTML report shows the tested flows and any collected traces. Browser timings are test diagnostics, not a throughput or transliteration performance benchmark. Automatic retries are disabled so a failing input flow cannot be hidden by an eventually passing retry.
+
+An old green `main` badge does not establish that a new pull request passes. Verify the checks on the intended source commit before merging. The browser workflow defines its checks; repository protection settings determine which checks block a merge.
+
+## Not established by these tests
+
+- Real phone keyboards, Android or iOS devices, or mobile IME behavior.
+- Native operating system clipboard permissions and clipboard integration.
+- Real composition input from an installed IME; only the injected event contract is automated here.
+- Screen readers, other assistive technology, or accessibility conformance.
+- Installed Chrome, Firefox, or Safari application support on every operating system.
+- Framework-controlled field integration, such as React state reconciliation.
+- `contenteditable`, rich-text editors, or input types outside text/search and textarea.
+
+For a browser issue, report the browser/application version, operating system, input surface, exact key or event sequence, expected and actual Unicode text, caret/selection, mode, and whether the reproduction uses a real keyboard, real clipboard, or injected events. Include a minimal reproduction when possible. The [contribution guide](../../CONTRIBUTING.md) explains how to add a focused regression.
