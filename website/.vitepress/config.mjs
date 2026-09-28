@@ -126,6 +126,7 @@ export default defineConfig({
           { text: 'Browser compatibility', link: '/docs/package/browser-compatibility.html' },
           { text: 'Month-name provenance', link: '/docs/package/month-names.html' },
           { text: 'Loanword review', link: '/docs/package/loanword-review.html' },
+          { text: 'Loanword coverage audit', link: '/docs/package/loanword-coverage-audit.html' },
         ] },
         { text: 'Evaluation and review', items: [
           { text: 'Benchmark protocol', link: '/docs/package/benchmarks.html' },

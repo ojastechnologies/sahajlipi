@@ -71,6 +71,10 @@
     "title": "SahajLipi Loanword Review | English Spellings in Nepali",
     "description": "See SahajLipi English-spelling loanword defaults, spelling evidence, pending variants, custom entries, and limits for English and attached word forms."
   },
+  "docs/package/loanword-coverage-audit.md": {
+    "title": "SahajLipi Loanword Coverage Audit | Company and Research Gaps",
+    "description": "Audit SahajLipi loanword coverage, the company spelling gap, pending English loanwords, source evidence, and a reproducible path to broader reviewed support."
+  },
   "docs/package/loanword-benchmarks.md": {
     "title": "SahajLipi Loanword Benchmarks | Defaults and Cha Checks",
     "description": "Inspect dated loanword and cha behavior checks, unchanged-label external comparisons, case provenance, overlap disclosures, and reproduction steps."
