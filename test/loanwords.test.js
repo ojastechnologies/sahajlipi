@@ -28,6 +28,66 @@ const loanwords = [
   ['nurse', 'नर्स'],
 ];
 
+test('company converts as a Nepali loanword while a domain stays literal', () => {
+  assert.deepEqual(convertWord('company'), {
+    text: 'कम्पनी', candidates: ['कम्पनी'], ambiguous: false,
+  });
+  assert.equal(convertWord('Company').text, 'कम्पनी');
+  assert.equal(convertWord('COMPANY').text, 'कम्पनी');
+  assert.equal(convertText('company company.com company@example.com'), 'कम्पनी company.com company@example.com');
+});
+
+// Source-assisted follow-up entries from the previously published research queue.
+const sourceAssistedQueue = [
+  ['bus', 'बस'],
+  ['cricket', 'क्रिकेट'],
+  ['football', 'फुटबल'],
+  ['hotel', 'होटल'],
+  ['keyboard', 'किबोर्ड'],
+  ['laptop', 'ल्यापटप'],
+  ['microphone', 'माइक्रोफोन'],
+  ['office', 'अफिस'],
+  ['password', 'पासवर्ड'],
+  ['restaurant', 'रेस्टुरेन्ट'],
+  ['ticket', 'टिकट'],
+  ['wifi', 'वाइफाइ'],
+];
+
+for (const [roman, expected] of sourceAssistedQueue) {
+  test(`${roman} uses its source-assisted loanword spelling as a complete key`, () => {
+    assert.equal(convertWord(roman).text, expected);
+    assert.equal(convertText(`${roman}.`), `${expected}.`);
+  });
+}
+
+// Further exact-word preferences backed by dated institutional attestations.
+const newAttestedWords = [
+  ['ambulance', 'एम्बुलेन्स'],
+  ['battery', 'ब्याट्री'],
+  ['car', 'कार'],
+  ['carpet', 'कार्पेट'],
+  ['connector', 'कनेक्टर'],
+  ['courier', 'कुरियर'],
+  ['digital', 'डिजिटल'],
+  ['drone', 'ड्रोन'],
+  ['furniture', 'फर्निचर'],
+  ['inverter', 'इन्भर्टर'],
+  ['motorcycle', 'मोटरसाइकल'],
+  ['radio', 'रेडियो'],
+  ['router', 'राउटर'],
+  ['sofa', 'सोफा'],
+  ['telephone', 'टेलिफोन'],
+  ['van', 'भ्यान'],
+  ['website', 'वेबसाइट'],
+];
+
+for (const [roman, expected] of newAttestedWords) {
+  test(`${roman} converts to its source-attested exact-word preference`, () => {
+    assert.equal(convertWord(roman).text, expected);
+    assert.equal(convertText(`${roman}.`), `${expected}.`);
+  });
+}
+
 for (const [roman, expected] of loanwords) {
   test(`${roman} converts directly to its listed Nepali loanword spelling`, () => {
     assert.deepEqual(convertWord(roman), {

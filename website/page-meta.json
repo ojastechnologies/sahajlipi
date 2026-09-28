@@ -75,6 +75,10 @@
     "title": "SahajLipi Loanword Coverage Audit | Company and Research Gaps",
     "description": "Audit SahajLipi loanword coverage, the company spelling gap, pending English loanwords, source evidence, and a reproducible path to broader reviewed support."
   },
+  "docs/package/loanword-expansion-2026-09-28.md": {
+    "title": "SahajLipi Loanword Expansion | Company and 50 Exact Keys",
+    "description": "Review SahajLipi’s 50 English-spelling loanword defaults, source evidence, spelling variants, held candidates, and exact-word conversion limits."
+  },
   "docs/package/loanword-benchmarks.md": {
     "title": "SahajLipi Loanword Benchmarks | Defaults and Cha Checks",
     "description": "Inspect dated loanword and cha behavior checks, unchanged-label external comparisons, case provenance, overlap disclosures, and reproduction steps."

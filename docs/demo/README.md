@@ -41,9 +41,13 @@ The fields keep text and their undo snapshots in browser memory while the page i
 
 ### English loanwords
 
-The checkout's default engine includes these 20 exact English keys. They work automatically in the editor and marked text/search fields while Nepali mode is on; the demo needs no separate loanword setting. Each pilot entry has one preferred project spelling, so these keys do not open the readings dropdown. Additional spellings remain pending review.
+The default engine now includes **50 complete English-spelling loanword keys**: the original 20-word pilot, `company`, 12 entries from the earlier research queue, and 17 further source-attested entries. They work automatically in the editor and marked text/search fields while Nepali mode is on; the demo needs no separate loanword setting. These are source-assisted project spelling preferences, **not independently human-reviewed language labels** or an exhaustive loanword dictionary. See the [dated expansion review](../package/loanword-expansion-2026-09-28.md) for evidence, scope, and exclusions; the [original pilot review](../package/loanword-review.md) retains its historical 20-word claim.
 
-| English keys | Nepali spelling |
+Each listed key has one preferred project spelling, so it does not open the readings dropdown. Additional spellings and alternate senses may need separate review.
+
+**Original 20 keys**
+
+| English key | Nepali spelling |
 | --- | --- |
 | `camera` | क्यामेरा |
 | `computer` | कम्प्युटर |
@@ -66,11 +70,53 @@ The checkout's default engine includes these 20 exact English keys. They work au
 | `doctor` | डाक्टर |
 | `nurse` | नर्स |
 
-Try `camera computer mobile phone` to get **क्यामेरा कम्प्युटर मोबाइल फोन**, or `school college doctor nurse` to get **स्कुल कलेज डाक्टर नर्स**. These entries spell English loanwords in Nepali; they do not translate English sentences or choose a word's meaning.
+**Company and 12 entries from the earlier research queue**
 
-The entry matches only the complete key. Appending letters or a suffix, as in `cameraa`, `camerako`, or `mobilema`, recomputes the active word using ordinary phonetic conversion. Attached Nepali forms are not part of this pilot. Space keeps the currently displayed spelling and starts a new word; Backspace can return a longer active spelling to a listed key.
+| English key | Nepali spelling |
+| --- | --- |
+| `company` | कम्पनी |
+| `bus` | बस |
+| `cricket` | क्रिकेट |
+| `football` | फुटबल |
+| `hotel` | होटल |
+| `keyboard` | किबोर्ड |
+| `laptop` | ल्यापटप |
+| `microphone` | माइक्रोफोन |
+| `office` | अफिस |
+| `password` | पासवर्ड |
+| `restaurant` | रेस्टुरेन्ट |
+| `ticket` | टिकट |
+| `wifi` | वाइफाइ |
 
-Use the lowercase spellings in the table. Incidental capitals such as `Camera` and `Computer` match too, but `T`, `D`, `S`, `R`, and contextual `H` still select sounds. `Doctor`, `School`, `CAMERA`, and `COMPUTER` do not automatically match the lowercase loanword entries. Existing explicit name aliases, such as `Ram` and `Sita`, keep their listed readings.
+**17 further source-attested entries**
+
+| English key | Nepali spelling |
+| --- | --- |
+| `ambulance` | एम्बुलेन्स |
+| `battery` | ब्याट्री |
+| `car` | कार |
+| `carpet` | कार्पेट |
+| `connector` | कनेक्टर |
+| `courier` | कुरियर |
+| `digital` | डिजिटल |
+| `drone` | ड्रोन |
+| `furniture` | फर्निचर |
+| `inverter` | इन्भर्टर |
+| `motorcycle` | मोटरसाइकल |
+| `radio` | रेडियो |
+| `router` | राउटर |
+| `sofa` | सोफा |
+| `telephone` | टेलिफोन |
+| `van` | भ्यान |
+| `website` | वेबसाइट |
+
+Try `company camera computer` → **कम्पनी क्यामेरा कम्प्युटर** or `school office hotel` → **स्कुल अफिस होटल**. These entries spell borrowed words in Nepali; they do not translate English sentences or decide a word's meaning. `train`, `speaker`, `fax`, `wallet`, and `share` are **not** built-in loanword keys in this expansion; spelling or meaning decisions remain open in the [expansion review](../package/loanword-expansion-2026-09-28.md).
+
+An entry matches only its complete key. Appending letters or a suffix, as in `companyma`, `cameraa`, `camerako`, or `mobilema`, recomputes the active word using ordinary phonetic conversion. Attached Nepali forms are not inferred. Space keeps the currently displayed spelling and starts a new word; Backspace can return a longer active spelling to a listed key.
+
+Use the lowercase spellings in the tables for predictable results. Incidental capitals such as `Company`, `Camera`, and `Computer` match too, but `T`, `D`, `S`, `R`, and contextual `H` still select sounds. `Doctor`, `School`, all-capital keys, and arbitrary mixed case are not guaranteed aliases. Existing explicit name aliases, such as `Ram` and `Sita`, keep their listed readings.
+
+A domain like `company.com` stays literal under the separate mixed-text rule below. **English mode** and the unmarked English fields leave English words unchanged; choose those when you intend literal English. The [package typing reference](../package/typing-reference.md) and [API guide](../package/api.md#links-domains-and-email-addresses) give the precise conversion boundaries.
 
 ### English month names
 

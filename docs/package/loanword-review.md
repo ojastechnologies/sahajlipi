@@ -1,8 +1,10 @@
 # English loanword preferences and review — 2026-09-27
 
+**Historical pilot record.** The [2026-09-28 expansion](loanword-expansion-2026-09-28.md) adds 30 more keys, bringing the current built-in total to 50. The counts and pending statuses below describe the original pilot at its publication date.
+
 The package automatically converts the 20 English spellings below to their listed Nepali loanword forms. Live input uses them while Nepali mode is enabled; `convertWord` and `convertText` also use them. The user authorized these **source-assisted project preferences for implementation**. They are not independently human-reviewed corpus labels or a claim of universally correct spelling.
 
-The research catalogue contains 34 keys. Only pilot order 1–20 is shipped as new built-in loanword entries; the remaining 14 keys stay pending or deferred. Selection provides useful coverage and directly opened evidence, not a measured word-frequency ranking. The [source ledger](../../benchmark/reports/loanword-research-2026-09-27.json) records all 34 entries, Unicode code points, exact spelling evidence, variant evidence, source URLs, access dates and scopes.
+The research catalogue contained 34 keys. Only pilot order 1–20 was shipped as new built-in loanword entries at this stage; the remaining 14 keys were pending or deferred. Selection provides useful coverage and directly opened evidence, not a measured word-frequency ranking. The [source ledger](../../benchmark/reports/loanword-research-2026-09-27.json) records all 34 entries, Unicode code points, exact spelling evidence, variant evidence, source URLs, access dates and scopes.
 
 ## Accepted project defaults
 
@@ -51,7 +53,7 @@ The later [shared mixed-text policy](api.md#links-domains-and-email-addresses) p
 
 ## Unshipped research queue
 
-None of these 14 research proposals is added as a new loanword entry by this pilot. Their proposed spellings and variants remain review material. `train` is deferred because choosing the borrowed ट्रेन versus the semantic equivalent रेल requires a lexical decision.
+None of these 14 research proposals was added as a new loanword entry by this pilot; the [later expansion](loanword-expansion-2026-09-28.md) added 12 of them. Their proposed spellings and variants remain review material. `train` is deferred because choosing the borrowed ट्रेन versus the semantic equivalent रेल requires a lexical decision.
 
 | English key | Proposed output | Status | Proposal evidence | Observed variants, pending |
 | --- | --- | --- | --- | --- |
