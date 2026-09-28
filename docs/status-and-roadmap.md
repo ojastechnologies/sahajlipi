@@ -41,6 +41,8 @@ These month entries have their own evidence and regression scope. They do not ex
 
 ## Earlier English loanword pilot
 
+The [2026-09-28 loanword coverage audit](package/loanword-coverage-audit.md) checks the 20 shipped keys and all 14 pending catalogue keys, records the `company` gap and newly sourced candidates, and defines a review path for broader coverage. It adds no engine defaults or independent human labels.
+
 The [2026-09-27 loanword pilot](package/loanword-review.md) adds exactly 20 normalized English-spelling keys, including `camera` → क्यामेरा, `computer` → कम्प्युटर and `school` → स्कुल. These defaults are authorized source-assisted project preferences, each with one candidate. The research catalogue has 34 entries; the remaining 14 proposals and all observed loanword variants remain pending or deferred. This update also makes `cha` prefer च with छ as an alternative, while `chha` remains the single छ reading. Reserved Shift keys, custom-entry replacement and the unknown-word fallback retain their existing behavior.
 
 The pilot adds no independent human-reviewed corpus labels, attached forms such as `camerako`, automatic protection for English spans, or new engine/adapter configuration options. The [typing guide](package/typing-reference.md#english-spelling-loanwords), [source ledger](../benchmark/reports/loanword-research-2026-09-27.json) and [benchmark guide](package/benchmarks.md) separate spelling preferences, evidence and regression results. Historical recorded evidence and metrics remain intact.

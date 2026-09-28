@@ -18,6 +18,7 @@ SahajLipi provides a dependency-free Nepali transliteration engine and optional 
 | [Source-assisted online review](assisted-online-review.md) | All 100 draft case recommendations, spelling evidence, source links and pending human confirmation. |
 | [Ra-ya review and changes](ry-review.md) | Word-specific joiner preferences, Shift lookup, fixed-fixture results and source-quality triage. |
 | [English loanword preferences and review](loanword-review.md) | The 20 built-in loanword defaults, the 34-key source catalogue, pending variants, and English-field limits. |
+| [Loanword coverage audit](loanword-coverage-audit.md) | Current `company` failure, every pending pilot word, new source-backed leads, and the review path toward broader coverage. |
 | [English month names](month-names.md) | The 12 full month-name preferences, title case, spelling evidence, and calendar and English-field limits. |
 
 The built-in engine includes 20 exact English-spelling loanwords, such as `camera` → क्यामेरा and `school` → स्कुल. They convert automatically in Nepali mode and have one candidate each. These are authorized source-assisted project preferences; observed variants and independent human linguistic review remain pending. The [typing reference](typing-reference.md#english-spelling-loanwords) lists the mappings and the [review ledger](loanword-review.md) records their source scopes.

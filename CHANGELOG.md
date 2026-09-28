@@ -6,6 +6,8 @@ No npm versions have been published. `0.1.0` is the private repository prototype
 
 ### Added
 
+- Dated English loanword coverage audit for `company`, the complete pending pilot queue, source-backed research leads, and expansion criteria.
+
 - Developer getting-started guide for local tarball installation, public package imports, TypeScript, and integration scopes.
 - Runnable vanilla JavaScript, TypeScript, and React uncontrolled-field examples with candidates, English mode, and cleanup.
 - Isolated tarball-consumer checks for JavaScript exports, strict TypeScript resolution, tutorial execution, and package contents.
