@@ -6,6 +6,8 @@ No npm versions have been published. `0.1.0` is the private repository prototype
 
 ### Added
 
+- Added `company` → कम्पनी and 29 source-assisted exact English-spelling loanwords, with a dated expansion review and refreshed demo and package guides.
+
 - Dated English loanword coverage audit for `company`, the complete pending pilot queue, source-backed research leads, and expansion criteria.
 
 - Developer getting-started guide for local tarball installation, public package imports, TypeScript, and integration scopes.

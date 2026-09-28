@@ -1,6 +1,6 @@
 # Nepali typing reference
 
-SahajLipi currently converts Roman Nepali, 20 listed English-spelling loanwords and 12 full English month names to Unicode Devanagari. The core returns a preferred reading and, where listed, alternatives. The optional browser adapters render that preferred reading in opted-in text fields as you type and report alternatives to the host interface. This reference describes the **current prototype**, not a standardized Romanization scheme.
+SahajLipi currently converts Roman Nepali, 50 listed English-spelling loanwords and 12 full English month names to Unicode Devanagari. The core returns a preferred reading and, where listed, alternatives. The optional browser adapters render that preferred reading in opted-in text fields as you type and report alternatives to the host interface. This reference describes the **current prototype**, not a standardized Romanization scheme.
 
 The [starter lexicon](../../src/lexicon.js) takes priority over the [phonetic fallback](../../src/phonetic.js). The listed word `cha` defaults to च and offers छ as an alternative; `chha` returns only छ. The fallback tokens remain `ch` → च and `chh` → छ. Custom entries can replace a built-in entry in one engine instance. See the [engine source](../../src/index.js) for the lookup order.
 
@@ -112,7 +112,7 @@ Online usage supports the listed Nepali spellings: [नेपाल कानू
 
 ## English-spelling loanwords
 
-These 20 exact keys automatically use the listed Nepali loanword forms. The browser adapters apply them while Nepali mode is on, and the core conversion functions use them directly. Each new entry has **one candidate**; observed variants remain pending review. The defaults are source-assisted project preferences authorized for implementation, with independent human linguistic review still pending. The [loanword review](loanword-review.md) records source URLs, access scopes, pending variants and the remaining 14 unshipped research proposals.
+These 50 exact keys automatically use the listed Nepali loanword forms. The browser adapters apply them while Nepali mode is on, and the core conversion functions use them directly. Each entry has **one candidate**; observed variants remain pending review. The defaults are source-assisted project preferences, with independent human linguistic review still pending. The [original pilot](loanword-review.md) records its 20 keys and dated source ledger; the [expansion review](loanword-expansion-2026-09-28.md) records the 30 later keys and candidates held for further review.
 
 | English key | Preferred output | English key | Preferred output |
 | --- | --- | --- | --- |
@@ -127,9 +127,44 @@ These 20 exact keys automatically use the listed Nepali loanword forms. The brow
 | `school` | स्कुल | `college` | कलेज |
 | `doctor` | डाक्टर | `nurse` | नर्स |
 
+The original pilot above has 20 keys. The 30 later source-assisted exact-word preferences are:
+
+| English key | Preferred output |
+| --- | --- |
+| `ambulance` | एम्बुलेन्स |
+| `battery` | ब्याट्री |
+| `bus` | बस |
+| `car` | कार |
+| `carpet` | कार्पेट |
+| `company` | कम्पनी |
+| `connector` | कनेक्टर |
+| `courier` | कुरियर |
+| `cricket` | क्रिकेट |
+| `digital` | डिजिटल |
+| `drone` | ड्रोन |
+| `football` | फुटबल |
+| `furniture` | फर्निचर |
+| `hotel` | होटल |
+| `inverter` | इन्भर्टर |
+| `keyboard` | किबोर्ड |
+| `laptop` | ल्यापटप |
+| `microphone` | माइक्रोफोन |
+| `motorcycle` | मोटरसाइकल |
+| `office` | अफिस |
+| `password` | पासवर्ड |
+| `radio` | रेडियो |
+| `restaurant` | रेस्टुरेन्ट |
+| `router` | राउटर |
+| `sofa` | सोफा |
+| `telephone` | टेलिफोन |
+| `ticket` | टिकट |
+| `van` | भ्यान |
+| `website` | वेबसाइट |
+| `wifi` | वाइफाइ |
+
 This spells a borrowed word rather than translating its meaning: `school` produces स्कुल rather than विद्यालय. `mouse` uses the computer-device reading. A developer can replace a key's full candidate list with the existing `createEngine({ entries })` API.
 
-`Camera` and `Computer` match their lowercase entries. Reserved Shift keys still apply, so `Doctor`, `School`, `CAMERA` and `COMPUTER` are not blanket-lowercased aliases. Attached forms such as `camerako`, `cameramaa`, `mobilema` and `schoolma` are unlisted and keep the fallback; this pilot does not infer suffixes. Hyphenated `e-mail` is split by text conversion and is not the `email` alias.
+`Camera`, `Computer` and `Company` match their lowercase entries. Reserved Shift keys still apply, so `Doctor`, `School`, `CAMERA` and `COMPUTER` are not blanket-lowercased aliases. Attached forms such as `camerako`, `cameramaa`, `mobilema` and `schoolma` are unlisted and keep the fallback; this pilot does not infer suffixes. Hyphenated `e-mail` is split by text conversion and is not the `email` alias.
 
 Keep an entire English field literal by leaving it unattached, marking it `data-sahajlipi-ignore`, or disabling conversion. Text conversion and attached fields preserve recognized links, ASCII domain-shaped hosts, and ordinary ASCII email addresses by default: `camera` becomes क्यामेरा, while `camera.com` stays literal. Ordinary English phrases, code, and filenames still need explicit literal handling; `camera_file` and `camera123` can still be converted. See [mixed text](#mixed-text-and-literal-english).
 
@@ -214,7 +249,7 @@ For an English phrase or code fragment, switch the field’s controller to `setE
 ## Current limits
 
 - The starter lexicon is small. Unknown words use deterministic phonetic rules, which can give incorrect Nepali spelling. There is no context-sensitive ranking or language detection.
-- `convertText` preserves recognized technical spans, then converts Latin-letter runs outside them regardless of whether they are Nepali or English. The 20 loanword entries and 12 month names cover their listed keys and aliases; they add no language detection or attached-form inference. Arbitrary English and code remain outside automatic preservation.
+- `convertText` preserves recognized technical spans, then converts Latin-letter runs outside them regardless of whether they are Nepali or English. The 50 loanword entries and 12 month names cover their listed keys and aliases; they add no language detection or attached-form inference. Arbitrary English and code remain outside automatic preservation.
 - The browser adapter attaches to `<textarea>` and text/search inputs, directly or through an opt-in field manager. It handles keyboard input, paste, and composition events, but this reference is not a browser compatibility guarantee.
 - The prototype does not offer a dedicated keyboard shortcut for every Devanagari character, mark, or accent. A future language profile would need its own reviewed mappings; current behavior is Nepali-specific.
 

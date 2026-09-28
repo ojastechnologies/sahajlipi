@@ -32,6 +32,7 @@ Browse the [package website](https://ojastechnologies.github.io/sahajlipi/) for 
 | [Source-assisted review records](../benchmark/reports/nepali-assisted-online-001.json) | Read the public per-case projection, attribution and research hashes; complete sentence texts are omitted. |
 | [Ra-ya review and changes](package/ry-review.md) | Inspect exact word preferences, Shift lookup, before/after results and source-quality triage. |
 | [Loanword coverage audit](package/loanword-coverage-audit.md) | Review the `company` gap, pending catalogue, source-backed candidates, and evidence needed for broader loanword support. |
+| [Loanword expansion review](package/loanword-expansion-2026-09-28.md) | See the 30 later exact-word defaults, source scopes, held candidates, and current coverage limits. |
 | [Ra-ya machine report](../benchmark/reports/nepali-ry-001.json) | Verify exact engine/fixture hashes, recorded checks and evidence limits. |
 
 The repository [Evaluation status](../README.md#evaluation-status) summarizes dated baselines. The linked reports provide the evidence and limits behind each result. Unreviewed proposal agreement is not a language-accuracy score.

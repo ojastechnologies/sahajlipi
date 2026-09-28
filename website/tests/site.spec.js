@@ -61,6 +61,9 @@ test('homepage demo link loads the static app and supports typing', async ({ pag
   const editor = page.locator('#typing-field');
   await editor.pressSequentially('paani ');
   await expect(editor).toHaveValue('पानी ');
+  await editor.press('ControlOrMeta+A');
+  await editor.pressSequentially('company ');
+  await expect(editor).toHaveValue('कम्पनी ');
   await expect(page.locator('link[rel="canonical"]')).toHaveCount(1);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', canonical + 'demo/');
   await page.getByRole('link', { name: 'Docs', exact: true }).click();

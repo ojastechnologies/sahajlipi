@@ -1,10 +1,12 @@
 # English loanword coverage audit — 2026-09-28
 
+**Historical baseline:** this page records behavior at `de2cb93`. The later [loanword expansion](loanword-expansion-2026-09-28.md) implements `company` and other reviewed exact-word preferences. Use the [current typing reference](typing-reference.md#english-spelling-loanwords) for live behavior.
+
 SahajLipi's English-spelling loanword feature is a small pilot, not a general English-to-Nepali transliterator. This audit was prompted by `company`. It covers **all 34 keys in the project's existing loanword research catalogue**, probes additional source-backed examples, and sets out a review method for expansion. It does **not** claim to enumerate every loanword in Nepali: vocabulary, spelling, sense, and use vary by domain and over time. “Loanword” here means a borrowed form used in Nepali script, rather than translating an arbitrary English sentence or converting a proper name.
 
 This is source-assisted research and a code-behavior audit on `de2cb93` (the main-branch commit at the start of this review), run with Node.js 22.22.3. No human-reviewed labels were admitted, no engine mappings or old benchmark fixtures were changed, and the comparisons below are **not** a language-accuracy score. The [dated 20-word pilot](loanword-review.md), its [34-key source ledger](../../benchmark/reports/loanword-research-2026-09-27.json), and the [historical benchmark](loanword-benchmarks.md) retain their original claims and dates.
 
-## What the engine covers today
+## What the engine covered at the baseline
 
 | Area | Current behavior | Evidence and limit |
 | --- | --- | --- |
@@ -18,7 +20,7 @@ The [starter lexicon](../../src/lexicon.js), [word conversion](../../src/index.j
 
 ## The reported `company` gap
 
-The output of `convertWord` and `convertText` for `company` is currently **चोम्पञ्**, with no alternative. The fallback parses the English spelling as Roman Nepali (`c` → च and `ny` → ञ्). It is not a dictionary choice. `Company` and `COMPANY` produce the same unintended output. Examples such as `companyma` → **चोम्पञ्म** and `companyharu` → **चोम्पञ्हरु** show that one exact entry alone will not cover attached Nepali forms. By contrast, `convertText('company.com')` remains literal because the separate technical-text policy recognizes a domain-shaped string; `convertWord` does not make that promise.
+At the baseline, the output of `convertWord` and `convertText` for `company` was **चोम्पञ्**, with no alternative. The fallback parses the English spelling as Roman Nepali (`c` → च and `ny` → ञ्). It is not a dictionary choice. `Company` and `COMPANY` produce the same unintended output. Examples such as `companyma` → **चोम्पञ्म** and `companyharu` → **चोम्पञ्हरु** show that one exact entry alone will not cover attached Nepali forms. By contrast, `convertText('company.com')` remains literal because the separate technical-text policy recognizes a domain-shaped string; `convertWord` does not make that promise.
 
 **Recommended base-word reading: `company` → कम्पनी.** The [Nepal Law Commission legal dictionary](https://giwmscdntwo.gov.np/media/pdf_upload/%E0%A4%95%E0%A4%BE%E0%A4%A8%E0%A5%82%E0%A4%A8%E0%A5%80%20%E0%A4%B6%E0%A4%AC%E0%A5%8D%E0%A4%A6%E0%A4%95%E0%A5%8B%E0%A4%B6_hsclzr0.pdf) explicitly indexes the bilingual entry “कम्पनी (Company)”; the [Office of the Company Registrar](https://ocr.gov.np/pages/registration/) also uses कम्पनी throughout its registration explanation. The dictionary PDF was too large for this audit's page reader, so its bilingual entry was checked in the publisher's indexed excerpt; the Registrar's Unicode HTML was opened independently. This establishes strong legal and official business usage, but no general ranking of every context. The earlier [assistant-reviewed `companyharumathi` word proposal](assisted-online-review.md) remains an unadmitted, snippet-supported proposal and is **not** a verified inflection rule.
 
@@ -26,7 +28,7 @@ Adding `company` as a source-assisted project preference is justified for review
 
 ## Existing research queue: actual output versus proposal
 
-This table covers **every one of the 14** unshipped keys. The middle column is the existing source-assisted **proposal**, not an accepted label. The right column is the current `convertWord` result on `de2cb93`; it shows the fallback gap, not a scored linguistic error. The proposal's source and variant details remain in the [original ledger](loanword-review.md#unshipped-research-queue).
+This table covers **every one of the 14** then-unshipped keys. The middle column is the existing source-assisted **proposal**, not an accepted label. The right column is the baseline `convertWord` result on `de2cb93`; it shows the fallback gap, not a scored linguistic error. The proposal's source and variant details remain in the [original ledger](loanword-review.md#unshipped-research-queue).
 
 | English key | Existing proposal, pending | Current output |
 | --- | --- | --- |
@@ -49,9 +51,9 @@ The prior source research also recorded variant pairs such as होटल/ह�
 
 ## New candidate probes beyond the 34-key catalogue
 
-These examples are **review leads, not new built-in defaults**. Official paired English–Nepali labels are stronger evidence of a spelling relationship than a Nepali-only occurrence. Even a paired form does not prove that automatic conversion is right in every sentence.
+These were **review leads at the baseline, not built-in defaults at that time**. Official paired English–Nepali labels are stronger evidence of a spelling relationship than a Nepali-only occurrence. Even a paired form does not prove that automatic conversion is right in every sentence.
 
-| Key and current output | Source-backed Nepali form | Evidence and decision needed |
+| Key and baseline output | Source-backed Nepali form | Evidence and decision needed |
 | --- | --- | --- |
 | `company` → चोम्पञ् | कम्पनी | [Law Commission dictionary](https://giwmscdntwo.gov.np/media/pdf_upload/%E0%A4%95%E0%A4%BE%E0%A4%A8%E0%A5%82%E0%A4%A8%E0%A5%80%20%E0%A4%B6%E0%A4%AC%E0%A5%8D%E0%A4%A6%E0%A4%95%E0%A5%8B%E0%A4%B6_hsclzr0.pdf) directly pairs the terms; [Registrar](https://ocr.gov.np/pages/registration/) uses कम्पनी. High-priority base-word candidate; forms and capitalization remain separate. |
 | `telephone` → तेलेफोने | टेलिफोन | [Inland Revenue Department bilingual form](https://old.ird.gov.np/public/pdf/151338091.pdf) pairs the labels on page 1. Check common input variants and whether users prefer फोन in a given context. |
@@ -76,7 +78,7 @@ The dataset card distinguishes **CC BY manual data** from **CC0-packaged mined d
 4. **Protect existing typing.** Test exact lookup and candidates, longer-word boundaries, suffixes, capitalized/reserved Shift keys, literal English fields, URLs/email, editing and paste. Never enable a blanket English-word converter because it would change ordinary Roman Nepali typing and technical text. Store source/review metadata separately from the small offline runtime lexicon.
 5. **Measure on a separate held-out set.** Freeze independently reviewed common-loanword examples before choosing rules or defaults. Publish exact top choice, accepted-candidate recall, coverage by domain/input form, and false automatic conversions of ordinary English tokens inside Nepali-enabled mixed text and on collision cases, with denominators and exclusions. Check English-only fields separately for literal passthrough. Keep names and general Roman Nepali cases as separate slices. The existing pilot contracts and the public Aksharantar test cannot substitute for this set.
 
-**Decision from this audit:** `company` → कम्पनी has strong source support and should be the first proposed base-word expansion. The 14 existing proposals and new candidates deserve a prioritized review queue, with separate variant and suffix decisions. No claim of exhaustive loanword coverage or improved accuracy is justified yet. The next implementation change should be scoped to reviewed entries and accompanied by before/after behavior, new regression cases, and the source ledger; the current engine is unchanged by this audit.
+**Decision from this audit:** `company` → कम्पनी has strong source support and should be the first proposed base-word expansion. The 14 existing proposals and new candidates deserve a prioritized review queue, with separate variant and suffix decisions. No claim of exhaustive loanword coverage or improved accuracy is justified yet. The next implementation change should be scoped to reviewed entries and accompanied by before/after behavior, new regression cases, and the source ledger; this audit alone did not change the engine. See the linked expansion for later implementation.
 
 ## Reproduce the code observations
 
