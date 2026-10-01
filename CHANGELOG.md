@@ -6,6 +6,9 @@ No npm versions have been published. `0.1.0` is the private repository prototype
 
 ### Added
 
+- Completed source-assisted review of all 100 development cases, with 86 frozen project references, 14 exclusions, preserved maintainer notes and original evidence dates.
+- Reproducible exact-output measurement command, per-case public evidence ledger, protected sentence publication and dated development baseline.
+
 - Added `company` → कम्पनी and 29 source-assisted exact English-spelling loanwords, with a dated expansion review and refreshed demo and package guides.
 
 - Dated English loanword coverage audit for `company`, the complete pending pilot queue, source-backed research leads, and expansion criteria.

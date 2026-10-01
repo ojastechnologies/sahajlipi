@@ -130,5 +130,9 @@
   "demo/index.html": {
     "title": "SahajLipi Live Demo | Type Roman Nepali to Unicode",
     "description": "Try SahajLipi phonetic Nepali typing in your browser, choose available spellings, switch to English mode, and explore Unicode keys and field examples."
+  },
+  "docs/package/source-review-2026-10-01.md": {
+    "title": "SahajLipi Source Review | Reviewed References and Baseline",
+    "description": "Inspect 86 source-assisted Nepali development references, 14 exclusions, spelling alternatives, per-case evidence and reproducible exact-output measurements."
   }
 }

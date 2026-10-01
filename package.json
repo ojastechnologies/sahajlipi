@@ -23,6 +23,7 @@
     "benchmark:aksharantar": "node benchmark/aksharantar.js",
     "benchmark:sentence-queue": "node benchmark/sentence-review.js",
     "benchmark:review-batch": "node benchmark/review-batch.js",
+    "benchmark:source-reviewed": "node benchmark/source-reviewed.js",
     "test:browser": "node tools/build-examples.js && playwright test",
     "test:browser:report": "playwright show-report",
     "verify:package": "node tools/verify-package.js",

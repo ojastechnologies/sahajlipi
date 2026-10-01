@@ -15,11 +15,12 @@ SahajLipi provides a dependency-free Nepali transliteration engine and optional 
 | [Mixed-text benchmark record](mixed-text-benchmarks.md) | Separate dated mixed-text and early-address contracts, preserved prior rows, identities, reproduction commands, and scope limits. |
 | [External evaluation](external-evaluation.md) | Pinned Nepali word data, source discrepancies, initial baseline, and sentence review process. |
 | [Development review batch](review-batch.md) | Reproducible 100-case review batch, independent review sheets, and diagnostic limits. |
-| [Source-assisted online review](assisted-online-review.md) | All 100 draft case recommendations, spelling evidence, source links and pending human confirmation. |
+| [Completed source-assisted development review](source-review-2026-10-01.md) | 86 admitted references, 14 exclusions, per-case evidence and exact-output baseline. |
+| [Earlier source-assisted online review](assisted-online-review.md) | Historical 100-case draft recommendations and research evidence. |
 | [Ra-ya review and changes](ry-review.md) | Word-specific joiner preferences, Shift lookup, fixed-fixture results and source-quality triage. |
 | [Original English loanword pilot](loanword-review.md) | The dated 20-word pilot, its 34-key source catalogue, and original limits. |
 | [Loanword expansion and review](loanword-expansion-2026-09-28.md) | The 30 later exact-word defaults, new candidate inventory, held decisions, and current limits. |
-| [Loanword coverage audit](loanword-coverage-audit.md) | Current `company` failure, every pending pilot word, new source-backed leads, and the review path toward broader coverage. |
+| [Loanword coverage audit](loanword-coverage-audit.md) | Dated `company` gap, the earlier pending pilot queue, source-backed leads, and the review path toward broader coverage. |
 | [English month names](month-names.md) | The 12 full month-name preferences, title case, spelling evidence, and calendar and English-field limits. |
 
 The built-in engine includes 50 exact English-spelling loanwords, such as `camera` → क्यामेरा, `company` → कम्पनी and `school` → स्कुल. They convert automatically in Nepali mode and have one candidate each. These are source-assisted project preferences; observed variants and independent human linguistic review remain pending. The [typing reference](typing-reference.md#english-spelling-loanwords) lists the mappings, while the [pilot ledger](loanword-review.md) and [expansion review](loanword-expansion-2026-09-28.md) record their source scopes.

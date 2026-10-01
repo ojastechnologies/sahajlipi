@@ -1,0 +1,1759 @@
+{
+  "schemaVersion": 1,
+  "purpose": "development",
+  "reviewKind": "delegated-source-assisted",
+  "humanVerified": false,
+  "independentHumanReview": false,
+  "measurement": {
+    "recordedAt": "2026-10-01T09:47:48.472Z",
+    "engineCommit": "4e20b34cbb5ce943189051cd4acf23f185adecb3",
+    "workingTreeChanged": true,
+    "nodeVersion": "v22.22.3",
+    "options": {
+      "digits": "devanagari",
+      "preserveTechnicalText": true,
+      "entries": "starter defaults"
+    },
+    "sourceCasesSha256": "2f92bcf5a16d35b6a31dca052e4e358ffe417b5dcec0e8cc704d17f8acbf23e3",
+    "frozenReviewFileSha256": "5d9b36e39481d3f790fed503968f6bc504e71780ba083d8ed214f27ef674d34a",
+    "engineFileHashes": {
+      "src/index.js": "efc2ed4719f209fd45e850d80d5ee8d3f6b8ef3862c70268aac8d46e8eab9627",
+      "src/phonetic.js": "dec43061ce47d8456092b661a4b1ea7b5d366d2c7969a4f2b6f3b1b0c20ff1ff",
+      "src/lexicon.js": "ad094ca6e25566dc8647274ac24b70ea55e1ce2a7c66132f0b426d09df6f32f2",
+      "src/text-policy.js": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa"
+    },
+    "toolFileHashes": {
+      "benchmark/source-reviewed.js": "467a088bd6e0dafd6bdc942ed837d8b4e048ba52f9c21a077f0f57cd65448433",
+      "benchmark/source-reviewed-core.js": "8d1336c9a3a18b02c52ce2287e366df15d46f011c57c0eddbf21a9824bf4eee0"
+    }
+  },
+  "summary": {
+    "total": 100,
+    "decisions": {
+      "accept": 67,
+      "correct": 19,
+      "exclude": 14,
+      "needs-user": 0
+    },
+    "admittedTotal": 86,
+    "word": {
+      "total": 74,
+      "topMatchesAny": 8,
+      "preferredTotal": 69,
+      "preferredMatches": 7,
+      "candidateMatchesAny": 8,
+      "candidateMatchesAll": 7,
+      "referenceCandidatesMatched": 8,
+      "referenceCandidatesTotal": 79
+    },
+    "text": {
+      "total": 12,
+      "topMatchesAny": 0,
+      "preferredTotal": 12,
+      "preferredMatches": 0
+    }
+  },
+  "items": [
+    {
+      "id": "word-validation:nep355",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "futera",
+      "proposedOutput": "फुटेर",
+      "references": [
+        "फुटेर"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "फुतेर",
+      "actualTopSha256": "6f177174977b60ab416415ea1768ea7622023b84af28a483aea64073102544bf",
+      "candidates": [
+        "फुतेर"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep778",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "imandar",
+      "proposedOutput": "इमान्दार",
+      "references": [
+        "इमान्दार"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "इमन्दर्",
+      "actualTopSha256": "9fc7437e437b835de01af0f6cbc45ce50ffe27d1ee3ba20aac4f9abc7c2065ac",
+      "candidates": [
+        "इमन्दर्"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep295",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "nabhani",
+      "proposedOutput": "नभनी",
+      "references": [
+        "नभनी"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "नभनि",
+      "actualTopSha256": "28f3100f84ce89151a848fad3cdd7ff5fbf57c5eb85a463e81361ab12f06a42f",
+      "candidates": [
+        "नभनि"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep501",
+      "mode": "word",
+      "decision": "correct",
+      "evaluated": true,
+      "roman": "shanta",
+      "proposedOutput": "शान्ता",
+      "references": [
+        "शान्ता",
+        "शान्त"
+      ],
+      "preferredReferenceIndex": null,
+      "actualTop": "शन्त",
+      "actualTopSha256": "d1bdfd676b1d4c049763bf9ca6d47f1d9af5c05ddc2e11123b83f6e34faf1d6b",
+      "candidates": [
+        "शन्त"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": null,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep662",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "sarasar",
+      "proposedOutput": "सरासर",
+      "references": [
+        "सरासर"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "सरसर्",
+      "actualTopSha256": "d2d71afd5c59eaa861fdd19d5ecba443d48dc8bc5b4435d708434bc64a8663f5",
+      "candidates": [
+        "सरसर्"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep679",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "saundaryako",
+      "proposedOutput": "सौन्दर्यको",
+      "references": [
+        "सौन्दर्यको"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "सौन्दर्यको",
+      "actualTopSha256": "4050515d09865e70b240950f129558c78cbf190b1e1a46bd2ebb0b2a84d31d83",
+      "candidates": [
+        "सौन्दर्यको"
+      ],
+      "topMatchesAny": true,
+      "preferredMatch": true,
+      "referenceCandidatesMatched": 1
+    },
+    {
+      "id": "word-validation:nep516",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "sakos",
+      "proposedOutput": "सकोस्",
+      "references": [
+        "सकोस्"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "सकोस्",
+      "actualTopSha256": "7dc20ad2126b3f896ee5627ea61e262051daae3aed564f3ee57981c355dd16d8",
+      "candidates": [
+        "सकोस्"
+      ],
+      "topMatchesAny": true,
+      "preferredMatch": true,
+      "referenceCandidatesMatched": 1
+    },
+    {
+      "id": "word-validation:nep644",
+      "mode": "word",
+      "decision": "correct",
+      "evaluated": true,
+      "roman": "mahila",
+      "proposedOutput": "माहिला",
+      "references": [
+        "माहिला",
+        "महिला"
+      ],
+      "preferredReferenceIndex": null,
+      "actualTop": "महिल",
+      "actualTopSha256": "615e703889e21b91f39b556e5d9def4b7aef2a9b202672caf272cc0c46155630",
+      "candidates": [
+        "महिल"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": null,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep753",
+      "mode": "word",
+      "decision": "correct",
+      "evaluated": true,
+      "roman": "schoolma",
+      "proposedOutput": "स्कूलमा",
+      "references": [
+        "स्कूलमा",
+        "स्कुलमा"
+      ],
+      "preferredReferenceIndex": null,
+      "actualTop": "स्चूल्म",
+      "actualTopSha256": "f8fb4c2ce38683ef52567c9fc6cc7e0dc096647b996641b04ba247339a1b5c59",
+      "candidates": [
+        "स्चूल्म"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": null,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep586",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "dil",
+      "proposedOutput": "दिल",
+      "references": [
+        "दिल"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "दिल्",
+      "actualTopSha256": "814a6bd33cce88fa8a9d44d66a960b87f8420ceefba3e2fff50210d7d51250f2",
+      "candidates": [
+        "दिल्"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep794",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "astitwalai",
+      "proposedOutput": "अस्तित्वलाई",
+      "references": [
+        "अस्तित्वलाई"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "अस्तित्वलै",
+      "actualTopSha256": "df33fabd58d6424ba08c99d6844502ded1895945a2f893f335d8114a570ff9e8",
+      "candidates": [
+        "अस्तित्वलै"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep800",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "vidhansabha",
+      "proposedOutput": "विधानसभा",
+      "references": [
+        "विधानसभा"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "विधन्सभ",
+      "actualTopSha256": "bd90b6a93aaeff048432a2ae2f11f5e5b677aca7b58c591d3a29c55e9cc8d8fb",
+      "candidates": [
+        "विधन्सभ"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep729",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "kathanak",
+      "proposedOutput": "कथानक",
+      "references": [
+        "कथानक"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "कथनक्",
+      "actualTopSha256": "5d42815748157136a0dd2fe1748cf7eb5b5c3b4923c462587579190e86f6606d",
+      "candidates": [
+        "कथनक्"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep719",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "arambha",
+      "proposedOutput": "आरम्भ",
+      "references": [
+        "आरम्भ"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "अरम्भ",
+      "actualTopSha256": "baa0f1877b7e2d1e627bc2fdd77ed5fd251d36ee48c602f8083a389e0f0a827d",
+      "candidates": [
+        "अरम्भ"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep570",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "yasaprakar",
+      "proposedOutput": "यसप्रकार",
+      "references": [
+        "यसप्रकार"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "यसप्रकर्",
+      "actualTopSha256": "bda6898a8d8465356d71cecba7fcd74b498e9c2b24d12268acba842544710c07",
+      "candidates": [
+        "यसप्रकर्"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep500",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "ekadhik",
+      "proposedOutput": "एकाधिक",
+      "references": [
+        "एकाधिक"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "एकधिक्",
+      "actualTopSha256": "92ba9558b5cbf17bd38ec91ef8043863d3bc26eae84ad53945da7fc948f85409",
+      "candidates": [
+        "एकधिक्"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep665",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "basyo",
+      "proposedOutput": "बस्यो",
+      "references": [
+        "बस्यो"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "बस्यो",
+      "actualTopSha256": "02b08e1c24906ab92ffecc4350dd5acc8ccb01b1dbac34e7c34ee92e8643a62d",
+      "candidates": [
+        "बस्यो"
+      ],
+      "topMatchesAny": true,
+      "preferredMatch": true,
+      "referenceCandidatesMatched": 1
+    },
+    {
+      "id": "word-validation:nep558",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "lepchaharu",
+      "proposedOutput": "लेप्चाहरू",
+      "references": [
+        "लेप्चाहरू"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "लेप्चहरु",
+      "actualTopSha256": "8723d46be4599d4128eae84cf90246d319047bb9e20c76b3f16179023e61210b",
+      "candidates": [
+        "लेप्चहरु"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep587",
+      "mode": "word",
+      "decision": "correct",
+      "evaluated": true,
+      "roman": "angrejharuko",
+      "proposedOutput": "अंग्रेजहरूको",
+      "references": [
+        "अंग्रेजहरूको",
+        "अङ्ग्रेजहरूको"
+      ],
+      "preferredReferenceIndex": null,
+      "actualTop": "अङ्रेझरुको",
+      "actualTopSha256": "8109cfed8499bb45d9f117aa2cfb034bad2e9358648f146298a0702c019f1127",
+      "candidates": [
+        "अङ्रेझरुको"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": null,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep435",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "jaghanya",
+      "proposedOutput": "जघन्य",
+      "references": [
+        "जघन्य"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "जघञ",
+      "actualTopSha256": "5de19b71a51b0d3d43abdb8c5b97e9804a2ae0d0196b5f83358849efe9406d1e",
+      "candidates": [
+        "जघञ"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep491",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "pukar",
+      "proposedOutput": "पुकार",
+      "references": [
+        "पुकार"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "पुकर्",
+      "actualTopSha256": "9bf0490608f51a0f3ad2f1c201a273797555e4bfa3ba0d3540b3af6823a72708",
+      "candidates": [
+        "पुकर्"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep290",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "adhyayama",
+      "proposedOutput": "अध्यायमा",
+      "references": [
+        "अध्यायमा"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "अध्ययम",
+      "actualTopSha256": "cf75bb2a5da293281d9f68cbb86d9a290c153220e94037753bb70d167853cd9a",
+      "candidates": [
+        "अध्ययम"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep360",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "karyaharuma",
+      "proposedOutput": "कार्यहरूमा",
+      "references": [
+        "कार्यहरूमा"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "कर्यहरुम",
+      "actualTopSha256": "e09cabac3a46efbca52c14cf348f849745176d07203fbdd1ecdd042d33bfc3c3",
+      "candidates": [
+        "कर्यहरुम"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep438",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "paridhibhitra",
+      "proposedOutput": "परिधिभित्र",
+      "references": [
+        "परिधिभित्र"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "परिधिभित्र",
+      "actualTopSha256": "f55dd107715c005ef50851cfc388c427afb564bfe6cf7c1eddcb0eadbd5982b9",
+      "candidates": [
+        "परिधिभित्र"
+      ],
+      "topMatchesAny": true,
+      "preferredMatch": true,
+      "referenceCandidatesMatched": 1
+    },
+    {
+      "id": "word-validation:nep612",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "niskanda",
+      "proposedOutput": "निस्कँदा",
+      "references": [
+        "निस्कँदा"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "निस्कन्द",
+      "actualTopSha256": "6eda04bc2e317f9dc8bc089917fffdf82ba96021881e626cb8cc01313bfa54ca",
+      "candidates": [
+        "निस्कन्द"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep663",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "gaunle",
+      "proposedOutput": "गाउँले",
+      "references": [
+        "गाउँले"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "गौन्ले",
+      "actualTopSha256": "90d6e3403a85eab8f67bc1d339c7e6bbb4fdae7d8e05ff81620338f81d50241e",
+      "candidates": [
+        "गौन्ले"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep760",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "gherieko",
+      "proposedOutput": "घेरिएको",
+      "references": [
+        "घेरिएको"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "घेरिएको",
+      "actualTopSha256": "1dfc431ab6a7c23e2370189e2ea6fd8d8760146f526646d7cf7b9083783646c0",
+      "candidates": [
+        "घेरिएको"
+      ],
+      "topMatchesAny": true,
+      "preferredMatch": true,
+      "referenceCandidatesMatched": 1
+    },
+    {
+      "id": "word-validation:nep647",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "vedko",
+      "proposedOutput": "वेदको",
+      "references": [
+        "वेदको"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "वेद्को",
+      "actualTopSha256": "faaaedcdd4e15e6a1addca91c4cc9a36d256e6000f07263d663f0d620e79e810",
+      "candidates": [
+        "वेद्को"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep433",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "pairaheka",
+      "proposedOutput": "पाइरहेका",
+      "references": [
+        "पाइरहेका"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "पैरहेक",
+      "actualTopSha256": "56ae2e8366b9220223a09b0feea03d87abbb4ba0dcc16fd2d8746d2423b4de50",
+      "candidates": [
+        "पैरहेक"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep443",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "naline",
+      "proposedOutput": "नलिने",
+      "references": [
+        "नलिने"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "नलिने",
+      "actualTopSha256": "79ba3664dca231b45d6e571a762d95ec052faabaf754c71ba846e1c300abd034",
+      "candidates": [
+        "नलिने"
+      ],
+      "topMatchesAny": true,
+      "preferredMatch": true,
+      "referenceCandidatesMatched": 1
+    },
+    {
+      "id": "word-validation:nep632",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "bora",
+      "proposedOutput": "बोरा",
+      "references": [
+        "बोरा"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "बोर",
+      "actualTopSha256": "ae7f7af5e92ebc7474bb65937593c4a581a8c7871b1901659e52535a5c84dbf1",
+      "candidates": [
+        "बोर"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep344",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "halyo",
+      "proposedOutput": "हाल्यो",
+      "references": [
+        "हाल्यो"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "हल्यो",
+      "actualTopSha256": "cb5b7ff8309f70bc16c63a85f379e6c96b9c5924ef6d14e4df5b18105aa424d6",
+      "candidates": [
+        "हल्यो"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep504",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "afumathi",
+      "proposedOutput": "आफूमाथि",
+      "references": [
+        "आफूमाथि"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "अफुमथि",
+      "actualTopSha256": "0e6dfa991b858770c40b9ea6193fb76c728dda817da068d8ac6b291bfbce76e9",
+      "candidates": [
+        "अफुमथि"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep288",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "dindaina",
+      "proposedOutput": "दिँदैन",
+      "references": [
+        "दिँदैन"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "दिन्दैन",
+      "actualTopSha256": "ac8308331dce69b31e336cb878f51c322d8c592fd5ca514c1f76e7f9a2d95cc3",
+      "candidates": [
+        "दिन्दैन"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep560",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "utthan",
+      "proposedOutput": "उत्थान",
+      "references": [
+        "उत्थान"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "उत्थन्",
+      "actualTopSha256": "ff3695d1ca97070bbf7c2267b20eb5d4b4608f46fe8ea701a0031a9c9e874f77",
+      "candidates": [
+        "उत्थन्"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep786",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "samanjasya",
+      "proposedOutput": "सामञ्जस्य",
+      "references": [
+        "सामञ्जस्य"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "समन्जस्य",
+      "actualTopSha256": "c26abd9707de0634c42e8e61deafcb9499e6ab9cc92b074bf838e02d41ba85cd",
+      "candidates": [
+        "समन्जस्य"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep764",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "hetu",
+      "proposedOutput": "हेतु",
+      "references": [
+        "हेतु"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "हेतु",
+      "actualTopSha256": "96d0da080ac26a58f99d4b931f21a51e6126313540152210de851c30e64c2bd8",
+      "candidates": [
+        "हेतु"
+      ],
+      "topMatchesAny": true,
+      "preferredMatch": true,
+      "referenceCandidatesMatched": 1
+    },
+    {
+      "id": "word-validation:nep442",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "sammanko",
+      "proposedOutput": "सम्मानको",
+      "references": [
+        "सम्मानको"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "सम्मन्को",
+      "actualTopSha256": "82de5002c1f8b6265fd5afd942070cf40694bd6ca9d0c454303db0475ac5799a",
+      "candidates": [
+        "सम्मन्को"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep453",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "kramik",
+      "proposedOutput": "क्रमिक",
+      "references": [
+        "क्रमिक"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "क्रमिक्",
+      "actualTopSha256": "95b2177dbc5bb5112ef606cf86411f1bdf21e367826e4ec9b727a8f80c07097b",
+      "candidates": [
+        "क्रमिक्"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep628",
+      "mode": "word",
+      "decision": "correct",
+      "evaluated": true,
+      "roman": "bhagna",
+      "proposedOutput": "भाग्न",
+      "references": [
+        "भाग्न",
+        "भग्न"
+      ],
+      "preferredReferenceIndex": null,
+      "actualTop": "भग्न",
+      "actualTopSha256": "665fc56aa4d5ec7b7990566204f56d49fc4e11d88fa80d4593d26ac55a8996c1",
+      "candidates": [
+        "भग्न"
+      ],
+      "topMatchesAny": true,
+      "preferredMatch": null,
+      "referenceCandidatesMatched": 1
+    },
+    {
+      "id": "word-validation:nep250",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "header",
+      "proposedOutput": "हेडर",
+      "references": [
+        "हेडर"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "हेअदेर्",
+      "actualTopSha256": "bc55ecd85fc06be6aa09e1427e78174b72981e46d642a43a9f138594b3cb090b",
+      "candidates": [
+        "हेअदेर्"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep84",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "fulbariharu",
+      "proposedOutput": "फूलबारीहरू",
+      "references": [
+        "फूलबारीहरू"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "फुल्बरिहरु",
+      "actualTopSha256": "723cdc566c20c37f0b3d16af6ade28f0f2333931a15f494b3d1faf2e73703573",
+      "candidates": [
+        "फुल्बरिहरु"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep171",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "goretaharuma",
+      "proposedOutput": "गोरेटाहरूमा",
+      "references": [
+        "गोरेटाहरूमा"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "गोरेतहरुम",
+      "actualTopSha256": "4c5308108873e4bd07789dea8773add934bd0d6180352d61b3611a4d0588d97e",
+      "candidates": [
+        "गोरेतहरुम"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep239",
+      "mode": "word",
+      "decision": "exclude",
+      "evaluated": false
+    },
+    {
+      "id": "word-validation:nep279",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "kendraharudwara",
+      "proposedOutput": "केन्द्रहरूद्वारा",
+      "references": [
+        "केन्द्रहरूद्वारा"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "केन्द्रहरुद्वर",
+      "actualTopSha256": "5d5a6d83c3812646f78fa9cde3f4a13c04c5327b1f2f6347f013ce51cc86ed0e",
+      "candidates": [
+        "केन्द्रहरुद्वर"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep237",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "hospitaltarfa",
+      "proposedOutput": "हस्पिटलतर्फ",
+      "references": [
+        "हस्पिटलतर्फ"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "होस्पितल्तर्फ",
+      "actualTopSha256": "8c9c0e9d76b31c93110cb6c26a3be7b0d38a65e5de89496da0ff94ee216ce1a2",
+      "candidates": [
+        "होस्पितल्तर्फ"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep217",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "manovaigyanikharule",
+      "proposedOutput": "मनोवैज्ञानिकहरूले",
+      "references": [
+        "मनोवैज्ञानिकहरूले"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "मनोवैज्ञनिखरुले",
+      "actualTopSha256": "3b65e21b9eb0cac81fb12fcec46f4c3f8c22ce39af1e57926410dfebdc728d8c",
+      "candidates": [
+        "मनोवैज्ञनिखरुले"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep52",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "premchandradwara",
+      "proposedOutput": "प्रेमचन्द्रद्वारा",
+      "references": [
+        "प्रेमचन्द्रद्वारा"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "प्रेम्चन्द्रद्वर",
+      "actualTopSha256": "3df252427dcb453597a61f3501be1dae87137f3bef033f0885c913cdb489a2c5",
+      "candidates": [
+        "प्रेम्चन्द्रद्वर"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep261",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "vigyanle",
+      "proposedOutput": "विज्ञानले",
+      "references": [
+        "विज्ञानले"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "विज्ञन्ले",
+      "actualTopSha256": "16faf278f4c99b74cc428efe28200bdd67e6f5b9d0122bb50b8711cbdb31a974",
+      "candidates": [
+        "विज्ञन्ले"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep77",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "gabhnuparchha",
+      "proposedOutput": "गाभ्नुपर्छ",
+      "references": [
+        "गाभ्नुपर्छ"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "गभ्नुपर्छ",
+      "actualTopSha256": "b25b244ff8a39b86f7a3cd00bb21d097381938361c4055c21b945f6cf4abaacb",
+      "candidates": [
+        "गभ्नुपर्छ"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep99",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "fyankidinchhan",
+      "proposedOutput": "फ्याँकिदिन्छन्",
+      "references": [
+        "फ्याँकिदिन्छन्"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "फ्यन्किदिन्छन्",
+      "actualTopSha256": "b8786391828870b535d5ec7d6bbcc1932d3a017cf4682d9e4b31268966a18c37",
+      "candidates": [
+        "फ्यन्किदिन्छन्"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep133",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "mediasanga",
+      "proposedOutput": "मिडियासँग",
+      "references": [
+        "मिडियासँग"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "मेदिअसङ",
+      "actualTopSha256": "cd312878ac136c8319086f8cb74abdacf5eb34b8463dece301891ab21a7ff0bb",
+      "candidates": [
+        "मेदिअसङ"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep197",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "indradevle",
+      "proposedOutput": "इन्द्रदेवले",
+      "references": [
+        "इन्द्रदेवले"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "इन्द्रदेव्ले",
+      "actualTopSha256": "8b82bc3a310ad4bdbd578a1b78a85f724fe14223bed2c518c9644809bc1b6f6b",
+      "candidates": [
+        "इन्द्रदेव्ले"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep206",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "lakhetiraheka",
+      "proposedOutput": "लखेटिरहेका",
+      "references": [
+        "लखेटिरहेका"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "लखेतिरहेक",
+      "actualTopSha256": "dc87b9960d792518be58944692b27704a98ce1fa10c5ed11fbe07dc6a2722c2a",
+      "candidates": [
+        "लखेतिरहेक"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep248",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "patrakaraharumathi",
+      "proposedOutput": "पत्रकारहरूमाथि",
+      "references": [
+        "पत्रकारहरूमाथि"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "पत्रकरहरुमथि",
+      "actualTopSha256": "a4d842caed8e2ef9831f28d216295b95470edbe4f426a3b5c0f84f934dcae6f4",
+      "candidates": [
+        "पत्रकरहरुमथि"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep262",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "samhalnubhaeko",
+      "proposedOutput": "सम्हाल्नुभएको",
+      "references": [
+        "सम्हाल्नुभएको"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "सम्हल्नुभएको",
+      "actualTopSha256": "7fc8be991e3f1dcb791dd0bd2dac55871bd38ad35431a8c192c7a48cea2de672",
+      "candidates": [
+        "सम्हल्नुभएको"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep62",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "bolaunuparne",
+      "proposedOutput": "बोलाउनुपर्ने",
+      "references": [
+        "बोलाउनुपर्ने"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "बोलौनुपर्ने",
+      "actualTopSha256": "dd7af9a93881799a35af9c2441804c4a898f453c100bfaa0fede984ce8d52c57",
+      "candidates": [
+        "बोलौनुपर्ने"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep103",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "pandejyule",
+      "proposedOutput": "पाण्डेज्यूले",
+      "references": [
+        "पाण्डेज्यूले"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "पन्देज्युले",
+      "actualTopSha256": "17721afc24c5caaaefc9dcf8f45c9921a59eecfee79535b777a9825fb67ce07c",
+      "candidates": [
+        "पन्देज्युले"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep175",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "companyharumathi",
+      "proposedOutput": "कम्पनीहरूमाथि",
+      "references": [
+        "कम्पनीहरूमाथि"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "चोम्पञ्हरुमथि",
+      "actualTopSha256": "fe21b8d09417ce16414ec87da00e800872479294b5640b96d8071d0d581211cc",
+      "candidates": [
+        "चोम्पञ्हरुमथि"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep189",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "bhagidarko",
+      "proposedOutput": "भागीदारको",
+      "references": [
+        "भागीदारको"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "भगिदर्को",
+      "actualTopSha256": "8767ff40f1d56542af8bd196737b4f5b4e9820fcd0493c92d89c4beef46f7565",
+      "candidates": [
+        "भगिदर्को"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep162",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "sambhawanaharulai",
+      "proposedOutput": "सम्भावनाहरूलाई",
+      "references": [
+        "सम्भावनाहरूलाई"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "सम्भवनहरुलै",
+      "actualTopSha256": "c0223dd0ad583f556de3a1c82f971ed3abeaa0ccc042f75ffa7c257428f1f84d",
+      "candidates": [
+        "सम्भवनहरुलै"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep183",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "dushprawrittiharuko",
+      "proposedOutput": "दुष्प्रवृत्तिहरूको",
+      "references": [
+        "दुष्प्रवृत्तिहरूको"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "दुश्प्रव्रित्तिहरुको",
+      "actualTopSha256": "d30373dc2602677d13465055665acf60b5fff8db32790aa103d0d3c4d3fb24e5",
+      "candidates": [
+        "दुश्प्रव्रित्तिहरुको"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep147",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "suktiharu",
+      "proposedOutput": "सूक्तिहरू",
+      "references": [
+        "सूक्तिहरू"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "सुक्तिहरु",
+      "actualTopSha256": "51bac79fa919b09cfaf137b236ef2f9bc92b37bff4f5245479f05be2ed1dbf91",
+      "candidates": [
+        "सुक्तिहरु"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep73",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "asuraharuko",
+      "proposedOutput": "असुरहरूको",
+      "references": [
+        "असुरहरूको"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "असुरहरुको",
+      "actualTopSha256": "839557437a92b068f485a901cc2e1044c6b31f157c40c24c1b48efe8b7ace1bf",
+      "candidates": [
+        "असुरहरुको"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep45",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "tariniprasadale",
+      "proposedOutput": "तारिणीप्रसादले",
+      "references": [
+        "तारिणीप्रसादले"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "तरिनिप्रसदले",
+      "actualTopSha256": "fb627b1b44fad0939bd8479cee586fcc3150c0007b26b168c768a71a3f1ebfec",
+      "candidates": [
+        "तरिनिप्रसदले"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep2469",
+      "mode": "word",
+      "decision": "exclude",
+      "evaluated": false
+    },
+    {
+      "id": "word-validation:nep1258",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "wajedle",
+      "proposedOutput": "वाजेदले",
+      "references": [
+        "वाजेदले"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "वजेद्ले",
+      "actualTopSha256": "e4bd24a4ae5d3519a8d9c73e2c38eb87bb58c40c745e039f1daed56687af1a6a",
+      "candidates": [
+        "वजेद्ले"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep1076",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "aspatalbichko",
+      "proposedOutput": "अस्पतालबीचको",
+      "references": [
+        "अस्पतालबीचको"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "अस्पतल्बिच्को",
+      "actualTopSha256": "9d3e94500f454b9f29b82c8bc457d0e7a24956110d6b6cad862c4141293c8f0f",
+      "candidates": [
+        "अस्पतल्बिच्को"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep1540",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "bhaktiganyukta",
+      "proposedOutput": "भक्तिगानयुक्त",
+      "references": [
+        "भक्तिगानयुक्त"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "भक्तिगञुक्त",
+      "actualTopSha256": "68c9bdf5ff1d0844a4c4cda9edb22378e2c74fcef86f4dbc194eae6e06a5e426",
+      "candidates": [
+        "भक्तिगञुक्त"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep2051",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "purnakalinlai",
+      "proposedOutput": "पूर्णकालीनलाई",
+      "references": [
+        "पूर्णकालीनलाई"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "पुर्नकलिन्लै",
+      "actualTopSha256": "3c932f0292cca7f37bb6dee89db6a57d75d4fff859ea175359e03fb71897e052",
+      "candidates": [
+        "पुर्नकलिन्लै"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep1657",
+      "mode": "word",
+      "decision": "exclude",
+      "evaluated": false
+    },
+    {
+      "id": "word-validation:nep881",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "devnarasinh",
+      "proposedOutput": "देवनरसिंह",
+      "references": [
+        "देवनरसिंह"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "देव्नरसिन्ह्",
+      "actualTopSha256": "ed54accae0aef41739061663ae7ccb5fc561b08c34d53aff24c5c8b1f512e2dd",
+      "candidates": [
+        "देव्नरसिन्ह्"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep1089",
+      "mode": "word",
+      "decision": "exclude",
+      "evaluated": false
+    },
+    {
+      "id": "word-validation:nep1476",
+      "mode": "word",
+      "decision": "exclude",
+      "evaluated": false
+    },
+    {
+      "id": "word-validation:nep1831",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "lagalagi",
+      "proposedOutput": "लगालगी",
+      "references": [
+        "लगालगी"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "लगलगि",
+      "actualTopSha256": "b3d91fa1c7826664bee720b2866cdc89313cb76d7eff92e800227abe32375744",
+      "candidates": [
+        "लगलगि"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep815",
+      "mode": "word",
+      "decision": "exclude",
+      "evaluated": false
+    },
+    {
+      "id": "word-validation:nep810",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "javara",
+      "proposedOutput": "जवरा",
+      "references": [
+        "जवरा"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "जवर",
+      "actualTopSha256": "da668a4a4efa0f2eff9a29ab57c63e0e97f31c6121d22dbaef27ccaf2ba40534",
+      "candidates": [
+        "जवर"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep806",
+      "mode": "word",
+      "decision": "correct",
+      "evaluated": true,
+      "roman": "chintaman",
+      "proposedOutput": "चिंतामन",
+      "references": [
+        "चिन्तामन"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "चिन्तमन्",
+      "actualTopSha256": "640469833bcdc20a53f1b4afc80c33a925644adb85b1e6d8e798e92fd679e33d",
+      "candidates": [
+        "चिन्तमन्"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep813",
+      "mode": "word",
+      "decision": "correct",
+      "evaluated": true,
+      "roman": "manjhi",
+      "proposedOutput": "मांझी",
+      "references": [
+        "माझी"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "मन्झि",
+      "actualTopSha256": "4aaa089e0ecb8085858f2f060589e6fa67fc05437e3f145b74ee3ada5e27be59",
+      "candidates": [
+        "मन्झि"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "word-validation:nep811",
+      "mode": "word",
+      "decision": "accept",
+      "evaluated": true,
+      "roman": "gopalman",
+      "proposedOutput": "गोपालमान",
+      "references": [
+        "गोपालमान"
+      ],
+      "preferredReferenceIndex": 0,
+      "actualTop": "गोपल्मन्",
+      "actualTopSha256": "5d47e748676b76c96a7e89bbed209ed12d685788b97ade3b89d892d16f4e4901",
+      "candidates": [
+        "गोपल्मन्"
+      ],
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": 0
+    },
+    {
+      "id": "sentence:ne_348",
+      "mode": "text",
+      "decision": "correct",
+      "evaluated": true,
+      "preferredReferenceIndex": 0,
+      "actualTopSha256": "f874e21b785b1a5177a25c7626a6f0f5da537c5f249c420bc142e980208d10be",
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": null
+    },
+    {
+      "id": "sentence:ne_75",
+      "mode": "text",
+      "decision": "exclude",
+      "evaluated": false
+    },
+    {
+      "id": "sentence:ne_151",
+      "mode": "text",
+      "decision": "correct",
+      "evaluated": true,
+      "preferredReferenceIndex": 0,
+      "actualTopSha256": "d0cf8a12bea51e7fd228758c7b37764fbed3f1706fa766b196f7091ead23ccf3",
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": null
+    },
+    {
+      "id": "sentence:ne_187",
+      "mode": "text",
+      "decision": "correct",
+      "evaluated": true,
+      "preferredReferenceIndex": 0,
+      "actualTopSha256": "185e4464e87cf55ddd346430e000b2bf9c5c923ca6803b137bda0c9bce0d63da",
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": null
+    },
+    {
+      "id": "sentence:ne_168",
+      "mode": "text",
+      "decision": "correct",
+      "evaluated": true,
+      "preferredReferenceIndex": 0,
+      "actualTopSha256": "6c77febeff0ba938ea9fd1c8f977a5fd21e2ab5dec356ed48cecad7d2d9f9a96",
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": null
+    },
+    {
+      "id": "sentence:ne_96",
+      "mode": "text",
+      "decision": "correct",
+      "evaluated": true,
+      "preferredReferenceIndex": 0,
+      "actualTopSha256": "3792cb4e7c6af6f3f5b4c34fb58bb6ba10d0bb03e56251d36c6a34f81dcd432b",
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": null
+    },
+    {
+      "id": "sentence:ne_9",
+      "mode": "text",
+      "decision": "correct",
+      "evaluated": true,
+      "preferredReferenceIndex": 0,
+      "actualTopSha256": "ffc76203a24e37c85149c1fa2cfb7b529c0a5b33aeaa1c74a32a82f38eec843e",
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": null
+    },
+    {
+      "id": "sentence:ne_400",
+      "mode": "text",
+      "decision": "exclude",
+      "evaluated": false
+    },
+    {
+      "id": "sentence:ne_176",
+      "mode": "text",
+      "decision": "correct",
+      "evaluated": true,
+      "preferredReferenceIndex": 0,
+      "actualTopSha256": "3cea91c3847fca2db9d4fe783881c5f135c7de6b946eed15651f8d1c70c1d46c",
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": null
+    },
+    {
+      "id": "sentence:ne_291",
+      "mode": "text",
+      "decision": "correct",
+      "evaluated": true,
+      "preferredReferenceIndex": 0,
+      "actualTopSha256": "17aa09277ecc0dd3d56169ad7d0a9ed8bd133388e2b553ccfb0ac9df5f524d4d",
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": null
+    },
+    {
+      "id": "sentence:ne_360",
+      "mode": "text",
+      "decision": "exclude",
+      "evaluated": false
+    },
+    {
+      "id": "sentence:ne_148",
+      "mode": "text",
+      "decision": "correct",
+      "evaluated": true,
+      "preferredReferenceIndex": 0,
+      "actualTopSha256": "50184e36619f4f00dffb9d4a9d3a5bb9b1d0c419bbb7635b67b8d0b02be01157",
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": null
+    },
+    {
+      "id": "sentence:ne_381",
+      "mode": "text",
+      "decision": "correct",
+      "evaluated": true,
+      "preferredReferenceIndex": 0,
+      "actualTopSha256": "302d8ebbc6e38d2d94dcaf37f102b52e96e544d508fa20abf8e209d524506632",
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": null
+    },
+    {
+      "id": "sentence:ne_231",
+      "mode": "text",
+      "decision": "correct",
+      "evaluated": true,
+      "preferredReferenceIndex": 0,
+      "actualTopSha256": "080fa3b67c3b648b66e8b9fd9c932c98dd2e68998647d113a074737799e94d7d",
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": null
+    },
+    {
+      "id": "sentence:ne_41",
+      "mode": "text",
+      "decision": "exclude",
+      "evaluated": false
+    },
+    {
+      "id": "sentence:ne_29",
+      "mode": "text",
+      "decision": "exclude",
+      "evaluated": false
+    },
+    {
+      "id": "sentence:ne_77",
+      "mode": "text",
+      "decision": "exclude",
+      "evaluated": false
+    },
+    {
+      "id": "sentence:ne_389",
+      "mode": "text",
+      "decision": "exclude",
+      "evaluated": false
+    },
+    {
+      "id": "sentence:ne_210",
+      "mode": "text",
+      "decision": "exclude",
+      "evaluated": false
+    },
+    {
+      "id": "sentence:ne_294",
+      "mode": "text",
+      "decision": "correct",
+      "evaluated": true,
+      "preferredReferenceIndex": 0,
+      "actualTopSha256": "b29f755066308e2c0d2a620b3bd70fcba7523cee2b11e33ba0a14da2e137849b",
+      "topMatchesAny": false,
+      "preferredMatch": false,
+      "referenceCandidatesMatched": null
+    }
+  ]
+}
