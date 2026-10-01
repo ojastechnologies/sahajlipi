@@ -1,5 +1,7 @@
 # English loanword expansion — 2026-09-28
 
+**Historical expansion record.** The later [2026-10-01 suffix update](loanword-suffixes-2026-10-01.md) adds `media`, finite attached forms and the school alternative. This page retains the original 50-key count, held decisions and whole-word matching observations.
+
 This dated record follows the [34-key coverage audit](loanword-coverage-audit.md). That audit describes the engine **before** this change, at commit `de2cb93`; its `company` → चोम्पञ् observation is historical. The current change adds `company` → **कम्पनी** and 29 more exact English-spelling keys. Together with the [original 20-word pilot](loanword-review.md), the built-in loanword catalogue now has **50 complete-word keys**, each with one preferred output. The separate 12 Gregorian month names are not included in that count.
 
 The preferred outputs below are **source-assisted project choices for implementation**. An institutional occurrence establishes that a Nepali spelling is used in its source context. It does not establish that the spelling is the only valid one, that the English key always has that sense, or that these keys are the most frequent loanwords. There are still no independently reviewed human loanword labels or population-wide coverage and accuracy estimates. The [earlier audit](loanword-coverage-audit.md) and [pilot](loanword-review.md) retain their original dates, counts, and evidence scopes.

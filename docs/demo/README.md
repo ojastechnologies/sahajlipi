@@ -25,7 +25,7 @@ Replace `YOUR_LAN_IP` with that address, then open `http://YOUR_LAN_IP:4173/saha
 
 ## Use the page
 
-- **Type in the editor.** Roman letters turn into Nepali in the same textarea. Space commits the displayed word; Backspace can edit the active Roman spelling. The on-page **How to type** guide shows examples for vowels, half consonants, `cha`/`chha`, the two र्य/र्‍य forms, listed word shortcuts, English loanwords, full English month names, Shift sounds, marks, digits, punctuation, mixed text, and alternatives. The [package typing reference](../package/typing-reference.md) documents the complete rules and the scope of those word entries.
+- **Type in the editor.** Roman letters turn into Nepali in the same textarea. Space commits the displayed word; Backspace can edit the active Roman spelling. The on-page **How to type** guide shows examples for vowels, half consonants, `cha`/`chha`, the two र्य/र्‍य forms, listed word shortcuts, English loanwords and their supported suffixes, full English month names, Shift sounds, marks, digits, punctuation, mixed text, and alternatives. The [package typing reference](../package/typing-reference.md) documents the complete rules and the scope of those word entries.
 - **Choose a reading.** When the active spelling has multiple listed readings, a dropdown appears below the textarea. The first reading is displayed by default. Choose another from the dropdown or press `Alt` + a number from `1` through `9` while the word is active.
 - **Switch mode.** The button shows **Nepali mode** when conversion is on and **English mode** when input is literal. It controls subsequent typing and paste in every marked field on this page: the main editor and the three form examples. Existing text stays as it is when you switch modes.
 - **Try form fields.** The two marked text fields and marked search field below the editor use the same conversion setup. The mixed-text field lets you try Nepali beside a link or email address. The unmarked text and email fields stay in English. The alternatives dropdown and character count belong to the main editor; in the form fields, `Alt` + a number can select an available alternative.
@@ -41,9 +41,9 @@ The fields keep text and their undo snapshots in browser memory while the page i
 
 ### English loanwords
 
-The default engine now includes **50 complete English-spelling loanword keys**: the original 20-word pilot, `company`, 12 entries from the earlier research queue, and 17 further source-attested entries. They work automatically in the editor and marked text/search fields while Nepali mode is on; the demo needs no separate loanword setting. These are source-assisted project spelling preferences, **not independently human-reviewed language labels** or an exhaustive loanword dictionary. See the [dated expansion review](../package/loanword-expansion-2026-09-28.md) for evidence, scope, and exclusions; the [original pilot review](../package/loanword-review.md) retains its historical 20-word claim.
+The default engine includes **51 recognized English-spelling loanword stems**: the earlier 50 keys plus `media` → मिडिया. The finite suffix rule also accepts 19 attached suffix keys on these stems. They work automatically in the editor and marked text/search fields while Nepali mode is on; the demo needs no separate loanword setting. These are source-assisted project spelling preferences, **not independently human-reviewed language labels** or an exhaustive loanword dictionary. See the [dated suffix review](../package/loanword-suffixes-2026-10-01.md) for the current rules and evidence; the [earlier expansion](../package/loanword-expansion-2026-09-28.md) and [original pilot](../package/loanword-review.md) keep their historical counts.
 
-Each listed key has one preferred project spelling, so it does not open the readings dropdown. Additional spellings and alternate senses may need separate review.
+`school` displays **स्कुल** first and offers **स्कूल** in the readings dropdown. Attached school forms offer the same ordered readings: `schoolma` displays **स्कुलमा** and offers **स्कूलमा**. Other built-in loanword stems currently have one reading. Additional spellings and alternate senses may need separate review.
 
 **Original 20 keys**
 
@@ -65,7 +65,7 @@ Each listed key has one preferred project spelling, so it does not open the read
 | `bank` | बैंक |
 | `cheque` | चेक |
 | `file` | फाइल |
-| `school` | स्कुल |
+| `school` | स्कुल; alternative स्कूल |
 | `college` | कलेज |
 | `doctor` | डाक्टर |
 | `nurse` | नर्स |
@@ -110,9 +110,17 @@ Each listed key has one preferred project spelling, so it does not open the read
 | `van` | भ्यान |
 | `website` | वेबसाइट |
 
+`media` is the latest key and uses **मिडिया**.
+
 Try `company camera computer` → **कम्पनी क्यामेरा कम्प्युटर** or `school office hotel` → **स्कुल अफिस होटल**. These entries spell borrowed words in Nepali; they do not translate English sentences or decide a word's meaning. `train`, `speaker`, `fax`, `wallet`, and `share` are **not** built-in loanword keys in this expansion; spelling or meaning decisions remain open in the [expansion review](../package/loanword-expansion-2026-09-28.md).
 
-An entry matches only its complete key. Appending letters or a suffix, as in `companyma`, `cameraa`, `camerako`, or `mobilema`, recomputes the active word using ordinary phonetic conversion. Attached Nepali forms are not inferred. Space keeps the currently displayed spelling and starts a new word; Backspace can return a longer active spelling to a listed key.
+**Supported attached forms**
+
+Try `companyharumathi` → **कम्पनीहरूमाथि**, `schoolma` → **स्कुलमा / स्कूलमा**, or `mediasanga` → **मिडियासँग**. Append one of `ma`, `ko`, `ka`, `ki`, `le`, `lai`, `bata`, `sanga`, `mathi` or `haru` to a listed loanword stem. `haru` may also be followed by one of the other nine endings: for example, `companyharuko` → **कम्पनीहरूको**. The [complete suffix table](../package/typing-reference.md#attached-loanword-forms) lists all 19 keys and their native endings.
+
+The stem retains its vowels and readings when a recognized suffix is complete. While typing an unfinished suffix, the whole spelling may temporarily use phonetic conversion; it becomes the derived form once the complete suffix key is present. Space commits the current reading. Backspace re-evaluates the remaining Roman keys.
+
+Unsupported endings such as `cameramaa`, extra suffix chains and arbitrary new stem keys still use ordinary conversion. These spelling rules do not choose sentence grammar, translate English phrases or infer month/native-word suffixes.
 
 Use the lowercase spellings in the tables for predictable results. Incidental capitals such as `Company`, `Camera`, and `Computer` match too, but `T`, `D`, `S`, `R`, and contextual `H` still select sounds. `Doctor`, `School`, all-capital keys, and arbitrary mixed case are not guaranteed aliases. Existing explicit name aliases, such as `Ram` and `Sita`, keep their listed readings.
 

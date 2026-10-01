@@ -15,6 +15,14 @@ The first command prints results and exits successfully even when a contract cas
 
 The dependency-free runner is [benchmark/run.js](../../benchmark/run.js). Its UTF-8, one-JSON-object-per-line fixtures are in [benchmark/cases.jsonl](../../benchmark/cases.jsonl). You can inspect a different fixture file with `node benchmark/run.js --fixtures path/to/cases.jsonl`; add `--check` if its contract cases should gate the command.
 
+## Loanword suffix follow-up — 2026-10-01
+
+The [dated suffix review and comparison](loanword-suffixes-2026-10-01.md#recorded-comparison) adds four selected contracts for `companyharumathi`, `schoolma`, `mediasanga` and text beside protected addresses. It also declares two intentional revisions to earlier fallback targets: `bankma` → बैंकमा and `fileharu` → फाइलहरू. IDs, inputs and statuses remain stable; provenance records the revisions. The other 133 of 135 historical rows remain byte-for-byte identical.
+
+On the same revised final fixture, full contracts score **131/137 → 137/137**. The separate frozen historical fixture scores **133/133 → 131/133**, with only those two intended policy differences. The [machine report](../../benchmark/reports/loanword-suffixes-2026-10-01.json) retains both comparisons, the source-assisted [suffix research ledger](../../benchmark/reports/loanword-suffix-research-2026-10-01.json), source hashes and reproduction commands. Earlier dated benchmark reports are unchanged.
+
+Against the unchanged source-assisted development references, word defaults improve **8/74 → 11/74** and individual candidate references **8/79 → 12/79**; complete sentences remain **0/12**. These development cases guided the implementation. Neither the selected software contracts nor this development comparison is a held-out or population-wide accuracy estimate. Use the [dated reproduction instructions](loanword-suffixes-2026-10-01.md#reproduce) to compare archived engine sources on the same fixtures.
+
 ## What a case means
 
 Each case has a stable `id`, a `status` (`contract` or `exploratory`), a `mode` (`word` or `text`), an `input`, an `expectedTop`, a `category`, and a `provenance` note. Word cases also list `expectedCandidates`. The status identifies whether a difference is a regression against an agreed project behavior or a proposal awaiting review. A contract is **not** a claim that its spelling was independently validated by Nepali speakers.

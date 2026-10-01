@@ -1,6 +1,6 @@
 # Nepali typing reference
 
-SahajLipi currently converts Roman Nepali, 50 listed English-spelling loanwords and 12 full English month names to Unicode Devanagari. The core returns a preferred reading and, where listed, alternatives. The optional browser adapters render that preferred reading in opted-in text fields as you type and report alternatives to the host interface. This reference describes the **current prototype**, not a standardized Romanization scheme.
+SahajLipi currently converts Roman Nepali, 51 listed English-spelling loanword stems with finite attached suffix forms and 12 full English month names to Unicode Devanagari. The core returns a preferred reading and, where listed, alternatives. The optional browser adapters render that preferred reading in opted-in text fields as you type and report alternatives to the host interface. This reference describes the **current prototype**, not a standardized Romanization scheme.
 
 The [starter lexicon](../../src/lexicon.js) takes priority over the [phonetic fallback](../../src/phonetic.js). The listed word `cha` defaults to च and offers छ as an alternative; `chha` returns only छ. The fallback tokens remain `ch` → च and `chh` → छ. Custom entries can replace a built-in entry in one engine instance. See the [engine source](../../src/index.js) for the lookup order.
 
@@ -112,7 +112,7 @@ Online usage supports the listed Nepali spellings: [नेपाल कानू
 
 ## English-spelling loanwords
 
-These 50 exact keys automatically use the listed Nepali loanword forms. The browser adapters apply them while Nepali mode is on, and the core conversion functions use them directly. Each entry has **one candidate**; observed variants remain pending review. The defaults are source-assisted project preferences, with independent human linguistic review still pending. The [original pilot](loanword-review.md) records its 20 keys and dated source ledger; the [expansion review](loanword-expansion-2026-09-28.md) records the 30 later keys and candidates held for further review.
+These 51 listed stems automatically use the Nepali loanword forms below. The browser adapters apply them in Nepali mode, and the core conversion functions use them directly. `school` keeps **स्कुल** first and adds **स्कूल** as an alternative; other built-in loanword stems currently have one reading. The [suffix review](loanword-suffixes-2026-10-01.md) records the new `media` key, school alternatives and finite attached forms. These are source-assisted project preferences, with independent human linguistic review pending. The [original pilot](loanword-review.md) and [earlier expansion](loanword-expansion-2026-09-28.md) retain their dated counts and evidence.
 
 | English key | Preferred output | English key | Preferred output |
 | --- | --- | --- | --- |
@@ -124,10 +124,10 @@ These 50 exact keys automatically use the listed Nepali loanword forms. The brow
 | `scanner` | स्क्यानर | `video` | भिडियो |
 | `taxi` | ट्याक्सी | `bank` | बैंक |
 | `cheque` | चेक | `file` | फाइल |
-| `school` | स्कुल | `college` | कलेज |
+| `school` | स्कुल; alternative स्कूल | `college` | कलेज |
 | `doctor` | डाक्टर | `nurse` | नर्स |
 
-The original pilot above has 20 keys. The 30 later source-assisted exact-word preferences are:
+The original pilot above has 20 keys. The table below lists the 30 expansion entries plus the latest `media` stem:
 
 | English key | Preferred output |
 | --- | --- |
@@ -161,12 +161,36 @@ The original pilot above has 20 keys. The 30 later source-assisted exact-word pr
 | `van` | भ्यान |
 | `website` | वेबसाइट |
 | `wifi` | वाइफाइ |
+| `media` | मिडिया |
+
+The `media` row is the latest addition after the 20-key pilot and 30-key expansion.
 
 This spells a borrowed word rather than translating its meaning: `school` produces स्कुल rather than विद्यालय. `mouse` uses the computer-device reading. A developer can replace a key's full candidate list with the existing `createEngine({ entries })` API.
 
-`Camera`, `Computer` and `Company` match their lowercase entries. Reserved Shift keys still apply, so `Doctor`, `School`, `CAMERA` and `COMPUTER` are not blanket-lowercased aliases. Attached forms such as `camerako`, `cameramaa`, `mobilema` and `schoolma` are unlisted and keep the fallback; this pilot does not infer suffixes. Hyphenated `e-mail` is split by text conversion and is not the `email` alias.
+`Camera`, `Computer` and `Company` match their lowercase entries. Reserved Shift keys still apply, so `Doctor`, `School`, `CAMERA` and `COMPUTER` are not blanket-lowercased aliases. The finite attached forms below inherit the stem reading; unsupported spellings such as `cameramaa` keep the fallback. Hyphenated `e-mail` is split by text conversion and is not the `email` alias.
 
 Keep an entire English field literal by leaving it unattached, marking it `data-sahajlipi-ignore`, or disabling conversion. Text conversion and attached fields preserve recognized links, ASCII domain-shaped hosts, and ordinary ASCII email addresses by default: `camera` becomes क्यामेरा, while `camera.com` stays literal. Ordinary English phrases, code, and filenames still need explicit literal handling; `camera_file` and `camera123` can still be converted. See [mixed text](#mixed-text-and-literal-english).
+
+### Attached loanword forms
+
+Append one of these lowercase keys directly to a listed English loanword stem:
+
+| Suffix key | Appended Nepali form | Example |
+| --- | --- | --- |
+| `ma` | मा | `schoolma` → स्कुलमा / स्कूलमा |
+| `ko` | को | `camerako` → क्यामेराको |
+| `ka` | का | `companyka` → कम्पनीका |
+| `ki` | की | `companyki` → कम्पनीकी |
+| `le` | ले | `companyle` → कम्पनीले |
+| `lai` | लाई | `companylai` → कम्पनीलाई |
+| `bata` | बाट | `companybata` → कम्पनीबाट |
+| `sanga` | सँग | `mediasanga` → मिडियासँग |
+| `mathi` | माथि | `companymathi` → कम्पनीमाथि |
+| `haru` | हरू | `companyharu` → कम्पनीहरू |
+
+`haru` may be followed by **one** of `ma`, `ko`, `ka`, `ki`, `le`, `lai`, `bata`, `sanga` or `mathi`: `companyharumathi` → कम्पनीहरूमाथि and `schoolharuma` → स्कुलहरूमा / स्कूलहरूमा. That makes **19 recognized suffix keys**, not arbitrary repeated suffixes. Candidate order follows the stem; choose the school alternative through the existing dropdown or candidate API.
+
+Only the 51 listed loanword stems participate. Months, native Nepali entries and arbitrary custom stem names do not gain suffix handling. Exact whole-word custom entries win; customizing a recognized stem changes its derived readings. Unsupported suffixes, `cameramaa` and unrecognized stems use ordinary conversion. Capitals reserved for Shift sounds and explicit marks keep their existing rules. The rule joins spelling components; it does not decide whether the form is grammatical in a sentence.
 
 ## English month names
 
@@ -249,7 +273,7 @@ For an English phrase or code fragment, switch the field’s controller to `setE
 ## Current limits
 
 - The starter lexicon is small. Unknown words use deterministic phonetic rules, which can give incorrect Nepali spelling. There is no context-sensitive ranking or language detection.
-- `convertText` preserves recognized technical spans, then converts Latin-letter runs outside them regardless of whether they are Nepali or English. The 50 loanword entries and 12 month names cover their listed keys and aliases; they add no language detection or attached-form inference. Arbitrary English and code remain outside automatic preservation.
+- `convertText` preserves recognized technical spans, then converts Latin-letter runs outside them regardless of whether they are Nepali or English. The 51 loanword stems cover their listed keys and 19 finite attached suffix keys; the 12 month names keep exact lookup. These rules add no language detection or general inflection. Arbitrary English and code remain outside automatic preservation.
 - The browser adapter attaches to `<textarea>` and text/search inputs, directly or through an opt-in field manager. It handles keyboard input, paste, and composition events, but this reference is not a browser compatibility guarantee.
 - The prototype does not offer a dedicated keyboard shortcut for every Devanagari character, mark, or accent. A future language profile would need its own reviewed mappings; current behavior is Nepali-specific.
 

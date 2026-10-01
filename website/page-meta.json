@@ -134,5 +134,9 @@
   "docs/package/source-review-2026-10-01.md": {
     "title": "SahajLipi Source Review | Reviewed References and Baseline",
     "description": "Inspect 86 source-assisted Nepali development references, 14 exclusions, spelling alternatives, per-case evidence and reproducible exact-output measurements."
+  },
+  "docs/package/loanword-suffixes-2026-10-01.md": {
+    "title": "SahajLipi Loanword Suffixes | Rules, Evidence and Results",
+    "description": "Review SahajLipi’s 51 loanword stems, finite Nepali suffix keys, school alternatives, custom-entry behavior, source evidence and reproducible comparisons."
   }
 }

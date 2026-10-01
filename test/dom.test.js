@@ -407,7 +407,7 @@ test("loanword typing keeps Roman keys editable across dictionary and longer-wor
   assert.equal(field.value, "चमेर्");
   assert.equal(controller.getState().activeRoman, "camer");
   type("ako");
-  assert.equal(field.value, "चमेरको");
+  assert.equal(field.value, "क्यामेराको");
   assert.equal(controller.getState().activeRoman, "camerako");
   beforeInput("deleteContentBackward");
   beforeInput("deleteContentBackward");

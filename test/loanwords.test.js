@@ -92,8 +92,8 @@ for (const [roman, expected] of loanwords) {
   test(`${roman} converts directly to its listed Nepali loanword spelling`, () => {
     assert.deepEqual(convertWord(roman), {
       text: expected,
-      candidates: [expected],
-      ambiguous: false,
+      candidates: roman === 'school' ? ['स्कुल', 'स्कूल'] : [expected],
+      ambiguous: roman === 'school',
     });
     assert.equal(convertText(`${roman}.`), `${expected}.`);
   });
@@ -118,11 +118,11 @@ test('loanword lookup ignores incidental capitals while preserving reserved Shif
   }
 });
 
-test('loanword aliases do not match longer keys or invent short English readings', () => {
+test('loanword aliases do not infer unsupported endings or short English readings', () => {
   const unchanged = [
     ['cameraa', 'चमेरा'],
-    ['camerako', 'चमेरको'],
-    ['schoolma', 'स्चूल्म'],
+    ['camerakoala', 'चमेरकोअल'],
+    ['schoolmaharu', 'स्चूल्महरु'],
     ['phail', 'फैल्'],
     ['fail', 'फैल्'],
     ['pan', 'पन्'],

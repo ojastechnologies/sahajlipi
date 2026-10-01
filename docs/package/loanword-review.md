@@ -1,6 +1,6 @@
 # English loanword preferences and review — 2026-09-27
 
-**Historical pilot record.** The [2026-09-28 expansion](loanword-expansion-2026-09-28.md) adds 30 more keys, bringing the current built-in total to 50. The counts and pending statuses below describe the original pilot at its publication date.
+**Historical pilot record.** The [2026-09-28 expansion](loanword-expansion-2026-09-28.md) adds 30 more keys. The later [2026-10-01 suffix update](loanword-suffixes-2026-10-01.md) adds the 51st stem, finite attached forms and the school alternative. Counts and pending statuses below describe the original pilot at its publication date.
 
 The package automatically converts the 20 English spellings below to their listed Nepali loanword forms. Live input uses them while Nepali mode is enabled; `convertWord` and `convertText` also use them. The user authorized these **source-assisted project preferences for implementation**. They are not independently human-reviewed corpus labels or a claim of universally correct spelling.
 

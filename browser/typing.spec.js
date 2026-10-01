@@ -342,3 +342,35 @@ test('digit configuration and English exclusions apply consistently to typing an
   await page.keyboard.type(' 456');
   await expect(demoField).toHaveValue('१२३ 456');
 });
+
+test('real keyboard converts reviewed loanword suffixes and selects a spelling before an address cue', async ({ page }) => {
+  const field = await demo(page);
+  await page.keyboard.type('companyharumathi mediasanga.');
+  await expect(field).toHaveValue('कम्पनीहरूमाथि मिडियासँग.');
+  await clearDemo(page);
+  await page.keyboard.type('schoolma');
+  await expect(field).toHaveValue('स्कुलमा');
+  await expect(page.locator('#candidate-select option')).toHaveText(['स्कुलमा', 'स्कूलमा']);
+  await page.locator('#candidate-select').selectOption('1');
+  await expect(field).toHaveValue('स्कूलमा');
+  await page.keyboard.type('.c');
+  await expect(field).toHaveValue('schoolma.c');
+  await page.keyboard.press('Backspace');
+  // Removing a technical cue resumes the preferred reading, as for existing words.
+  await expect(field).toHaveValue('स्कुलमा.');
+  await page.keyboard.press('Control+z');
+  await expect(field).toHaveValue('schoolma.c');
+});
+
+test('loanword suffix editing preserves its Roman source and English mode keeps later input literal', async ({ page }) => {
+  const field = await demo(page);
+  await page.keyboard.type('companyharumathi');
+  await expect(field).toHaveValue('कम्पनीहरूमाथि');
+  for (let index = 0; index < 5; index++) await page.keyboard.press('Backspace');
+  await expect(field).toHaveValue('कम्पनीहरू');
+  await page.keyboard.type('mathi');
+  await expect(field).toHaveValue('कम्पनीहरूमाथि');
+  await page.locator('#mode-button').click();
+  await page.keyboard.type(' schoolma mediasanga');
+  await expect(field).toHaveValue('कम्पनीहरूमाथि schoolma mediasanga');
+});

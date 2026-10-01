@@ -1,5 +1,7 @@
 # Source-assisted development review — 2026-10-01
 
+**Follow-up:** the [loanword suffix update](loanword-suffixes-2026-10-01.md) measures a later engine against these unchanged references. The baseline and decisions below remain the original review record.
+
 The maintainer delegated completion of the [100-case development batch](review-batch.md) to a source-assisted review. **86 cases now have frozen project development references:** 74 words and 12 sentences. Fourteen cases are excluded, and no case remains waiting for the maintainer to identify a word.
 
 These references support choosing and measuring the next engine changes. They are assistant research with maintainer authorization, not two independent human reviews or a representative held-out accuracy corpus. The original cases and earlier dated reports remain intact. No conversion rule changes in this review.

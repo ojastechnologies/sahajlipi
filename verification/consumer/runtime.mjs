@@ -11,6 +11,9 @@ assert.equal(typeof dom.attachNepaliInputs, 'function');
 assert.deepEqual(core.convertWord('cha'), { text: 'च', candidates: ['च', 'छ'], ambiguous: true });
 assert.deepEqual(core.convertWord(''), { text: '', candidates: [], ambiguous: false });
 assert.equal(core.convertWord('paryo').text, 'पर्\u200dयो');
+assert.equal(core.convertWord('companyharumathi').text, 'कम्पनीहरूमाथि');
+assert.deepEqual(core.convertWord('schoolma'), { text: 'स्कुलमा', candidates: ['स्कुलमा', 'स्कूलमा'], ambiguous: true });
+assert.equal(core.convertText('mediasanga company@school.com https://media.com'), 'मिडियासँग company@school.com https://media.com');
 assert.equal(core.convertText('paani 123 test99@example.com https://example.com/456 |'),
   'पानी १२३ test99@example.com https://example.com/456 ।');
 assert.equal(core.createEngine({ digits: 'latin' }).convertText('paani 3.14'), 'पानी 3.14');

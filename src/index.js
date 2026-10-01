@@ -1,4 +1,5 @@
 import { starterEntries } from './lexicon.js';
+import { loanwordReadings } from './loanwords.js';
 import { normalizeRoman, phoneticWord } from './phonetic.js';
 import { findProtectedSpans } from './text-policy.js';
 
@@ -50,7 +51,7 @@ export function createEngine({ entries = {}, preserveTechnicalText = true, digit
     // Normalization keeps only capitals that select a distinct sound.
     // An explicitly cased entry can still override that sound.
     if (exact || /[TDSRH]/.test(normalized)) return exact;
-    return dictionary.get(normalized.toLowerCase());
+    return dictionary.get(normalized.toLowerCase()) ?? loanwordReadings(normalized.toLowerCase(), dictionary);
   }
 
   function convertWord(roman) {
