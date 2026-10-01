@@ -15,6 +15,14 @@ The first command prints results and exits successfully even when a contract cas
 
 The dependency-free runner is [benchmark/run.js](../../benchmark/run.js). Its UTF-8, one-JSON-object-per-line fixtures are in [benchmark/cases.jsonl](../../benchmark/cases.jsonl). You can inspect a different fixture file with `node benchmark/run.js --fixtures path/to/cases.jsonl`; add `--check` if its contract cases should gate the command.
 
+## Native spelling follow-up — 2026-10-01
+
+The [four-word spelling review](nepali-spelling-2026-10-01.md) adds exact preferences for `halyo`, `nabhani`, `gaunle` and `dindaina`. The final fixture has **142 contracts and two exploratory cases**, with all 139 prior rows byte-for-byte unchanged. Five additions cover the four words and one synthetic text integration guard. On the same final fixture, full contracts score **137/142 → 142/142**; both engines still pass the historical **137/137** contracts.
+
+Against unchanged development references, word defaults improve **11/74 → 15/74** and individual reference candidates **12/79 → 16/79**. Complete reviewed sentences remain **0/12**. A separately frozen 11-word conformance sample with assistant-constructed Roman keys scores **11/11 on both engines**. Its words were selected after design from one institutional source; it is not independent human or representative natural-typing evaluation.
+
+The [machine report](../../benchmark/reports/nepali-spelling-2026-10-01.json) pins engine, tool, fixture and source-ledger hashes, admits no new human-reviewed labels, and preserves every old reference and exclusion. The [dated reproduction instructions](nepali-spelling-2026-10-01.md#reproduce) compare archived sources on those same data. Earlier dated reports remain unchanged.
+
 ## Loanword suffix follow-up — 2026-10-01
 
 The [dated suffix review and comparison](loanword-suffixes-2026-10-01.md#recorded-comparison) adds four selected contracts for `companyharumathi`, `schoolma`, `mediasanga` and text beside protected addresses. It also declares two intentional revisions to earlier fallback targets: `bankma` → बैंकमा and `fileharu` → फाइलहरू. IDs, inputs and statuses remain stable; provenance records the revisions. The other 133 of 135 historical rows remain byte-for-byte identical.

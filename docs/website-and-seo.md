@@ -1,6 +1,6 @@
 # Package website and discoverability
 
-SahajLipi has three separate surfaces: the package website introduces the library, the documentation explains the reusable package, and the demo lets people try it. The generated site brings them together under `https://ojastechnologies.github.io/sahajlipi/`. Website deployment does not publish the package to npm; the prototype remains private and unpublished.
+SahajLipi has three separate surfaces: the package website introduces the library, the documentation explains the reusable package, and the demo lets people try it. The generated site brings them together under `https://ojastechnologies.github.io/sahajlipi/`. Website deployment is separate from npm publication. Package metadata is prepared for the public `0.1.0-alpha.1` candidate (`private: false`, `alpha` tag), but registry publication and verification remain pending. Use the [release record](release.md) for actual distribution status.
 
 ## Pages and content ownership
 

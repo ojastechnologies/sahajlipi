@@ -21,6 +21,8 @@ Browse the [package website](https://ojastechnologies.github.io/sahajlipi/) for 
 | [Developer consumer browser record](../browser/reports/desktop-003.json) | Inspect the later 51-check run, installed-package identity, and uncontrolled React lifecycle scope. |
 | [Digit desktop browser record](../browser/reports/desktop-002.json) | Inspect the later 42-check digit/configuration run, source identities, named flows, and limits. |
 | [Desktop browser run record](../browser/reports/desktop-001.json) | Inspect the dated desktop-engine results, test names, source hashes, environment, and scope limits. |
+| [Reviewed native spelling update](package/nepali-spelling-2026-10-01.md) | Four exact aliases, direct spelling evidence, frozen validation and unchanged-reference comparisons. |
+| [Loanword suffix update](package/loanword-suffixes-2026-10-01.md) | Finite suffix rules, inherited readings, source evidence and dated comparisons. |
 | [Seed benchmark](package/benchmarks.md) | Run behavior checks; inspect the recorded baseline, scoring rules, and exclusions. |
 | [Digit rendering record](package/digits-benchmarks.md) | Reproduce the revised default-digit contracts and separate historical Latin compatibility result. |
 | [Mixed-text and early-address records](package/mixed-text-benchmarks.md) | Reproduce dated address-preservation comparisons with frozen fixtures, engine identities, and scope limits. |
@@ -28,12 +30,12 @@ Browse the [package website](https://ojastechnologies.github.io/sahajlipi/) for 
 | [Development review guide](package/review-batch.md) | Generate the 100-case development batch and record independent Nepali-language decisions. |
 | [Development batch report](package/review-batch-baseline.md) | Inspect dated source-proposal agreement and diagnostic signals, with review limitations. |
 | [Run manifest](../benchmark/reports/nepali-review-001.json) | Verify source pins, selected IDs, engine/tool hashes, and artifact hashes for the recorded development run. |
-| [Completed source-assisted review](package/source-review-2026-10-01.md) | Frozen development references, exclusions, spelling evidence and current exact-output baseline. |
+| [Completed source-assisted review](package/source-review-2026-10-01.md) | Frozen development references, exclusions, spelling evidence and the original exact-output baseline. |
 | [Source-assisted online review](package/assisted-online-review.md) | Inspect 100 draft recommendations, evidence scope, source links and pending human review. |
 | [Source-assisted review records](../benchmark/reports/nepali-assisted-online-001.json) | Read the public per-case projection, attribution and research hashes; complete sentence texts are omitted. |
 | [Ra-ya review and changes](package/ry-review.md) | Inspect exact word preferences, Shift lookup, before/after results and source-quality triage. |
 | [Loanword coverage audit](package/loanword-coverage-audit.md) | Review the `company` gap, pending catalogue, source-backed candidates, and evidence needed for broader loanword support. |
-| [Loanword expansion review](package/loanword-expansion-2026-09-28.md) | See the 30 later exact-word defaults, source scopes, held candidates, and current coverage limits. |
+| [Loanword expansion review](package/loanword-expansion-2026-09-28.md) | See the 30 later exact-word defaults, source scopes, held candidates and dated coverage limits. |
 | [Ra-ya machine report](../benchmark/reports/nepali-ry-001.json) | Verify exact engine/fixture hashes, recorded checks and evidence limits. |
 
 The repository [Evaluation status](../README.md#evaluation-status) summarizes dated baselines. The linked reports provide the evidence and limits behind each result. Unreviewed proposal agreement is not a language-accuracy score.
@@ -52,7 +54,7 @@ The demo is one consumer of the package. Its Copy and Clear buttons, character c
 | Read | For |
 | --- | --- |
 | [Release policy](release.md) | Compatibility, versioning, migration, and the alpha release checklist. |
-| [Changelog](../CHANGELOG.md) | Unreleased changes and future published-version notes. |
+| [Changelog](../CHANGELOG.md) | Unpublished alpha candidate contents and verified release notes. |
 | [Development guide](development.md) | Repository workflow, tests, CI, and release readiness. |
 | [Status and roadmap](status-and-roadmap.md) | Current capabilities, limits, and priorities. |
 | [Website and SEO](website-and-seo.md) | Markdown site builds, metadata, sitemap, publishing, and discoverability limits. |

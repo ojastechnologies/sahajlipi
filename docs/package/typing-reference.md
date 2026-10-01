@@ -110,6 +110,21 @@ These entries match whole words; they do not infer stems, suffixes, or compound 
 
 Online usage supports the listed Nepali spellings: [नेपाल कानून पत्रिका uses गर्‍यो](https://nkp.gov.np/full_detail/9337) and [मर्‍यो and मार्‍यो](https://nkp.gov.np/full_detail/9028); [Nagarik uses भर्‍यो](https://nagariknews.nagariknetwork.com/opinion/171387-1550462880.html), [Nepal magazine uses तर्‍यो](https://nepalmag.com.np/feeling/2017/01/23/20170123180759), and [Gorkhapatra uses सर्‍यो](https://gorkhapatraonline.com/news/64479). The [District Administration Office, Parsa uses पुर्‍याउनु in a notice heading](https://daoparsa.moha.gov.np/en/post/saraka-ra-jaga-ga-pa-ra-pa-ta-gara-tha-pa-ra-ya-una-para-na-va-thha-pa-raka-ya), and [नेपाल कानून पत्रिका uses भर्‍याङ](https://nkp.gov.np/full_detail/9853). These are assisted checks of published spellings, not independent human verification of the Roman mappings; that review remains pending. The [dated review and benchmark report](ry-review.md) records these decisions, checks, remaining ambiguities, and limitations.
 
+## Reviewed native-word spellings
+
+Four common informal spellings have exact starter entries:
+
+| Roman key | Preferred output |
+| --- | --- |
+| `halyo` | हाल्यो |
+| `nabhani` | नभनी |
+| `gaunle` | गाउँले |
+| `dindaina` | दिँदैन |
+
+Each currently has one reading. These completed keys supply the source-reviewed vowel or nasal spelling. They do not change the fallback: `pani` and `paani` remain distinct, `ki` and `kii` retain their vowel lengths, and an unvoweled consonant stays half. Explicit `^` / `~` still choose bindu / chandrabindu; Shift keys keep their explicit sounds.
+
+Only the complete normalized key matches. Incidental title case such as `Halyo` works; reserved sound capitals inside an input keep their phonetic meaning unless an exact custom entry exists. Attached native forms and misspellings are not inferred from these aliases. Developers can replace a complete key’s readings with `createEngine({ entries })`. The [dated spelling review](nepali-spelling-2026-10-01.md) explains sources, choices, validation and limits.
+
 ## English-spelling loanwords
 
 These 51 listed stems automatically use the Nepali loanword forms below. The browser adapters apply them in Nepali mode, and the core conversion functions use them directly. `school` keeps **स्कुल** first and adds **स्कूल** as an alternative; other built-in loanword stems currently have one reading. The [suffix review](loanword-suffixes-2026-10-01.md) records the new `media` key, school alternatives and finite attached forms. These are source-assisted project preferences, with independent human linguistic review pending. The [original pilot](loanword-review.md) and [earlier expansion](loanword-expansion-2026-09-28.md) retain their dated counts and evidence.

@@ -25,7 +25,7 @@ Replace `YOUR_LAN_IP` with that address, then open `http://YOUR_LAN_IP:4173/saha
 
 ## Use the page
 
-- **Type in the editor.** Roman letters turn into Nepali in the same textarea. Space commits the displayed word; Backspace can edit the active Roman spelling. The on-page **How to type** guide shows examples for vowels, half consonants, `cha`/`chha`, the two र्य/र्‍य forms, listed word shortcuts, English loanwords and their supported suffixes, full English month names, Shift sounds, marks, digits, punctuation, mixed text, and alternatives. The [package typing reference](../package/typing-reference.md) documents the complete rules and the scope of those word entries.
+- **Type in the editor.** Roman letters turn into Nepali in the same textarea. Space commits the displayed word; Backspace can edit the active Roman spelling. The on-page **How to type** guide shows examples for vowels, half consonants, `cha`/`chha`, the two र्य/र्‍य forms, listed word shortcuts, four reviewed native spellings, English loanwords and their supported suffixes, full English month names, Shift sounds, marks, digits, punctuation, mixed text, and alternatives. The [package typing reference](../package/typing-reference.md) documents the complete rules and the scope of those word entries.
 - **Choose a reading.** When the active spelling has multiple listed readings, a dropdown appears below the textarea. The first reading is displayed by default. Choose another from the dropdown or press `Alt` + a number from `1` through `9` while the word is active.
 - **Switch mode.** The button shows **Nepali mode** when conversion is on and **English mode** when input is literal. It controls subsequent typing and paste in every marked field on this page: the main editor and the three form examples. Existing text stays as it is when you switch modes.
 - **Try form fields.** The two marked text fields and marked search field below the editor use the same conversion setup. The mixed-text field lets you try Nepali beside a link or email address. The unmarked text and email fields stay in English. The alternatives dropdown and character count belong to the main editor; in the form fields, `Alt` + a number can select an available alternative.
@@ -38,6 +38,12 @@ The fields keep text and their undo snapshots in browser memory while the page i
 ### च and छ
 
 `cha` displays **च** first and offers **छ** in the readings dropdown. Use `chha` for **छ** directly. Without a vowel, `ch` stays **च्** and `chh` stays **छ्**. Listed complete words can keep their own spelling: `huncha` still gives **हुन्छ**. The other consonants, vowel lengths, and Shift sound keys keep their existing behavior.
+
+### Reviewed native-word spellings
+
+Try `halyo` → **हाल्यो**, `nabhani` → **नभनी**, `gaunle` → **गाउँले** and `dindaina` → **दिँदैन**. Each completed spelling currently has one reading. These exact aliases supply the reviewed vowel or nasal form; they do not change the ordinary key rules or infer attached native words. An unfinished or unlisted spelling can still use the phonetic fallback.
+
+The [package spelling review](../package/nepali-spelling-2026-10-01.md) records sources, decisions and measurement. The demo uses the same engine, and English mode keeps these keys literal.
 
 ### English loanwords
 

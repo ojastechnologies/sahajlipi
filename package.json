@@ -1,9 +1,9 @@
 {
   "name": "sahajlipi",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.0-alpha.1",
+  "private": false,
   "type": "module",
-  "description": "Dependency-free Roman Nepali to Unicode typing prototype",
+  "description": "Dependency-free Roman Nepali to Unicode typing engine and browser input adapters",
   "exports": {
     ".": {
       "types": "./src/index.d.ts",
@@ -62,5 +62,24 @@
     "LICENSE",
     "LICENSES/",
     "NOTICE"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "tag": "alpha",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "author": {
+    "name": "Mahesh Nepal",
+    "url": "https://github.com/manepal"
+  },
+  "keywords": [
+    "nepali",
+    "nepali-typing",
+    "roman-nepali",
+    "transliteration",
+    "devanagari",
+    "unicode",
+    "keyboard",
+    "input-method"
   ]
 }

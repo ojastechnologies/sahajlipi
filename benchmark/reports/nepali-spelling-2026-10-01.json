@@ -1,0 +1,957 @@
+{
+  "schemaVersion": 1,
+  "reportId": "nepali-spelling-2026-10-01",
+  "recordedAt": "2026-10-01T15:35:53.620Z",
+  "purpose": "Exact conformance to four reviewed native spelling aliases and one synthetic text integration contract, with descriptive comparison against frozen source-assisted development references",
+  "baseline": {
+    "gitCommit": "cbcd77aae14e1845567e416c29f05658e0fe8e62",
+    "snapshotMethod": "git archive of immutable src/, package.json and required benchmark files; test directories excluded",
+    "sourceFileSha256": {
+      "src/dom.d.ts": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1",
+      "src/dom.js": "6e84385a02ec7a79b8550de417b701b23ea3c3b36ab46e6408f1c7dfa7c233b2",
+      "src/index.d.ts": "48be479797841978cabab3ba96fe9b77caa8c814238866908aa515619ab7cd17",
+      "src/index.js": "315f43b424c19d1e2197d78414a618e59865cf4171255e72f1c6db90b5fb74f4",
+      "src/lexicon.js": "27792c7626f6982750101f903030f2866b0338e3b37780dcc4df1b4486f4eb79",
+      "src/loanwords.js": "aa74e688d3b77980b5ee7e9fb89ce2c0a61fd27568d3230048bef91a8379e446",
+      "src/phonetic.js": "dec43061ce47d8456092b661a4b1ea7b5d366d2c7969a4f2b6f3b1b0c20ff1ff",
+      "src/text-policy.js": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa"
+    }
+  },
+  "after": {
+    "identity": "Native spelling implementation measured from this checkout; all src files pinned by hashes. Publishing metadata changes in package.json do not define or invalidate this core source identity.",
+    "sourceFileSha256": {
+      "src/dom.d.ts": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1",
+      "src/dom.js": "6e84385a02ec7a79b8550de417b701b23ea3c3b36ab46e6408f1c7dfa7c233b2",
+      "src/index.d.ts": "48be479797841978cabab3ba96fe9b77caa8c814238866908aa515619ab7cd17",
+      "src/index.js": "315f43b424c19d1e2197d78414a618e59865cf4171255e72f1c6db90b5fb74f4",
+      "src/lexicon.js": "e325edef9cd9e2ebef42700ef9aeb6033b130e9a7c459b407820c31297d9448d",
+      "src/loanwords.js": "aa74e688d3b77980b5ee7e9fb89ce2c0a61fd27568d3230048bef91a8379e446",
+      "src/phonetic.js": "dec43061ce47d8456092b661a4b1ea7b5d366d2c7969a4f2b6f3b1b0c20ff1ff",
+      "src/text-policy.js": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa"
+    }
+  },
+  "environment": {
+    "nodeVersion": "v22.22.3",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "25.6.0"
+  },
+  "options": {
+    "digits": "devanagari",
+    "preserveTechnicalText": true,
+    "entries": "starter defaults"
+  },
+  "implementationScope": {
+    "changedRuntimeSourceFiles": [
+      "src/lexicon.js"
+    ],
+    "addedEntries": {
+      "halyo": [
+        "हाल्यो"
+      ],
+      "nabhani": [
+        "नभनी"
+      ],
+      "gaunle": [
+        "गाउँले"
+      ],
+      "dindaina": [
+        "दिँदैन"
+      ]
+    },
+    "priorEntryCount": 160,
+    "afterEntryCount": 164,
+    "allPriorReadingArraysPreserved": true,
+    "allOtherSrcFilesByteIdentical": true,
+    "publishingMetadataOutsideCoreIdentity": true
+  },
+  "linguisticValidation": {
+    "path": "benchmark/reports/nepali-spelling-research-2026-10-01.json",
+    "sha256": "b59d158212030c44a8ed8fa03bf3bd867eafba43d1867a9892b60d8748558099",
+    "reviewedAt": "2026-10-01",
+    "recordedAtUTC": "2026-10-01T15:32:05Z",
+    "reviewKind": "source-assisted-project-spelling-preferences",
+    "humanVerified": false,
+    "independentHumanReview": false,
+    "targetCount": 4,
+    "sourceCount": 5,
+    "scope": "Four existing frozen development word references rechecked against primary Nepali institutional usage, plus a separately frozen small after-design constructed phonetic control sample. No engine outcomes inspected while freezing that new sample."
+  },
+  "constructedValidation": {
+    "purpose": "after-design-selected-phonetic-conformance-controls",
+    "frozenAtUTC": "2026-10-01T15:32:05Z",
+    "frozenControlFileSha256": "e72bc806b0ad378db6d0879d67fe86c9e35a5b6bd368583b515fb9304da3c048",
+    "controlsEmbeddedInPinnedResearchLedger": true,
+    "humanVerified": false,
+    "independentHumanReview": false,
+    "independentHeldOutAccuracy": false,
+    "constructedRomanKeys": true,
+    "populationRepresentative": false,
+    "scope": "A convenience sample of 11 short source-attested word forms with constructed Roman keys. Inputs exclude baseline lexicon keys, the old reviewed word-input keys and the four target root strings. Source selection and Roman construction use known project typing rules; this is selected after-design conformance validation, not blind or representative natural-typing accuracy. No reference or core changes are authorized in response to its outcomes.",
+    "before": {
+      "passed": 11,
+      "total": 11,
+      "wordTop": 11,
+      "wordTotal": 11,
+      "candidateHits": 11,
+      "candidateTotal": 11,
+      "textTop": 0,
+      "textTotal": 0,
+      "mismatchCaseIds": []
+    },
+    "after": {
+      "passed": 11,
+      "total": 11,
+      "wordTop": 11,
+      "wordTotal": 11,
+      "candidateHits": 11,
+      "candidateTotal": 11,
+      "textTop": 0,
+      "textTotal": 0,
+      "mismatchCaseIds": []
+    },
+    "caseResults": [
+      {
+        "id": "native-control-01",
+        "input": "paata",
+        "referenceOutputs": [
+          "पात"
+        ],
+        "control": "long-aa and explicit final a",
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 315",
+        "before": {
+          "actualTop": "पात",
+          "actualCandidates": [
+            "पात"
+          ],
+          "pass": true
+        },
+        "after": {
+          "actualTop": "पात",
+          "actualCandidates": [
+            "पात"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "native-control-02",
+        "input": "phuula",
+        "referenceOutputs": [
+          "फूल"
+        ],
+        "control": "long-uu and explicit final a",
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 318",
+        "before": {
+          "actualTop": "फूल",
+          "actualCandidates": [
+            "फूल"
+          ],
+          "pass": true
+        },
+        "after": {
+          "actualTop": "फूल",
+          "actualCandidates": [
+            "फूल"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "native-control-03",
+        "input": "maaTo",
+        "referenceOutputs": [
+          "माटो"
+        ],
+        "control": "long-aa and reserved retroflex T",
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 344",
+        "before": {
+          "actualTop": "माटो",
+          "actualCandidates": [
+            "माटो"
+          ],
+          "pass": true
+        },
+        "after": {
+          "actualTop": "माटो",
+          "actualCandidates": [
+            "माटो"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "native-control-04",
+        "input": "jaraa",
+        "referenceOutputs": [
+          "जरा"
+        ],
+        "control": "long-aa ending",
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 460",
+        "before": {
+          "actualTop": "जरा",
+          "actualCandidates": [
+            "जरा"
+          ],
+          "pass": true
+        },
+        "after": {
+          "actualTop": "जरा",
+          "actualCandidates": [
+            "जरा"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "native-control-05",
+        "input": "phala",
+        "referenceOutputs": [
+          "फल"
+        ],
+        "control": "short vowels and explicit final a",
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 318",
+        "before": {
+          "actualTop": "फल",
+          "actualCandidates": [
+            "फल"
+          ],
+          "pass": true
+        },
+        "after": {
+          "actualTop": "फल",
+          "actualCandidates": [
+            "फल"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "native-control-06",
+        "input": "mala",
+        "referenceOutputs": [
+          "मल"
+        ],
+        "control": "short vowels and explicit final a",
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 240",
+        "before": {
+          "actualTop": "मल",
+          "actualCandidates": [
+            "मल"
+          ],
+          "pass": true
+        },
+        "after": {
+          "actualTop": "मल",
+          "actualCandidates": [
+            "मल"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "native-control-07",
+        "input": "daanaa",
+        "referenceOutputs": [
+          "दाना"
+        ],
+        "control": "two long-aa vowels",
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 328",
+        "before": {
+          "actualTop": "दाना",
+          "actualCandidates": [
+            "दाना"
+          ],
+          "pass": true
+        },
+        "after": {
+          "actualTop": "दाना",
+          "actualCandidates": [
+            "दाना"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "native-control-08",
+        "input": "dhaanako",
+        "referenceOutputs": [
+          "धानको"
+        ],
+        "control": "fully encoded native genitive spelling without a loanword root rule",
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 338",
+        "before": {
+          "actualTop": "धानको",
+          "actualCandidates": [
+            "धानको"
+          ],
+          "pass": true
+        },
+        "after": {
+          "actualTop": "धानको",
+          "actualCandidates": [
+            "धानको"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "native-control-09",
+        "input": "haa~gaa",
+        "referenceOutputs": [
+          "हाँगा"
+        ],
+        "control": "explicit chandrabindu after a fully supplied vowel",
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 388",
+        "before": {
+          "actualTop": "हाँगा",
+          "actualCandidates": [
+            "हाँगा"
+          ],
+          "pass": true
+        },
+        "after": {
+          "actualTop": "हाँगा",
+          "actualCandidates": [
+            "हाँगा"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "native-control-10",
+        "input": "boTa",
+        "referenceOutputs": [
+          "बोट"
+        ],
+        "control": "reserved retroflex T and explicit final a",
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 373",
+        "before": {
+          "actualTop": "बोट",
+          "actualCandidates": [
+            "बोट"
+          ],
+          "pass": true
+        },
+        "after": {
+          "actualTop": "बोट",
+          "actualCandidates": [
+            "बोट"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "native-control-11",
+        "input": "chiso",
+        "referenceOutputs": [
+          "चिसो"
+        ],
+        "control": "ordinary ch and short-i spelling",
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 344",
+        "before": {
+          "actualTop": "चिसो",
+          "actualCandidates": [
+            "चिसो"
+          ],
+          "pass": true
+        },
+        "after": {
+          "actualTop": "चिसो",
+          "actualCandidates": [
+            "चिसो"
+          ],
+          "pass": true
+        }
+      }
+    ]
+  },
+  "fixture": {
+    "path": "benchmark/cases.jsonl",
+    "sha256": "89fb755dcbdce6c44e310120445d52faf31b0cfb6f82d72a4f2f38027aa2bcec",
+    "total": 144,
+    "contractCount": 142,
+    "exploratoryCount": 2,
+    "priorFixtureSha256": "fde07b59211831c3b8a6c05ebc5a3f1dc6148d0d34b259141932239e9562d0b4",
+    "priorRowCount": 139,
+    "priorByteIdenticalRowCount": 139,
+    "priorBytesPreserved": true,
+    "newCaseIds": [
+      "native-spelling-halyo",
+      "native-spelling-nabhani",
+      "native-spelling-gaunle",
+      "native-spelling-dindaina",
+      "native-spelling-text-boundaries"
+    ]
+  },
+  "finalContract": {
+    "before": {
+      "passed": 137,
+      "total": 142,
+      "wordTop": 106,
+      "wordTotal": 110,
+      "candidateHits": 109,
+      "candidateTotal": 113,
+      "textTop": 31,
+      "textTotal": 32,
+      "mismatchCaseIds": [
+        "native-spelling-halyo",
+        "native-spelling-nabhani",
+        "native-spelling-gaunle",
+        "native-spelling-dindaina",
+        "native-spelling-text-boundaries"
+      ]
+    },
+    "after": {
+      "passed": 142,
+      "total": 142,
+      "wordTop": 110,
+      "wordTotal": 110,
+      "candidateHits": 113,
+      "candidateTotal": 113,
+      "textTop": 32,
+      "textTotal": 32,
+      "mismatchCaseIds": []
+    }
+  },
+  "historicalContract": {
+    "before": {
+      "passed": 137,
+      "total": 137,
+      "wordTop": 106,
+      "wordTotal": 106,
+      "candidateHits": 109,
+      "candidateTotal": 109,
+      "textTop": 31,
+      "textTotal": 31,
+      "mismatchCaseIds": []
+    },
+    "after": {
+      "passed": 137,
+      "total": 137,
+      "wordTop": 106,
+      "wordTotal": 106,
+      "candidateHits": 109,
+      "candidateTotal": 109,
+      "textTop": 31,
+      "textTotal": 31,
+      "mismatchCaseIds": []
+    }
+  },
+  "addedSpellingContract": {
+    "before": {
+      "passed": 0,
+      "total": 5,
+      "wordTop": 0,
+      "wordTotal": 4,
+      "candidateHits": 0,
+      "candidateTotal": 4,
+      "textTop": 0,
+      "textTotal": 1,
+      "mismatchCaseIds": [
+        "native-spelling-halyo",
+        "native-spelling-nabhani",
+        "native-spelling-gaunle",
+        "native-spelling-dindaina",
+        "native-spelling-text-boundaries"
+      ]
+    },
+    "after": {
+      "passed": 5,
+      "total": 5,
+      "wordTop": 4,
+      "wordTotal": 4,
+      "candidateHits": 4,
+      "candidateTotal": 4,
+      "textTop": 1,
+      "textTotal": 1,
+      "mismatchCaseIds": []
+    }
+  },
+  "exploratory": {
+    "before": {
+      "passed": 0,
+      "total": 2,
+      "wordTop": 0,
+      "wordTotal": 2,
+      "candidateHits": 0,
+      "candidateTotal": 2,
+      "textTop": 0,
+      "textTotal": 0,
+      "mismatchCaseIds": [
+        "janchu-proposal",
+        "padhchhu-proposal"
+      ]
+    },
+    "after": {
+      "passed": 0,
+      "total": 2,
+      "wordTop": 0,
+      "wordTotal": 2,
+      "candidateHits": 0,
+      "candidateTotal": 2,
+      "textTop": 0,
+      "textTotal": 0,
+      "mismatchCaseIds": [
+        "janchu-proposal",
+        "padhchhu-proposal"
+      ]
+    },
+    "excludedFromGate": true,
+    "labelsRemainUnreviewed": true
+  },
+  "newCaseResults": [
+    {
+      "id": "native-spelling-halyo",
+      "status": "contract",
+      "mode": "word",
+      "category": "native-spelling",
+      "input": "halyo",
+      "expectedTop": "हाल्यो",
+      "expectedCandidates": [
+        "हाल्यो"
+      ],
+      "provenance": "Literal project spelling preference authorized for development correction 2026-10-01; frozen source-assisted review evidence in benchmark/reports/nepali-source-review-2026-10-01.json. An informal Roman alias with short/omitted vowels or nasal cues maps to this reviewed word; no general vowel/nasal rewrite, independent human verification or held-out accuracy claim.",
+      "before": {
+        "actualTop": "हल्यो",
+        "actualCandidates": [
+          "हल्यो"
+        ],
+        "pass": false
+      },
+      "after": {
+        "actualTop": "हाल्यो",
+        "actualCandidates": [
+          "हाल्यो"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "native-spelling-nabhani",
+      "status": "contract",
+      "mode": "word",
+      "category": "native-spelling",
+      "input": "nabhani",
+      "expectedTop": "नभनी",
+      "expectedCandidates": [
+        "नभनी"
+      ],
+      "provenance": "Literal project spelling preference authorized for development correction 2026-10-01; frozen source-assisted review evidence in benchmark/reports/nepali-source-review-2026-10-01.json. An informal Roman alias with short/omitted vowels or nasal cues maps to this reviewed word; no general vowel/nasal rewrite, independent human verification or held-out accuracy claim.",
+      "before": {
+        "actualTop": "नभनि",
+        "actualCandidates": [
+          "नभनि"
+        ],
+        "pass": false
+      },
+      "after": {
+        "actualTop": "नभनी",
+        "actualCandidates": [
+          "नभनी"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "native-spelling-gaunle",
+      "status": "contract",
+      "mode": "word",
+      "category": "native-spelling",
+      "input": "gaunle",
+      "expectedTop": "गाउँले",
+      "expectedCandidates": [
+        "गाउँले"
+      ],
+      "provenance": "Literal project spelling preference authorized for development correction 2026-10-01; frozen source-assisted review evidence in benchmark/reports/nepali-source-review-2026-10-01.json. An informal Roman alias with short/omitted vowels or nasal cues maps to this reviewed word; no general vowel/nasal rewrite, independent human verification or held-out accuracy claim.",
+      "before": {
+        "actualTop": "गौन्ले",
+        "actualCandidates": [
+          "गौन्ले"
+        ],
+        "pass": false
+      },
+      "after": {
+        "actualTop": "गाउँले",
+        "actualCandidates": [
+          "गाउँले"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "native-spelling-dindaina",
+      "status": "contract",
+      "mode": "word",
+      "category": "native-spelling",
+      "input": "dindaina",
+      "expectedTop": "दिँदैन",
+      "expectedCandidates": [
+        "दिँदैन"
+      ],
+      "provenance": "Literal project spelling preference authorized for development correction 2026-10-01; frozen source-assisted review evidence in benchmark/reports/nepali-source-review-2026-10-01.json. An informal Roman alias with short/omitted vowels or nasal cues maps to this reviewed word; no general vowel/nasal rewrite, independent human verification or held-out accuracy claim.",
+      "before": {
+        "actualTop": "दिन्दैन",
+        "actualCandidates": [
+          "दिन्दैन"
+        ],
+        "pass": false
+      },
+      "after": {
+        "actualTop": "दिँदैन",
+        "actualCandidates": [
+          "दिँदैन"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "native-spelling-text-boundaries",
+      "status": "contract",
+      "mode": "text",
+      "category": "native-spelling-text",
+      "input": "halyo nabhani gaunle dindaina pani paani. user123@example.com https://example.com/path T D S R|",
+      "expectedTop": "हाल्यो नभनी गाउँले दिँदैन पनि पानी. user123@example.com https://example.com/path ट् ड् ष् ऋ।",
+      "provenance": "Synthetic project integration guard for the four reviewed native spelling preferences, pani/paani distinction, period/danda, literal URL/email spans and reserved Shift sounds; no independently reviewed sentence or browser/performance claim.",
+      "before": {
+        "actualTop": "हल्यो नभनि गौन्ले दिन्दैन पनि पानी. user123@example.com https://example.com/path ट् ड् ष् ऋ।",
+        "actualCandidates": null,
+        "pass": false
+      },
+      "after": {
+        "actualTop": "हाल्यो नभनी गाउँले दिँदैन पनि पानी. user123@example.com https://example.com/path ट् ड् ष् ऋ।",
+        "actualCandidates": null,
+        "pass": true
+      }
+    }
+  ],
+  "frozenSourceReview": {
+    "reviewPath": "benchmark/reports/nepali-source-review-2026-10-01.json",
+    "reviewFileSha256": "5d9b36e39481d3f790fed503968f6bc504e71780ba083d8ed214f27ef674d34a",
+    "sourceCasesSha256": "2f92bcf5a16d35b6a31dca052e4e358ffe417b5dcec0e8cc704d17f8acbf23e3",
+    "humanVerified": false,
+    "independentHumanReview": false,
+    "referencePurpose": "development",
+    "before": {
+      "total": 100,
+      "decisions": {
+        "accept": 67,
+        "correct": 19,
+        "exclude": 14,
+        "needs-user": 0
+      },
+      "admittedTotal": 86,
+      "word": {
+        "total": 74,
+        "topMatchesAny": 11,
+        "preferredTotal": 69,
+        "preferredMatches": 9,
+        "candidateMatchesAny": 11,
+        "candidateMatchesAll": 10,
+        "referenceCandidatesMatched": 12,
+        "referenceCandidatesTotal": 79
+      },
+      "text": {
+        "total": 12,
+        "topMatchesAny": 0,
+        "preferredTotal": 12,
+        "preferredMatches": 0
+      }
+    },
+    "after": {
+      "total": 100,
+      "decisions": {
+        "accept": 67,
+        "correct": 19,
+        "exclude": 14,
+        "needs-user": 0
+      },
+      "admittedTotal": 86,
+      "word": {
+        "total": 74,
+        "topMatchesAny": 15,
+        "preferredTotal": 69,
+        "preferredMatches": 13,
+        "candidateMatchesAny": 15,
+        "candidateMatchesAll": 14,
+        "referenceCandidatesMatched": 16,
+        "referenceCandidatesTotal": 79
+      },
+      "text": {
+        "total": 12,
+        "topMatchesAny": 0,
+        "preferredTotal": 12,
+        "preferredMatches": 0
+      }
+    },
+    "changedCaseResults": [
+      {
+        "id": "word-validation:nep295",
+        "mode": "word",
+        "before": {
+          "id": "word-validation:nep295",
+          "mode": "word",
+          "decision": "accept",
+          "evaluated": true,
+          "roman": "nabhani",
+          "proposedOutput": "नभनी",
+          "references": [
+            "नभनी"
+          ],
+          "preferredReferenceIndex": 0,
+          "actualTop": "नभनि",
+          "actualTopSha256": "28f3100f84ce89151a848fad3cdd7ff5fbf57c5eb85a463e81361ab12f06a42f",
+          "candidates": [
+            "नभनि"
+          ],
+          "topMatchesAny": false,
+          "preferredMatch": false,
+          "referenceCandidatesMatched": 0
+        },
+        "after": {
+          "id": "word-validation:nep295",
+          "mode": "word",
+          "decision": "accept",
+          "evaluated": true,
+          "roman": "nabhani",
+          "proposedOutput": "नभनी",
+          "references": [
+            "नभनी"
+          ],
+          "preferredReferenceIndex": 0,
+          "actualTop": "नभनी",
+          "actualTopSha256": "5cf2ddea0d39f54e498e84424f0c56b79bfcb270bd9e2c02bb7c1c79a764ca8c",
+          "candidates": [
+            "नभनी"
+          ],
+          "topMatchesAny": true,
+          "preferredMatch": true,
+          "referenceCandidatesMatched": 1
+        }
+      },
+      {
+        "id": "word-validation:nep663",
+        "mode": "word",
+        "before": {
+          "id": "word-validation:nep663",
+          "mode": "word",
+          "decision": "accept",
+          "evaluated": true,
+          "roman": "gaunle",
+          "proposedOutput": "गाउँले",
+          "references": [
+            "गाउँले"
+          ],
+          "preferredReferenceIndex": 0,
+          "actualTop": "गौन्ले",
+          "actualTopSha256": "90d6e3403a85eab8f67bc1d339c7e6bbb4fdae7d8e05ff81620338f81d50241e",
+          "candidates": [
+            "गौन्ले"
+          ],
+          "topMatchesAny": false,
+          "preferredMatch": false,
+          "referenceCandidatesMatched": 0
+        },
+        "after": {
+          "id": "word-validation:nep663",
+          "mode": "word",
+          "decision": "accept",
+          "evaluated": true,
+          "roman": "gaunle",
+          "proposedOutput": "गाउँले",
+          "references": [
+            "गाउँले"
+          ],
+          "preferredReferenceIndex": 0,
+          "actualTop": "गाउँले",
+          "actualTopSha256": "2878dc7e5fbc04b52e12c1504bf61718b25e2af2a38e4f50cfa218bd15885cab",
+          "candidates": [
+            "गाउँले"
+          ],
+          "topMatchesAny": true,
+          "preferredMatch": true,
+          "referenceCandidatesMatched": 1
+        }
+      },
+      {
+        "id": "word-validation:nep344",
+        "mode": "word",
+        "before": {
+          "id": "word-validation:nep344",
+          "mode": "word",
+          "decision": "accept",
+          "evaluated": true,
+          "roman": "halyo",
+          "proposedOutput": "हाल्यो",
+          "references": [
+            "हाल्यो"
+          ],
+          "preferredReferenceIndex": 0,
+          "actualTop": "हल्यो",
+          "actualTopSha256": "cb5b7ff8309f70bc16c63a85f379e6c96b9c5924ef6d14e4df5b18105aa424d6",
+          "candidates": [
+            "हल्यो"
+          ],
+          "topMatchesAny": false,
+          "preferredMatch": false,
+          "referenceCandidatesMatched": 0
+        },
+        "after": {
+          "id": "word-validation:nep344",
+          "mode": "word",
+          "decision": "accept",
+          "evaluated": true,
+          "roman": "halyo",
+          "proposedOutput": "हाल्यो",
+          "references": [
+            "हाल्यो"
+          ],
+          "preferredReferenceIndex": 0,
+          "actualTop": "हाल्यो",
+          "actualTopSha256": "09cca5190880417c718ecf9112fee1a4d39e634e0d69f16554c8d73ec1285b02",
+          "candidates": [
+            "हाल्यो"
+          ],
+          "topMatchesAny": true,
+          "preferredMatch": true,
+          "referenceCandidatesMatched": 1
+        }
+      },
+      {
+        "id": "word-validation:nep288",
+        "mode": "word",
+        "before": {
+          "id": "word-validation:nep288",
+          "mode": "word",
+          "decision": "accept",
+          "evaluated": true,
+          "roman": "dindaina",
+          "proposedOutput": "दिँदैन",
+          "references": [
+            "दिँदैन"
+          ],
+          "preferredReferenceIndex": 0,
+          "actualTop": "दिन्दैन",
+          "actualTopSha256": "ac8308331dce69b31e336cb878f51c322d8c592fd5ca514c1f76e7f9a2d95cc3",
+          "candidates": [
+            "दिन्दैन"
+          ],
+          "topMatchesAny": false,
+          "preferredMatch": false,
+          "referenceCandidatesMatched": 0
+        },
+        "after": {
+          "id": "word-validation:nep288",
+          "mode": "word",
+          "decision": "accept",
+          "evaluated": true,
+          "roman": "dindaina",
+          "proposedOutput": "दिँदैन",
+          "references": [
+            "दिँदैन"
+          ],
+          "preferredReferenceIndex": 0,
+          "actualTop": "दिँदैन",
+          "actualTopSha256": "9041219d8e1015206a211dc16357f97090fc5ab35a9ef95f8a40cb3c2af03220",
+          "candidates": [
+            "दिँदैन"
+          ],
+          "topMatchesAny": true,
+          "preferredMatch": true,
+          "referenceCandidatesMatched": 1
+        }
+      }
+    ]
+  },
+  "commands": {
+    "beforeFinalFixture": {
+      "method": "node benchmark/run.js --fixtures <same-final-fixture> --check",
+      "exitCode": 1,
+      "contract": {
+        "passed": 137,
+        "total": 142
+      }
+    },
+    "afterFinalFixture": {
+      "method": "node benchmark/run.js --fixtures <same-final-fixture> --check",
+      "exitCode": 0,
+      "contract": {
+        "passed": 142,
+        "total": 142
+      }
+    }
+  },
+  "toolFileSha256": {
+    "baselineRunner": "02f76258dece93e9ec8e54cd484dddc9456d4a64c4162114221c4794b8d87f31",
+    "benchmark/run.js": "02f76258dece93e9ec8e54cd484dddc9456d4a64c4162114221c4794b8d87f31",
+    "benchmark/measure-native-spelling.js": "1e1525042dff93b353731cc30ab251e1df7ec23e57623fecc59cace38a23fc9a",
+    "benchmark/source-reviewed.js": "467a088bd6e0dafd6bdc942ed837d8b4e048ba52f9c21a077f0f57cd65448433",
+    "benchmark/source-reviewed-core.js": "8d1336c9a3a18b02c52ce2287e366df15d46f011c57c0eddbf21a9824bf4eee0"
+  },
+  "historicalReportSha256": {
+    "benchmark/reports/digits-001.json": "78991781b88bcfd574978c23df51cf0f29b39d6b1a81237a98e0e7711196264d",
+    "benchmark/reports/early-address-001.json": "082f661778813c2b5943ed0c525458de011b27be919857a0b8339151e38c8695",
+    "benchmark/reports/loanword-research-2026-09-27.json": "91e3c5503132d0288c1b06f52b83a1b5c89945e2d3248340f2860533ad763f31",
+    "benchmark/reports/loanword-suffix-research-2026-10-01.json": "2a551d56b1b37ec2d333f715bfec348b709a753387f813bb558adcd44941fbf3",
+    "benchmark/reports/loanword-suffixes-2026-10-01.json": "abf522c3bb0124b3a6864e0b83d89d982681a27255d081e54afcab936c3474b3",
+    "benchmark/reports/mixed-text-001.json": "5b488efc1ccad07c6ccd15e455822da67bdad472d99e140ccb6b2784b7b6fe10",
+    "benchmark/reports/month-research-2026-09-27.json": "d3672780680fc6414788fdd6d75d2503baaeb624d22f5a1e6d017f204ae658cb",
+    "benchmark/reports/nepali-assisted-online-001.json": "39fff8c8a6f3733f7295055a3cdcceb7bcd32e52aaf6c2ac130271d72bb4a1ad",
+    "benchmark/reports/nepali-loanwords-001.json": "37740f529042361af3a0d061f0de6226bbffa46a81b4672c46defb899bd9afb8",
+    "benchmark/reports/nepali-months-001.json": "db6bf7cd7c491d6ec00d9424eb3234631bc026bd7a7fd59cfae907a337f6b595",
+    "benchmark/reports/nepali-review-001.json": "511c3a67702d8623922503d1809b3caaba259c61cf36492b3c34ec7723eaa0e6",
+    "benchmark/reports/nepali-ry-001.json": "bf749b5cc02e68547e7c069f5cc0e36da149d74b7720f1b793798204ff2285bc",
+    "benchmark/reports/nepali-source-review-2026-10-01.json": "5d9b36e39481d3f790fed503968f6bc504e71780ba083d8ed214f27ef674d34a",
+    "benchmark/reports/nepali-source-review-baseline-2026-10-01.json": "1ef9b88526e79989f356d295f98ef2d28b95f70d745db219a53ae2b059c24e6b"
+  },
+  "reproduction": {
+    "baselineSnapshot": "git archive cbcd77aae14e1845567e416c29f05658e0fe8e62 src package.json benchmark/cases.jsonl benchmark/run.js benchmark/reports | tar -x -C <baseline-directory>",
+    "comparison": "node benchmark/measure-native-spelling.js <absolute-baseline-directory> --cases <pinned-original-review-cases.jsonl> [--output <new-report.json>]",
+    "reviewCases": "Prepare the pinned review-batch-001 cases using docs/package/review-batch.md. No additional external corpus download is needed by this comparison.",
+    "verification": "Replay from the archived spelling implementation and verify fixture, review, source and tool hashes. Timestamp, Node/OS details vary by host; the fixture and reference denominators stay fixed."
+  },
+  "limits": [
+    "Four reviewed literal spelling aliases and one synthetic text contract were added from development failures; they are regression coverage, not independent human or held-out accuracy labels.",
+    "The original 100-case review is a development set used to design this change; changes on it cannot establish population accuracy or clean held-out improvement.",
+    "Source-assisted spelling references, exclusions and alternatives remain frozen. Full source sentence inputs, references and converter outputs are withheld from public observations; hashes retain exact comparison identity.",
+    "Seed scoring uses the default engine only. Custom-entry precedence, unrelated vowel/nasal spellings, English mode and live editing require their separate functional and browser checks.",
+    "Candidate coverage measures only the listed readings; it does not score extra suggestions, every valid spelling or candidate usefulness.",
+    "The eleven source-attested control words have assistant-constructed Roman keys selected after design. They are conformance checks against explicit typing rules, not collected natural typing, representative vocabulary or independent held-out language accuracy.",
+    "Only four complete native spelling aliases are added. No general phonetic, vowel/nasal rewrite or loanword morphology change is measured by this record.",
+    "Package version, private/publishing metadata and later documentation changes are outside the pinned core source hash scope. Replaying uses module-type package.json to import the source, without using its version as engine identity.",
+    "No external test labels, performance timings, competitor comparison or browser compatibility claim are added by this report."
+  ]
+}

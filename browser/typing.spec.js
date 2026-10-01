@@ -374,3 +374,24 @@ test('loanword suffix editing preserves its Roman source and English mode keeps 
   await page.keyboard.type(' schoolma mediasanga');
   await expect(field).toHaveValue('कम्पनीहरूमाथि schoolma mediasanga');
 });
+
+
+test('reviewed native word preferences retain Roman editing, undo and English mode', async ({ page }) => {
+  const field = await demo(page);
+  await page.keyboard.type('halyo nabhani gaunle dindaina|');
+  await expect(field).toHaveValue('हाल्यो नभनी गाउँले दिँदैन।');
+  await clearDemo(page);
+  await page.keyboard.type('gaunle');
+  await expect(field).toHaveValue('गाउँले');
+  await page.keyboard.press('Backspace');
+  await expect(field).toHaveValue('गौन्ल्');
+  await page.keyboard.type('e');
+  await expect(field).toHaveValue('गाउँले');
+  await page.keyboard.press('Control+z');
+  await expect(field).toHaveValue('गौन्ल्');
+  await page.keyboard.press('Control+Shift+z');
+  await expect(field).toHaveValue('गाउँले');
+  await page.locator('#mode-button').click();
+  await page.keyboard.type(' dindaina');
+  await expect(field).toHaveValue('गाउँले dindaina');
+});

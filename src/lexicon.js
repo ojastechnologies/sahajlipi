@@ -4,6 +4,7 @@
 // Source-assisted loanword preferences and held variants: docs/package/loanword-review.md
 // and docs/package/loanword-expansion-2026-09-28.md.
 // Gregorian month spellings and source data: docs/package/month-names.md.
+// Reviewed native word preferences: docs/package/nepali-spelling-2026-10-01.md.
 export const starterEntries = {
   aaja: ['आज'],
   aama: ['आमा'],
@@ -47,6 +48,7 @@ export const starterEntries = {
   dherai: ['धेरै'],
   didi: ['दिदी'],
   digital: ['डिजिटल'],
+  dindaina: ['दिँदैन'],
   doctor: ['डाक्टर'],
   drone: ['ड्रोन'],
   email: ['इमेल'],
@@ -61,9 +63,11 @@ export const starterEntries = {
   garna: ['गर्न'],
   garnu: ['गर्नु'],
   gaun: ['गाउँ'],
+  gaunle: ['गाउँले'],
   ghar: ['घर'],
   gharma: ['घरमा'],
   haina: ['होइन'],
+  halyo: ['हाल्यो'],
   hami: ['हामी'],
   hamro: ['हाम्रो'],
   hijo: ['हिजो'],
@@ -111,6 +115,7 @@ export const starterEntries = {
   motorcycle: ['मोटरसाइकल'],
   mouse: ['माउस'],
   naam: ['नाम'],
+  nabhani: ['नभनी'],
   nam: ['नाम'],
   namaste: ['नमस्ते'],
   nepal: ['नेपाल'],

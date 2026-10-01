@@ -1,6 +1,32 @@
 # Release and compatibility policy
 
-SahajLipi is an experimental Nepali typing package. The repository version is `0.1.0`, `private` is `true`, and no npm release has been made. This guide defines the preparation and review steps for a developer alpha; it does not announce one. The [getting-started guide](package/getting-started.md) explains how to install a local tarball today.
+SahajLipi is an experimental Nepali typing package. The checkout targets `0.1.0-alpha.1`, with `private: false` and an explicit npm `alpha` publishing tag. This guide records candidate preparation and the remaining publication steps. The [getting-started guide](package/getting-started.md) explains exact-version and local-tarball installation.
+
+## Current alpha candidate
+
+**Registry publication is pending.** The candidate version is **`0.1.0-alpha.1`**. The maintainer authorized its preparation and alpha publication on 2026-10-01. Npm authentication and registry verification are required to complete that publication; GitHub access does not provide npm access.
+
+The manifest's `publishConfig` targets the public npm registry with `access: public` and `tag: alpha`. The publishing command must also state the alpha tag explicitly. Only a verified registry result establishes that users can install this version from npm. No source tag or GitHub release should announce a completed npm publication before that verification.
+
+The candidate retains the two public exports, strict TypeScript declarations, Node 18+ core scope and no runtime dependencies. Its four [reviewed native word preferences](package/nepali-spelling-2026-10-01.md) change the default output for `halyo`, `nabhani`, `gaunle` and `dindaina`; the mapping and before/after evidence are recorded separately. The package remains experimental: independent real-typing review, physical mobile/IME checks and framework-controlled input support are pending.
+
+### Candidate validation — 2026-10-01
+
+The local candidate passed 304 Node tests, 142 seed contracts and 60 desktop browser checks. Actual tarball installation verified all 13 allowed files, ESM public exports, included licenses, strict TypeScript consumers and the installed vanilla/React examples. The [native spelling evidence](package/nepali-spelling-2026-10-01.md) and [desktop-005 record](../browser/reports/desktop-005.json) retain the measured scope and source identities. Website generation and public-file/link verification passed. These checks prepare the candidate; registry access and post-publication installation still need verification.
+
+### Verify and publish the candidate
+
+Run the release checklist below on the committed candidate. Pack it to a dedicated output directory, retain its checksum, and publish the exact reviewed tarball:
+
+```sh
+npm pack --ignore-scripts --pack-destination /absolute/path/to/release-output
+npm publish /absolute/path/to/release-output/sahajlipi-0.1.0-alpha.1.tgz \
+  --tag alpha --access public --registry=https://registry.npmjs.org/
+```
+
+Use npm's [browser login flow](https://docs.npmjs.com/accessing-npm-using-2fa/) and complete its authentication challenge. Publishing requires the registry's [two-factor authentication policy](https://docs.npmjs.com/requiring-2fa-for-package-publishing-and-settings-modification/). Credentials and authentication challenges are handled by npm; they do not belong in the repository.
+
+After publication, compare the registry version, alpha tag, integrity and downloaded tarball with the reviewed artifact. Install that exact registry version into a fresh app and rerun the public imports and compiler/browser consumers. Then create the matching source tag and GitHub release with the tarball checksum, tested commit, dated evidence and remaining limitations. Update this status only after verification.
 
 ## Public package boundary
 
@@ -23,7 +49,7 @@ An ESM import of the DOM module can be evaluated on a server, but attachment nee
 
 ## Versioning and changes
 
-Use a prerelease identifier for the first registry alpha, such as `0.1.0-alpha.1`; the maintainer must choose and verify the actual version before release. The checkout's existing `0.1.0` is not a published version. Alpha users should pin an exact version when typing behavior matters.
+The first candidate uses `0.1.0-alpha.1`; its registry availability must be verified separately. Alpha users should pin an exact version when typing behavior matters.
 
 During `0.x` development:
 
