@@ -78,6 +78,12 @@ Use the test names and attached failure traces to identify exactly which flow fa
 
 The separate [desktop-003 record](../../browser/reports/desktop-003.json) captures the later 51-check run (17 scenarios per engine), including the nine consumer checks. It records package and test source identities, installed-tarball checksum, environment, and outcomes. The 36- and 42-check records below remain historical and immutable; their totals describe their original runs.
 
+## Loanword suffix follow-up — 2026-10-01
+
+The [desktop-004 record](../../browser/reports/desktop-004.json) captures **57/57 passing checks**: 19 scenarios in each of Chromium, Firefox and WebKit. Two added scenarios per engine check reviewed attached suffixes, the school spelling dropdown, Roman-source Backspace editing, address-cue restoration and English mode. Runtime and test source hashes identify this run; earlier desktop records retain their original scopes and counts.
+
+A selected spelling survives ordinary punctuation and whitespace. A domain cue makes the Roman token literal; deleting that cue resumes its default spelling. This behavior was also confirmed against the pre-suffix adapter. It does not preserve the earlier candidate choice across a technical-token transition.
+
 ## Desktop engine matrix
 
 | Playwright project | Browser under test | Status evidence |

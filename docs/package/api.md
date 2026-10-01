@@ -25,6 +25,15 @@ convertWord('kam');
 convertWord('camera');
 // { text: 'क्यामेरा', candidates: ['क्यामेरा'], ambiguous: false }
 
+convertWord('companyharumathi');
+// { text: 'कम्पनीहरूमाथि', candidates: ['कम्पनीहरूमाथि'], ambiguous: false }
+
+convertWord('schoolma');
+// { text: 'स्कुलमा', candidates: ['स्कुलमा', 'स्कूलमा'], ambiguous: true }
+
+convertWord('mediasanga');
+// { text: 'मिडियासँग', candidates: ['मिडियासँग'], ambiguous: false }
+
 convertWord('September');
 // { text: 'सेप्टेम्बर', candidates: ['सेप्टेम्बर'], ambiguous: false }
 
@@ -45,16 +54,16 @@ Returns `{ text, candidates, ambiguous }`:
 | Field | Meaning |
 | --- | --- |
 | `text` | The first, displayed reading. |
-| `candidates` | Distinct readings in priority order. Usually one item; alternatives appear only when an entry lists them. |
+| `candidates` | Distinct readings in priority order. Usually one item; listed stem alternatives are inherited by recognized suffix forms. |
 | `ambiguous` | `true` when more than one distinct candidate remains. |
 
-`convertWord` is a single-Roman-word API. It does not apply URL or email preservation; use `convertText` for text containing addresses or punctuation. An empty input returns empty text and candidates. The engine checks the starter lexicon first, then interprets explicit marks, then applies deterministic phonetic rules. An unknown spelling still returns a result; it is **not** evidence that the result is linguistically correct. See [architecture](architecture.md) and [benchmarks](benchmarks.md).
+`convertWord` is a single-Roman-word API. It does not apply URL or email preservation; use `convertText` for text containing addresses or punctuation. An empty input returns empty text and candidates. The engine checks an exact lexicon entry first, then recognized loanword suffix forms, then interprets explicit marks and applies deterministic phonetic rules. An unknown spelling still returns a result; it is **not** evidence that the result is linguistically correct. See [architecture](architecture.md) and [benchmarks](benchmarks.md).
 
-The built-in lexicon includes 50 exact English-spelling loanwords, including `camera` → क्यामेरा, `company` → कम्पनी and `school` → स्कुल. Each has one candidate, so source-observed variants are not exposed as built-in alternatives. These are source-assisted project preferences, with independent human linguistic review still pending. The [original pilot](loanword-review.md) and [latest expansion review](loanword-expansion-2026-09-28.md) list the mappings, evidence and held candidates. This spells a borrowed word rather than translating it to a Nepali equivalent.
+The built-in lexicon includes 51 recognized English-spelling loanword stems, including `camera` → क्यामेरा, `company` → कम्पनी and `media` → मिडिया. `school` returns `['स्कुल', 'स्कूल']`; the first reading remains the existing default. Recognized suffix forms inherit every distinct stem reading in the same order. The [suffix review](loanword-suffixes-2026-10-01.md) records the finite rule, evidence and limits. These are source-assisted project preferences, with independent human linguistic review pending. They spell borrowed words rather than translating their meanings.
 
 It also includes the 12 full English month names, each with one preferred candidate: `january` → जनवरी, `may` → मे and `december` → डिसेम्बर, for example. All normal title-case month names work; `September` and `December` are explicit aliases because their initial capitals otherwise select reserved sounds. The [month reference](month-names.md) lists every mapping and its source scope. These are source-assisted project preferences, with independent human linguistic review pending.
 
-Lookup keeps the existing normalization and reserved `T`, `D`, `S`, `R` and contextual `H` sound keys. `Camera` matches `camera`; `Doctor`, `School` and all-capital spellings that retain a reserved key are not automatic English aliases. Unlisted attached forms such as `camerako` use the existing fallback rather than inheriting a loanword stem. `cha` now returns `['च', 'छ']`; `chha` returns only `['छ']`.
+Lookup keeps the existing normalization and reserved `T`, `D`, `S`, `R` and contextual `H` sound keys. `Camera` matches `camera`; `Doctor`, `School` and all-capital spellings that retain a reserved key are not automatic English aliases. Recognized attached forms such as `camerako` inherit the loanword stem. Only the 19 suffix keys in the [typing reference](typing-reference.md#attached-loanword-forms) are recognized: the rule adds a supported suffix directly to a recognized stem reading, without predicting grammar or correcting typos. `cameramaa`, unsupported suffix chains and unrecognized stems keep the fallback. `cha` now returns `['च', 'छ']`; `chha` returns only `['छ']`.
 
 The month entries use the same whole-word lookup. Abbreviations such as `jan` and attached forms such as `januaryma` are unlisted. Both `May` and `may` give मे; the engine does not detect whether “may” is a month or an English modal verb. Native Roman input such as `maya` keeps its existing behavior. The entries convert month names, not calendar dates; there is no Gregorian-to-Bikram-Sambat conversion or new API option.
 
@@ -110,7 +119,22 @@ Creates an independent engine. `digits` accepts only `'devanagari'` (the default
 
 `preserveTechnicalText` defaults to `true` and controls technical-span preservation in that engine’s `convertText`. Set it to `false` to convert throughout the input, including inside addresses. Digit rendering is independent: use both `digits: 'latin'` and `preserveTechnicalText: false` to recover the earlier ASCII-digit, unprotected-text behavior. It must be a boolean; other values throw `TypeError`. It does not change `convertWord` or disable Nepali conversion. An `entries` object replaces a starter entry for the same normalized Roman key in that engine instance. Values must be a non-empty array of non-empty strings, ordered from the preferred reading to alternatives; malformed values throw `TypeError`. The engine does not validate the script or Unicode normalization of those strings. Duplicate outputs are removed when a word is converted.
 
-This replacement also applies to built-in loanwords: `createEngine({ entries: { camera: ['क्यामरा'] } })` replaces the entire `camera` candidate list in that instance. Such a custom choice does not admit the spelling as a built-in candidate or a reviewed corpus label.
+This replacement also applies to built-in loanwords: `createEngine({ entries: { camera: ['क्यामरा'] } })` replaces the entire `camera` candidate list in that instance. Recognized attached forms use that engine’s stem readings unless an exact compound entry overrides them. Customizing an arbitrary new key does not make it a recognized suffix stem.
+
+A recognized stem reading containing only ASCII Latin letters keeps the Roman suffix: `createEngine({ entries: { company: ['company'] } }).convertWord('companyma').text` is `companyma`. Other custom strings receive the native suffix verbatim, without automatic vowel or virama changes. Use an exact compound entry when a custom spelling needs different joining. Such choices are instance-specific; they do not become built-in candidates or reviewed labels.
+
+```js
+const loanwords = createEngine({
+  entries: {
+    school: ['स्कूल', 'स्कुल'],
+    schoolma: ['विद्यालयमा'],
+  },
+});
+
+loanwords.convertWord('schoolko').candidates; // ['स्कूलको', 'स्कुलको']
+loanwords.convertWord('schoolma').candidates; // ['विद्यालयमा'] — exact entry wins
+convertWord('schoolma').candidates;          // ['स्कुलमा', 'स्कूलमा']
+```
 
 Month entries use the same API. A lowercase replacement for `september` or `december` also updates its built-in title-case alias; supplying an exact `September` or `December` entry overrides that alias separately. The existing `Ram` and `Sita` aliases follow the same rule. For example:
 

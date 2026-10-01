@@ -1,0 +1,660 @@
+{
+  "schemaVersion": 1,
+  "reportId": "loanword-suffixes-001",
+  "recordedAt": "2026-10-01T11:06:47.324Z",
+  "purpose": "Exact conformance to four authorized loanword-suffix software contracts and descriptive comparison with frozen source-assisted development references",
+  "baseline": {
+    "gitCommit": "d3bb77f39f78b436d613424e78979b0357d8d7da",
+    "snapshotMethod": "git archive of immutable src/, package.json and required benchmark files; test directories excluded",
+    "sourceFileSha256": {
+      "src/dom.d.ts": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1",
+      "src/dom.js": "6e84385a02ec7a79b8550de417b701b23ea3c3b36ab46e6408f1c7dfa7c233b2",
+      "src/index.d.ts": "48be479797841978cabab3ba96fe9b77caa8c814238866908aa515619ab7cd17",
+      "src/index.js": "efc2ed4719f209fd45e850d80d5ee8d3f6b8ef3862c70268aac8d46e8eab9627",
+      "src/lexicon.js": "ad094ca6e25566dc8647274ac24b70ea55e1ce2a7c66132f0b426d09df6f32f2",
+      "src/phonetic.js": "dec43061ce47d8456092b661a4b1ea7b5d366d2c7969a4f2b6f3b1b0c20ff1ff",
+      "src/text-policy.js": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa"
+    }
+  },
+  "after": {
+    "identity": "Suffix implementation measured from this checkout; all source files pinned by hashes without assigning an uncreated commit",
+    "sourceFileSha256": {
+      "src/dom.d.ts": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1",
+      "src/dom.js": "6e84385a02ec7a79b8550de417b701b23ea3c3b36ab46e6408f1c7dfa7c233b2",
+      "src/index.d.ts": "48be479797841978cabab3ba96fe9b77caa8c814238866908aa515619ab7cd17",
+      "src/index.js": "315f43b424c19d1e2197d78414a618e59865cf4171255e72f1c6db90b5fb74f4",
+      "src/lexicon.js": "27792c7626f6982750101f903030f2866b0338e3b37780dcc4df1b4486f4eb79",
+      "src/loanwords.js": "aa74e688d3b77980b5ee7e9fb89ce2c0a61fd27568d3230048bef91a8379e446",
+      "src/phonetic.js": "dec43061ce47d8456092b661a4b1ea7b5d366d2c7969a4f2b6f3b1b0c20ff1ff",
+      "src/text-policy.js": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa"
+    }
+  },
+  "environment": {
+    "nodeVersion": "v22.22.3",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "25.6.0"
+  },
+  "options": {
+    "digits": "devanagari",
+    "preserveTechnicalText": true,
+    "entries": "starter defaults"
+  },
+  "linguisticValidation": {
+    "path": "benchmark/reports/loanword-suffix-research-2026-10-01.json",
+    "sha256": "2a551d56b1b37ec2d333f715bfec348b709a753387f813bb558adcd44941fbf3",
+    "reviewedAt": "2026-10-01",
+    "reviewKind": "source-assisted-linguistic-review",
+    "humanVerified": false,
+    "independentHumanReview": false,
+    "suffixKeyCount": 19,
+    "sourceCount": 12,
+    "scope": "Validate reviewed loanword roots and a finite suffix catalogue; no engine output or diagnosis used in this review.",
+    "derivationBasis": "Finite productive combinations of reviewed stems and attested grammatical endings; not every generated root+ending combination is separately attested."
+  },
+  "fixture": {
+    "path": "benchmark/cases.jsonl",
+    "sha256": "fde07b59211831c3b8a6c05ebc5a3f1dc6148d0d34b259141932239e9562d0b4",
+    "total": 139,
+    "contractCount": 137,
+    "exploratoryCount": 2,
+    "priorFixtureSha256": "c5d2b7bbca573368a7531b7d21a5b989f7ca67d937ff0ae49cc3b3d923449fe7",
+    "priorRowCount": 135,
+    "priorByteIdenticalRowCount": 133,
+    "priorBytesPreserved": false,
+    "revisedHistoricalCaseIds": [
+      "loanword-bank-suffix-fallback",
+      "loanword-file-suffix-fallback"
+    ],
+    "revisionScope": "Only bankma and fileharu expectedTop/expectedCandidates change to the authorized joined loanword forms, with this dated provenance appended. All IDs, inputs, statuses, categories and original provenance prefixes are retained; the other 133 historical rows are byte-identical.",
+    "newCaseIds": [
+      "loanword-suffix-companyharumathi",
+      "loanword-suffix-schoolma",
+      "loanword-suffix-mediasanga",
+      "loanword-suffix-text-boundaries"
+    ]
+  },
+  "finalContract": {
+    "before": {
+      "passed": 131,
+      "total": 137,
+      "wordTop": 101,
+      "wordTotal": 106,
+      "candidateHits": 103,
+      "candidateTotal": 109,
+      "textTop": 30,
+      "textTotal": 31,
+      "mismatchCaseIds": [
+        "loanword-bank-suffix-fallback",
+        "loanword-file-suffix-fallback",
+        "loanword-suffix-companyharumathi",
+        "loanword-suffix-schoolma",
+        "loanword-suffix-mediasanga",
+        "loanword-suffix-text-boundaries"
+      ]
+    },
+    "after": {
+      "passed": 137,
+      "total": 137,
+      "wordTop": 106,
+      "wordTotal": 106,
+      "candidateHits": 109,
+      "candidateTotal": 109,
+      "textTop": 31,
+      "textTotal": 31,
+      "mismatchCaseIds": []
+    }
+  },
+  "historicalContract": {
+    "before": {
+      "passed": 133,
+      "total": 133,
+      "wordTop": 103,
+      "wordTotal": 103,
+      "candidateHits": 105,
+      "candidateTotal": 105,
+      "textTop": 30,
+      "textTotal": 30,
+      "mismatchCaseIds": []
+    },
+    "after": {
+      "passed": 131,
+      "total": 133,
+      "wordTop": 101,
+      "wordTotal": 103,
+      "candidateHits": 103,
+      "candidateTotal": 105,
+      "textTop": 30,
+      "textTotal": 30,
+      "mismatchCaseIds": [
+        "loanword-bank-suffix-fallback",
+        "loanword-file-suffix-fallback"
+      ]
+    },
+    "intentionalMismatchCaseIds": [
+      "loanword-bank-suffix-fallback",
+      "loanword-file-suffix-fallback"
+    ]
+  },
+  "addedSuffixContract": {
+    "before": {
+      "passed": 0,
+      "total": 4,
+      "wordTop": 0,
+      "wordTotal": 3,
+      "candidateHits": 0,
+      "candidateTotal": 4,
+      "textTop": 0,
+      "textTotal": 1,
+      "mismatchCaseIds": [
+        "loanword-suffix-companyharumathi",
+        "loanword-suffix-schoolma",
+        "loanword-suffix-mediasanga",
+        "loanword-suffix-text-boundaries"
+      ]
+    },
+    "after": {
+      "passed": 4,
+      "total": 4,
+      "wordTop": 3,
+      "wordTotal": 3,
+      "candidateHits": 4,
+      "candidateTotal": 4,
+      "textTop": 1,
+      "textTotal": 1,
+      "mismatchCaseIds": []
+    }
+  },
+  "exploratory": {
+    "before": {
+      "passed": 0,
+      "total": 2,
+      "wordTop": 0,
+      "wordTotal": 2,
+      "candidateHits": 0,
+      "candidateTotal": 2,
+      "textTop": 0,
+      "textTotal": 0,
+      "mismatchCaseIds": [
+        "janchu-proposal",
+        "padhchhu-proposal"
+      ]
+    },
+    "after": {
+      "passed": 0,
+      "total": 2,
+      "wordTop": 0,
+      "wordTotal": 2,
+      "candidateHits": 0,
+      "candidateTotal": 2,
+      "textTop": 0,
+      "textTotal": 0,
+      "mismatchCaseIds": [
+        "janchu-proposal",
+        "padhchhu-proposal"
+      ]
+    },
+    "excludedFromGate": true,
+    "labelsRemainUnreviewed": true
+  },
+  "revisedHistoricalCaseResults": [
+    {
+      "id": "loanword-bank-suffix-fallback",
+      "input": "bankma",
+      "historicalExpectedTop": "बन्क्म",
+      "historicalExpectedCandidates": [
+        "बन्क्म"
+      ],
+      "revisedExpectedTop": "बैंकमा",
+      "revisedExpectedCandidates": [
+        "बैंकमा"
+      ],
+      "beforeAgainstHistorical": {
+        "actualTop": "बन्क्म",
+        "actualCandidates": [
+          "बन्क्म"
+        ],
+        "pass": true
+      },
+      "afterAgainstHistorical": {
+        "actualTop": "बैंकमा",
+        "actualCandidates": [
+          "बैंकमा"
+        ],
+        "pass": false
+      },
+      "beforeAgainstRevised": {
+        "actualTop": "बन्क्म",
+        "actualCandidates": [
+          "बन्क्म"
+        ],
+        "pass": false
+      },
+      "afterAgainstRevised": {
+        "actualTop": "बैंकमा",
+        "actualCandidates": [
+          "बैंकमा"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "loanword-file-suffix-fallback",
+      "input": "fileharu",
+      "historicalExpectedTop": "फिलेहरु",
+      "historicalExpectedCandidates": [
+        "फिलेहरु"
+      ],
+      "revisedExpectedTop": "फाइलहरू",
+      "revisedExpectedCandidates": [
+        "फाइलहरू"
+      ],
+      "beforeAgainstHistorical": {
+        "actualTop": "फिलेहरु",
+        "actualCandidates": [
+          "फिलेहरु"
+        ],
+        "pass": true
+      },
+      "afterAgainstHistorical": {
+        "actualTop": "फाइलहरू",
+        "actualCandidates": [
+          "फाइलहरू"
+        ],
+        "pass": false
+      },
+      "beforeAgainstRevised": {
+        "actualTop": "फिलेहरु",
+        "actualCandidates": [
+          "फिलेहरु"
+        ],
+        "pass": false
+      },
+      "afterAgainstRevised": {
+        "actualTop": "फाइलहरू",
+        "actualCandidates": [
+          "फाइलहरू"
+        ],
+        "pass": true
+      }
+    }
+  ],
+  "newCaseResults": [
+    {
+      "id": "loanword-suffix-companyharumathi",
+      "status": "contract",
+      "mode": "word",
+      "category": "loanword-suffix",
+      "input": "companyharumathi",
+      "expectedTop": "कम्पनीहरूमाथि",
+      "expectedCandidates": [
+        "कम्पनीहरूमाथि"
+      ],
+      "provenance": "Source-assisted development references frozen 2026-10-01; delegated review evidence in benchmark/reports/nepali-source-review-2026-10-01.json; user-authorized loanword suffix software contract, not independent human or held-out linguistic accuracy.",
+      "before": {
+        "actualTop": "चोम्पञ्हरुमथि",
+        "actualCandidates": [
+          "चोम्पञ्हरुमथि"
+        ],
+        "pass": false
+      },
+      "after": {
+        "actualTop": "कम्पनीहरूमाथि",
+        "actualCandidates": [
+          "कम्पनीहरूमाथि"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "loanword-suffix-schoolma",
+      "status": "contract",
+      "mode": "word",
+      "category": "loanword-suffix",
+      "input": "schoolma",
+      "expectedTop": "स्कुलमा",
+      "expectedCandidates": [
+        "स्कुलमा",
+        "स्कूलमा"
+      ],
+      "provenance": "Source-assisted development references frozen 2026-10-01; delegated review evidence in benchmark/reports/nepali-source-review-2026-10-01.json; user-authorized loanword suffix software contract, not independent human or held-out linguistic accuracy.",
+      "before": {
+        "actualTop": "स्चूल्म",
+        "actualCandidates": [
+          "स्चूल्म"
+        ],
+        "pass": false
+      },
+      "after": {
+        "actualTop": "स्कुलमा",
+        "actualCandidates": [
+          "स्कुलमा",
+          "स्कूलमा"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "loanword-suffix-mediasanga",
+      "status": "contract",
+      "mode": "word",
+      "category": "loanword-suffix",
+      "input": "mediasanga",
+      "expectedTop": "मिडियासँग",
+      "expectedCandidates": [
+        "मिडियासँग"
+      ],
+      "provenance": "Source-assisted development references frozen 2026-10-01; delegated review evidence in benchmark/reports/nepali-source-review-2026-10-01.json; user-authorized loanword suffix software contract, not independent human or held-out linguistic accuracy.",
+      "before": {
+        "actualTop": "मेदिअसङ",
+        "actualCandidates": [
+          "मेदिअसङ"
+        ],
+        "pass": false
+      },
+      "after": {
+        "actualTop": "मिडियासँग",
+        "actualCandidates": [
+          "मिडियासँग"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "loanword-suffix-text-boundaries",
+      "status": "contract",
+      "mode": "text",
+      "category": "loanword-suffix-text",
+      "input": "companyharumathi schoolma mediasanga company@school.com https://media.com T D S R|",
+      "expectedTop": "कम्पनीहरूमाथि स्कुलमा मिडियासँग company@school.com https://media.com ट् ड् ष् ऋ।",
+      "provenance": "Project-authored software integration guard for the three reviewed suffix words, literal URL/email spans, reserved Shift sounds and danda; no independent human, population-accuracy, timing or browser-support claim.",
+      "before": {
+        "actualTop": "चोम्पञ्हरुमथि स्चूल्म मेदिअसङ company@school.com https://media.com ट् ड् ष् ऋ।",
+        "actualCandidates": null,
+        "pass": false
+      },
+      "after": {
+        "actualTop": "कम्पनीहरूमाथि स्कुलमा मिडियासँग company@school.com https://media.com ट् ड् ष् ऋ।",
+        "actualCandidates": null,
+        "pass": true
+      }
+    }
+  ],
+  "frozenSourceReview": {
+    "reviewPath": "benchmark/reports/nepali-source-review-2026-10-01.json",
+    "reviewFileSha256": "5d9b36e39481d3f790fed503968f6bc504e71780ba083d8ed214f27ef674d34a",
+    "sourceCasesSha256": "2f92bcf5a16d35b6a31dca052e4e358ffe417b5dcec0e8cc704d17f8acbf23e3",
+    "humanVerified": false,
+    "independentHumanReview": false,
+    "referencePurpose": "development",
+    "before": {
+      "total": 100,
+      "decisions": {
+        "accept": 67,
+        "correct": 19,
+        "exclude": 14,
+        "needs-user": 0
+      },
+      "admittedTotal": 86,
+      "word": {
+        "total": 74,
+        "topMatchesAny": 8,
+        "preferredTotal": 69,
+        "preferredMatches": 7,
+        "candidateMatchesAny": 8,
+        "candidateMatchesAll": 7,
+        "referenceCandidatesMatched": 8,
+        "referenceCandidatesTotal": 79
+      },
+      "text": {
+        "total": 12,
+        "topMatchesAny": 0,
+        "preferredTotal": 12,
+        "preferredMatches": 0
+      }
+    },
+    "after": {
+      "total": 100,
+      "decisions": {
+        "accept": 67,
+        "correct": 19,
+        "exclude": 14,
+        "needs-user": 0
+      },
+      "admittedTotal": 86,
+      "word": {
+        "total": 74,
+        "topMatchesAny": 11,
+        "preferredTotal": 69,
+        "preferredMatches": 9,
+        "candidateMatchesAny": 11,
+        "candidateMatchesAll": 10,
+        "referenceCandidatesMatched": 12,
+        "referenceCandidatesTotal": 79
+      },
+      "text": {
+        "total": 12,
+        "topMatchesAny": 0,
+        "preferredTotal": 12,
+        "preferredMatches": 0
+      }
+    },
+    "changedCaseResults": [
+      {
+        "id": "word-validation:nep753",
+        "mode": "word",
+        "before": {
+          "id": "word-validation:nep753",
+          "mode": "word",
+          "decision": "correct",
+          "evaluated": true,
+          "roman": "schoolma",
+          "proposedOutput": "स्कूलमा",
+          "references": [
+            "स्कूलमा",
+            "स्कुलमा"
+          ],
+          "preferredReferenceIndex": null,
+          "actualTop": "स्चूल्म",
+          "actualTopSha256": "f8fb4c2ce38683ef52567c9fc6cc7e0dc096647b996641b04ba247339a1b5c59",
+          "candidates": [
+            "स्चूल्म"
+          ],
+          "topMatchesAny": false,
+          "preferredMatch": null,
+          "referenceCandidatesMatched": 0
+        },
+        "after": {
+          "id": "word-validation:nep753",
+          "mode": "word",
+          "decision": "correct",
+          "evaluated": true,
+          "roman": "schoolma",
+          "proposedOutput": "स्कूलमा",
+          "references": [
+            "स्कूलमा",
+            "स्कुलमा"
+          ],
+          "preferredReferenceIndex": null,
+          "actualTop": "स्कुलमा",
+          "actualTopSha256": "f71e2718c99b6ddad01a39d38042ed9f140bc66e18c8ac54940b9879594aa68c",
+          "candidates": [
+            "स्कुलमा",
+            "स्कूलमा"
+          ],
+          "topMatchesAny": true,
+          "preferredMatch": null,
+          "referenceCandidatesMatched": 2
+        }
+      },
+      {
+        "id": "word-validation:nep133",
+        "mode": "word",
+        "before": {
+          "id": "word-validation:nep133",
+          "mode": "word",
+          "decision": "accept",
+          "evaluated": true,
+          "roman": "mediasanga",
+          "proposedOutput": "मिडियासँग",
+          "references": [
+            "मिडियासँग"
+          ],
+          "preferredReferenceIndex": 0,
+          "actualTop": "मेदिअसङ",
+          "actualTopSha256": "cd312878ac136c8319086f8cb74abdacf5eb34b8463dece301891ab21a7ff0bb",
+          "candidates": [
+            "मेदिअसङ"
+          ],
+          "topMatchesAny": false,
+          "preferredMatch": false,
+          "referenceCandidatesMatched": 0
+        },
+        "after": {
+          "id": "word-validation:nep133",
+          "mode": "word",
+          "decision": "accept",
+          "evaluated": true,
+          "roman": "mediasanga",
+          "proposedOutput": "मिडियासँग",
+          "references": [
+            "मिडियासँग"
+          ],
+          "preferredReferenceIndex": 0,
+          "actualTop": "मिडियासँग",
+          "actualTopSha256": "af361633def162fd047f120e62a39a70f5be69cb46537a52249f0d27705eb8c3",
+          "candidates": [
+            "मिडियासँग"
+          ],
+          "topMatchesAny": true,
+          "preferredMatch": true,
+          "referenceCandidatesMatched": 1
+        }
+      },
+      {
+        "id": "word-validation:nep175",
+        "mode": "word",
+        "before": {
+          "id": "word-validation:nep175",
+          "mode": "word",
+          "decision": "accept",
+          "evaluated": true,
+          "roman": "companyharumathi",
+          "proposedOutput": "कम्पनीहरूमाथि",
+          "references": [
+            "कम्पनीहरूमाथि"
+          ],
+          "preferredReferenceIndex": 0,
+          "actualTop": "चोम्पञ्हरुमथि",
+          "actualTopSha256": "fe21b8d09417ce16414ec87da00e800872479294b5640b96d8071d0d581211cc",
+          "candidates": [
+            "चोम्पञ्हरुमथि"
+          ],
+          "topMatchesAny": false,
+          "preferredMatch": false,
+          "referenceCandidatesMatched": 0
+        },
+        "after": {
+          "id": "word-validation:nep175",
+          "mode": "word",
+          "decision": "accept",
+          "evaluated": true,
+          "roman": "companyharumathi",
+          "proposedOutput": "कम्पनीहरूमाथि",
+          "references": [
+            "कम्पनीहरूमाथि"
+          ],
+          "preferredReferenceIndex": 0,
+          "actualTop": "कम्पनीहरूमाथि",
+          "actualTopSha256": "a85a6c9422b0b68c0b7790a416f3ffe4f3e8a219d67ec2517d995d6d7cb746a2",
+          "candidates": [
+            "कम्पनीहरूमाथि"
+          ],
+          "topMatchesAny": true,
+          "preferredMatch": true,
+          "referenceCandidatesMatched": 1
+        }
+      },
+      {
+        "id": "sentence:ne_187",
+        "mode": "text",
+        "before": {
+          "id": "sentence:ne_187",
+          "mode": "text",
+          "decision": "correct",
+          "evaluated": true,
+          "preferredReferenceIndex": 0,
+          "actualTopSha256": "185e4464e87cf55ddd346430e000b2bf9c5c923ca6803b137bda0c9bce0d63da",
+          "topMatchesAny": false,
+          "preferredMatch": false,
+          "referenceCandidatesMatched": null
+        },
+        "after": {
+          "id": "sentence:ne_187",
+          "mode": "text",
+          "decision": "correct",
+          "evaluated": true,
+          "preferredReferenceIndex": 0,
+          "actualTopSha256": "9b553de3e8bbc8896ee840c884cb962cecc5ab8d1ad53665b7aedd222508d312",
+          "topMatchesAny": false,
+          "preferredMatch": false,
+          "referenceCandidatesMatched": null
+        }
+      }
+    ]
+  },
+  "commands": {
+    "beforeFinalFixture": {
+      "method": "node benchmark/run.js --fixtures <same-final-fixture> --check",
+      "exitCode": 1,
+      "contract": {
+        "passed": 131,
+        "total": 137
+      }
+    },
+    "afterFinalFixture": {
+      "method": "node benchmark/run.js --fixtures <same-final-fixture> --check",
+      "exitCode": 0,
+      "contract": {
+        "passed": 137,
+        "total": 137
+      }
+    }
+  },
+  "toolFileSha256": {
+    "baselineRunner": "02f76258dece93e9ec8e54cd484dddc9456d4a64c4162114221c4794b8d87f31",
+    "benchmark/run.js": "02f76258dece93e9ec8e54cd484dddc9456d4a64c4162114221c4794b8d87f31",
+    "benchmark/measure-loanword-suffixes.js": "41e0568b5d3bbfb16382820cc61632d6690170c1641cc5b66cf177e30635897c",
+    "benchmark/source-reviewed.js": "467a088bd6e0dafd6bdc942ed837d8b4e048ba52f9c21a077f0f57cd65448433",
+    "benchmark/source-reviewed-core.js": "8d1336c9a3a18b02c52ce2287e366df15d46f011c57c0eddbf21a9824bf4eee0"
+  },
+  "historicalReportSha256": {
+    "benchmark/reports/digits-001.json": "78991781b88bcfd574978c23df51cf0f29b39d6b1a81237a98e0e7711196264d",
+    "benchmark/reports/early-address-001.json": "082f661778813c2b5943ed0c525458de011b27be919857a0b8339151e38c8695",
+    "benchmark/reports/loanword-research-2026-09-27.json": "91e3c5503132d0288c1b06f52b83a1b5c89945e2d3248340f2860533ad763f31",
+    "benchmark/reports/mixed-text-001.json": "5b488efc1ccad07c6ccd15e455822da67bdad472d99e140ccb6b2784b7b6fe10",
+    "benchmark/reports/month-research-2026-09-27.json": "d3672780680fc6414788fdd6d75d2503baaeb624d22f5a1e6d017f204ae658cb",
+    "benchmark/reports/nepali-assisted-online-001.json": "39fff8c8a6f3733f7295055a3cdcceb7bcd32e52aaf6c2ac130271d72bb4a1ad",
+    "benchmark/reports/nepali-loanwords-001.json": "37740f529042361af3a0d061f0de6226bbffa46a81b4672c46defb899bd9afb8",
+    "benchmark/reports/nepali-months-001.json": "db6bf7cd7c491d6ec00d9424eb3234631bc026bd7a7fd59cfae907a337f6b595",
+    "benchmark/reports/nepali-review-001.json": "511c3a67702d8623922503d1809b3caaba259c61cf36492b3c34ec7723eaa0e6",
+    "benchmark/reports/nepali-ry-001.json": "bf749b5cc02e68547e7c069f5cc0e36da149d74b7720f1b793798204ff2285bc",
+    "benchmark/reports/nepali-source-review-2026-10-01.json": "5d9b36e39481d3f790fed503968f6bc504e71780ba083d8ed214f27ef674d34a",
+    "benchmark/reports/nepali-source-review-baseline-2026-10-01.json": "1ef9b88526e79989f356d295f98ef2d28b95f70d745db219a53ae2b059c24e6b"
+  },
+  "reproduction": {
+    "baselineSnapshot": "git archive d3bb77f39f78b436d613424e78979b0357d8d7da src package.json benchmark/cases.jsonl benchmark/run.js benchmark/reports | tar -x -C <baseline-directory>",
+    "comparison": "node benchmark/measure-loanword-suffixes.js <absolute-baseline-directory> --cases <pinned-original-review-cases.jsonl> [--output <new-report.json>]",
+    "reviewCases": "Prepare the pinned review-batch-001 cases using docs/package/review-batch.md. No additional external corpus download is needed by this comparison.",
+    "verification": "Replay from the archived suffix implementation and verify fixture, review, source and tool hashes. Timestamp, Node/OS details vary by host; the fixture and reference denominators stay fixed."
+  },
+  "limits": [
+    "Two earlier whole-word-only fallback contracts (bankma/fileharu) intentionally change under the authorized finite suffix policy. Historical and revised contract summaries use different expectations; their difference is not an improvement on unchanged labels.",
+    "Four selected software contracts were added from reviewed development failures; they are regression coverage, not independent human or held-out accuracy labels.",
+    "The original 100-case review is a development set used to design this change; changes on it cannot establish population accuracy or clean held-out improvement.",
+    "Source-assisted spelling references, exclusions and alternatives remain frozen. Full source sentence inputs, references and converter outputs are withheld from public observations; hashes retain exact comparison identity.",
+    "Seed scoring uses the default engine only. Custom-entry precedence, finite suffix boundaries, English mode and live editing require their separate functional and browser checks.",
+    "Candidate coverage measures only the listed readings; it does not score extra suggestions, every valid spelling or candidate usefulness.",
+    "No external test labels, performance timings, competitor comparison or browser compatibility claim are added by this report."
+  ]
+}

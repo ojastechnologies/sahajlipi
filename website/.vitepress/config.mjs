@@ -128,6 +128,7 @@ export default defineConfig({
           { text: 'Loanword review', link: '/docs/package/loanword-review.html' },
           { text: 'Loanword coverage audit', link: '/docs/package/loanword-coverage-audit.html' },
           { text: 'Loanword expansion', link: '/docs/package/loanword-expansion-2026-09-28.html' },
+          { text: 'Loanword suffixes', link: '/docs/package/loanword-suffixes-2026-10-01.html' },
         ] },
         { text: 'Evaluation and review', items: [
           { text: 'Benchmark protocol', link: '/docs/package/benchmarks.html' },

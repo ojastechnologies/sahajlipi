@@ -6,6 +6,10 @@ No npm versions have been published. `0.1.0` is the private repository prototype
 
 ### Added
 
+- Finite Nepali suffix handling for the 51 recognized English loanword stems, including `companyharumathi` → कम्पनीहरूमाथि and `mediasanga` → मिडियासँग.
+- `media` → मिडिया and the स्कूल alternative for `school`, inherited by recognized attached forms while keeping स्कुल first.
+- Dated source review and benchmark comparison for loanword suffixes, plus updated package and demo guides.
+
 - Completed source-assisted review of all 100 development cases, with 86 frozen project references, 14 exclusions, preserved maintainer notes and original evidence dates.
 - Reproducible exact-output measurement command, per-case public evidence ledger, protected sentence publication and dated development baseline.
 
@@ -37,4 +41,4 @@ No npm versions have been published. `0.1.0` is the private repository prototype
 - Distributed MIT and Unicode-3.0 licenses plus a NOTICE for CLDR-derived month-name data.
 - Pinned example/compiler and VitePress website development dependencies; no runtime dependencies added.
 
-The existing prototype includes direct phonetic typing, selected word alternatives, configurable field scopes, loanwords, Gregorian month spellings, technical-text preservation, and configurable Devanagari/Latin digits. Their implementation history and dated evidence remain in the package guides. These onboarding and website updates do not change conversion rules or publish a package. GitHub Pages now uses the Actions publishing source for the generated website artifact.
+The existing prototype includes direct phonetic typing, selected word alternatives, configurable field scopes, loanwords, Gregorian month spellings, technical-text preservation, and configurable Devanagari/Latin digits. Their implementation history and dated evidence remain in the package guides. The suffix update changes only the documented recognized loanword forms; package publication remains pending. GitHub Pages now uses the Actions publishing source for the generated website artifact.

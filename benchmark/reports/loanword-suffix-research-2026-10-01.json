@@ -1,0 +1,558 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-01",
+  "reviewKind": "source-assisted-linguistic-review",
+  "humanVerified": false,
+  "independentHumanReview": false,
+  "scope": "Validate reviewed loanword roots and a finite suffix catalogue; no engine output or diagnosis used in this review.",
+  "recommendedAllowlist": [
+    {
+      "roman": "ma",
+      "output": "मा",
+      "sourceIds": [
+        "LS01",
+        "LS04"
+      ],
+      "basis": "Short ASCII Roman keys are an explicit project typing convention; Nepali ending spelling and joining are attested. Mapping is restricted to reviewed loanword roots."
+    },
+    {
+      "roman": "ko",
+      "output": "को",
+      "sourceIds": [
+        "LS01",
+        "LS05"
+      ],
+      "basis": "Short ASCII Roman keys are an explicit project typing convention; Nepali ending spelling and joining are attested. Mapping is restricted to reviewed loanword roots."
+    },
+    {
+      "roman": "ka",
+      "output": "का",
+      "sourceIds": [
+        "LS01",
+        "LS05"
+      ],
+      "basis": "Short ASCII Roman keys are an explicit project typing convention; Nepali ending spelling and joining are attested. Mapping is restricted to reviewed loanword roots."
+    },
+    {
+      "roman": "ki",
+      "output": "की",
+      "sourceIds": [
+        "LS05"
+      ],
+      "basis": "Short ASCII Roman keys are an explicit project typing convention; Nepali ending spelling and joining are attested. Mapping is restricted to reviewed loanword roots."
+    },
+    {
+      "roman": "le",
+      "output": "ले",
+      "sourceIds": [
+        "LS01",
+        "LS02"
+      ],
+      "basis": "Short ASCII Roman keys are an explicit project typing convention; Nepali ending spelling and joining are attested. Mapping is restricted to reviewed loanword roots."
+    },
+    {
+      "roman": "lai",
+      "output": "लाई",
+      "sourceIds": [
+        "LS03"
+      ],
+      "basis": "Short ASCII Roman keys are an explicit project typing convention; Nepali ending spelling and joining are attested. Mapping is restricted to reviewed loanword roots."
+    },
+    {
+      "roman": "bata",
+      "output": "बाट",
+      "sourceIds": [
+        "LS03"
+      ],
+      "basis": "Short ASCII Roman keys are an explicit project typing convention; Nepali ending spelling and joining are attested. Mapping is restricted to reviewed loanword roots."
+    },
+    {
+      "roman": "sanga",
+      "output": "सँग",
+      "sourceIds": [
+        "LS06",
+        "LS09"
+      ],
+      "basis": "Short ASCII Roman keys are an explicit project typing convention; Nepali ending spelling and joining are attested. Mapping is restricted to reviewed loanword roots."
+    },
+    {
+      "roman": "mathi",
+      "output": "माथि",
+      "sourceIds": [
+        "LS04",
+        "LS08"
+      ],
+      "basis": "Short ASCII Roman keys are an explicit project typing convention; Nepali ending spelling and joining are attested. Mapping is restricted to reviewed loanword roots."
+    },
+    {
+      "roman": "haru",
+      "output": "हरू",
+      "sourceIds": [
+        "LS02"
+      ],
+      "basis": "Short ASCII Roman keys are an explicit project typing convention; Nepali ending spelling and joining are attested. Mapping is restricted to reviewed loanword roots."
+    },
+    {
+      "roman": "haruma",
+      "output": "हरूमा",
+      "sourceIds": [
+        "LS02",
+        "LS01",
+        "LS04"
+      ],
+      "basis": "Bounded productive inference from plural हरू plus one allowed ending; not a claim that every root+suffix pair was attested."
+    },
+    {
+      "roman": "haruko",
+      "output": "हरूको",
+      "sourceIds": [
+        "LS02",
+        "LS01",
+        "LS05"
+      ],
+      "basis": "Bounded productive inference from plural हरू plus one allowed ending; not a claim that every root+suffix pair was attested."
+    },
+    {
+      "roman": "haruka",
+      "output": "हरूका",
+      "sourceIds": [
+        "LS02",
+        "LS01",
+        "LS05"
+      ],
+      "basis": "Bounded productive inference from plural हरू plus one allowed ending; not a claim that every root+suffix pair was attested."
+    },
+    {
+      "roman": "haruki",
+      "output": "हरूकी",
+      "sourceIds": [
+        "LS02",
+        "LS05"
+      ],
+      "basis": "Bounded productive inference from plural हरू plus one allowed ending; not a claim that every root+suffix pair was attested."
+    },
+    {
+      "roman": "harule",
+      "output": "हरूले",
+      "sourceIds": [
+        "LS02",
+        "LS01"
+      ],
+      "basis": "Bounded productive inference from plural हरू plus one allowed ending; not a claim that every root+suffix pair was attested."
+    },
+    {
+      "roman": "harulai",
+      "output": "हरूलाई",
+      "sourceIds": [
+        "LS02",
+        "LS03"
+      ],
+      "basis": "Bounded productive inference from plural हरू plus one allowed ending; not a claim that every root+suffix pair was attested."
+    },
+    {
+      "roman": "harubata",
+      "output": "हरूबाट",
+      "sourceIds": [
+        "LS02",
+        "LS03"
+      ],
+      "basis": "Bounded productive inference from plural हरू plus one allowed ending; not a claim that every root+suffix pair was attested."
+    },
+    {
+      "roman": "harusanga",
+      "output": "हरूसँग",
+      "sourceIds": [
+        "LS02",
+        "LS06",
+        "LS09"
+      ],
+      "basis": "Bounded productive inference from plural हरू plus one allowed ending; not a claim that every root+suffix pair was attested."
+    },
+    {
+      "roman": "harumathi",
+      "output": "हरूमाथि",
+      "sourceIds": [
+        "LS02",
+        "LS04",
+        "LS08"
+      ],
+      "basis": "Bounded productive inference from plural हरू plus one allowed ending; not a claim that every root+suffix pair was attested."
+    }
+  ],
+  "recommendedSuffixKeyCount": 19,
+  "stemChoices": [
+    {
+      "roman": "company",
+      "outputs": [
+        "कम्पनी"
+      ],
+      "sourceIds": [
+        "LS01",
+        "LS02",
+        "LS03"
+      ]
+    },
+    {
+      "roman": "school",
+      "outputs": [
+        "स्कुल",
+        "स्कूल"
+      ],
+      "sourceIds": [
+        "LS04",
+        "LS07"
+      ],
+      "note": "Keep existing short-u preferred output; add long-u alternate. Source usage alone does not rank variants."
+    },
+    {
+      "roman": "media",
+      "outputs": [
+        "मिडिया"
+      ],
+      "sourceIds": [
+        "LS06"
+      ],
+      "note": "Add as the 51st reviewed exact loanword root. Context is communication/media, not all English senses."
+    }
+  ],
+  "reviewedTargets": [
+    {
+      "roman": "companyharumathi",
+      "referenceOutputs": [
+        "कम्पनीहरूमाथि"
+      ],
+      "sourceIds": [
+        "LS08",
+        "LS02",
+        "LS04"
+      ],
+      "supportLevel": "limited exact attestation plus direct productive morphology support"
+    },
+    {
+      "roman": "schoolma",
+      "referenceOutputs": [
+        "स्कुलमा",
+        "स्कूलमा"
+      ],
+      "sourceIds": [
+        "LS04",
+        "LS07"
+      ],
+      "supportLevel": "direct whole-form attestation for both alternatives"
+    },
+    {
+      "roman": "mediasanga",
+      "referenceOutputs": [
+        "मिडियासँग"
+      ],
+      "sourceIds": [
+        "LS06"
+      ],
+      "supportLevel": "direct whole-form attestation"
+    }
+  ],
+  "literalObservedJoinedExamples": [
+    {
+      "romanConvention": "companyma",
+      "observedNepali": "कम्पनीमा",
+      "sourceIds": [
+        "LS01"
+      ]
+    },
+    {
+      "romanConvention": "companyko",
+      "observedNepali": "कम्पनीको",
+      "sourceIds": [
+        "LS01"
+      ]
+    },
+    {
+      "romanConvention": "companyka",
+      "observedNepali": "कम्पनीका",
+      "sourceIds": [
+        "LS01"
+      ]
+    },
+    {
+      "romanConvention": "companyle",
+      "observedNepali": "कम्पनीले",
+      "sourceIds": [
+        "LS01"
+      ]
+    },
+    {
+      "romanConvention": "companylai",
+      "observedNepali": "कम्पनीलाई",
+      "sourceIds": [
+        "LS03"
+      ]
+    },
+    {
+      "romanConvention": "companybata",
+      "observedNepali": "कम्पनीबाट",
+      "sourceIds": [
+        "LS03"
+      ]
+    },
+    {
+      "romanConvention": "companysanga",
+      "observedNepali": "कम्पनीसँग",
+      "sourceIds": [
+        "LS09"
+      ]
+    },
+    {
+      "romanConvention": "companyharu",
+      "observedNepali": "कम्पनीहरू",
+      "sourceIds": [
+        "LS02"
+      ]
+    },
+    {
+      "romanConvention": "companyharuko",
+      "observedNepali": "कम्पनीहरूको",
+      "sourceIds": [
+        "LS02"
+      ]
+    },
+    {
+      "romanConvention": "companyharule",
+      "observedNepali": "कम्पनीहरूले",
+      "sourceIds": [
+        "LS02"
+      ]
+    },
+    {
+      "romanConvention": "companyharulai",
+      "observedNepali": "कम्पनीहरूलाई",
+      "sourceIds": [
+        "LS03",
+        "LS09"
+      ]
+    },
+    {
+      "romanConvention": "tablemathi",
+      "observedNepali": "टेबलमाथि",
+      "sourceIds": [
+        "LS04"
+      ],
+      "note": "Morphology example only; table root spelling must follow separate project root choice."
+    }
+  ],
+  "edgeCases": [
+    {
+      "root": "media",
+      "nepaliStem": "मिडिया",
+      "literalObserved": "मिडियासँग",
+      "sourceIds": [
+        "LS06"
+      ],
+      "recommendation": "Preserve the final ा. Append the suffix spelling directly; do not delete or coalesce stem vowels."
+    },
+    {
+      "root": "video",
+      "nepaliStem": "भिडियो",
+      "literalObserved": "भिडियोको",
+      "sourceIds": [
+        "LS10"
+      ],
+      "recommendation": "Preserve final ो before को; do not attach a virama or rewrite vowel signs."
+    },
+    {
+      "root": "radio",
+      "nepaliStem": "रेडियो",
+      "literalObserved": "रेडियोमा",
+      "sourceIds": [
+        "LS12"
+      ],
+      "recommendation": "Preserve final ो before मा; limited exact-source scope retained."
+    },
+    {
+      "root": "coffee",
+      "nepaliStem": "कफी",
+      "literalObserved": [
+        "कफीको",
+        "कफीका",
+        "कफीमा",
+        "कफीलाई"
+      ],
+      "sourceIds": [
+        "LS11"
+      ],
+      "recommendation": "Research only, not a new root in this change. If later admitted, preserve final long ी before endings."
+    }
+  ],
+  "implementationRecommendations": [
+    "Use complete-root plus complete-suffix matching over the 19 explicit suffix keys. Longest root/ending matching must be deterministic; exact custom/full entries retain precedence.",
+    "Derive only from the reviewed built-in loanword catalogue, not every ordinary Roman Nepali lexicon entry or arbitrary custom stem.",
+    "Append full Unicode suffix spelling to each ordered root candidate. Never remove the root final vowel or add half-sound virama during joining.",
+    "Keep selected suffix keys literal and case-sensitive after the existing Shift controls; do not broadly lowercase T/D/S/R/contextual H.",
+    "Do not add recursive suffix chains, automatic typo repair, or unsourced Roman suffix aliases. sangai and haru+sangai are deferred from the initial slice.",
+    "Describe productive derivation honestly: grammatical material is attested, but every generated root+ending combination is not separately verified. Conversion does not validate sentence grammar or choose genitive agreement for the user.",
+    "Preserve URL/domain/email literals and English-only modes via the existing outer text/DOM policies."
+  ],
+  "deferred": [
+    {
+      "key": "sangai",
+      "outputProposal": "सँगै",
+      "reason": "Whole मिडियासँगै is indexed in Press Council original article https://www.presscouncilnepal.gov.np/np/2023/12/14/8200/, but direct open failed. Initial slice is intentionally 19 explicit keys; this adverbial/emphatic extension can be reviewed separately."
+    }
+  ],
+  "questions": [],
+  "sources": [
+    {
+      "id": "LS01",
+      "title": "Office of Company Registrar — registration information",
+      "url": "https://ocr.gov.np/pages/registration/",
+      "accessScope": "direct-html",
+      "verifiedAt": "2026-10-01",
+      "observedForms": [
+        "कम्पनीमा",
+        "कम्पनीको",
+        "कम्पनीले",
+        "कम्पनीका"
+      ],
+      "support": "Direct institutional usage preserves the vowel-final stem कम्पनी before case/genitive endings. Relevant text appears around lines 143–179. Attestation, not a normative ranking."
+    },
+    {
+      "id": "LS02",
+      "title": "Office of Company Registrar — scope of work",
+      "url": "https://ocr.gov.np/pages/scopes/",
+      "accessScope": "direct-html",
+      "verifiedAt": "2026-10-01",
+      "observedForms": [
+        "कम्पनीहरू",
+        "कम्पनीहरूको",
+        "कम्पनीहरूले"
+      ],
+      "support": "Direct plural and plural-plus-postposition usage at lines 117–120. Long ऊ in हरू is directly attested; source does not prescribe a Roman input convention."
+    },
+    {
+      "id": "LS03",
+      "title": "Office of Company Registrar — monitoring arrangements",
+      "url": "https://ocr.gov.np/pages/monitoring/",
+      "accessScope": "direct-html",
+      "verifiedAt": "2026-10-01",
+      "observedForms": [
+        "कम्पनीबाट",
+        "कम्पनीलाई",
+        "कम्पनीहरूलाई"
+      ],
+      "support": "Direct HTML at lines 123 and 144 contains the joined ablative, dative and plural dative forms."
+    },
+    {
+      "id": "LS04",
+      "title": "Introduction to the Nepali Language — Chapter 6 Unit 4 Grammar Focus",
+      "url": "https://pressbooks.bccampus.ca/nepali/chapter/chapter-6-unit-4-grammar-focus/",
+      "accessScope": "direct-html",
+      "verifiedAt": "2026-10-01",
+      "observedForms": [
+        "टेबलमा",
+        "टेबलमाथि",
+        "कक्षामा",
+        "स्कुलमा",
+        "अफिसमा"
+      ],
+      "support": "Original instructional text explicitly describes noun+मा attachment, and directly joined location words including माथि. स्कुलमा at line 1013; टेबलमाथि at line 771. Its licensed content is cited through short examples, not incorporated wholesale."
+    },
+    {
+      "id": "LS05",
+      "title": "Introduction to the Nepali Language — Chapter 4 Unit 4 Grammar Focus",
+      "url": "https://pressbooks.bccampus.ca/nepali/chapter/chapter-4-unit-4-grammar-focus/",
+      "accessScope": "direct-html",
+      "verifiedAt": "2026-10-01",
+      "observedForms": [
+        "तपाईंको",
+        "तपाईंकी",
+        "तपाईंका",
+        "उनीहरूको"
+      ],
+      "support": "Original instruction explains that को/की/का attach to the owner and agree with the thing owned. This supports the endings as morphology, not a claim that every generated loanword phrase is grammatical in every context."
+    },
+    {
+      "id": "LS06",
+      "title": "Nepal Police — information dissemination by central spokesperson",
+      "url": "https://www.nepalpolice.gov.np/news/print/4077/",
+      "accessScope": "direct-html",
+      "verifiedAt": "2026-10-01",
+      "observedForms": [
+        "मिडिया",
+        "मिडियासँग"
+      ],
+      "support": "Original police article directly uses whole मिडियासँग at line 7, as well as the base मिडिया. Stronger current access than the historical Press Council indexed PDF evidence."
+    },
+    {
+      "id": "LS07",
+      "title": "Armed Police Force Women’s Association — activities",
+      "url": "https://wfa.apf.gov.np/",
+      "accessScope": "direct-html",
+      "verifiedAt": "2026-10-01",
+      "observedForms": [
+        "स्कुलमा",
+        "स्कूलमा",
+        "स्कुलको",
+        "स्कुलका"
+      ],
+      "support": "Original institutional activity descriptions contain both short-u and long-u school spelling variants. स्कूलमा at line 2177; स्कुलमा at lines 196, 481 and elsewhere. Both are attested; no unique spelling preference or usage frequency is inferred."
+    },
+    {
+      "id": "LS08",
+      "title": "Nepal Telecom — consolidated financial statements 2077/78",
+      "url": "https://cms.ntc.net.np/storage/media/gM01GEEPTnfUBHHTAipjQnUzCoLkFXP3pcIQUX4n.pdf",
+      "accessScope": "search-indexed-pdf-excerpt",
+      "verifiedAt": "2026-10-01",
+      "observedForms": [
+        "कम्पनीहरूमाथि"
+      ],
+      "support": "Search-indexed financial-report excerpt contains the whole joined form कम्पनीहरूमाथि. Direct web fetch refused the 10,842,471-byte PDF, and no visual page was inspected. Surrounding extracted text has errors, so preserve limited confidence and access scope."
+    },
+    {
+      "id": "LS09",
+      "title": "Nepal Law Journal — decision 9344",
+      "url": "https://nkp.gov.np/full_detail/9344",
+      "accessScope": "direct-html",
+      "verifiedAt": "2026-10-01",
+      "observedForms": [
+        "कम्पनीसँग",
+        "कम्पनीहरूलाई"
+      ],
+      "support": "Original Supreme Court decision HTML contains कम्पनीसँग around paragraph 26 and कम्पनीहरूलाई at paragraph 31. This corroborates joined singular comitative and plural dative morphology."
+    },
+    {
+      "id": "LS10",
+      "title": "Nepal Police — social media character-assassination arrest report",
+      "url": "https://www.nepalpolice.gov.np/news/7952/",
+      "accessScope": "direct-html",
+      "verifiedAt": "2026-10-01",
+      "observedForms": [
+        "भिडियोको"
+      ],
+      "support": "Original police article uses भिडियोको at line 70, preserving vowel-final भिडियो before को. Context is a social-media video."
+    },
+    {
+      "id": "LS11",
+      "title": "Suryodaya Municipality — coffee crop FAQ",
+      "url": "https://www.suryodayakrishi.gov.np/faq/978/1031",
+      "accessScope": "direct-html",
+      "verifiedAt": "2026-10-01",
+      "observedForms": [
+        "कफीको",
+        "कफीका",
+        "कफीमा",
+        "कफीलाई"
+      ],
+      "support": "Original municipality agriculture FAQ directly shows long-i stem कफी before multiple endings. This is an edge-case spelling research note only; coffee is not added to the shipped loanword roots by this change."
+    },
+    {
+      "id": "LS12",
+      "title": "Radio Nepal — Jhankar 2079 annual publication",
+      "url": "https://radionepal.gov.np/wp-content/uploads/2023/04/Radio-Nepal-Jhankar-2079-compressed.pdf",
+      "accessScope": "search-indexed-pdf-excerpt",
+      "verifiedAt": "2026-10-01",
+      "observedForms": [
+        "रेडियोमा"
+      ],
+      "support": "Indexed original Radio Nepal publication excerpt directly contains रेडियोमा. Full PDF and visual page were not inspected in this review; spelling is useful as an edge case but limited-scope attestation."
+    }
+  ]
+}

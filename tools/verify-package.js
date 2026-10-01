@@ -12,7 +12,7 @@ const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const requiredFiles = [
   'package.json', 'README.md', 'LICENSE', 'NOTICE', 'LICENSES/Unicode-3.0.txt',
   'src/index.js', 'src/index.d.ts', 'src/dom.js', 'src/dom.d.ts',
-  'src/lexicon.js', 'src/phonetic.js', 'src/text-policy.js',
+  'src/lexicon.js', 'src/loanwords.js', 'src/phonetic.js', 'src/text-policy.js',
 ];
 const runtimeFiles = new Set(requiredFiles.filter((name) => name.startsWith('src/')));
 
