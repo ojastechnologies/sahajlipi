@@ -1,10 +1,13 @@
 # Changelog
 
-No npm versions have been published. `0.1.0` is the private repository prototype version. Release entries will identify actual published versions and their source tags; [release policy](docs/release.md) defines versioning and migration expectations.
+No npm versions have been published. `0.1.0-alpha.1` is the prepared release candidate, with public publication configured for the `alpha` tag. This record describes candidate contents; registry publication and verification remain pending. Actual release entries will identify published versions and source tags; [release policy](docs/release.md) defines versioning and migration expectations.
 
-## Unreleased
+## 0.1.0-alpha.1 — candidate, unpublished
 
 ### Added
+
+- Four reviewed exact spelling aliases: `halyo` → हाल्यो, `nabhani` → नभनी, `gaunle` → गाउँले and `dindaina` → दिँदैन. Unlisted vowel, Shift, nasal-mark and half-consonant behavior remains unchanged.
+- Dated spelling evidence, frozen source-assisted validation and reproducible before/after measurements.
 
 - Finite Nepali suffix handling for the 51 recognized English loanword stems, including `companyharumathi` → कम्पनीहरूमाथि and `mediasanga` → मिडियासँग.
 - `media` → मिडिया and the स्कूल alternative for `school`, inherited by recognized attached forms while keeping स्कुल first.
@@ -36,6 +39,8 @@ No npm versions have been published. `0.1.0` is the private repository prototype
 - Source-only vanilla example instructions use the separate repository example server on port 4177.
 
 ### Packaging
+
+- Candidate metadata for `0.1.0-alpha.1`, with public access and the `alpha` tag. Candidate preparation does not establish a registry release.
 
 - Explicit distribution file allowlist and repository/support metadata.
 - Distributed MIT and Unicode-3.0 licenses plus a NOTICE for CLDR-derived month-name data.

@@ -1,6 +1,6 @@
 # API reference
 
-SahajLipi is an MIT-licensed prototype at version `0.1.0`. It is **not published to npm**: [`package.json`](../../package.json) has `"private": true`. Install it from a local tarball or checkout folder using [getting started](getting-started.md); the examples below use its public package exports. The code is dependency-free ECMAScript modules; Node.js 18 or later is declared in the package metadata. See [integration recipes](integration-recipes.md) for complete candidate and component examples.
+SahajLipi is an MIT-licensed experimental package. [`package.json`](../../package.json) is prepared for the **`0.1.0-alpha.1` candidate** with public access and the `alpha` tag. It is **not published to npm yet**; candidate metadata does not establish a registry release. Install it from a local tarball or checkout folder using [getting started](getting-started.md); the examples below use its public package exports. The code is dependency-free ECMAScript modules; Node.js 18 or later is declared in the package metadata. See [integration recipes](integration-recipes.md) for complete candidate and component examples.
 
 The public surface has two entry points:
 
@@ -18,6 +18,12 @@ import { convertWord, convertText, createEngine } from 'sahajlipi';
 
 convertWord('paani');
 // { text: 'पानी', candidates: ['पानी'], ambiguous: false }
+
+convertWord('gaunle');
+// { text: 'गाउँले', candidates: ['गाउँले'], ambiguous: false }
+
+convertText('halyo nabhani gaunle dindaina.');
+// 'हाल्यो नभनी गाउँले दिँदैन.'
 
 convertWord('kam');
 // { text: 'कम', candidates: ['कम', 'काम'], ambiguous: true }
@@ -58,6 +64,8 @@ Returns `{ text, candidates, ambiguous }`:
 | `ambiguous` | `true` when more than one distinct candidate remains. |
 
 `convertWord` is a single-Roman-word API. It does not apply URL or email preservation; use `convertText` for text containing addresses or punctuation. An empty input returns empty text and candidates. The engine checks an exact lexicon entry first, then recognized loanword suffix forms, then interprets explicit marks and applies deterministic phonetic rules. An unknown spelling still returns a result; it is **not** evidence that the result is linguistically correct. See [architecture](architecture.md) and [benchmarks](benchmarks.md).
+
+The four reviewed exact aliases `halyo` → हाल्यो, `nabhani` → नभनी, `gaunle` → गाउँले and `dindaina` → दिँदैन each have one reading. They use whole-word lookup; they do not create a vowel/nasal correction rule or native-word suffix inference. An exact custom entry replaces an alias, as for any starter entry. Reserved Shift keys still select their sounds. See the [dated spelling review](nepali-spelling-2026-10-01.md).
 
 The built-in lexicon includes 51 recognized English-spelling loanword stems, including `camera` → क्यामेरा, `company` → कम्पनी and `media` → मिडिया. `school` returns `['स्कुल', 'स्कूल']`; the first reading remains the existing default. Recognized suffix forms inherit every distinct stem reading in the same order. The [suffix review](loanword-suffixes-2026-10-01.md) records the finite rule, evidence and limits. These are source-assisted project preferences, with independent human linguistic review pending. They spell borrowed words rather than translating their meanings.
 

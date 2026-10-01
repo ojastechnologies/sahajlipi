@@ -1,6 +1,6 @@
 # Developer integration examples
 
-These examples consume the public `sahajlipi` and `sahajlipi/dom` entry points. The package is still unpublished; the repository's verification command installs a local packed tarball in a temporary consumer project instead of downloading SahajLipi from npm.
+These examples consume the public `sahajlipi` and `sahajlipi/dom` entry points. The repository's verification command installs a locally packed tarball in a temporary consumer project. It checks candidate contents without depending on registry availability; the [release record](../docs/release.md) identifies actual npm publication and verification status.
 
 | Example | What it demonstrates |
 | --- | --- |

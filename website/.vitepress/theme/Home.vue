@@ -22,7 +22,7 @@ typing.destroy();`;
           <a class="sahaj-button sahaj-button-primary" :href="withBase('/docs/package/getting-started.html')">Get started</a>
           <a class="sahaj-button sahaj-button-secondary" :href="withBase('/demo/')" target="_self">Try the demo</a>
         </div>
-        <p class="sahaj-release-note">Open-source prototype. Not published to npm yet.<br>Start with a checkout or a local package.</p>
+        <p class="sahaj-release-note">0.1.0-alpha.1 candidate. Not published to npm yet.<br>Start with a checkout or a local package.</p>
       </div>
       <WordPreview />
     </section>

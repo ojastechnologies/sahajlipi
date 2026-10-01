@@ -97,7 +97,7 @@ Pull requests to `main` run the [Node CI workflow](../.github/workflows/ci.yml) 
 
 ## Release status
 
-The repository and demo are public; npm publishing is still blocked by `"private": true`. The [release policy](release.md) now defines compatibility scope, versioning, migration notes, and an alpha checklist. There is no npm publishing workflow, registry release, or stable API promise. See [CHANGELOG.md](../CHANGELOG.md) for unreleased changes and [Getting started](package/getting-started.md) for local package installation.
+The repository and demo are public. Metadata is prepared for the unpublished `0.1.0-alpha.1` candidate, with public access and the `alpha` tag. The [release policy](release.md) defines compatibility scope, versioning, migration notes and the alpha checklist. Registry publication and verification remain pending; experimental typing behavior is not a stable API promise. See [CHANGELOG.md](../CHANGELOG.md) for candidate contents and [Getting started](package/getting-started.md) for local installation.
 
 ## Privacy and trust boundaries
 

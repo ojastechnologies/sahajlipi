@@ -1,0 +1,366 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-01",
+  "recordedAtUTC": "2026-10-01T15:32:05Z",
+  "reviewKind": "source-assisted-project-spelling-preferences",
+  "humanVerified": false,
+  "independentHumanReview": false,
+  "scope": "Four existing frozen development word references rechecked against primary Nepali institutional usage, plus a separately frozen small after-design constructed phonetic control sample. No engine outcomes inspected while freezing that new sample.",
+  "baselineCommit": "cbcd77aae14e1845567e416c29f05658e0fe8e62",
+  "frozenDevelopmentLedgerSha256": "5d9b36e39481d3f790fed503968f6bc504e71780ba083d8ed214f27ef674d34a",
+  "typingRulesBaselineSha256": "4ad74d5488c34cf2f64ca615a1447bf58ff7504748a97edeee00f52c989d7520",
+  "baselineLexiconSha256": "27792c7626f6982750101f903030f2866b0338e3b37780dcc4df1b4486f4eb79",
+  "targetCount": 4,
+  "targets": [
+    {
+      "input": "halyo",
+      "referenceOutputs": [
+        "हाल्यो"
+      ],
+      "preferredReferenceIndex": 0,
+      "sourceIds": [
+        "NS01"
+      ],
+      "basis": "Previously frozen source-assisted development reference, rechecked for implementation; not a held-out label.",
+      "note": "Exact informal whole-word preference supplies lexical long आ. This does not make every fallback a long.",
+      "priorCaseId": "word-validation:nep344",
+      "priorEvidenceReused": true,
+      "priorEvidence": [
+        {
+          "url": "https://www.onlinekhabar.com/2025/03/1646297/social-network-x-files-lawsuit-against-indian-government",
+          "title": "सामाजिक सञ्जाल एक्सले भारत सरकारविरुद्ध हाल्यो मुद्दा — Online Khabar",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: The headline contains हाल्यो, a past-tense verb form.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://nkp.gov.np/full_detail/5159",
+          "title": "Nepal Kanoon Patrika — decision page 5159",
+          "support": "Whole हाल्यो directly visible as a finite verb. Supports the long vowel and ल्य cluster.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ]
+    },
+    {
+      "input": "nabhani",
+      "referenceOutputs": [
+        "नभनी"
+      ],
+      "preferredReferenceIndex": 0,
+      "sourceIds": [
+        "NS02"
+      ],
+      "basis": "Previously frozen source-assisted development reference, rechecked for implementation; not a held-out label.",
+      "note": "Exact informal whole-word preference supplies long final ी. Historical frozen reason text says short final vowel despite storing the long-vowel reference; this new record clarifies the note without changing the old ledger.",
+      "priorCaseId": "word-validation:nep295",
+      "priorEvidenceReused": true,
+      "priorEvidence": [
+        {
+          "url": "https://gorkhapatraonline.com/news/143266",
+          "title": "Gorkhapatra — गोठ गोठमा पशु प्राविधिक",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Indexed text matches दिनरात नभनी; full article could not be fetched.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://nkp.gov.np/full_detail/5950",
+          "title": "Nepal Kanoon Patrika — decision page 5950",
+          "support": "Whole नभनी directly visible in the official decision; current page verified.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ]
+    },
+    {
+      "input": "gaunle",
+      "referenceOutputs": [
+        "गाउँले"
+      ],
+      "preferredReferenceIndex": 0,
+      "sourceIds": [
+        "NS03"
+      ],
+      "basis": "Previously frozen source-assisted development reference, rechecked for implementation; not a held-out label.",
+      "note": "Exact informal whole-word preference retains the lexical independent उ and chandrabindu sequence. It does not globally reinterpret au or n.",
+      "priorCaseId": "word-validation:nep663",
+      "priorEvidenceReused": true,
+      "priorEvidence": [
+        {
+          "url": "https://www.sanskritiksansthan.gov.np/content/527",
+          "title": "Sanskritik Sansthan — माटोको गीत दोस्रो संस्करण",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched गाउँले at lines 150–152.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "input": "dindaina",
+      "referenceOutputs": [
+        "दिँदैन"
+      ],
+      "preferredReferenceIndex": 0,
+      "sourceIds": [
+        "NS04",
+        "NS05"
+      ],
+      "basis": "Previously frozen source-assisted development reference, rechecked for implementation; not a held-out label.",
+      "note": "Exact informal whole-word preference retains chandrabindu over the first vowel. It does not globally turn n into a nasal mark.",
+      "priorCaseId": "word-validation:nep288",
+      "priorEvidenceReused": true,
+      "priorEvidence": [
+        {
+          "url": "https://na.parliament.gov.np/uploads/attachments/oqw7slnndhb0wnrq.pdf",
+          "title": "National Assembly transcript — attachment oqw7slnndhb0wnrq.pdf",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: The indexed transcript excerpt contains दिँदैन. The PDF could not be inspected.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://na.parliament.gov.np/uploads/attachments/oqw7slnndhb0wnrq.pdf",
+          "title": "National Assembly — official meeting transcript",
+          "support": "Current indexed parliamentary excerpt shows whole दिँदैन with chandrabindu. This refreshes the prior citation but remains indexed text, not a new full-PDF inspection.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "NS01",
+      "title": "Nepal Law Journal — decision 1440, homicide",
+      "url": "https://nkp.gov.np/full_detail/5159",
+      "accessScope": "direct-html",
+      "verifiedAt": "2026-10-01",
+      "recordedAtUTC": "2026-10-01T15:32:05Z",
+      "support": "Whole target verb form is visible in quoted testimony at line 43. Surrounding historical transcription contains typographic irregularities, so this is usage attestation, not a normative spelling or sense ranking."
+    },
+    {
+      "id": "NS02",
+      "title": "Nepal Law Journal — decision 6581, inheritance and land possession",
+      "url": "https://nkp.gov.np/full_detail/5950",
+      "accessScope": "direct-html",
+      "verifiedAt": "2026-10-01",
+      "recordedAtUTC": "2026-10-01T15:32:05Z",
+      "support": "Whole target negative verb form is directly visible in the account at line 41. The displayed final vowel sign is long U+0940, not short U+093F."
+    },
+    {
+      "id": "NS03",
+      "title": "Sanskritik Sansthan — Matoko Geet, second edition production",
+      "url": "https://www.sanskritiksansthan.gov.np/content/527",
+      "accessScope": "direct-html",
+      "verifiedAt": "2026-10-01",
+      "recordedAtUTC": "2026-10-01T15:32:05Z",
+      "support": "The complete target noun is visible in production cast-role labels at lines 146–152. This rechecks the historical direct source; it does not independently human-verify the Roman key."
+    },
+    {
+      "id": "NS04",
+      "title": "Suryodaya Municipality — citrus-fruit cultivation guidance",
+      "url": "https://www.suryodayakrishi.gov.np/fruit-farming-technology-info/1402",
+      "accessScope": "direct-html",
+      "verifiedAt": "2026-10-01",
+      "recordedAtUTC": "2026-10-01T15:32:05Z",
+      "support": "The target negative verb with chandrabindu is directly visible at line 345. Short individual word forms used for the separate constructed controls are directly visible elsewhere in the page. The institutional page is usage evidence; surrounding spelling variation does not establish a normative dictionary or a frequency estimate."
+    },
+    {
+      "id": "NS05",
+      "title": "National Assembly — original meeting transcript attachment",
+      "url": "https://na.parliament.gov.np/uploads/attachments/oqw7slnndhb0wnrq.pdf",
+      "accessScope": "prior-indexed-pdf-excerpt-only",
+      "verifiedAt": "2026-10-01",
+      "priorRecordedAt": "2026-09-27",
+      "recheckedAt": "2026-10-01",
+      "support": "Existing frozen review contains a refreshed indexed excerpt for the fourth target. Current direct PDF fetch failed; no PDF page was visually inspected. Retain historical scope rather than upgrade it. The new direct municipal source provides current implementation corroboration."
+    }
+  ],
+  "constructedValidation": {
+    "path": "benchmark/data/native-spelling-2026-10-01/constructed-native-controls.json",
+    "sha256": "e72bc806b0ad378db6d0879d67fe86c9e35a5b6bd368583b515fb9304da3c048",
+    "frozenAtUTC": "2026-10-01T15:32:05Z",
+    "caseCount": 11,
+    "purpose": "after-design-selected-phonetic-conformance-controls",
+    "humanVerified": false,
+    "independentHumanReview": false,
+    "independentHeldOutAccuracy": false,
+    "constructedRomanKeys": true,
+    "populationRepresentative": false,
+    "scope": "A convenience sample of 11 short source-attested word forms with constructed Roman keys. Inputs exclude baseline lexicon keys, the old reviewed word-input keys and the four target root strings. Source selection and Roman construction use known project typing rules; this is selected after-design conformance validation, not blind or representative natural-typing accuracy. No reference or core changes are authorized in response to its outcomes.",
+    "cases": [
+      {
+        "id": "native-control-01",
+        "mode": "word",
+        "input": "paata",
+        "referenceOutputs": [
+          "पात"
+        ],
+        "preferredReferenceIndex": 0,
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 315",
+        "romanOrigin": "Assistant-constructed from the documented explicit typing controls after design; not collected from a typist or transliteration dataset.",
+        "control": "long-aa and explicit final a"
+      },
+      {
+        "id": "native-control-02",
+        "mode": "word",
+        "input": "phuula",
+        "referenceOutputs": [
+          "फूल"
+        ],
+        "preferredReferenceIndex": 0,
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 318",
+        "romanOrigin": "Assistant-constructed from the documented explicit typing controls after design; not collected from a typist or transliteration dataset.",
+        "control": "long-uu and explicit final a"
+      },
+      {
+        "id": "native-control-03",
+        "mode": "word",
+        "input": "maaTo",
+        "referenceOutputs": [
+          "माटो"
+        ],
+        "preferredReferenceIndex": 0,
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 344",
+        "romanOrigin": "Assistant-constructed from the documented explicit typing controls after design; not collected from a typist or transliteration dataset.",
+        "control": "long-aa and reserved retroflex T"
+      },
+      {
+        "id": "native-control-04",
+        "mode": "word",
+        "input": "jaraa",
+        "referenceOutputs": [
+          "जरा"
+        ],
+        "preferredReferenceIndex": 0,
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 460",
+        "romanOrigin": "Assistant-constructed from the documented explicit typing controls after design; not collected from a typist or transliteration dataset.",
+        "control": "long-aa ending"
+      },
+      {
+        "id": "native-control-05",
+        "mode": "word",
+        "input": "phala",
+        "referenceOutputs": [
+          "फल"
+        ],
+        "preferredReferenceIndex": 0,
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 318",
+        "romanOrigin": "Assistant-constructed from the documented explicit typing controls after design; not collected from a typist or transliteration dataset.",
+        "control": "short vowels and explicit final a"
+      },
+      {
+        "id": "native-control-06",
+        "mode": "word",
+        "input": "mala",
+        "referenceOutputs": [
+          "मल"
+        ],
+        "preferredReferenceIndex": 0,
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 240",
+        "romanOrigin": "Assistant-constructed from the documented explicit typing controls after design; not collected from a typist or transliteration dataset.",
+        "control": "short vowels and explicit final a"
+      },
+      {
+        "id": "native-control-07",
+        "mode": "word",
+        "input": "daanaa",
+        "referenceOutputs": [
+          "दाना"
+        ],
+        "preferredReferenceIndex": 0,
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 328",
+        "romanOrigin": "Assistant-constructed from the documented explicit typing controls after design; not collected from a typist or transliteration dataset.",
+        "control": "two long-aa vowels"
+      },
+      {
+        "id": "native-control-08",
+        "mode": "word",
+        "input": "dhaanako",
+        "referenceOutputs": [
+          "धानको"
+        ],
+        "preferredReferenceIndex": 0,
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 338",
+        "romanOrigin": "Assistant-constructed from the documented explicit typing controls after design; not collected from a typist or transliteration dataset.",
+        "control": "fully encoded native genitive spelling without a loanword root rule"
+      },
+      {
+        "id": "native-control-09",
+        "mode": "word",
+        "input": "haa~gaa",
+        "referenceOutputs": [
+          "हाँगा"
+        ],
+        "preferredReferenceIndex": 0,
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 388",
+        "romanOrigin": "Assistant-constructed from the documented explicit typing controls after design; not collected from a typist or transliteration dataset.",
+        "control": "explicit chandrabindu after a fully supplied vowel"
+      },
+      {
+        "id": "native-control-10",
+        "mode": "word",
+        "input": "boTa",
+        "referenceOutputs": [
+          "बोट"
+        ],
+        "preferredReferenceIndex": 0,
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 373",
+        "romanOrigin": "Assistant-constructed from the documented explicit typing controls after design; not collected from a typist or transliteration dataset.",
+        "control": "reserved retroflex T and explicit final a"
+      },
+      {
+        "id": "native-control-11",
+        "mode": "word",
+        "input": "chiso",
+        "referenceOutputs": [
+          "चिसो"
+        ],
+        "preferredReferenceIndex": 0,
+        "sourceIds": [
+          "NS04"
+        ],
+        "sourceLocator": "direct HTML line 344",
+        "romanOrigin": "Assistant-constructed from the documented explicit typing controls after design; not collected from a typist or transliteration dataset.",
+        "control": "ordinary ch and short-i spelling"
+      }
+    ],
+    "publication": "Short individual word forms and citation metadata only; no copied full source sentences or document text. No open license is asserted for the source."
+  },
+  "implementationBoundaries": [
+    "Only four complete lowercase keys acquire preferences. No aliases, root parser, native suffix generator, vowel-length heuristic or inferred nasal placement follows from these observations.",
+    "Explicit short/long vowels, au, nasal marks, reserved Shift sounds and bare half-consonants retain the fallback rules. Exact custom word entries keep normal precedence.",
+    "The target mapping choices reuse development references; the new controls were selected after the design and are not independent human language labels.",
+    "Record all control outputs including failures without tuning the new entries or changing the frozen controls."
+  ],
+  "questions": []
+}

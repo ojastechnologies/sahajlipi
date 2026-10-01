@@ -4,7 +4,7 @@ SahajLipi is an early, MIT-licensed Roman Nepali to Unicode typing project. The 
 
 ## Package status
 
-The [package](package/README.md) includes a deterministic word and text converter, a small starter lexicon with ordered alternatives for selected spellings, 51 recognized English-spelling loanword stems with 19 finite suffix keys and 12 full English month names, and browser adapters for direct typing in configured text fields. It has TypeScript declarations and no runtime dependencies. The package is marked `private` and is **not published to npm**.
+The [package](package/README.md) includes a deterministic word and text converter, a small starter lexicon with ordered alternatives for selected spellings, 51 recognized English-spelling loanword stems with 19 finite suffix keys and 12 full English month names, and browser adapters for direct typing in configured text fields. It has TypeScript declarations and no runtime dependencies. The **`0.1.0-alpha.1` candidate** is prepared with public access and the `alpha` tag. It is **not published to npm yet**; registry publication and verification remain pending.
 
 | Area | Current limit |
 | --- | --- |
@@ -22,6 +22,10 @@ The [architecture](package/architecture.md), [API reference](package/api.md), an
 A separate Playwright suite checks the reusable adapters and selected demo flows in Chromium, Firefox, and WebKit. It uses pinned development dependencies, an isolated local server, and a dedicated GitHub Actions matrix with downloadable HTML/JSON reports and failure traces. The [browser compatibility guide](package/browser-compatibility.md) records the first dated macOS arm64 run: **36/36** checks across 12 scenarios in Chromium, Firefox, and WebKit, with no failures, skips, flaky outcomes, or retries. Its source hashes, tested versions, commands, and limits are preserved in the [desktop-001 record](../browser/reports/desktop-001.json). The core engine remains dependency-free and its Node suite still runs on Node 18; browser tooling needs Node 20 or later.
 
 These checks cover selected desktop keyboard flows and separately labeled injected paste/composition events. They do not establish real mobile keyboard, OS clipboard, installed Safari, assistive-technology, or framework-controlled input support. The historical linguistic benchmark records are unchanged. A separate [digit follow-up](package/browser-compatibility.md#digit-follow-up--2026-09-27) records **42/42** checks across 14 scenarios per engine, adding digit editing, numeric address cues, Latin configuration, and English exclusions. It preserves the original [desktop-001 record](../browser/reports/desktop-001.json) and documents its new source separately in [desktop-002](../browser/reports/desktop-002.json).
+
+## Latest reviewed native spellings
+
+The [four-word spelling review](package/nepali-spelling-2026-10-01.md) adds exact aliases for `halyo` → हाल्यो, `nabhani` → नभनी, `gaunle` → गाउँले and `dindaina` → दिँदैन. Source-assisted reference spellings motivate these entries; the phonetic fallback, vowel lengths, Shift keys and half-consonant rules are unchanged. Custom exact readings still take priority, and native suffix forms are not inferred. The dated report records **137/142 → 142/142** seed contracts, **11/74 → 15/74** word defaults and **12/79 → 16/79** individual candidate references on unchanged development labels; complete sentences remain **0/12**. A constructed 11-word conformance sample matches **11/11 on both engines**. These results are separate from independent human or representative accuracy claims.
 
 ## Latest digit rendering
 
@@ -65,7 +69,7 @@ Following maintainer feedback, six of the original seven unresolved validation t
 
 The [getting-started guide](package/getting-started.md) explains local tarball installation and public imports before an npm release. [Integration recipes](package/integration-recipes.md) link runnable JavaScript, TypeScript, and React uncontrolled-field examples. Package validation installs the actual tarball in a standalone app, checks its allowed contents and exports, compiles strict TypeScript consumers, and executes the core tutorial. The browser suite also tests the installed-package examples, including React effect cleanup in development StrictMode. These checks do not establish controlled-field, mobile, SSR/hydration, or all-framework support.
 
-The [release policy](release.md) and [changelog](../CHANGELOG.md) define the remaining alpha review. Package preparation adds no runtime dependencies and changes no conversion rules. The package remains private and unpublished; independent real-typing corpus review remains separate work.
+The [release policy](release.md) and [changelog](../CHANGELOG.md) define the remaining alpha review. Package preparation adds no runtime dependencies and changes no conversion rules. The prepared `0.1.0-alpha.1` candidate remains unpublished; authenticated registry publication and clean registry-consumer verification are pending. Independent real-typing corpus review remains separate work.
 
 ## Website status
 
@@ -79,10 +83,10 @@ The [live demo](https://ojastechnologies.github.io/sahajlipi/demo/) is a static 
 
 ## Priorities
 
-1. **Develop from the completed review.** The [source-assisted development review](package/source-review-2026-10-01.md) supplies 86 frozen references, 14 documented exclusions and a reproducible baseline. The first focused slice adds recognized loanword suffixes. Next address the remaining vowel/nasal spellings and valid alternatives; compare on the frozen references and preserve existing key contracts. In parallel, collect consented real typing examples with intended Unicode, valid alternatives and independent human review, reserving a separate held-out set for representative accuracy claims.
+1. **Develop from the completed review.** The [source-assisted development review](package/source-review-2026-10-01.md) supplies 86 frozen references, 14 documented exclusions and a reproducible baseline. The first slices add recognized loanword suffixes and four exact native vowel/nasal aliases. Next address the remaining reviewed mismatches and valid alternatives; compare on the frozen references and preserve existing key contracts. In parallel, collect consented real typing examples with intended Unicode, valid alternatives and independent human review, reserving a separate held-out set for representative accuracy claims.
 2. **Evidence-led spelling expansion.** Use the reviewed corpus and observed typing needs to choose lexical entries and broadly valid phonetic changes. Review the remaining loanwords, alternate spellings, and attached forms separately. Collect feedback on the shared technical-text policy before expanding its address scope; arbitrary code and English still require explicit literal handling. Report ambiguity and trade-offs when changing defaults.
 3. **Browser input compatibility.** Maintain the [desktop engine regressions](package/browser-compatibility.md) and investigate reported failures. Extend evidence with real mobile keyboards and IMEs, operating system clipboard behavior, assistive technology, and framework-controlled fields before claiming those surfaces are supported.
-4. **Developer alpha release.** Finish API and compatibility review using the verified package consumers and [release checklist](release.md); choose an alpha version and publish with an honest quality baseline.
+4. **Developer alpha release.** Complete the [release checklist](release.md) for the prepared `0.1.0-alpha.1` candidate, publish under the `alpha` tag after authenticated checks, and verify the registry artifact in a fresh consumer. Keep the quality baseline and remaining limitations visible.
 5. **Other Devanagari languages.** Separate language-specific mappings and lexicons from shared conversion and editing mechanics. Add each language with its own reviewed corpus and guide.
 
 These are priorities, not release dates. Any future comparison with other typing tools should use the same published evaluation criteria and distinguish observed results from opinion. No competitor review is included here.

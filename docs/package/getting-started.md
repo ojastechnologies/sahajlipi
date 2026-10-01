@@ -2,9 +2,15 @@
 
 SahajLipi converts Roman Nepali to Unicode Nepali. Use the core functions for strings, or the optional browser adapter for live typing in text inputs and textareas. Start here, then use the [API reference](api.md) for every option and the [integration recipes](integration-recipes.md) for candidates and component cleanup.
 
-## 1. Install the current prototype
+## 1. Install the alpha candidate
 
-**SahajLipi is not published to npm yet.** The repository remains `private: true`. The package imports below work when installed from the checkout or a locally packed tarball; they do not imply a registry release.
+The checkout targets **`0.1.0-alpha.1`**, an experimental developer alpha. Candidate preparation does not establish registry availability. Until the [release status](../release.md#current-alpha-candidate) confirms publication, use a local tarball. After publication, pin the exact alpha version:
+
+```sh
+npm install --save-exact sahajlipi@0.1.0-alpha.1
+```
+
+`npm install sahajlipi@alpha` follows the alpha tag and may select a later prerelease. Use the exact version when reproducible typing behavior matters. The alpha is not promoted to the `latest` tag by the publishing configuration.
 
 For a reproducible local installation, clone the repository and pack it:
 
@@ -14,10 +20,10 @@ cd sahajlipi
 npm pack --ignore-scripts
 ```
 
-The current version produces `sahajlipi-0.1.0.tgz` in that checkout. In your application directory, install that file using its absolute path:
+This candidate produces `sahajlipi-0.1.0-alpha.1.tgz`. In your application directory, install that file using its absolute path:
 
 ```sh
-npm install /absolute/path/to/sahajlipi/sahajlipi-0.1.0.tgz
+npm install /absolute/path/to/sahajlipi/sahajlipi-0.1.0-alpha.1.tgz
 ```
 
 Alternatively, install the local folder directly:
@@ -26,9 +32,7 @@ Alternatively, install the local folder directly:
 npm install /absolute/path/to/sahajlipi
 ```
 
-A folder installation can link to the checkout; checkout changes can then affect your application. A tarball captures the files from the time it was packed. Repack and reinstall it after updating SahajLipi.
-
-**After a registry release is announced**, the intended command will be `npm install sahajlipi`. Do not use that registry command to obtain this unreleased prototype.
+A folder installation can link to the checkout; checkout changes can then affect your application. A tarball captures the files from the time it was packed. Repack and reinstall it after updating SahajLipi. Alpha users should review the [typing reference](typing-reference.md), [evaluation evidence](nepali-spelling-2026-10-01.md) and [compatibility scope](../release.md#compatibility-scope) before adopting it.
 
 ## 2. Convert strings
 

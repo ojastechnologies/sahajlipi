@@ -1,8 +1,8 @@
 # SahajLipi
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/brand/logo-dark.svg">
-  <img src="assets/brand/logo.svg" alt="SahajLipi" width="380" height="82">
+  <source media="(prefers-color-scheme: dark)" srcset="https://ojastechnologies.github.io/sahajlipi/assets/brand/logo-dark.svg">
+  <img src="https://ojastechnologies.github.io/sahajlipi/assets/brand/logo.svg" alt="SahajLipi" width="380" height="82">
 </picture>
 
 **Roman keys. Native script.**
@@ -17,9 +17,17 @@ SahajLipi is an open-source JavaScript library with TypeScript declarations for 
 
 ## Use the package
 
-Start with [Getting started](docs/package/getting-started.md) for local tarball installation and imports from `sahajlipi` / `sahajlipi/dom`. The package is not on npm yet. Runnable [integration examples](examples/README.md) cover vanilla JavaScript, TypeScript, and a React uncontrolled textarea; [integration recipes](docs/package/integration-recipes.md) explain candidates and lifecycle handling.
+Start with [Getting started](docs/package/getting-started.md) for local tarball installation and imports from `sahajlipi` / `sahajlipi/dom`. This candidate targets **`0.1.0-alpha.1`** with the `alpha` tag. Use registry installation once that exact version’s availability is verified in the [release record](docs/release.md), or install a locally packed checkout. Runnable [integration examples](examples/README.md) cover vanilla JavaScript, TypeScript, and a React uncontrolled textarea; [integration recipes](docs/package/integration-recipes.md) explain candidates and lifecycle handling.
 
-The core engine converts words and text without a browser. For live typing, mark the fields that should accept Roman Nepali, then initialize the browser adapter once:
+After verifying registry availability, install the exact alpha version:
+
+```sh
+npm install --save-exact sahajlipi@0.1.0-alpha.1
+```
+
+This command requires the exact version to exist in the registry; candidate metadata alone does not establish availability. The [local tarball instructions](docs/package/getting-started.md) also work from this checkout.
+
+The core engine converts words and text without a browser. The browser examples assume an ESM bundler or an import map that resolves the installed package. For live typing, mark the fields that should accept Roman Nepali, then initialize the browser adapter once:
 
 ```html
 <textarea data-sahajlipi></textarea>
@@ -27,7 +35,7 @@ The core engine converts words and text without a browser. For live typing, mark
 <input type="search" data-sahajlipi>
 
 <script type="module">
-  import { attachNepaliInputs } from './src/dom.js';
+  import { attachNepaliInputs } from 'sahajlipi/dom';
 
   const nepali = attachNepaliInputs();
   // Call nepali.destroy() when the page or app is torn down.
@@ -39,14 +47,14 @@ The manager also picks up marked fields added later. For one field, call `attach
 As an alternative to the marked-field setup above, enable Nepali typing across an app's document with `{ scope: 'all' }`. This covers supported textareas and text/search inputs; mark any English field with `data-sahajlipi-ignore`. Pass a page container as the first argument to limit the scope, or use `selector` to target particular fields. Each initializer has its own configuration and `setEnabled()` control.
 
 ```js
-import { attachNepaliInputs } from './src/dom.js';
+import { attachNepaliInputs } from 'sahajlipi/dom';
 
 const appTyping = attachNepaliInputs(document, { scope: 'all' });
 // appTyping.setEnabled(false) switches its fields to literal English typing.
 ```
 
 ```js
-import { convertWord, convertText } from './src/index.js';
+import { convertWord, convertText } from 'sahajlipi';
 
 convertWord('paani');
 // { text: 'पानी', candidates: ['पानी'], ambiguous: false }
@@ -61,6 +69,8 @@ convertText('September 27, 2026 3.14|');
 // 'सेप्टेम्बर २७, २०२६ ३.१४।'
 ```
 
+Four reviewed exact native-word aliases now produce `halyo` → हाल्यो, `nabhani` → नभनी, `gaunle` → गाउँले and `dindaina` → दिँदैन. They preserve the existing vowel, Shift and half-consonant rules for unlisted spellings. See the [dated spelling review](docs/package/nepali-spelling-2026-10-01.md).
+
 The default engine converts 51 listed English-spelling loanword stems, including `camera` → क्यामेरा, `company` → कम्पनी and `media` → मिडिया. A finite list of 19 attached suffix forms also works: `companyharumathi` → कम्पनीहरूमाथि, `schoolma` → स्कुलमा with स्कूलमा as an alternative, and `mediasanga` → मिडियासँग. Browser fields use these defaults in Nepali mode. See the [current suffix rules and evidence](docs/package/loanword-suffixes-2026-10-01.md); the [original pilot](docs/package/loanword-review.md) and [earlier expansion](docs/package/loanword-expansion-2026-09-28.md) keep their dated scopes.
 
 The twelve full Gregorian month names also work in lowercase and Title Case, such as `september` or `September` → सेप्टेम्बर; [month-name defaults](docs/package/month-names.md) spell names without calendar conversion.
@@ -69,7 +79,7 @@ ASCII number keys use Devanagari digits by default (`123` → `१२३`, `3.14
 
 Recognizable links, ASCII domain-shaped hosts and ordinary ASCII email addresses stay literal by default during text conversion, live typing, and paste. Preservation starts at early cues such as `https:`, `www.`, `name@`, and `camera.c`, before an address is complete. Plain `camera` still converts. The policy preserves spelling and case without checking whether a domain exists; it does not detect arbitrary English or code. For an English fragment, disable conversion while typing or pasting it, then enable it again. Custom engines can opt out with `preserveTechnicalText: false`. See [mixed-text behavior and controls](docs/package/api.md#links-domains-and-email-addresses).
 
-Start with the [package documentation](docs/package/README.md) for the [API](docs/package/api.md), [typing rules](docs/package/typing-reference.md), [architecture](docs/package/architecture.md), and [benchmark protocol](docs/package/benchmarks.md). The package is still marked `private` and is **not published to npm**; the snippets above use checkout imports. A locally packed installation can use the public package imports; see [Getting started](docs/package/getting-started.md).
+Start with the [package documentation](docs/package/README.md) for the [API](docs/package/api.md), [typing rules](docs/package/typing-reference.md), [architecture](docs/package/architecture.md), and [benchmark protocol](docs/package/benchmarks.md). The package metadata targets public `0.1.0-alpha.1` with the `alpha` tag. The snippets above use public package imports, supported by both local-tarball and registry installations. Registry installation requires verified availability of the exact release; see [Getting started](docs/package/getting-started.md).
 
 ## Package website and demo
 
@@ -92,6 +102,8 @@ The badges show current `main` workflow status. Node CI runs automated tests and
 
 | Evaluation | Recorded result | Run date | Interpretation |
 | --- | --- | --- | --- |
+| [Reviewed native spelling contracts and comparison](docs/package/nepali-spelling-2026-10-01.md#recorded-comparison) | Contracts 137/142 → 142/142; reviewed word defaults 11/74 → 15/74, reference candidates 12/79 → 16/79 | 2026-10-01 | All 139 prior rows unchanged; constructed controls 11/11 before and after; complete reviewed sentences remain 0/12. No representative accuracy claim. |
+| [Native spelling browser regressions](docs/package/browser-compatibility.md#native-spelling-follow-up--2026-10-01) | 60/60 checks: 20 scenarios in each of Chromium, Firefox and WebKit | 2026-10-01 | Adds reviewed native word editing, undo/redo and English mode; alpha tarball tested locally, registry availability requires separate verification. |
 | [Loanword suffix contracts and reviewed comparison](docs/package/loanword-suffixes-2026-10-01.md#recorded-comparison) | Revised contracts 131/137 → 137/137; reviewed word defaults 8/74 → 11/74, reference candidates 8/79 → 12/79 | 2026-10-01 | Two historical fallback expectations intentionally revised; frozen development references unchanged, full sentences remain 0/12. No held-out accuracy claim. |
 | [Loanword suffix browser regressions](docs/package/browser-compatibility.md#loanword-suffix-follow-up--2026-10-01) | 57/57 checks: 19 scenarios in each of Chromium, Firefox and WebKit | 2026-10-01 | Adds attached suffix editing, candidate choices and address/mode transitions; existing desktop and synthetic-event limits remain. |
 | [Developer consumer browser regressions](docs/package/browser-compatibility.md#installed-package-developer-examples) | 51/51 checks: 17 scenarios in each of Chromium, Firefox, and WebKit | 2026-09-27 | Adds installed-package vanilla and React uncontrolled-field lifecycle checks. Historical runs remain immutable; no general framework support claim. |
@@ -132,7 +144,7 @@ npm run test:browser
 
 On Linux, add `--with-deps` to the browser installation command. The suite starts its own local server. See the [browser compatibility guide](docs/package/browser-compatibility.md) for running one engine, opening reports, and distinguishing keyboard checks from injected event tests. Playwright is a development dependency; the package has no runtime dependencies.
 
-The [release policy](docs/release.md) and [changelog](CHANGELOG.md) track alpha preparation; npm publishing is still blocked.
+The [release record and policy](docs/release.md) and [changelog](CHANGELOG.md) identify candidate contents, verified publication status and registry-consumer evidence.
 
 See the [documentation index](docs/README.md), [development guide](docs/development.md), [contribution guide](CONTRIBUTING.md), [project status](docs/status-and-roadmap.md), [security policy](SECURITY.md), and [MIT license](LICENSE). The seed benchmark is a regression set, not a population-wide accuracy measure. See the [external evaluation guide](docs/package/external-evaluation.md) for the pinned Nepali word baseline and sentence review process.
 

@@ -84,6 +84,12 @@ The [desktop-004 record](../../browser/reports/desktop-004.json) captures **57/5
 
 A selected spelling survives ordinary punctuation and whitespace. A domain cue makes the Roman token literal; deleting that cue resumes its default spelling. This behavior was also confirmed against the pre-suffix adapter. It does not preserve the earlier candidate choice across a technical-token transition.
 
+## Native spelling follow-up — 2026-10-01
+
+The [desktop-005 record](../../browser/reports/desktop-005.json) captures **60/60 passing checks**: 20 scenarios in each of Chromium, Firefox and WebKit. The added native-word scenario checks the four reviewed spellings, Roman-source Backspace editing, undo/redo and English mode. Installed-package JavaScript and TypeScript consumers passed for the `0.1.0-alpha.1` candidate; registry publication requires separate verification.
+
+The record pins tested runtime, integration fixtures, package metadata and installed-tarball identity. The browser and adapter scope limits in this guide still apply. Earlier records retain their original tested sources and totals.
+
 ## Desktop engine matrix
 
 | Playwright project | Browser under test | Status evidence |
