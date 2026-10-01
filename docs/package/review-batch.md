@@ -15,7 +15,7 @@ npm run benchmark:review-batch -- \
   --output benchmark/data/review-batch-001
 ```
 
-The generator refuses an existing output directory. Use a new path when rerunning so review edits remain intact. Raw inputs and generated review files live under the ignored `benchmark/data/` directory and are excluded from the distributed package. The [published source-assisted review](assisted-online-review.md) is a separate draft projection: it includes case recommendations and evidence, omits complete sentence texts and human worksheets, and admits no canonical decisions.
+The generator refuses an existing output directory. Use a new path when rerunning so review edits remain intact. Raw inputs and generated review files live under the ignored `benchmark/data/` directory and are excluded from the distributed package. The earlier [published source-assisted review](assisted-online-review.md) is a separate dated draft projection: it includes case recommendations and evidence, omits complete sentence texts and human worksheets, and admits no canonical decisions.
 
 ### Sources and selection
 
@@ -48,7 +48,17 @@ These quotas deliberately cover different source categories. They do not reflect
 
 Give each reviewer only their own review files. Keep the diagnostics separate until both independent decisions have been recorded so the engine's current output does not influence the proposed answers.
 
-## Review and reconcile
+## Delegated source-assisted review
+
+The maintainer can delegate source research and development-reference decisions without completing two human review sheets. That route is now completed for this batch in the [2026-10-01 source-assisted review](source-review-2026-10-01.md): 86 admitted project development cases, 14 exclusions, and no unanswered word questions. Its frozen ledger and exact-output measurement are separate artifacts; the original cases and human worksheets remain unchanged.
+
+For this route, record the evidence URL, access scope and verification date for every admitted case. Preserve valid alternatives and flag any unresolved intended word for the maintainer. Keep malformed or insufficiently supported pairs outside the scored denominator. Freeze references before comparing the current engine, retain original source hashes and attribution, and label the review source-assisted with `humanVerified: false`. This produces usable development references, without claiming independent human review or representative accuracy.
+
+Run `npm run benchmark:source-reviewed` after preparing the original batch. The [dated report](source-review-2026-10-01.md#reproduce-or-measure-a-later-engine) explains reconstruction, provenance checks, denominators and output-file protection.
+
+<a id="review-and-reconcile"></a>
+
+## Independent human review and reconciliation
 
 Two proficient Nepali reviewers should judge each Roman input and its source proposal independently. Each decision should record a stable reviewer ID, review date, decision (`accept`, `correct`, or `exclude`), suggested outputs, and a reason. A source proposal may be one valid answer among several, or the pair may not preserve the intended meaning. Record acceptable alternatives explicitly instead of forcing every input to have one spelling.
 
@@ -66,7 +76,7 @@ Append a completed entry to the case's `reviews` array in the reviewer's own JSO
 
 Use a stable reviewer ID and an ISO date for `reviewedAt`. Leave `acceptedOutputs` empty during independent review.
 
-After both reviews, reconcile disagreements in `cases.jsonl`. Set `reviewStatus` to `accepted`, `corrected`, or `excluded`; fill `acceptedOutputs` only for admitted cases. Keep both reviews, reasons, source IDs, and any source correction. No case is a confirmed regression expectation until reconciliation is complete. The entire batch remains development data after review; reserve a separate reviewed set before making future accuracy claims.
+After both reviews, reconcile disagreements in `cases.jsonl`. Set `reviewStatus` to `accepted`, `corrected`, or `excluded`; fill `acceptedOutputs` only for admitted cases. Keep both reviews, reasons, source IDs, and any source correction. For this independent-human route, no case is a confirmed human-reviewed regression expectation until reconciliation is complete. Source-assisted project development references follow the separate route above. The entire batch remains development data after review; reserve a separate reviewed set before making future accuracy claims.
 
 ## Use the error breakdown
 
@@ -94,4 +104,4 @@ Formatting and punctuation comparisons are diagnostic only; they never change th
 
 These signals are hints for review, not established causes such as a missing lexical entry or a faulty phonetic rule. A mismatch can reflect ambiguity, a different typing convention, or a defective source pair. Counts in this batch describe these 100 selected proposals and should not be extrapolated to all Nepali typing.
 
-Once reviewers have confirmed outputs, group recurring admitted errors, choose a focused correction, and add regression cases that also protect Shift shortcuts and existing alternatives. Compare before and after on the accepted development cases, disclose the reviewed denominator and exclusions, and report remaining failures. Keep source-proposal agreement separate from reviewed-output agreement. The batch generator itself changes neither the engine nor the browser demo.
+Once human reconciliation or delegated source-assisted review has confirmed project references, group recurring admitted errors, choose a focused correction, and add regression cases that also protect Shift shortcuts and existing alternatives. Compare before and after on the accepted development cases, disclose the reviewed denominator and exclusions, and report remaining failures. Keep source-proposal agreement separate from reviewed-output agreement. The batch generator itself changes neither the engine nor the browser demo.

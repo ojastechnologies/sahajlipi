@@ -138,7 +138,8 @@ export default defineConfig({
           { text: 'External evaluation', link: '/docs/package/external-evaluation.html' },
           { text: 'Review batch', link: '/docs/package/review-batch.html' },
           { text: 'Batch baseline', link: '/docs/package/review-batch-baseline.html' },
-          { text: 'Assisted online review', link: '/docs/package/assisted-online-review.html' },
+          { text: 'Completed source review', link: '/docs/package/source-review-2026-10-01.html' },
+          { text: 'Earlier online review', link: '/docs/package/assisted-online-review.html' },
           { text: 'Ra-ya review', link: '/docs/package/ry-review.html' },
         ] },
         { text: 'Project', items: [

@@ -1,0 +1,3576 @@
+{
+  "schemaVersion": 1,
+  "purpose": "development",
+  "reviewKind": "delegated-source-assisted",
+  "reviewStatus": "frozen-project-development-references",
+  "reviewedAt": "2026-10-01",
+  "humanVerified": false,
+  "independentHumanReview": false,
+  "projectReferenceCases": 86,
+  "independentHumanCorpusCases": 0,
+  "policy": {
+    "authority": "Maintainer delegated source-assisted review on 2026-10-01",
+    "referenceGeneration": "Three research passes read original proposals, prior research and maintainer notes without current engine diagnostics. Consolidation was frozen before current measurement.",
+    "earlierResearchConsulted": true,
+    "maintainerNotesConsulted": true,
+    "accuracyScope": "Selected development references, not independent held-out or population accuracy.",
+    "unicodeComparison": "Exact strings; no normalization, joiner removal or punctuation stripping.",
+    "punctuation": "Literal Roman periods and supplied spacing are preserved; pipe would produce danda.",
+    "digits": "Default Devanagari digits outside protected technical spans.",
+    "alternatives": "Several attested readings can be valid; null preferredReferenceIndex makes no unique-intent or preferred-default claim.",
+    "exclude": "Do not silently repair malformed Roman inputs, infer missing words, or validate foreign names solely from unverified labels.",
+    "sentencePublication": "Complete sentence inputs, proposals, references and actual engine strings omitted. Small edits plus hashes reconstruct local references."
+  },
+  "provenance": {
+    "sourceCasesSha256": "2f92bcf5a16d35b6a31dca052e4e358ffe417b5dcec0e8cc704d17f8acbf23e3",
+    "sources": {
+      "words": {
+        "dataset": "ai4bharat/Aksharantar",
+        "revision": "e418c1fc928d9f5393af33268472cf20c1891be8",
+        "file": "nep_valid.json",
+        "split": "validation",
+        "sha256": "9bc1c65df08c5f41eb61ffeaf631bf1bc3820c64ef71ae54b4868c5ac3ea9be7"
+      },
+      "test": {
+        "dataset": "ai4bharat/Aksharantar",
+        "revision": "e418c1fc928d9f5393af33268472cf20c1891be8",
+        "file": "nep_test.json",
+        "split": "test",
+        "sha256": "172c759fcbb9faeda0a23765ccd12ad0520fb535a05dca42dd9c9923ee5f554e",
+        "use": "overlap exclusion only"
+      },
+      "sentences": {
+        "dataset": "ai4bharat/Bhasha-Abhijnaanam",
+        "revision": "c54a95d9b9d62c891a03bd5da60715df7176b097",
+        "file": "nepali-sentence-review.jsonl",
+        "split": "unreviewed paired queue",
+        "sha256": "362e56b6e24f4614731da2d30b2d62d47c0b71d42c46815c67368386425f4d37"
+      }
+    },
+    "selectionSeed": "sahajlipi-nepali-review-001",
+    "originalSelectedCaseIds": [
+      "word-validation:nep355",
+      "word-validation:nep778",
+      "word-validation:nep295",
+      "word-validation:nep501",
+      "word-validation:nep662",
+      "word-validation:nep679",
+      "word-validation:nep516",
+      "word-validation:nep644",
+      "word-validation:nep753",
+      "word-validation:nep586",
+      "word-validation:nep794",
+      "word-validation:nep800",
+      "word-validation:nep729",
+      "word-validation:nep719",
+      "word-validation:nep570",
+      "word-validation:nep500",
+      "word-validation:nep665",
+      "word-validation:nep558",
+      "word-validation:nep587",
+      "word-validation:nep435",
+      "word-validation:nep491",
+      "word-validation:nep290",
+      "word-validation:nep360",
+      "word-validation:nep438",
+      "word-validation:nep612",
+      "word-validation:nep663",
+      "word-validation:nep760",
+      "word-validation:nep647",
+      "word-validation:nep433",
+      "word-validation:nep443",
+      "word-validation:nep632",
+      "word-validation:nep344",
+      "word-validation:nep504",
+      "word-validation:nep288",
+      "word-validation:nep560",
+      "word-validation:nep786",
+      "word-validation:nep764",
+      "word-validation:nep442",
+      "word-validation:nep453",
+      "word-validation:nep628",
+      "word-validation:nep250",
+      "word-validation:nep84",
+      "word-validation:nep171",
+      "word-validation:nep239",
+      "word-validation:nep279",
+      "word-validation:nep237",
+      "word-validation:nep217",
+      "word-validation:nep52",
+      "word-validation:nep261",
+      "word-validation:nep77",
+      "word-validation:nep99",
+      "word-validation:nep133",
+      "word-validation:nep197",
+      "word-validation:nep206",
+      "word-validation:nep248",
+      "word-validation:nep262",
+      "word-validation:nep62",
+      "word-validation:nep103",
+      "word-validation:nep175",
+      "word-validation:nep189",
+      "word-validation:nep162",
+      "word-validation:nep183",
+      "word-validation:nep147",
+      "word-validation:nep73",
+      "word-validation:nep45",
+      "word-validation:nep2469",
+      "word-validation:nep1258",
+      "word-validation:nep1076",
+      "word-validation:nep1540",
+      "word-validation:nep2051",
+      "word-validation:nep1657",
+      "word-validation:nep881",
+      "word-validation:nep1089",
+      "word-validation:nep1476",
+      "word-validation:nep1831",
+      "word-validation:nep815",
+      "word-validation:nep810",
+      "word-validation:nep806",
+      "word-validation:nep813",
+      "word-validation:nep811",
+      "sentence:ne_348",
+      "sentence:ne_75",
+      "sentence:ne_151",
+      "sentence:ne_187",
+      "sentence:ne_168",
+      "sentence:ne_96",
+      "sentence:ne_9",
+      "sentence:ne_400",
+      "sentence:ne_176",
+      "sentence:ne_291",
+      "sentence:ne_360",
+      "sentence:ne_148",
+      "sentence:ne_381",
+      "sentence:ne_231",
+      "sentence:ne_41",
+      "sentence:ne_29",
+      "sentence:ne_77",
+      "sentence:ne_389",
+      "sentence:ne_210",
+      "sentence:ne_294"
+    ],
+    "priorPublicDraftSha256": "39fff8c8a6f3733f7295055a3cdcceb7bcd32e52aaf6c2ac130271d72bb4a1ad",
+    "priorLocalResearchSha256": "f6cc43bd75edcb0b73f99a15a2bc7218c2b0c27a922f241f1e49cb1ea7c37c5a",
+    "maintainerSheetSha256": "d320af12d9ffa1803db2923451ea460830274e26c1746866fb1242a1fe66d33c",
+    "maintainerNotesCount": 21,
+    "maintainerReviewDates": "Blank in original sheet; no dates invented.",
+    "researchFileHashes": {
+      "words-a.json": "cbcf6ad43d869080a45ea392f76a287f6a668335c05eb94904eb6bc16702cef0",
+      "words-b.json": "8afc854353e605acf180b0747f4f4de4c90086569c1d41920eded10b5af1ea05",
+      "sentences.json": "0eb53f000c181e5d98def330e7bd31cdf046ce4540f326c20ddf8968f877eda5"
+    }
+  },
+  "cases": [
+    {
+      "id": "word-validation:nep355",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The proposed verb form occurs in a Nepali news headline; futera is a plausible informal spelling, although the Roman input does not encode the retroflex consonant explicitly. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://www.ratopati.com/story/473542/babarmahal-submerged-after-pipe-bursts-39failure39-of-development-model",
+          "title": "Ratopati — पाइप फुटेर बबरमहल जलमग्न हुनु विकास मोडेलको असफलता",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched फुटेर in headline and body.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://president.gov.np/%E0%A4%B5%E0%A4%BE%E0%A4%A4%E0%A4%BE%E0%A4%B5%E0%A4%B0%E0%A4%A3%E0%A5%80%E0%A4%AF-%E0%A4%B8%E0%A5%87%E0%A4%B5%E0%A4%BE-%E0%A4%A8%E0%A4%BF%E0%A4%B0%E0%A4%A8%E0%A5%8D%E0%A4%A4%E0%A4%B0%E0%A4%A4%E0%A4%BE/",
+          "title": "Office of the President — Chure conservation address",
+          "support": "Indexed original presidential address contains फुटेर in a glacial-lake context. Whole form attested; direct page fetch did not complete.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "281867cd6730d667e959b6ef3b6c9e42e7ed4be3cc6b1221228661586799c100",
+      "sourceProposalSha256": "ead414657a3f4f78de72a8a21b9997e77a09fa9d4676ae4ff7b0125cc3bdc7aa",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "futera",
+      "sourceProposal": "फुटेर",
+      "referenceOutputs": [
+        "फुटेर"
+      ]
+    },
+    {
+      "id": "word-validation:nep778",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The exact proposed adjective appears in an official Kathmandu Metropolitan City headline. Short and long vowels are not fully specified by informal Roman input. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://metronews.kathmandu.gov.np/news/detail/483",
+          "title": "Kathmandu Metropolitan City Metro News — हावाको स्वच्छताका लागि उपलब्ध उपायको इमान्दार कार्यान्वयनमा जोड",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched इमान्दार in headline, lines 349–351.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://metronews.kathmandu.gov.np/news/detail/483",
+          "title": "Kathmandu Metropolitan City Metro News — clean-air measures",
+          "support": "Whole इमान्दार is visible in the official headline; current page verified.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "fb9c089ca7da16813872b01e210577d0819525df361a46614d4635a33f26d3b9",
+      "sourceProposalSha256": "85b60251fa665d70bd4d166d976093d4a9e7f89b09e77ed4e326c41cd9bfcfcf",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "imandar",
+      "sourceProposal": "इमान्दार",
+      "referenceOutputs": [
+        "इमान्दार"
+      ]
+    },
+    {
+      "id": "word-validation:nep295",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The whole negative conjunctive नभनी is directly attested in an official court decision. Reviewer A accepted this reading; the short final vowel belongs to this form. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://gorkhapatraonline.com/news/143266",
+          "title": "Gorkhapatra — गोठ गोठमा पशु प्राविधिक",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Indexed text matches दिनरात नभनी; full article could not be fetched.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://nkp.gov.np/full_detail/5950",
+          "title": "Nepal Kanoon Patrika — decision page 5950",
+          "support": "Whole नभनी directly visible in the official decision; current page verified.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "4bbb3f12d59e2d370187c632fa74a70522bf2d1e270da268582ba428c9fe6e72",
+      "sourceProposalSha256": "5cf2ddea0d39f54e498e84424f0c56b79bfcb270bd9e2c02bb7c1c79a764ca8c",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "nabhani",
+      "sourceProposal": "नभनी",
+      "referenceOutputs": [
+        "नभनी"
+      ]
+    },
+    {
+      "id": "word-validation:nep501",
+      "decision": "correct",
+      "confidence": "medium",
+      "reason": "Both the personal name and the adjective are attested. A context-free shanta does not determine which reading the writer intended; retain the source name and add the adjective. The preserved Reviewer A notes by manepal already identify the additional reading; this source-assisted follow-up supports both without assigning a unique default. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://www.budhanilkanthamun.gov.np/ne/elected-officials",
+          "title": "Budhanilkantha Municipality — Elected Officials",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched शान्ता in official name at line 156; शान्त in municipal slogan at line 17.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://www.budhanilkanthamun.gov.np/ne/elected-officials",
+          "title": "Budhanilkantha Municipality — elected officials",
+          "support": "Whole personal-name spelling शान्ता visible in municipal list; the adjective is independently visible in the Department of Tourism page below.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        },
+        {
+          "url": "https://www.tourismdepartment.gov.np/pages/tourism-destination/",
+          "title": "Department of Tourism — destinations",
+          "support": "Whole शान्त appears in the Pokhara description. This corroborates the adjective reading stated by manepal.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "4836c13aaf0859d08a2e7118b1dadd8254ce2c7cef523deb8764e6faf08cf882",
+      "sourceProposalSha256": "a6084925b603802cde7d3f43e01aaaffbf8ed7a420d1643a79d75a02d0bf8ef8",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": null,
+      "input": "shanta",
+      "sourceProposal": "शान्ता",
+      "referenceOutputs": [
+        "शान्ता",
+        "शान्त"
+      ]
+    },
+    {
+      "id": "word-validation:nep662",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The exact proposed adverb appears in a Nepali short story published by Gorkhapatra. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://gorkhapatraonline.com/news/14203",
+          "title": "Gorkhapatra — रिटायर्ड हाकिम (कथा)",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched सरासर at lines 136 and 176.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://nkp.gov.np/full_detail/8024",
+          "title": "Nepal Kanoon Patrika — decision page 8024",
+          "support": "Indexed official decision contains whole सरासर. The new full-page fetch failed, so only its indexed excerpt is claimed.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "624b07c97422dbc43bf2b95f78bfc7b3242ea36290809b7131a8fca2151627ed",
+      "sourceProposalSha256": "4bf8682dce35a5ef30abe671b0cde92c2473483569c256fdf0a11f3f70f84b71",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "sarasar",
+      "sourceProposal": "सरासर",
+      "referenceOutputs": [
+        "सरासर"
+      ]
+    },
+    {
+      "id": "word-validation:nep679",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The exact genitive form appears in the Department of Tourism description of Patan. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://www.tourismdepartment.gov.np/pages/tourism-destination/",
+          "title": "Department of Tourism — मुख्य पर्यटन गन्तव्य",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched सौन्दर्यको at line 64.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://www.tourismdepartment.gov.np/pages/tourism-destination/",
+          "title": "Department of Tourism — destinations",
+          "support": "Whole सौन्दर्यको occurs in the explanation of the name Lalitpur; page verified.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "c2479eed11834b987cd6036ad6321200b1dfca98137465fd772a8461b3dd745b",
+      "sourceProposalSha256": "4050515d09865e70b240950f129558c78cbf190b1e1a46bd2ebb0b2a84d31d83",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "saundaryako",
+      "sourceProposal": "सौन्दर्यको",
+      "referenceOutputs": [
+        "सौन्दर्यको"
+      ]
+    },
+    {
+      "id": "word-validation:nep516",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The final virama is attested on this optative verb form in a government agricultural article. This spelling check does not establish a deterministic keyboard mapping. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://www.kawasotikrishi.gov.np/livestock-info/5218",
+          "title": "Kawasoti Krishi — माछा पालन",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched सकोस् at line 171.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://www.kawasotikrishi.gov.np/livestock-info/5218",
+          "title": "Kawasoti Agriculture — fish farming",
+          "support": "Whole optative सकोस् visible in the fish-farming article, including final virama; page verified.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "2c9f886b9382dc1a513fbcf87bf34d5274de8f198fabf9fd6ce8100b5a157c6d",
+      "sourceProposalSha256": "7dc20ad2126b3f896ee5627ea61e262051daae3aed564f3ee57981c355dd16d8",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "sakos",
+      "sourceProposal": "सकोस्",
+      "referenceOutputs": [
+        "सकोस्"
+      ]
+    },
+    {
+      "id": "word-validation:nep644",
+      "decision": "correct",
+      "confidence": "medium",
+      "reason": "माहिला is attested in an ordinal/family context and महिला is the distinct reading used for women. Informal mahila does not settle vowel length or intended meaning; preserve both as draft alternatives. The preserved Reviewer A notes by manepal already identify the additional reading; this source-assisted follow-up supports both without assigning a unique default. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://nkp.gov.np/full_detail/2055",
+          "title": "Nepal Kanoon Patrika — decision page 2055",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched माहिला at lines 55–56 in a siblings/ordinal context.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://siddhicharanmun.gov.np/our-mission-detail/",
+          "title": "Siddhicharan Municipality — Our Mission",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Indexed mission text matches महिला alongside children and youth; page fetch failed.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://nkp.gov.np/full_detail/2055",
+          "title": "Nepal Kanoon Patrika — decision page 2055",
+          "support": "Whole माहिला appears with जेठा and कान्छा in a sibling-order context; page verified.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        },
+        {
+          "url": "https://wfa.apf.gov.np/",
+          "title": "Armed Police Force Women’s Association — activities",
+          "support": "Whole महिला occurs throughout the association’s own page; supports the distinct women reading already identified by manepal.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "63abb17fdd37edb557b465e0cd05ca4e968d8b8c8ac527a111f45b956405e033",
+      "sourceProposalSha256": "27edbf96cf6afbfdb3dae16725619a0bb049a01aac7248bcf2a614a1e3724527",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": null,
+      "input": "mahila",
+      "sourceProposal": "माहिला",
+      "referenceOutputs": [
+        "माहिला",
+        "महिला"
+      ]
+    },
+    {
+      "id": "word-validation:nep753",
+      "decision": "correct",
+      "confidence": "medium",
+      "reason": "School plus the locative suffix is attested as both स्कूलमा and स्कुलमा in original Nepali official/educational publications. Reviewer A accepted स्कूलमा. Retain both as usage-supported reference variants; no normative spelling ranking or frequency claim is made. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://www.int.sentia-sendai.jp/child/school/n/pdf/Nepali_JES.pdf",
+          "title": "Sendai Tourism, Convention and International Association — Nepali school-life guide",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Indexed PDF text matches स्कूलमा; fetching the PDF failed.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://pressbooks.bccampus.ca/nepali/chapter/chapter-6-unit-4-grammar-focus/",
+          "title": "Introduction to the Nepali Language — Unit 4 Grammar Focus",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched उनीहरू स्कुलमा थिए। at line 1013.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://wfa.apf.gov.np/",
+          "title": "Armed Police Force Women’s Association — activities",
+          "support": "Whole स्कूलमा appears in the association’s own account of a school event, while स्कुलमा also occurs on the page; usage evidence, not a declaration that both spellings are normative.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        },
+        {
+          "url": "https://film.gov.np/destination/11",
+          "title": "Film Development Board — filming destinations",
+          "support": "Whole स्कुलमा is visible in the original Lo Manthang description. It supports the short-vowel variant; no preference can be ranked from this page alone.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "70e7751a059fb0fea9b6e103bc9ab2233d6c39d34ca58c400b4c28fa335e38c8",
+      "sourceProposalSha256": "07c0dba81832533ff499597768d6c5a7c666adb1a6354c50ab2917a82ea24887",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": null,
+      "input": "schoolma",
+      "sourceProposal": "स्कूलमा",
+      "referenceOutputs": [
+        "स्कूलमा",
+        "स्कुलमा"
+      ]
+    },
+    {
+      "id": "word-validation:nep586",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "A government-hosted Nepali textbook excerpt uses the source spelling in a dental/retroflex minimal pair. It supports this lexical reading without resolving the consonant distinction in informal dil. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://dhangadhimaimun.gov.np/sites/dhangadhimaimun.gov.np/files/documents/Nepali_Class8.pdf",
+          "title": "Dhangadhimai Municipality — Nepali textbook PDF",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Indexed exercise matches डिल – दिल; PDF fetch failed.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://dhangadhimaimun.gov.np/sites/dhangadhimaimun.gov.np/files/documents/Nepali_Class8.pdf",
+          "title": "Nepali Class 8 — government-hosted textbook",
+          "support": "The indexed textbook exercise explicitly pairs डिल and दिल. Dental दिल is retained as the source reading accepted by manepal; PDF fetch did not complete.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "9d342244e93851e7f8706dd00084e0cceda323793e4b6ab2dc124077289db8dd",
+      "sourceProposalSha256": "f9ddfebb959890eb7ea9ef2d82224620351d3aa3e6beb32f59b25ce2eea182c3",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "dil",
+      "sourceProposal": "दिल",
+      "referenceOutputs": [
+        "दिल"
+      ]
+    },
+    {
+      "id": "word-validation:nep794",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The exact noun plus dative suffix appears in a Supreme Court decision published by Nepal Kanoon Patrika. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://nkp.gov.np/full_detail/9714",
+          "title": "Nepal Kanoon Patrika — decision page 9714",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched अस्तित्वलाई at line 149.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "3a72e95dc85e5f40ecd7578724ccec0cdc41e94fe690a8f811b4806588e9adc0",
+      "sourceProposalSha256": "9da3f7f5248f5d24c9ee59c1060a0aa19f0bbab179ae8674924a0d8e632b0b0b",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "astitwalai",
+      "sourceProposal": "अस्तित्वलाई",
+      "referenceOutputs": [
+        "अस्तित्वलाई"
+      ]
+    },
+    {
+      "id": "word-validation:nep800",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The exact compound appears in Nepali reporting about the Bihar legislature. This establishes Nepali usage of the term, not the intended political context of the isolated word. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://gorkhapatraonline.com/news/178908",
+          "title": "Gorkhapatra — नेपाल-भारत सीमा ७२ घण्टाका लागि बन्द, जनजीवन प्रभावित",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched विधानसभा at line 46.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "6283b8f6605a9fd9f4cacd9b2e7b72a4baf9468c4473bc0184f802d28446b32e",
+      "sourceProposalSha256": "c71ff982698e87552d789883aae07788186d2eb3a2af571cc04981106b1ad54f",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "vidhansabha",
+      "sourceProposal": "विधानसभा",
+      "referenceOutputs": [
+        "विधानसभा"
+      ]
+    },
+    {
+      "id": "word-validation:nep729",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The exact compound appears in a government department description of narrative films. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://doib.gov.np/pages/7981026/",
+          "title": "Department of Information and Broadcasting — परिचय",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched कथानक at line 212.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://doib.gov.np/pages/7981026/",
+          "title": "Department of Information and Broadcasting — introduction",
+          "support": "Whole कथानक visible in the department’s account of narrative films.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "fe3ca4cf94e441d1413f63bbf4c5d1407ee2aec8fb5b05cccc394078785aae5f",
+      "sourceProposalSha256": "07fd679a973c2dd86f886660b299626c98510c2c31126684e53bd48e391ad223",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "kathanak",
+      "sourceProposal": "कथानक",
+      "referenceOutputs": [
+        "कथानक"
+      ]
+    },
+    {
+      "id": "word-validation:nep719",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The exact noun is used in an official tourism description. The informal initial a does not specify vowel length, but the source word is a plausible reading. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://www.tourismdepartment.gov.np/pages/tourism-destination/",
+          "title": "Department of Tourism — मुख्य पर्यटन गन्तव्य",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched आरम्भ at line 68.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://www.tourismdepartment.gov.np/pages/tourism-destination/",
+          "title": "Department of Tourism — destinations",
+          "support": "Whole आरम्भ visible in the Pokhara description, corroborating the initial long vowel.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "1d6a87035325cb9f47c5f6e5e4e564cc9365145e012886e0cebf88449d0c8f5b",
+      "sourceProposalSha256": "c3d35d359badc22400529274d658c81e46e2e8e91989594b3b9e251cda0aaf2c",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "arambha",
+      "sourceProposal": "आरम्भ",
+      "referenceOutputs": [
+        "आरम्भ"
+      ]
+    },
+    {
+      "id": "word-validation:nep570",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The unspaced source form is attested in an official court publication. This is usage evidence, not a comprehensive rule that the expression must always be written without a space. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://nkp.gov.np/full_detail/6318",
+          "title": "Nepal Kanoon Patrika — decision page 6318",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched यसप्रकार at lines 42, 60 and 61.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "5cf0a3f79719fd6641773a4147b0529170faa386382fc4a9f481e45571d20522",
+      "sourceProposalSha256": "653d164c75f7b5ebd1bd22761cfb6fff1e0184df8084bc961a75d03e2840f33c",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "yasaprakar",
+      "sourceProposal": "यसप्रकार",
+      "referenceOutputs": [
+        "यसप्रकार"
+      ]
+    },
+    {
+      "id": "word-validation:nep500",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The whole adjective एकाधिक is corroborated by original Nepali-language university educational material in an indexed PDF excerpt, beyond the earlier community dictionary transcription. No full-PDF inspection is claimed. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://ne.wiktionary.org/wiki/%E0%A4%A8%E0%A5%87%E0%A4%AA%E0%A4%BE%E0%A4%B2%E0%A5%80_%E0%A4%B6%E0%A4%AC%E0%A5%8D%E0%A4%A6%E0%A4%B8%E0%A4%AE%E0%A5%82%E0%A4%B9_%E0%A5%A6%E0%A5%AE_%E0%A4%8B%E0%A4%94",
+          "title": "Nepali Wiktionary — नेपाली शब्दसमूह ०८ ऋऔ",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched एकाधिक as adjective headword at line 252.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://egyankosh.ac.in/bitstream/123456789/89683/3/Block-1.pdf",
+          "title": "IGNOU eGyanKosh — नेपाली भाषाको परिचय",
+          "support": "Indexed Nepali-language textbook contains whole एकाधिक in its explanation of synonymous words. Primary educational material; direct PDF fetch timed out.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "28532e8d72d827738d7efdfb4e7dbc6418a2e771c466739d631cc5cf5e32d977",
+      "sourceProposalSha256": "05e6323db16e52968c30724ef4871eb29617920a9b11518340be43326aa31603",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "ekadhik",
+      "sourceProposal": "एकाधिक",
+      "referenceOutputs": [
+        "एकाधिक"
+      ]
+    },
+    {
+      "id": "word-validation:nep665",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The exact finite verb form appears in an official court publication. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://nkp.gov.np/full_detail/9073",
+          "title": "Nepal Kanoon Patrika — decision page 9073",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched बस्यो at line 88.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "892aa052618e7731d5fa1c09a515b78b16710cec1790cbaf615a9281e53710eb",
+      "sourceProposalSha256": "02b08e1c24906ab92ffecc4350dd5acc8ccb01b1dbac34e7c34ee92e8643a62d",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "basyo",
+      "sourceProposal": "बस्यो",
+      "referenceOutputs": [
+        "बस्यो"
+      ]
+    },
+    {
+      "id": "word-validation:nep558",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "A Nepali cultural report contains the exact plural ethnic-group spelling. The short/long plural-suffix vowel is not encoded unambiguously in informal haru. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://gorkhapatraonline.com/news/164765",
+          "title": "Gorkhapatra — पहिचान खोज्दै लेप्चा जाति",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched लेप्चाहरू at line 66.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "6ba3a2d10259fe5d6312e2e14ec565c557883c0cd6087595dbcb67d914b307ad",
+      "sourceProposalSha256": "c2b54ef9a5704b349bcffbc81fe73bb6c98e2cb6ca98d8a17157d582090c5333",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "lepchaharu",
+      "sourceProposal": "लेप्चाहरू",
+      "referenceOutputs": [
+        "लेप्चाहरू"
+      ]
+    },
+    {
+      "id": "word-validation:nep587",
+      "decision": "correct",
+      "confidence": "medium",
+      "reason": "The source अंग्रेजहरूको was accepted by Reviewer A; original Nepali usage also supports अङ्ग्रेजहरूको with an explicit velar nasal. Preserve the source spelling and the attested alternative without declaring one uniquely intended. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://ehimalayatimes.com/2023/07/137023/",
+          "title": "Himalaya Times — गोर्खा भर्ती, सुगौली सन्धि र १९५० को सन्धि",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched अंग्रेजहरूको at line 138.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://gorkhapatraonline.com/news/19123",
+          "title": "Gorkhapatra — मर्यादित शिक्षण पेसा",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched अङ्ग्रेजहरूको at line 129.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://www.butwalmun.gov.np/sites/butwalmun.gov.np/files/Class%208%20Nepali%20Book_compressed.pdf",
+          "title": "Butwal Municipality — Class 8 Nepali textbook",
+          "support": "Indexed educational text contains whole अङ्ग्रेजहरूको in a historical passage. Explicit velar-nasal spelling attested; no new full-PDF inspection.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "46bda4b643856d6471f11e7d8d6649e8b89a95a6159a6c23029e8d2a91fdd838",
+      "sourceProposalSha256": "800651934e78856481cda6a3e6dae37eb3477e8b088bec1ee82f338e7ad41c1b",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": null,
+      "input": "angrejharuko",
+      "sourceProposal": "अंग्रेजहरूको",
+      "referenceOutputs": [
+        "अंग्रेजहरूको",
+        "अङ्ग्रेजहरूको"
+      ]
+    },
+    {
+      "id": "word-validation:nep435",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The exact adjective appears in an official court publication defining categories of offences. This review uses its spelling only. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://nkp.gov.np/full_detail/10160",
+          "title": "Nepal Kanoon Patrika — decision page 10160",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched जघन्य at line 134.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "3644b641329dd7d619eb64bbd32c2e97e85e397017f2615f164a535cbd17a2f4",
+      "sourceProposalSha256": "eee46e791943a8a04e4bf18561bab9c9bb077865317f22f3a1ef559367c365a0",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "jaghanya",
+      "sourceProposal": "जघन्य",
+      "referenceOutputs": [
+        "जघन्य"
+      ]
+    },
+    {
+      "id": "word-validation:nep491",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "Whole पुकार is corroborated by an original Nepali Police literary publication in indexed text, beyond the earlier community dictionary transcription. Reviewer A accepted the reading. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://ne.wiktionary.org/wiki/%E0%A4%A8%E0%A5%87%E0%A4%AA%E0%A4%BE%E0%A4%B2%E0%A5%80_%E0%A4%B6%E0%A4%AC%E0%A5%8D%E0%A4%A6%E0%A4%B8%E0%A4%AE%E0%A5%82%E0%A4%B9_%E0%A5%A9%E0%A5%AF_%E0%A4%AA%E0%A5%81",
+          "title": "Nepali Wiktionary — नेपाली शब्दसमूह ३९ पु",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched पुकार/पुकारा as headword at line 129.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://www.nepalpolice.gov.np/media/filer_public/03/c6/03c6d652-1a18-4ce7-8136-05e6a608aec3/aasara_2079m.pdf",
+          "title": "Nepal Police — Aasara publication 2079",
+          "support": "Indexed original prayer uses whole पुकार. It supplies original Nepali usage beyond the previously consulted community dictionary.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "757d665440c096d867888b6ccf6b01cd3b9b07c1a99665b1edba416d285e20e7",
+      "sourceProposalSha256": "42494617a057a3d2df6cf996991f264252ca46b7c43c5c0b8d8f0df462f0f19a",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "pukar",
+      "sourceProposal": "पुकार",
+      "referenceOutputs": [
+        "पुकार"
+      ]
+    },
+    {
+      "id": "word-validation:nep290",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The whole noun with locative suffix अध्यायमा is directly attested in an official court decision. This validates the complete form rather than inferring it from separately attested components. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://giwmscdnone.gov.np/media/pdf_upload/Majhi%20Grammar_8gym8rc.pdf",
+          "title": "Government-hosted Majhi Grammar — chapter 2",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Indexed chapter introduction matches यस अध्यायमा.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://nkp.gov.np/full_detail/9211",
+          "title": "Nepal Kanoon Patrika — decision page 9211",
+          "support": "Whole अध्यायमा directly visible in the official decision; supports the complete inflected form rather than inferring it from अध्याय plus मा.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "d10c5c0066b5fdff905a890a321c843bb0c1eb79bfd6cdc1031cd2b7228f819f",
+      "sourceProposalSha256": "f0c4221f66c1e3159c3b3bbd18611947db37c5e69a61a13aafb13b9e5d13e757",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "adhyayama",
+      "sourceProposal": "अध्यायमा",
+      "referenceOutputs": [
+        "अध्यायमा"
+      ]
+    },
+    {
+      "id": "word-validation:nep360",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The exact noun with plural and locative suffixes appears in a Nepali article about workplace motivation. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://gorkhapatraonline.com/news/46481",
+          "title": "Gorkhapatra — उत्प्रेरणा र कार्यसन्तुष्टिको अन्तरसम्बन्ध",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched कार्यहरूमा at line 124.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "d03ea041573d77c6dbd17573ba95a3b4386548e5d1e056ca8355ad790deb638d",
+      "sourceProposalSha256": "9df58e239cf1bae45358867e5b12985f133daaf90db8f94a5d469547e3af12d8",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "karyaharuma",
+      "sourceProposal": "कार्यहरूमा",
+      "referenceOutputs": [
+        "कार्यहरूमा"
+      ]
+    },
+    {
+      "id": "word-validation:nep438",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The exact source compound appears in an official court publication. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://nkp.gov.np/full_detail/9384",
+          "title": "Nepal Kanoon Patrika — decision page 9384",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched परिधिभित्र at line 38.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "31d956362e34bb7a26c0c12f6bca5d508c2955b03922adbd909f8d25f04efff3",
+      "sourceProposalSha256": "f55dd107715c005ef50851cfc388c427afb564bfe6cf7c1eddcb0eadbd5982b9",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "paridhibhitra",
+      "sourceProposal": "परिधिभित्र",
+      "referenceOutputs": [
+        "परिधिभित्र"
+      ]
+    },
+    {
+      "id": "word-validation:nep612",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The exact nasalized verb form appears in a Nepali article. The source chandrabindu is supported despite its omission from informal niskanda. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://shilapatra.com/detail/151000",
+          "title": "Shilapatra — चिसो मौसममा मर्निङ वाकः सबेरैभन्दा अबेर उपयुक्त",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched निस्कँदा at line 129.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://daomakawanpur.moha.gov.np/en/post/sha-ra-jal-tatha-ma-sama-va-ja-nia-na-va-bha-ga-ma-sama-pa-ra-va-na-ma-na-maha",
+          "title": "Makawanpur District Administration — heat and hot-wind bulletin",
+          "support": "Whole निस्कँदा directly visible, including chandrabindu, in the administration’s republication of the weather department bulletin.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "5507b4733d112fe2e19b21f8c1bb8947c03c7316b1f0e45c35ac590957f4b921",
+      "sourceProposalSha256": "d1ec763da4e65f1b4481524d45346e10cec49bcb339717676442537078debbd9",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "niskanda",
+      "sourceProposal": "निस्कँदा",
+      "referenceOutputs": [
+        "निस्कँदा"
+      ]
+    },
+    {
+      "id": "word-validation:nep663",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The exact nasalized noun occurs in a government cultural institution production cast list. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://www.sanskritiksansthan.gov.np/content/527",
+          "title": "Sanskritik Sansthan — माटोको गीत दोस्रो संस्करण",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched गाउँले at lines 150–152.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "2b23590d38f72a37e74f0c15b03bc93da9df834a9aae30641de98b22d201e957",
+      "sourceProposalSha256": "2878dc7e5fbc04b52e12c1504bf61718b25e2af2a38e4f50cfa218bd15885cab",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "gaunle",
+      "sourceProposal": "गाउँले",
+      "referenceOutputs": [
+        "गाउँले"
+      ]
+    },
+    {
+      "id": "word-validation:nep760",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The exact inflected verb form is used in an official court publication. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://nkp.gov.np/full_detail/9024",
+          "title": "Nepal Kanoon Patrika — decision page 9024",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched घेरिएको at line 141.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "33cf9098ad66e2cec071dda5e4fb0ca7339138d23a09bb67d3c1cce321ad9012",
+      "sourceProposalSha256": "1dfc431ab6a7c23e2370189e2ea6fd8d8760146f526646d7cf7b9083783646c0",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "gherieko",
+      "sourceProposal": "घेरिएको",
+      "referenceOutputs": [
+        "घेरिएको"
+      ]
+    },
+    {
+      "id": "word-validation:nep647",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The exact genitive form occurs in a Nepali article about the Vedas. The informal final consonant in ved is compatible with this lexical reading. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://gorkhapatraonline.com/news/156789",
+          "title": "Gorkhapatra — वेद र वेदका मन्त्र",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched वेदको at lines 51 and 65.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://daosankhuwasabha.moha.gov.np/post/ja-l-l-ka-para-caya-33",
+          "title": "Sankhuwasabha District Administration — district introduction",
+          "support": "Whole वेदको directly visible in the description of Sabhapokhari.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "7a92ee54ee4c544291dbd3aa80e8ef4beadbf1b669637683156ecee006f53f97",
+      "sourceProposalSha256": "5ef47fbcefd625fb0320029522233503631ae16d1f3debb93899bc5f4d2a1996",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "vedko",
+      "sourceProposal": "वेदको",
+      "referenceOutputs": [
+        "वेदको"
+      ]
+    },
+    {
+      "id": "word-validation:nep433",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The exact inflected verb occurs in a District Administration Office page title. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://daohumla.moha.gov.np/page/thana-thama-gha-ita-bha-apa-na-gata-bhaeka-ra-sa-va-ka-tha-kha-na-ja-vana-na-ra",
+          "title": "District Administration Office Humla — livelihood allowance notice",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched पाइरहेका in title at line 91.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "79bdbdfa71840f83551624ed211e7d49fc5a568bc41ab415b4d7fab3184e671d",
+      "sourceProposalSha256": "5052ff507b00c4ca0361f8fbf83149222f50c095ff213047bcacc8a9bba5d7dd",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "pairaheka",
+      "sourceProposal": "पाइरहेका",
+      "referenceOutputs": [
+        "पाइरहेका"
+      ]
+    },
+    {
+      "id": "word-validation:nep443",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The exact negative infinitival form appears in an official court publication. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://nkp.gov.np/full_detail/143",
+          "title": "Nepal Kanoon Patrika — decision page 143",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Matched नलिने at line 132.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "4e7ce2bb029925132dee240d82fc2ac0265f0fe135e07165c55d47dc22ce06af",
+      "sourceProposalSha256": "79ba3664dca231b45d6e571a762d95ec052faabaf754c71ba846e1c300abd034",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "naline",
+      "sourceProposal": "नलिने",
+      "referenceOutputs": [
+        "नलिने"
+      ]
+    },
+    {
+      "id": "word-validation:nep632",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The whole sack noun बोरा is directly attested in a court decision describing cement packaging; informal bora plausibly denotes this lexical reading. The older dictionary citation is retained with its prior provenance. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://www.wisdomlib.org/definition/bora",
+          "title": "Bora — Nepali dictionary section (Wisdomlib, attributed to unoes Nepali-English Dictionary)",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: Nepali dictionary subsection explicitly lists बोरा as a sack. The Nepali subsection was consulted, not the Hindi/Marathi entries.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://nkp.gov.np/full_detail/9177",
+          "title": "Nepal Kanoon Patrika — decision page 9177",
+          "support": "Court decision’s packing discussion uses whole बोरा in the sack sense; directly opened original decision also includes its inflected forms.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "48afbde946e49312118a0137d2db1b43e9741a0796e11ed616671c12cc70c4e4",
+      "sourceProposalSha256": "ba7df2ff90f331744d5cea14132d150f3c2e07536f3c80aa08e82e741d6aa27a",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "bora",
+      "sourceProposal": "बोरा",
+      "referenceOutputs": [
+        "बोरा"
+      ]
+    },
+    {
+      "id": "word-validation:nep344",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "हाल्यो is attested as a verb form in published Nepali. It is a plausible reading of halyo. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://www.onlinekhabar.com/2025/03/1646297/social-network-x-files-lawsuit-against-indian-government",
+          "title": "सामाजिक सञ्जाल एक्सले भारत सरकारविरुद्ध हाल्यो मुद्दा — Online Khabar",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: The headline contains हाल्यो, a past-tense verb form.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://nkp.gov.np/full_detail/5159",
+          "title": "Nepal Kanoon Patrika — decision page 5159",
+          "support": "Whole हाल्यो directly visible as a finite verb. Supports the long vowel and ल्य cluster.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "a260ec16167ef67483e582a1387b03b125170ede519e6278e6fb796577bb1a85",
+      "sourceProposalSha256": "09cca5190880417c718ecf9112fee1a4d39e634e0d69f16554c8d73ec1285b02",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "halyo",
+      "sourceProposal": "हाल्यो",
+      "referenceOutputs": [
+        "हाल्यो"
+      ]
+    },
+    {
+      "id": "word-validation:nep504",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The source attests the joined form आफूमाथि. This supports the source spelling but does not prove the original Roman user's intent. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://hr.parliament.gov.np/uploads/attachments/tv9oh3iuyjuweywu.pdf",
+          "title": "Notice 079-9-26 — House of Representatives voting record",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: The indexed voting-record excerpt uses आफूमाथि. Opening the PDF failed; evidence is limited to the indexed excerpt.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://nkp.gov.np/full_detail/638",
+          "title": "Nepal Kanoon Patrika — decision page 638",
+          "support": "Whole joined आफूमाथि directly visible in the official decision.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "0ae6e56b8ba61d1cebecdeae4a4e1ef46ef8a8fd2ab3bea075609866c8c89d9d",
+      "sourceProposalSha256": "3ee082af13eee6b17129f24c23360d6ccea5ee06f887c96eb0b959ffa2fc67d5",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "afumathi",
+      "sourceProposal": "आफूमाथि",
+      "referenceOutputs": [
+        "आफूमाथि"
+      ]
+    },
+    {
+      "id": "word-validation:nep288",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The attested negative verb form includes chandrabindu. Informal dindaina plausibly omits that nasalization distinction. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://na.parliament.gov.np/uploads/attachments/oqw7slnndhb0wnrq.pdf",
+          "title": "National Assembly transcript — attachment oqw7slnndhb0wnrq.pdf",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: The indexed transcript excerpt contains दिँदैन. The PDF could not be inspected.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://na.parliament.gov.np/uploads/attachments/oqw7slnndhb0wnrq.pdf",
+          "title": "National Assembly — official meeting transcript",
+          "support": "Current indexed parliamentary excerpt shows whole दिँदैन with chandrabindu. This refreshes the prior citation but remains indexed text, not a new full-PDF inspection.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "5a887b50430511d41c82faeb1e0946ab43ea05032c1f8bdea5f424926be816af",
+      "sourceProposalSha256": "9041219d8e1015206a211dc16357f97090fc5ab35a9ef95f8a40cb3c2af03220",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "dindaina",
+      "sourceProposal": "दिँदैन",
+      "referenceOutputs": [
+        "दिँदैन"
+      ]
+    },
+    {
+      "id": "word-validation:nep560",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The official programme name corroborates उत्थान, including the त्थ cluster. Informal utthan is a plausible rendering. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://president.gov.np/%E0%A4%B0%E0%A4%BE%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A4%AA%E0%A4%A4%E0%A4%BF%E0%A4%95%E0%A5%8B-%E0%A4%A8%E0%A4%BE%E0%A4%AE%E0%A4%AE%E0%A4%BE-%E0%A4%B8%E0%A4%82%E0%A4%9A%E0%A4%BE%E0%A4%B2/",
+          "title": "राष्ट्रपति महिला उत्थान कार्यक्रम — Office of the President",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: The programme title and indexed description repeatedly use उत्थान. Full page fetch failed.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://president.gov.np/%E0%A4%B0%E0%A4%BE%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A4%AA%E0%A4%A4%E0%A4%BF%E0%A4%95%E0%A5%8B-%E0%A4%A8%E0%A4%BE%E0%A4%AE%E0%A4%AE%E0%A4%BE-%E0%A4%B8%E0%A4%82%E0%A4%9A%E0%A4%BE%E0%A4%B2/",
+          "title": "Office of the President — women’s uplift programme",
+          "support": "Current indexed page title contains whole उत्थान, including त्थ. No new full-page inspection completed.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "74f7fe972a80ba2e3707191318998e47497b10796c2c5a1980f5dad6755550fa",
+      "sourceProposalSha256": "24e6114bcf3ac94f84ea4fe0917538971253de64689a6d3d3a8d4f12c3e9578f",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "utthan",
+      "sourceProposal": "उत्थान",
+      "referenceOutputs": [
+        "उत्थान"
+      ]
+    },
+    {
+      "id": "word-validation:nep786",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "Government policy usage corroborates सामञ्जस्य. This is evidence for the ञ्ज spelling, not proof of a deterministic input mapping. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://giwmscdnone.gov.np/media/pdf_upload/doc02016020250121174623-3-31_bf05bzx.pdf",
+          "title": "वाणिज्य नीति, २०८१ — Government of Nepal",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: The indexed clause 11.13 excerpt contains सामञ्जस्य; visual PDF inspection was not performed.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://nkp.gov.np/full_detail/2438",
+          "title": "Nepal Kanoon Patrika — decision page 2438",
+          "support": "Whole सामञ्जस्य directly visible in the official decision’s discussion of social harmony, including ञ्ज.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "4a9a2cd7fd24d5d9f24831a4e717c2f9dbeec411c1a55af45ffcfc40b3797a76",
+      "sourceProposalSha256": "4ff2408f2ad146d45d5c16c7c4e02c0299982ade1c4de0c7323fd7df9a56fb88",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "samanjasya",
+      "sourceProposal": "सामञ्जस्य",
+      "referenceOutputs": [
+        "सामञ्जस्य"
+      ]
+    },
+    {
+      "id": "word-validation:nep764",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "हेतु is attested in official Nepali prose and is a plausible rendering of hetu. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://apf.gov.np/news/4724-news-1",
+          "title": "गृहसचिव दिनेश भट्टराईबाट सशस्त्र प्रहरी  कर्मचारीहरुलाई  निर्देशन",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: The Armed Police Force article text contains हेतु in a purpose construction.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-09-27"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "5d0d79124ae48e4ae7811f98244197128f685f05449560dd436cdde94589f699",
+      "sourceProposalSha256": "96d0da080ac26a58f99d4b931f21a51e6126313540152210de851c30e64c2bd8",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "hetu",
+      "sourceProposal": "हेतु",
+      "referenceOutputs": [
+        "हेतु"
+      ]
+    },
+    {
+      "id": "word-validation:nep442",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The official legal provision supports सम्मानको as सम्मान plus the genitive ending. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://repository.lawcommission.gov.np/np/documents/prevailing-law/statutes-acts/%E0%A4%B5%E0%A4%BF%E0%A4%A8%E0%A4%BF%E0%A4%AE%E0%A5%87%E0%A4%AF-%E0%A4%85%E0%A4%A7%E0%A4%BF%E0%A4%95%E0%A4%BE%E0%A4%B0-%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0-%E0%A4%90%E0%A4%A8-%E0%A5%A8%E0%A5%A6/%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%9A%E0%A5%8D%E0%A4%9B%E0%A5%87%E0%A4%A6-%E0%A5%AF-%E0%A4%B5%E0%A4%BF%E0%A4%B5%E0%A4%BF%E0%A4%A7-4/",
+          "title": "परिच्छेद–९ विविध – नेपाल कानून आयोग",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: The indexed legal provision repeats सम्मानको in a phrase about acceptance for honour.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://nkp.gov.np/full_detail/162",
+          "title": "Nepal Kanoon Patrika — decision page 162",
+          "support": "Whole सम्मानको directly visible in the discussion of honours.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "a5fa70ba38ee67396927c2723c4b3213e676b9dd6ea714d9210a73fb60755b75",
+      "sourceProposalSha256": "62443f797f8ec94310fb04d703e0d5ba98aabad6daa9806b11cbb2e10bd0cfad",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "sammanko",
+      "sourceProposal": "सम्मानको",
+      "referenceOutputs": [
+        "सम्मानको"
+      ]
+    },
+    {
+      "id": "word-validation:nep453",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The guidelines corroborate क्रमिक in the sense of sequential progression. The consonant cluster and vowel marks are plausible for kramik. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://nepalpolice.gov.np/media/filer_public/ae/e4/aee44765-826c-457f-a8cb-663eb5d8fd74/insp-asi-pbt-guidelines-for-candidates-2076-12-05.pdf",
+          "title": "Inspector/ASI candidate guidelines (2076-12-05) — Nepal Police",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: The Nepal Police candidate guidelines excerpt uses क्रमिक; PDF rendering was not inspected.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://nkp.gov.np/full_detail/6759",
+          "title": "Nepal Kanoon Patrika — decision page 6759",
+          "support": "Whole क्रमिक directly visible in the original official decision.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "daee8223cb8c98ff46d7c347dca652009973dae96e50cd3c53475bc28a73dcf6",
+      "sourceProposalSha256": "dc87a9c954d4d0a3b056622528723902496a3f3a712533d64fa71d92f1615c5d",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "kramik",
+      "sourceProposal": "क्रमिक",
+      "referenceOutputs": [
+        "क्रमिक"
+      ]
+    },
+    {
+      "id": "word-validation:nep628",
+      "decision": "correct",
+      "confidence": "medium",
+      "reason": "भाग्न is the attested infinitive reading (to flee). भग्न is a separately attested adjective/noun in Nepali (broken/fracture). The isolated informal bhagna permits both; retain both with no ranked default. This is an expanded reference set, not a claim that भाग्न is misspelled. This is an assistant source-assisted validation, not a second independent human review; reused sources retain their original verification dates.",
+      "evidence": [
+        {
+          "url": "https://repository.lawcommission.gov.np/np/documents/prevailing-law/rules-and-regulations/%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A4%BE%E0%A4%97%E0%A4%BE%E0%A4%B0-%E0%A4%A8%E0%A4%BF%E0%A4%AF%E0%A4%AE%E0%A4%BE%E0%A4%B5%E0%A4%B2%E0%A5%80-%E0%A5%A8%E0%A5%A6%E0%A5%A8%E0%A5%A6/%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%9A%E0%A5%8D%E0%A4%9B%E0%A5%87%E0%A4%A6-%E0%A5%AD-11/",
+          "title": "परिच्छेद–७,भाग्न लागेकोमा हतियार प्रयोग गर्ने तथा भागेकोमा खान तलास गर्ने – नेपाल कानून आयोग",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: The prison-rule heading and indexed clause use भाग्न.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://repository.lawcommission.gov.np/np/category/documents/activities/page/13/",
+          "title": "गतिविधीहरु – Page 13 – नेपाल कानून आयोग",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: The indexed orthography-guide word list includes भग्न; the page fetch timed out.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://ne.wiktionary.org/wiki/%E0%A4%A8%E0%A5%87%E0%A4%AA%E0%A4%BE%E0%A4%B2%E0%A5%80_%E0%A4%B6%E0%A4%AC%E0%A5%8D%E0%A4%A6%E0%A4%B8%E0%A4%AE%E0%A5%82%E0%A4%B9_%E0%A5%AA%E0%A5%AB_%E0%A4%AD",
+          "title": "नेपाली शब्दसमूह ४५ भ - विक्सनरी",
+          "support": "Prior evidence reused from assisted-online-2026-09-27: The Nepali dictionary-style excerpt lists भग्न as an adjective for broken or ruined. This is a community-maintained secondary reference.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://ppsc.lumbini.gov.np/media/list/%E0%A4%95%E0%A4%B5%E0%A4%B0%E0%A4%9C_final.pdf",
+          "title": "Lumbini Provincial Public Service Commission — Ayurvedic syllabus",
+          "support": "Indexed original syllabus lists whole भग्न among conditions. Corroborates the distinct short-vowel lexical alternative; no new full-PDF inspection.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "b337447cf21592071f2630ec7163bb62ed57ec15c701a0076dc54ae7d47e7678",
+      "sourceProposalSha256": "b8d820d612bd23e00641d8ab2f624c657217cc1d43bc94f9539437f229a96dfe",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": null,
+      "input": "bhagna",
+      "sourceProposal": "भाग्न",
+      "referenceOutputs": [
+        "भाग्न",
+        "भग्न"
+      ]
+    },
+    {
+      "id": "word-validation:nep250",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The official bilingual training guide pairs Header with हेडर. That corroborates the loan spelling irrespective of the document, sport, or masonry sense of the isolated English word.",
+      "evidence": [
+        {
+          "url": "https://feb.gov.np/extra_upload/5c50334d6095a_5.%20Final%20training_guide_mason.pdf",
+          "title": "Masonry training guide — Foreign Employment Board",
+          "support": "The masonry training-guide excerpt pairs English Header with हेडर. The indexed excerpt was consulted, not a visual PDF page.",
+          "accessScope": "search-indexed PDF excerpt; visual page not inspected",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "1e0584a25d9f43bf5cbd0aec01eb1af2220ed085b4e7f1837b0d89958cae353a",
+      "sourceProposalSha256": "18cf2851904d9a88eba9f4972a5b0dd501ddfb0af9d15b3e8adc863cc7350437",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "header",
+      "sourceProposal": "हेडर",
+      "referenceOutputs": [
+        "हेडर"
+      ]
+    },
+    {
+      "id": "word-validation:nep84",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The published poem corroborates the plural फूलबारीहरू. The Roman input does not explicitly mark vowel length; retain this attested reading.",
+      "evidence": [
+        {
+          "url": "https://las.edu.np/magazine.pdf",
+          "title": "The Bud 2080 — Little Angels' School magazine",
+          "support": "The school's published magazine excerpt contains फूलबारीहरू; visual PDF inspection was not performed.",
+          "accessScope": "search-indexed PDF excerpt; visual page not inspected",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "f078682985b6d48cf393a35826f156c7e6936d541bbe986f7468596a7f84b3f5",
+      "sourceProposalSha256": "53ff64a5fca3a97deb346c86523c469b0486094d1ba88d50d2e14c8510bb2ddd",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "fulbariharu",
+      "sourceProposal": "फूलबारीहरू",
+      "referenceOutputs": [
+        "फूलबारीहरू"
+      ]
+    },
+    {
+      "id": "word-validation:nep171",
+      "decision": "accept",
+      "confidence": "high",
+      "reason": "The joined plural-plus-locative form गोरेटाहरूमा is directly attested in published Nepali.",
+      "evidence": [
+        {
+          "url": "https://ekantipur.com/feature/2026/07/17/17842895897334850.html",
+          "title": "सिंजा संस्कृति झल्काउने जुम्लाको भुइँकाफल टिप्ने चलन - कान्तिपुर",
+          "support": "The article body contains गोरेटाहरूमा for activity on village paths.",
+          "accessScope": "full-page HTML text",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "0104dc4551a4b88634c0acc26c2c671557dac65128f9e527c665f9ecb054a870",
+      "sourceProposalSha256": "6f633386267d16c8c7ef5086b4b0d97e926fec52a35de445f294528b70f190c8",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "goretaharuma",
+      "sourceProposal": "गोरेटाहरूमा",
+      "referenceOutputs": [
+        "गोरेटाहरूमा"
+      ]
+    },
+    {
+      "id": "word-validation:nep239",
+      "decision": "exclude",
+      "confidence": "high",
+      "reason": "The isolated input fuses the place name and a separate noun. The municipal history supports भक्तपुर राज्यमा with a space. Exclude this from the clean word batch rather than score a fused phrase as a standard word.",
+      "evidence": [
+        {
+          "url": "https://www.bhaktapurmun.gov.np/sites/bhaktapurmun.gov.np/files/documents/BKT-268%20Reduce.pdf",
+          "title": "Bhaktapur municipal publication BKT-268",
+          "support": "The municipal history excerpt contains भक्तपुर राज्यमा with a space. It does not attest the fused source spelling भक्तपुरराज्यमा.",
+          "accessScope": "search-indexed municipal PDF excerpt; visual page not inspected",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "Missing word boundary between bhaktapur and rajyama; comparison phrase भक्तपुर राज्यमा requires segmentation."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "468ab5e3e8068ca2f32a323c2fe55e6582cca2828819497f93d0a97f09e8b537",
+      "sourceProposalSha256": "0aca4147635589e17ba8dbe122895e9433211b29efe2d65d1fd5a9582e5cb154",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": null,
+      "input": "bhaktapurrajyama",
+      "sourceProposal": "भक्तपुरराज्यमा",
+      "referenceOutputs": []
+    },
+    {
+      "id": "word-validation:nep279",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The official bulletin corroborates the full form केन्द्रहरूद्वारा, including the plural and instrumental components.",
+      "evidence": [
+        {
+          "url": "https://cid.nepalpolice.gov.np/media/filer_public/65/29/65290821-26b2-41f9-8694-071b755c4487/mansir-me-2081.pdf",
+          "title": "Crime Investigation monthly e-bulletin, Mangsir 2081 — Nepal Police",
+          "support": "The community-policing activity excerpt contains केन्द्रहरूद्वारा.",
+          "accessScope": "search-indexed PDF excerpt; visual page not inspected",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "a7a49c9fb543151c357e94eaa53ab0c44d6e6528d0751e5592a4bde3abc6e125",
+      "sourceProposalSha256": "ae44a7997cb8cb53e1b2e86e072c08eb08be6fed12d0f2242c7f72cba3ba1559",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "kendraharudwara",
+      "sourceProposal": "केन्द्रहरूद्वारा",
+      "referenceOutputs": [
+        "केन्द्रहरूद्वारा"
+      ]
+    },
+    {
+      "id": "word-validation:nep237",
+      "decision": "accept",
+      "confidence": "high",
+      "reason": "The legal record corroborates हस्पिटलतर्फ. It is a plausible Nepali rendering of the loan plus the direction ending in hospitaltarfa.",
+      "evidence": [
+        {
+          "url": "https://nkp.gov.np/full_detail/308",
+          "title": "नेपाल कानून पत्रिका",
+          "support": "The court-record body contains हस्पिटलतर्फ in a passage about taking someone for treatment.",
+          "accessScope": "full-page HTML text",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "7faea01cefd746a832b6c2922c48800f815eee4cc43ed9b4955b5c77d0fd31f3",
+      "sourceProposalSha256": "708a5144ba002f46f1365eb703800c8ab68eae3b0f94485d76e10b29fcdf3210",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "hospitaltarfa",
+      "sourceProposal": "हस्पिटलतर्फ",
+      "referenceOutputs": [
+        "हस्पिटलतर्फ"
+      ]
+    },
+    {
+      "id": "word-validation:nep217",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The police magazine corroborates the entire plural instrumental form मनोवैज्ञानिकहरूले.",
+      "evidence": [
+        {
+          "url": "https://cid.nepalpolice.gov.np/media/filer_public/36/a8/36a88505-8f15-49b8-9cef-add9e8aa2b78/cid_magazine_2071.pdf",
+          "title": "Crime Investigation magazine 2071 — Nepal Police",
+          "support": "The criminal-investigation magazine excerpt contains मनोवैज्ञानिकहरूले in discussion of cognitive-psychology research.",
+          "accessScope": "search-indexed PDF excerpt; visual page not inspected",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "8ef607b21c307776b1fb6c02abe83a1f9a46f6b63598f72dbad22a41fbc51095",
+      "sourceProposalSha256": "e031909eb75905c5a45bbbf84aa41fd19628872f513264e8da2cd4c14e25c9e5",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "manovaigyanikharule",
+      "sourceProposal": "मनोवैज्ञानिकहरूले",
+      "referenceOutputs": [
+        "मनोवैज्ञानिकहरूले"
+      ]
+    },
+    {
+      "id": "word-validation:nep52",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The original Nepali literary thesis supports the author-name form प्रेमचन्द्र with द्वारा. The Roman input matches that joined form. Confidence remains medium because retrieval exposes legacy-font text.",
+      "evidence": [
+        {
+          "url": "https://elibrary.tucl.edu.np/bitstreams/6ebe171c-ca10-4cfe-bb64-3b9e7750da6c/download",
+          "title": "TU thesis section 3.5: विश्वेश्वरप्रसाद कोइरालाको कथायात्रा र चरण विभाजन",
+          "support": "The directly retrieved TU thesis contains legacy-font k|]drGb|åf/f in its Koirala literary-history section, readable as प्रेमचन्द्रद्वारा; this is a decoding inference, not a Unicode-text match.",
+          "accessScope": "legacy-font PDF text, page 31 (zero-based page 30); screenshot retrieval failed",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "8960201d3d23affdb8afdf9ff70c2c1ee0f7d9b82cb3f5f312718bafda843b89",
+      "sourceProposalSha256": "539290269fadf6f226c574f802577ec32d2b85ecbbff2cac4f44c58517c9272a",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "premchandradwara",
+      "sourceProposal": "प्रेमचन्द्रद्वारा",
+      "referenceOutputs": [
+        "प्रेमचन्द्रद्वारा"
+      ]
+    },
+    {
+      "id": "word-validation:nep261",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The textbook supports विज्ञानले as विज्ञान with the instrumental ending. Informal vigyan plausibly represents the ज्ञ cluster.",
+      "evidence": [
+        {
+          "url": "https://dhangadhimaimun.gov.np/sites/dhangadhimaimun.gov.np/files/documents/Nepali_Class8.pdf",
+          "title": "Nepali Class 8 textbook hosted by Dhangadhimai Municipality",
+          "support": "The Nepali Class 8 textbook excerpt repeatedly uses विज्ञानले.",
+          "accessScope": "search-snippet (evidence retained from the 2026-09-27 source-assisted record)",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://learning.cehrd.gov.np/pluginfile.php/212/mod_resource/content/1/Nepali%20grade%2011.pdf",
+          "title": "CEHRD — Nepali grade 11 textbook",
+          "support": "The indexed government textbook excerpt contains विज्ञानले.",
+          "accessScope": "search-indexed PDF excerpt; visual page not inspected",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "7512f2abdc37608ac404b0b6d1e6717ab7c34846a331efb83a29425f3939bf98",
+      "sourceProposalSha256": "bdf05ae510cf9c98e8bd3dc12512f79fdb30847f182827ade853103d14fe8061",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "vigyanle",
+      "sourceProposal": "विज्ञानले",
+      "referenceOutputs": [
+        "विज्ञानले"
+      ]
+    },
+    {
+      "id": "word-validation:nep77",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The exact joined verb construction गाभ्नुपर्छ is attested in an education publication.",
+      "evidence": [
+        {
+          "url": "https://nced.gov.np/np/files/multipleupload/0-02-Aug-2017-06-08-37Teacher%20Education%20Book%202072.pdf",
+          "title": "Teacher Education Book 2072 — National Centre for Educational Development",
+          "support": "The teacher-education publication's indexed excerpt contains गाभ्नुपर्छ in discussion of merging small schools.",
+          "accessScope": "search-indexed PDF excerpt; visual page not inspected",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "5adf2ac74d04d0d6b10c848f116b8c6146619336ba946f5e70f977c094aa8107",
+      "sourceProposalSha256": "69e6d8717d7103a5ef93c968c835cbb3d6a9c2eb49593c8638d73794db46403e",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "gabhnuparchha",
+      "sourceProposal": "गाभ्नुपर्छ",
+      "referenceOutputs": [
+        "गाभ्नुपर्छ"
+      ]
+    },
+    {
+      "id": "word-validation:nep99",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The published literary example supports the whole form with chandrabindu and the final virama. Informal fyankidinchhan plausibly represents those details.",
+      "evidence": [
+        {
+          "url": "https://sahityasangraha.com/2014/01/24/%E0%A4%B9%E0%A4%BE%E0%A4%81%E0%A4%B8%E0%A5%8D%E0%A4%AF-%E0%A4%AC%E0%A5%8D%E0%A4%AF%E0%A4%99%E0%A5%8D%E0%A4%97%E0%A5%8D%E0%A4%AF-%E0%A4%AA%E0%A4%BE%E0%A4%A0%E0%A4%95/",
+          "title": "पाठक — literary essay hosted by Sahitya Sangraha",
+          "support": "The indexed literary essay contains फ्याँकिदिन्छन्.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "2120bf455c4116ce099177002e5f547747db30aa5a010391c1a7e3ceaa3c8314",
+      "sourceProposalSha256": "5f5cf07c23d57fed837c87d02b8b3c641ed3d3a991b6a7c63d3f6b278f4e9284",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "fyankidinchhan",
+      "sourceProposal": "फ्याँकिदिन्छन्",
+      "referenceOutputs": [
+        "फ्याँकिदिन्छन्"
+      ]
+    },
+    {
+      "id": "word-validation:nep133",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The source corroborates the loan noun मिडिया joined to सँग. It is a plausible informal reading of mediasanga.",
+      "evidence": [
+        {
+          "url": "https://www.presscouncilnepal.gov.np/np/wp-content/uploads/2022/02/Samhita-_Push-078.pdf",
+          "title": "Samhita, Poush 2078 — Press Council Nepal",
+          "support": "The Press Council publication's excerpt uses मिडियासँग.",
+          "accessScope": "search-indexed PDF excerpt; visual page not inspected",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "a8f673fd77fa37cc75f3f13b736a0638a883eed79e40308ed3351b208b5e85b1",
+      "sourceProposalSha256": "af361633def162fd047f120e62a39a70f5be69cb46537a52249f0d27705eb8c3",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "mediasanga",
+      "sourceProposal": "मिडियासँग",
+      "referenceOutputs": [
+        "मिडियासँग"
+      ]
+    },
+    {
+      "id": "word-validation:nep197",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The spelling इन्द्रदेवले is attested as a personal-name construction. It does not establish whether the dataset means that person or the deity.",
+      "evidence": [
+        {
+          "url": "https://d1i1jdw69xsqx0.cloudfront.net/digitalhimalaya/collections/journals/purnima/pdf/Purnima_11_03.pdf",
+          "title": "Purnima 11(3) — historical journal archived by Digital Himalaya",
+          "support": "The Purnima historical-journal excerpt contains इन्द्रदेवले in a royal-name context.",
+          "accessScope": "search-snippet (evidence retained from the 2026-09-27 source-assisted record)",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://nkp.gov.np/full_detail/10374",
+          "title": "नेपाल कानून पत्रिका — tenancy appeal",
+          "support": "The indexed original court decision contains इन्द्रदेवले in a litigant-name context.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "6e9e0309c4f2557be4128984005f55f6410e0ee22b4c0191ca6880b880cfd62f",
+      "sourceProposalSha256": "29a662e1fab447430e5379bec1420f254a1c435b6cc05dbb0fe3f583fdbdb381",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "indradevle",
+      "sourceProposal": "इन्द्रदेवले",
+      "referenceOutputs": [
+        "इन्द्रदेवले"
+      ]
+    },
+    {
+      "id": "word-validation:nep206",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The official textbook activity corroborates the full continuous verb form लखेटिरहेका.",
+      "evidence": [
+        {
+          "url": "https://learning.cehrd.gov.np/pluginfile.php/181/mod_resource/content/1/Nepali%20grade%208.pdf",
+          "title": "Nepali Grade 8 — CEHRD learning portal",
+          "support": "The indexed Grade 8 Nepali textbook activity contains लखेटिरहेका.",
+          "accessScope": "search-indexed PDF excerpt; visual page not inspected",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "814c405a3032d3fd22487fa63a4066190023ed1f07726ea2989de9f8a61db19f",
+      "sourceProposalSha256": "a941811b2628e579a2704a00b23cc96f5876724ee7532630c8a04f079d9a45ac",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "lakhetiraheka",
+      "sourceProposal": "लखेटिरहेका",
+      "referenceOutputs": [
+        "लखेटिरहेका"
+      ]
+    },
+    {
+      "id": "word-validation:nep248",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The full plural-plus-postposition form पत्रकारहरूमाथि is corroborated by a professional journalism publication.",
+      "evidence": [
+        {
+          "url": "https://www.presscouncilnepal.gov.np/np/wp-content/uploads/2025/06/karnaliko-patrakarita-1.pdf",
+          "title": "Karnaliko Patrakarita — Press Council Nepal",
+          "support": "The Press Council volume excerpt contains पत्रकारहरूमाथि.",
+          "accessScope": "search-indexed PDF excerpt; visual page not inspected",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "c088bb88119f30f0234102c661f1a0c6b5c3476cf10b440f6dbfb6cec8c91868",
+      "sourceProposalSha256": "5a65253e36f31b4ab6ef5b01adb35e5acaf67a918b023f8bb36a5ad9c123b4e2",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "patrakaraharumathi",
+      "sourceProposal": "पत्रकारहरूमाथि",
+      "referenceOutputs": [
+        "पत्रकारहरूमाथि"
+      ]
+    },
+    {
+      "id": "word-validation:nep262",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The official release corroborates the respectful verb form सम्हाल्नुभएको. Informal samhalnubhaeko is a plausible rendering.",
+      "evidence": [
+        {
+          "url": "https://www.nia.gov.np/press/release/detail/athhayakashha-padalbta-pathabhara-garahanae",
+          "title": "अध्यक्ष पौडेलबाट पदभार ग्रहण — Nepal Insurance Authority",
+          "support": "The official appointment-release excerpt contains सम्हाल्नुभएको; full-page fetching timed out.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "f0f23d65cb73f1d44ab91cfef19db1794062eabd37b2c14a6528ea19da8e37c2",
+      "sourceProposalSha256": "989fbd9f4e57c4f0eeb545b08c07123ef155630660ae17c23bbc32c178a8af27",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "samhalnubhaeko",
+      "sourceProposal": "सम्हाल्नुभएको",
+      "referenceOutputs": [
+        "सम्हाल्नुभएको"
+      ]
+    },
+    {
+      "id": "word-validation:nep62",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The municipal law supports the joined obligation construction बोलाउनुपर्ने.",
+      "evidence": [
+        {
+          "url": "https://musikotmunrukum.gov.np/sites/musikotmunrukum.gov.np/files/documents/%E0%A4%AE%E0%A5%81%E0%A4%B8%E0%A4%BF%E0%A4%95%E0%A5%8B%E0%A4%9F%20%E0%A4%A8%E0%A4%97%E0%A4%B0%E0%A4%AA%E0%A4%BE%E0%A4%B2%E0%A4%BF%E0%A4%95%E0%A4%BE%E0%A4%95%E0%A5%8B%20%E0%A4%B8%E0%A4%B9%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A5%80%20%E0%A4%90%E0%A4%A8%20%20%E0%A5%A8%E0%A5%A6%E0%A5%AD%E0%A5%AA.pdf",
+          "title": "Musikot municipal Cooperative Act 2074",
+          "support": "The cooperative-law excerpt repeatedly uses बोलाउनुपर्ने.",
+          "accessScope": "search-indexed PDF excerpt; visual page not inspected",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "3b11b9a952a71a7ba960cb0d188ced348764ceed99b0d8b4ca614dddc4f1bea0",
+      "sourceProposalSha256": "2fe4032b1242c3099d3ee5b2001a9545cd19af16475e0730314dde0c37ef30ae",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "bolaunuparne",
+      "sourceProposal": "बोलाउनुपर्ने",
+      "referenceOutputs": [
+        "बोलाउनुपर्ने"
+      ]
+    },
+    {
+      "id": "word-validation:nep103",
+      "decision": "accept",
+      "confidence": "high",
+      "reason": "The exact surname-plus-honorific form is attested in an official record. The record supports the spelling; no identity claim is made.",
+      "evidence": [
+        {
+          "url": "https://ag.gov.np/oag-post/1618",
+          "title": "महान्यायाधिवक्ताको कार्यालय",
+          "support": "The workshop record contains पाण्डेज्यूले in reference to Padma Prasad Pande.",
+          "accessScope": "full-page HTML text",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "a5a91d41d74c3c5db32e48da9028d660717fa3534e45bb0bf63d37e62705fa8a",
+      "sourceProposalSha256": "b8c4c280de6426cbc1af6f880140291e34be3e671ed495b8e6dc7a9a59eda000",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "pandejyule",
+      "sourceProposal": "पाण्डेज्यूले",
+      "referenceOutputs": [
+        "पाण्डेज्यूले"
+      ]
+    },
+    {
+      "id": "word-validation:nep175",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The report corroborates the complete loanword-plus-plural-plus-postposition form कम्पनीहरूमाथि. Informal company is an English-spelled loan and fits this reading.",
+      "evidence": [
+        {
+          "url": "https://cms.ntc.net.np/storage/media/gM01GEEPTnfUBHHTAipjQnUzCoLkFXP3pcIQUX4n.pdf",
+          "title": "Nepal Telecom consolidated financial statements, 2077/78",
+          "support": "The Nepal Telecom financial-report excerpt contains कम्पनीहरूमाथि. Text extraction elsewhere in the excerpt is imperfect, so this is corroboration rather than normative proof.",
+          "accessScope": "search-indexed PDF excerpt; visual page not inspected",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "2f4ba88abc20128754333d78a1b23ae812ccd03c99d6cdcf03629203637cc579",
+      "sourceProposalSha256": "a85a6c9422b0b68c0b7790a416f3ffe4f3e8a219d67ec2517d995d6d7cb746a2",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "companyharumathi",
+      "sourceProposal": "कम्पनीहरूमाथि",
+      "referenceOutputs": [
+        "कम्पनीहरूमाथि"
+      ]
+    },
+    {
+      "id": "word-validation:nep189",
+      "decision": "accept",
+      "confidence": "high",
+      "reason": "The editorial body corroborates भागीदारको. It is a plausible genitive form for informal bhagidarko.",
+      "evidence": [
+        {
+          "url": "https://gorkhapatraonline.com/news/180757",
+          "title": "ताजा जनादेश उपयुक्त मौका",
+          "support": "The article body contains भागीदारको.",
+          "accessScope": "full-page HTML text",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "b6678ec46d06141fc9f462210bd937e11386c4692e5fa614db8b6427a299188e",
+      "sourceProposalSha256": "beedee58b11c7cbe3319e3f8d8c0d19433f177896dfb18c2f6462bb9a7014c56",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "bhagidarko",
+      "sourceProposal": "भागीदारको",
+      "referenceOutputs": [
+        "भागीदारको"
+      ]
+    },
+    {
+      "id": "word-validation:nep162",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The official address supports the full plural dative construction सम्भावनाहरूलाई. The Roman bh and w conventions remain informal.",
+      "evidence": [
+        {
+          "url": "https://president.gov.np/%E0%A4%B8%E0%A4%AE%E0%A5%8D%E0%A4%AE%E0%A4%BE%E0%A4%A8%E0%A4%A8%E0%A5%80%E0%A4%AF-%E0%A4%B0%E0%A4%BE%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A4%AA%E0%A4%A4%E0%A4%BF-%E0%A4%B6%E0%A5%8D-227/",
+          "title": "सम्माननीय राष्ट्रपति श्रीमती विद्यादेवी भण्डारीज्यूले विभिन्न सञ्चार माध्यमका प्रकाशक/सम्पादकहरूसँग भेटघाटको अवसरमा व्यक्त गर्नुभएको विचार - राष्ट्रपतिको कार्यालय",
+          "support": "The President's indexed address contains सम्भावनाहरूलाई; full-page fetching timed out.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "8c473c50c6a8c268f01d62888e12daa9f1b5ee8f32f61c78da5be903db1d59b3",
+      "sourceProposalSha256": "99c4f09f1fd0d778b6a96fcd1264165cbd96ee237c666d3b17af36a8b2df5f18",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "sambhawanaharulai",
+      "sourceProposal": "सम्भावनाहरूलाई",
+      "referenceOutputs": [
+        "सम्भावनाहरूलाई"
+      ]
+    },
+    {
+      "id": "word-validation:nep183",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The interview corroborates the plural genitive spelling दुष्प्रवृत्तिहरूको, including ष्प्र and वृ. That spelling is a plausible intended informal reading, not a core-keyboard mapping.",
+      "evidence": [
+        {
+          "url": "https://www.ratopati.com/story/497777/the-narrative-genre-is-telling-the-story-of-every-household",
+          "title": "*‘आख्यान विधाले घरघरको कथा बोलिरहेको हुन्छ’ | Nepal's first 24-hour updated news portal - Ratopati",
+          "support": "The indexed literary interview contains दुष्प्रवृत्तिहरूको. The full article was blocked by the host.",
+          "accessScope": "search-snippet (evidence retained from the 2026-09-27 source-assisted record)",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://elibrary.tucl.edu.np/bitstreams/382313c8-2fe2-46f4-b98e-d10050fb0146/download",
+          "title": "Tribhuvan University — study of Bhairav Aryal essays",
+          "support": "The indexed original Nepali thesis contains दुष्प्रवृत्तिहरूको in a discussion of social subjects.",
+          "accessScope": "search-indexed PDF excerpt; visual page not inspected",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "035f1797334d8bcadd4df6c51bc5a1ba4e4d0fdc52fab0707ff97af38dee09e3",
+      "sourceProposalSha256": "d2ec4ca60b07a2261dd0efa3effaf4c1fdac8c4b5d65da10631f7c88a1a9322e",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "dushprawrittiharuko",
+      "sourceProposal": "दुष्प्रवृत्तिहरूको",
+      "referenceOutputs": [
+        "दुष्प्रवृत्तिहरूको"
+      ]
+    },
+    {
+      "id": "word-validation:nep147",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The official book title corroborates the plural सूक्तिहरू. Roman suktiharu does not itself disambiguate the long उ sound.",
+      "evidence": [
+        {
+          "url": "https://repository.lawcommission.gov.np/np/documents/legal-maxims-%E0%A4%95%E0%A4%BE%E0%A4%A8%E0%A5%82%E0%A4%A8%E0%A5%80-%E0%A4%B8%E0%A5%82%E0%A4%95%E0%A5%8D%E0%A4%A4%E0%A4%BF%E0%A4%B9%E0%A4%B0%E0%A5%82/",
+          "title": "Legal Maxims – कानूनी सूक्तिहरू – नेपाल कानून आयोग",
+          "support": "The Law Commission publication title explicitly contains सूक्तिहरू. Full-page fetching timed out.",
+          "accessScope": "search-snippet (evidence retained from the 2026-09-27 source-assisted record)",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://www.lawcommission.gov.np/content/11069/11069-legal-maxims/",
+          "title": "Nepal Law Commission — कानूनी सूक्तिहरू",
+          "support": "The directly retrieved official book page title contains सूक्तिहरू.",
+          "accessScope": "full-page HTML text",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "a0ac7c3be9f92589dde37e8b5fa79f4d7ba0abe8bdbe14dc56a2a62c8b51b403",
+      "sourceProposalSha256": "d9e6ca06c457e3c97d7b2aca5272de9886efbca6e4c4621940c7845428a2b460",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "suktiharu",
+      "sourceProposal": "सूक्तिहरू",
+      "referenceOutputs": [
+        "सूक्तिहरू"
+      ]
+    },
+    {
+      "id": "word-validation:nep73",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "The cultural essay corroborates असुरहरूको. It is a plausible plural genitive reading of asuraharuko.",
+      "evidence": [
+        {
+          "url": "https://www.onlinekhabar.com/2018/05/676615/%E0%A4%A7%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%BF%E0%A4%95-%E0%A4%AA%E0%A4%B0%E0%A4%AE%E0%A5%8D%E0%A4%AA%E0%A4%B0%E0%A4%BE%E0%A4%95%E0%A4%BE-%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%BE%E0%A4%9A%E0%A5%80",
+          "title": "धार्मिक परम्पराका प्राचीन दुई मार्गः सुर र असुर – Online Khabar",
+          "support": "The indexed essay contains असुरहरूको when discussing mythological groups.",
+          "accessScope": "search-snippet; direct article fetch failed",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "b1eeb1bcdba5537cb3f3c4d549373fff4631748f8795d88b2e85e2f958755c17",
+      "sourceProposalSha256": "6b50a51984b7cedcde68861007f364b6b7d606a6cb4f3c680577889dc20f2234",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "asuraharuko",
+      "sourceProposal": "असुरहरूको",
+      "referenceOutputs": [
+        "असुरहरूको"
+      ]
+    },
+    {
+      "id": "word-validation:nep45",
+      "decision": "accept",
+      "confidence": "high",
+      "reason": "The full form is attested as a person's name plus ले. It supports a plausible proper-name reading, while the isolated dataset row does not establish identity.",
+      "evidence": [
+        {
+          "url": "https://ekantipur.com/koseli/2022/02/05/164403134365231121.html",
+          "title": "इतिहास: जनक्रान्तिमा रेडियो  - कान्तिपुर",
+          "support": "The historical feature body contains तारिणीप्रसादले in the Radio Nepal founding narrative.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "55b3581429725cc84cae19511de07c01abbb7fa40bdbccb5941fcc896df4858c",
+      "sourceProposalSha256": "2d27b38f84f67f4c0cfd152a09cb9ac3db2f10b347c0704d79695d64e1534826",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "tariniprasadale",
+      "sourceProposal": "तारिणीप्रसादले",
+      "referenceOutputs": [
+        "तारिणीप्रसादले"
+      ]
+    },
+    {
+      "id": "word-validation:nep2469",
+      "decision": "exclude",
+      "confidence": "high",
+      "reason": "Official Nepali usage supports इलाकामा. The paired elakama → एलाकामा instead changes the initial vowel. Following the user’s instruction to treat such dubious pairs as misspellings, exclude this source error without silently replacing its Roman input.",
+      "evidence": [
+        {
+          "url": "https://sabdasakha.com/word/इलाका",
+          "title": "शब्दसखा — इलाका",
+          "support": "The indexed dictionary entry attests इलाका; full-page fetch returned 403.",
+          "accessScope": "search-snippet (evidence retained from the 2026-09-27 source-assisted record)",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://ktmvalley.nepalpolice.gov.np/news/469/",
+          "title": "Kathmandu Valley Police — CCTV inauguration",
+          "support": "The indexed official news notice uses इलाकामा as the ordinary locative form. It does not attest एलाकामा.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "elakama / एलाकामा versus standard ilakama / इलाकामा requires initial-vowel repair."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "ec3443dfc33cd1e4410a26542984dc97365f8e9ad53e54c53b79eb9826c88f73",
+      "sourceProposalSha256": "d3e4bb7628b39bf4a395a9133522a4ee15f1704d4bbca28cd7e8b9ed65b3868d",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": null,
+      "input": "elakama",
+      "sourceProposal": "एलाकामा",
+      "referenceOutputs": []
+    },
+    {
+      "id": "word-validation:nep1258",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "Nepali reporting directly attests वाजेदले as an inflected foreign surname. Informal w/v and unmarked vowel length make this a plausible reading; no identity claim is established.",
+      "evidence": [
+        {
+          "url": "https://sagarmatha.tv/2024/09/137479/",
+          "title": "Sagarmatha TV — report about Wazed",
+          "support": "Indexed article attests वाजेदले; full-page retrieval was unavailable.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "765d2aeef7bb3731db8b657ef3ac015c68579a5d6e95f956d326a3681d21035a",
+      "sourceProposalSha256": "9756b674d4027b873b76acff25995d123e3737dcf73a5bde576321d5a64dd239",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "wajedle",
+      "sourceProposal": "वाजेदले",
+      "referenceOutputs": [
+        "वाजेदले"
+      ]
+    },
+    {
+      "id": "word-validation:nep1076",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "An official Nepal Police article contains अस्पतालबीचको exactly. The informal Roman omits long-vowel distinctions; the spelling is a plausible compound reading.",
+      "evidence": [
+        {
+          "url": "https://nepalpolice.gov.np/news/2590/",
+          "title": "Nepal Police — agreement with Megha Hospital",
+          "support": "Article body contains अस्पतालबीचको.",
+          "accessScope": "full-page HTML text",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "57c72954f609f903ca81c638fa3fa8ee92d95902a5b069cedbd921c17903bd0d",
+      "sourceProposalSha256": "e9fb7d8b8791a79b99fd2d99b61ff08399ff9f6cb52084078c8a3638ac8f7371",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "aspatalbichko",
+      "sourceProposal": "अस्पतालबीचको",
+      "referenceOutputs": [
+        "अस्पतालबीचको"
+      ]
+    },
+    {
+      "id": "word-validation:nep1540",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "A Nepali editorial attests भक्तिगानयुक्त exactly; the Roman sequence corresponds to the compound without requiring added words.",
+      "evidence": [
+        {
+          "url": "https://nagariknews.nagariknetwork.com/amp/others/125477-1499491920.html",
+          "title": "Nagarik — जन्मोत्सव जीवनमय बनोस्",
+          "support": "Indexed editorial contains भक्तिगानयुक्त; full-page retrieval failed.",
+          "accessScope": "search-snippet (evidence retained from the 2026-09-27 source-assisted record)",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://nagariknews.nagariknetwork.com/others/125477-1499491920.html?click_from=category",
+          "title": "Nagarik — जन्मोत्सव जीवनमय बनोस्",
+          "support": "The indexed original editorial contains भक्तिगानयुक्त.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "fb2aefe43dc81fcea9710b55187342de9184622e7906798d22a58672210b8d19",
+      "sourceProposalSha256": "808295686c045297bd55d11a94ae314a92450551b24d3f95f85b024f3b3b9e63",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "bhaktiganyukta",
+      "sourceProposal": "भक्तिगानयुक्त",
+      "referenceOutputs": [
+        "भक्तिगानयुक्त"
+      ]
+    },
+    {
+      "id": "word-validation:nep2051",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "An Auditor General report attests पूर्णकालीनलाई. This is a plausible inflected reading with vowel length inferred in informal Roman.",
+      "evidence": [
+        {
+          "url": "https://old.oag.gov.np/uploads/files/kWR-%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%AF%E0%A4%AE%E0%A5%82%E0%A4%B2%E0%A4%95%20%E0%A4%B0%E0%A5%8B%E0%A4%9C%E0%A4%97%E0%A4%BE%E0%A4%B0%20%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%AF%E0%A4%95%E0%A5%8D%E0%A4%B0%E0%A4%AE%20%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%A4%E0%A4%BF%E0%A4%B5%E0%A5%87%E0%A4%A6%E0%A4%A8%20%E0%A5%A8%E0%A5%A6%E0%A5%AD%E0%A5%AE.pdf",
+          "title": "Office of the Auditor General — employment-program audit",
+          "support": "Indexed report contains पूर्णकालीनलाई.",
+          "accessScope": "search-snippet (evidence retained from the 2026-09-27 source-assisted record)",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://old.oag.gov.np/uploads/files/kWR-%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%AF%E0%A4%AE%E0%A5%82%E0%A4%B2%E0%A4%95%20%E0%A4%B2%E0%A5%87%E0%A4%96%E0%A4%BE%E0%A4%AA%E0%A4%B0%E0%A5%80%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%A3%20%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%A4%E0%A4%BF%E0%A4%B5%E0%A5%87%E0%A4%A6%E0%A4%A8%20%E0%A5%A8%E0%A5%A6%E0%A5%AD%E0%A5%AE.pdf",
+          "title": "Office of the Auditor General — PM employment-program performance audit 2078",
+          "support": "The indexed government report contains पूर्णकालीनलाई.",
+          "accessScope": "search-indexed PDF excerpt; visual page not inspected",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "8fb366521a521f60632e655a605bbd91b640459ec8d2b54e7f79533e5e6aaa7c",
+      "sourceProposalSha256": "0daa66952eac3574491e1309398f1d9c757c20c9a2421256f7fd081e86e7d402",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "purnakalinlai",
+      "sourceProposal": "पूर्णकालीनलाई",
+      "referenceOutputs": [
+        "पूर्णकालीनलाई"
+      ]
+    },
+    {
+      "id": "word-validation:nep1657",
+      "decision": "exclude",
+      "confidence": "high",
+      "reason": "Official Nepali usage supports वर्षदेखि. warshadaikhi → वर्षदैखि contains a dai/de vowel mismatch against the ordinary form. Exclude the malformed source pair; the comparison is spelling evidence rather than a corrected reference for the unchanged input.",
+      "evidence": [
+        {
+          "url": "https://repository.lawcommission.gov.np/np/documents/prevailing-law/statutes-acts/%E0%A4%B8%E0%A4%B9%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A5%80-%E0%A4%90%E0%A4%A8-%E0%A5%A8%E0%A5%A6%E0%A5%AD%E0%A5%AA/%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%9A%E0%A5%8D%E0%A4%9B%E0%A5%87%E0%A4%A6-%E0%A5%A7%E0%A5%AF-%E0%A4%95%E0%A4%B8%E0%A5%82%E0%A4%B0-%E0%A4%A6%E0%A4%A3%E0%A5%8D%E0%A4%A1-%E0%A4%9C%E0%A4%B0/",
+          "title": "Nepal Law Commission — cooperative-law penalties",
+          "support": "Indexed text attests वर्षदेखि; full-page retrieval unavailable.",
+          "accessScope": "search-snippet (evidence retained from the 2026-09-27 source-assisted record)",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://repository.lawcommission.gov.np/np/documents/prevailing-law/statutes-acts/%E0%A4%AC%E0%A5%88%E0%A4%82%E0%A4%95%E0%A4%BF%E0%A4%82%E0%A4%97-%E0%A4%95%E0%A4%B8%E0%A5%82%E0%A4%B0-%E0%A4%A4%E0%A4%A5%E0%A4%BE-%E0%A4%B8%E0%A4%9C%E0%A4%BE%E0%A4%AF-%E0%A4%90%E0%A4%A8-%E0%A5%A8/%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%9A%E0%A5%8D%E0%A4%9B%E0%A5%87%E0%A4%A6-%E0%A5%A9-%E0%A4%A6%E0%A4%A3%E0%A5%8D%E0%A4%A1-%E0%A4%B8%E0%A4%9C%E0%A4%BE%E0%A4%AF-2/",
+          "title": "Nepal Law Commission — banking offences penalties",
+          "support": "The indexed law uses वर्षदेखि, contrasting with the dataset’s वर्षदैखि.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "daikhi / दैखि versus dekhi / देखि requires a vowel repair."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "22b8e4802dba169ee04f3d7901d7f20595ffa4057e1263681c135f65d1a98beb",
+      "sourceProposalSha256": "474ff012f7113e60c6218d123e88cd9b61cfb5ff4c12ba9aa6a7cb8525810e5c",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": null,
+      "input": "warshadaikhi",
+      "sourceProposal": "वर्षदैखि",
+      "referenceOutputs": []
+    },
+    {
+      "id": "word-validation:nep881",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "A Nepali historical article attests the name देवनरसिंह. The Roman form is a plausible name reading; occurrence does not identify which person this isolated dataset row means.",
+      "evidence": [
+        {
+          "url": "https://gorkhapatraonline.com/news/15596",
+          "title": "Gorkhapatra — त्यतिबेला इलम सिक्न जापान",
+          "support": "Article attests देवनरसिंह in a personal name.",
+          "accessScope": "full-page HTML text",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "dd5dd15ad4448d9229dadef9e3e6b1fd56adc7f91f17bb74f67d924dd6b2e6e4",
+      "sourceProposalSha256": "58ce5c093c695835a87bd19659bac139cb8a127a544519c692a2ea4acda2223c",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "devnarasinh",
+      "sourceProposal": "देवनरसिंह",
+      "referenceOutputs": [
+        "देवनरसिंह"
+      ]
+    },
+    {
+      "id": "word-validation:nep1089",
+      "decision": "exclude",
+      "confidence": "high",
+      "reason": "Municipal usage corroborates the place-name root मौरीभिर, but not the entire source token. The Roman sequence bhiralgayatma swaps the a/l order relative to bhirlagayatma (मौरीभिर + लगायतमा). Exclude the malformed pair instead of accepting a compound from root-only evidence.",
+      "evidence": [
+        {
+          "url": "https://baglungmun.gov.np/sites/baglungmun.gov.np/files/documents/Baglung%20Municipality%201%20_%20Report_2081.pdf",
+          "title": "Baglung Municipality — approved municipal programs",
+          "support": "Indexed PDF attests मौरीभिर; full PDF fetch timed out.",
+          "accessScope": "search-indexed municipal PDF excerpt; visual page not inspected",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "The Roman token contains ...bhiralg...; the proposed target corresponds to ...bhirlag... .",
+        "Only the place-name root is independently attested; the whole joined expression is not."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "c7f56ec56ac67308bd8ef924e322d09130efa7228c7e10a87ce692bc351346a5",
+      "sourceProposalSha256": "65450176e228310330fee426e332207835e23e28da85aa36fdb5e9d145d2af1e",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": null,
+      "input": "mauribhiralgayatma",
+      "sourceProposal": "मौरीभिरलगायतमा",
+      "referenceOutputs": []
+    },
+    {
+      "id": "word-validation:nep1476",
+      "decision": "exclude",
+      "confidence": "high",
+      "reason": "The ordinary joined construction is बनाएसँगै, directly attested in original Nepali reporting. banaesange → बनाएसँगे has a mismatched final vowel. Exclude this malformed pair rather than silently changing the Roman ending to sangai.",
+      "evidence": [
+        {
+          "url": "https://ekantipur.com/business/2026/01/01/rasuwagadhi-border-checkpoint-reopens-after-6-months-41-27.html",
+          "title": "Kantipur — रसुवागढी नाका reopening report",
+          "support": "Article body attests बनाएसँगै.",
+          "accessScope": "full-page HTML text",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "sange / सँगे versus sangai / सँगै requires a final-vowel repair."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "e4f2dcf2f7221129e4159ca8f310fac45264f0d25d402a64f7737f9c553762e0",
+      "sourceProposalSha256": "40841bbaceaf1008e34846d8b38f9faa4662b26728760a69c5ab8f64f1a3ba8f",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": null,
+      "input": "banaesange",
+      "sourceProposal": "बनाएसँगे",
+      "referenceOutputs": []
+    },
+    {
+      "id": "word-validation:nep1831",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "A Nepali literary reminiscence directly uses लगालगी. That supports a Nepali reading of this Roman form; a Hindi dictionary alone would not suffice.",
+      "evidence": [
+        {
+          "url": "https://www.onlinekhabar.com/2026/07/1981931/nagendra-raj-sharma-a-series-of-memories",
+          "title": "Online Khabar — memories of Nagendra Raj Sharma",
+          "support": "Article body contains लगालगी.",
+          "accessScope": "full-page HTML text",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "73d3304b41ccb82eb0a0767b1c8177a44d5074f6765c70c46d457a318829695f",
+      "sourceProposalSha256": "c1b014b7c1b0def1cdc139405da8dbcc1b5897c772516e00a8452df5a9ba4bc2",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "lagalagi",
+      "sourceProposal": "लगालगी",
+      "referenceOutputs": [
+        "लगालगी"
+      ]
+    },
+    {
+      "id": "word-validation:nep815",
+      "decision": "exclude",
+      "confidence": "medium",
+      "reason": "No primary Nepali spelling attestation for this isolated foreign surname was verified. Hindi sources and a Wikidata Nepali label may explain the dataset spelling but do not provide an independent Nepali reference. Exclude from this clean word batch; do not label a foreign proper name a misspelling.",
+      "evidence": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q12832683",
+          "title": "Wikidata — Bertha von Suttner",
+          "support": "Indexed sitelink contains Nepali बर्था भन सटनर. This is source-label context only and may overlap the benchmark’s Wikidata origin; no independent primary Nepali spelling was found.",
+          "accessScope": "search-snippet; dataset-related encyclopedia label only, not independent validation",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "The source omits the original name/entity context; Hindi or Wikidata label evidence cannot determine the Nepali rendering."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "881ed37a1bf55fc75b66d095bd249ae9f47ec8a5fa72d6f739e1af3e86cd07d7",
+      "sourceProposalSha256": "3b4200c671e44f1a879e639d02d3a38ff68c86db18fabfd5d37f632bf17a82e5",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": null,
+      "input": "suttner",
+      "sourceProposal": "सटनर",
+      "referenceOutputs": []
+    },
+    {
+      "id": "word-validation:nep810",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "Two primary Nepal Police personnel records corroborate जवरा as a surname. javara is a plausible informal spelling of that name, so retain the proposed output without claiming a particular person is identified.",
+      "evidence": [
+        {
+          "url": "https://bharatpurmun.gov.np/sites/bharatpurmun.gov.np/files/documents/Bharatpur%20Pragya__Journal.pdf",
+          "title": "Bharatpur Municipality — Pragya journal",
+          "support": "Indexed journal citation contains जवरा; full PDF retrieval failed.",
+          "accessScope": "search-snippet (evidence retained from the 2026-09-27 source-assisted record)",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://www.nepalpolice.gov.np/news/3422/",
+          "title": "Nepal Police — 20 senior superintendents decorated",
+          "support": "The indexed official promotion record uses जवरा in दीप शम्शेर जवरा. Direct fetch timed out.",
+          "accessScope": "search-snippet; direct page fetch timed out",
+          "verifiedAt": "2026-10-01"
+        },
+        {
+          "url": "https://nepalpolice.gov.np/news/2928/",
+          "title": "Nepal Police — Interpol Asian regional conference departure",
+          "support": "The indexed official personnel record uses जवरा in अनुपम शमशेर जवरा.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "9881d20f290359403ac4542b73f6b8cacbbc614b8b77d10f74926e3a81e853e2",
+      "sourceProposalSha256": "97ab0f652d39909fa3c5b556629c01d1aae07422a3da355bf5f23a8c5a6cbb7b",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "javara",
+      "sourceProposal": "जवरा",
+      "referenceOutputs": [
+        "जवरा"
+      ]
+    },
+    {
+      "id": "word-validation:nep806",
+      "decision": "correct",
+      "confidence": "medium",
+      "reason": "Primary Nepali usage supports चिन्तामन. The proposed चिंतामन was corroborated by a Hindi dictionary only. For this Nepali batch prefer the attested conjunct spelling; the sound sequence in chintaman is unchanged.",
+      "evidence": [
+        {
+          "url": "https://www.hindwi.org/hindi-dictionary/meaning-of-chintaaman",
+          "title": "Hindwi dictionary — चिंतामन",
+          "support": "Hindi entry attests चिंतामन; evidence is not a Nepali standard.",
+          "accessScope": "search-snippet (evidence retained from the 2026-09-27 source-assisted record)",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://elibrary.tucl.edu.np/bitstreams/c24d3f86-ce63-4bfa-ad4f-80b60a3fa65b/download",
+          "title": "Tribhuvan University — literary thesis",
+          "support": "Indexed Nepali thesis uses चिन्तामन, a comparison form.",
+          "accessScope": "search-snippet (evidence retained from the 2026-09-27 source-assisted record)",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://nepalpolice.gov.np/news/6181/",
+          "title": "Nepal Police — drug-possession arrests",
+          "support": "The indexed official arrest notice uses चिन्तामन as an Indian place name. The source does not establish which entity the isolated input denotes.",
+          "accessScope": "search-snippet; direct page fetch cache miss",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "The source target uses Hindi-style anusvara before त; Nepali reference uses न् + त. This is an orthographic correction, not proof of the original name identity."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "be62bf4f1a1269cb4367e1c61593f3f202345654a2b5685ecf0bd3a401021f15",
+      "sourceProposalSha256": "b020f7c251a0a942b10cb11401e7d36b90379a4bfa9870e98ec6bb8fa8d5f318",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "chintaman",
+      "sourceProposal": "चिंतामन",
+      "referenceOutputs": [
+        "चिन्तामन"
+      ]
+    },
+    {
+      "id": "word-validation:nep813",
+      "decision": "correct",
+      "confidence": "medium",
+      "reason": "The government Nepali ethnic-name page and original Nepali reporting even for Dashrath Manjhi both use माझी. Prefer that spelling in this Nepali batch. The proposed मांझी has cross-language native-name evidence, which does not establish the Nepali form.",
+      "evidence": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dashrath_Manjhi",
+          "title": "Wikipedia — Dashrath Manjhi",
+          "support": "Native-name field attests मांझी for a specific Indian name.",
+          "accessScope": "search-snippet (evidence retained from the 2026-09-27 source-assisted record)",
+          "verifiedAt": "2026-09-27"
+        },
+        {
+          "url": "https://nfdin.gov.np/pages/majhi/",
+          "title": "NFDIN — माझी",
+          "support": "The indexed government ethnicity page title and body use माझी. Direct page retrieval failed.",
+          "accessScope": "search-snippet; direct page fetch failed",
+          "verifiedAt": "2026-10-01"
+        },
+        {
+          "url": "https://www.onlinekhabar.com/2023/06/1322276/mountain_man",
+          "title": "Online Khabar — पहाड फोड्ने माउन्टेन म्यानको कथा",
+          "support": "The directly retrieved original Nepali report uses दशरथ माझी and माझी in discussing the Indian mountain man.",
+          "accessScope": "full-page HTML text",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "The source target has ा + anusvara + झ; the attested Nepali reference has ा + झ. Roman n is interpreted as an informal nasal/name convention, not an instruction to preserve Hindi spelling."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "67eea187da7212b3616951966cd0eaf171667e853aa1ed5903c86ff37bf4d111",
+      "sourceProposalSha256": "c5eb28a1635386f1f54a9d522b445fdcc11c59e05efc6b3a3d54b687941ea901",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "manjhi",
+      "sourceProposal": "मांझी",
+      "referenceOutputs": [
+        "माझी"
+      ]
+    },
+    {
+      "id": "word-validation:nep811",
+      "decision": "accept",
+      "confidence": "medium",
+      "reason": "A Nepali publisher author page directly attests गोपालमान. That supports the proposed name spelling as a plausible Roman reading; the isolated dataset name identity remains unconfirmed.",
+      "evidence": [
+        {
+          "url": "https://ekantipur.com/author/author-GopalmanShrestha-oE1lL",
+          "title": "Kantipur — Gopalman Shrestha author page",
+          "support": "Author heading contains गोपालमान.",
+          "accessScope": "full-page HTML text",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "word",
+      "romanSha256": "e2ffdf4528a43ac1ea055ce9014b215e417578f55f53889f2692145c6dc37f47",
+      "sourceProposalSha256": "e8014d35452323a0d0e2a7148f8339fac78eeedb4b01fd3fe3e6aca0be4871af",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "input": "gopalman",
+      "sourceProposal": "गोपालमान",
+      "referenceOutputs": [
+        "गोपालमान"
+      ]
+    },
+    {
+      "id": "sentence:ne_348",
+      "decision": "correct",
+      "confidence": "medium",
+      "reason": "Retain every supplied word, including the repeated conjunction and postposition, without rewriting the awkward historical wording. Apply the predeclared default digit policy to 1833 → १८३३; preserve the terminal period, the space after the first hyphen and the trailing space. Lexical/name components have official usage support; the full output is a source-assisted linguistic judgment.",
+      "evidence": [
+        {
+          "url": "https://rajbhavankolkata.gov.in/html/pastgov1834_1854_new.html",
+          "title": "Raj Bhavan, West Bengal — Past Governor 1834–1854",
+          "support": "English name context for Charter Act, Fort William and Governor-General; this is not a Nepali spelling authority.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        },
+        {
+          "url": "https://nkp.gov.np/full_detail/10453",
+          "title": "Nepal Supreme Court — Nepal Kanoon Patrika, उत्प्रेषण",
+          "support": "Direct Nepali judicial prose uses गभर्नर and काउन्सिल. Support is limited to those loanwords and selected component spelling.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "The source replaces the supplied final . with ।.",
+        "The source removes the space in the first governor- general and the trailing space.",
+        "The unprotected year converts 1833 → १८३३ under the predeclared default digit policy; literal period and spacing remain exact."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "text",
+      "romanSha256": "fd447233129c51117a87035699d2e73e7ec3fdf63483c2c341609476a8b9306b",
+      "sourceProposalSha256": "8b74dceb4cc4f618055860dfa5f3554c28ef4a330c7599a11cca880f14f09d8f",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "referencePatches": [
+        {
+          "edits": [
+            {
+              "start": 25,
+              "end": 25,
+              "replacement": " "
+            },
+            {
+              "start": 115,
+              "end": 116,
+              "replacement": ". "
+            }
+          ],
+          "sha256": "532320e2a9d7938484661b6fcfb690a47739651d55553b7513a86bf9bfa11536"
+        }
+      ]
+    },
+    {
+      "id": "sentence:ne_75",
+      "decision": "exclude",
+      "confidence": "high",
+      "reason": "Exclude the exact pair: tasaratha is a malformed or unconfirmed Roman form of तसर्थ. vrihat also leaves an unsettled spelling; a conventional तसर्थ reference does not license silently repairing the input.",
+      "evidence": [
+        {
+          "url": "https://nkp.gov.np/full_detail/10453",
+          "title": "Nepal Supreme Court — Nepal Kanoon Patrika, उत्प्रेषण",
+          "support": "Direct Nepali judicial prose uses तसर्थ. This attests the conventional component spelling but does not justify repairing Roman tasaratha.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "tasaratha is not cleanly aligned to तसर्थ.",
+        "vrihat/वृहत् spelling and final consonant require human confirmation.",
+        "The source changes terminal . to ।."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "text",
+      "romanSha256": "a2cd0f793d749b263b48c155d880f68fbdeee0cd2e2594057bb7199357ee3394",
+      "sourceProposalSha256": "dd51d1641b999f7f9dce298b13c2901860b8db36c68c2db90f1a2ba3233e0abf",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": null,
+      "referencePatches": []
+    },
+    {
+      "id": "sentence:ne_151",
+      "decision": "correct",
+      "confidence": "medium",
+      "reason": "Remove the source-added सबैभन्दा: safal supplies सफल only. The creator’s archive resolves the film/director context, and official Devanagari usage supports चारुलता/रे. Preserve the terminal period and the supplied word sequence.",
+      "evidence": [
+        {
+          "url": "https://satyajitray.org/charulata-the-lonely-wife/",
+          "title": "Satyajit Ray Org — Charulata (The Lonely Wife)",
+          "support": "Creator/archive film page identifies Charulata and Ray, resolving the proper-name context without certifying the Nepali sentence.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        },
+        {
+          "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1688294&lang=2&reg=48",
+          "title": "Press Information Bureau — Satyajit Ray retrospective",
+          "support": "Official Marathi release uses चारुलता and सत्यजित रे. This supplies Devanagari name usage, not Nepali grammar; direct fetch failed and the indexed excerpt was read.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "सबैभन्दा has no Roman counterpart.",
+        "The Raylai → रेलाई name reading still needs Nepali review.",
+        "The source changes terminal . to ।."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "text",
+      "romanSha256": "e6a9b7c06c9ad207a9bf097c9a3946031b88cc97df0cd2cf59b5233f4e075596",
+      "sourceProposalSha256": "cc6805327b56ca2745718c5f49637b7503f0b088dce4dd1325f369b1a876cb13",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "referencePatches": [
+        {
+          "edits": [
+            {
+              "start": 79,
+              "end": 88,
+              "replacement": ""
+            },
+            {
+              "start": 119,
+              "end": 120,
+              "replacement": "."
+            }
+          ],
+          "sha256": "d3cce82144170b1c103ecd78cfd959e3344999c780bc52a78df6c8ffe9e0bf01"
+        }
+      ]
+    },
+    {
+      "id": "sentence:ne_187",
+      "decision": "correct",
+      "confidence": "medium",
+      "reason": "All supplied words align to a conventional Nepali reading. Official material supports कम्पनी/कम्पनीको, गर्नु अघि, सधैँ and जाँच. Preserve the period and the wording, without assessing the financial proposition.",
+      "evidence": [
+        {
+          "url": "https://ocr.gov.np/pages/registration/",
+          "title": "Office of Company Registrar — company registration information",
+          "support": "Direct Nepali page uses कम्पनी, कम्पनीको, लगानी and गर्नु अघि; it supports the relevant roots and forms only.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        },
+        {
+          "url": "https://learning.cehrd.gov.np/mod/page/view.php?id=1132",
+          "title": "CEHRD Sikai Chautari — Generative AI and search",
+          "support": "Direct government educational Nepali uses सधैँ and जाँच. It does not validate the financial proposition.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "The source changes terminal . to ।."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "text",
+      "romanSha256": "9fb284f942ada99cbb7364d2659db70ec79425700c26fb0feee5f73cbbf80149",
+      "sourceProposalSha256": "44fa3bfca897ac662ac8b768769eb7a43a2b4159780004779317ddd27c84ec1a",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "referencePatches": [
+        {
+          "edits": [
+            {
+              "start": 91,
+              "end": 92,
+              "replacement": "."
+            }
+          ],
+          "sha256": "deddbdaebe7744a0f59f5a5ecf80c7e629c0641787230169aac7bff6e72b0324"
+        }
+      ]
+    },
+    {
+      "id": "sentence:ne_168",
+      "decision": "correct",
+      "confidence": "medium",
+      "reason": "Remove source-added सुट because Roman supplies boxing alone. बक्सिङ has official sports usage and the Sanda name has primary player-interview usage. The remaining word sequence is clear enough for a source-assisted reference; preserve the commas and terminal period.",
+      "evidence": [
+        {
+          "url": "https://competition.nsc.gov.np/uploads/Darpan_Maz_2080_acef371beb.pdf",
+          "title": "National Sports Council — Darpan 2080, international medals",
+          "support": "Official indexed publication uses बक्सिङ. Only the indexed excerpt was read; no claim is made about the sentence’s sporting proposition.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        },
+        {
+          "url": "https://www.kirtipursandesh.com.np/2021/01/blog-post.html",
+          "title": "Kirtipur Sandesh — interview with international wushu player Rajib Maharjan",
+          "support": "Published first-person player answer uses सान्सु सान्डा for the martial-arts discipline. This is primary interview usage for सान्डा, not an authoritative full sentence judgment; direct fetch failed and only the indexed excerpt was read.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "सुट has no Roman counterpart.",
+        "sanDaasanga → सान्डासँग includes a proper-name vowel decision requiring review.",
+        "The source changes terminal . to ।.",
+        "The added source सुट is removed; the conventional Sanda name is supported by primary interview usage."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "text",
+      "romanSha256": "9d07ca48fb60954df1d87333e9fe0394b79128acbfcf0c02a3d400c852e877ce",
+      "sourceProposalSha256": "10c41a117029fb3d807de0496475e18b34659722023cf014ded4189520324d7c",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "referencePatches": [
+        {
+          "edits": [
+            {
+              "start": 47,
+              "end": 51,
+              "replacement": ""
+            },
+            {
+              "start": 105,
+              "end": 106,
+              "replacement": "."
+            }
+          ],
+          "sha256": "e39527236a1aede6e28cfef4463c88cf7f23fb18a003ce50e9ef59c433a405da"
+        }
+      ]
+    },
+    {
+      "id": "sentence:ne_96",
+      "decision": "correct",
+      "confidence": "medium",
+      "reason": "Prefer शिल्ड for English shield rather than source सिल्ड, supported by municipal loanword usage. Retain the supplied कुहिनो प्याड and गम शिल्ड wording; no translation or safety judgment is inserted. Preserve comma and period.",
+      "evidence": [
+        {
+          "url": "https://nisdimun.gov.np/node?page=5&qt-det=1",
+          "title": "Nisdi Rural Municipality — events archive",
+          "support": "Indexed municipal archive attests प्याड and शिल्ड as loans. It supports their spellings, not the compound गम शिल्ड or the safety recommendation.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        },
+        {
+          "url": "https://www.nkp.gov.np/full_detail/10162",
+          "title": "Nepal Supreme Court — Nepal Kanoon Patrika",
+          "support": "Indexed Nepali judicial prose uses चश्मा. Component spelling only.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "shieldharu corresponds to a loanword beginning श rather than source स; confirmation remains necessary.",
+        "The source changes terminal . to ।."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "text",
+      "romanSha256": "5e0b444ab46f91918ad9a2ad02904c3599c23367a81d342ab0faef0700c8b9b9",
+      "sourceProposalSha256": "d31d3aa1252452e00884699859b17095d6bf634364f746aa4f54d5bfd1a41513",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "referencePatches": [
+        {
+          "edits": [
+            {
+              "start": 34,
+              "end": 35,
+              "replacement": "श"
+            },
+            {
+              "start": 60,
+              "end": 61,
+              "replacement": "."
+            }
+          ],
+          "sha256": "51a1b193905d1fcd5396f095843aec14d2ac4026e9efe6bf3579e37388c7163c"
+        }
+      ]
+    },
+    {
+      "id": "sentence:ne_9",
+      "decision": "correct",
+      "confidence": "medium",
+      "reason": "Context identifies the Chhattisgarh name despite informal omission of its final aspiration marker. Preserve both supplied periods and single spaces, and prefer officially attested ठूलो. अद्वितीय has direct Nepali official usage. Name evidence is cross-language; no claim about state size is evaluated.",
+      "evidence": [
+        {
+          "url": "https://revenue.cg.nic.in/",
+          "title": "Chhattisgarh Revenue and Disaster Management Department",
+          "support": "Official bilingual state heading identifies Chhattisgarh and छत्तीसगढ़/छत्तीसगढ़. It supports identification of the informal Roman name; the Nepali rendition छत्तीसगढ is a source-assisted adaptation, not a ruling by a Nepali dictionary.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        },
+        {
+          "url": "https://tdp.koshi.gov.np/pages/introduction/",
+          "title": "Koshi Tourism Development Project — introduction",
+          "support": "Direct official Nepali prose uses अद्वितीय and ठूलो, supporting selected spellings only.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "chhattisgaD versus छत्तीसगढ needs an informal name-alias decision; deterministic key mappings are not the review criterion.",
+        "The source changes the first . to a comma and the last . to ।.",
+        "The source inserts a doubled space after भारतको.",
+        "Prefer direct official Nepali ठूलो to source ठुलो; long-vowel omission in informal Roman is not treated as a malformed input."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "text",
+      "romanSha256": "5b85f29904f3bf12cfdf7ada1ca71bce4fc77571e016cf8276e46246bfccd221",
+      "sourceProposalSha256": "109051bf5a485ddea4330207a22a05c27dc02d413bbebd2f67a2c4191afe1857",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "referencePatches": [
+        {
+          "edits": [
+            {
+              "start": 47,
+              "end": 48,
+              "replacement": "."
+            },
+            {
+              "start": 94,
+              "end": 95,
+              "replacement": ""
+            },
+            {
+              "start": 101,
+              "end": 102,
+              "replacement": "ू"
+            },
+            {
+              "start": 113,
+              "end": 114,
+              "replacement": "."
+            }
+          ],
+          "sha256": "bba8c8692c29fec9a6e1a8acbc45951b037af02ff83eb6008d82bc9a6847100c"
+        }
+      ]
+    },
+    {
+      "id": "sentence:ne_400",
+      "decision": "exclude",
+      "confidence": "high",
+      "reason": "Exclude the exact pair because sudhaara does not contain the final k required by source सुधारक. Resolving the personal names cannot repair that missing consonant without inventing intent.",
+      "evidence": [],
+      "alignmentIssues": [
+        "sudhaara lacks the final consonant present in सुधारक.",
+        "suniti → सुनिती and keshavchandra → केशवचन्द्र require name-vowel and variant confirmation.",
+        "The source changes terminal . to ।."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "text",
+      "romanSha256": "f71a5ce4508b998f78b3777d870894755245197537d1718728f7b2c711a5bb99",
+      "sourceProposalSha256": "df401c86b322449d6c8d171b5e78baed1b4b326282b0a1556f9dad3c32ade6cf",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": null,
+      "referencePatches": []
+    },
+    {
+      "id": "sentence:ne_176",
+      "decision": "correct",
+      "confidence": "medium",
+      "reason": "Retain the supplied named-entity context and word sequence. Current official Hindi context identifies शाहजहाँ/औरंगज़ेब/जहाँआरा, and an official literary publication attests the source-name variant जहाँनारा. These support a conventional source-assisted Devanagari reading but not a Nepali dictionary ruling. Correct only terminal punctuation and trailing-space alignment; do not assess the historical proposition.",
+      "evidence": [
+        {
+          "url": "https://nri.up.gov.in/hi/article/taj-mahal",
+          "title": "Uttar Pradesh NRI Department — Taj Mahal",
+          "support": "Direct official Hindi prose uses शाहजहाँ, औरंगज़ेब and जहाँआरा. It identifies the names, and is not an authority for every Nepali spelling.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        },
+        {
+          "url": "https://www.iimc.gov.in/files/inline-documents/SM_JULY_DEC_2021_FINAL.pdf",
+          "title": "Indian Institute of Mass Communication — Sanchar Madhyam, July–December 2021",
+          "support": "Official scholarly publication excerpt refers to the primary literary text जहाँनारा and uses शाहजहाँ/औरंगजेब. This supports the source’s name as an attested Hindi literary variant, not as a Nepali dictionary standard. Direct PDF fetch timed out.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "Jahanara → जहाँनारा needs a name spelling decision; the source nasal/consonant sequence is uncertain.",
+        "Aurangzeble → औरङ्गजेबले and Shahajahan → शाहजहाँ need human name review.",
+        "The source changes terminal . to । and removes the trailing space.",
+        "Prior name uncertainty reduced by fresh official context and attested literary जहाँनारा variant; evidence remains cross-language."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "text",
+      "romanSha256": "fef07eb0fd40ade23317780607b308806428cea30579d3dd6323d553c0fc98dd",
+      "sourceProposalSha256": "0c2299cb335056f37d2a2b06e3e8518542b2ade8480202da890603e52fe75daf",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "referencePatches": [
+        {
+          "edits": [
+            {
+              "start": 118,
+              "end": 119,
+              "replacement": ". "
+            }
+          ],
+          "sha256": "5b5b483da04f48d5e3e214e79b80cb3c280f1f8a297a31cf5c4b528a1dd23e59"
+        }
+      ]
+    },
+    {
+      "id": "sentence:ne_291",
+      "decision": "correct",
+      "confidence": "medium",
+      "reason": "Apply the predeclared default digit policy to 1674 → १६७४; preserve supplied punctuation and each word. Official Marathi publication usage resolves प्रतापराव गुजर and बहलोल खान; the remaining source rendering is a conventional Nepali reading. Evidence is component/name usage, not validation of the complete historical sentence.",
+      "evidence": [
+        {
+          "url": "https://sahitya.marathi.gov.in/ebooks/छत्रपती शिवाजी महाराज.pdf",
+          "title": "Maharashtra literary board — Chhatrapati Shivaji Maharaj",
+          "support": "Official Marathi publication excerpt uses प्रतापराव गुजर, बहलोल खान and विजापुरी. This provides Devanagari name context; the Nepali form बिजापुरी is a source-assisted reading. Direct PDF was not read.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "The source changes terminal . to ।.",
+        "Prataprao, bahalol and commander-in-chief are name/loanword spellings requiring human confirmation.",
+        "The unprotected year converts 1674 → १६७४ under the predeclared default digit policy; literal period remains exact."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "text",
+      "romanSha256": "9322f2cc0fba7459c86853ac407f6b67efc5aa69bfa15dc936f4805db0b19a46",
+      "sourceProposalSha256": "9418ebfbb83405120fd0eabcdc4a89e7edb63be2eaece50c319cf9ee7c1b1939",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "referencePatches": [
+        {
+          "edits": [
+            {
+              "start": 151,
+              "end": 152,
+              "replacement": "."
+            }
+          ],
+          "sha256": "cba1d8f8e222793ddeb47b1cd92f12d0719b59d3d4eff85001622089bf97fd7c"
+        }
+      ]
+    },
+    {
+      "id": "sentence:ne_360",
+      "decision": "exclude",
+      "confidence": "high",
+      "reason": "Exclude this exact pair: akaadashee changes the initial vowel needed for source एकादशी, while source र has no Roman counterpart between vrata and poojaako. Do not insert that conjunction or silently rewrite the initial vowel.",
+      "evidence": [],
+      "alignmentIssues": [
+        "र has no Roman counterpart between vrata and poojaako.",
+        "akaadashee → एकादशी requires changing the supplied initial vowel.",
+        "The source changes terminal . to ।."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "text",
+      "romanSha256": "e8e8e1a1b5ef7a94c759a072e1de08aeda8f025a864398802f1789f10209264f",
+      "sourceProposalSha256": "7465698f34402a3b2bf7aae499da9ebc6bed5d853a58c9798c3edf79bfdbe884",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": null,
+      "referencePatches": []
+    },
+    {
+      "id": "sentence:ne_148",
+      "decision": "correct",
+      "confidence": "medium",
+      "reason": "Use the directly attested Nepali name चन्द्रगुप्त मौर्य and compound स्रोतअनुसार. The spaced स्रोत अनुसार is also a grammatical interpretation, so both references are retained with the joined spelling preferred. Preserve the supplied period.",
+      "evidence": [
+        {
+          "url": "https://ptc.gov.np/downloadfiles/inner-pages-%281%29-1681811026.pdf",
+          "title": "Nepal PTC publication — Acharya Chanakya and Chanakyaniti",
+          "support": "Indexed official Nepali publication uses चन्द्रगुप्त मौर्य, supporting the name spelling. Direct PDF returned 503; only the indexed excerpt was read.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        },
+        {
+          "url": "https://dms.tulsipurmun.gov.np/dataset/tulsipur",
+          "title": "Tulsipur Sub-metropolitan City — census dataset",
+          "support": "Direct official Nepali data headings use स्रोतअनुसार as a joined compound. This supports the joined reference without establishing that spaced स्रोत अनुसार is ungrammatical.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "Both spaced स्रोत अनुसार and joined स्रोतअनुसार require a word-boundary policy; the joined form is externally attested.",
+        "The source changes terminal . to ।."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "text",
+      "romanSha256": "e547ede0591449fe1401a7a97a0f22f4690741cf5a078c5f565baa53279668ca",
+      "sourceProposalSha256": "baee4da86cbc214b844274080df4ca44b8ede21ce14a5ab1e5684e881aba5c68",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "referencePatches": [
+        {
+          "edits": [
+            {
+              "start": 55,
+              "end": 56,
+              "replacement": ""
+            },
+            {
+              "start": 71,
+              "end": 72,
+              "replacement": "."
+            }
+          ],
+          "sha256": "6a99c009bb27b39d22792a5294b46832a24b97d09bc9e72a5c595daefe9f4f1c"
+        },
+        {
+          "edits": [
+            {
+              "start": 71,
+              "end": 72,
+              "replacement": "."
+            }
+          ],
+          "sha256": "19594739fa9f9b5055f9929a0097e66ba6f7ba457ab93295f02cc08067717fa1"
+        }
+      ]
+    },
+    {
+      "id": "sentence:ne_381",
+      "decision": "correct",
+      "confidence": "medium",
+      "reason": "Remove source-added स्वदेशी, since rashTravaadi supplies राष्ट्रवादी alone. The remaining token sequence is clear; official name usage supports कमलादेवी. Preserve the period rather than rewriting the political or historical statement.",
+      "evidence": [
+        {
+          "url": "https://www.newsonair.gov.in/wp-content/uploads/2024/01/Akashwani-Samchar-Bharati-2022_compressed.pdf",
+          "title": "Akashvani — Samachar Bharati 2022, Kamala Devi Chattopadhyay",
+          "support": "Official publication indexed excerpt uses कमलादेवी in name context. It does not support inserting स्वदेशी into the supplied Roman sentence.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "स्वदेशी has no Roman counterpart.",
+        "The source changes terminal . to ।."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "text",
+      "romanSha256": "2ed3842f97c5c9c5a69c09b208879ed92a3f0f8014e2353dff52315d78f4e68f",
+      "sourceProposalSha256": "6b2204301a46747aa473b718126eece67baea817899dbf244f6d26317da66837",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "referencePatches": [
+        {
+          "edits": [
+            {
+              "start": 21,
+              "end": 29,
+              "replacement": ""
+            },
+            {
+              "start": 76,
+              "end": 77,
+              "replacement": "."
+            }
+          ],
+          "sha256": "d1503ae0a68e2b83791525990b8e4ecb855d4b5fc696a62e763e890b7f73872f"
+        }
+      ]
+    },
+    {
+      "id": "sentence:ne_231",
+      "decision": "correct",
+      "confidence": "medium",
+      "reason": "Use देखाउँछ for dekhaunchha; source देखाउँदछ contains an extra verb syllable. Preserve the single supplied comma after तापक्रमले and remove the source-added comma after तथापि. Official month and textbook usage supports selected components; preserve terminal period.",
+      "evidence": [
+        {
+          "url": "https://old.dhm.gov.np/uploads/climatic/1439179793मासिक%20वर्षा%20चार्ट%20२०७४_.pdf",
+          "title": "Department of Hydrology and Meteorology — monthly rainfall charts 2074",
+          "support": "Official indexed chart labels use फेब्रुअरी and मार्च. Component month spelling only; direct PDF was not read.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        },
+        {
+          "url": "https://giwmscdnone.gov.np/media/app/public/323/posts/1714035912_55.pdf",
+          "title": "Government school textbook — migration trends and effects",
+          "support": "Indexed educational Nepali prose uses प्रवृत्ति and देखाउँछ. This supports selected spelling; it does not validate the temperature statement.",
+          "accessScope": "search-snippet",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "dekhaunchha differs from source देखाउँदछ; a faithful suggested verb is देखाउँछ.",
+        "The source adds a comma after तथापि.",
+        "The source changes terminal . to ।."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "text",
+      "romanSha256": "bc948de4fea991d38bfb0f13ba23a9068d15ee2bd7e7cfd5486e906da0fd3d30",
+      "sourceProposalSha256": "bbed40a978700b36db5ab2e8201a67e1485f1b0312e22df2226bb504cb5fdfb7",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "referencePatches": [
+        {
+          "edits": [
+            {
+              "start": 16,
+              "end": 17,
+              "replacement": ""
+            },
+            {
+              "start": 82,
+              "end": 83,
+              "replacement": ""
+            },
+            {
+              "start": 84,
+              "end": 85,
+              "replacement": "."
+            }
+          ],
+          "sha256": "9c060d3e3a8eb8b60d6c61a2feaa1420a51c7c6d2ed655eac52036b13e3c4ac4"
+        }
+      ]
+    },
+    {
+      "id": "sentence:ne_41",
+      "decision": "exclude",
+      "confidence": "high",
+      "reason": "Exclude the exact pair because auTa does not cleanly align with source एउटा. The writer’s initial vowel cannot be recovered confidently without an unapproved spelling alias or Roman repair.",
+      "evidence": [],
+      "alignmentIssues": [
+        "auTa → एउटा requires a vowel or alias decision that remains unresolved.",
+        "chichchyae → चिच्च्याए still needs spelling confirmation.",
+        "The source changes terminal . to ।."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "text",
+      "romanSha256": "a3a1e1deb41328fef3a6e143c694b7e6f12a4f553c392836c94302d136aa3dd6",
+      "sourceProposalSha256": "723b2ca2511188c76dbe639c24cb02bb8b632a1f2d7ba1824dd2227172375a29",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": null,
+      "referencePatches": []
+    },
+    {
+      "id": "sentence:ne_29",
+      "decision": "exclude",
+      "confidence": "high",
+      "reason": "Exclude the malformed pair. gsrna does not align with गर्न, and maadhyaambaaT and duwaikaa are unreliable against the supplied Nepali. An online spelling reference cannot recover the missing or wrong Roman symbols.",
+      "evidence": [],
+      "alignmentIssues": [
+        "gsrna has an extra s where source गर्न requires a vowel.",
+        "maadhyaambaaT needs a vowel/consonant reading decision; this review does not score deterministic Shift behavior.",
+        "r → र requires an explicit abbreviation decision.",
+        "The source inserts spaces around the first hyphen and changes final . to ।."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "text",
+      "romanSha256": "8c62d6361188356ad87c59a73c47723fa7fe2499e72292632ae9136d91c76437",
+      "sourceProposalSha256": "acae0ce6fa04d4547c01b9adea093052cb564ae42b8753dfc0b44226bb2b0e29",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": null,
+      "referencePatches": []
+    },
+    {
+      "id": "sentence:ne_77",
+      "decision": "exclude",
+      "confidence": "high",
+      "reason": "Exclude the malformed pair: source एक is absent from Roman, maarvaajkaa does not align cleanly with मारवारका, trathorekee with राठौरकी, or chheree with छोरी. Historical-name lookup cannot justify silently repairing this group of source errors.",
+      "evidence": [],
+      "alignmentIssues": [
+        "एक has no Roman counterpart.",
+        "maarvaajkaa does not cleanly align to मारवारका.",
+        "trathorekee does not cleanly align to राठौरकी.",
+        "chheree does not cleanly align to छोरी.",
+        "The source changes terminal . to ।."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "text",
+      "romanSha256": "3cf7cb42fbcca4f4079e094a7c836d67e16d9aaa5e6e73074818d7502b4ec339",
+      "sourceProposalSha256": "a14c8a1963bcf2875209804e801da157293ba853b62482eacc881c3f3c19b0a7",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": null,
+      "referencePatches": []
+    },
+    {
+      "id": "sentence:ne_389",
+      "decision": "exclude",
+      "confidence": "high",
+      "reason": "Exclude the malformed pair: jaktapaat requires replacing its initial j to match रक्तपात, and vfchalit has an erroneous f against विचलित. Do not infer the writer’s intended repair.",
+      "evidence": [],
+      "alignmentIssues": [
+        "jaktapaat → रक्तपात requires replacing initial j with r.",
+        "vfchalit → विचलित requires replacing the malformed f sequence.",
+        "The source changes terminal . to ।."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "text",
+      "romanSha256": "90e37020154750a3f6795d6d66bdf9b3973a82c8b953dad1fb405ae75ac8c037",
+      "sourceProposalSha256": "8dd5e9966b7b9ae603a4b207d92584cfe8902d64fc9ca069732d7d294ac44834",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": null,
+      "referencePatches": []
+    },
+    {
+      "id": "sentence:ne_210",
+      "decision": "exclude",
+      "confidence": "high",
+      "reason": "Exclude this exact pair because official name material identifies Japfu/Japfü, Dzukou/Dzükou and Pfutsero, while supplied Jafu/Zhuko/Futsero omit or change name segments. Multiple spellings plus defective source spacing make a repaired reference speculative; do not ask the user to guess dataset intent.",
+      "evidence": [
+        {
+          "url": "https://ipr.nagaland.gov.in/node/19678",
+          "title": "DIPR Nagaland — district survey of Dzükou forest fire",
+          "support": "Direct official text uses Dzükou Valley and Mt. Japfü. It exposes the supplied Jafu/Zhuko name mismatch; it does not approve silently repairing those Roman tokens.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        },
+        {
+          "url": "https://tourism.nagaland.gov.in/tourism-policy/",
+          "title": "Nagaland Tourism Department — tourism policy",
+          "support": "Direct official text names Dzukou, Japfu, Satoi Range and Pfutsero. It supports exclusion for uncertain/malformed source names rather than a reconstructed Nepali reference.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "Jafu lacks the p present in official Japfu/Japfü name forms.",
+        "Zhuko differs from official Dzukou/Dzükou name forms and its Nepali mapping remains unresolved.",
+        "Futsero differs from official Pfutsero; no alias approval is established.",
+        "The source inserts multiple spaces after जाफु, removes trailing space and changes . to ।."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "text",
+      "romanSha256": "d00f298f0f4e934c8fb91999099267033b189be1f9564e793398b3087925b47b",
+      "sourceProposalSha256": "dd0892d981413df81bc4824c9d0bcf879b72173fc37cb4b0f0c58dc7b8384633",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": null,
+      "referencePatches": []
+    },
+    {
+      "id": "sentence:ne_294",
+      "decision": "correct",
+      "confidence": "medium",
+      "reason": "The supplied Roman word sequence supports the conventional Nepali reading, including घुँडाभन्दा from ghundabhanda. Direct court usage supports the anatomical root घुँडा. Preserve period; evidence does not validate the unspecified game rule.",
+      "evidence": [
+        {
+          "url": "https://nkp.gov.np/full_detail/10596",
+          "title": "Nepal Supreme Court — Nepal Kanoon Patrika, कुटपिट अङ्गभङ्ग",
+          "support": "Direct court text uses घुँडा/घुँडाको and शरीर, supporting anatomical spelling only.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-01"
+        }
+      ],
+      "alignmentIssues": [
+        "The source changes terminal . to ।."
+      ],
+      "question": null,
+      "priorEvidenceReused": true,
+      "mode": "text",
+      "romanSha256": "53c42356952fc052348b556f5b394b6c3ef70519c2537f8ebdd3662cf8e6668c",
+      "sourceProposalSha256": "b2bb564fde3536070a43265e32c6efbd137ecbf4d951d51e8a054548b5b95f80",
+      "reviewedAt": "2026-10-01",
+      "preferredReferenceIndex": 0,
+      "referencePatches": [
+        {
+          "edits": [
+            {
+              "start": 83,
+              "end": 84,
+              "replacement": "."
+            }
+          ],
+          "sha256": "8b8a973e207c3327790d5578223e1718fafaaf7cf721f8d88d1cef1f8cd2e456"
+        }
+      ]
+    }
+  ],
+  "attribution": {
+    "wordExamples": {
+      "author": "AI4Bharat and the upstream sources identified by each category",
+      "dataset": "Aksharantar",
+      "datasetCard": "https://huggingface.co/datasets/ai4bharat/Aksharantar/blob/main/README.md",
+      "licenseSection": "https://indicnlp.ai4bharat.org/aksharantar/#license",
+      "paper": "https://aclanthology.org/2023.findings-emnlp.4/",
+      "terms": "The official card distinguishes manually collected data (CC-BY) from mined IndicCorp/Samanantar and existing-source data (CC0). Preserve each record’s source category; these examples are not relicensed as MIT.",
+      "licensesBySourceCategory": {
+        "AK-Freq": {
+          "license": "CC-BY-4.0",
+          "url": "https://creativecommons.org/licenses/by/4.0/"
+        },
+        "AK-Uni": {
+          "license": "CC-BY-4.0",
+          "url": "https://creativecommons.org/licenses/by/4.0/"
+        },
+        "IndicCorp": {
+          "license": "CC0-1.0",
+          "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+        },
+        "Wikidata": {
+          "license": "CC0-1.0",
+          "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+        }
+      },
+      "modifications": "Original word inputs and proposals retained. Expanded alternatives and two orthographic corrections are separate frozen project development annotations; original dataset examples are not relicensed as MIT."
+    },
+    "sentenceProvenance": {
+      "author": "AI4Bharat",
+      "dataset": "Bhasha-Abhijnaanam",
+      "datasetCard": "https://huggingface.co/datasets/ai4bharat/Bhasha-Abhijnaanam/blob/main/README.md",
+      "paper": "https://aclanthology.org/2023.acl-short.71/",
+      "terms": "The card labels collected data/packaging CC0-1.0 and notes AI4Bharat does not own underlying extracted text. Complete sentence texts are omitted from this publication.",
+      "modifications": "Original sentence IDs and hashes retained. Small correction patches reconstruct local references; complete input, source proposal and reference strings are omitted."
+    },
+    "consultedSources": "Titles, URLs and narrow support notes identify third-party evidence. Their linked content retains its own terms; a citation does not certify a complete reading."
+  }
+}

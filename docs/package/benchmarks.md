@@ -91,6 +91,12 @@ The [digit benchmark record](digits-benchmarks.md) and [machine report](../../be
 
 The frozen historical fixture remains a separate check: baseline default **125/125**, new default **118/125** from the seven intentional digit changes, and the explicit `digits: 'latin'` engine **125/125**. These are different default policies, not an improvement on unchanged labels. All prior IDs, inputs, categories, statuses, and provenance text are retained; seven expectations and dated provenance suffixes are revised transparently, while the other 120 prior rows and historical machine reports are unchanged. The new report and measurement tool pin the sources, runner, both fixtures, and changed IDs. No linguistic labels, external-word result, timing measurement, or browser/device result is added by this comparison.
 
+## Completed source-assisted development review — 2026-10-01
+
+The [completed review](source-review-2026-10-01.md) freezes 86 project development cases from the original 100: 74 words and 12 sentences. Fourteen exclusions have no scored references. The unchanged `4e20b34` engine matches **8/74** word cases, covers **8/79** listed word references in candidates and matches **0/12** complete sentence cases. The frozen ledger preserves alternatives and evidence; the measurement records its hash and exact default engine identity.
+
+Run `npm run benchmark:source-reviewed` after preparing the pinned batch. The research command reports mismatches without failing a gate and refuses to overwrite an existing output file. These source-assisted references are usable for development corrections, with no independent human or held-out accuracy claim. The earlier source-proposal and draft-review reports retain their original labels and denominators.
+
 ## Building a credible evaluation corpus
 
 Before publishing an accuracy claim, collect a separate set of real Roman input and intended Unicode output from consenting typists. Keep a record of each item's source, license or permission, keyboard and language context where known, and whether the input was typed naturally or created to test a rule. Ask proficient Nepali reviewers to verify the intended spelling and record disagreements. Where one Roman spelling has multiple plausible words, include enough sentence context to identify the typist's intended result; do not declare one word universally correct without context.

@@ -28,6 +28,7 @@ Browse the [package website](https://ojastechnologies.github.io/sahajlipi/) for 
 | [Development review guide](package/review-batch.md) | Generate the 100-case development batch and record independent Nepali-language decisions. |
 | [Development batch report](package/review-batch-baseline.md) | Inspect dated source-proposal agreement and diagnostic signals, with review limitations. |
 | [Run manifest](../benchmark/reports/nepali-review-001.json) | Verify source pins, selected IDs, engine/tool hashes, and artifact hashes for the recorded development run. |
+| [Completed source-assisted review](package/source-review-2026-10-01.md) | Frozen development references, exclusions, spelling evidence and current exact-output baseline. |
 | [Source-assisted online review](package/assisted-online-review.md) | Inspect 100 draft recommendations, evidence scope, source links and pending human review. |
 | [Source-assisted review records](../benchmark/reports/nepali-assisted-online-001.json) | Read the public per-case projection, attribution and research hashes; complete sentence texts are omitted. |
 | [Ra-ya review and changes](package/ry-review.md) | Inspect exact word preferences, Shift lookup, before/after results and source-quality triage. |

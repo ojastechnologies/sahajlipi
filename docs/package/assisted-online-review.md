@@ -1,5 +1,7 @@
 # Source-assisted online review — development batch 001
 
+**Follow-up:** the maintainer-delegated [2026-10-01 review](source-review-2026-10-01.md) completes this batch with frozen project development references and a reproducible measurement. This page and its linked report retain the earlier draft decisions and dates as a historical record.
+
 Research and publication date: **2026-09-27**. Reviewer: `assistant-online`.
 
 **All 100 recommendations are drafts. None is independently human verified or admitted as a canonical benchmark answer.** This report publishes the research so contributors can inspect its evidence and challenge its conclusions. It does not change engine behavior or any benchmark score.
