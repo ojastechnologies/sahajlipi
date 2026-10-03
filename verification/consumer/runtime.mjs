@@ -19,11 +19,16 @@ assert.equal(core.convertText('paani 123 test99@example.com https://example.com/
   'पानी १२३ test99@example.com https://example.com/456 ।');
 assert.equal(core.createEngine({ digits: 'latin' }).convertText('paani 3.14'), 'पानी 3.14');
 assert.equal(core.createEngine().convertText('paani 3.14'), 'पानी ३.१४');
+assert.equal(core.convertText('k kr kri k`|'), 'क क्र क्रि क्।');
+const strict = core.createEngine({ consonantMode: 'half' });
+assert.equal(strict.convertText('k kr kri k`|'), 'क् क्र् क्रि क्।');
+assert.equal(core.convertWord('k').text, 'क', 'Strict engines must not change module defaults');
 const custom = core.createEngine({ entries: { ojas: ['ओजस', 'ओजस्'], serial: ['123', '१२३'] } });
 assert.deepEqual(custom.convertWord('ojas'), { text: 'ओजस', candidates: ['ओजस', 'ओजस्'], ambiguous: true });
 assert.deepEqual(custom.convertWord('serial'), { text: '१२३', candidates: ['१२३'], ambiguous: false });
-assert.notEqual(core.convertWord('ojas').text, custom.convertWord('ojas').text, 'Custom engines remain independent');
+assert.deepEqual(core.convertWord('ojas'), { text: 'ओजस', candidates: ['ओजस'], ambiguous: false }, 'Custom engines remain independent');
 assert.throws(() => core.createEngine({ digits: 'arabic' }), TypeError);
+assert.throws(() => core.createEngine({ consonantMode: 'strict' }), TypeError);
 assert.throws(() => core.createEngine({ preserveTechnicalText: 'yes' }), TypeError);
 assert.throws(() => core.createEngine({ entries: { empty: [] } }), TypeError);
 

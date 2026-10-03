@@ -1,0 +1,2335 @@
+{
+  "schemaVersion": 1,
+  "reportId": "consonant-defaults-2026-10-03",
+  "recordedAt": "2026-10-03T09:33:51.301Z",
+  "purpose": "Exact conformance to an explicitly revised full-consonant default software contract and strict half compatibility; not general Nepali accuracy, external linguistic evaluation or timing",
+  "baseline": {
+    "gitCommit": "987e31f7ec4e49680d7a001c078debce3d7fb326",
+    "snapshotMethod": "git archive of immutable src, package.json, seed fixture, runner and historical reports",
+    "sourceFileSha256": {
+      "src/dom.d.ts": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1",
+      "src/dom.js": "6e84385a02ec7a79b8550de417b701b23ea3c3b36ab46e6408f1c7dfa7c233b2",
+      "src/index.d.ts": "48be479797841978cabab3ba96fe9b77caa8c814238866908aa515619ab7cd17",
+      "src/index.js": "315f43b424c19d1e2197d78414a618e59865cf4171255e72f1c6db90b5fb74f4",
+      "src/lexicon.js": "e325edef9cd9e2ebef42700ef9aeb6033b130e9a7c459b407820c31297d9448d",
+      "src/loanwords.js": "aa74e688d3b77980b5ee7e9fb89ce2c0a61fd27568d3230048bef91a8379e446",
+      "src/phonetic.js": "dec43061ce47d8456092b661a4b1ea7b5d366d2c7969a4f2b6f3b1b0c20ff1ff",
+      "src/text-policy.js": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa"
+    }
+  },
+  "after": {
+    "identity": "Unpublished alpha.2 source checkout; src hashes identify the measured implementation without assigning an uncreated commit",
+    "sourceFileSha256": {
+      "src/dom.d.ts": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1",
+      "src/dom.js": "a264f11888f8a611d116a065fa10191aec029fcce75ee7e797c3dad4342fb9ac",
+      "src/index.d.ts": "7b8c9969df0326e6b3fbfbd97713b60cb38931840c1da696b6fea6ac52d5d77a",
+      "src/index.js": "01f3fb9fc0fb8f60617d5af81e96ef7c8752fdada3ef5153a89dbe22577b1152",
+      "src/lexicon.js": "e325edef9cd9e2ebef42700ef9aeb6033b130e9a7c459b407820c31297d9448d",
+      "src/loanwords.js": "aa74e688d3b77980b5ee7e9fb89ce2c0a61fd27568d3230048bef91a8379e446",
+      "src/phonetic.js": "ac571d6f4c94c5b48baa1558973d4d27ad6c7f2c5ff15fc7bed36ecdb2d29bf9",
+      "src/text-policy.js": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa"
+    }
+  },
+  "environment": {
+    "nodeVersion": "v22.22.3",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "25.6.0"
+  },
+  "options": {
+    "defaultConsonantMode": "full",
+    "strictCompatibilityMode": "half",
+    "digits": "devanagari",
+    "preserveTechnicalText": true,
+    "entries": "starter defaults"
+  },
+  "fixture": {
+    "path": "benchmark/cases.jsonl",
+    "sha256": "1e20e12e1287243ab3958546b9c76a5fbd8a883b91a1f393a42a2320fbfb82ef",
+    "total": 162,
+    "contractCount": 160,
+    "exploratoryCount": 2,
+    "priorFixtureSha256": "89fb755dcbdce6c44e310120445d52faf31b0cfb6f82d72a4f2f38027aa2bcec",
+    "priorRowCount": 144,
+    "priorByteIdenticalRowCount": 130,
+    "revisedExpectedCaseIds": [
+      "half-k",
+      "half-kr",
+      "loanword-reserved-doctor",
+      "loanword-reserved-school",
+      "loanword-check-collision",
+      "loanword-fail-collision",
+      "loanword-phail-collision",
+      "month-shift-s",
+      "month-shift-d",
+      "month-short-jan",
+      "month-short-sep",
+      "mixed-early-ordinary-text",
+      "loanword-suffix-text-boundaries",
+      "native-spelling-text-boundaries"
+    ],
+    "newCaseIds": [
+      "consonant-full-kar",
+      "consonant-full-kh",
+      "consonant-full-n",
+      "consonant-full-ksh",
+      "consonant-full-gy",
+      "consonant-full-krt",
+      "consonant-word-literal-boundary",
+      "consonant-backtick-half",
+      "consonant-backtick-after-a",
+      "consonant-slash-after-a",
+      "consonant-backtick-joiner",
+      "consonant-full-bindu",
+      "consonant-full-chandrabindu",
+      "consonant-backtick-bindu",
+      "consonant-backtick-chandrabindu",
+      "consonant-slash-bindu",
+      "consonant-text-boundaries",
+      "consonant-text-technical-spans"
+    ],
+    "revisionScope": "Fourteen hand-specified preferred outputs, required singleton candidate arrays where applicable and appended dated provenance change. All prior IDs, inputs, categories, statuses, row order and prior provenance are preserved; the other 130 rows stay byte-identical."
+  },
+  "finalContract": {
+    "beforeDefault": {
+      "passed": 130,
+      "total": 160,
+      "wordTop": 101,
+      "wordTotal": 126,
+      "candidateHits": 104,
+      "candidateTotal": 129,
+      "textTop": 29,
+      "textTotal": 34,
+      "mismatchCaseIds": [
+        "half-k",
+        "half-kr",
+        "loanword-reserved-doctor",
+        "loanword-reserved-school",
+        "loanword-check-collision",
+        "loanword-fail-collision",
+        "loanword-phail-collision",
+        "month-shift-s",
+        "month-shift-d",
+        "month-short-jan",
+        "month-short-sep",
+        "mixed-early-ordinary-text",
+        "loanword-suffix-text-boundaries",
+        "native-spelling-text-boundaries",
+        "consonant-full-kar",
+        "consonant-full-kh",
+        "consonant-full-n",
+        "consonant-full-ksh",
+        "consonant-full-gy",
+        "consonant-full-krt",
+        "consonant-word-literal-boundary",
+        "consonant-backtick-half",
+        "consonant-backtick-after-a",
+        "consonant-backtick-joiner",
+        "consonant-full-bindu",
+        "consonant-full-chandrabindu",
+        "consonant-backtick-bindu",
+        "consonant-backtick-chandrabindu",
+        "consonant-text-boundaries",
+        "consonant-text-technical-spans"
+      ]
+    },
+    "afterDefault": {
+      "passed": 160,
+      "total": 160,
+      "wordTop": 126,
+      "wordTotal": 126,
+      "candidateHits": 129,
+      "candidateTotal": 129,
+      "textTop": 34,
+      "textTotal": 34,
+      "mismatchCaseIds": []
+    },
+    "afterExplicitFull": {
+      "passed": 160,
+      "total": 160,
+      "wordTop": 126,
+      "wordTotal": 126,
+      "candidateHits": 129,
+      "candidateTotal": 129,
+      "textTop": 34,
+      "textTotal": 34,
+      "mismatchCaseIds": []
+    }
+  },
+  "historicalContract": {
+    "beforeDefault": {
+      "passed": 142,
+      "total": 142,
+      "wordTop": 110,
+      "wordTotal": 110,
+      "candidateHits": 113,
+      "candidateTotal": 113,
+      "textTop": 32,
+      "textTotal": 32,
+      "mismatchCaseIds": []
+    },
+    "afterDefault": {
+      "passed": 128,
+      "total": 142,
+      "wordTop": 99,
+      "wordTotal": 110,
+      "candidateHits": 102,
+      "candidateTotal": 113,
+      "textTop": 29,
+      "textTotal": 32,
+      "mismatchCaseIds": [
+        "half-k",
+        "half-kr",
+        "loanword-reserved-doctor",
+        "loanword-reserved-school",
+        "loanword-check-collision",
+        "loanword-fail-collision",
+        "loanword-phail-collision",
+        "month-shift-s",
+        "month-shift-d",
+        "month-short-jan",
+        "month-short-sep",
+        "mixed-early-ordinary-text",
+        "loanword-suffix-text-boundaries",
+        "native-spelling-text-boundaries"
+      ]
+    },
+    "afterHalf": {
+      "passed": 142,
+      "total": 142,
+      "wordTop": 110,
+      "wordTotal": 110,
+      "candidateHits": 113,
+      "candidateTotal": 113,
+      "textTop": 32,
+      "textTotal": 32,
+      "mismatchCaseIds": []
+    },
+    "intentionalDefaultMismatchCaseIds": [
+      "half-k",
+      "half-kr",
+      "loanword-reserved-doctor",
+      "loanword-reserved-school",
+      "loanword-check-collision",
+      "loanword-fail-collision",
+      "loanword-phail-collision",
+      "month-shift-s",
+      "month-shift-d",
+      "month-short-jan",
+      "month-short-sep",
+      "mixed-early-ordinary-text",
+      "loanword-suffix-text-boundaries",
+      "native-spelling-text-boundaries"
+    ]
+  },
+  "strictRawParity": {
+    "passed": 144,
+    "total": 144,
+    "scope": "Exact convertWord object (text, full candidate array, ambiguous) or convertText string for all archived contract and exploratory inputs",
+    "mismatchCaseIds": []
+  },
+  "addedContract": {
+    "beforeDefault": {
+      "passed": 2,
+      "total": 18,
+      "wordTop": 2,
+      "wordTotal": 16,
+      "candidateHits": 2,
+      "candidateTotal": 16,
+      "textTop": 0,
+      "textTotal": 2,
+      "mismatchCaseIds": [
+        "consonant-full-kar",
+        "consonant-full-kh",
+        "consonant-full-n",
+        "consonant-full-ksh",
+        "consonant-full-gy",
+        "consonant-full-krt",
+        "consonant-word-literal-boundary",
+        "consonant-backtick-half",
+        "consonant-backtick-after-a",
+        "consonant-backtick-joiner",
+        "consonant-full-bindu",
+        "consonant-full-chandrabindu",
+        "consonant-backtick-bindu",
+        "consonant-backtick-chandrabindu",
+        "consonant-text-boundaries",
+        "consonant-text-technical-spans"
+      ]
+    },
+    "afterDefault": {
+      "passed": 18,
+      "total": 18,
+      "wordTop": 16,
+      "wordTotal": 16,
+      "candidateHits": 16,
+      "candidateTotal": 16,
+      "textTop": 2,
+      "textTotal": 2,
+      "mismatchCaseIds": []
+    }
+  },
+  "finiteModeContract": {
+    "path": "benchmark/consonant-modes-2026-10-03.json",
+    "sha256": "7b56093a3c017d511885d6e7de405ad3ac6f2e0a2a559458c267491167a29fa0",
+    "caseCount": 31,
+    "expectationProvenance": "All fullExpected and halfExpected Unicode strings were hand-specified from the approved typing rules before running the comparison. No engine output generated or replaced these expectations. Existing external references are unchanged.",
+    "beforeDefaultAgainstFull": {
+      "passed": 11,
+      "total": 31,
+      "wordTop": 11,
+      "wordTotal": 28,
+      "candidateHits": 11,
+      "candidateTotal": 28,
+      "textTop": 0,
+      "textTotal": 3,
+      "mismatchCaseIds": [
+        "bare-k",
+        "final-cluster",
+        "vowel-separated-consonants",
+        "digraph-final",
+        "bare-n",
+        "reserved-shift",
+        "ksh-token",
+        "gy-token",
+        "three-consonants",
+        "word-literal-boundary",
+        "bare-bindu",
+        "bare-chandrabindu",
+        "backtick-half",
+        "backtick-after-a",
+        "backtick-joiner",
+        "backtick-bindu",
+        "backtick-chandrabindu",
+        "text-boundaries",
+        "technical-spans",
+        "digits-and-script"
+      ]
+    },
+    "afterDefault": {
+      "passed": 31,
+      "total": 31,
+      "wordTop": 28,
+      "wordTotal": 28,
+      "candidateHits": 28,
+      "candidateTotal": 28,
+      "textTop": 3,
+      "textTotal": 3,
+      "mismatchCaseIds": []
+    },
+    "afterExplicitFull": {
+      "passed": 31,
+      "total": 31,
+      "wordTop": 28,
+      "wordTotal": 28,
+      "candidateHits": 28,
+      "candidateTotal": 28,
+      "textTop": 3,
+      "textTotal": 3,
+      "mismatchCaseIds": []
+    },
+    "afterHalf": {
+      "passed": 31,
+      "total": 31,
+      "wordTop": 28,
+      "wordTotal": 28,
+      "candidateHits": 28,
+      "candidateTotal": 28,
+      "textTop": 3,
+      "textTotal": 3,
+      "mismatchCaseIds": []
+    },
+    "caseResults": [
+      {
+        "id": "bare-k",
+        "mode": "word",
+        "input": "k",
+        "fullExpected": "क",
+        "halfExpected": "क्",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "क्",
+          "actualCandidates": [
+            "क्"
+          ],
+          "pass": false
+        },
+        "afterDefault": {
+          "actualTop": "क",
+          "actualCandidates": [
+            "क"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "क",
+          "actualCandidates": [
+            "क"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "क्",
+          "actualCandidates": [
+            "क्"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "explicit-a",
+        "mode": "word",
+        "input": "ka",
+        "fullExpected": "क",
+        "halfExpected": "क",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "क",
+          "actualCandidates": [
+            "क"
+          ],
+          "pass": true
+        },
+        "afterDefault": {
+          "actualTop": "क",
+          "actualCandidates": [
+            "क"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "क",
+          "actualCandidates": [
+            "क"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "क",
+          "actualCandidates": [
+            "क"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "final-cluster",
+        "mode": "word",
+        "input": "kr",
+        "fullExpected": "क्र",
+        "halfExpected": "क्र्",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "क्र्",
+          "actualCandidates": [
+            "क्र्"
+          ],
+          "pass": false
+        },
+        "afterDefault": {
+          "actualTop": "क्र",
+          "actualCandidates": [
+            "क्र"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "क्र",
+          "actualCandidates": [
+            "क्र"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "क्र्",
+          "actualCandidates": [
+            "क्र्"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "cluster-a",
+        "mode": "word",
+        "input": "kra",
+        "fullExpected": "क्र",
+        "halfExpected": "क्र",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "क्र",
+          "actualCandidates": [
+            "क्र"
+          ],
+          "pass": true
+        },
+        "afterDefault": {
+          "actualTop": "क्र",
+          "actualCandidates": [
+            "क्र"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "क्र",
+          "actualCandidates": [
+            "क्र"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "क्र",
+          "actualCandidates": [
+            "क्र"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "cluster-i",
+        "mode": "word",
+        "input": "kri",
+        "fullExpected": "क्रि",
+        "halfExpected": "क्रि",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "क्रि",
+          "actualCandidates": [
+            "क्रि"
+          ],
+          "pass": true
+        },
+        "afterDefault": {
+          "actualTop": "क्रि",
+          "actualCandidates": [
+            "क्रि"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "क्रि",
+          "actualCandidates": [
+            "क्रि"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "क्रि",
+          "actualCandidates": [
+            "क्रि"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "vowel-separated-consonants",
+        "mode": "word",
+        "input": "kar",
+        "fullExpected": "कर",
+        "halfExpected": "कर्",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "कर्",
+          "actualCandidates": [
+            "कर्"
+          ],
+          "pass": false
+        },
+        "afterDefault": {
+          "actualTop": "कर",
+          "actualCandidates": [
+            "कर"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "कर",
+          "actualCandidates": [
+            "कर"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "कर्",
+          "actualCandidates": [
+            "कर्"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "short-i",
+        "mode": "word",
+        "input": "ki",
+        "fullExpected": "कि",
+        "halfExpected": "कि",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "कि",
+          "actualCandidates": [
+            "कि"
+          ],
+          "pass": true
+        },
+        "afterDefault": {
+          "actualTop": "कि",
+          "actualCandidates": [
+            "कि"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "कि",
+          "actualCandidates": [
+            "कि"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "कि",
+          "actualCandidates": [
+            "कि"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "digraph-vowel",
+        "mode": "word",
+        "input": "khi",
+        "fullExpected": "खि",
+        "halfExpected": "खि",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "खि",
+          "actualCandidates": [
+            "खि"
+          ],
+          "pass": true
+        },
+        "afterDefault": {
+          "actualTop": "खि",
+          "actualCandidates": [
+            "खि"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "खि",
+          "actualCandidates": [
+            "खि"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "खि",
+          "actualCandidates": [
+            "खि"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "digraph-final",
+        "mode": "word",
+        "input": "kh",
+        "fullExpected": "ख",
+        "halfExpected": "ख्",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "ख्",
+          "actualCandidates": [
+            "ख्"
+          ],
+          "pass": false
+        },
+        "afterDefault": {
+          "actualTop": "ख",
+          "actualCandidates": [
+            "ख"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "ख",
+          "actualCandidates": [
+            "ख"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "ख्",
+          "actualCandidates": [
+            "ख्"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "bare-n",
+        "mode": "word",
+        "input": "n",
+        "fullExpected": "न",
+        "halfExpected": "न्",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "न्",
+          "actualCandidates": [
+            "न्"
+          ],
+          "pass": false
+        },
+        "afterDefault": {
+          "actualTop": "न",
+          "actualCandidates": [
+            "न"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "न",
+          "actualCandidates": [
+            "न"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "न्",
+          "actualCandidates": [
+            "न्"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "reserved-shift",
+        "mode": "word",
+        "input": "T",
+        "fullExpected": "ट",
+        "halfExpected": "ट्",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "ट्",
+          "actualCandidates": [
+            "ट्"
+          ],
+          "pass": false
+        },
+        "afterDefault": {
+          "actualTop": "ट",
+          "actualCandidates": [
+            "ट"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "ट",
+          "actualCandidates": [
+            "ट"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "ट्",
+          "actualCandidates": [
+            "ट्"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "ksh-token",
+        "mode": "word",
+        "input": "ksh",
+        "fullExpected": "क्ष",
+        "halfExpected": "क्ष्",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "क्ष्",
+          "actualCandidates": [
+            "क्ष्"
+          ],
+          "pass": false
+        },
+        "afterDefault": {
+          "actualTop": "क्ष",
+          "actualCandidates": [
+            "क्ष"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "क्ष",
+          "actualCandidates": [
+            "क्ष"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "क्ष्",
+          "actualCandidates": [
+            "क्ष्"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "gy-token",
+        "mode": "word",
+        "input": "gy",
+        "fullExpected": "ज्ञ",
+        "halfExpected": "ज्ञ्",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "ज्ञ्",
+          "actualCandidates": [
+            "ज्ञ्"
+          ],
+          "pass": false
+        },
+        "afterDefault": {
+          "actualTop": "ज्ञ",
+          "actualCandidates": [
+            "ज्ञ"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "ज्ञ",
+          "actualCandidates": [
+            "ज्ञ"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "ज्ञ्",
+          "actualCandidates": [
+            "ज्ञ्"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "three-consonants",
+        "mode": "word",
+        "input": "krt",
+        "fullExpected": "क्र्त",
+        "halfExpected": "क्र्त्",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "क्र्त्",
+          "actualCandidates": [
+            "क्र्त्"
+          ],
+          "pass": false
+        },
+        "afterDefault": {
+          "actualTop": "क्र्त",
+          "actualCandidates": [
+            "क्र्त"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "क्र्त",
+          "actualCandidates": [
+            "क्र्त"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "क्र्त्",
+          "actualCandidates": [
+            "क्र्त्"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "word-literal-boundary",
+        "mode": "word",
+        "input": "k!",
+        "fullExpected": "क!",
+        "halfExpected": "क्!",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "क्!",
+          "actualCandidates": [
+            "क्!"
+          ],
+          "pass": false
+        },
+        "afterDefault": {
+          "actualTop": "क!",
+          "actualCandidates": [
+            "क!"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "क!",
+          "actualCandidates": [
+            "क!"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "क्!",
+          "actualCandidates": [
+            "क्!"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "bare-bindu",
+        "mode": "word",
+        "input": "k^",
+        "fullExpected": "कं",
+        "halfExpected": "क्ं",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "क्ं",
+          "actualCandidates": [
+            "क्ं"
+          ],
+          "pass": false
+        },
+        "afterDefault": {
+          "actualTop": "कं",
+          "actualCandidates": [
+            "कं"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "कं",
+          "actualCandidates": [
+            "कं"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "क्ं",
+          "actualCandidates": [
+            "क्ं"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "bare-chandrabindu",
+        "mode": "word",
+        "input": "k~",
+        "fullExpected": "कँ",
+        "halfExpected": "क्ँ",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "क्ँ",
+          "actualCandidates": [
+            "क्ँ"
+          ],
+          "pass": false
+        },
+        "afterDefault": {
+          "actualTop": "कँ",
+          "actualCandidates": [
+            "कँ"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "कँ",
+          "actualCandidates": [
+            "कँ"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "क्ँ",
+          "actualCandidates": [
+            "क्ँ"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "a-bindu",
+        "mode": "word",
+        "input": "ka^",
+        "fullExpected": "कं",
+        "halfExpected": "कं",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "कं",
+          "actualCandidates": [
+            "कं"
+          ],
+          "pass": true
+        },
+        "afterDefault": {
+          "actualTop": "कं",
+          "actualCandidates": [
+            "कं"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "कं",
+          "actualCandidates": [
+            "कं"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "कं",
+          "actualCandidates": [
+            "कं"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "visarga",
+        "mode": "word",
+        "input": "kaH",
+        "fullExpected": "कः",
+        "halfExpected": "कः",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "कः",
+          "actualCandidates": [
+            "कः"
+          ],
+          "pass": true
+        },
+        "afterDefault": {
+          "actualTop": "कः",
+          "actualCandidates": [
+            "कः"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "कः",
+          "actualCandidates": [
+            "कः"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "कः",
+          "actualCandidates": [
+            "कः"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "backtick-half",
+        "mode": "word",
+        "input": "k`",
+        "fullExpected": "क्",
+        "halfExpected": "क्",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "क्`",
+          "actualCandidates": [
+            "क्`"
+          ],
+          "pass": false
+        },
+        "afterDefault": {
+          "actualTop": "क्",
+          "actualCandidates": [
+            "क्"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "क्",
+          "actualCandidates": [
+            "क्"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "क्",
+          "actualCandidates": [
+            "क्"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "backtick-after-a",
+        "mode": "word",
+        "input": "ka`",
+        "fullExpected": "क्",
+        "halfExpected": "क्",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "क`",
+          "actualCandidates": [
+            "क`"
+          ],
+          "pass": false
+        },
+        "afterDefault": {
+          "actualTop": "क्",
+          "actualCandidates": [
+            "क्"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "क्",
+          "actualCandidates": [
+            "क्"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "क्",
+          "actualCandidates": [
+            "क्"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "slash-half",
+        "mode": "word",
+        "input": "k/",
+        "fullExpected": "क्",
+        "halfExpected": "क्",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "क्",
+          "actualCandidates": [
+            "क्"
+          ],
+          "pass": true
+        },
+        "afterDefault": {
+          "actualTop": "क्",
+          "actualCandidates": [
+            "क्"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "क्",
+          "actualCandidates": [
+            "क्"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "क्",
+          "actualCandidates": [
+            "क्"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "slash-after-a",
+        "mode": "word",
+        "input": "ka/",
+        "fullExpected": "क्",
+        "halfExpected": "क्",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "क्",
+          "actualCandidates": [
+            "क्"
+          ],
+          "pass": true
+        },
+        "afterDefault": {
+          "actualTop": "क्",
+          "actualCandidates": [
+            "क्"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "क्",
+          "actualCandidates": [
+            "क्"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "क्",
+          "actualCandidates": [
+            "क्"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "backtick-joiner",
+        "mode": "word",
+        "input": "par`=yo",
+        "fullExpected": "पर्‍यो",
+        "halfExpected": "पर्‍यो",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "पर्`=यो",
+          "actualCandidates": [
+            "पर्`=यो"
+          ],
+          "pass": false
+        },
+        "afterDefault": {
+          "actualTop": "पर्‍यो",
+          "actualCandidates": [
+            "पर्‍यो"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "पर्‍यो",
+          "actualCandidates": [
+            "पर्‍यो"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "पर्‍यो",
+          "actualCandidates": [
+            "पर्‍यो"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "slash-joiner",
+        "mode": "word",
+        "input": "par/=yo",
+        "fullExpected": "पर्‍यो",
+        "halfExpected": "पर्‍यो",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "पर्‍यो",
+          "actualCandidates": [
+            "पर्‍यो"
+          ],
+          "pass": true
+        },
+        "afterDefault": {
+          "actualTop": "पर्‍यो",
+          "actualCandidates": [
+            "पर्‍यो"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "पर्‍यो",
+          "actualCandidates": [
+            "पर्‍यो"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "पर्‍यो",
+          "actualCandidates": [
+            "पर्‍यो"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "backtick-bindu",
+        "mode": "word",
+        "input": "k`^",
+        "fullExpected": "क्ं",
+        "halfExpected": "क्ं",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "क्`ं",
+          "actualCandidates": [
+            "क्`ं"
+          ],
+          "pass": false
+        },
+        "afterDefault": {
+          "actualTop": "क्ं",
+          "actualCandidates": [
+            "क्ं"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "क्ं",
+          "actualCandidates": [
+            "क्ं"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "क्ं",
+          "actualCandidates": [
+            "क्ं"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "backtick-chandrabindu",
+        "mode": "word",
+        "input": "k`~",
+        "fullExpected": "क्ँ",
+        "halfExpected": "क्ँ",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "क्`ँ",
+          "actualCandidates": [
+            "क्`ँ"
+          ],
+          "pass": false
+        },
+        "afterDefault": {
+          "actualTop": "क्ँ",
+          "actualCandidates": [
+            "क्ँ"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "क्ँ",
+          "actualCandidates": [
+            "क्ँ"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "क्ँ",
+          "actualCandidates": [
+            "क्ँ"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "slash-bindu",
+        "mode": "word",
+        "input": "k/^",
+        "fullExpected": "क्ं",
+        "halfExpected": "क्ं",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "क्ं",
+          "actualCandidates": [
+            "क्ं"
+          ],
+          "pass": true
+        },
+        "afterDefault": {
+          "actualTop": "क्ं",
+          "actualCandidates": [
+            "क्ं"
+          ],
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "क्ं",
+          "actualCandidates": [
+            "क्ं"
+          ],
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "क्ं",
+          "actualCandidates": [
+            "क्ं"
+          ],
+          "pass": true
+        }
+      },
+      {
+        "id": "text-boundaries",
+        "mode": "text",
+        "input": "k kr kar k! kr, kar.\nk` k/ par`=yo 123|",
+        "fullExpected": "क क्र कर क! क्र, कर.\nक् क् पर्‍यो १२३।",
+        "halfExpected": "क् क्र् कर् क्! क्र्, कर्.\nक् क् पर्‍यो १२३।",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "क् क्र् कर् क्! क्र्, कर्.\nक्` क् पर्`=यो १२३।",
+          "actualCandidates": null,
+          "pass": false
+        },
+        "afterDefault": {
+          "actualTop": "क क्र कर क! क्र, कर.\nक् क् पर्‍यो १२३।",
+          "actualCandidates": null,
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "क क्र कर क! क्र, कर.\nक् क् पर्‍यो १२३।",
+          "actualCandidates": null,
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "क् क्र् कर् क्! क्र्, कर्.\nक् क् पर्‍यो १२३।",
+          "actualCandidates": null,
+          "pass": true
+        }
+      },
+      {
+        "id": "technical-spans",
+        "mode": "text",
+        "input": "k user@kr.com https://example.com/k?x=kr kr|",
+        "fullExpected": "क user@kr.com https://example.com/k?x=kr क्र।",
+        "halfExpected": "क् user@kr.com https://example.com/k?x=kr क्र्।",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "क् user@kr.com https://example.com/k?x=kr क्र्।",
+          "actualCandidates": null,
+          "pass": false
+        },
+        "afterDefault": {
+          "actualTop": "क user@kr.com https://example.com/k?x=kr क्र।",
+          "actualCandidates": null,
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "क user@kr.com https://example.com/k?x=kr क्र।",
+          "actualCandidates": null,
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "क् user@kr.com https://example.com/k?x=kr क्र्।",
+          "actualCandidates": null,
+          "pass": true
+        }
+      },
+      {
+        "id": "digits-and-script",
+        "mode": "text",
+        "input": "k 42| kr १२3",
+        "fullExpected": "क ४२। क्र १२३",
+        "halfExpected": "क् ४२। क्र् १२३",
+        "beforeDefaultAgainstFull": {
+          "actualTop": "क् ४२। क्र् १२३",
+          "actualCandidates": null,
+          "pass": false
+        },
+        "afterDefault": {
+          "actualTop": "क ४२। क्र १२३",
+          "actualCandidates": null,
+          "pass": true
+        },
+        "afterExplicitFull": {
+          "actualTop": "क ४२। क्र १२३",
+          "actualCandidates": null,
+          "pass": true
+        },
+        "afterHalf": {
+          "actualTop": "क् ४२। क्र् १२३",
+          "actualCandidates": null,
+          "pass": true
+        }
+      }
+    ]
+  },
+  "exploratory": {
+    "beforeDefault": {
+      "passed": 0,
+      "total": 2,
+      "wordTop": 0,
+      "wordTotal": 2,
+      "candidateHits": 0,
+      "candidateTotal": 2,
+      "textTop": 0,
+      "textTotal": 0,
+      "mismatchCaseIds": [
+        "janchu-proposal",
+        "padhchhu-proposal"
+      ]
+    },
+    "afterDefault": {
+      "passed": 0,
+      "total": 2,
+      "wordTop": 0,
+      "wordTotal": 2,
+      "candidateHits": 0,
+      "candidateTotal": 2,
+      "textTop": 0,
+      "textTotal": 0,
+      "mismatchCaseIds": [
+        "janchu-proposal",
+        "padhchhu-proposal"
+      ]
+    },
+    "afterHalf": {
+      "passed": 0,
+      "total": 2,
+      "wordTop": 0,
+      "wordTotal": 2,
+      "candidateHits": 0,
+      "candidateTotal": 2,
+      "textTop": 0,
+      "textTotal": 0,
+      "mismatchCaseIds": [
+        "janchu-proposal",
+        "padhchhu-proposal"
+      ]
+    },
+    "excludedFromGate": true,
+    "labelsRemainUnreviewed": true
+  },
+  "revisedHistoricalCaseResults": [
+    {
+      "id": "half-k",
+      "input": "k",
+      "historicalExpectedTop": "क्",
+      "revisedExpectedTop": "क",
+      "beforeDefaultAgainstRevised": {
+        "actualTop": "क्",
+        "actualCandidates": [
+          "क्"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "क",
+        "actualCandidates": [
+          "क"
+        ],
+        "pass": true
+      },
+      "afterHalfAgainstHistorical": {
+        "actualTop": "क्",
+        "actualCandidates": [
+          "क्"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "half-kr",
+      "input": "kr",
+      "historicalExpectedTop": "क्र्",
+      "revisedExpectedTop": "क्र",
+      "beforeDefaultAgainstRevised": {
+        "actualTop": "क्र्",
+        "actualCandidates": [
+          "क्र्"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "क्र",
+        "actualCandidates": [
+          "क्र"
+        ],
+        "pass": true
+      },
+      "afterHalfAgainstHistorical": {
+        "actualTop": "क्र्",
+        "actualCandidates": [
+          "क्र्"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "loanword-reserved-doctor",
+      "input": "Doctor",
+      "historicalExpectedTop": "डोच्तोर्",
+      "revisedExpectedTop": "डोच्तोर",
+      "beforeDefaultAgainstRevised": {
+        "actualTop": "डोच्तोर्",
+        "actualCandidates": [
+          "डोच्तोर्"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "डोच्तोर",
+        "actualCandidates": [
+          "डोच्तोर"
+        ],
+        "pass": true
+      },
+      "afterHalfAgainstHistorical": {
+        "actualTop": "डोच्तोर्",
+        "actualCandidates": [
+          "डोच्तोर्"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "loanword-reserved-school",
+      "input": "School",
+      "historicalExpectedTop": "ष्चूल्",
+      "revisedExpectedTop": "ष्चूल",
+      "beforeDefaultAgainstRevised": {
+        "actualTop": "ष्चूल्",
+        "actualCandidates": [
+          "ष्चूल्"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "ष्चूल",
+        "actualCandidates": [
+          "ष्चूल"
+        ],
+        "pass": true
+      },
+      "afterHalfAgainstHistorical": {
+        "actualTop": "ष्चूल्",
+        "actualCandidates": [
+          "ष्चूल्"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "loanword-check-collision",
+      "input": "check",
+      "historicalExpectedTop": "चेच्क्",
+      "revisedExpectedTop": "चेच्क",
+      "beforeDefaultAgainstRevised": {
+        "actualTop": "चेच्क्",
+        "actualCandidates": [
+          "चेच्क्"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "चेच्क",
+        "actualCandidates": [
+          "चेच्क"
+        ],
+        "pass": true
+      },
+      "afterHalfAgainstHistorical": {
+        "actualTop": "चेच्क्",
+        "actualCandidates": [
+          "चेच्क्"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "loanword-fail-collision",
+      "input": "fail",
+      "historicalExpectedTop": "फैल्",
+      "revisedExpectedTop": "फैल",
+      "beforeDefaultAgainstRevised": {
+        "actualTop": "फैल्",
+        "actualCandidates": [
+          "फैल्"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "फैल",
+        "actualCandidates": [
+          "फैल"
+        ],
+        "pass": true
+      },
+      "afterHalfAgainstHistorical": {
+        "actualTop": "फैल्",
+        "actualCandidates": [
+          "फैल्"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "loanword-phail-collision",
+      "input": "phail",
+      "historicalExpectedTop": "फैल्",
+      "revisedExpectedTop": "फैल",
+      "beforeDefaultAgainstRevised": {
+        "actualTop": "फैल्",
+        "actualCandidates": [
+          "फैल्"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "फैल",
+        "actualCandidates": [
+          "फैल"
+        ],
+        "pass": true
+      },
+      "afterHalfAgainstHistorical": {
+        "actualTop": "फैल्",
+        "actualCandidates": [
+          "फैल्"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "month-shift-s",
+      "input": "S",
+      "historicalExpectedTop": "ष्",
+      "revisedExpectedTop": "ष",
+      "beforeDefaultAgainstRevised": {
+        "actualTop": "ष्",
+        "actualCandidates": [
+          "ष्"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "ष",
+        "actualCandidates": [
+          "ष"
+        ],
+        "pass": true
+      },
+      "afterHalfAgainstHistorical": {
+        "actualTop": "ष्",
+        "actualCandidates": [
+          "ष्"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "month-shift-d",
+      "input": "D",
+      "historicalExpectedTop": "ड्",
+      "revisedExpectedTop": "ड",
+      "beforeDefaultAgainstRevised": {
+        "actualTop": "ड्",
+        "actualCandidates": [
+          "ड्"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "ड",
+        "actualCandidates": [
+          "ड"
+        ],
+        "pass": true
+      },
+      "afterHalfAgainstHistorical": {
+        "actualTop": "ड्",
+        "actualCandidates": [
+          "ड्"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "month-short-jan",
+      "input": "Jan",
+      "historicalExpectedTop": "जन्",
+      "revisedExpectedTop": "जन",
+      "beforeDefaultAgainstRevised": {
+        "actualTop": "जन्",
+        "actualCandidates": [
+          "जन्"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "जन",
+        "actualCandidates": [
+          "जन"
+        ],
+        "pass": true
+      },
+      "afterHalfAgainstHistorical": {
+        "actualTop": "जन्",
+        "actualCandidates": [
+          "जन्"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "month-short-sep",
+      "input": "Sep",
+      "historicalExpectedTop": "षेप्",
+      "revisedExpectedTop": "षेप",
+      "beforeDefaultAgainstRevised": {
+        "actualTop": "षेप्",
+        "actualCandidates": [
+          "षेप्"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "षेप",
+        "actualCandidates": [
+          "षेप"
+        ],
+        "pass": true
+      },
+      "afterHalfAgainstHistorical": {
+        "actualTop": "षेप्",
+        "actualCandidates": [
+          "षेप्"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "mixed-early-ordinary-text",
+      "input": "camera camera. 3.14 par/=yo T D|",
+      "historicalExpectedTop": "क्यामेरा क्यामेरा. ३.१४ पर्‍यो ट् ड्।",
+      "revisedExpectedTop": "क्यामेरा क्यामेरा. ३.१४ पर्‍यो ट ड।",
+      "beforeDefaultAgainstRevised": {
+        "actualTop": "क्यामेरा क्यामेरा. ३.१४ पर्‍यो ट् ड्।",
+        "actualCandidates": null,
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "क्यामेरा क्यामेरा. ३.१४ पर्‍यो ट ड।",
+        "actualCandidates": null,
+        "pass": true
+      },
+      "afterHalfAgainstHistorical": {
+        "actualTop": "क्यामेरा क्यामेरा. ३.१४ पर्‍यो ट् ड्।",
+        "actualCandidates": null,
+        "pass": true
+      }
+    },
+    {
+      "id": "loanword-suffix-text-boundaries",
+      "input": "companyharumathi schoolma mediasanga company@school.com https://media.com T D S R|",
+      "historicalExpectedTop": "कम्पनीहरूमाथि स्कुलमा मिडियासँग company@school.com https://media.com ट् ड् ष् ऋ।",
+      "revisedExpectedTop": "कम्पनीहरूमाथि स्कुलमा मिडियासँग company@school.com https://media.com ट ड ष ऋ।",
+      "beforeDefaultAgainstRevised": {
+        "actualTop": "कम्पनीहरूमाथि स्कुलमा मिडियासँग company@school.com https://media.com ट् ड् ष् ऋ।",
+        "actualCandidates": null,
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "कम्पनीहरूमाथि स्कुलमा मिडियासँग company@school.com https://media.com ट ड ष ऋ।",
+        "actualCandidates": null,
+        "pass": true
+      },
+      "afterHalfAgainstHistorical": {
+        "actualTop": "कम्पनीहरूमाथि स्कुलमा मिडियासँग company@school.com https://media.com ट् ड् ष् ऋ।",
+        "actualCandidates": null,
+        "pass": true
+      }
+    },
+    {
+      "id": "native-spelling-text-boundaries",
+      "input": "halyo nabhani gaunle dindaina pani paani. user123@example.com https://example.com/path T D S R|",
+      "historicalExpectedTop": "हाल्यो नभनी गाउँले दिँदैन पनि पानी. user123@example.com https://example.com/path ट् ड् ष् ऋ।",
+      "revisedExpectedTop": "हाल्यो नभनी गाउँले दिँदैन पनि पानी. user123@example.com https://example.com/path ट ड ष ऋ।",
+      "beforeDefaultAgainstRevised": {
+        "actualTop": "हाल्यो नभनी गाउँले दिँदैन पनि पानी. user123@example.com https://example.com/path ट् ड् ष् ऋ।",
+        "actualCandidates": null,
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "हाल्यो नभनी गाउँले दिँदैन पनि पानी. user123@example.com https://example.com/path ट ड ष ऋ।",
+        "actualCandidates": null,
+        "pass": true
+      },
+      "afterHalfAgainstHistorical": {
+        "actualTop": "हाल्यो नभनी गाउँले दिँदैन पनि पानी. user123@example.com https://example.com/path ट् ड् ष् ऋ।",
+        "actualCandidates": null,
+        "pass": true
+      }
+    }
+  ],
+  "newCaseResults": [
+    {
+      "id": "consonant-full-kar",
+      "status": "contract",
+      "mode": "word",
+      "category": "consonant-default",
+      "input": "kar",
+      "expectedTop": "कर",
+      "expectedCandidates": [
+        "कर"
+      ],
+      "provenance": "Project-authored full-consonant and explicit-halant software contract authorized 2026-10-03; expected Unicode strings hand-specified from the approved typing rules before measurement. Backtick aliases slash and backtick= aliases /=. No independent human review, held-out language accuracy, performance or browser-support claim.",
+      "beforeDefault": {
+        "actualTop": "कर्",
+        "actualCandidates": [
+          "कर्"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "कर",
+        "actualCandidates": [
+          "कर"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "consonant-full-kh",
+      "status": "contract",
+      "mode": "word",
+      "category": "consonant-default",
+      "input": "kh",
+      "expectedTop": "ख",
+      "expectedCandidates": [
+        "ख"
+      ],
+      "provenance": "Project-authored full-consonant and explicit-halant software contract authorized 2026-10-03; expected Unicode strings hand-specified from the approved typing rules before measurement. Backtick aliases slash and backtick= aliases /=. No independent human review, held-out language accuracy, performance or browser-support claim.",
+      "beforeDefault": {
+        "actualTop": "ख्",
+        "actualCandidates": [
+          "ख्"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "ख",
+        "actualCandidates": [
+          "ख"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "consonant-full-n",
+      "status": "contract",
+      "mode": "word",
+      "category": "consonant-default",
+      "input": "n",
+      "expectedTop": "न",
+      "expectedCandidates": [
+        "न"
+      ],
+      "provenance": "Project-authored full-consonant and explicit-halant software contract authorized 2026-10-03; expected Unicode strings hand-specified from the approved typing rules before measurement. Backtick aliases slash and backtick= aliases /=. No independent human review, held-out language accuracy, performance or browser-support claim.",
+      "beforeDefault": {
+        "actualTop": "न्",
+        "actualCandidates": [
+          "न्"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "न",
+        "actualCandidates": [
+          "न"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "consonant-full-ksh",
+      "status": "contract",
+      "mode": "word",
+      "category": "consonant-default",
+      "input": "ksh",
+      "expectedTop": "क्ष",
+      "expectedCandidates": [
+        "क्ष"
+      ],
+      "provenance": "Project-authored full-consonant and explicit-halant software contract authorized 2026-10-03; expected Unicode strings hand-specified from the approved typing rules before measurement. Backtick aliases slash and backtick= aliases /=. No independent human review, held-out language accuracy, performance or browser-support claim.",
+      "beforeDefault": {
+        "actualTop": "क्ष्",
+        "actualCandidates": [
+          "क्ष्"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "क्ष",
+        "actualCandidates": [
+          "क्ष"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "consonant-full-gy",
+      "status": "contract",
+      "mode": "word",
+      "category": "consonant-default",
+      "input": "gy",
+      "expectedTop": "ज्ञ",
+      "expectedCandidates": [
+        "ज्ञ"
+      ],
+      "provenance": "Project-authored full-consonant and explicit-halant software contract authorized 2026-10-03; expected Unicode strings hand-specified from the approved typing rules before measurement. Backtick aliases slash and backtick= aliases /=. No independent human review, held-out language accuracy, performance or browser-support claim.",
+      "beforeDefault": {
+        "actualTop": "ज्ञ्",
+        "actualCandidates": [
+          "ज्ञ्"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "ज्ञ",
+        "actualCandidates": [
+          "ज्ञ"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "consonant-full-krt",
+      "status": "contract",
+      "mode": "word",
+      "category": "consonant-default",
+      "input": "krt",
+      "expectedTop": "क्र्त",
+      "expectedCandidates": [
+        "क्र्त"
+      ],
+      "provenance": "Project-authored full-consonant and explicit-halant software contract authorized 2026-10-03; expected Unicode strings hand-specified from the approved typing rules before measurement. Backtick aliases slash and backtick= aliases /=. No independent human review, held-out language accuracy, performance or browser-support claim.",
+      "beforeDefault": {
+        "actualTop": "क्र्त्",
+        "actualCandidates": [
+          "क्र्त्"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "क्र्त",
+        "actualCandidates": [
+          "क्र्त"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "consonant-word-literal-boundary",
+      "status": "contract",
+      "mode": "word",
+      "category": "consonant-default",
+      "input": "k!",
+      "expectedTop": "क!",
+      "expectedCandidates": [
+        "क!"
+      ],
+      "provenance": "Project-authored full-consonant and explicit-halant software contract authorized 2026-10-03; expected Unicode strings hand-specified from the approved typing rules before measurement. Backtick aliases slash and backtick= aliases /=. No independent human review, held-out language accuracy, performance or browser-support claim.",
+      "beforeDefault": {
+        "actualTop": "क्!",
+        "actualCandidates": [
+          "क्!"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "क!",
+        "actualCandidates": [
+          "क!"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "consonant-backtick-half",
+      "status": "contract",
+      "mode": "word",
+      "category": "consonant-default",
+      "input": "k`",
+      "expectedTop": "क्",
+      "expectedCandidates": [
+        "क्"
+      ],
+      "provenance": "Project-authored full-consonant and explicit-halant software contract authorized 2026-10-03; expected Unicode strings hand-specified from the approved typing rules before measurement. Backtick aliases slash and backtick= aliases /=. No independent human review, held-out language accuracy, performance or browser-support claim.",
+      "beforeDefault": {
+        "actualTop": "क्`",
+        "actualCandidates": [
+          "क्`"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "क्",
+        "actualCandidates": [
+          "क्"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "consonant-backtick-after-a",
+      "status": "contract",
+      "mode": "word",
+      "category": "consonant-default",
+      "input": "ka`",
+      "expectedTop": "क्",
+      "expectedCandidates": [
+        "क्"
+      ],
+      "provenance": "Project-authored full-consonant and explicit-halant software contract authorized 2026-10-03; expected Unicode strings hand-specified from the approved typing rules before measurement. Backtick aliases slash and backtick= aliases /=. No independent human review, held-out language accuracy, performance or browser-support claim.",
+      "beforeDefault": {
+        "actualTop": "क`",
+        "actualCandidates": [
+          "क`"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "क्",
+        "actualCandidates": [
+          "क्"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "consonant-slash-after-a",
+      "status": "contract",
+      "mode": "word",
+      "category": "consonant-default",
+      "input": "ka/",
+      "expectedTop": "क्",
+      "expectedCandidates": [
+        "क्"
+      ],
+      "provenance": "Project-authored full-consonant and explicit-halant software contract authorized 2026-10-03; expected Unicode strings hand-specified from the approved typing rules before measurement. Backtick aliases slash and backtick= aliases /=. No independent human review, held-out language accuracy, performance or browser-support claim.",
+      "beforeDefault": {
+        "actualTop": "क्",
+        "actualCandidates": [
+          "क्"
+        ],
+        "pass": true
+      },
+      "afterDefault": {
+        "actualTop": "क्",
+        "actualCandidates": [
+          "क्"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "consonant-backtick-joiner",
+      "status": "contract",
+      "mode": "word",
+      "category": "consonant-default",
+      "input": "par`=yo",
+      "expectedTop": "पर्‍यो",
+      "expectedCandidates": [
+        "पर्‍यो"
+      ],
+      "provenance": "Project-authored full-consonant and explicit-halant software contract authorized 2026-10-03; expected Unicode strings hand-specified from the approved typing rules before measurement. Backtick aliases slash and backtick= aliases /=. No independent human review, held-out language accuracy, performance or browser-support claim.",
+      "beforeDefault": {
+        "actualTop": "पर्`=यो",
+        "actualCandidates": [
+          "पर्`=यो"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "पर्‍यो",
+        "actualCandidates": [
+          "पर्‍यो"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "consonant-full-bindu",
+      "status": "contract",
+      "mode": "word",
+      "category": "consonant-default",
+      "input": "k^",
+      "expectedTop": "कं",
+      "expectedCandidates": [
+        "कं"
+      ],
+      "provenance": "Project-authored full-consonant and explicit-halant software contract authorized 2026-10-03; expected Unicode strings hand-specified from the approved typing rules before measurement. Backtick aliases slash and backtick= aliases /=. No independent human review, held-out language accuracy, performance or browser-support claim.",
+      "beforeDefault": {
+        "actualTop": "क्ं",
+        "actualCandidates": [
+          "क्ं"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "कं",
+        "actualCandidates": [
+          "कं"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "consonant-full-chandrabindu",
+      "status": "contract",
+      "mode": "word",
+      "category": "consonant-default",
+      "input": "k~",
+      "expectedTop": "कँ",
+      "expectedCandidates": [
+        "कँ"
+      ],
+      "provenance": "Project-authored full-consonant and explicit-halant software contract authorized 2026-10-03; expected Unicode strings hand-specified from the approved typing rules before measurement. Backtick aliases slash and backtick= aliases /=. No independent human review, held-out language accuracy, performance or browser-support claim.",
+      "beforeDefault": {
+        "actualTop": "क्ँ",
+        "actualCandidates": [
+          "क्ँ"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "कँ",
+        "actualCandidates": [
+          "कँ"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "consonant-backtick-bindu",
+      "status": "contract",
+      "mode": "word",
+      "category": "consonant-default",
+      "input": "k`^",
+      "expectedTop": "क्ं",
+      "expectedCandidates": [
+        "क्ं"
+      ],
+      "provenance": "Project-authored full-consonant and explicit-halant software contract authorized 2026-10-03; expected Unicode strings hand-specified from the approved typing rules before measurement. Backtick aliases slash and backtick= aliases /=. No independent human review, held-out language accuracy, performance or browser-support claim.",
+      "beforeDefault": {
+        "actualTop": "क्`ं",
+        "actualCandidates": [
+          "क्`ं"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "क्ं",
+        "actualCandidates": [
+          "क्ं"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "consonant-backtick-chandrabindu",
+      "status": "contract",
+      "mode": "word",
+      "category": "consonant-default",
+      "input": "k`~",
+      "expectedTop": "क्ँ",
+      "expectedCandidates": [
+        "क्ँ"
+      ],
+      "provenance": "Project-authored full-consonant and explicit-halant software contract authorized 2026-10-03; expected Unicode strings hand-specified from the approved typing rules before measurement. Backtick aliases slash and backtick= aliases /=. No independent human review, held-out language accuracy, performance or browser-support claim.",
+      "beforeDefault": {
+        "actualTop": "क्`ँ",
+        "actualCandidates": [
+          "क्`ँ"
+        ],
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "क्ँ",
+        "actualCandidates": [
+          "क्ँ"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "consonant-slash-bindu",
+      "status": "contract",
+      "mode": "word",
+      "category": "consonant-default",
+      "input": "k/^",
+      "expectedTop": "क्ं",
+      "expectedCandidates": [
+        "क्ं"
+      ],
+      "provenance": "Project-authored full-consonant and explicit-halant software contract authorized 2026-10-03; expected Unicode strings hand-specified from the approved typing rules before measurement. Backtick aliases slash and backtick= aliases /=. No independent human review, held-out language accuracy, performance or browser-support claim.",
+      "beforeDefault": {
+        "actualTop": "क्ं",
+        "actualCandidates": [
+          "क्ं"
+        ],
+        "pass": true
+      },
+      "afterDefault": {
+        "actualTop": "क्ं",
+        "actualCandidates": [
+          "क्ं"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "id": "consonant-text-boundaries",
+      "status": "contract",
+      "mode": "text",
+      "category": "consonant-default-text",
+      "input": "k kr kar k! kr, kar.\nk` k/ par`=yo 123|",
+      "expectedTop": "क क्र कर क! क्र, कर.\nक् क् पर्‍यो १२३।",
+      "provenance": "Project-authored full-consonant and explicit-halant software contract authorized 2026-10-03; expected Unicode strings hand-specified from the approved typing rules before measurement. Backtick aliases slash and backtick= aliases /=. No independent human review, held-out language accuracy, performance or browser-support claim.",
+      "beforeDefault": {
+        "actualTop": "क् क्र् कर् क्! क्र्, कर्.\nक्` क् पर्`=यो १२३।",
+        "actualCandidates": null,
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "क क्र कर क! क्र, कर.\nक् क् पर्‍यो १२३।",
+        "actualCandidates": null,
+        "pass": true
+      }
+    },
+    {
+      "id": "consonant-text-technical-spans",
+      "status": "contract",
+      "mode": "text",
+      "category": "consonant-default-text",
+      "input": "k user@kr.com https://example.com/k?x=kr kr|",
+      "expectedTop": "क user@kr.com https://example.com/k?x=kr क्र।",
+      "provenance": "Project-authored full-consonant and explicit-halant software contract authorized 2026-10-03; expected Unicode strings hand-specified from the approved typing rules before measurement. Backtick aliases slash and backtick= aliases /=. No independent human review, held-out language accuracy, performance or browser-support claim.",
+      "beforeDefault": {
+        "actualTop": "क् user@kr.com https://example.com/k?x=kr क्र्।",
+        "actualCandidates": null,
+        "pass": false
+      },
+      "afterDefault": {
+        "actualTop": "क user@kr.com https://example.com/k?x=kr क्र।",
+        "actualCandidates": null,
+        "pass": true
+      }
+    }
+  ],
+  "commands": {
+    "beforeFinalFixture": {
+      "method": "node benchmark/run.js --fixtures <same-final-fixture> --check",
+      "exitCode": 1,
+      "contract": {
+        "passed": 130,
+        "total": 160
+      }
+    },
+    "afterFinalFixture": {
+      "method": "node benchmark/run.js --fixtures <same-final-fixture> --check",
+      "exitCode": 0,
+      "contract": {
+        "passed": 160,
+        "total": 160
+      }
+    },
+    "strictMode": "Programmatic createEngine({ consonantMode: 'half' }); the seed CLI continues to measure only its default engine"
+  },
+  "toolFileSha256": {
+    "baselineRunner": "02f76258dece93e9ec8e54cd484dddc9456d4a64c4162114221c4794b8d87f31",
+    "benchmark/run.js": "02f76258dece93e9ec8e54cd484dddc9456d4a64c4162114221c4794b8d87f31",
+    "benchmark/measure-consonant-defaults.js": "621a51bc86709a92afb4a70dd896e0fc0d27cb3337a1b58bcc945bba4e7b7025"
+  },
+  "historicalReportSha256": {
+    "benchmark/reports/digits-001.json": "78991781b88bcfd574978c23df51cf0f29b39d6b1a81237a98e0e7711196264d",
+    "benchmark/reports/early-address-001.json": "082f661778813c2b5943ed0c525458de011b27be919857a0b8339151e38c8695",
+    "benchmark/reports/loanword-research-2026-09-27.json": "91e3c5503132d0288c1b06f52b83a1b5c89945e2d3248340f2860533ad763f31",
+    "benchmark/reports/loanword-suffix-research-2026-10-01.json": "2a551d56b1b37ec2d333f715bfec348b709a753387f813bb558adcd44941fbf3",
+    "benchmark/reports/loanword-suffixes-2026-10-01.json": "abf522c3bb0124b3a6864e0b83d89d982681a27255d081e54afcab936c3474b3",
+    "benchmark/reports/mixed-text-001.json": "5b488efc1ccad07c6ccd15e455822da67bdad472d99e140ccb6b2784b7b6fe10",
+    "benchmark/reports/month-research-2026-09-27.json": "d3672780680fc6414788fdd6d75d2503baaeb624d22f5a1e6d017f204ae658cb",
+    "benchmark/reports/nepali-assisted-online-001.json": "39fff8c8a6f3733f7295055a3cdcceb7bcd32e52aaf6c2ac130271d72bb4a1ad",
+    "benchmark/reports/nepali-loanwords-001.json": "37740f529042361af3a0d061f0de6226bbffa46a81b4672c46defb899bd9afb8",
+    "benchmark/reports/nepali-months-001.json": "db6bf7cd7c491d6ec00d9424eb3234631bc026bd7a7fd59cfae907a337f6b595",
+    "benchmark/reports/nepali-review-001.json": "511c3a67702d8623922503d1809b3caaba259c61cf36492b3c34ec7723eaa0e6",
+    "benchmark/reports/nepali-ry-001.json": "bf749b5cc02e68547e7c069f5cc0e36da149d74b7720f1b793798204ff2285bc",
+    "benchmark/reports/nepali-source-review-2026-10-01.json": "5d9b36e39481d3f790fed503968f6bc504e71780ba083d8ed214f27ef674d34a",
+    "benchmark/reports/nepali-source-review-baseline-2026-10-01.json": "1ef9b88526e79989f356d295f98ef2d28b95f70d745db219a53ae2b059c24e6b",
+    "benchmark/reports/nepali-spelling-2026-10-01.json": "a0b86998485dc299e87506de95f714c8af3fa84982226d05627a04fe9199a955",
+    "benchmark/reports/nepali-spelling-research-2026-10-01.json": "b59d158212030c44a8ed8fa03bf3bd867eafba43d1867a9892b60d8748558099"
+  },
+  "gate": {
+    "pass": true,
+    "covers": [
+      "revised default contracts",
+      "explicit full contracts",
+      "archived half-mode contracts",
+      "31 finite default/full/half cases",
+      "all 144 archived raw outputs"
+    ]
+  },
+  "reproduction": {
+    "baselineSnapshot": "git archive 987e31f7ec4e49680d7a001c078debce3d7fb326 src package.json benchmark/cases.jsonl benchmark/run.js benchmark/reports | tar -x -C <baseline-directory>",
+    "comparison": "node benchmark/measure-consonant-defaults.js <absolute-baseline-directory> --check [--output <new-report.json>]",
+    "verification": "Use the source, fixture and tool hashes in this record. The script pins baseline source and both finite fixtures, refuses output overwrite and verifies historical reports. Recorded time and Node/OS fields vary by host."
+  },
+  "limits": [
+    "These selected cases check an approved software policy. Their expectations are hand-authored from that policy, not independently collected or reviewed Nepali spellings.",
+    "The before/after totals use intentional revised defaults. The historical half-mode result and exact raw-output parity separately measure compatibility; a changed policy score is not linguistic improvement.",
+    "All prior reports, source-assisted references and exploratory labels remain unchanged. No external corpus is evaluated by this comparison.",
+    "Strict parity covers the 144 archived inputs and 31 selected mode cases; it is finite regression evidence, not a proof for every possible Roman input.",
+    "Candidate coverage counts only fixture-required readings; it does not judge extra suggestions, every possible spelling or usefulness.",
+    "No browser/mobile, live editing, performance, population accuracy or npm publication result is established. The published alpha.1 package remains distinct from this unpublished alpha.2 source."
+  ]
+}

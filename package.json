@@ -1,6 +1,6 @@
 {
   "name": "sahajlipi",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "private": false,
   "type": "module",
   "description": "Dependency-free Roman Nepali to Unicode typing engine and browser input adapters",

@@ -80,7 +80,7 @@ test('explicit marks use the derived preferred reading without changing existing
 
 test('text conversion uses derived forms while addresses keep their literal spelling and digits', () => {
   assert.equal(convertText('companyharumathi schoolma mediasanga company@school.com https://media.com T D S R|'),
-    'कम्पनीहरूमाथि स्कुलमा मिडियासँग company@school.com https://media.com ट् ड् ष् ऋ।');
+    'कम्पनीहरूमाथि स्कुलमा मिडियासँग company@school.com https://media.com ट ड ष ऋ।');
   assert.equal(convertText('companyma.com schoolma@example.com mediaharu 123.'),
     'companyma.com schoolma@example.com मिडियाहरू १२३.');
   assert.equal(createEngine({ digits: 'latin' }).convertText('mediasanga 123.'), 'मिडियासँग 123.');

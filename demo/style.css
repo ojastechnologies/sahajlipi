@@ -73,6 +73,8 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 3px
 .live-indicator { width: 8px; height: 8px; border-radius: 50%; background: var(--gold-ink); box-shadow: 0 0 0 4px var(--gold-soft); }
 .toolbar-actions { display: flex; align-items: center; gap: 7px; }
 .toolbar-actions button { min-height: 34px; padding: 7px 10px; border-radius: 7px; font-size: 12px; font-weight: 650; white-space: nowrap; }
+.consonant-setting { display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: 12px; }
+.consonant-setting select { min-height: 34px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); color: var(--ink); font: inherit; }
 .mode-button { border: 1px solid var(--gold); background: var(--gold-soft); color: var(--ink); }
 .mode-button[aria-pressed="false"] { border-color: var(--line); background: #f4f6f7; color: var(--muted); }
 .quiet-button { border: 1px solid transparent; background: transparent; color: var(--muted); }

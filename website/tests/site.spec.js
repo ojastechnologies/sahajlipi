@@ -31,6 +31,12 @@ test('home preview runs the core converter and links into developer docs', async
   await expect(page.locator('#nepali-preview')).toHaveText('पानी');
   await page.locator('#roman-preview').fill('camera');
   await expect(page.locator('#nepali-preview')).toHaveText('क्यामेरा');
+  await page.locator('#roman-preview').fill('k');
+  await expect(page.locator('#nepali-preview')).toHaveText('क');
+  await page.locator('#roman-preview').fill('kr');
+  await expect(page.locator('#nepali-preview')).toHaveText('क्र');
+  await page.locator('#roman-preview').fill('k`');
+  await expect(page.locator('#nepali-preview')).toHaveText('क्');
   await page.getByRole('button', { name: '123', exact: true }).click();
   await expect(page.locator('#nepali-preview')).toHaveText('१२३');
   await page.locator('#roman-preview').fill('');

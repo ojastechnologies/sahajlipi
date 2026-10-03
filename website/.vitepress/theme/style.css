@@ -120,7 +120,7 @@ html { scroll-padding-top: 90px; }
 .sahaj-button-primary:hover { background: var(--sahaj-deep); border-color: var(--sahaj-deep); }
 .sahaj-button-secondary { background: var(--vp-c-bg-elv); color: var(--vp-c-text-1); }
 .sahaj-button-secondary:hover { border-color: var(--vp-c-brand-1); color: var(--vp-c-brand-1); }
-.sahaj-release-note { margin-top: 21px; color: var(--vp-c-text-3); font-size: .875rem; line-height: 1.65; }
+.sahaj-release-note, .sahaj-source-note { margin-top: 21px; color: var(--vp-c-text-3); font-size: .875rem; line-height: 1.65; }
 
 .word-preview {
   align-self: center;
@@ -227,7 +227,7 @@ html { scroll-padding-top: 90px; }
   .sahaj-hero-copy h1 { max-width: 14ch; font-size: clamp(2.4rem, 10vw, 3.2rem); }
   .sahaj-introduction { max-width: 48ch; margin-top: 20px; }
   .sahaj-actions { margin-top: 23px; }
-  .sahaj-release-note { margin-top: 17px; }
+  .sahaj-release-note, .sahaj-source-note { margin-top: 17px; }
   .word-preview-heading { gap: 14px; }
   .word-preview-writing input { font-size: 1.65rem; }
   .word-preview-writing output { font-size: 2.8rem; min-height: 88px; }

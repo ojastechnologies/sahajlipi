@@ -82,9 +82,9 @@ test('protected technical spans retain digits in hosts, credentials, ports, path
 test('technical text opt-out and digit style remain independent options', () => {
   const devanagari = createEngine({ preserveTechnicalText: false });
   const latin = createEngine({ preserveTechnicalText: false, digits: 'latin' });
-  assert.equal(devanagari.convertText('http://127.0.0.1:4173/2'), 'ह्त्त्प्://१२७.०.०.१:४१७३/२');
-  assert.equal(latin.convertText('http://127.0.0.1:4173/2'), 'ह्त्त्प्://127.0.0.1:4173/2');
-  assert.equal(devanagari.convertText('user2@camera3.com'), 'उसेर्२@क्यामेरा३.चोम्');
-  assert.equal(latin.convertText('user2@camera3.com'), 'उसेर्2@क्यामेरा3.चोम्');
+  assert.equal(devanagari.convertText('http://127.0.0.1:4173/2'), 'ह्त्त्प://१२७.०.०.१:४१७३/२');
+  assert.equal(latin.convertText('http://127.0.0.1:4173/2'), 'ह्त्त्प://127.0.0.1:4173/2');
+  assert.equal(devanagari.convertText('user2@camera3.com'), 'उसेर२@क्यामेरा३.चोम');
+  assert.equal(latin.convertText('user2@camera3.com'), 'उसेर2@क्यामेरा3.चोम');
   assert.equal(createEngine({ digits: 'latin' }).convertText('http://127.0.0.1:4173/2'), 'http://127.0.0.1:4173/2');
 });

@@ -12,7 +12,7 @@ for (const [input, text] of [
 
 test('reviewed native words convert beside addresses, digits and explicit sounds', () => {
   assert.equal(convertText('halyo nabhani gaunle dindaina pani paani. user123@example.com https://example.com/path T D S R|'),
-    'हाल्यो नभनी गाउँले दिँदैन पनि पानी. user123@example.com https://example.com/path ट् ड् ष् ऋ।');
+    'हाल्यो नभनी गाउँले दिँदैन पनि पानी. user123@example.com https://example.com/path ट ड ष ऋ।');
 });
 
 test('native word preferences respect incidental capitals, reserved Shift and custom readings', () => {
@@ -25,7 +25,7 @@ test('native word preferences respect incidental capitals, reserved Shift and cu
 
 test('native aliases preserve explicit vowel lengths, nasal marks and half forms', () => {
   assert.equal(convertText('pani paani ha haa hi hii hu huu ka^ kaa~ ta Ta da Da k kr kra|'),
-    'पनि पानी ह हा हि ही हु हू कं काँ त ट द ड क् क्र् क्र।');
+    'पनि पानी ह हा हि ही हु हू कं काँ त ट द ड क क्र क्र।');
 });
 
 test('new native entries do not infer suffixes or match longer Roman spellings', () => {

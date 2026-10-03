@@ -1,6 +1,6 @@
 # Release and compatibility policy
 
-SahajLipi is an experimental Nepali typing package. Version `0.1.0-alpha.1` is published on npm with public access and the explicit `alpha` tag. This guide records the reviewed source, registry verification, compatibility limits, and future release procedure. The [getting-started guide](package/getting-started.md) explains exact-version and local-tarball installation.
+SahajLipi is an experimental Nepali typing package. Version `0.1.0-alpha.1` is published on npm with public access and the explicit `alpha` tag. Version **`0.1.0-alpha.2` is the next unpublished source candidate**. This guide records the published artifact, registry verification, candidate migration, compatibility limits, and future release procedure. The [getting-started guide](package/getting-started.md) explains exact-version and local-tarball installation.
 
 <span id="current-alpha-candidate"></span>
 
@@ -31,6 +31,18 @@ Fresh consumers installed `sahajlipi@0.1.0-alpha.1` from the official npm regist
 The registry-installed vanilla and React examples compiled and bundled, then passed **9/9 browser scenarios**: three existing developer integration scenarios per Chromium, Firefox, and WebKit, with zero retries, skips, or errors. These are post-publication integration checks. They do not replace the dated 60/60 candidate suite or establish physical mobile, controlled React, SSR, or assistive-technology support.
 
 The prerelease's [verification record](https://github.com/ojastechnologies/sahajlipi/releases/download/v0.1.0-alpha.1/release-verification.json) records registry and source identity, checksums, verification-tool adaptation, browser versions, and scoped results.
+
+## Next source candidate — unpublished
+
+`0.1.0-alpha.2` is a local/source candidate. It has not been published to npm or promoted to a registry tag. The alpha.1 artifact, source tag, checksum, and dated checks above remain unchanged. Use the [local tarball instructions](package/getting-started.md#local-development-installation) to try the candidate; keep `npm install --save-exact sahajlipi@0.1.0-alpha.1` for the published release.
+
+The candidate changes phonetic fallback endings from half to full by default: `k` changes क् → क, `kr` changes क्र् → क्र, and `kar` changes कर् → कर. Both `k` / `ka` → क and `kr` / `kra` → क्र; `kri` → क्रि and `shakti` → शक्ति retain their internal conjuncts and vowel signs. This affects unlisted spellings and fallback segments. Exact built-in/custom readings and recognized loanword suffix outputs retain their supplied Unicode and priority.
+
+Backtick now requests an explicit half form like `/`; both persist across spaces and punctuation. A vowel after either marker remains independent (`` k`i `` and `k/i` → क्इ), while `ki` → कि attaches the vowel sign. Backtick followed by `=` supports the existing `/=` joiner behavior. The [typing reference](package/typing-reference.md#half-consonants-and-conjuncts) documents these keys.
+
+For integrations that need alpha.1 fallback output after adopting the candidate, use `createEngine({ consonantMode: 'half' })`. Pass **both** of that engine's `convertWord` and `convertText` functions to each adapter or manager; the [migration recipe](package/integration-recipes.md#keep-alpha1-consonant-behavior) includes complete browser setup. The default is `'full'`, and another `consonantMode` value throws `TypeError`. Attachment and configuration do not rewrite existing field contents. The published alpha.1 has no `consonantMode` option or backtick shortcut.
+
+The alpha.1 measurements above describe that release. Separate alpha.2 checks on 2026-10-03 passed 317 Node tests, 160 seed contracts, 66 desktop browser scenarios, 11 website scenarios, and installed JavaScript/strict TypeScript consumers. The [candidate contract report](package/consonant-defaults-2026-10-03.md) records declared fixture revisions, finite full/half contracts, and 144/144 exact archived results preserved by strict mode. These are software and integration checks, not representative linguistic accuracy or physical mobile validation. Complete the release checklist before publication; candidate registry publication and its post-publication verification remain pending.
 
 ### Verify and publish future alphas
 
@@ -67,7 +79,7 @@ An ESM import of the DOM module can be evaluated on a server, but attachment nee
 
 ## Versioning and changes
 
-The first published developer alpha is `0.1.0-alpha.1`. Alpha users should pin an exact version when typing behavior matters.
+The first published developer alpha is `0.1.0-alpha.1`; `0.1.0-alpha.2` remains an unpublished source candidate. Alpha users should pin an exact version when typing behavior matters.
 
 During `0.x` development:
 

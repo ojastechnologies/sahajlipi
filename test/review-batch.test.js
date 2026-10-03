@@ -252,7 +252,7 @@ test('diagnostics keep an original Unicode proposal mismatch even when joiner re
 
 test('diagnostics report final virama differences as observed string differences', () => {
   const { items: [item] } = diagnoseReviewBatch([
-    reviewCase('word-validation:virama', 'word', 'k', 'क'),
+    reviewCase('word-validation:virama', 'word', 'k/', 'क'),
   ]);
 
   assert.equal(item.actualTop, 'क्');
@@ -267,7 +267,7 @@ test('diagnostic aggregates count every case once and leave unsupported matches 
     reviewCase('word-validation:kam', 'word', 'kam', 'काम'),
     reviewCase('word-validation:paryo', 'word', 'paryo', 'पर्‍यो'),
     reviewCase('word-validation:joiner', 'word', 'paryo', 'पर्यो'),
-    reviewCase('word-validation:virama', 'word', 'k', 'क'),
+    reviewCase('word-validation:virama', 'word', 'k/', 'क'),
     reviewCase('sentence:unrelated', 'text', 'namaste nepal pani', 'असम्बन्धित वाक्य यहाँ'),
   ];
   const original = structuredClone(sourceCases);

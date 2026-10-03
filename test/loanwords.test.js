@@ -101,7 +101,7 @@ for (const [roman, expected] of loanwords) {
 
 test('loanwords coexist with Nepali vowels, half sounds and explicit punctuation', () => {
   assert.equal(convertText('camera pani paani k ka ch chh cha chha| 3.14'),
-    'क्यामेरा पनि पानी क् क च् छ् च छ। ३.१४');
+    'क्यामेरा पनि पानी क क च छ च छ। ३.१४');
 });
 
 test('loanword lookup ignores incidental capitals while preserving reserved Shift sounds', () => {
@@ -110,8 +110,8 @@ test('loanword lookup ignores incidental capitals while preserving reserved Shif
   const shifted = [
     ['CAMERA', 'चमेऋअ'],
     ['COMPUTER', 'चोम्पुटेऋ'],
-    ['Doctor', 'डोच्तोर्'],
-    ['School', 'ष्चूल्'],
+    ['Doctor', 'डोच्तोर'],
+    ['School', 'ष्चूल'],
   ];
   for (const [roman, expected] of shifted) {
     assert.deepEqual(convertWord(roman), { text: expected, candidates: [expected], ambiguous: false });
@@ -123,11 +123,11 @@ test('loanword aliases do not infer unsupported endings or short English reading
     ['cameraa', 'चमेरा'],
     ['camerakoala', 'चमेरकोअल'],
     ['schoolmaharu', 'स्चूल्महरु'],
-    ['phail', 'फैल्'],
-    ['fail', 'फैल्'],
-    ['pan', 'पन्'],
-    ['can', 'चन्'],
-    ['fan', 'फन्'],
+    ['phail', 'फैल'],
+    ['fail', 'फैल'],
+    ['pan', 'पन'],
+    ['can', 'चन'],
+    ['fan', 'फन'],
   ];
   for (const [roman, expected] of unchanged) {
     assert.deepEqual(convertWord(roman), { text: expected, candidates: [expected], ambiguous: false });

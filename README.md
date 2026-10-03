@@ -19,6 +19,8 @@ SahajLipi is an open-source JavaScript library with TypeScript declarations for 
 
 The experimental developer alpha **`0.1.0-alpha.1`** is [published on npm](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.1). Start with [Getting started](docs/package/getting-started.md) for installation and imports from `sahajlipi` / `sahajlipi/dom`. Runnable [integration examples](examples/README.md) cover vanilla JavaScript, TypeScript, and a React uncontrolled textarea; [integration recipes](docs/package/integration-recipes.md) explain candidates and lifecycle handling.
 
+The current source candidate is **`0.1.0-alpha.2`, unpublished**. It uses full bare and final fallback consonants by default, adds backtick as an explicit half marker, and offers `consonantMode: 'half'` for alpha.1 fallback compatibility. The npm alpha.1 artifact is unchanged. See the [source behavior](#source-candidate-consonant-behavior) and [migration recipe](docs/package/integration-recipes.md#keep-alpha1-consonant-behavior).
+
 Install the exact alpha version:
 
 ```sh
@@ -69,7 +71,7 @@ convertText('September 27, 2026 3.14|');
 // 'सेप्टेम्बर २७, २०२६ ३.१४।'
 ```
 
-Four reviewed exact native-word aliases now produce `halyo` → हाल्यो, `nabhani` → नभनी, `gaunle` → गाउँले and `dindaina` → दिँदैन. They preserve the existing vowel, Shift and half-consonant rules for unlisted spellings. See the [dated spelling review](docs/package/nepali-spelling-2026-10-01.md).
+Four reviewed exact native-word aliases produce `halyo` → हाल्यो, `nabhani` → नभनी, `gaunle` → गाउँले and `dindaina` → दिँदैन. These exact readings retain their priority in either consonant mode; vowel lengths and Shift sound keys keep their explicit rules. See the [dated spelling review](docs/package/nepali-spelling-2026-10-01.md).
 
 The default engine converts 51 listed English-spelling loanword stems, including `camera` → क्यामेरा, `company` → कम्पनी and `media` → मिडिया. A finite list of 19 attached suffix forms also works: `companyharumathi` → कम्पनीहरूमाथि, `schoolma` → स्कुलमा with स्कूलमा as an alternative, and `mediasanga` → मिडियासँग. Browser fields use these defaults in Nepali mode. See the [current suffix rules and evidence](docs/package/loanword-suffixes-2026-10-01.md); the [original pilot](docs/package/loanword-review.md) and [earlier expansion](docs/package/loanword-expansion-2026-09-28.md) keep their dated scopes.
 
@@ -80,6 +82,26 @@ ASCII number keys use Devanagari digits by default (`123` → `१२३`, `3.14
 Recognizable links, ASCII domain-shaped hosts and ordinary ASCII email addresses stay literal by default during text conversion, live typing, and paste. Preservation starts at early cues such as `https:`, `www.`, `name@`, and `camera.c`, before an address is complete. Plain `camera` still converts. The policy preserves spelling and case without checking whether a domain exists; it does not detect arbitrary English or code. For an English fragment, disable conversion while typing or pasting it, then enable it again. Custom engines can opt out with `preserveTechnicalText: false`. See [mixed-text behavior and controls](docs/package/api.md#links-domains-and-email-addresses).
 
 Start with the [package documentation](docs/package/README.md) for the [API](docs/package/api.md), [typing rules](docs/package/typing-reference.md), [architecture](docs/package/architecture.md), and [benchmark protocol](docs/package/benchmarks.md). The snippets above use public package imports from the verified `0.1.0-alpha.1` release; see [Getting started](docs/package/getting-started.md).
+
+### Source candidate consonant behavior
+
+The unpublished alpha.2 source candidate displays full bare and final consonants immediately, while forming internal conjuncts automatically:
+
+| Roman input | Default output |
+| --- | --- |
+| `k` or `ka` | क |
+| `kr` or `kra` | क्र |
+| `kri` | क्रि |
+| `kar` | कर |
+| `shakti` | शक्ति |
+| `` k` `` or `k/` | क् |
+| `` k`i `` or `k/i` | क्इ |
+
+Explicit half forms persist across spaces and punctuation. Use `ki` → कि for an attached vowel sign; a vowel after either half marker is independent. Both `` `= `` and `/=` support the existing explicit joiner behavior. Exact built-in and custom lexicon readings are not rewritten by the new fallback default.
+
+With this source candidate, `createEngine({ consonantMode: 'half' })` restores alpha.1 phonetic fallback endings such as `k` → क् and `kr` → क्र्. Pass both engine converters to browser adapters as shown in the [migration recipe](docs/package/integration-recipes.md#keep-alpha1-consonant-behavior). Install a [locally packed source candidate](docs/package/getting-started.md#local-development-installation) to try these changes; the published npm alpha.1 keeps its existing behavior.
+
+Candidate verification on 2026-10-03 passed **317 Node tests**, **160 seed contracts**, **66 desktop browser scenarios**, and **11 website scenarios**, plus installed JavaScript and strict TypeScript consumers. The [dated consonant comparison](docs/package/consonant-defaults-2026-10-03.md) records 31 literal cases for each mode and **144/144** exact archived results preserved by strict mode. These counts describe software contracts and the listed integration flows; they are not a general Nepali accuracy score. The earlier evaluation tables below remain dated records.
 
 ## Package website and demo
 

@@ -61,6 +61,13 @@
                 <span>Live editor</span>
               </div>
               <div class="toolbar-actions">
+                <label class="consonant-setting" for="consonant-select">
+                  <span>Consonants</span>
+                  <select id="consonant-select" title="Choose how consonants appear; existing text is preserved">
+                    <option value="full">Full (default)</option>
+                    <option value="half">Strict half</option>
+                  </select>
+                </label>
                 <button id="mode-button" class="mode-button" type="button" aria-pressed="true" aria-label="Nepali conversion for all marked fields" title="Switch all marked fields to English mode">Nepali mode</button>
                 <button id="copy-button" class="quiet-button" type="button">Copy</button>
                 <button id="clear-button" class="quiet-button" type="button">Clear</button>
@@ -87,7 +94,7 @@
             </div>
 
             <div class="editor-footer">
-              <span id="typing-hint">Type Roman Nepali directly. Space finishes a word. Links and email addresses stay literal; the mode button controls the editor and all marked form fields.</span>
+              <span id="typing-hint">Type Roman Nepali directly. Use a backtick (`) for a half consonant. Space finishes a word. Settings apply to all marked fields and preserve existing text.</span>
               <span id="character-count" class="character-count">0 characters</span>
             </div>
           </section>
@@ -165,11 +172,11 @@
             <section class="guide-card">
               <span class="guide-number">02 / Vowels</span>
               <h3>Length changes the word</h3>
-              <p>A consonant starts half and a vowel completes it: <kbd>k</kbd> gives <span lang="ne">क्</span>, then <kbd>ka</kbd> gives <span lang="ne">क</span>. Use <kbd>aa</kbd> for long <span lang="ne">आ</span>, as in <span lang="ne">का</span>. <kbd>ii</kbd> or <kbd>ee</kbd> make sounds like <span lang="ne">की</span>; <kbd>uu</kbd> or <kbd>oo</kbd> make sounds like <span lang="ne">कू</span>.</p>
+              <p>Consonants start full: <kbd>k</kbd> and <kbd>ka</kbd> both give <span lang="ne">क</span>. A vowel changes the sound: <kbd>ki</kbd> gives <span lang="ne">कि</span>. Use <kbd>aa</kbd> for long <span lang="ne">आ</span>, as in <span lang="ne">का</span>. <kbd>ii</kbd> or <kbd>ee</kbd> make sounds like <span lang="ne">की</span>; <kbd>uu</kbd> or <kbd>oo</kbd> make sounds like <span lang="ne">कू</span>.</p>
               <div class="key-examples" aria-label="Short and long vowel examples">
                 <div><kbd>pani</kbd><span aria-hidden="true">→</span><strong lang="ne">पनि</strong></div>
                 <div><kbd>paani</kbd><span aria-hidden="true">→</span><strong lang="ne">पानी</strong></div>
-                <div><kbd>k</kbd><span aria-hidden="true">→</span><strong lang="ne">क्</strong></div>
+                <div><kbd>k</kbd><span aria-hidden="true">→</span><strong lang="ne">क</strong></div>
                 <div><kbd>ka</kbd><span aria-hidden="true">→</span><strong lang="ne">क</strong></div>
                 <div><kbd>kaa</kbd><span aria-hidden="true">→</span><strong lang="ne">का</strong></div>
               </div>
@@ -177,27 +184,28 @@
 
             <section class="guide-card" id="half-sounds-guide">
               <span class="guide-number">03 / Half sounds</span>
-              <h3>Half until a vowel arrives</h3>
-              <p>In phonetic conversion, consonants without a following vowel remain half, even at the end of a word. Adjacent consonants join automatically. A vowel completes the last consonant. A known word can use its listed spelling.</p>
+              <h3>Full consonants, automatic joins</h3>
+              <p>Adjacent consonants join automatically, with the last consonant full: <kbd>kr</kbd> and <kbd>kra</kbd> give <span lang="ne">क्र</span>. A vowel after a consonant keeps the syllables separate: <kbd>kar</kbd> gives <span lang="ne">कर</span>. A known word can use its listed spelling.</p>
               <div class="key-examples" aria-label="Consonant cluster examples">
-                <div><kbd>kr</kbd><span aria-hidden="true">→</span><strong lang="ne">क्र्</strong></div>
+                <div><kbd>kr</kbd><span aria-hidden="true">→</span><strong lang="ne">क्र</strong></div>
                 <div><kbd>kra</kbd><span aria-hidden="true">→</span><strong lang="ne">क्र</strong></div>
                 <div><kbd>kri</kbd><span aria-hidden="true">→</span><strong lang="ne">क्रि</strong></div>
                 <div><kbd>shakti</kbd><span aria-hidden="true">→</span><strong lang="ne">शक्ति</strong></div>
               </div>
-              <p><kbd>Space</kbd> keeps the displayed spelling. Use <kbd>/</kbd> when you want an explicit halant after a vowel: <kbd>ka/</kbd> → <span lang="ne">क्</span>. Use <kbd>/=</kbd> to add a joiner after the halant: <kbd>par/=yo</kbd> → <span lang="ne">पर्‍यो</span>. The font and browser determine the visible shape. Listed words can complete a final consonant, for example <kbd>kam</kbd> → <span lang="ne">कम</span>.</p>
+              <p>Type <kbd>`</kbd> for an explicit half consonant: <kbd>k`</kbd> or <kbd>ka`</kbd> → <span lang="ne">क्</span>, and <kbd>kr`</kbd> → <span lang="ne">क्र्</span>. <kbd>Space</kbd> and punctuation keep that half form. A following vowel starts independently: <kbd>k`i</kbd> → <span lang="ne">क्इ</span>. The <kbd>/</kbd> shortcut works the same way.</p>
+              <p>Use <kbd>`=</kbd> or <kbd>/=</kbd> to add a joiner after the halant: <kbd>par`=yo</kbd> → <span lang="ne">पर्‍यो</span>. The font and browser determine the visible shape. Choose <strong>Strict half</strong> above to keep the earlier phonetic behavior, where <kbd>k</kbd> → <span lang="ne">क्</span> and <kbd>kr</kbd> → <span lang="ne">क्र्</span> until you add a vowel. Changing the setting preserves existing text.</p>
             </section>
 
             <section class="guide-card">
               <span class="guide-number">04 / Ch and Chh sounds</span>
               <h3><span lang="ne">च</span> or <span lang="ne">छ</span></h3>
-              <p>Use <kbd>ch</kbd> for <span lang="ne">च्</span> and <kbd>chh</kbd> for the aspirated <span lang="ne">छ्</span>. Add a vowel to complete the consonant:</p>
+              <p>Use <kbd>ch</kbd> for <span lang="ne">च</span> and <kbd>chh</kbd> for the aspirated <span lang="ne">छ</span>. Both start full; a backtick makes them half:</p>
               <table class="sound-table" aria-label="Ch and Chh consonant sounds">
                 <thead><tr><th scope="col">Keys</th><th scope="col">Default result</th></tr></thead>
                 <tbody>
-                  <tr><td><kbd>ch</kbd></td><td><span lang="ne">च्</span></td></tr>
+                  <tr><td><kbd>ch</kbd></td><td><span lang="ne">च</span></td></tr>
                   <tr><td><kbd>cha</kbd></td><td><span lang="ne">च</span></td></tr>
-                  <tr><td><kbd>chh</kbd></td><td><span lang="ne">छ्</span></td></tr>
+                  <tr><td><kbd>chh</kbd></td><td><span lang="ne">छ</span></td></tr>
                   <tr><td><kbd>chha</kbd></td><td><span lang="ne">छ</span></td></tr>
                 </tbody>
               </table>
@@ -231,7 +239,7 @@
                 <div><kbd>bharyaanga</kbd><span aria-hidden="true">→</span><strong lang="ne">भर्‍याङ</strong></div>
               </div>
               <p>Only the listed <kbd>puryaunu</kbd> shortcut supplies long <span lang="ne">आ</span> followed by <span lang="ne">उ</span> where you typed <kbd>au</kbd>. In ordinary phonetic conversion, <kbd>au</kbd> still means <span lang="ne">औ</span>: <kbd>kau</kbd> → <span lang="ne">कौ</span>.</p>
-              <p>Only the listed <kbd>bharyang</kbd> shortcut fills in long <span lang="ne">आ</span> and a complete final <span lang="ne">ङ</span>. The explicit spelling <kbd>bharyaanga</kbd> includes <kbd>aa</kbd> and final <kbd>a</kbd>.</p>
+              <p>The listed <kbd>bharyang</kbd> shortcut fills in long <span lang="ne">आ</span> and chooses the <span lang="ne">र्‍य</span> form. Keep the complete listed spelling <kbd>bharyaanga</kbd> to receive that same joiner preference. In Full mode, the explicit form <kbd>bhar`=yaang</kbd> also gives <span lang="ne">भर्‍याङ</span> without a final <kbd>a</kbd>.</p>
               <p>Four other complete spellings supply reviewed vowels or nasal marks: <kbd>halyo</kbd> → <span lang="ne">हाल्यो</span>, <kbd>nabhani</kbd> → <span lang="ne">नभनी</span>, <kbd>gaunle</kbd> → <span lang="ne">गाउँले</span>, and <kbd>dindaina</kbd> → <span lang="ne">दिँदैन</span>. These exact entries do not change ordinary vowel, Shift, half-consonant or explicit-mark keys, and they do not infer attached native words.</p>
               <p>For an unlisted spelling, request <span lang="ne">र्‍य</span> with <kbd>/=</kbd> and type the vowels yourself. Examples: <kbd>gar/=yo</kbd> → <span lang="ne">गर्‍यो</span>, <kbd>pur/=yaaunu</kbd> → <span lang="ne">पुर्‍याउनु</span>, and <kbd>bhar/=yaanga</kbd> → <span lang="ne">भर्‍याङ</span>.</p>
             </section>
@@ -261,7 +269,7 @@
                 <div><kbd>ri</kbd><span aria-hidden="true">→</span><strong lang="ne">रि</strong></div>
                 <div><kbd>kri</kbd><span aria-hidden="true">→</span><strong lang="ne">क्रि</strong></div>
               </div>
-              <p>Capital <kbd>S</kbd> or <kbd>Sh</kbd> chooses <span lang="ne">ष</span>; lowercase <kbd>sh</kbd> gives <span lang="ne">श</span>. As with other consonants, add a vowel to complete it: <kbd>Sa</kbd> or <kbd>Sha</kbd> → <span lang="ne">ष</span>, while <kbd>sha</kbd> → <span lang="ne">श</span>.</p>
+              <p>Capital <kbd>S</kbd> or <kbd>Sh</kbd> chooses <span lang="ne">ष</span>; lowercase <kbd>sh</kbd> gives <span lang="ne">श</span>. An optional <kbd>a</kbd> keeps the same full sound: <kbd>Sa</kbd> or <kbd>Sha</kbd> → <span lang="ne">ष</span>, while <kbd>sha</kbd> → <span lang="ne">श</span>.</p>
               <p>Capital <kbd>H</kbd> after a vowel adds visarga <span lang="ne">ः</span>. Lowercase <kbd>h</kbd> still types <span lang="ne">ह</span>, and <kbd>:</kbd> stays an English colon.</p>
               <p>Known words may keep their listed spelling when capitalized: <kbd>Ram</kbd> → <span lang="ne">राम</span> and <kbd>Sita</kbd> → <span lang="ne">सीता</span>.</p>
               <div class="key-examples" aria-label="Visarga examples">
@@ -469,7 +477,7 @@
               <span class="guide-number">19 / Editor controls</span>
               <h3>Switch, copy, or clear</h3>
               <p>The mode button shows <strong>Nepali mode</strong> when conversion is enabled and <strong>English mode</strong> when typing is literal. It switches the editor and all three marked form fields together. Existing text stays as it is.</p>
-              <p>Use <strong>English mode</strong> to type or paste an English phrase or code fragment, then switch back to continue Nepali typing. In English mode, digits and shortcut keys such as <kbd>^</kbd>, <kbd>~</kbd>, <kbd>/</kbd>, and <kbd>|</kbd> stay literal. The <kbd>.</kbd> key stays a period in both modes.</p>
+              <p>Use <strong>English mode</strong> to type or paste an English phrase or code fragment, then switch back to continue Nepali typing. In English mode, digits and shortcut keys such as <kbd>^</kbd>, <kbd>~</kbd>, <kbd>`</kbd>, <kbd>/</kbd>, and <kbd>|</kbd> stay literal. The <kbd>.</kbd> key stays a period in both modes.</p>
               <p><strong>Copy</strong> copies the main editor text; <strong>Clear</strong> starts that editor again. English notes and the email-only field always stay literal.</p>
             </section>
           </div>

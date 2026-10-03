@@ -1,4 +1,5 @@
 import { attachNepaliInputs } from "../src/dom.js";
+import { createEngine } from "../src/index.js";
 
 const field = document.querySelector("#typing-field");
 const candidatePanel = document.querySelector("#candidate-panel");
@@ -6,6 +7,7 @@ const candidateSelect = document.querySelector("#candidate-select");
 const romanSpelling = document.querySelector("#roman-spelling");
 const characterCount = document.querySelector("#character-count");
 const modeButton = document.querySelector("#mode-button");
+const consonantSelect = document.querySelector("#consonant-select");
 const copyButton = document.querySelector("#copy-button");
 const clearButton = document.querySelector("#clear-button");
 
@@ -28,7 +30,10 @@ function render({ text, enabled, activeRoman, candidates }) {
 }
 
 // One manager attaches every marked field, including the form examples below.
+let engine = createEngine({ consonantMode: consonantSelect.value });
 const manager = attachNepaliInputs(document, {
+  convertWord: (word) => engine.convertWord(word),
+  convertText: (text) => engine.convertText(text),
   onStateChange(state, changedField) {
     if (changedField === field) render(state);
   },
@@ -41,6 +46,13 @@ candidateSelect.addEventListener("change", () => {
 
 modeButton.addEventListener("click", () => {
   manager.setEnabled(!controller.getState().enabled);
+  field.focus();
+});
+
+consonantSelect.addEventListener("change", () => {
+  engine = createEngine({ consonantMode: consonantSelect.value });
+  // Finish each current word while keeping the text and English/Nepali mode.
+  manager.setEnabled(manager.getEnabled());
   field.focus();
 });
 

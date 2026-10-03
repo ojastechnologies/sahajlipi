@@ -2,6 +2,8 @@
 
 The [live SahajLipi demo](https://ojastechnologies.github.io/sahajlipi/demo/) lets you try the current Nepali typing experience in a browser. This page covers the demo interface and how to run it. The [package website](https://ojastechnologies.github.io/sahajlipi/) introduces the library and provides developer documentation. For the reusable conversion engine, browser adapter, API, and typing rules, start with the [package documentation](../package/README.md).
 
+This guide describes the **unpublished `0.1.0-alpha.2` source demo**, including full consonants by default and the **Consonants** selector. Hosted changes appear after merge and website deployment. The published npm alpha.1 artifact keeps its earlier half-consonant fallback; the [release record](../release.md) distinguishes package distribution from the source demo.
+
 ## Run it locally
 
 From the repository root, with Node.js 20 or later, npm, and Python 3 available:
@@ -25,7 +27,8 @@ Replace `YOUR_LAN_IP` with that address, then open `http://YOUR_LAN_IP:4173/saha
 
 ## Use the page
 
-- **Type in the editor.** Roman letters turn into Nepali in the same textarea. Space commits the displayed word; Backspace can edit the active Roman spelling. The on-page **How to type** guide shows examples for vowels, half consonants, `cha`/`chha`, the two र्य/र्‍य forms, listed word shortcuts, four reviewed native spellings, English loanwords and their supported suffixes, full English month names, Shift sounds, marks, digits, punctuation, mixed text, and alternatives. The [package typing reference](../package/typing-reference.md) documents the complete rules and the scope of those word entries.
+- **Type in the editor.** Roman letters turn into Nepali in the same textarea. Space commits the displayed word; Backspace can edit the active Roman spelling. The on-page **How to type** guide shows examples for vowels, full consonants, automatic conjuncts, explicit half forms, `cha`/`chha`, the two र्य/र्‍य forms, listed word shortcuts, four reviewed native spellings, English loanwords and their supported suffixes, full English month names, Shift sounds, marks, digits, punctuation, mixed text, and alternatives. The [package typing reference](../package/typing-reference.md) documents the complete rules and the scope of those word entries.
+- **Choose consonant behavior.** **Consonants → Full (default)** displays full bare and final consonants, such as `k` → क and `kr` → क्र. **Strict half** retains alpha.1 fallback endings, such as `k` → क् and `kr` → क्र् until a vowel completes them. The selector controls the main editor and all three marked form fields. Changing it finishes their active words and preserves existing text and Nepali/English mode; subsequent typing and paste use the selected behavior.
 - **Choose a reading.** When the active spelling has multiple listed readings, a dropdown appears below the textarea. The first reading is displayed by default. Choose another from the dropdown or press `Alt` + a number from `1` through `9` while the word is active.
 - **Switch mode.** The button shows **Nepali mode** when conversion is on and **English mode** when input is literal. It controls subsequent typing and paste in every marked field on this page: the main editor and the three form examples. Existing text stays as it is when you switch modes.
 - **Try form fields.** The two marked text fields and marked search field below the editor use the same conversion setup. The mixed-text field lets you try Nepali beside a link or email address. The unmarked text and email fields stay in English. The alternatives dropdown and character count belong to the main editor; in the form fields, `Alt` + a number can select an available alternative.
@@ -35,9 +38,17 @@ The fields keep text and their undo snapshots in browser memory while the page i
 
 ## Words and sounds to try
 
+### Full consonants and explicit halves
+
+With **Full (default)** selected, both `k` and `ka` → **क**, and both `kr` and `kra` → **क्र**. Internal conjuncts form automatically: `kri` → **क्रि** and `shakti` → **शक्ति**. Use `a` to separate consonants: `kar` → **कर**.
+
+Type backtick or `/` for an explicit half form: `` k` `` or `k/` → **क्**, and `` kr` `` or `kr/` → **क्र्**. Spaces and punctuation preserve that half form in either selector setting. A following vowel starts independently: `` k`i `` or `k/i` → **क्इ**; use `ki` → **कि** for the attached vowel sign. Backtick followed by `=` or `/=` adds a joiner after the virama: `` par`=yo `` and `par/=yo` → **पर्‍यो**.
+
+**Strict half** changes phonetic fallback endings only. Exact listed words and their candidate order retain priority. Developers can apply the same configuration with `createEngine({ consonantMode: 'half' })`; see the [browser migration recipe](../package/integration-recipes.md#keep-alpha1-consonant-behavior).
+
 ### च and छ
 
-`cha` displays **च** first and offers **छ** in the readings dropdown. Use `chha` for **छ** directly. Without a vowel, `ch` stays **च्** and `chh` stays **छ्**. Listed complete words can keep their own spelling: `huncha` still gives **हुन्छ**. The other consonants, vowel lengths, and Shift sound keys keep their existing behavior.
+`cha` displays **च** first and offers **छ** in the readings dropdown. Use `chha` for **छ** directly. With **Full (default)**, bare `ch` gives **च** and `chh` gives **छ**; add backtick or `/` for **च्** or **छ्**. **Strict half** keeps bare `ch` → **च्** and `chh` → **छ्**. Listed complete words keep their own spelling: `huncha` still gives **हुन्छ**. Vowel lengths and Shift sound keys keep their explicit rules.
 
 ### Reviewed native-word spellings
 
@@ -183,11 +194,11 @@ The policy checks a shape, not whether the address exists: `pani.paani` and its 
 
 ### Keep an English phrase literal
 
-Switch to **English mode** before typing or pasting an English phrase, acronym, or code fragment; switch back to **Nepali mode** when ready to continue Nepali. The button controls all marked fields together, and it leaves existing text as it is. In English mode, digits and shortcut characters such as `^`, `~`, `/`, and `|` stay literal too. The unmarked English notes and email-only fields always preserve what you type.
+Switch to **English mode** before typing or pasting an English phrase, acronym, or code fragment; switch back to **Nepali mode** when ready to continue Nepali. The button controls all marked fields together, and it leaves existing text as it is. In English mode, digits and shortcut characters such as `^`, `~`, backtick, `/`, and `|` stay literal too. Changing **Consonants** preserves English mode. The unmarked English notes and email-only fields always preserve what you type.
 
 ## How the demo connects to the package
 
-[`demo/index.html`](../../demo/index.html) defines the editor, controls, candidate dropdown, three marked form fields, and on-page guide. [`demo/style.css`](../../demo/style.css) styles them. [`demo/main.js`](../../demo/main.js) imports `attachNepaliInputs` from `src/dom.js` and calls it once for all fields marked `data-sahajlipi`. The manager supplies the main editor's controller for its candidate dropdown and clear control; its `setEnabled()` method switches Nepali typing for every marked field. Copy reads the main editor's value. The unmarked English text and email fields have no adapter. Editing and conversion behavior lives in the [package code](../package/README.md), so the demo exercises the same functions that developers can embed in their own apps.
+[`demo/index.html`](../../demo/index.html) defines the editor, controls, candidate dropdown, three marked form fields, and on-page guide. [`demo/style.css`](../../demo/style.css) styles them. [`demo/main.js`](../../demo/main.js) creates an engine using the selected `consonantMode`, imports `attachNepaliInputs` from `src/dom.js`, and calls it once for all fields marked `data-sahajlipi`. Both conversion callbacks use the current engine, so selector changes apply to live typing, paste, and completed composition. The manager supplies the main editor's controller for its candidate dropdown and clear control; its `setEnabled()` method switches Nepali typing for every marked field. Copy reads the main editor's value. The unmarked English text and email fields have no adapter. Editing and conversion behavior lives in the [package code](../package/README.md), so the demo exercises the same functions that developers can embed in their own apps.
 
 ## Brand assets
 

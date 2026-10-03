@@ -54,16 +54,77 @@ async function pasteText(field, text) {
   }, text);
 }
 
-test('real keyboard keeps an active half consonant editable and notifies input listeners', async ({ page }) => {
+test('real keyboard forms full consonant clusters and backspaces through their Roman keys', async ({ page }) => {
   const field = await fixture(page);
   await page.keyboard.type('k');
-  await expect(field).toHaveValue('क्');
-  await page.keyboard.type('a');
   await expect(field).toHaveValue('क');
+  await page.keyboard.type('r');
+  await expect(field).toHaveValue('क्र');
+  await page.keyboard.type('i');
+  await expect(field).toHaveValue('क्रि');
   await page.keyboard.press('Backspace');
-  await expect(field).toHaveValue('क्');
+  await expect(field).toHaveValue('क्र');
+  await page.keyboard.press('Backspace');
+  await expect(field).toHaveValue('क');
   await expect.poll(() => page.evaluate(() => window.browserFixture.inputValues))
-    .toEqual(['क्', 'क', 'क्']);
+    .toEqual(['क', 'क्र', 'क्रि', 'क्र', 'क']);
+});
+
+test('real keyboard commits and edits explicit backtick halves with undo and redo', async ({ page }) => {
+  const field = await fixture(page);
+  await page.keyboard.type('ka`');
+  await expect(field).toHaveValue('क्');
+  await expect.poll(() => page.evaluate(() => window.browserFixture.controller.getState().activeRoman))
+    .toBe('ka`');
+  await page.keyboard.press('Backspace');
+  await expect(field).toHaveValue('क');
+  await page.keyboard.press('Control+z');
+  await expect(field).toHaveValue('क्');
+  await page.keyboard.press('Control+Shift+z');
+  await expect(field).toHaveValue('क');
+  await page.keyboard.type('`i kr` par`=yo ');
+  await expect(field).toHaveValue('क्इ क्र् पर्\u200dयो ');
+  await page.keyboard.press('Control+z');
+  await expect(field).toHaveValue('क्इ क्र् पर्\u200dयो');
+  await page.keyboard.press('Control+Shift+z');
+  await expect(field).toHaveValue('क्इ क्र् पर्\u200dयो ');
+});
+
+test('demo consonant settings preserve existing text and configure typing and paste across marked fields', async ({ page }) => {
+  const field = await demo(page);
+  await page.keyboard.type('k');
+  await page.locator('#consonant-select').selectOption('half');
+  await expect(field).toHaveValue('क');
+  await page.keyboard.type('r');
+  // Switching finishes the previous source word rather than rerendering it.
+  await expect(field).toHaveValue('कर्');
+  await expect(page.locator('#roman-spelling')).toHaveText('r');
+  await field.evaluate(element => element.setSelectionRange(0, element.value.length));
+  await page.locator('#consonant-select').selectOption('full');
+  await expect.poll(() => field.evaluate(element => [element.selectionStart, element.selectionEnd]))
+    .toEqual([0, 3]);
+  await page.keyboard.type('k ');
+  await expect(field).toHaveValue('क ');
+  await page.locator('#consonant-select').selectOption('half');
+  await expect(field).toHaveValue('क ');
+  await page.keyboard.type('kr');
+  await expect(field).toHaveValue('क क्र्');
+  await pasteText(field, ' k');
+  await expect(field).toHaveValue('क क्र् क्');
+  await page.locator('#sample-name').focus();
+  await page.keyboard.type('k');
+  await expect(page.locator('#sample-name')).toHaveValue('क्');
+  await page.locator('#consonant-select').selectOption('full');
+  await expect(page.locator('#sample-name')).toHaveValue('क्');
+  await expect(field).toHaveValue('क क्र् क्');
+  await page.keyboard.type(' k');
+  await expect(field).toHaveValue('क क्र् क् क');
+  await page.locator('#mode-button').click();
+  await page.keyboard.type(' k` kr');
+  await expect(field).toHaveValue('क क्र् क् क k` kr');
+  await page.locator('#consonant-select').selectOption('half');
+  await page.keyboard.type(' k`');
+  await expect(field).toHaveValue('क क्र् क् क k` kr k`');
 });
 
 test('real keyboard preserves the ra-ya joiner, Shift sounds, bindu and chandrabindu', async ({ page }) => {
@@ -287,7 +348,7 @@ test('synthetic native input fallback handles an active vowel and a mixed-text p
   await expect(field).toHaveValue('क');
   await expect.poll(() => page.evaluate(() => window.browserFixture.inputValues.at(-1))).toBe('क');
   await page.keyboard.press('Control+z');
-  await expect(field).toHaveValue('क्');
+  await expect(field).toHaveValue('क');
   await page.evaluate(() => window.browserFixture.controller.setText(''));
   await field.evaluate(element => {
     const source = 'namaste camera.com user@example.com|';
@@ -384,11 +445,11 @@ test('reviewed native word preferences retain Roman editing, undo and English mo
   await page.keyboard.type('gaunle');
   await expect(field).toHaveValue('गाउँले');
   await page.keyboard.press('Backspace');
-  await expect(field).toHaveValue('गौन्ल्');
+  await expect(field).toHaveValue('गौन्ल');
   await page.keyboard.type('e');
   await expect(field).toHaveValue('गाउँले');
   await page.keyboard.press('Control+z');
-  await expect(field).toHaveValue('गौन्ल्');
+  await expect(field).toHaveValue('गौन्ल');
   await page.keyboard.press('Control+Shift+z');
   await expect(field).toHaveValue('गाउँले');
   await page.locator('#mode-button').click();

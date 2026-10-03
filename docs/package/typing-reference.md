@@ -1,12 +1,12 @@
 # Nepali typing reference
 
-SahajLipi currently converts Roman Nepali, 51 listed English-spelling loanword stems with finite attached suffix forms and 12 full English month names to Unicode Devanagari. The core returns a preferred reading and, where listed, alternatives. The optional browser adapters render that preferred reading in opted-in text fields as you type and report alternatives to the host interface. This reference describes the **current prototype**, not a standardized Romanization scheme.
+SahajLipi currently converts Roman Nepali, 51 listed English-spelling loanword stems with finite attached suffix forms and 12 full English month names to Unicode Devanagari. The core returns a preferred reading and, where listed, alternatives. The optional browser adapters render that preferred reading in opted-in text fields as you type and report alternatives to the host interface. This reference describes the **unpublished `0.1.0-alpha.2` source candidate**, not a standardized Romanization scheme. The published `0.1.0-alpha.1` keeps its earlier half-consonant default; see the [migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior).
 
 The [starter lexicon](../../src/lexicon.js) takes priority over the [phonetic fallback](../../src/phonetic.js). The listed word `cha` defaults to च and offers छ as an alternative; `chha` returns only छ. The fallback tokens remain `ch` → च and `chh` → छ. Custom entries can replace a built-in entry in one engine instance. See the [engine source](../../src/index.js) for the lookup order.
 
 ## Vowels
 
-A consonant without a following vowel stays half. The vowel `a` completes it without adding a visible vowel sign: `k` → क्, `ka` → क. Longer vowels are typed explicitly, so `pani` → पनि and `paani` → पानी.
+A bare or final consonant is full by default: both `k` and `ka` → क. The vowel `a` supplies no visible vowel sign and separates consonants where needed: `kar` → कर, while `kr` → क्र. Longer vowels are typed explicitly, so `pani` → पनि and `paani` → पानी.
 
 The table shows independent vowels and examples after `k`. The `R` row is case-sensitive.
 
@@ -28,7 +28,7 @@ Lowercase `ri` → रि and `kri` → क्रि. Use capital `R` when you m
 
 ## Consonants
 
-These are **fallback tokens**, shown as their base letters for readability. When a token is typed without a vowel, the fallback appends virama: `k` → क्, `kh` → ख्. Add `a` to complete the final consonant: `kha` → ख. Longer tokens are matched before shorter ones. A listed word can override the fallback result.
+These are **fallback tokens**, shown as their base letters. A bare or final token is full by default: `k` → क and `kh` → ख; `ka` and `kha` give the same letters. Adjacent consonants form internal conjuncts automatically. Longer tokens are matched before shorter ones. A listed word can override the fallback result.
 
 | Roman token | Base letter | Roman token | Base letter |
 | --- | --- | --- | --- |
@@ -66,20 +66,23 @@ Capital `S` or `Sh` selects ष (`Sa` or `Sha` → ष), while lowercase `sh` se
 
 ## Half consonants and conjuncts
 
-The fallback keeps an unvoweled consonant half, including at the end of an active word. Adjacent consonants form a cluster. Pressing Space commits what is displayed; it does not add an implied `a`.
+The default fallback displays full bare and final consonants immediately, while adjacent consonants form an internal cluster. Pressing Space or typing punctuation commits the displayed reading. Use backtick or `/` when the final consonant must remain half.
 
 | Type | Output | Why |
 | --- | --- | --- |
-| `k` | क् | No vowel yet |
-| `ka` | क | `a` completes क |
-| `kr` | क्र् | The final र is still half |
-| `kra` | क्र | `a` completes the cluster |
+| `k` or `ka` | क | A bare final consonant is full |
+| `kr` or `kra` | क्र | Internal क् joins full final र |
 | `kri` | क्रि | `i` adds the ि sign |
+| `kar` | कर | `a` separates क and र |
 | `shakti` | शक्ति | Adjacent consonants form the cluster |
 
-Type `/` to request a virama explicitly, especially after a vowel: `ka/` → क्. `k/` also yields क्, which is already the default for a bare `k`. The slash remains literal where no consonant can take a virama, such as `a/` → अ/, and in `3/4`.
+Type backtick (`` ` ``) or `/` to request a virama explicitly: `` k` `` or `k/` → क्, and `` ka` `` or `ka/` → क्. The explicit half form persists when you finish the word with a space or punctuation: `` k` `` followed by Space keeps क्. Each marker remains literal where no consonant can take a virama, such as `` a` `` → `` अ` `` or `a/` → अ/, and the slash in `3/4` stays literal.
 
-Type `/=` after a consonant when you need a zero width joiner after its virama: `par/=yo` → पर्‍यो. The inserted sequence is virama U+094D followed by zero width joiner U+200D. The exact visible half form or conjunct depends on the browser's text shaping and font. See the [Unicode Indic FAQ on half forms and joiners](https://www.unicode.org/faq/indic.html).
+A vowel after either explicit half marker is independent: `` k`i `` and `k/i` → क्इ. Use `ki` → कि for the attached vowel sign.
+
+Type backtick followed by `=` (`` `= ``) or `/=` after a consonant when you need a zero width joiner after its virama: `` par`=yo `` and `par/=yo` → पर्‍यो. The inserted sequence is virama U+094D followed by zero width joiner U+200D. The exact visible half form or conjunct depends on the browser's text shaping and font. See the [Unicode Indic FAQ on half forms and joiners](https://www.unicode.org/faq/indic.html).
+
+Developers can select `createEngine({ consonantMode: 'half' })` for the published alpha.1 phonetic fallback: `k` → क्, `kr` → क्र्, while `ka` → क and `kra` → क्र. The default is `consonantMode: 'full'`. This option changes fallback endings only; exact built-in and custom readings keep their priority and supplied Unicode. See the [API option](api.md#consonant-mode), [browser migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior), and [dated software-contract record](consonant-defaults-2026-10-03.md).
 
 ### र्य and र्‍य
 
@@ -104,7 +107,7 @@ Title case follows the same entries, for example `Garyo` → गर्‍यो.
 Two informal spellings have additional whole-word exceptions:
 
 - `puryaunu` supplies आ followed by independent उ in पुर्‍याउनु. Its `au` does **not** use the ordinary औ token. `puryaaunu` spells the long vowel explicitly. The fallback still converts `au` to औ, as in `kau` → कौ.
-- `bharyang` supplies the long आ and completes the final ङ in भर्‍याङ. `bharyaanga` explicitly includes `aa` and final `a`. Bare consonants in the fallback still remain half.
+- `bharyang` supplies the long आ in भर्‍याङ. `bharyaanga` explicitly includes `aa` and final `a`. Bare final consonants in the default fallback are full.
 
 These entries match whole words; they do not infer stems, suffixes, or compound spellings. Other words keep the ordinary cluster, including `kaarya` → कार्य, `suurya` → सूर्य, `saundarya` → सौन्दर्य, and `aachaarya` → आचार्य. For an unlisted form that needs र्‍य, type `/=` explicitly and supply its vowels: `gar/=yo` → गर्‍यो, `pur/=yaaunu` → पुर्‍याउनु, and `bhar/=yaanga` → भर्‍याङ.
 
@@ -121,7 +124,7 @@ Four common informal spellings have exact starter entries:
 | `gaunle` | गाउँले |
 | `dindaina` | दिँदैन |
 
-Each currently has one reading. These completed keys supply the source-reviewed vowel or nasal spelling. They do not change the fallback: `pani` and `paani` remain distinct, `ki` and `kii` retain their vowel lengths, and an unvoweled consonant stays half. Explicit `^` / `~` still choose bindu / chandrabindu; Shift keys keep their explicit sounds.
+Each currently has one reading. These completed keys supply the source-reviewed vowel or nasal spelling. They preserve the vowel distinctions in the fallback: `pani` and `paani` remain distinct, and `ki` and `kii` retain their vowel lengths. The default fallback now makes bare and final consonants full; explicit backtick or `/` keeps a consonant half. Explicit `^` / `~` still choose bindu / chandrabindu; Shift keys keep their explicit sounds.
 
 Only the complete normalized key matches. Incidental title case such as `Halyo` works; reserved sound capitals inside an input keep their phonetic meaning unless an exact custom entry exists. Attached native forms and misspellings are not inferred from these aliases. Developers can replace a complete key’s readings with `createEngine({ entries })`. The [dated spelling review](nepali-spelling-2026-10-01.md) explains sources, choices, validation and limits.
 
@@ -255,7 +258,7 @@ The period `.` always stays an English period, including in `3.14`. Type `|` for
 
 The engine returns candidates in preferred order. For example, `kam` gives कम first and काम second; `cha` gives च first and छ second. Use `chha` for the single छ reading. The field adapter shows the first reading inline and reports alternatives through `onStateChange` only while an ambiguous word is active. An integrating app can show a dropdown and call `chooseCandidate(index)`; the adapter also handles Alt+1, Alt+2, and so on. Press Space to finish the word with the displayed reading. While a word is active, Backspace edits its original Roman sequence and recalculates the Nepali output.
 
-The controller’s `setEnabled(false)` switches subsequent input to literal typing; `setEnabled(true)` resumes conversion. When conversion is disabled, ASCII digits and keys such as `^`, `~`, `/`, and `|` remain literal. Switching modes does not rewrite text already in the field. `convertText` always uses the first reading of each converted word and returns plain text without candidate data.
+The controller’s `setEnabled(false)` switches subsequent input to literal typing; `setEnabled(true)` resumes conversion. When conversion is disabled, ASCII digits and keys such as `^`, `~`, backtick, `/`, and `|` remain literal. Switching modes does not rewrite text already in the field. `convertText` always uses the first reading of each converted word and returns plain text without candidate data.
 
 ## Mixed text and literal English
 

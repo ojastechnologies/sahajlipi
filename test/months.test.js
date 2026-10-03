@@ -57,9 +57,9 @@ test('explicit title-case month overrides win regardless of lowercase entry orde
 
 test('explicit month titles leave other shifted spellings and partial keys unchanged', () => {
   const unchanged = [
-    ['Sa', 'ष'], ['Da', 'ड'], ['School', 'ष्चूल्'], ['Doctor', 'डोच्तोर्'],
-    ['sepTember', 'सेप्टेम्बेर्'], ['decembeR', 'देचेम्बेऋ'],
-    ['jan', 'जन्'], ['sept', 'सेप्त्'], ['septemberma', 'सेप्तेम्बेर्म'],
+    ['Sa', 'ष'], ['Da', 'ड'], ['School', 'ष्चूल'], ['Doctor', 'डोच्तोर'],
+    ['sepTember', 'सेप्टेम्बेर'], ['decembeR', 'देचेम्बेऋ'],
+    ['jan', 'जन'], ['sept', 'सेप्त'], ['septemberma', 'सेप्तेम्बेर्म'],
   ];
   for (const [roman, expected] of unchanged) {
     assert.deepEqual(convertWord(roman), { text: expected, candidates: [expected], ambiguous: false });

@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 1,
+  "fixtureId": "consonant-modes-2026-10-03",
+  "authoredAt": "2026-10-03",
+  "purpose": "Finite literal software contracts for the full-consonant default and strict half compatibility; not general Nepali linguistic accuracy.",
+  "expectationProvenance": "All fullExpected and halfExpected Unicode strings were hand-specified from the approved typing rules before running the comparison. No engine output generated or replaced these expectations. Existing external references are unchanged.",
+  "cases": [
+    {
+      "id": "bare-k",
+      "mode": "word",
+      "input": "k",
+      "fullExpected": "क",
+      "halfExpected": "क्"
+    },
+    {
+      "id": "explicit-a",
+      "mode": "word",
+      "input": "ka",
+      "fullExpected": "क",
+      "halfExpected": "क"
+    },
+    {
+      "id": "final-cluster",
+      "mode": "word",
+      "input": "kr",
+      "fullExpected": "क्र",
+      "halfExpected": "क्र्"
+    },
+    {
+      "id": "cluster-a",
+      "mode": "word",
+      "input": "kra",
+      "fullExpected": "क्र",
+      "halfExpected": "क्र"
+    },
+    {
+      "id": "cluster-i",
+      "mode": "word",
+      "input": "kri",
+      "fullExpected": "क्रि",
+      "halfExpected": "क्रि"
+    },
+    {
+      "id": "vowel-separated-consonants",
+      "mode": "word",
+      "input": "kar",
+      "fullExpected": "कर",
+      "halfExpected": "कर्"
+    },
+    {
+      "id": "short-i",
+      "mode": "word",
+      "input": "ki",
+      "fullExpected": "कि",
+      "halfExpected": "कि"
+    },
+    {
+      "id": "digraph-vowel",
+      "mode": "word",
+      "input": "khi",
+      "fullExpected": "खि",
+      "halfExpected": "खि"
+    },
+    {
+      "id": "digraph-final",
+      "mode": "word",
+      "input": "kh",
+      "fullExpected": "ख",
+      "halfExpected": "ख्"
+    },
+    {
+      "id": "bare-n",
+      "mode": "word",
+      "input": "n",
+      "fullExpected": "न",
+      "halfExpected": "न्"
+    },
+    {
+      "id": "reserved-shift",
+      "mode": "word",
+      "input": "T",
+      "fullExpected": "ट",
+      "halfExpected": "ट्"
+    },
+    {
+      "id": "ksh-token",
+      "mode": "word",
+      "input": "ksh",
+      "fullExpected": "क्ष",
+      "halfExpected": "क्ष्"
+    },
+    {
+      "id": "gy-token",
+      "mode": "word",
+      "input": "gy",
+      "fullExpected": "ज्ञ",
+      "halfExpected": "ज्ञ्"
+    },
+    {
+      "id": "three-consonants",
+      "mode": "word",
+      "input": "krt",
+      "fullExpected": "क्र्त",
+      "halfExpected": "क्र्त्"
+    },
+    {
+      "id": "word-literal-boundary",
+      "mode": "word",
+      "input": "k!",
+      "fullExpected": "क!",
+      "halfExpected": "क्!"
+    },
+    {
+      "id": "bare-bindu",
+      "mode": "word",
+      "input": "k^",
+      "fullExpected": "कं",
+      "halfExpected": "क्ं"
+    },
+    {
+      "id": "bare-chandrabindu",
+      "mode": "word",
+      "input": "k~",
+      "fullExpected": "कँ",
+      "halfExpected": "क्ँ"
+    },
+    {
+      "id": "a-bindu",
+      "mode": "word",
+      "input": "ka^",
+      "fullExpected": "कं",
+      "halfExpected": "कं"
+    },
+    {
+      "id": "visarga",
+      "mode": "word",
+      "input": "kaH",
+      "fullExpected": "कः",
+      "halfExpected": "कः"
+    },
+    {
+      "id": "backtick-half",
+      "mode": "word",
+      "input": "k`",
+      "fullExpected": "क्",
+      "halfExpected": "क्"
+    },
+    {
+      "id": "backtick-after-a",
+      "mode": "word",
+      "input": "ka`",
+      "fullExpected": "क्",
+      "halfExpected": "क्"
+    },
+    {
+      "id": "slash-half",
+      "mode": "word",
+      "input": "k/",
+      "fullExpected": "क्",
+      "halfExpected": "क्"
+    },
+    {
+      "id": "slash-after-a",
+      "mode": "word",
+      "input": "ka/",
+      "fullExpected": "क्",
+      "halfExpected": "क्"
+    },
+    {
+      "id": "backtick-joiner",
+      "mode": "word",
+      "input": "par`=yo",
+      "fullExpected": "पर्‍यो",
+      "halfExpected": "पर्‍यो"
+    },
+    {
+      "id": "slash-joiner",
+      "mode": "word",
+      "input": "par/=yo",
+      "fullExpected": "पर्‍यो",
+      "halfExpected": "पर्‍यो"
+    },
+    {
+      "id": "backtick-bindu",
+      "mode": "word",
+      "input": "k`^",
+      "fullExpected": "क्ं",
+      "halfExpected": "क्ं"
+    },
+    {
+      "id": "backtick-chandrabindu",
+      "mode": "word",
+      "input": "k`~",
+      "fullExpected": "क्ँ",
+      "halfExpected": "क्ँ"
+    },
+    {
+      "id": "slash-bindu",
+      "mode": "word",
+      "input": "k/^",
+      "fullExpected": "क्ं",
+      "halfExpected": "क्ं"
+    },
+    {
+      "id": "text-boundaries",
+      "mode": "text",
+      "input": "k kr kar k! kr, kar.\nk` k/ par`=yo 123|",
+      "fullExpected": "क क्र कर क! क्र, कर.\nक् क् पर्‍यो १२३।",
+      "halfExpected": "क् क्र् कर् क्! क्र्, कर्.\nक् क् पर्‍यो १२३।"
+    },
+    {
+      "id": "technical-spans",
+      "mode": "text",
+      "input": "k user@kr.com https://example.com/k?x=kr kr|",
+      "fullExpected": "क user@kr.com https://example.com/k?x=kr क्र।",
+      "halfExpected": "क् user@kr.com https://example.com/k?x=kr क्र्।"
+    },
+    {
+      "id": "digits-and-script",
+      "mode": "text",
+      "input": "k 42| kr १२3",
+      "fullExpected": "क ४२। क्र १२३",
+      "halfExpected": "क् ४२। क्र् १२३"
+    }
+  ]
+}

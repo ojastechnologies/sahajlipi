@@ -6,14 +6,17 @@ import { findProtectedSpans } from './text-policy.js';
 /**
  * Create an independent engine. Custom entries replace starter entries for
  * the same Roman spelling; each value is ordered from preferred to alternate.
- * @param {{entries?: Record<string, string[]>, preserveTechnicalText?: boolean, digits?: 'devanagari' | 'latin'}} [options]
+ * @param {{entries?: Record<string, string[]>, preserveTechnicalText?: boolean, digits?: 'devanagari' | 'latin', consonantMode?: 'full' | 'half'}} [options]
  */
-export function createEngine({ entries = {}, preserveTechnicalText = true, digits = 'devanagari' } = {}) {
+export function createEngine({ entries = {}, preserveTechnicalText = true, digits = 'devanagari', consonantMode = 'full' } = {}) {
   if (typeof preserveTechnicalText !== 'boolean') {
     throw new TypeError('preserveTechnicalText must be a boolean');
   }
   if (digits !== 'devanagari' && digits !== 'latin') {
     throw new TypeError('digits must be "devanagari" or "latin"');
+  }
+  if (consonantMode !== 'full' && consonantMode !== 'half') {
+    throw new TypeError('consonantMode must be "full" or "half"');
   }
 
   function convertDigits(text) {
@@ -57,20 +60,20 @@ export function createEngine({ entries = {}, preserveTechnicalText = true, digit
   function convertWord(roman) {
     if (!roman) return { text: '', candidates: [], ambiguous: false };
     let readings = lookup(roman);
-    if (!readings && /[\^~\/=]/.test(roman)) {
+    if (!readings && /[\^~\/`=]/.test(roman)) {
       // Process explicit marks after each segment's preferred reading. A
       // full-spelling dictionary entry can still define valid alternatives.
       let output = '';
       let explicitHalant = false;
-      for (const part of roman.split(/([\^~\/=])/)) {
+      for (const part of roman.split(/([\^~\/`=])/)) {
         if (!part) continue;
-        if (part === '/') {
+        if (part === '/' || part === '`') {
           if (output.endsWith('्')) explicitHalant = true;
           else if (/[क-हक़-य़]$/u.test(output)) {
             output += '्';
             explicitHalant = true;
           } else {
-            output += '/';
+            output += part;
             explicitHalant = false;
           }
         } else if (part === '=') {
@@ -78,18 +81,18 @@ export function createEngine({ entries = {}, preserveTechnicalText = true, digit
           explicitHalant = false;
         } else {
           output += part === '^' ? 'ं' : part === '~' ? 'ँ'
-            : (lookup(part) ?? [phoneticWord(part)])[0];
+            : (lookup(part) ?? [phoneticWord(part, consonantMode)])[0];
           explicitHalant = false;
         }
       }
       readings = [output];
     }
-    const candidates = [...new Set((readings ?? [phoneticWord(roman)]).map(convertDigits))];
+    const candidates = [...new Set((readings ?? [phoneticWord(roman, consonantMode)]).map(convertDigits))];
     return { text: candidates[0], candidates, ambiguous: candidates.length > 1 };
   }
 
   function convertSegment(text) {
-    const converted = text.replace(/[A-Za-z\^~\/=]+/g, (word) => convertWord(word).text);
+    const converted = text.replace(/[A-Za-z\^~\/`=]+/g, (word) => convertWord(word).text);
     return convertDigits(converted).replace(/\|/g, '।');
   }
 

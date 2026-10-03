@@ -33,7 +33,7 @@ export function normalizeRoman(roman) {
   });
 }
 
-export function phoneticWord(roman) {
+export function phoneticWord(roman, consonantMode = 'full') {
   const input = normalizeRoman(roman);
   let output = '';
   let previousIsConsonant = false;
@@ -66,10 +66,13 @@ export function phoneticWord(roman) {
       continue;
     }
 
+    // Only a following consonant needs this implicit halant in full mode.
+    // Keep the strict mode's historical fallback across literal characters.
+    if (previousIsConsonant && consonantMode === 'full') output = output.slice(0, -1);
     output += roman[offset];
     previousIsConsonant = false;
     offset += 1;
   }
 
-  return output;
+  return previousIsConsonant && consonantMode === 'full' ? output.slice(0, -1) : output;
 }

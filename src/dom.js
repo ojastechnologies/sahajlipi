@@ -174,7 +174,7 @@ export function attachNepaliInput(input, {
       }
       return output + convertTyped(roman.slice(cursor, end));
     }
-    const match = /[a-z\^~\/=]+$/i.exec(roman);
+    const match = /[a-z\^~\/=`]+$/i.exec(roman);
     if (!wordConversion || !match || spans.some((span) => match.index < span.end && roman.length > span.start)) {
       return { text: renderUntil(roman.length), active: null, choices: validChoices };
     }
@@ -237,8 +237,8 @@ export function attachNepaliInput(input, {
     // Appending a sound edits the active word; a candidate choice remains committed
     // when punctuation or whitespace follows it.
     const choices = context.choices.filter((choice) =>
-      !(choice.end === prefix.length && /^[a-z\^~\/=]/i.test(text)));
-    if (active && token && context.start === token.start && !/^[a-z\^~\/=]/i.test(text)) {
+      !(choice.end === prefix.length && /^[a-z\^~\/=`]/i.test(text)));
+    if (active && token && context.start === token.start && !/^[a-z\^~\/=`]/i.test(text)) {
       const rawStart = active.rawStart;
       const rawEnd = rawStart + active.roman.length;
       if (!choices.some((choice) => choice.start === rawStart && choice.end === rawEnd)) {
@@ -246,7 +246,7 @@ export function attachNepaliInput(input, {
           text: input.value.slice(active.start, active.end), dismissed: active.dismissed });
       }
     }
-    if (commit || text.length > 1 && !/^[a-z\^~\/=]+$/i.test(text)) {
+    if (commit || text.length > 1 && !/^[a-z\^~\/=`]+$/i.test(text)) {
       const result = renderToken(raw, choices, false);
       const caret = context.suffix && result.text.endsWith(context.suffix)
         ? context.start + result.text.length - context.suffix.length

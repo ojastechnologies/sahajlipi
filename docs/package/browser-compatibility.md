@@ -55,7 +55,7 @@ The suite distinguishes normal keyboard actions from injected event contracts:
 
 | Coverage | Evidence and boundary |
 | --- | --- |
-| Direct typing and word boundaries | Browser keyboard actions assert active half forms, the ra-ya joiner, Shift sounds, bindu/chandrabindu, displayed text, and caret behavior. |
+| Direct typing and word boundaries | Browser keyboard actions assert full consonant defaults, automatic internal conjuncts, explicit backtick half forms, the ra-ya joiner, Shift sounds, bindu/chandrabindu, displayed text, and caret behavior. |
 | Digits and configuration | Keyboard actions check Devanagari defaults, unchanged decimal periods, numeric address-cue restoration, editing, Latin engine configuration, English mode and excluded fields; paste contracts use injected events. |
 | Early address cues | Incremental keyboard input checks literal rendering after email, HTTP(S), `www.`, and domain cues. |
 | Selection, Backspace, undo, and redo | Keyboard and selection actions check the adapter's edit state, including crossing an address cue. |
@@ -89,6 +89,23 @@ A selected spelling survives ordinary punctuation and whitespace. A domain cue m
 The [desktop-005 record](../../browser/reports/desktop-005.json) captures **60/60 passing checks**: 20 scenarios in each of Chromium, Firefox and WebKit. The added native-word scenario checks the four reviewed spellings, Roman-source Backspace editing, undo/redo and English mode. Installed-package JavaScript and TypeScript consumers passed for the `0.1.0-alpha.1` candidate; registry publication requires separate verification.
 
 The record pins tested runtime, integration fixtures, package metadata and installed-tarball identity. The browser and adapter scope limits in this guide still apply. Earlier records retain their original tested sources and totals.
+
+## Full-consonant source candidate follow-up — 2026-10-03
+
+The [desktop-006 record](../../browser/reports/desktop-006.json) captures **66/66 passing checks** for the **unpublished `0.1.0-alpha.2` source candidate**: 22 scenarios in each of Chromium, Firefox and WebKit. Each engine runs 19 typing scenarios and three installed-package integration scenarios. The final `npm run test:browser` run began at **2026-10-03T09:40:42.747Z** on macOS arm64 with Node.js **22.22.3**, Playwright **1.63.0**, headless browsers, two workers, and no retries. It recorded zero failures, skips, flaky outcomes, or test/report errors.
+
+| Project | Engine version | Passed | Failed | Skipped |
+| --- | --- | --- | --- | --- |
+| `chromium` | `153.0.8010.12` | 22/22 | 0 | 0 |
+| `firefox` | `155.0` | 22/22 | 0 | 0 |
+| `webkit` | `26.6` | 22/22 | 0 | 0 |
+| **Total** | 22 scenarios × 3 projects | **66/66** | **0** | **0** |
+
+Keyboard scenarios check `k` → क, `kr` → क्र, `kri` → क्रि, and Backspace through the retained Roman spelling. The backtick scenario checks explicit half forms, a following independent vowel, the explicit joiner, word boundaries, and undo/redo. The demo setting scenario checks full/half conversion across marked fields, preservation of existing text and selection, and continuation in English mode. Its paste portion uses an injected clipboard event. The existing paste, composition, and native-input scenarios also use injected events; they do not exercise an operating system clipboard or an installed IME. See the [consonant option](api.md#consonant-mode) and [alpha.1 migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior).
+
+The example builder packed and installed a local alpha.2 tarball, compiled the React example, and checked that both example bundles resolve installed public package exports. All nine installed vanilla/React browser checks passed. Separate `npm run verify:package` JavaScript and strict TypeScript checks passed for alpha.2. These checks establish local package integration; alpha.2 remains unpublished.
+
+The record identifies the checkout based on `987e31f` with SHA-256 hashes of runtime modules, declarations, demo, tests, configuration, and consumer source files. Its generated browser report and installed-example manifest have separate hashes. Later documentation edits are outside that source-hash scope and can change a later tarball; the recorded tarball is not asserted to match a later checkout. Desktop-001 through desktop-005 retain their original sources, outcomes, and counts. The desktop engine and integration limits below still apply; this run makes no mobile, OS clipboard, installed Safari, accessibility, or general linguistic-accuracy claim.
 
 ## Desktop engine matrix
 
