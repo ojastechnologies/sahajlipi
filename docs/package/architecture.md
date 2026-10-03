@@ -2,7 +2,7 @@
 
 SahajLipi is currently a small, dependency-free **Nepali** transliteration prototype. A pure conversion engine chooses a default Devanagari rendering for Roman input; separate browser adapters apply that engine to configured text fields as the user types. The project name leaves room for other Devanagari languages, but no other language implementation exists today.
 
-This page describes the unpublished `0.1.0-alpha.2` source candidate. The published alpha.1 artifact retains its earlier half-consonant fallback. For supported keys and migration examples, see the [typing reference](typing-reference.md) and [integration recipe](integration-recipes.md#keep-alpha1-consonant-behavior). For evaluation methods and dated results, see [benchmarks](benchmarks.md).
+This page describes the published `0.1.0-alpha.2` package and its source. The earlier alpha.1 artifact retains its half-consonant fallback. For supported keys and migration examples, see the [typing reference](typing-reference.md) and [integration recipe](integration-recipes.md#keep-alpha1-consonant-behavior). For evaluation methods and dated results, see [benchmarks](benchmarks.md).
 
 ## Components and boundaries
 
@@ -32,7 +32,7 @@ flowchart LR
 | [`src/dom.js`](../../src/dom.js) | Optional text-field integration: scoped discovery and lifecycle, live replacement, caret and active-word state, suggestions, paste, composition, and undo. |
 | [`src/index.d.ts`](../../src/index.d.ts), [`src/dom.d.ts`](../../src/dom.d.ts) | TypeScript declarations for the core and browser adapters. |
 
-The core imports the lexicon, loanword-suffix, phonetic, and text-policy modules. It does not access the DOM or make network requests. The browser module uses the default converters unless custom functions are passed, so an independent engine can drive the same input behavior. The package is an ES module with `.` and `./dom` export paths and no runtime dependencies. The experimental alpha **`0.1.0-alpha.1`** was published to npm on 2026-10-03; its registry artifact matches the reviewed release source. The `0.1.0-alpha.2` source candidate is unpublished. See the [release record](../release.md) for verification and distribution status. The core and Node tests support Node.js 18 or newer. The separate browser test toolchain uses a pinned Playwright development dependency and requires Node.js 20 or newer.
+The core imports the lexicon, loanword-suffix, phonetic, and text-policy modules. It does not access the DOM or make network requests. The browser module uses the default converters unless custom functions are passed, so an independent engine can drive the same input behavior. The package is an ES module with `.` and `./dom` export paths and no runtime dependencies. The experimental alpha **`0.1.0-alpha.2`** was published to npm on 2026-10-03; its registry artifact matches the reviewed release source. See the [release record](../release.md) for verification and distribution status. The core and Node tests support Node.js 18 or newer. The separate browser test toolchain uses a pinned Playwright development dependency and requires Node.js 20 or newer.
 
 ## Core conversion flow
 
@@ -100,4 +100,4 @@ Current limits to account for in integrations and evaluations:
 - Candidate order is the supplied lexicon order. There is no statistical ranking, sentence context, or automatic correction.
 - The DOM adapter supports textareas and text/search inputs. Selected desktop-engine flows have a [recorded compatibility run](browser-compatibility.md#recorded-run--2026-09-27). Mobile composition has simulated tests, while real device keyboards, installed IMEs, OS clipboard behavior, and assistive technology remain unverified. `contenteditable` and other input types remain unsupported.
 - The seed [benchmark](benchmarks.md) checks named behavior contracts and separately reports exploratory cases. There is no independently reviewed real-typing corpus or population-wide accuracy estimate yet.
-- Only Nepali mappings are implemented. The published `0.1.0-alpha.1` remains experimental; registry distribution does not complete independent linguistic, physical mobile, or framework-controlled field review.
+- Only Nepali mappings are implemented. The published `0.1.0-alpha.2` remains experimental; registry distribution does not complete independent linguistic, physical mobile, or framework-controlled field review.

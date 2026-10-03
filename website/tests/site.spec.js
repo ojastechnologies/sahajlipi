@@ -13,11 +13,11 @@ test('homepage remains readable without JavaScript', async ({ browser }) => {
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Nepali typing for your web app.');
   await expect(page.locator('#nepali-preview')).toHaveText('पानी');
   const release = page.locator('.sahaj-release-note');
-  await expect(release).toContainText('0.1.0-alpha.1 is available on npm.');
+  await expect(release).toContainText('0.1.0-alpha.2 is available on npm.');
   await expect(release).toContainText('Experimental Nepali developer alpha.');
-  await expect(release.getByRole('link', { name: 'npm', exact: true })).toHaveAttribute('href', 'https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.1');
+  await expect(release.getByRole('link', { name: 'npm', exact: true })).toHaveAttribute('href', 'https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.2');
   await expect(release.getByRole('link', { name: 'release record', exact: true })).toHaveAttribute('href', '/sahajlipi/docs/release.html');
-  await expect(page.getByLabel('Install the verified Nepali developer alpha')).toHaveText('npm install --save-exact sahajlipi@0.1.0-alpha.1');
+  await expect(page.getByLabel('Install the verified Nepali developer alpha')).toHaveText('npm install --save-exact sahajlipi@0.1.0-alpha.2');
   await page.getByRole('link', { name: 'Get started', exact: true }).click();
   await expect(page).toHaveURL(/\/docs\/package\/getting-started\.html$/);
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
@@ -51,9 +51,9 @@ test('home preview runs the core converter and links into developer docs', async
   await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(1);
   const structured = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent());
   const source = structured['@graph'].find(node => node['@type'] === 'SoftwareSourceCode');
-  expect(source.version).toBe('0.1.0-alpha.1');
+  expect(source.version).toBe('0.1.0-alpha.2');
   expect(source.datePublished).toBe('2026-10-03');
-  expect(source.sameAs).toBe('https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.1');
+  expect(source.sameAs).toBe('https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.2');
   expect(errors).toEqual([]);
 });
 

@@ -17,17 +17,17 @@ SahajLipi is an open-source JavaScript library with TypeScript declarations for 
 
 ## Use the package
 
-The experimental developer alpha **`0.1.0-alpha.1`** is [published on npm](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.1). Start with [Getting started](docs/package/getting-started.md) for installation and imports from `sahajlipi` / `sahajlipi/dom`. Runnable [integration examples](examples/README.md) cover vanilla JavaScript, TypeScript, and a React uncontrolled textarea; [integration recipes](docs/package/integration-recipes.md) explain candidates and lifecycle handling.
+The experimental developer alpha **`0.1.0-alpha.2`** is [published on npm](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.2). Start with [Getting started](docs/package/getting-started.md) for installation and imports from `sahajlipi` / `sahajlipi/dom`. Runnable [integration examples](examples/README.md) cover vanilla JavaScript, TypeScript, and a React uncontrolled textarea; [integration recipes](docs/package/integration-recipes.md) explain candidates and lifecycle handling.
 
-The current source candidate is **`0.1.0-alpha.2`, unpublished**. It uses full bare and final fallback consonants by default, adds backtick as an explicit half marker, and offers `consonantMode: 'half'` for alpha.1 fallback compatibility. The npm alpha.1 artifact is unchanged. See the [source behavior](#source-candidate-consonant-behavior) and [migration recipe](docs/package/integration-recipes.md#keep-alpha1-consonant-behavior).
+Alpha.2 uses full bare and final fallback consonants by default, adds backtick as an explicit half marker, and offers `consonantMode: 'half'` for alpha.1 fallback compatibility. The npm alpha.1 artifact is unchanged. See the [alpha.2 behavior](#alpha2-consonant-behavior) and [migration recipe](docs/package/integration-recipes.md#keep-alpha1-consonant-behavior).
 
 Install the exact alpha version:
 
 ```sh
-npm install --save-exact sahajlipi@0.1.0-alpha.1
+npm install --save-exact sahajlipi@0.1.0-alpha.2
 ```
 
-The [release record](docs/release.md) records registry integrity, consumer checks, and the experimental scope. Npm assigned both `alpha` and `latest` to this first release; pin the exact version above. The [local tarball instructions](docs/package/getting-started.md) remain available for development.
+The [release record](docs/release.md) records registry integrity, consumer checks, and the experimental scope. The verified npm `alpha` tag points to `0.1.0-alpha.2`; `latest` still points to `0.1.0-alpha.1` from the first publication. Both are experimental releases; pin the exact version above. The [local tarball instructions](docs/package/getting-started.md#local-development-installation) remain available for development.
 
 The core engine converts words and text without a browser. The browser examples assume an ESM bundler or an import map that resolves the installed package. For live typing, mark the fields that should accept Roman Nepali, then initialize the browser adapter once:
 
@@ -81,11 +81,13 @@ ASCII number keys use Devanagari digits by default (`123` → `१२३`, `3.14
 
 Recognizable links, ASCII domain-shaped hosts and ordinary ASCII email addresses stay literal by default during text conversion, live typing, and paste. Preservation starts at early cues such as `https:`, `www.`, `name@`, and `camera.c`, before an address is complete. Plain `camera` still converts. The policy preserves spelling and case without checking whether a domain exists; it does not detect arbitrary English or code. For an English fragment, disable conversion while typing or pasting it, then enable it again. Custom engines can opt out with `preserveTechnicalText: false`. See [mixed-text behavior and controls](docs/package/api.md#links-domains-and-email-addresses).
 
-Start with the [package documentation](docs/package/README.md) for the [API](docs/package/api.md), [typing rules](docs/package/typing-reference.md), [architecture](docs/package/architecture.md), and [benchmark protocol](docs/package/benchmarks.md). The snippets above use public package imports from the verified `0.1.0-alpha.1` release; see [Getting started](docs/package/getting-started.md).
+Start with the [package documentation](docs/package/README.md) for the [API](docs/package/api.md), [typing rules](docs/package/typing-reference.md), [architecture](docs/package/architecture.md), and [benchmark protocol](docs/package/benchmarks.md). The snippets above use public package imports from the verified `0.1.0-alpha.2` release; see [Getting started](docs/package/getting-started.md).
 
-### Source candidate consonant behavior
+<span id="source-candidate-consonant-behavior"></span>
 
-The unpublished alpha.2 source candidate displays full bare and final consonants immediately, while forming internal conjuncts automatically:
+### Alpha.2 consonant behavior
+
+Alpha.2 displays full bare and final consonants immediately, while forming internal conjuncts automatically:
 
 | Roman input | Default output |
 | --- | --- |
@@ -99,7 +101,7 @@ The unpublished alpha.2 source candidate displays full bare and final consonants
 
 Explicit half forms persist across spaces and punctuation. Use `ki` → कि for an attached vowel sign; a vowel after either half marker is independent. Both `` `= `` and `/=` support the existing explicit joiner behavior. Exact built-in and custom lexicon readings are not rewritten by the new fallback default.
 
-With this source candidate, `createEngine({ consonantMode: 'half' })` restores alpha.1 phonetic fallback endings such as `k` → क् and `kr` → क्र्. Pass both engine converters to browser adapters as shown in the [migration recipe](docs/package/integration-recipes.md#keep-alpha1-consonant-behavior). Install a [locally packed source candidate](docs/package/getting-started.md#local-development-installation) to try these changes; the published npm alpha.1 keeps its existing behavior.
+In alpha.2, `createEngine({ consonantMode: 'half' })` restores alpha.1 phonetic fallback endings such as `k` → क् and `kr` → क्र्. Pass both engine converters to browser adapters as shown in the [migration recipe](docs/package/integration-recipes.md#keep-alpha1-consonant-behavior). Install the exact npm version above to use these changes; the published npm alpha.1 keeps its existing behavior.
 
 Candidate verification on 2026-10-03 passed **317 Node tests**, **160 seed contracts**, **66 desktop browser scenarios**, and **11 website scenarios**, plus installed JavaScript and strict TypeScript consumers. The [dated consonant comparison](docs/package/consonant-defaults-2026-10-03.md) records 31 literal cases for each mode and **144/144** exact archived results preserved by strict mode. These counts describe software contracts and the listed integration flows; they are not a general Nepali accuracy score. The earlier evaluation tables below remain dated records.
 

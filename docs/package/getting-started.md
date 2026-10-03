@@ -2,17 +2,17 @@
 
 SahajLipi converts Roman Nepali to Unicode Nepali. Use the core functions for strings, or the optional browser adapter for live typing in text inputs and textareas. Start here, then use the [API reference](api.md) for every option and the [integration recipes](integration-recipes.md) for candidates and component cleanup.
 
-The published npm version is **`0.1.0-alpha.1`**. The current source candidate is **`0.1.0-alpha.2`, unpublished**; it changes the phonetic fallback to full bare and final consonants and adds backtick as an explicit half marker. The setup examples below work with either version, while `consonantMode` and backtick require the source candidate. See [source behavior](#source-candidate-consonant-behavior) and the [migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior) before changing versions.
+The current published npm version is **`0.1.0-alpha.2`**. It changes the phonetic fallback to full bare and final consonants and adds backtick as an explicit half marker. The examples below target alpha.2; `consonantMode` and backtick are unavailable in alpha.1. See [alpha.2 behavior](#alpha2-consonant-behavior) and the [migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior) before changing versions.
 
 ## 1. Install the published alpha
 
-**[`sahajlipi@0.1.0-alpha.1`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.1)** was published on 2026-10-03 as an experimental Nepali developer alpha. Its registry tarball and fresh JavaScript and TypeScript consumers have been verified. Pin the exact version:
+**[`sahajlipi@0.1.0-alpha.2`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.2)** was published on 2026-10-03 as an experimental Nepali developer alpha. Its registry tarball matches the archived candidate and reviewed release source. Pin the exact version:
 
 ```sh
-npm install --save-exact sahajlipi@0.1.0-alpha.1
+npm install --save-exact sahajlipi@0.1.0-alpha.2
 ```
 
-`npm install sahajlipi@alpha` follows the alpha tag and may select a later prerelease. Both `alpha` and `latest` currently point to `0.1.0-alpha.1`: npm automatically assigned `latest` on this first publication despite `--tag alpha`, and a removal attempt was rejected. This remains an experimental release. Use the exact version when reproducible typing behavior matters; the [release record](../release.md) documents the registry result and [npm's reported tag behavior](https://github.com/npm/cli/issues/8490).
+`npm install sahajlipi@alpha` follows the alpha tag and may select a later prerelease. The verified `alpha` tag currently points to `0.1.0-alpha.2`; `latest` still points to `0.1.0-alpha.1`. Npm assigned `latest` on the first publication despite `--tag alpha`, and a removal attempt was rejected. Both versions remain experimental. Use the exact version when reproducible typing behavior matters; the [release record](../release.md) documents the registry result, artifact identity, and consumer checks, as well as [npm's reported tag behavior](https://github.com/npm/cli/issues/8490).
 
 ### Local development installation
 
@@ -24,7 +24,7 @@ cd sahajlipi
 npm pack --ignore-scripts
 ```
 
-The `0.1.0-alpha.2` source candidate produces `sahajlipi-0.1.0-alpha.2.tgz`; it is not an npm release. Make sure your checkout contains that candidate before packing. In your application directory, install the packed file using its absolute path:
+A checkout at `0.1.0-alpha.2` produces `sahajlipi-0.1.0-alpha.2.tgz`. Check your checkout's version before packing; a locally packed file reflects that checkout and is separate from the verified registry tarball. In your application directory, install the packed file using its absolute path:
 
 ```sh
 npm install /absolute/path/to/sahajlipi/sahajlipi-0.1.0-alpha.2.tgz
@@ -38,11 +38,13 @@ npm install /absolute/path/to/sahajlipi
 
 A folder installation can link to the checkout; checkout changes can then affect your application. A tarball captures the files from the time it was packed. Repack and reinstall it after updating SahajLipi. Alpha users should review the [typing reference](typing-reference.md), [evaluation evidence](nepali-spelling-2026-10-01.md) and [compatibility scope](../release.md#compatibility-scope) before adopting it.
 
-### Source candidate consonant behavior
+<span id="source-candidate-consonant-behavior"></span>
 
-The unpublished alpha.2 candidate uses full bare and final consonants immediately: `k` and `ka` → क, `kr` and `kra` → क्र, `kri` → क्रि, `kar` → कर, and `shakti` → शक्ति. Type backtick or `/` for a half form: `` k` `` and `k/` → क्, including after a space or punctuation commits the word. A following vowel is independent: `` k`i `` and `k/i` → क्इ; use `ki` → कि for the attached sign. Both `` `= `` and `/=` insert a joiner after the explicit virama.
+### Alpha.2 consonant behavior
 
-With this candidate, `createEngine({ consonantMode: 'half' })` preserves the alpha.1 phonetic fallback. Exact built-in/custom readings retain their supplied Unicode in either mode. Pass both engine functions to browser fields as shown in the [migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior). The npm alpha.1 artifact is unchanged and does not expose this option or the backtick shortcut.
+Alpha.2 uses full bare and final consonants immediately: `k` and `ka` → क, `kr` and `kra` → क्र, `kri` → क्रि, `kar` → कर, and `shakti` → शक्ति. Type backtick or `/` for a half form: `` k` `` and `k/` → क्, including after a space or punctuation commits the word. A following vowel is independent: `` k`i `` and `k/i` → क्इ; use `ki` → कि for the attached sign. Both `` `= `` and `/=` insert a joiner after the explicit virama.
+
+In alpha.2, `createEngine({ consonantMode: 'half' })` preserves the alpha.1 phonetic fallback. Exact built-in/custom readings retain their supplied Unicode in either mode. Pass both engine functions to browser fields as shown in the [migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior). The npm alpha.1 artifact is unchanged and does not expose this option or the backtick shortcut.
 
 ## 2. Convert strings
 

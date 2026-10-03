@@ -2,15 +2,15 @@
 
 Browse the [package website](https://ojastechnologies.github.io/sahajlipi/) for the library overview and searchable documentation, or read the Markdown guides here on GitHub. Choose the guide for the part of SahajLipi you are using. The **package** provides conversion and optional browser input adapters. The **demo** is a static playground built with that package.
 
-The experimental Nepali developer alpha **[`sahajlipi@0.1.0-alpha.1`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.1)** was published on 2026-10-03. Pin that exact version for reproducible behavior. Both npm `alpha` and `latest` currently point to it; `latest` does not indicate a stable release. The [release record](release.md) documents registry verification and remaining limitations.
+The experimental Nepali developer alpha **[`sahajlipi@0.1.0-alpha.2`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.2)** was published on 2026-10-03. Pin that exact version for reproducible behavior. The verified npm `alpha` tag points to alpha.2; `latest` remains on alpha.1 from the first publication. Both versions are experimental. The [release record](release.md) documents registry verification and remaining limitations.
 
-The current source guides describe **`0.1.0-alpha.2`, an unpublished candidate** with full bare and final fallback consonants, automatic internal conjuncts, and explicit backtick or `/` half forms. Published alpha.1 retains its earlier behavior. The [migration recipe](package/integration-recipes.md#keep-alpha1-consonant-behavior) preserves alpha.1 fallback endings with `createEngine({ consonantMode: 'half' })` when adopting the candidate.
+The current guides describe **`0.1.0-alpha.2`** with full bare and final fallback consonants, automatic internal conjuncts, and explicit backtick or `/` half forms. Published alpha.1 retains its earlier behavior. The [migration recipe](package/integration-recipes.md#keep-alpha1-consonant-behavior) preserves alpha.1 fallback endings with `createEngine({ consonantMode: 'half' })` when adopting alpha.2.
 
 ## Reusable package
 
 | Read | For |
 | --- | --- |
-| [Getting started](package/getting-started.md) | Install the published alpha or local source candidate, use public imports, and choose an integration scope. |
+| [Getting started](package/getting-started.md) | Install the published alpha or a local checkout, use public imports, and choose an integration scope. |
 | [Integration recipes](package/integration-recipes.md) | Working candidates, TypeScript, React uncontrolled fields, and cleanup. |
 | [Package overview](package/README.md) | Entry points, scope, and current distribution status. |
 | [API reference](package/api.md) | Core engine and browser input APIs, one-call setup, and TypeScript declarations. |
@@ -22,7 +22,7 @@ The current source guides describe **`0.1.0-alpha.2`, an unpublished candidate**
 
 | Read | For |
 | --- | --- |
-| [Full-consonant candidate contracts](package/consonant-defaults-2026-10-03.md) | Full default endings, strict half compatibility, declared fixture revisions, and separate candidate evidence. |
+| [Full-consonant candidate contracts](package/consonant-defaults-2026-10-03.md) | Full default endings, strict half compatibility, declared fixture revisions, and dated candidate evidence. |
 | [Developer consumer browser record](../browser/reports/desktop-003.json) | Inspect the later 51-check run, installed-package identity, and uncontrolled React lifecycle scope. |
 | [Digit desktop browser record](../browser/reports/desktop-002.json) | Inspect the later 42-check digit/configuration run, source identities, named flows, and limits. |
 | [Desktop browser run record](../browser/reports/desktop-001.json) | Inspect the dated desktop-engine results, test names, source hashes, environment, and scope limits. |
@@ -59,7 +59,7 @@ The demo is one consumer of the package. Its Copy and Clear buttons, character c
 | Read | For |
 | --- | --- |
 | [Release policy](release.md) | Compatibility, versioning, migration, and the alpha release checklist. |
-| [Changelog](../CHANGELOG.md) | Unpublished candidate changes and published alpha contents. |
+| [Changelog](../CHANGELOG.md) | Published alpha contents and migration notes. |
 | [Development guide](development.md) | Repository workflow, tests, CI, and release readiness. |
 | [Status and roadmap](status-and-roadmap.md) | Current capabilities, limits, and priorities. |
 | [Website and SEO](website-and-seo.md) | Markdown site builds, metadata, sitemap, publishing, and discoverability limits. |

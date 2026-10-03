@@ -33,7 +33,7 @@
   },
   "docs/package/consonant-defaults-2026-10-03.md": {
     "title": "Full Consonant Defaults | SahajLipi Alpha Compatibility Checks",
-    "description": "Review the unreleased SahajLipi full consonant default, explicit backtick halant, automatic conjuncts, strict half compatibility, and finite benchmark evidence."
+    "description": "Review SahajLipi alpha.2 full consonant defaults, explicit backtick halants, automatic conjuncts, strict half compatibility, and dated finite benchmark evidence."
   },
   "docs/package/browser-compatibility.md": {
     "title": "SahajLipi Browser Compatibility | Tests and Limits",
