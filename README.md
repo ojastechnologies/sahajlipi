@@ -27,7 +27,7 @@ Install the exact alpha version:
 npm install --save-exact sahajlipi@0.1.0-alpha.2
 ```
 
-The [release record](docs/release.md) records registry integrity, consumer checks, and the experimental scope. The verified npm `alpha` tag points to `0.1.0-alpha.2`; `latest` still points to `0.1.0-alpha.1` from the first publication. Both are experimental releases; pin the exact version above. The [local tarball instructions](docs/package/getting-started.md#local-development-installation) remain available for development.
+The [release record](docs/release.md) records registry integrity, consumer checks, and the experimental scope. The verified npm `alpha` and `latest` tags both point to `0.1.0-alpha.2`; `npm install sahajlipi` now selects alpha.2. Both published versions are experimental; pin the exact version above. The [local tarball instructions](docs/package/getting-started.md#local-development-installation) remain available for development.
 
 The core engine converts words and text without a browser. The browser examples assume an ESM bundler or an import map that resolves the installed package. For live typing, mark the fields that should accept Roman Nepali, then initialize the browser adapter once:
 

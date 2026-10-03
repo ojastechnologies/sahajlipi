@@ -99,7 +99,7 @@ Pull requests to `main` run the [Node CI workflow](../.github/workflows/ci.yml) 
 
 ## Release status
 
-The repository and demo are public. `sahajlipi@0.1.0-alpha.2` was published to the public npm registry on 2026-10-03 and its artifact was verified against the archived candidate, release source, and checksum. The verified `alpha` tag points to alpha.2; `latest` remains on alpha.1. Both are experimental Nepali developer alphas; publication does not establish stable APIs or linguistic quality. Install with `npm install --save-exact sahajlipi@0.1.0-alpha.2`.
+The repository and demo are public. `sahajlipi@0.1.0-alpha.2` was published to the public npm registry on 2026-10-03 and its artifact was verified against the archived candidate, release source, and checksum. The verified `alpha` and `latest` tags both point to `0.1.0-alpha.2`; `npm install sahajlipi` now selects alpha.2. Both published versions are experimental Nepali developer alphas; publication does not establish stable APIs or linguistic quality. Install with `npm install --save-exact sahajlipi@0.1.0-alpha.2`.
 
 Alpha.2 phonetic fallback defaults to full bare and final consonants and supports explicit backtick or `/` half forms. Preserve alpha.1 fallback endings with `createEngine({ consonantMode: 'half' })`, passing both converters to DOM fields as shown in the [migration recipe](package/integration-recipes.md#keep-alpha1-consonant-behavior). Published alpha.1 retains its earlier behavior and has no new option or backtick shortcut; its dated checks remain separate from alpha.2 candidate and registry verification.
 

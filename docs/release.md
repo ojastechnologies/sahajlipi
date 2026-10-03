@@ -14,7 +14,7 @@ The exact reviewed tarball was published from merged source [`48a0321bed417b1e99
 b1c3bb6dc673ad55a574ef8d95ce19daddc9c5a38f403f0c2defc449adc35fd5
 ```
 
-Install with `npm install --save-exact sahajlipi@0.1.0-alpha.2`. The verified registry tags are **`alpha` → `0.1.0-alpha.2`** and **`latest` → `0.1.0-alpha.1`**. Unversioned installation still selects alpha.1. Both versions are experimental; no stable release has been promoted. The first-publication tag exception is recorded in the alpha.1 history below.
+Install with `npm install --save-exact sahajlipi@0.1.0-alpha.2`. After the maintainer-authorized tag update on 2026-10-03, the verified registry tags are **`alpha` → `0.1.0-alpha.2`** and **`latest` → `0.1.0-alpha.2`**. Unversioned `npm install sahajlipi` now selects alpha.2. The release remains experimental; assigning `latest` establishes the default installation, without a stable-release promise. The first-publication tag exception is recorded in the alpha.1 history below.
 
 Fresh checks on the exact merged source passed **317 Node tests**, **160 seed contracts**, and **66 desktop browser checks**. The two exploratory seed proposals remain excluded from the regression gate. All merged-commit CI jobs passed: Node 18/20/22/24 engine checks, Node 20/22/24 package consumers, Chromium/Firefox/WebKit browser jobs, and the website's eleven checks and deployment. Actual tarball consumers passed public JavaScript imports, strict TypeScript configurations, and installed vanilla/React examples. The retained artifact checksum matched the tarball used by those browser examples.
 
@@ -28,6 +28,10 @@ The registry-installed vanilla and React examples compiled and bundled, then pas
 
 The [behavior and migration notes](#alpha2-behavior-and-migration) describe the full-consonant default, explicit backtick shortcut, and strict half option. Independent language evaluation, physical mobile/IME checks, controlled React fields, SSR/hydration, and assistive technology remain unverified.
 
+### Latest tag update — 2026-10-03
+
+Alpha.2 initially advanced only `alpha`, leaving `latest` on alpha.1. The maintainer then authorized moving `latest` to alpha.2 so default installation selects the current experimental release. Both tags and the unchanged tarball checksum, size, SHA-1, SHA-512, and original publication timestamp were checked. A fresh consumer using unversioned `npm install sahajlipi` resolved to alpha.2 with the expected official tarball URL and SHA-512 integrity, and passed the existing public JavaScript fixture. The prerelease's [dated tag-update record](https://github.com/ojastechnologies/sahajlipi/releases/download/v0.1.0-alpha.2/tag-update-2026-10-03.json) records this later registry state separately from the original publication verification. The source tag, package version, artifact, and earlier dated records are unchanged.
+
 ## Previous alpha release — alpha.1
 
 **Published and verified on 2026-10-03:** [`sahajlipi@0.1.0-alpha.1`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.1), maintained on npm by `ojastechadmin`. The maintainer authorized preparation and alpha publication on 2026-10-01. Publication completed at `2026-10-03T06:29:13.469Z` after npm's interactive two-factor authentication.
@@ -38,7 +42,7 @@ The package was published from reviewed source [`314a1b4cf312bcb727dcb7cb2a5f86a
 466dc9baa2b117b34570a024747aa2cfc8d5c208c7df7fd2aaa8fe6ce4763ad3
 ```
 
-Install the earlier release with `npm install --save-exact sahajlipi@0.1.0-alpha.1`. At its publication, the registry's `alpha` tag resolved to that version. Npm also assigned `latest` on this first publication, even though the manifest and publishing command explicitly requested `alpha`. An authenticated attempt to remove `latest` returned HTTP 400; the verified tags at that time were therefore **both `alpha` and `latest`**. The npm CLI project [records the same first-publication behavior](https://github.com/npm/cli/issues/8490). Alpha.2 subsequently advanced only `alpha`; `latest` still points to alpha.1. This version remains experimental. The registry's `latest` label does not establish stable behavior, representative language accuracy, or a stable-release promise.
+Install the earlier release with `npm install --save-exact sahajlipi@0.1.0-alpha.1`. At its publication, the registry's `alpha` tag resolved to that version. Npm also assigned `latest` on this first publication, even though the manifest and publishing command explicitly requested `alpha`. An authenticated attempt to remove `latest` returned HTTP 400; the verified tags at that time were therefore **both `alpha` and `latest`**. The npm CLI project [records the same first-publication behavior](https://github.com/npm/cli/issues/8490). Alpha.2 initially advanced only `alpha`; the later maintainer-authorized tag update moved `latest` to alpha.2 as well. Alpha.1 remains experimental. The registry's `latest` label does not establish stable behavior, representative language accuracy, or a stable-release promise.
 
 The release retains the two public exports, strict TypeScript declarations, Node 18+ core scope and no runtime dependencies. Its four [reviewed native word preferences](package/nepali-spelling-2026-10-01.md) change the default output for `halyo`, `nabhani`, `gaunle` and `dindaina`; the mapping and before/after evidence are recorded separately. Independent real-typing review, physical mobile/IME checks and framework-controlled input support remain pending.
 

@@ -2,7 +2,7 @@
 
 Browse the [package website](https://ojastechnologies.github.io/sahajlipi/) for the library overview and searchable documentation, or read the Markdown guides here on GitHub. Choose the guide for the part of SahajLipi you are using. The **package** provides conversion and optional browser input adapters. The **demo** is a static playground built with that package.
 
-The experimental Nepali developer alpha **[`sahajlipi@0.1.0-alpha.2`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.2)** was published on 2026-10-03. Pin that exact version for reproducible behavior. The verified npm `alpha` tag points to alpha.2; `latest` remains on alpha.1 from the first publication. Both versions are experimental. The [release record](release.md) documents registry verification and remaining limitations.
+The experimental Nepali developer alpha **[`sahajlipi@0.1.0-alpha.2`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.2)** was published on 2026-10-03. Pin that exact version for reproducible behavior. The verified npm `alpha` and `latest` tags both point to `0.1.0-alpha.2`; `npm install sahajlipi` now selects alpha.2. Both versions are experimental. The [release record](release.md) documents registry verification and remaining limitations.
 
 The current guides describe **`0.1.0-alpha.2`** with full bare and final fallback consonants, automatic internal conjuncts, and explicit backtick or `/` half forms. Published alpha.1 retains its earlier behavior. The [migration recipe](package/integration-recipes.md#keep-alpha1-consonant-behavior) preserves alpha.1 fallback endings with `createEngine({ consonantMode: 'half' })` when adopting alpha.2.
 
