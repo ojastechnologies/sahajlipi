@@ -4,6 +4,8 @@ This guide records how SahajLipi checks its reusable browser adapters in desktop
 
 The engine's [Unicode behavior contracts](benchmarks.md) and language-review records measure different things. Browser tests check editing and integration behavior. They do not establish Nepali linguistic accuracy.
 
+**Publication follow-up (2026-10-03):** `0.1.0-alpha.2` is now published on npm, and its registry artifact matches the reviewed source. The [release record](../release.md) documents current distribution verification. The dated browser runs below retain their original source-candidate and local-tarball scope.
+
 ## Run locally
 
 The core engine and Node test suite run on **Node.js 18 or later** with no runtime dependencies. The browser test tooling requires **Node.js 20 or later**, npm, and Python 3. Playwright is a development dependency pinned to `1.63.0`; the lockfile records the dependency versions.

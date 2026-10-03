@@ -1,10 +1,10 @@
 # Changelog
 
-Published versions and the next unpublished candidate are recorded here. The [release record](docs/release.md) identifies the verified artifact, source, consumer checks, and experimental limits; the same page defines versioning and migration expectations.
+Published versions and their changes are recorded here. The [release record](docs/release.md) identifies the verified artifacts, sources, consumer checks, and experimental limits; the same page defines versioning and migration expectations.
 
-## 0.1.0-alpha.2 — Unpublished
+## 0.1.0-alpha.2 — 2026-10-03
 
-Next experimental source candidate. The npm `0.1.0-alpha.1` artifact and its recorded verification remain unchanged; alpha.2 has not been published.
+Experimental developer alpha, [published on npm](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.2) from source [`48a0321`](https://github.com/ojastechnologies/sahajlipi/commit/48a0321bed417b1e995f66adbcbf9ade2c82f1cf). Install the exact version with `npm install --save-exact sahajlipi@0.1.0-alpha.2`. The verified `alpha` tag points to alpha.2; `latest` remains on alpha.1. The npm `0.1.0-alpha.1` artifact and its recorded verification remain unchanged. See the [release record](docs/release.md) for artifact identity and verification.
 
 ### Changed
 
@@ -14,7 +14,11 @@ Next experimental source candidate. The npm `0.1.0-alpha.1` artifact and its rec
 ### Added
 
 - `createEngine({ consonantMode: 'full' | 'half' })`, defaulting to `'full'`. Select `'half'` for alpha.1 phonetic fallback endings and pass both converters to DOM fields. The [migration recipe](docs/package/integration-recipes.md#keep-alpha1-consonant-behavior) covers this configuration.
-- Current source documentation distinguishes the unpublished candidate from the published alpha.1 package; historical dated reports retain their original measurements and scope.
+- Updated package documentation for alpha.2 installation, full-consonant defaults, and alpha.1 fallback migration; historical dated reports retain their original measurements and scope.
+
+### Packaging
+
+- Public distribution of the exact reviewed alpha.2 tarball under the `alpha` tag. The registry artifact's checksum and all 13 distributed files match the archived candidate and release source.
 
 ## 0.1.0-alpha.1 — 2026-10-03
 

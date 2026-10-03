@@ -1,5 +1,7 @@
 # Reviewed native spellings — 2026-10-01
 
+**Publication follow-up (2026-10-03):** Alpha.1 and alpha.2 were subsequently published on npm and their registry artifacts verified against the reviewed source. See the [release record](../release.md) for current distribution status. The preparation status and measurements below retain their 2026-10-01 scope.
+
 This update adds four exact starter entries from the [frozen development review](source-review-2026-10-01.md). It follows the [loanword suffix slice](loanword-suffixes-2026-10-01.md), using lexical preferences for specific informal spellings while preserving the ordinary phonetic key rules. The default core engine and Nepali-enabled browser fields use the same entries.
 
 The [source ledger](../../benchmark/reports/nepali-spelling-research-2026-10-01.json) records exact references, new and reused evidence, original access dates, sources and a separately frozen constructed control sample. These are source-assisted project preferences. They are not independent human language reviews, general spelling correction or representative accuracy evidence.

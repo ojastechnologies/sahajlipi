@@ -1,6 +1,6 @@
 # API reference
 
-SahajLipi is an MIT-licensed experimental Nepali package. This reference describes the **unpublished `0.1.0-alpha.2` source candidate**, including the full-consonant default and backtick shortcut. **[`sahajlipi@0.1.0-alpha.1`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.1)** remains the published version; its earlier half-consonant default and `/` shortcut are unchanged, and it does not expose `consonantMode`. Use [getting started](getting-started.md) for published or local installation and the [release record](../release.md) for distribution status. The examples below use the two public package exports. The code is dependency-free ECMAScript modules; Node.js 18 or later is declared in the package metadata. See [integration recipes](integration-recipes.md) for complete candidate and component examples.
+SahajLipi is an MIT-licensed experimental Nepali package. This reference describes the **published [`sahajlipi@0.1.0-alpha.2`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.2) developer alpha**, including the full-consonant default and backtick shortcut. The earlier alpha.1 artifact retains its half-consonant default and `/` shortcut and does not expose `consonantMode`. Use [getting started](getting-started.md) for published or local installation and the [release record](../release.md) for distribution status. The examples below use the two public package exports. The code is dependency-free ECMAScript modules; Node.js 18 or later is declared in the package metadata. See [integration recipes](integration-recipes.md) for complete candidate and component examples.
 
 The public surface has two entry points:
 
@@ -183,7 +183,7 @@ legacy.convertText('camera.com'); // 'क्यामेरा.चोम'
 
 #### Consonant mode
 
-The unpublished alpha.2 candidate changes the fallback default from alpha.1's half endings to full endings. Vowel signs and internal conjuncts keep their explicit token rules:
+Alpha.2 changes the fallback default from alpha.1's half endings to full endings. Vowel signs and internal conjuncts keep their explicit token rules:
 
 | Roman input | Default `'full'` | Compatibility `'half'` |
 | --- | --- | --- |
@@ -210,7 +210,7 @@ const custom = createEngine({ entries: { k: ['क्'] } });
 custom.convertWord('k').text; // 'क्' — exact entry wins in full mode
 ```
 
-For browser fields, pass both `convertWord` and `convertText` from the same engine so typing, paste, and completed composition share the policy. `consonantMode` is a core engine option, not a browser-adapter option. Existing field contents are not rewritten by attachment or configuration. The [migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior) preserves the alpha.1 phonetic fallback when adopting the candidate.
+For browser fields, pass both `convertWord` and `convertText` from the same engine so typing, paste, and completed composition share the policy. `consonantMode` is a core engine option, not a browser-adapter option. Existing field contents are not rewritten by attachment or configuration. The [migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior) preserves the alpha.1 phonetic fallback when adopting alpha.2.
 
 #### Digits and shared field configuration
 

@@ -1,5 +1,7 @@
 # Full-consonant default contracts — 2026-10-03
 
+**Publication follow-up (2026-10-03):** `0.1.0-alpha.2` was subsequently published on npm and its registry artifact verified against the reviewed source. See the [release record](../release.md) for current distribution status. This dated record retains the source-candidate checks made before publication.
+
 The source now defaults to `consonantMode: 'full'`. An unmarked final fallback consonant renders full; adjacent consonants still form automatic clusters. `createEngine({ consonantMode: 'half' })` retains the previous implicit final-halant behavior. Slash and backtick explicitly request a halant, and `/=` and backtick followed by `=` request a halant with a zero-width joiner.
 
 This is an approved **software-contract update**, measured against literal, manually specified Unicode strings. The changed default and its selected tests do not establish better Nepali linguistic accuracy. The published `0.1.0-alpha.1` package is unchanged; these results describe the unpublished `0.1.0-alpha.2` source.

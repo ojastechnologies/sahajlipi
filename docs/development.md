@@ -99,9 +99,9 @@ Pull requests to `main` run the [Node CI workflow](../.github/workflows/ci.yml) 
 
 ## Release status
 
-The repository and demo are public. `sahajlipi@0.1.0-alpha.1` was published to the public npm registry on 2026-10-03 and verified against the release source and checksum. Fresh installed JavaScript and strict TypeScript consumers passed. It is an experimental Nepali developer alpha; publication does not establish stable APIs or linguistic quality. Install with `npm install --save-exact sahajlipi@0.1.0-alpha.1`.
+The repository and demo are public. `sahajlipi@0.1.0-alpha.2` was published to the public npm registry on 2026-10-03 and its artifact was verified against the archived candidate, release source, and checksum. The verified `alpha` tag points to alpha.2; `latest` remains on alpha.1. Both are experimental Nepali developer alphas; publication does not establish stable APIs or linguistic quality. Install with `npm install --save-exact sahajlipi@0.1.0-alpha.2`.
 
-The next source candidate is `0.1.0-alpha.2`, unpublished. Its phonetic fallback defaults to full bare and final consonants and supports explicit backtick or `/` half forms. Preserve alpha.1 fallback endings with `createEngine({ consonantMode: 'half' })`, passing both converters to DOM fields as shown in the [migration recipe](package/integration-recipes.md#keep-alpha1-consonant-behavior). Published alpha.1 retains its earlier behavior and has no new option or backtick shortcut; its dated checks are separate from candidate verification.
+Alpha.2 phonetic fallback defaults to full bare and final consonants and supports explicit backtick or `/` half forms. Preserve alpha.1 fallback endings with `createEngine({ consonantMode: 'half' })`, passing both converters to DOM fields as shown in the [migration recipe](package/integration-recipes.md#keep-alpha1-consonant-behavior). Published alpha.1 retains its earlier behavior and has no new option or backtick shortcut; its dated checks remain separate from alpha.2 candidate and registry verification.
 
 The [release record](release.md) records artifact identity, registry tags, compatibility scope, versioning, migration notes, and the alpha checklist. See [CHANGELOG.md](../CHANGELOG.md) for release contents and [Getting started](package/getting-started.md) for npm, local tarball, and source installation.
 
