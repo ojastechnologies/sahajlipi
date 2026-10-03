@@ -1,8 +1,10 @@
 # Changelog
 
-No npm versions have been published. `0.1.0-alpha.1` is the prepared release candidate, with public publication configured for the `alpha` tag. This record describes candidate contents; registry publication and verification remain pending. Actual release entries will identify published versions and source tags; [release policy](docs/release.md) defines versioning and migration expectations.
+Published versions and their changes are recorded here. The [release record](docs/release.md) identifies the verified artifact, source, consumer checks, and experimental limits; the same page defines versioning and migration expectations.
 
-## 0.1.0-alpha.1 — candidate, unpublished
+## 0.1.0-alpha.1 — 2026-10-03
+
+First experimental developer alpha, [published on npm](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.1) from source [`314a1b4`](https://github.com/ojastechnologies/sahajlipi/commit/314a1b4cf312bcb727dcb7cb2a5f86a926eb4b72). Install the exact version with `npm install --save-exact sahajlipi@0.1.0-alpha.1`. Npm assigned both `alpha` and `latest` on first publication; authenticated removal of `latest` was rejected with HTTP 400. This remains an alpha with no stable-release promise.
 
 ### Added
 
@@ -40,10 +42,10 @@ No npm versions have been published. `0.1.0-alpha.1` is the prepared release can
 
 ### Packaging
 
-- Candidate metadata for `0.1.0-alpha.1`, with public access and the `alpha` tag. Candidate preparation does not establish a registry release.
+- Public distribution of `0.1.0-alpha.1`, with the explicit `alpha` tag, a verified registry tarball, and fresh installed-package JavaScript and strict TypeScript consumers.
 
 - Explicit distribution file allowlist and repository/support metadata.
 - Distributed MIT and Unicode-3.0 licenses plus a NOTICE for CLDR-derived month-name data.
 - Pinned example/compiler and VitePress website development dependencies; no runtime dependencies added.
 
-The existing prototype includes direct phonetic typing, selected word alternatives, configurable field scopes, loanwords, Gregorian month spellings, technical-text preservation, and configurable Devanagari/Latin digits. Their implementation history and dated evidence remain in the package guides. The suffix update changes only the documented recognized loanword forms; package publication remains pending. GitHub Pages now uses the Actions publishing source for the generated website artifact.
+The alpha includes direct phonetic typing, selected word alternatives, configurable field scopes, loanwords, Gregorian month spellings, technical-text preservation, and configurable Devanagari/Latin digits. Their implementation history and dated evidence remain in the package guides. The suffix update changes only the documented recognized loanword forms. GitHub Pages uses the Actions publishing source for the generated website artifact.

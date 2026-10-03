@@ -54,7 +54,7 @@ function pageHead(pageData) {
         '@context': 'https://schema.org',
         '@graph': [
           { '@type': 'WebSite', '@id': siteUrl + '#website', name: 'SahajLipi', url: siteUrl, description: pageData.description, inLanguage: 'en' },
-          { '@type': 'SoftwareSourceCode', '@id': siteUrl + '#source', name: 'SahajLipi', url: siteUrl, description: 'Open-source Roman Nepali transliteration engine and browser input adapters. Experimental; not published to npm.', codeRepository: repository, programmingLanguage: ['JavaScript', 'TypeScript'], license: repository + '/blob/main/LICENSE' },
+          { '@type': 'SoftwareSourceCode', '@id': siteUrl + '#source', name: 'SahajLipi', url: siteUrl, description: 'Open-source Roman Nepali transliteration engine and browser input adapters. Published on npm as an experimental Nepali developer alpha.', version: '0.1.0-alpha.1', datePublished: '2026-10-03', sameAs: 'https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.1', codeRepository: repository, programmingLanguage: ['JavaScript', 'TypeScript'], license: repository + '/blob/main/LICENSE' },
         ],
       };
       head.push(['script', { type: 'application/ld+json' }, JSON.stringify(graph).replaceAll('<', '\\u003c')]);
@@ -70,7 +70,7 @@ export default defineConfig({
   lang: 'en',
   title: 'SahajLipi',
   titleTemplate: false,
-  description: 'An open-source Roman Nepali typing engine and browser input adapters for JavaScript applications.',
+  description: 'An open-source Roman Nepali typing engine and browser input adapters, available on npm as an experimental developer alpha.',
   lastUpdated: false,
   ignoreDeadLinks: false,
   markdown: {
@@ -158,7 +158,7 @@ export default defineConfig({
       ],
     },
     socialLinks: [{ icon: 'github', link: repository }],
-    footer: { message: 'Open source. Nepali first. Experimental and unpublished on npm.', copyright: 'MIT code · Unicode-3.0 month data' },
+    footer: { message: 'Open source. Nepali first. Experimental developer alpha on npm.', copyright: 'MIT code · Unicode-3.0 month data' },
     docFooter: { prev: 'Previous page', next: 'Next page' },
   },
   transformPageData(pageData) {

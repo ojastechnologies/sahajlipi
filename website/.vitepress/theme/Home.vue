@@ -22,7 +22,7 @@ typing.destroy();`;
           <a class="sahaj-button sahaj-button-primary" :href="withBase('/docs/package/getting-started.html')">Get started</a>
           <a class="sahaj-button sahaj-button-secondary" :href="withBase('/demo/')" target="_self">Try the demo</a>
         </div>
-        <p class="sahaj-release-note">0.1.0-alpha.1 candidate. Not published to npm yet.<br>Start with a checkout or a local package.</p>
+        <p class="sahaj-release-note">0.1.0-alpha.1 is available on <a href="https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.1">npm</a>.<br>Experimental Nepali developer alpha. Read the <a :href="withBase('/docs/release.html')">release record</a>.</p>
       </div>
       <WordPreview />
     </section>
@@ -35,11 +35,16 @@ typing.destroy();`;
       </div>
       <div class="sahaj-code-example">
         <div class="sahaj-code-heading">
+          <span>Install the developer alpha</span>
+          <span>npm</span>
+        </div>
+        <pre aria-label="Install the verified Nepali developer alpha"><code>npm install --save-exact sahajlipi@0.1.0-alpha.1</code></pre>
+        <div class="sahaj-code-heading">
           <span>One initializer for your app</span>
           <span>JavaScript</span>
         </div>
         <pre aria-label="Initialize Nepali typing across supported fields"><code>{{ quickstart }}</code></pre>
-        <p>Supports textareas and text/search inputs. Add <code>data-sahajlipi-ignore</code> to an English field. The getting-started guide explains local installation.</p>
+        <p>Supports textareas and text/search inputs. Add <code>data-sahajlipi-ignore</code> to an English field. The getting-started guide covers npm installation and source checkouts.</p>
       </div>
     </section>
 

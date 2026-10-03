@@ -2,17 +2,19 @@
 
 SahajLipi converts Roman Nepali to Unicode Nepali. Use the core functions for strings, or the optional browser adapter for live typing in text inputs and textareas. Start here, then use the [API reference](api.md) for every option and the [integration recipes](integration-recipes.md) for candidates and component cleanup.
 
-## 1. Install the alpha candidate
+## 1. Install the published alpha
 
-The checkout targets **`0.1.0-alpha.1`**, an experimental developer alpha. Candidate preparation does not establish registry availability. Until the [release status](../release.md#current-alpha-candidate) confirms publication, use a local tarball. After publication, pin the exact alpha version:
+**[`sahajlipi@0.1.0-alpha.1`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.1)** was published on 2026-10-03 as an experimental Nepali developer alpha. Its registry tarball and fresh JavaScript and TypeScript consumers have been verified. Pin the exact version:
 
 ```sh
 npm install --save-exact sahajlipi@0.1.0-alpha.1
 ```
 
-`npm install sahajlipi@alpha` follows the alpha tag and may select a later prerelease. Use the exact version when reproducible typing behavior matters. The alpha is not promoted to the `latest` tag by the publishing configuration.
+`npm install sahajlipi@alpha` follows the alpha tag and may select a later prerelease. Both `alpha` and `latest` currently point to `0.1.0-alpha.1`: npm automatically assigned `latest` on this first publication despite `--tag alpha`, and a removal attempt was rejected. This remains an experimental release. Use the exact version when reproducible typing behavior matters; the [release record](../release.md) documents the registry result and [npm's reported tag behavior](https://github.com/npm/cli/issues/8490).
 
-For a reproducible local installation, clone the repository and pack it:
+### Local development installation
+
+To test a checkout, clone the repository and pack it:
 
 ```sh
 git clone https://github.com/ojastechnologies/sahajlipi.git
@@ -20,7 +22,7 @@ cd sahajlipi
 npm pack --ignore-scripts
 ```
 
-This candidate produces `sahajlipi-0.1.0-alpha.1.tgz`. In your application directory, install that file using its absolute path:
+At version `0.1.0-alpha.1`, this produces `sahajlipi-0.1.0-alpha.1.tgz`. In your application directory, install that file using its absolute path:
 
 ```sh
 npm install /absolute/path/to/sahajlipi/sahajlipi-0.1.0-alpha.1.tgz

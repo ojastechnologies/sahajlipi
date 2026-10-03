@@ -1,6 +1,6 @@
 # Package website and discoverability
 
-SahajLipi has three separate surfaces: the package website introduces the library, the documentation explains the reusable package, and the demo lets people try it. The generated site brings them together under `https://ojastechnologies.github.io/sahajlipi/`. Website deployment is separate from npm publication. Package metadata is prepared for the public `0.1.0-alpha.1` candidate (`private: false`, `alpha` tag), but registry publication and verification remain pending. Use the [release record](release.md) for actual distribution status.
+SahajLipi has three separate surfaces: the package website introduces the library, the documentation explains the reusable package, and the demo lets people try it. The generated site brings them together under `https://ojastechnologies.github.io/sahajlipi/`. Website deployment is separate from npm publication. `sahajlipi@0.1.0-alpha.1` was published to the public npm registry and verified on 2026-10-03. The homepage offers `npm install --save-exact sahajlipi@0.1.0-alpha.1` and labels it as an experimental Nepali developer alpha. Use the [release record](release.md) for artifact identity, registry tags, and distribution evidence.
 
 ## Pages and content ownership
 
@@ -60,7 +60,7 @@ On Linux, install with `npx playwright install --with-deps chromium`. The same N
 
 The [eleven website scenarios](../website/tests/site.spec.js) cover:
 
-- Homepage content without JavaScript and the interactive converter preview.
+- Homepage content without JavaScript, published alpha status text, the exact npm install command, and the interactive converter preview.
 - Documentation links, canonical routes, and local search.
 - Demo links from the homepage, header, and documentation body, plus demo typing.
 - Desktop and mobile Home/logo navigation, with legacy local entry paths redirected to the complete site.
@@ -81,7 +81,7 @@ After a deployment, check the production homepage, a direct documentation URL, t
 
 ## Metadata and canonical URLs
 
-[`website/page-meta.json`](../website/page-meta.json) owns the human-readable title and description for every generated page and the copied demo. Titles identify the page's purpose; descriptions summarize its actual contents. Add an entry whenever adding a page. Avoid repeated descriptions, keyword lists, unsupported language claims, or a claim that the package is available from npm.
+[`website/page-meta.json`](../website/page-meta.json) owns the human-readable title and description for every generated page and the copied demo. Titles identify the page's purpose; descriptions summarize its actual contents. Add an entry whenever adding a page. Avoid repeated descriptions, keyword lists, or unsupported language and quality claims. npm availability is verified for `0.1.0-alpha.1`; describe it as an experimental Nepali developer alpha and keep release claims aligned with the [release record](release.md).
 
 The site configuration adds:
 
@@ -96,7 +96,7 @@ A directory index uses a trailing slash, such as `/sahajlipi/docs/`; an ordinary
 
 The sitemap is published at [the project sitemap](https://ojastechnologies.github.io/sahajlipi/sitemap.xml). It includes intended public pages, not every source file or test fixture. Do not invent modification dates for pages to make them appear newer. Sitemaps help discovery, but submitting one does not guarantee indexing. See [Google's sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap).
 
-Structured metadata describes the implemented software and repository. It does not add invented reviews, ratings, download counts, supported languages, or a released package version. It does not promise a rich search result.
+Structured metadata describes the implemented software and repository, the verified `0.1.0-alpha.1` version, its publication date, and its npm version page. It does not add invented reviews, ratings, download counts, or supported languages. It does not promise a rich search result.
 
 ### Robots on a GitHub Pages project
 

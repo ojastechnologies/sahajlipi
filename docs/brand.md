@@ -15,11 +15,11 @@ SahajLipi helps people type Nepali with Roman keys in web applications. Its iden
 | Repository and package identifier | `sahajlipi` — lowercase. |
 | Tagline | **Roman keys. Native script.** |
 | Supporting line | **Open-source Nepali typing for the web.** |
-| Current product description | Open-source JavaScript library with TypeScript declarations for Roman Nepali to Unicode typing; an experimental package with a website and demo. |
+| Current product description | Open-source JavaScript library with TypeScript declarations for Roman Nepali to Unicode typing; an experimental Nepali developer alpha available on npm, with a website and demo. |
 
 Use plain, specific language. Explain the keys, the resulting script, and the next action. In issue reports and release notes, show an actual input and output. Keep buttons direct: “Copy”, “Clear”, and “Try the demo”.
 
-Describe Nepali as the implemented language today. Other Devanagari languages are a [future goal](status-and-roadmap.md#priorities). The broad tagline describes the typing idea; surrounding copy must still state the current Nepali scope. Claims about accuracy, browser support, privacy, or comparisons with other tools need linked evidence and its limits. The project is a prototype and the package is not published to npm. Use the [status page](status-and-roadmap.md) and [evaluation guides](package/benchmarks.md) for current claims.
+Describe Nepali as the implemented language today. Other Devanagari languages are a [future goal](status-and-roadmap.md#priorities). The broad tagline describes the typing idea; surrounding copy must still state the current Nepali scope. Claims about accuracy, browser support, privacy, or comparisons with other tools need linked evidence and its limits. The verified npm release is `0.1.0-alpha.1`, an experimental Nepali developer alpha published on 2026-10-03. Label it as an alpha and show the exact install command `npm install --save-exact sahajlipi@0.1.0-alpha.1`; publication does not establish stable APIs or linguistic quality. Use the [release record](release.md), [status page](status-and-roadmap.md), and [evaluation guides](package/benchmarks.md) for current claims.
 
 ## Logo and mark
 
@@ -82,7 +82,7 @@ The website metadata uses the supplied social preview. GitHub currently uses its
 
 ## Package website identity
 
-The package homepage and documentation use the same mark, wordmark, colors, and browser icons as the demo. Page previews use `assets/brand/social-preview.png`; preserve the meaningful project name in visible text and accessible image names. Page titles and descriptions live in `website/page-meta.json`, with the implemented Nepali scope and prototype release status stated plainly. The [website and SEO guide](website-and-seo.md) explains canonical URLs, social metadata, and repository discovery.
+The package homepage and documentation use the same mark, wordmark, colors, and browser icons as the demo. Page previews use `assets/brand/social-preview.png`; preserve the meaningful project name in visible text and accessible image names. Page titles and descriptions live in `website/page-meta.json`, with the implemented Nepali scope and experimental developer alpha status stated plainly. The [website and SEO guide](website-and-seo.md) explains canonical URLs, social metadata, and repository discovery.
 
 ## Contributing artwork
 

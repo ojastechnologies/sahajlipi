@@ -2,11 +2,13 @@
 
 Browse the [package website](https://ojastechnologies.github.io/sahajlipi/) for the library overview and searchable documentation, or read the Markdown guides here on GitHub. Choose the guide for the part of SahajLipi you are using. The **package** provides conversion and optional browser input adapters. The **demo** is a static playground built with that package.
 
+The experimental Nepali developer alpha **[`sahajlipi@0.1.0-alpha.1`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.1)** was published on 2026-10-03. Pin that exact version for reproducible behavior. Both npm `alpha` and `latest` currently point to it; `latest` does not indicate a stable release. The [release record](release.md) documents registry verification and remaining limitations.
+
 ## Reusable package
 
 | Read | For |
 | --- | --- |
-| [Getting started](package/getting-started.md) | Install locally, use public imports, and choose an integration scope. |
+| [Getting started](package/getting-started.md) | Install the published alpha, use public imports, and choose an integration scope. |
 | [Integration recipes](package/integration-recipes.md) | Working candidates, TypeScript, React uncontrolled fields, and cleanup. |
 | [Package overview](package/README.md) | Entry points, scope, and current distribution status. |
 | [API reference](package/api.md) | Core engine and browser input APIs, one-call setup, and TypeScript declarations. |
@@ -54,7 +56,7 @@ The demo is one consumer of the package. Its Copy and Clear buttons, character c
 | Read | For |
 | --- | --- |
 | [Release policy](release.md) | Compatibility, versioning, migration, and the alpha release checklist. |
-| [Changelog](../CHANGELOG.md) | Unpublished alpha candidate contents and verified release notes. |
+| [Changelog](../CHANGELOG.md) | Published alpha contents and verified release notes. |
 | [Development guide](development.md) | Repository workflow, tests, CI, and release readiness. |
 | [Status and roadmap](status-and-roadmap.md) | Current capabilities, limits, and priorities. |
 | [Website and SEO](website-and-seo.md) | Markdown site builds, metadata, sitemap, publishing, and discoverability limits. |

@@ -1,6 +1,6 @@
 # API reference
 
-SahajLipi is an MIT-licensed experimental package. [`package.json`](../../package.json) is prepared for the **`0.1.0-alpha.1` candidate** with public access and the `alpha` tag. It is **not published to npm yet**; candidate metadata does not establish a registry release. Install it from a local tarball or checkout folder using [getting started](getting-started.md); the examples below use its public package exports. The code is dependency-free ECMAScript modules; Node.js 18 or later is declared in the package metadata. See [integration recipes](integration-recipes.md) for complete candidate and component examples.
+SahajLipi is an MIT-licensed experimental Nepali package. **[`sahajlipi@0.1.0-alpha.1`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.1)** was published on 2026-10-03; install it with `npm install --save-exact sahajlipi@0.1.0-alpha.1` using [getting started](getting-started.md). Both npm `alpha` and `latest` currently select this prerelease; see the [release record](../release.md) for verification and tag behavior. The examples below use its two public package exports. The code is dependency-free ECMAScript modules; Node.js 18 or later is declared in the package metadata. See [integration recipes](integration-recipes.md) for complete candidate and component examples.
 
 The public surface has two entry points:
 
