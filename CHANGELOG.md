@@ -4,7 +4,7 @@ Published versions and their changes are recorded here. The [release record](doc
 
 ## 0.1.0-alpha.2 — 2026-10-03
 
-Experimental developer alpha, [published on npm](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.2) from source [`48a0321`](https://github.com/ojastechnologies/sahajlipi/commit/48a0321bed417b1e995f66adbcbf9ade2c82f1cf). Install the exact version with `npm install --save-exact sahajlipi@0.1.0-alpha.2`. The verified `alpha` tag points to alpha.2; `latest` remains on alpha.1. The npm `0.1.0-alpha.1` artifact and its recorded verification remain unchanged. See the [release record](docs/release.md) for artifact identity and verification.
+Experimental developer alpha, [published on npm](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.2) from source [`48a0321`](https://github.com/ojastechnologies/sahajlipi/commit/48a0321bed417b1e995f66adbcbf9ade2c82f1cf). Install the exact version with `npm install --save-exact sahajlipi@0.1.0-alpha.2`. The verified `alpha` and `latest` tags both point to `0.1.0-alpha.2`; `npm install sahajlipi` now selects alpha.2. The npm `0.1.0-alpha.1` artifact and its recorded verification remain unchanged. See the [release record](docs/release.md) for artifact identity and verification.
 
 ### Changed
 

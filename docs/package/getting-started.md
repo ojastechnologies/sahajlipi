@@ -12,7 +12,7 @@ The current published npm version is **`0.1.0-alpha.2`**. It changes the phoneti
 npm install --save-exact sahajlipi@0.1.0-alpha.2
 ```
 
-`npm install sahajlipi@alpha` follows the alpha tag and may select a later prerelease. The verified `alpha` tag currently points to `0.1.0-alpha.2`; `latest` still points to `0.1.0-alpha.1`. Npm assigned `latest` on the first publication despite `--tag alpha`, and a removal attempt was rejected. Both versions remain experimental. Use the exact version when reproducible typing behavior matters; the [release record](../release.md) documents the registry result, artifact identity, and consumer checks, as well as [npm's reported tag behavior](https://github.com/npm/cli/issues/8490).
+`npm install sahajlipi@alpha` follows the alpha tag and may select a later prerelease. The verified `alpha` and `latest` tags both point to `0.1.0-alpha.2`; `npm install sahajlipi` now selects alpha.2. Npm assigned `latest` on the first publication despite `--tag alpha`, and a removal attempt was rejected. Both versions remain experimental. Use the exact version when reproducible typing behavior matters; the [release record](../release.md) documents the registry result, artifact identity, and consumer checks, as well as [npm's reported tag behavior](https://github.com/npm/cli/issues/8490).
 
 ### Local development installation
 
