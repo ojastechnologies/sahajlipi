@@ -189,7 +189,7 @@ test('a custom engine can opt out of address preservation in live typing', (t) =
   const { field, type, paste } = setup(t, createEngine({ preserveTechnicalText: false }));
   type('camera.com ');
   paste('camera.com');
-  assert.equal(field.value, 'क्यामेरा.चोम् क्यामेरा.चोम्');
+  assert.equal(field.value, 'क्यामेरा.चोम क्यामेरा.चोम');
 });
 
 test('unconverted Devanagari composition deletes a complete grapheme', async (t) => {
@@ -358,7 +358,7 @@ test('earlier recognition keeps a sentence period and the engine opt-out intact'
   controller.setText('');
   const custom = setup(t, createEngine({ preserveTechnicalText: false }));
   custom.type('camera@ camera.c');
-  assert.equal(custom.field.value, 'क्यामेरा@ क्यामेरा.च्');
+  assert.equal(custom.field.value, 'क्यामेरा@ क्यामेरा.च');
 });
 
 test('an HTTP authority does not swallow adjacent sentence wrappers and Nepali words', (t) => {

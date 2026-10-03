@@ -1,6 +1,20 @@
 # Changelog
 
-Published versions and their changes are recorded here. The [release record](docs/release.md) identifies the verified artifact, source, consumer checks, and experimental limits; the same page defines versioning and migration expectations.
+Published versions and the next unpublished candidate are recorded here. The [release record](docs/release.md) identifies the verified artifact, source, consumer checks, and experimental limits; the same page defines versioning and migration expectations.
+
+## 0.1.0-alpha.2 — Unpublished
+
+Next experimental source candidate. The npm `0.1.0-alpha.1` artifact and its recorded verification remain unchanged; alpha.2 has not been published.
+
+### Changed
+
+- Phonetic fallback uses full bare and final consonants by default: `k` and `ka` → क, `kr` and `kra` → क्र, `kri` → क्रि, `kar` → कर. Internal conjuncts remain automatic, including `shakti` → शक्ति. Exact built-in and custom lexicon readings retain priority and supplied Unicode.
+- Backtick now requests an explicit half consonant like `/`; both persist across spaces and punctuation. A vowel after either marker remains independent: `` k`i `` and `k/i` → क्इ; use `ki` → कि for the attached sign. Backtick followed by `=` supports the same explicit joiner behavior as `/=`.
+
+### Added
+
+- `createEngine({ consonantMode: 'full' | 'half' })`, defaulting to `'full'`. Select `'half'` for alpha.1 phonetic fallback endings and pass both converters to DOM fields. The [migration recipe](docs/package/integration-recipes.md#keep-alpha1-consonant-behavior) covers this configuration.
+- Current source documentation distinguishes the unpublished candidate from the published alpha.1 package; historical dated reports retain their original measurements and scope.
 
 ## 0.1.0-alpha.1 — 2026-10-03
 

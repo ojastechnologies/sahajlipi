@@ -1,6 +1,6 @@
 # Security policy
 
-SahajLipi publishes experimental developer alphas. Version `0.1.0-alpha.1` was published on npm on 2026-10-03. The current alpha and public `main` branch receive best-effort fixes; there is no promised support window yet. See the [release record](docs/release.md) for the verified artifact and compatibility limits.
+SahajLipi publishes experimental developer alphas. Version `0.1.0-alpha.1` was published on npm on 2026-10-03 and remains the current published alpha. Version `0.1.0-alpha.2` is an unpublished source candidate. The published alpha and public `main` branch receive best-effort fixes; there is no promised support window yet. See the [release record](docs/release.md) for the verified artifact, candidate status, and compatibility limits.
 
 | Version | Security fixes |
 | --- | --- |

@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { attachNepaliInput } from "../src/dom.js";
-import { convertText, convertWord } from "../src/index.js";
+import { createEngine, convertText, convertWord } from "../src/index.js";
 
 class FakeTextarea extends EventTarget {
   tagName = "TEXTAREA";
@@ -24,12 +24,12 @@ class FakeTextarea extends EventTarget {
   }
 }
 
-function setup(t) {
+function setup(t, options = {}) {
   const fakeDocument = new EventTarget();
   const field = new FakeTextarea();
   fakeDocument.activeElement = field;
   globalThis.document = fakeDocument;
-  const controller = attachNepaliInput(field, { convertWord, convertText });
+  const controller = attachNepaliInput(field, { convertWord, convertText, ...options });
   t.after(() => {
     controller.destroy();
     delete globalThis.document;
@@ -72,20 +72,101 @@ test("single and double a spellings remain distinct while typing", (t) => {
   assert.deepEqual(controller.getState().candidates, []);
 });
 
-test("unvoweled consonants stay half while the next vowel completes them", (t) => {
+test("full consonants form editable clusters while preserving each Roman key", (t) => {
   const { field, controller, type, beforeInput } = setup(t);
   type("k");
-  assert.equal(field.value, "क्");
+  assert.equal(field.value, "क");
   assert.equal(controller.getState().activeRoman, "k");
   type("a");
   assert.equal(field.value, "क");
   controller.setText("");
   type("kr");
-  assert.equal(field.value, "क्र्");
+  assert.equal(field.value, "क्र");
+  type("i");
+  assert.equal(field.value, "क्रि");
   beforeInput("deleteContentBackward");
-  assert.equal(field.value, "क्");
+  assert.equal(field.value, "क्र");
+  beforeInput("deleteContentBackward");
+  assert.equal(field.value, "क");
   type("ra");
   assert.equal(field.value, "क्र");
+});
+
+test("backtick marks an explicit half consonant and stays editable through undo and redo", (t) => {
+  const { field, controller, type, beforeInput } = setup(t);
+  type("ka`");
+  assert.equal(field.value, "क्");
+  assert.equal(controller.getState().activeRoman, "ka`");
+  controller.undo();
+  assert.equal(field.value, "क");
+  assert.equal(controller.getState().activeRoman, "ka");
+  controller.redo();
+  assert.equal(field.value, "क्");
+  beforeInput("deleteContentBackward");
+  assert.equal(field.value, "क");
+  type("`i ");
+  assert.equal(field.value, "क्इ ");
+  assert.equal(controller.getState().activeRoman, "");
+});
+
+test("backtick-equals keeps a joiner in the active word and explicit half clusters survive boundaries", (t) => {
+  const { field, controller, type } = setup(t);
+  type("par`=yo kr`. ka` ");
+  assert.equal(field.value, "पर्\u200dयो क्र्. क् ");
+  assert.equal(controller.getState().activeRoman, "");
+});
+
+test("strict consonant engines keep half defaults for typing and paste", (t) => {
+  const { field, controller, type } = setup(t, createEngine({ consonantMode: "half" }));
+  type("kr");
+  assert.equal(field.value, "क्र्");
+  type("i k` ");
+  assert.equal(field.value, "क्रि क् ");
+  const paste = new Event("paste", { cancelable: true });
+  Object.defineProperty(paste, "clipboardData", { value: { getData: () => "k kr k`" } });
+  field.dispatchEvent(paste);
+  assert.equal(field.value, "क्रि क् क् क्र् क्");
+  assert.equal(controller.getState().activeRoman, "");
+});
+
+test("paste converts explicit backtick consonants while retaining address markers", (t) => {
+  const { field, controller } = setup(t);
+  const paste = new Event("paste", { cancelable: true });
+  Object.defineProperty(paste, "clipboardData", {
+    value: { getData: () => "k ka` kr` k`i https://example.com/k/=i" },
+  });
+  field.dispatchEvent(paste);
+  assert.equal(field.value, "क क् क्र् क्इ https://example.com/k/=i");
+  controller.undo();
+  assert.equal(field.value, "");
+});
+
+test("native input fallback includes a backtick in the active Roman word", (t) => {
+  const { field, controller, type, beforeInput } = setup(t);
+  type("k");
+  field.setRangeText("`", field.selectionStart, field.selectionEnd, "end");
+  const event = new Event("input");
+  Object.defineProperty(event, "inputType", { value: "insertText" });
+  field.dispatchEvent(event);
+  assert.equal(field.value, "क्");
+  assert.equal(controller.getState().activeRoman, "k`");
+  beforeInput("deleteContentBackward");
+  assert.equal(field.value, "क");
+});
+
+test("composition includes a backtick marker and undoes it as one edit", async (t) => {
+  const { field, controller, type } = setup(t);
+  type("kr");
+  field.dispatchEvent(new Event("compositionstart"));
+  field.setRangeText("`", field.selectionStart, field.selectionEnd, "end");
+  field.dispatchEvent(new Event("compositionend"));
+  field.dispatchEvent(new Event("input"));
+  await new Promise((resolve) => setTimeout(resolve, 5));
+  assert.equal(field.value, "क्र्");
+  assert.equal(controller.getState().activeRoman, "kr`");
+  controller.undo();
+  assert.equal(field.value, "क्र");
+  assert.equal(controller.getState().activeRoman, "kr");
 });
 
 test("paryo uses the explicit ra-ya form without an incorrect alternative", (t) => {
@@ -103,7 +184,7 @@ test("a listed ry word remains editable as its Roman keys cross the lookup bound
   assert.equal(controller.getState().activeRoman, "garyo");
   assert.deepEqual(controller.getState().candidates, []);
   beforeInput("deleteContentBackward");
-  assert.equal(field.value, "गर्य्");
+  assert.equal(field.value, "गर्य");
   assert.equal(controller.getState().activeRoman, "gary");
   type("o kaarya");
   assert.equal(field.value, "गर्\u200dयो कार्य");
@@ -148,7 +229,7 @@ test("slash types an editable half consonant and slash-equals controls its shape
   assert.equal(field.value, "क्");
   assert.equal(controller.getState().activeRoman, "k/");
   beforeInput("deleteContentBackward");
-  assert.equal(field.value, "क्");
+  assert.equal(field.value, "क");
   assert.equal(controller.getState().activeRoman, "k");
   type("/=");
   assert.equal(field.value, "क्‍");
@@ -157,14 +238,26 @@ test("slash types an editable half consonant and slash-equals controls its shape
   assert.equal(field.value, "पर्‍यो");
 });
 
-test("undo restores the Roman spelling when an explicit halant leaves the text unchanged", (t) => {
+test("undo removes an explicit halant and restores the full consonant source", (t) => {
   const { field, controller, type } = setup(t);
   type("k/");
   assert.equal(field.value, "क्");
   assert.equal(controller.getState().activeRoman, "k/");
   controller.undo();
+  assert.equal(field.value, "क");
+  assert.equal(controller.getState().activeRoman, "k");
+});
+
+test("strict mode records an explicit backtick even when its visible text stays unchanged", (t) => {
+  const { field, controller, type } = setup(t, createEngine({ consonantMode: "half" }));
+  type("k`");
+  assert.equal(field.value, "क्");
+  assert.equal(controller.getState().activeRoman, "k`");
+  controller.undo();
   assert.equal(field.value, "क्");
   assert.equal(controller.getState().activeRoman, "k");
+  controller.redo();
+  assert.equal(controller.getState().activeRoman, "k`");
 });
 
 test("pipe types full stop after numbers while slash stays literal in dates", (t) => {
@@ -176,7 +269,7 @@ test("pipe types full stop after numbers while slash stays literal in dates", (t
 test("Shift distinguishes retroflex T and D from dental t and d while typing", (t) => {
   const { field, controller, type } = setup(t);
   type("t T d D th Th dh Dh");
-  assert.equal(field.value, "त् ट् द् ड् थ् ठ् ध् ढ्");
+  assert.equal(field.value, "त ट द ड थ ठ ध ढ");
   assert.equal(controller.getState().activeRoman, "Dh");
 });
 
@@ -332,8 +425,8 @@ test("English mode keeps Roman input literal", (t) => {
   assert.deepEqual(controller.getState().candidates, []);
   type("^~");
   assert.equal(field.value, "pani^~");
-  type("/=|");
-  assert.equal(field.value, "pani^~/=|");
+  type("/=`=|");
+  assert.equal(field.value, "pani^~/=`=|");
 });
 
 test("committed Nepali deletes a full visible grapheme", (t) => {
@@ -361,10 +454,10 @@ test("a mobile composition is converted after its final input event", async (t) 
   assert.equal(field.value, "");
 });
 
-test("a separately composed mobile vowel completes the active half consonant", async (t) => {
+test("a separately composed mobile vowel preserves the active full consonant source", async (t) => {
   const { field, controller, type } = setup(t);
   type("k");
-  assert.equal(field.value, "क्");
+  assert.equal(field.value, "क");
   field.dispatchEvent(new Event("compositionstart"));
   field.setRangeText("a", field.selectionStart, field.selectionEnd, "end");
   field.dispatchEvent(new Event("compositionend"));
@@ -372,7 +465,7 @@ test("a separately composed mobile vowel completes the active half consonant", a
   assert.equal(field.value, "क");
   assert.equal(controller.getState().activeRoman, "ka");
   controller.undo();
-  assert.equal(field.value, "क्");
+  assert.equal(field.value, "क");
   assert.equal(controller.getState().activeRoman, "k");
 });
 
@@ -404,7 +497,7 @@ test("loanword typing keeps Roman keys editable across dictionary and longer-wor
   assert.equal(controller.getState().activeRoman, "camera");
   assert.deepEqual(controller.getState().candidates, []);
   beforeInput("deleteContentBackward");
-  assert.equal(field.value, "चमेर्");
+  assert.equal(field.value, "चमेर");
   assert.equal(controller.getState().activeRoman, "camer");
   type("ako");
   assert.equal(field.value, "क्यामेराको");
@@ -425,7 +518,7 @@ test("cha defaults to च and selecting छ remains editable into explicit chha"
   controller.chooseCandidate(1);
   assert.equal(field.value, "छ");
   beforeInput("deleteContentBackward");
-  assert.equal(field.value, "च्");
+  assert.equal(field.value, "च");
   assert.equal(controller.getState().activeRoman, "ch");
   type("ha");
   assert.equal(field.value, "छ");

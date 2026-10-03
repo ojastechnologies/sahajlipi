@@ -1,6 +1,6 @@
 # API reference
 
-SahajLipi is an MIT-licensed experimental Nepali package. **[`sahajlipi@0.1.0-alpha.1`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.1)** was published on 2026-10-03; install it with `npm install --save-exact sahajlipi@0.1.0-alpha.1` using [getting started](getting-started.md). Both npm `alpha` and `latest` currently select this prerelease; see the [release record](../release.md) for verification and tag behavior. The examples below use its two public package exports. The code is dependency-free ECMAScript modules; Node.js 18 or later is declared in the package metadata. See [integration recipes](integration-recipes.md) for complete candidate and component examples.
+SahajLipi is an MIT-licensed experimental Nepali package. This reference describes the **unpublished `0.1.0-alpha.2` source candidate**, including the full-consonant default and backtick shortcut. **[`sahajlipi@0.1.0-alpha.1`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.1)** remains the published version; its earlier half-consonant default and `/` shortcut are unchanged, and it does not expose `consonantMode`. Use [getting started](getting-started.md) for published or local installation and the [release record](../release.md) for distribution status. The examples below use the two public package exports. The code is dependency-free ECMAScript modules; Node.js 18 or later is declared in the package metadata. See [integration recipes](integration-recipes.md) for complete candidate and component examples.
 
 The public surface has two entry points:
 
@@ -65,6 +65,8 @@ Returns `{ text, candidates, ambiguous }`:
 
 `convertWord` is a single-Roman-word API. It does not apply URL or email preservation; use `convertText` for text containing addresses or punctuation. An empty input returns empty text and candidates. The engine checks an exact lexicon entry first, then recognized loanword suffix forms, then interprets explicit marks and applies deterministic phonetic rules. An unknown spelling still returns a result; it is **not** evidence that the result is linguistically correct. See [architecture](architecture.md) and [benchmarks](benchmarks.md).
 
+The default phonetic fallback uses full bare and final consonants: `k` and `ka` → क, `kr` and `kra` → क्र, `kri` → क्रि, `kar` → कर, and `shakti` → शक्ति. Internal conjuncts still form automatically. Backtick or `/` requests a persistent explicit half form: `` k` `` and `k/` → क्. A following vowel is independent (`` k`i `` and `k/i` → क्इ); use `ki` for कि. Both `` `= `` and `/=` request a joiner after the explicit virama. Exact lexicon readings retain priority and are not rewritten by the consonant mode. See the [typing reference](typing-reference.md#half-consonants-and-conjuncts).
+
 The four reviewed exact aliases `halyo` → हाल्यो, `nabhani` → नभनी, `gaunle` → गाउँले and `dindaina` → दिँदैन each have one reading. They use whole-word lookup; they do not create a vowel/nasal correction rule or native-word suffix inference. An exact custom entry replaces an alias, as for any starter entry. Reserved Shift keys still select their sounds. See the [dated spelling review](nepali-spelling-2026-10-01.md).
 
 The built-in lexicon includes 51 recognized English-spelling loanword stems, including `camera` → क्यामेरा, `company` → कम्पनी and `media` → मिडिया. `school` returns `['स्कुल', 'स्कूल']`; the first reading remains the existing default. Recognized suffix forms inherit every distinct stem reading in the same order. The [suffix review](loanword-suffixes-2026-10-01.md) records the finite rule, evidence and limits. These are source-assisted project preferences, with independent human linguistic review pending. They spell borrowed words rather than translating their meanings.
@@ -77,7 +79,7 @@ The month entries use the same whole-word lookup. Abbreviations such as `jan` an
 
 ### `convertText(text)`
 
-Preserves recognizable technical spans first, then converts ASCII Latin-letter runs outside them using `convertWord`, including the supported `^`, `~`, `/`, and `=` shortcuts. Outside protected spans, ASCII digits `0–9` become Devanagari `०–९` by default and `|` becomes `।`; periods, whitespace, other punctuation, and existing Devanagari pass through. The engine-level `digits` option can retain ASCII digits instead. It returns one string without word-level candidates.
+Preserves recognizable technical spans first, then converts ASCII Latin-letter runs outside them using `convertWord`, including the supported `^`, `~`, backtick, `/`, and `=` shortcuts. Outside protected spans, ASCII digits `0–9` become Devanagari `०–९` by default and `|` becomes `।`; periods, whitespace, other punctuation, and existing Devanagari pass through. The engine-level `digits` option can retain ASCII digits instead. It returns one string without word-level candidates. Explicit half forms remain half across spaces and punctuation: `convertText('k/ k/|')` → `क् क्।`, with the same result using backticks.
 
 #### Links, domains, and email addresses
 
@@ -121,9 +123,11 @@ This is an ASCII pattern policy, not a full URL or email parser. Unicode hostnam
 
 <a id="createengine-entries"></a>
 
-### `createEngine({ entries, preserveTechnicalText, digits })`
+### `createEngine({ entries, preserveTechnicalText, digits, consonantMode })`
 
 Creates an independent engine. `digits` accepts only `'devanagari'` (the default) or `'latin'`; another value throws `TypeError`. It chooses the rendering of ASCII digits in returned word candidates and in whole-text conversion outside protected spans. Existing Devanagari digits remain unchanged in either style. Candidate digit rendering happens before deduplication, so custom outputs `1` and `१` become one candidate under the default style. Neither style parses numbers, changes their value, or converts calendars.
+
+`consonantMode` accepts only `'full'` (the default) or `'half'`; another value throws `TypeError`. It controls bare and final consonants produced by the phonetic fallback. Exact built-in/custom readings and recognized loanword suffix outputs keep their supplied Unicode and priority. The [consonant-mode examples](#consonant-mode) show the compatibility option.
 
 `preserveTechnicalText` defaults to `true` and controls technical-span preservation in that engine’s `convertText`. Set it to `false` to convert throughout the input, including inside addresses. Digit rendering is independent: use both `digits: 'latin'` and `preserveTechnicalText: false` to recover the earlier ASCII-digit, unprotected-text behavior. It must be a boolean; other values throw `TypeError`. It does not change `convertWord` or disable Nepali conversion. An `entries` object replaces a starter entry for the same normalized Roman key in that engine instance. Values must be a non-empty array of non-empty strings, ordered from the preferred reading to alternatives; malformed values throw `TypeError`. The engine does not validate the script or Unicode normalization of those strings. Duplicate outputs are removed when a word is converted.
 
@@ -174,8 +178,39 @@ convertWord('kam').text;           // 'कम' — the default engine is unchang
 
 ```js
 const legacy = createEngine({ preserveTechnicalText: false });
-legacy.convertText('camera.com'); // 'क्यामेरा.चोम्'
+legacy.convertText('camera.com'); // 'क्यामेरा.चोम'
 ```
+
+#### Consonant mode
+
+The unpublished alpha.2 candidate changes the fallback default from alpha.1's half endings to full endings. Vowel signs and internal conjuncts keep their explicit token rules:
+
+| Roman input | Default `'full'` | Compatibility `'half'` |
+| --- | --- | --- |
+| `k` | क | क् |
+| `ka` | क | क |
+| `kr` | क्र | क्र् |
+| `kra` | क्र | क्र |
+| `kri` | क्रि | क्रि |
+| `kar` | कर | कर् |
+| `shakti` | शक्ति | शक्ति |
+| `` k` `` or `k/` | क् | क् |
+| `` k`i `` or `k/i` | क्इ | क्इ |
+
+```js
+const full = createEngine();
+full.convertWord('k').text; // 'क'
+full.convertWord('kr').text; // 'क्र'
+
+const half = createEngine({ consonantMode: 'half' });
+half.convertWord('k').text; // 'क्'
+half.convertWord('kr').text; // 'क्र्'
+
+const custom = createEngine({ entries: { k: ['क्'] } });
+custom.convertWord('k').text; // 'क्' — exact entry wins in full mode
+```
+
+For browser fields, pass both `convertWord` and `convertText` from the same engine so typing, paste, and completed composition share the policy. `consonantMode` is a core engine option, not a browser-adapter option. Existing field contents are not rewritten by attachment or configuration. The [migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior) preserves the alpha.1 phonetic fallback when adopting the candidate.
 
 #### Digits and shared field configuration
 
@@ -227,7 +262,7 @@ const result = 'Project SahajLipi: ' + convertText('namaste camera|');
 
 Browser integrations can use the existing mode controls described below to type or paste English spans. There are no new delimiters or keyboard shortcuts for literal fragments.
 
-`createEngine` configures entries, digit rendering, and the text-preservation policy. The phonetic token tables and special-key behavior remain fixed in the Nepali implementation; there is no language-profile API yet.
+`createEngine` configures entries, digit rendering, consonant endings, and the text-preservation policy. The phonetic token tables and special-key mappings belong to the Nepali implementation; there is no language-profile API yet.
 
 ## Browser input adapters
 

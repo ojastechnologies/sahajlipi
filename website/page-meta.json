@@ -31,6 +31,10 @@
     "title": "Nepali Typing Reference | SahajLipi Keys and Unicode",
     "description": "Find SahajLipi Roman Nepali keys for vowels, consonants, half forms, Shift sounds, bindu, chandrabindu, punctuation, digits, and word alternatives."
   },
+  "docs/package/consonant-defaults-2026-10-03.md": {
+    "title": "Full Consonant Defaults | SahajLipi Alpha Compatibility Checks",
+    "description": "Review the unreleased SahajLipi full consonant default, explicit backtick halant, automatic conjuncts, strict half compatibility, and finite benchmark evidence."
+  },
   "docs/package/browser-compatibility.md": {
     "title": "SahajLipi Browser Compatibility | Tests and Limits",
     "description": "Run SahajLipi desktop browser checks, inspect tested engines and installed-package examples, and understand clipboard, IME, mobile, and framework limits."

@@ -15,6 +15,12 @@ The first command prints results and exits successfully even when a contract cas
 
 The dependency-free runner is [benchmark/run.js](../../benchmark/run.js). Its UTF-8, one-JSON-object-per-line fixtures are in [benchmark/cases.jsonl](../../benchmark/cases.jsonl). You can inspect a different fixture file with `node benchmark/run.js --fixtures path/to/cases.jsonl`; add `--check` if its contract cases should gate the command.
 
+## Full-consonant default update — 2026-10-03
+
+The [dated contract comparison](consonant-defaults-2026-10-03.md) records the new full-consonant default, automatic internal clusters, explicit backtick/slash halants and strict `consonantMode: 'half'` compatibility. The current seed has **160 contracts and two exploratory cases**: 14 intentional revisions to prior final-halant expectations, 18 additions and 130 byte-identical prior rows. On the same revised fixture, agreement with the new software contract is **130/160 → 160/160**; this policy change is not a gain in measured Nepali linguistic accuracy.
+
+The frozen original fixture remains separate: prior default **142/142**, new default **128/142** from those 14 declared changes, and strict half mode **142/142**. Strict mode also matches **144/144** complete archived raw outputs, including the two exploratory cases. A separate manually specified 31-case fixture passes **31/31** in the default, explicit full and half engines. The [machine report](../../benchmark/reports/consonant-defaults-2026-10-03.json) pins fixtures, tools, engine sources and all historical reports. Its [reproduction command](consonant-defaults-2026-10-03.md#reproduce) checks both modes without changing the seed runner schema. Earlier reports, exploratory labels and source-assisted references remain unchanged.
+
 ## Native spelling follow-up — 2026-10-01
 
 The [four-word spelling review](nepali-spelling-2026-10-01.md) adds exact preferences for `halyo`, `nabhani`, `gaunle` and `dindaina`. The final fixture has **142 contracts and two exploratory cases**, with all 139 prior rows byte-for-byte unchanged. Five additions cover the four words and one synthetic text integration guard. On the same final fixture, full contracts score **137/142 → 142/142**; both engines still pass the historical **137/137** contracts.

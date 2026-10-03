@@ -2,6 +2,7 @@ import { convertText, convertWord, createEngine } from 'sahajlipi';
 import type { Conversion, Engine, EngineOptions } from 'sahajlipi';
 
 const options: EngineOptions = {
+  consonantMode: 'full',
   digits: 'latin',
   preserveTechnicalText: true,
   entries: { ojas: ['ओजस', 'ओजस्'] },
@@ -12,7 +13,12 @@ const text: string = convertText('paani 123');
 const alternatives: string[] = convertWord('cha').candidates;
 const ambiguous: boolean = result.ambiguous;
 void [text, alternatives, ambiguous];
+const strict: Engine = createEngine({ consonantMode: 'half' });
+const half: string = strict.convertText('k kr');
+void half;
 
+// @ts-expect-error Only the two documented consonant modes are supported.
+createEngine({ consonantMode: 'strict' });
 // @ts-expect-error Only the two documented digit styles are supported.
 createEngine({ digits: 'arabic' });
 // @ts-expect-error Technical text preservation is a boolean.

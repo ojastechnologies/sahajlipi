@@ -24,15 +24,15 @@ test('uses phonetic rules for words outside the starter dictionary', () => {
   assert.equal(convertWord('namaste').text, 'नमस्ते');
 });
 
-test('leaves fallback consonants half until an explicit vowel completes them', () => {
-  assert.equal(convertWord('k').text, 'क्');
+test('uses full fallback endings and forms internal conjuncts without an explicit vowel', () => {
+  assert.equal(convertWord('k').text, 'क');
   assert.equal(convertWord('ka').text, 'क');
   assert.equal(convertWord('ki').text, 'कि');
-  assert.equal(convertWord('kr').text, 'क्र्');
+  assert.equal(convertWord('kr').text, 'क्र');
   assert.equal(convertWord('kra').text, 'क्र');
-  assert.equal(convertWord('kt').text, 'क्त्');
+  assert.equal(convertWord('kt').text, 'क्त');
   assert.equal(convertWord('kta').text, 'क्त');
-  assert.equal(convertText('k ka kr kra'), 'क् क क्र् क्र');
+  assert.equal(convertText('k ka kr kra'), 'क क क्र क्र');
 });
 
 test('types vocalic r with Shift R without changing the usual ri sound', () => {
@@ -46,7 +46,7 @@ test('types vocalic r with Shift R without changing the usual ri sound', () => {
 
 test('types retroflex sha with Shift S while lowercase sh stays unchanged', () => {
   assert.equal(convertWord('sha').text, 'श');
-  assert.equal(convertWord('S').text, 'ष्');
+  assert.equal(convertWord('S').text, 'ष');
   assert.equal(convertWord('Sa').text, 'ष');
   assert.equal(convertWord('Sha').text, 'ष');
   assert.equal(convertText('sha Sha'), 'श ष');
@@ -95,8 +95,8 @@ test('types bindu and chandrabindu with explicit phonetic shortcuts', () => {
   assert.equal(convertWord('a^').text, 'अं');
   assert.equal(convertWord('a~').text, 'अँ');
   assert.equal(convertText('ka^ kaa~ a^ a~'), 'कं काँ अं अँ');
-  assert.equal(convertWord('n').text, 'न्');
-  assert.equal(convertWord('m').text, 'म्');
+  assert.equal(convertWord('n').text, 'न');
+  assert.equal(convertWord('m').text, 'म');
   assert.deepEqual(convertWord('kam^').candidates, ['कमं']);
   const custom = createEngine({ entries: { 'kam^': ['कामं', 'कमं'] } });
   assert.deepEqual(custom.convertWord('kam^').candidates, ['कामं', 'कमं']);
@@ -104,7 +104,7 @@ test('types bindu and chandrabindu with explicit phonetic shortcuts', () => {
 
 test('makes conjuncts automatically and types an explicit halant with slash', () => {
   assert.equal(convertWord('shakti').text, 'शक्ति');
-  assert.equal(convertWord('kr').text, 'क्र्');
+  assert.equal(convertWord('kr').text, 'क्र');
   assert.equal(convertWord('k/').text, 'क्');
   assert.equal(convertWord('ka/').text, 'क्');
   assert.equal(convertWord('th/').text, 'थ्');
@@ -115,7 +115,7 @@ test('makes conjuncts automatically and types an explicit halant with slash', ()
 test('forces a visible half form with slash-equals after the halant', () => {
   assert.equal(convertWord('par/=yo').text, 'पर्‍यो');
   assert.equal(convertText('par/=yo'), 'पर्‍यो');
-  assert.equal(convertWord('k=').text, 'क्=');
+  assert.equal(convertWord('k=').text, 'क=');
 });
 
 test('types explicit danda with pipe, including after a decimal', () => {
@@ -194,8 +194,8 @@ test('rejects empty or malformed custom entries rather than returning undefined 
 test('cha prefers the unaspirated sound while chha explicitly selects the aspirated sound', () => {
   assert.deepEqual(convertWord('cha'), { text: 'च', candidates: ['च', 'छ'], ambiguous: true });
   assert.deepEqual(convertWord('chha'), { text: 'छ', candidates: ['छ'], ambiguous: false });
-  assert.equal(convertWord('ch').text, 'च्');
-  assert.equal(convertWord('chh').text, 'छ्');
+  assert.equal(convertWord('ch').text, 'च');
+  assert.equal(convertWord('chh').text, 'छ');
   assert.equal(convertText('cha chha'), 'च छ');
   const custom = createEngine({ entries: { cha: ['छ', 'च'] } });
   assert.equal(custom.convertWord('cha').text, 'छ');

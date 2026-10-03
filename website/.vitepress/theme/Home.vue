@@ -23,6 +23,7 @@ typing.destroy();`;
           <a class="sahaj-button sahaj-button-secondary" :href="withBase('/demo/')" target="_self">Try the demo</a>
         </div>
         <p class="sahaj-release-note">0.1.0-alpha.1 is available on <a href="https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.1">npm</a>.<br>Experimental Nepali developer alpha. Read the <a :href="withBase('/docs/release.html')">release record</a>.</p>
+        <p class="sahaj-source-note">This site previews the unreleased 0.1.0-alpha.2 source: full consonant endings, automatic conjuncts, and backtick for explicit halves. See the <a :href="withBase('/docs/package/consonant-defaults-2026-10-03.html')">change and compatibility checks</a>.</p>
       </div>
       <WordPreview />
     </section>

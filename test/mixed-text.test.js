@@ -50,9 +50,9 @@ test('does not classify decimals, explicit marks, or ordinary mixed identifiers 
   assert.equal(convertText('pani. paani|'), 'पनि. पानी।');
 });
 
-test('explicit opt-out applies the previous conversion rules across all text', () => {
+test('explicit opt-out converts addresses with the configured full consonant fallback', () => {
   const legacy = createEngine({ preserveTechnicalText: false });
-  assert.equal(legacy.convertText('camera.com user@camera.com|'), 'क्यामेरा.चोम् उसेर्@क्यामेरा.चोम्।');
+  assert.equal(legacy.convertText('camera.com user@camera.com|'), 'क्यामेरा.चोम उसेर@क्यामेरा.चोम।');
   assert.deepEqual(convertWord('camera.com'), legacy.convertWord('camera.com'));
 });
 
@@ -110,7 +110,7 @@ test('bare domains are recognizable at the first alphabetic label after a dot', 
   }
   assert.deepEqual(protectedText('camera camera. 3.14 camera.123'), []);
   assert.equal(convertText('camera camera. 3.14 par/=yo ka^ kaa~ T D'),
-    'क्यामेरा क्यामेरा. ३.१४ पर्‍यो कं काँ ट् ड्');
+    'क्यामेरा क्यामेरा. ३.१४ पर्‍यो कं काँ ट ड');
 });
 
 test('early recognition respects sentence boundaries and the per-engine opt-out', () => {
@@ -118,7 +118,7 @@ test('early recognition respects sentence boundaries and the per-engine opt-out'
     ['https:', 'www.', 'user@', 'camera.c']);
   const legacy = createEngine({ preserveTechnicalText: false });
   const text = 'https: www. user@ camera.c';
-  assert.equal(legacy.convertText(text), 'ह्त्त्प्स्: व्व्व्. उसेर्@ क्यामेरा.च्');
+  assert.equal(legacy.convertText(text), 'ह्त्त्प्स: व्व्व. उसेर@ क्यामेरा.च');
   assert.notEqual(convertText(text), legacy.convertText(text));
 });
 

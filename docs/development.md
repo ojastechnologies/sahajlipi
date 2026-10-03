@@ -23,6 +23,8 @@ npm run test:browser
 
 On Linux, use `npx playwright install --with-deps chromium firefox webkit`. The suite automatically starts an isolated Python server on port 4180. `npm run test:browser -- --project=chromium` runs one engine, and `npm run test:browser:report` opens the latest HTML report. The [browser compatibility guide](package/browser-compatibility.md) defines the coverage, report interpretation, and limits.
 
+For the alpha.2 consonant change, `npm run test:browser -- browser/typing.spec.js` focuses on typing flows, including the demo's **Full (default)** / **Strict half** selector. Try both settings in the editor and marked form fields, explicit backtick and `/` halves, vowel attachment, paste, and English mode. The [candidate contract report](package/consonant-defaults-2026-10-03.md#reproduce) gives the separate full/half benchmark reproduction commands. Run the complete suite before proposing a release, and record candidate results separately from the dated alpha.1 checks.
+
 ## Verify the package and developer examples
 
 With Node.js 20 or later and `npm ci` completed:
@@ -98,6 +100,8 @@ Pull requests to `main` run the [Node CI workflow](../.github/workflows/ci.yml) 
 ## Release status
 
 The repository and demo are public. `sahajlipi@0.1.0-alpha.1` was published to the public npm registry on 2026-10-03 and verified against the release source and checksum. Fresh installed JavaScript and strict TypeScript consumers passed. It is an experimental Nepali developer alpha; publication does not establish stable APIs or linguistic quality. Install with `npm install --save-exact sahajlipi@0.1.0-alpha.1`.
+
+The next source candidate is `0.1.0-alpha.2`, unpublished. Its phonetic fallback defaults to full bare and final consonants and supports explicit backtick or `/` half forms. Preserve alpha.1 fallback endings with `createEngine({ consonantMode: 'half' })`, passing both converters to DOM fields as shown in the [migration recipe](package/integration-recipes.md#keep-alpha1-consonant-behavior). Published alpha.1 retains its earlier behavior and has no new option or backtick shortcut; its dated checks are separate from candidate verification.
 
 The [release record](release.md) records artifact identity, registry tags, compatibility scope, versioning, migration notes, and the alpha checklist. See [CHANGELOG.md](../CHANGELOG.md) for release contents and [Getting started](package/getting-started.md) for npm, local tarball, and source installation.
 

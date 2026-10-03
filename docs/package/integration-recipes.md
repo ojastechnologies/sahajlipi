@@ -1,6 +1,6 @@
 # Integration recipes
 
-These recipes use the public `sahajlipi` and `sahajlipi/dom` entry points from the published experimental Nepali alpha. Install with `npm install --save-exact sahajlipi@0.1.0-alpha.1` as described in [getting started](getting-started.md). Both npm `alpha` and `latest` currently select that prerelease; the [release record](../release.md) documents verification and tag behavior. The core is ESM, and the adapters require real browser fields.
+These recipes use the public `sahajlipi` and `sahajlipi/dom` entry points. The published experimental Nepali version remains `0.1.0-alpha.1`; the `0.1.0-alpha.2` source candidate is unpublished. General attachment and lifecycle recipes apply to both; the consonant compatibility option below requires the source candidate. See [getting started](getting-started.md) for exact-version npm installation and local tarballs, and the [release record](../release.md) for distribution status. The core is ESM, and the adapters require real browser fields.
 
 ## Runnable examples
 
@@ -93,6 +93,35 @@ const manager = attachNepaliInputs(page, {
 Put `data-sahajlipi-ignore` on English text fields. Native email, number, telephone, and password fields are unsupported and stay unattached. Use `selector` to select only your Nepali fields; it overrides the scope selection. A custom `excludeSelector` replaces the default exclusion selector. These selectors match fields, not exclusion regions.
 
 Do not combine a document-wide manager with another manager targeting the same fields. Use separate roots, selectors, or field exclusions to keep ownership distinct. For dynamic fields, the manager observes eligible additions and removals; `manager.refresh()` scans immediately. Call `manager.destroy()` when the page region is removed. The [API reference](api.md#choose-an-integration-scope) defines scope, observation, and manager controls.
+
+<span id="keep-alpha1-consonant-behavior"></span>
+
+## Keep alpha.1 consonant behavior
+
+The unpublished alpha.2 source candidate changes fallback endings: `k` → क and `kr` → क्र by default, where alpha.1 yields क् and क्र्. Internal conjuncts still form automatically, and vowel signs keep their existing rules. Exact lexicon readings, including custom entries, keep priority and are not rewritten.
+
+When adopting the candidate, select `'half'` on a shared engine to retain alpha.1 fallback endings. Pass **both** converters to the manager so live words, paste, and completed composition use the same configuration:
+
+```js
+import { createEngine } from 'sahajlipi';
+import { attachNepaliInputs } from 'sahajlipi/dom';
+
+const engine = createEngine({ consonantMode: 'half' });
+engine.convertWord('k').text; // 'क्'
+engine.convertWord('kr').text; // 'क्र्'
+
+const manager = attachNepaliInputs(document, {
+  scope: 'all',
+  convertWord: engine.convertWord,
+  convertText: engine.convertText,
+});
+
+// Call manager.destroy() during page teardown.
+```
+
+For a single field, pass the same pair to `attachNepaliInput(field, { convertWord: engine.convertWord, convertText: engine.convertText })`. `consonantMode` is a core option; putting it directly in adapter options does not configure conversion. Attachment and configuration do not rewrite existing field text.
+
+Use the default `'full'` mode when you want full bare and final fallback consonants. Either mode supports explicit backtick and `/` half forms, which persist across spaces and punctuation; `` k`i `` and `k/i` keep the following vowel independent. The [typing reference](typing-reference.md#half-consonants-and-conjuncts) lists these rules. The published alpha.1 artifact retains its original `/` behavior and does not expose `consonantMode` or the backtick shortcut.
 
 ## TypeScript field attachment
 
