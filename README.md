@@ -17,15 +17,15 @@ SahajLipi is an open-source JavaScript library with TypeScript declarations for 
 
 ## Use the package
 
-Start with [Getting started](docs/package/getting-started.md) for local tarball installation and imports from `sahajlipi` / `sahajlipi/dom`. This candidate targets **`0.1.0-alpha.1`** with the `alpha` tag. Use registry installation once that exact version’s availability is verified in the [release record](docs/release.md), or install a locally packed checkout. Runnable [integration examples](examples/README.md) cover vanilla JavaScript, TypeScript, and a React uncontrolled textarea; [integration recipes](docs/package/integration-recipes.md) explain candidates and lifecycle handling.
+The experimental developer alpha **`0.1.0-alpha.1`** is [published on npm](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.1). Start with [Getting started](docs/package/getting-started.md) for installation and imports from `sahajlipi` / `sahajlipi/dom`. Runnable [integration examples](examples/README.md) cover vanilla JavaScript, TypeScript, and a React uncontrolled textarea; [integration recipes](docs/package/integration-recipes.md) explain candidates and lifecycle handling.
 
-After verifying registry availability, install the exact alpha version:
+Install the exact alpha version:
 
 ```sh
 npm install --save-exact sahajlipi@0.1.0-alpha.1
 ```
 
-This command requires the exact version to exist in the registry; candidate metadata alone does not establish availability. The [local tarball instructions](docs/package/getting-started.md) also work from this checkout.
+The [release record](docs/release.md) records registry integrity, consumer checks, and the experimental scope. Npm assigned both `alpha` and `latest` to this first release; pin the exact version above. The [local tarball instructions](docs/package/getting-started.md) remain available for development.
 
 The core engine converts words and text without a browser. The browser examples assume an ESM bundler or an import map that resolves the installed package. For live typing, mark the fields that should accept Roman Nepali, then initialize the browser adapter once:
 
@@ -79,7 +79,7 @@ ASCII number keys use Devanagari digits by default (`123` → `१२३`, `3.14
 
 Recognizable links, ASCII domain-shaped hosts and ordinary ASCII email addresses stay literal by default during text conversion, live typing, and paste. Preservation starts at early cues such as `https:`, `www.`, `name@`, and `camera.c`, before an address is complete. Plain `camera` still converts. The policy preserves spelling and case without checking whether a domain exists; it does not detect arbitrary English or code. For an English fragment, disable conversion while typing or pasting it, then enable it again. Custom engines can opt out with `preserveTechnicalText: false`. See [mixed-text behavior and controls](docs/package/api.md#links-domains-and-email-addresses).
 
-Start with the [package documentation](docs/package/README.md) for the [API](docs/package/api.md), [typing rules](docs/package/typing-reference.md), [architecture](docs/package/architecture.md), and [benchmark protocol](docs/package/benchmarks.md). The package metadata targets public `0.1.0-alpha.1` with the `alpha` tag. The snippets above use public package imports, supported by both local-tarball and registry installations. Registry installation requires verified availability of the exact release; see [Getting started](docs/package/getting-started.md).
+Start with the [package documentation](docs/package/README.md) for the [API](docs/package/api.md), [typing rules](docs/package/typing-reference.md), [architecture](docs/package/architecture.md), and [benchmark protocol](docs/package/benchmarks.md). The snippets above use public package imports from the verified `0.1.0-alpha.1` release; see [Getting started](docs/package/getting-started.md).
 
 ## Package website and demo
 

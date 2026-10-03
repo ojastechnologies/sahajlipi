@@ -1,11 +1,11 @@
 # Security policy
 
-SahajLipi is an unreleased prototype. The public `main` branch receives best-effort fixes; there is no published npm version or promised support window yet.
+SahajLipi publishes experimental developer alphas. Version `0.1.0-alpha.1` was published on npm on 2026-10-03. The current alpha and public `main` branch receive best-effort fixes; there is no promised support window yet. See the [release record](docs/release.md) for the verified artifact and compatibility limits.
 
 | Version | Security fixes |
 | --- | --- |
 | Current `main` | Best effort |
-| npm package | No release exists |
+| `0.1.0-alpha.1` | Best effort; experimental |
 
 ## Report a vulnerability privately
 

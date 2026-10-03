@@ -1,6 +1,6 @@
 # Integration recipes
 
-These recipes use the public `sahajlipi` and `sahajlipi/dom` entry points. Install the current prototype from a local tarball or checkout as described in [getting started](getting-started.md); it is not yet published to npm. The core is ESM, and the adapters require real browser fields.
+These recipes use the public `sahajlipi` and `sahajlipi/dom` entry points from the published experimental Nepali alpha. Install with `npm install --save-exact sahajlipi@0.1.0-alpha.1` as described in [getting started](getting-started.md). Both npm `alpha` and `latest` currently select that prerelease; the [release record](../release.md) documents verification and tag behavior. The core is ESM, and the adapters require real browser fields.
 
 ## Runnable examples
 

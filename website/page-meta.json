@@ -1,7 +1,7 @@
 {
   "index.md": {
     "title": "SahajLipi | Nepali Typing Library for JavaScript",
-    "description": "Open-source Nepali typing for JavaScript and TypeScript apps. Convert Roman Nepali to Unicode with direct typing, optional candidates, and browser adapters."
+    "description": "Install the SahajLipi developer alpha from npm for Roman Nepali to Unicode typing in JavaScript and TypeScript apps, with core and browser APIs."
   },
   "docs/index.md": {
     "title": "SahajLipi Documentation | Developer Guides and Evidence",
@@ -13,7 +13,7 @@
   },
   "docs/package/getting-started.md": {
     "title": "Getting Started with SahajLipi | JavaScript and TypeScript",
-    "description": "Install the unreleased SahajLipi prototype locally, convert Roman Nepali, configure browser fields, and use the public JavaScript and TypeScript APIs."
+    "description": "Install the exact SahajLipi developer alpha from npm or a local checkout, convert Roman Nepali, configure browser fields, and use JavaScript and TypeScript APIs."
   },
   "docs/package/integration-recipes.md": {
     "title": "SahajLipi Integration Recipes | Browser and React Examples",
@@ -100,12 +100,12 @@
     "description": "Contribute to SahajLipi, run engine and browser checks, verify local tarball consumers, build examples and the website, and inspect CI evidence."
   },
   "docs/release.md": {
-    "title": "SahajLipi Release Policy | Alpha Checklist and Compatibility",
-    "description": "Review SahajLipi package boundaries, compatibility evidence, versioning, migration rules, and the alpha checklist before any npm publication."
+    "title": "SahajLipi Release Record | Developer Alpha and Compatibility",
+    "description": "Inspect the verified SahajLipi npm alpha, package identity, distribution tags, compatibility evidence, versioning, migration rules, and release checklist."
   },
   "docs/status-and-roadmap.md": {
     "title": "SahajLipi Status and Roadmap | Scope and Next Steps",
-    "description": "Understand the current SahajLipi prototype, Nepali typing limits, package and demo status, review priorities, and plans before a developer alpha."
+    "description": "Understand the published SahajLipi developer alpha, Nepali typing limits, package and demo status, review priorities, and next steps."
   },
   "docs/brand.md": {
     "title": "SahajLipi Brand Guide | Name, Logo, Colors, and Assets",
@@ -121,11 +121,11 @@
   },
   "docs/security.md": {
     "title": "SahajLipi Security Policy | Private Vulnerability Reports",
-    "description": "Find SahajLipi vulnerability reporting instructions and prototype support status, with private disclosure guidance for project security issues."
+    "description": "Find SahajLipi vulnerability reporting instructions and experimental alpha support status, with private disclosure guidance for project security issues."
   },
   "docs/changelog.md": {
-    "title": "SahajLipi Changelog | Unreleased Changes and Version Notes",
-    "description": "Track the unpublished SahajLipi alpha candidate, reviewed spelling changes, packaging, integration checks and verified release status."
+    "title": "SahajLipi Changelog | Releases and Version Notes",
+    "description": "Track the published SahajLipi developer alpha, reviewed spelling changes, packaging, integration checks, and unreleased development changes."
   },
   "demo/index.html": {
     "title": "SahajLipi Live Demo | Type Roman Nepali to Unicode",
