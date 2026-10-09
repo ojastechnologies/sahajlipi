@@ -1,6 +1,6 @@
 # Reviewed native forms — 2026-10-09
 
-**Unreleased repository update:** this batch adds 34 exact whole-key preferences for Nepali forms, compounds and inflections. Use a [local development installation](getting-started.md#local-development-installation) to try them. The **prepared, unpublished alpha.4 candidate** includes this batch and 211 starter keys; the verified published npm alpha.3 artifact has 177 keys and excludes it. The [candidate release section](../release.md#alpha4-release-candidate) records preparation status. Original source measurements below are separate from fresh versioned-candidate verification; package publication and website deployment have their own verification steps.
+**Alpha.4 publication follow-up — 2026-10-09:** this 34-key batch is included in the verified [`sahajlipi@0.1.0-alpha.4`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.4) registry archive with 211 starter keys. Alpha.3 retains its 177-key artifact and excludes these later forms. Use [exact-version installation](getting-started.md#1-install-the-published-alpha) and the [release section](../release.md#alpha4-release) for distribution verification. Original source measurements below remain separate from local candidate checks and fresh registry-installed consumers; website deployment is separate from npm publication.
 
 The batch reviews the 46 remaining word-default mismatches after the [earlier spelling follow-up](nepali-spelling-2026-10-09.md). Its frozen source ledger selects 34 additions and records 12 deferrals. The first displayed reading is a project typing preference; alternatives remain available where the Roman input admits multiple readings.
 
@@ -116,7 +116,7 @@ Ten rows concern names or name-related constructions, one is a separately scoped
 
 ## Recorded comparison
 
-The [new machine report](../../benchmark/reports/native-forms-2026-10-09.json) compares merged baseline source `5baaad071a5a673c756eb48e2f7523a05c3295fd` with the unreleased native-form update, using identical final seed contracts and the original frozen development references.
+The [new machine report](../../benchmark/reports/native-forms-2026-10-09.json) compares merged baseline source `5baaad071a5a673c756eb48e2f7523a05c3295fd` with the then-unreleased native-form update, using identical final seed contracts and the original frozen development references.
 
 | Metric | Pre-batch baseline | Native-form update |
 | --- | ---: | ---: |

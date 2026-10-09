@@ -54,7 +54,7 @@ function pageHead(pageData) {
         '@context': 'https://schema.org',
         '@graph': [
           { '@type': 'WebSite', '@id': siteUrl + '#website', name: 'SahajLipi', url: siteUrl, description: pageData.description, inLanguage: 'en' },
-          { '@type': 'SoftwareSourceCode', '@id': siteUrl + '#source', name: 'SahajLipi', url: siteUrl, description: 'Open-source Roman Nepali transliteration engine and browser input adapters. Published on npm as an experimental Nepali developer alpha.', version: '0.1.0-alpha.3', datePublished: '2026-10-09', sameAs: 'https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.3', codeRepository: repository, programmingLanguage: ['JavaScript', 'TypeScript'], license: repository + '/blob/main/LICENSE' },
+          { '@type': 'SoftwareSourceCode', '@id': siteUrl + '#source', name: 'SahajLipi', url: siteUrl, description: 'Open-source Roman Nepali transliteration engine and browser input adapters. Published on npm as an experimental Nepali developer alpha.', version: '0.1.0-alpha.4', datePublished: '2026-10-09', sameAs: 'https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.4', codeRepository: repository, programmingLanguage: ['JavaScript', 'TypeScript'], license: repository + '/blob/main/LICENSE' },
         ],
       };
       head.push(['script', { type: 'application/ld+json' }, JSON.stringify(graph).replaceAll('<', '\\u003c')]);
@@ -130,7 +130,7 @@ export default defineConfig({
           { text: 'Loanword expansion', link: '/docs/package/loanword-expansion-2026-09-28.html' },
           { text: 'Loanword suffixes', link: '/docs/package/loanword-suffixes-2026-10-01.html' },
           { text: 'Alpha.3 native spellings', link: '/docs/package/nepali-spelling-2026-10-09.html' },
-          { text: 'Unreleased native forms', link: '/docs/package/native-forms-2026-10-09.html' },
+          { text: 'Alpha.4 native forms', link: '/docs/package/native-forms-2026-10-09.html' },
           { text: 'Reviewed native spellings', link: '/docs/package/nepali-spelling-2026-10-01.html' },
         ] },
         { text: 'Evaluation and review', items: [

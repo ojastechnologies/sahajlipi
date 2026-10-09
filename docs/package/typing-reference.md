@@ -1,6 +1,6 @@
 # Nepali typing reference
 
-SahajLipi currently converts Roman Nepali, 51 listed English-spelling loanword stems with finite attached suffix forms and 12 full English month names to Unicode Devanagari. The core returns a preferred reading and, where listed, alternatives. The optional browser adapters render that preferred reading in opted-in text fields as you type and report alternatives to the host interface. This reference describes the published **`0.1.0-alpha.3` package**, including the **13-key spelling slice released on 2026-10-09**; the keys are project conventions rather than a standardized Romanization scheme. The earlier `0.1.0-alpha.1` keeps its half-consonant default; see the [migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior).
+SahajLipi currently converts Roman Nepali, 51 listed English-spelling loanword stems with finite attached suffix forms and 12 full English month names to Unicode Devanagari. The core returns a preferred reading and, where listed, alternatives. The optional browser adapters render that preferred reading in opted-in text fields as you type and report alternatives to the host interface. This reference describes the published **`0.1.0-alpha.4` package**, including the earlier **13-key spelling slice** and **34 native forms released on 2026-10-09**; the keys are project conventions rather than a standardized Romanization scheme. The earlier `0.1.0-alpha.1` keeps its half-consonant default; see the [migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior).
 
 The [starter lexicon](../../src/lexicon.js) takes priority over the [phonetic fallback](../../src/phonetic.js). The listed word `cha` defaults to च and offers छ as an alternative; `chha` returns only छ. The fallback tokens remain `ch` → च and `chh` → छ. Custom entries can replace a built-in entry in one engine instance. See the [engine source](../../src/index.js) for the lookup order.
 
@@ -115,7 +115,7 @@ Online usage supports the listed Nepali spellings: [नेपाल कानू
 
 ## Reviewed native-word spellings
 
-Four earlier reviewed starter keys remain included in alpha.3:
+Four earlier reviewed starter keys remain included in alpha.4:
 
 | Roman key | Preferred output |
 | --- | --- |
@@ -126,7 +126,7 @@ Four earlier reviewed starter keys remain included in alpha.3:
 
 Each has one reading. The [2026-10-01 review](nepali-spelling-2026-10-01.md) records their sources and dated comparison.
 
-**Alpha.3 spelling update — 2026-10-09:** twelve single-reading preferences and a second reading for `bhagna` bring this reviewed native-key group to **17 keys**. The published `sahajlipi@0.1.0-alpha.3` package includes this slice; the [release record](../release.md#alpha3-release) identifies the verified artifact. The separately proposed 34 native forms are outside alpha.3.
+**Alpha.3 spelling update — 2026-10-09:** twelve single-reading preferences and a second reading for `bhagna` bring this reviewed native-key group to **17 keys**. The published `sahajlipi@0.1.0-alpha.3` package includes this slice; the [release record](../release.md#alpha3-release) identifies the verified artifact. The 34 later native forms are shipped in alpha.4 and excluded from historical alpha.3.
 
 | Roman key | Alpha.3 output | Alternative |
 | --- | --- | --- |
@@ -146,7 +146,7 @@ Each has one reading. The [2026-10-01 review](nepali-spelling-2026-10-01.md) rec
 
 `bhagna` keeps its existing displayed भग्न reading and offers the distinct भाग्न reading for selection. Its order preserves the earlier default; the frozen references specify no uniquely preferred meaning. The [2026-10-09 review](nepali-spelling-2026-10-09.md) records source access, decisions and unchanged-reference measurements.
 
-**Later unreleased native-form batch — 2026-10-09:** the source checkout adds another 34 complete keys. For example, `futera` → फुटेर, `astitwalai` → अस्तित्वलाई, `karyaharuma` → कार्यहरूमा, `pairaheka` → पाइरहेका and `samhalnubhaeko` → सम्हाल्नुभएको. The [complete native-form guide](native-forms-2026-10-09.md#exact-mappings-and-sources) lists every mapping, its prior output and source access. These additions are included in the **prepared, unpublished alpha.4 candidate** and outside the verified published alpha.3 artifact. See the [candidate release section](../release.md#alpha4-release-candidate) and local installation instructions before trying them.
+**Alpha.4 native-form batch — 2026-10-09:** the published package adds another 34 complete keys. For example, `futera` → फुटेर, `astitwalai` → अस्तित्वलाई, `karyaharuma` → कार्यहरूमा, `pairaheka` → पाइरहेका and `samhalnubhaeko` → सम्हाल्नुभएको. The [complete native-form guide](native-forms-2026-10-09.md#exact-mappings-and-sources) lists every mapping, its prior output and source access. These additions are included in **published alpha.4** and outside the historical alpha.3 artifact. See the [release section](../release.md#alpha4-release) and exact-version installation instructions.
 
 | Roman key | Displayed reading | Alternative |
 | --- | --- | --- |

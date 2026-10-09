@@ -2,7 +2,7 @@
 
 The [live SahajLipi demo](https://ojastechnologies.github.io/sahajlipi/demo/) lets you try the current Nepali typing experience in a browser. This page covers the demo interface and how to run it. The [package website](https://ojastechnologies.github.io/sahajlipi/) introduces the library and provides developer documentation. For the reusable conversion engine, browser adapter, API, and typing rules, start with the [package documentation](../package/README.md).
 
-This guide describes the **repository demo**, including the full-consonant behavior introduced in alpha.2, the **Consonants** selector and the **13-key spelling slice shipped in alpha.3**. Website deployment is separate from npm publication. Alpha.1 retains its earlier half-consonant fallback; the [release record](../release.md) distinguishes registry packages from the repository demo. The repository demo also includes the [later unreleased 34-key native-form batch](../package/native-forms-2026-10-09.md), outside the published alpha.3 artifact. Hosted demo changes appear after merge and website deployment.
+This guide describes the **repository demo**, including the full-consonant behavior introduced in alpha.2, the **Consonants** selector and the **13-key spelling slice shipped in alpha.3**. Website deployment is separate from npm publication. Alpha.1 retains its earlier half-consonant fallback; the [release record](../release.md) distinguishes registry packages from the repository demo. The repository demo also includes the [34-key native-form batch shipped in alpha.4](../package/native-forms-2026-10-09.md). The original alpha.3 artifact excludes these later forms; website deployment remains separate from npm publication.
 
 ## Run it locally
 

@@ -2,9 +2,9 @@
 
 Published versions and prepared candidates are recorded here. The [release record](docs/release.md) identifies the verified artifacts, sources, consumer checks, and experimental limits; the same page defines versioning and migration expectations.
 
-## 0.1.0-alpha.4 — prepared candidate, unpublished
+## 0.1.0-alpha.4 — 2026-10-09
 
-Prepared on 2026-10-09 for an experimental developer alpha. The candidate packages the merged 34-key native-form update and 211 starter keys from source `9bec98c4ce980d1bc7852d553dab01d15e664834`. It is **not published on npm**. The verified `alpha` and `latest` tags remain on `0.1.0-alpha.3`, whose 177-key artifact excludes these 34 forms. The [release record](docs/release.md#alpha4-release-candidate) and [candidate verification](benchmark/reports/alpha4-candidate-2026-10-09.json) record passed local candidate checks. Maintainer PR review/merge and registry publication verification remain pending.
+Experimental developer alpha, [published on npm](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.4) by `maheshnepal`, with package access managed through `ojastech`. Publication completed at `2026-10-09T15:10:15.506Z`. The official 13-file, 26,335-byte archive matches merged preparation source `b4bbe41b9734ae20729a7109a525324479c06c6b` and the reviewed artifact byte for byte. Alpha.4 ships the 34 native forms and 211 starter keys; alpha.3 retains its original 177-key artifact. The verified `alpha` and `latest` tags both select alpha.4; unversioned installation selects alpha.4. The [release record](docs/release.md#alpha4-release) and [publication verification](benchmark/reports/alpha4-publication-2026-10-09.json) document official archive identity, fresh JavaScript/strict TypeScript and 9/9 registry-installed browser checks. The unchanged [candidate record](benchmark/reports/alpha4-candidate-2026-10-09.json) retains its dated preparation scope.
 
 ### Added
 
@@ -18,11 +18,11 @@ The [native-form comparison](docs/package/native-forms-2026-10-09.md#recorded-co
 - Candidate version and lockfile advance to `0.1.0-alpha.4`; runtime behavior is the existing merged native-form update.
 - Packaged README uses the release record for current distribution status and distinguishes alpha.3's 177 starter keys from alpha.4's 211.
 - Preparation follows the [alpha.4 release plan](docs/superpowers/plans/2026-10-09-alpha4-release.md), preserving the exact alpha.1/2/3 archives and all dated source/candidate evidence.
-- Fresh candidate validation passed 389 Node tests, 209 seed contracts, JavaScript/strict TypeScript consumers, retained-archive identity and all 34 reading arrays in both consonant modes, 69 desktop browser checks and 11 Chromium website checks. The public candidate record identifies the 13-file, 26,335-byte archive and its exact source; these are local candidate checks, with publication still pending.
+- Fresh candidate validation passed 389 Node tests, 209 seed contracts, JavaScript/strict TypeScript consumers, retained-archive identity and all 34 reading arrays in both consonant modes, 69 desktop browser checks and 11 Chromium website checks. The public candidate record identifies the 13-file, 26,335-byte archive and its exact source; these remain dated local candidate checks, separate from subsequent registry verification.
 
 ## 0.1.0-alpha.3 — 2026-10-09
 
-Experimental developer alpha, [published on npm](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.3) by `maheshnepal` from merged preparation source [`4df0ebc`](https://github.com/ojastechnologies/sahajlipi/commit/4df0ebcc174e379ca345752228aceddf14e25d43). The official 13-file archive matches the reviewed alpha.3 artifact byte for byte. The verified `alpha` and `latest` tags both point to `0.1.0-alpha.3`; unversioned `npm install sahajlipi` selects alpha.3. Pin with `npm install --save-exact sahajlipi@0.1.0-alpha.3`; the [release record](docs/release.md#alpha3-release) documents integrity, migration and fresh registry consumers.
+Experimental developer alpha, [published on npm](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.3) by `maheshnepal` from merged preparation source [`4df0ebc`](https://github.com/ojastechnologies/sahajlipi/commit/4df0ebcc174e379ca345752228aceddf14e25d43). The official 13-file archive matches the reviewed alpha.3 artifact byte for byte. Its dated verification observed `alpha` and `latest` on `0.1.0-alpha.3`; unversioned `npm install sahajlipi` selected alpha.3 at that time. Pin this historical release with `npm install --save-exact sahajlipi@0.1.0-alpha.3`; the [release record](docs/release.md#alpha3-release) documents integrity, migration and fresh registry consumers.
 
 ### Added
 
@@ -39,7 +39,7 @@ The selected development comparison improves word defaults **16/74 → 28/74** a
 
 ## 0.1.0-alpha.2 — 2026-10-03
 
-Experimental developer alpha, [published on npm](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.2) from source [`48a0321`](https://github.com/ojastechnologies/sahajlipi/commit/48a0321bed417b1e995f66adbcbf9ade2c82f1cf). Install that historical version with `npm install --save-exact sahajlipi@0.1.0-alpha.2`. Its dated tag verification recorded `alpha` and `latest` on alpha.2; current tags are documented with alpha.3 in the [release record](docs/release.md). The alpha.1 and alpha.2 artifacts and their recorded verification remain unchanged.
+Experimental developer alpha, [published on npm](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.2) from source [`48a0321`](https://github.com/ojastechnologies/sahajlipi/commit/48a0321bed417b1e995f66adbcbf9ade2c82f1cf). Install that historical version with `npm install --save-exact sahajlipi@0.1.0-alpha.2`. Its dated tag verification recorded `alpha` and `latest` on alpha.2; current tags are documented with alpha.4 in the [release record](docs/release.md). The alpha.1 and alpha.2 artifacts and their recorded verification remain unchanged.
 
 ### Changed
 

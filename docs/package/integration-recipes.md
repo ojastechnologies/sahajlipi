@@ -1,6 +1,6 @@
 # Integration recipes
 
-These recipes use the public `sahajlipi` and `sahajlipi/dom` entry points from the published experimental Nepali version `0.1.0-alpha.3`. General attachment and lifecycle recipes also apply to alpha.1; the consonant compatibility option below requires alpha.2 or later. See [getting started](getting-started.md) for exact-version npm installation and local tarballs, and the [release record](../release.md) for distribution status and verification. The core is ESM, and the adapters require real browser fields.
+These recipes use the public `sahajlipi` and `sahajlipi/dom` entry points from the published experimental Nepali version `0.1.0-alpha.4`. General attachment and lifecycle recipes also apply to alpha.1; the consonant compatibility option below requires alpha.2 or later. See [getting started](getting-started.md) for exact-version npm installation and local tarballs, and the [release record](../release.md) for distribution status and verification. The core is ESM, and the adapters require real browser fields.
 
 ## Runnable examples
 
