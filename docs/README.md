@@ -6,7 +6,7 @@ The experimental Nepali developer alpha **[`sahajlipi@0.1.0-alpha.3`](https://ww
 
 The current guides describe **`0.1.0-alpha.3`**, including the full fallback consonants and explicit backtick or `/` half forms introduced in alpha.2. Alpha.1 retains its earlier behavior. The [migration recipe](package/integration-recipes.md#keep-alpha1-consonant-behavior) preserves alpha.1 fallback endings with `createEngine({ consonantMode: 'half' })` when adopting alpha.2 or later.
 
-The typing reference and repository demo include the [13-key spelling slice shipped in alpha.3](package/nepali-spelling-2026-10-09.md). A separate later 34-form proposal is outside this release.
+The typing reference and repository demo include the [13-key spelling slice shipped in alpha.3](package/nepali-spelling-2026-10-09.md). This repository also contains the [later unreleased 34-key native-form batch](package/native-forms-2026-10-09.md), available through a local checkout and its demo. The 34 forms are outside the published alpha.3 artifact; hosted demo changes appear after merge and website deployment.
 
 ## Reusable package
 
@@ -25,6 +25,7 @@ The typing reference and repository demo include the [13-key spelling slice ship
 | Read | For |
 | --- | --- |
 | [Alpha.3 native spelling follow-up](package/nepali-spelling-2026-10-09.md) | Twelve exact native preferences, an additional `bhagna` candidate, source checks and frozen development comparison. |
+| [Unreleased native-form batch](package/native-forms-2026-10-09.md) | 34 exact mappings, candidate-order decisions, source access, all 12 deferrals and unchanged evaluation denominators. |
 | [Full-consonant candidate contracts](package/consonant-defaults-2026-10-03.md) | Full default endings, strict half compatibility, declared fixture revisions, and dated candidate evidence. |
 | [Developer consumer browser record](../browser/reports/desktop-003.json) | Inspect the later 51-check run, installed-package identity, and uncontrolled React lifecycle scope. |
 | [Digit desktop browser record](../browser/reports/desktop-002.json) | Inspect the later 42-check digit/configuration run, source identities, named flows, and limits. |

@@ -456,3 +456,29 @@ test('reviewed native word preferences retain Roman editing, undo and English mo
   await page.keyboard.type(' dindaina');
   await expect(field).toHaveValue('गाउँले dindaina');
 });
+
+test('reviewed complete native forms expose alternatives and preserve editing and English mode', async ({ page }) => {
+  const field = await demo(page);
+  await page.keyboard.type('mahila');
+  await expect(field).toHaveValue('महिला');
+  await expect(page.locator('#candidate-select option')).toHaveText(['महिला', 'माहिला']);
+  await page.locator('#candidate-select').selectOption('1');
+  await expect(field).toHaveValue('माहिला');
+  await page.keyboard.type(' shanta');
+  await expect(field).toHaveValue('माहिला शान्त');
+  await expect(page.locator('#candidate-select option')).toHaveText(['शान्त', 'शान्ता']);
+  await page.keyboard.press('Backspace');
+  await expect(field).toHaveValue('माहिला शन्त');
+  await page.keyboard.type('a');
+  await expect(field).toHaveValue('माहिला शान्त');
+  await page.keyboard.press('Control+z');
+  await expect(field).toHaveValue('माहिला शन्त');
+  await page.keyboard.press('Control+Shift+z');
+  await expect(field).toHaveValue('माहिला शान्त');
+  await page.keyboard.type(' angrejharuko');
+  await expect(field).toHaveValue('माहिला शान्त अङ्ग्रेजहरूको');
+  await expect(page.locator('#candidate-select option')).toHaveText(['अङ्ग्रेजहरूको', 'अंग्रेजहरूको']);
+  await page.locator('#mode-button').click();
+  await page.keyboard.type(' mahila');
+  await expect(field).toHaveValue('माहिला शान्त अङ्ग्रेजहरूको mahila');
+});

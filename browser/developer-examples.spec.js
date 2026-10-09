@@ -18,13 +18,13 @@ test('installed vanilla consumer converts marked fields, exposes candidates, and
   await expect(page.locator('#adapter-status')).toHaveText('Nepali typing enabled');
   const field = page.locator('#nepali-message');
   await field.focus();
-  await page.keyboard.type('kam');
-  await expect(field).toHaveValue('कम');
-  await expect(page.locator('#candidate-options button')).toHaveText(['कम', 'काम']);
+  await page.keyboard.type('mahila');
+  await expect(field).toHaveValue('महिला');
+  await expect(page.locator('#candidate-options button')).toHaveText(['महिला', 'माहिला']);
   await page.locator('#candidate-options button[data-candidate-index="1"]').click();
-  await expect(field).toHaveValue('काम');
+  await expect(field).toHaveValue('माहिला');
   await page.keyboard.type(' 123|');
-  await expect(field).toHaveValue('काम १२३।');
+  await expect(field).toHaveValue('माहिला १२३।');
 
   const second = page.locator('#nepali-name');
   await second.focus();
@@ -40,12 +40,12 @@ test('installed vanilla consumer converts marked fields, exposes candidates, and
   await field.focus();
   await page.keyboard.press('End');
   await page.keyboard.type(' camera 123');
-  await expect(field).toHaveValue('काम १२३। camera 123');
+  await expect(field).toHaveValue('माहिला १२३। camera 123');
   await page.locator('#mode-toggle').click();
   await field.focus();
   await page.keyboard.press('End');
   await page.keyboard.type(' paani');
-  await expect(field).toHaveValue('काम १२३। camera 123 पानी');
+  await expect(field).toHaveValue('माहिला १२३। camera 123 पानी');
 });
 
 test('installed vanilla consumer teardown leaves text literal and disables its controls', async ({ page }) => {

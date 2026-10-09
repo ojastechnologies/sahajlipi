@@ -146,6 +146,16 @@ Each has one reading. The [2026-10-01 review](nepali-spelling-2026-10-01.md) rec
 
 `bhagna` keeps its existing displayed भग्न reading and offers the distinct भाग्न reading for selection. Its order preserves the earlier default; the frozen references specify no uniquely preferred meaning. The [2026-10-09 review](nepali-spelling-2026-10-09.md) records source access, decisions and unchanged-reference measurements.
 
+**Later unreleased native-form batch — 2026-10-09:** the source checkout adds another 34 complete keys. For example, `futera` → फुटेर, `astitwalai` → अस्तित्वलाई, `karyaharuma` → कार्यहरूमा, `pairaheka` → पाइरहेका and `samhalnubhaeko` → सम्हाल्नुभएको. The [complete native-form guide](native-forms-2026-10-09.md#exact-mappings-and-sources) lists every mapping, its prior output and source access. These additions are separate from the archived alpha.3 preparation artifact and the published alpha.2 package.
+
+| Roman key | Displayed reading | Alternative |
+| --- | --- | --- |
+| `mahila` | महिला | माहिला |
+| `shanta` | शान्त | शान्ता |
+| `angrejharuko` | अङ्ग्रेजहरूको | अंग्रेजहरूको |
+
+The maintainer chose `mahila` and `shanta` ordering; the explicit velar nasal comes first for `angrejharuko` to preserve the earlier fallback style. These are software preferences, not measured frequency rankings. Choose an alternative in the host interface or use `Alt+2` while the word is active in an attached field. The exact forms apply in either consonant mode. This batch does not infer other native endings or add loanword stems; its [12 deferrals](native-forms-2026-10-09.md#deferred-cases) remain in evaluation with unchanged references.
+
 These completed keys supply reviewed whole-word spellings. They preserve the vowel distinctions in the fallback: `pani` and `paani` remain distinct, and `ki` and `kii` retain their vowel lengths. The default fallback makes bare and final consonants full; explicit backtick or `/` keeps a consonant half. Explicit `^` / `~` still choose bindu / chandrabindu; Shift keys keep their explicit sounds.
 
 Only the complete normalized key matches. Incidental title case such as `Halyo` or `Imandar` works; reserved sound capitals keep their phonetic meaning unless an exact custom entry exists. For example, `Sarasar` still starts with ष, and `niSkanda` retains its explicit ष sound. Attached native forms and misspellings are not inferred from these aliases. Developers can replace a complete key’s readings with `createEngine({ entries })`.
