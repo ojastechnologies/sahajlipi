@@ -4,7 +4,7 @@ Published versions and prepared candidates are recorded here. The [release recor
 
 ## 0.1.0-alpha.3 — prepared candidate, unpublished
 
-Prepared on 2026-10-09 from the merged native spelling update. Package metadata identifies alpha.3; the current published npm artifact and verified registry tags remain `0.1.0-alpha.2`. Use a [local candidate tarball](docs/package/getting-started.md#local-development-installation) for review. The [candidate release notes](docs/release.md#alpha3-release-candidate) describe migration, the dated source evidence and pending fresh candidate verification. No alpha.3 npm publication or registry-consumer verification is recorded yet.
+Prepared on 2026-10-09 from the merged native spelling update. Package metadata identifies alpha.3; the current published npm artifact and verified registry tags remain `0.1.0-alpha.2`. Use a [local candidate tarball](docs/package/getting-started.md#local-development-installation) for review. The [candidate release notes](docs/release.md#alpha3-release-candidate) describe migration, the dated source evidence and completed local candidate verification. No alpha.3 npm publication or registry-consumer verification is recorded yet.
 
 ### Added
 

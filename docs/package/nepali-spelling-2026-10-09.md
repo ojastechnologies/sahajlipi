@@ -76,7 +76,7 @@ The ledger defers `mahila`, `shanta` and `angrejharuko`, whose listed alternativ
 
 ## Software validation
 
-The original source-update validation on 2026-10-09, before alpha.3 release preparation, passed **345/345 Node tests**, **174/174 seed contracts**, **66/66 desktop browser checks** across Chromium, Firefox and WebKit, and **11/11 website checks**. The website build and public-link checks also passed. These dated checks retain their measured source identities; fresh checks of the versioned alpha.3 candidate will be recorded separately in the [release preparation section](../release.md#alpha3-release-candidate).
+The original source-update validation on 2026-10-09, before alpha.3 release preparation, passed **345/345 Node tests**, **174/174 seed contracts**, **66/66 desktop browser checks** across Chromium, Firefox and WebKit, and **11/11 website checks**. The website build and public-link checks also passed. These dated checks retain their measured source identities; fresh checks of the versioned alpha.3 candidate are recorded separately in the [release preparation section](../release.md#alpha3-release-candidate).
 
 A local unpublished tarball from that original source update passed standalone JavaScript and strict TypeScript NodeNext/Bundler consumers. Its installed engine passed all 13 new entry checks and a mixed-text integration check. This does not republish the npm alpha.2 artifact. These software checks do not establish physical mobile/IME compatibility, independent human spelling review or representative language accuracy.
 

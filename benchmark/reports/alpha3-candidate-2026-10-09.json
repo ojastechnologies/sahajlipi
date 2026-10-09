@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 1,
+  "recordId": "alpha3-candidate-2026-10-09",
+  "recordedAtUtc": "2026-10-09T07:39:06.402535+00:00",
+  "status": "verified_local_candidate_unpublished",
+  "packageSourceCommit": "ef86b3543122496ce5f00108a00c5021705f3df9",
+  "mergedRuntimeSourceCommit": "5baaad071a5a673c756eb48e2f7523a05c3295fd",
+  "sourceIdentityLimit": "All distributed file bytes match packageSourceCommit. Later report/status documentation changes are outside the npm tarball; verify file equality again on the merged preparation PR before publishing.",
+  "runtimeUnchangedSinceMergedSpellingBatch": true,
+  "environment": {
+    "node": "v22.22.3",
+    "npm": "10.9.8",
+    "python": "3.14.0",
+    "platform": "darwin",
+    "architecture": "arm64"
+  },
+  "maintainer": {
+    "npmAccountVerified": "maheshnepal",
+    "npmOrganization": "ojastech",
+    "intendedPublicPackage": "sahajlipi",
+    "identityVerification": "npm whoami --registry=https://registry.npmjs.org/ returned maheshnepal on 2026-10-09; recheck before publication"
+  },
+  "artifact": {
+    "name": "sahajlipi",
+    "version": "0.1.0-alpha.3",
+    "filename": "sahajlipi-0.1.0-alpha.3.tgz",
+    "compressedBytes": 25135,
+    "fileCount": 13,
+    "sha256": "5aa10ae915a56fcddfe842dd9abbdb31a5131a8a5323c82d85fe199e7d7b0cd9",
+    "sha1": "7d6415f760b19a2cf27540503dc7bf085e2ed4e0",
+    "sha512": "sha512-IQ05rEkyUMOOkb/FhL/Tvko1eSNjBLxmSZFszapMOtg46pjQVHCP3TAOeN2pApg0LOwwam1IQGe0Nuee9SZ6gg==",
+    "files": [
+      {
+        "path": "LICENSE",
+        "size": 1079,
+        "mode": 420,
+        "sha256": "84abe5cb282f83d7da4f1bc92e19b28f64e89036877cad5fe5cb9b8f35ee84ad"
+      },
+      {
+        "path": "LICENSES/Unicode-3.0.txt",
+        "size": 2033,
+        "mode": 420,
+        "sha256": "220ba0e1c43b99530d2d5bdb892a99dca0989414f51ab695ecd90163eaa1ec3b"
+      },
+      {
+        "path": "NOTICE",
+        "size": 698,
+        "mode": 420,
+        "sha256": "56f72e63edd18ecb0708c7e2d8afb057e98c7014c3d510bd8888d138ce05eda5"
+      },
+      {
+        "path": "README.md",
+        "size": 23887,
+        "mode": 420,
+        "sha256": "591fbf15d3c58174844ff2a3045736264c21217f5aaf83f1634b0650ad176b4c"
+      },
+      {
+        "path": "package.json",
+        "size": 2939,
+        "mode": 420,
+        "sha256": "d14a88343bafc8b98e8a201344c3ecbb25c92761ed487fbab83ac838b5e6e584"
+      },
+      {
+        "path": "src/dom.d.ts",
+        "size": 2023,
+        "mode": 420,
+        "sha256": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1"
+      },
+      {
+        "path": "src/dom.js",
+        "size": 27834,
+        "mode": 420,
+        "sha256": "a264f11888f8a611d116a065fa10191aec029fcce75ee7e797c3dad4342fb9ac"
+      },
+      {
+        "path": "src/index.d.ts",
+        "size": 1161,
+        "mode": 420,
+        "sha256": "7b8c9969df0326e6b3fbfbd97713b60cb38931840c1da696b6fea6ac52d5d77a"
+      },
+      {
+        "path": "src/index.js",
+        "size": 4787,
+        "mode": 420,
+        "sha256": "01f3fb9fc0fb8f60617d5af81e96ef7c8752fdada3ef5153a89dbe22577b1152"
+      },
+      {
+        "path": "src/lexicon.js",
+        "size": 6182,
+        "mode": 420,
+        "sha256": "909b157d2e5601a24c8a7c27386524c0572dd7c29488ed2f135d24ff60573c78"
+      },
+      {
+        "path": "src/loanwords.js",
+        "size": 1779,
+        "mode": 420,
+        "sha256": "aa74e688d3b77980b5ee7e9fb89ce2c0a61fd27568d3230048bef91a8379e446"
+      },
+      {
+        "path": "src/phonetic.js",
+        "size": 2767,
+        "mode": 420,
+        "sha256": "ac571d6f4c94c5b48baa1558973d4d27ad6c7f2c5ff15fc7bed36ecdb2d29bf9"
+      },
+      {
+        "path": "src/text-policy.js",
+        "size": 5375,
+        "mode": 420,
+        "sha256": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa"
+      }
+    ],
+    "runtimeSha256": {
+      "src/dom.d.ts": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1",
+      "src/dom.js": "a264f11888f8a611d116a065fa10191aec029fcce75ee7e797c3dad4342fb9ac",
+      "src/index.d.ts": "7b8c9969df0326e6b3fbfbd97713b60cb38931840c1da696b6fea6ac52d5d77a",
+      "src/index.js": "01f3fb9fc0fb8f60617d5af81e96ef7c8752fdada3ef5153a89dbe22577b1152",
+      "src/lexicon.js": "909b157d2e5601a24c8a7c27386524c0572dd7c29488ed2f135d24ff60573c78",
+      "src/loanwords.js": "aa74e688d3b77980b5ee7e9fb89ce2c0a61fd27568d3230048bef91a8379e446",
+      "src/phonetic.js": "ac571d6f4c94c5b48baa1558973d4d27ad6c7f2c5ff15fc7bed36ecdb2d29bf9",
+      "src/text-policy.js": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa"
+    },
+    "description": "Dependency-free Nepali phonetic typing and Roman Nepali to Devanagari Unicode transliteration for JavaScript, with browser input adapters and TypeScript types.",
+    "keywords": [
+      "nepali",
+      "devanagari",
+      "devnagari",
+      "roman-nepali",
+      "nepali-typing",
+      "nepali-keyboard",
+      "nepali-input",
+      "nepali-unicode",
+      "nepali-transliteration",
+      "phonetic-typing",
+      "transliteration",
+      "unicode",
+      "keyboard",
+      "ime",
+      "input-method",
+      "javascript",
+      "typescript",
+      "browser",
+      "textarea"
+    ]
+  },
+  "checks": {
+    "dependencyInstallation": {
+      "command": "npm ci --offline --no-audit --no-fund",
+      "result": "passed",
+      "pinnedDevelopmentPackages": 144
+    },
+    "node": {
+      "command": "npm test",
+      "passed": 345,
+      "failed": 0,
+      "skipped": 0
+    },
+    "seed": {
+      "command": "npm run benchmark -- --check",
+      "passed": 174,
+      "totalContracts": 174,
+      "exploratoryExcluded": 2,
+      "fixtureSha256": "75aaa25d90d1b0d6ed7193698b55621eae98fcab88a225be9f3f4af0527e50f1"
+    },
+    "packageConsumer": {
+      "command": "npm run verify:package",
+      "result": "passed",
+      "tarballSha256": "5aa10ae915a56fcddfe842dd9abbdb31a5131a8a5323c82d85fe199e7d7b0cd9",
+      "runtimeFixtureSha256": "489554bdbe1211e141f8132f3dcbeb86be2257527c503a45453852706bde31ec",
+      "checks": [
+        "Public ESM exports, server-safe DOM-module import, blocked internal imports",
+        "All twelve new exact spellings and bhagna candidate order through installed sahajlipi export",
+        "Mixed Nepali, loanword, Devanagari digits, email and URL conversion",
+        "Strict TypeScript 5.9.3: NodeNext core without DOM; DOM fixtures/tutorials; Bundler fixtures/tutorials",
+        "Execution of emitted TypeScript core tutorial"
+      ],
+      "noRuntimePeerOrOptionalDependencies": true
+    },
+    "archive": {
+      "command": "npm pack --offline --json --ignore-scripts --cache <task-local-cache> --pack-destination <release-output>",
+      "result": "passed",
+      "allDistributedFilesEqualCommittedSource": true,
+      "licensesAndNoticeIncluded": true,
+      "developmentDataExcluded": true
+    },
+    "browser": {
+      "command": "npm run test:browser",
+      "stats": {
+        "startTime": "2026-10-09T07:36:08.487Z",
+        "duration": 17130.543,
+        "expected": 66,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "errors": 0,
+      "engines": [
+        "chromium",
+        "firefox",
+        "webkit"
+      ],
+      "retries": 0,
+      "installedExampleTarballSha256": "5aa10ae915a56fcddfe842dd9abbdb31a5131a8a5323c82d85fe199e7d7b0cd9",
+      "scope": "66 desktop checks, including vanilla and uncontrolled React StrictMode examples bundled from the actual installed tarball"
+    },
+    "website": {
+      "command": "npm run test:site",
+      "stats": {
+        "startTime": "2026-10-09T07:36:41.626Z",
+        "duration": 3297.9849999999997,
+        "expected": 11,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "errors": 0,
+      "retries": 0,
+      "scope": "Build, public-file/link verifier and 11 Chromium website checks; homepage and structured metadata still advertise verified alpha.2"
+    }
+  },
+  "sourceAssistedDevelopmentComparison": {
+    "measuredAtUtc": "2026-10-09T07:29:44.644Z",
+    "command": "node benchmark/measure-reviewed-spelling.js <archived-alpha2-source> --cases <licensed-local-cases> --output <new-output>",
+    "sameRuntimeHashesAsArtifact": true,
+    "references": "benchmark/reports/nepali-source-review-2026-10-01.json",
+    "referencesSha256": "5d9b36e39481d3f790fed503968f6bc504e71780ba083d8ed214f27ef674d34a",
+    "localCasesSha256": "2f92bcf5a16d35b6a31dca052e4e358ffe417b5dcec0e8cc704d17f8acbf23e3",
+    "publishedOriginalComparison": "benchmark/reports/nepali-spelling-2026-10-09.json",
+    "publishedOriginalComparisonSha256": "7d40f1a3f1900db75447f86ec888b03594a2c6eb28aa0267b40036e72aeb67fb",
+    "wordDefaults": {
+      "alpha2": 16,
+      "candidate": 28,
+      "total": 74
+    },
+    "referenceCandidateCoverage": {
+      "alpha2": 17,
+      "candidate": 30,
+      "total": 79
+    },
+    "completeSentenceDefaults": {
+      "alpha2": 0,
+      "candidate": 0,
+      "total": 12
+    },
+    "historicalSeedContracts": {
+      "alpha2": 160,
+      "candidate": 160,
+      "total": 160
+    },
+    "remainingWordDefaultMismatches": 46,
+    "limitation": "Source-assisted selected development targets guided the changes; these are not independent human review or held-out population accuracy. Complete licensed source sentences are not published."
+  },
+  "npmDiscovery": {
+    "metadataStatus": "included_in_verified_tarball_not_yet_published",
+    "baseline": "benchmark/reports/npm-search-2026-10-09.json",
+    "baselineSha256": "022ca7b2f88480f6b270941ab88addac7bea93cb276e2980dbdfedb94749c67e",
+    "termCount": 12,
+    "keywordCount": 19,
+    "limitations": "Registry API observations are not npm website placement; metadata updates require publication and indexing. No search position is guaranteed."
+  },
+  "remainingReleaseGates": [
+    "Preparation PR review and merge; inspect all CI checks on exact proposed and merged commits",
+    "Recheck npm maintainer and official registry alpha.3 availability",
+    "Verify merged distributed bytes and retained tarball checksum; publish exact artifact with public access and alpha tag",
+    "Inspect actual alpha and latest tags; maintain the authorized default-installation behavior with a verified latest tag update if required",
+    "Compare official registry metadata and downloaded artifact SHA-1/SHA-512/SHA-256; install registry version into fresh JavaScript/TypeScript/browser consumers",
+    "Create matching GitHub prerelease only after registry verification; then update website and publication status",
+    "Repeat search audit after publication and indexing"
+  ],
+  "unverifiedScope": [
+    "Physical mobile and IME behavior",
+    "Controlled React values and SSR/hydration",
+    "Assistive technology",
+    "Independent human linguistic review and representative accuracy"
+  ]
+}

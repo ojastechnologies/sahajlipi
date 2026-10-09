@@ -24,7 +24,13 @@ The [spelling comparison](package/nepali-spelling-2026-10-09.md#recorded-compari
 
 The same dated source update passed **345 Node tests**, **174 seed contracts**, **66 desktop browser checks**, **11 website checks**, and local tarball JavaScript/strict TypeScript consumers. Those results retain their original source identities and are separate from fresh validation of the versioned alpha.3 candidate.
 
-Fresh candidate verification will be retained at `benchmark/reports/alpha3-candidate-2026-10-09.json`, with the proposed source identity, runtime file hashes, actual tarball version and SHA-256, package contents, consumer results, browser and website results, and the checks inspected on the proposed commit. Until that record is completed, the alpha.3 verification gates are pending. Publication requires review of the exact merged source and retained artifact, followed by registry comparison and fresh registry-installed consumers as described in the checklist below. Physical mobile/IME behavior, controlled React fields, SSR/hydration, assistive technology and independent language accuracy remain unverified.
+Fresh validation of the committed alpha.3 candidate passed **345/345 Node tests**, **174/174 seed contracts**, **66/66 desktop browser checks**, **11/11 website checks**, and installed JavaScript/strict TypeScript consumers. The [candidate verification record](../benchmark/reports/alpha3-candidate-2026-10-09.json) retains the tested commit, all distributed file hashes, 13-file allowlist, consumer scope and identical tarball checksum used by the installed browser examples. The archived candidate is **25,135 compressed bytes**, with SHA-256:
+
+```text
+5aa10ae915a56fcddfe842dd9abbdb31a5131a8a5323c82d85fe199e7d7b0cd9
+```
+
+Its distributed bytes match candidate commit [`ef86b35`](https://github.com/ojastechnologies/sahajlipi/commit/ef86b3543122496ce5f00108a00c5021705f3df9); all eight `src/` files are unchanged from the merged spelling batch. The verification record and this status update are outside the npm tarball. Inspect CI on the preparation PR and merged commit, and verify distributed file equality again before publishing the retained artifact. Publication and fresh registry-installed consumers remain pending. Physical mobile/IME behavior, controlled React fields, SSR/hydration, assistive technology and independent language accuracy remain unverified.
 
 <span id="current-alpha-candidate"></span>
 
