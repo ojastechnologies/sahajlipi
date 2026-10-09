@@ -1,0 +1,156 @@
+{
+  "package": "sahajlipi",
+  "checkedAtUtc": "2026-10-09T07:29:02.232255+00:00",
+  "phase": "before_alpha3_publication",
+  "surface": "official npm registry search API, not npm website search",
+  "endpoint": "https://registry.npmjs.org/-/v1/search",
+  "queryParameters": {
+    "size": 250,
+    "from": 0
+  },
+  "limitations": [
+    "Positions are a dated observation in the first 250 API results, not a ranking guarantee.",
+    "API ordering is not assumed to match the npm website OpenSearch interface.",
+    "Metadata changes are not published yet; this audit observes the existing alpha.2 package.",
+    "No competitor package lists or maintainer identities are retained."
+  ],
+  "results": [
+    {
+      "text": "nepali",
+      "url": "https://registry.npmjs.org/-/v1/search?text=nepali&size=250&from=0",
+      "status": "found",
+      "responseTime": "2026-10-09T07:29:03.362Z",
+      "total": 551,
+      "returned": 250,
+      "position": 88,
+      "version": "0.1.0-alpha.2"
+    },
+    {
+      "text": "devanagari",
+      "url": "https://registry.npmjs.org/-/v1/search?text=devanagari&size=250&from=0",
+      "status": "found",
+      "responseTime": "2026-10-09T07:29:04.301Z",
+      "total": 480,
+      "returned": 250,
+      "position": 230,
+      "version": "0.1.0-alpha.2"
+    },
+    {
+      "text": "devnagari",
+      "url": "https://registry.npmjs.org/-/v1/search?text=devnagari&size=250&from=0",
+      "status": "absent_in_returned_window",
+      "responseTime": "2026-10-09T07:29:05.432Z",
+      "total": 6,
+      "returned": 6,
+      "position": null,
+      "version": null
+    },
+    {
+      "text": "roman-nepali",
+      "url": "https://registry.npmjs.org/-/v1/search?text=roman-nepali&size=250&from=0",
+      "status": "found",
+      "responseTime": "2026-10-09T07:29:05.805Z",
+      "total": 1420,
+      "returned": 250,
+      "position": 1,
+      "version": "0.1.0-alpha.2"
+    },
+    {
+      "text": "nepali-typing",
+      "url": "https://registry.npmjs.org/-/v1/search?text=nepali-typing&size=250&from=0",
+      "status": "found",
+      "responseTime": "2026-10-09T07:29:06.683Z",
+      "total": 15386,
+      "returned": 250,
+      "position": 77,
+      "version": "0.1.0-alpha.2"
+    },
+    {
+      "text": "nepali-unicode",
+      "url": "https://registry.npmjs.org/-/v1/search?text=nepali-unicode&size=250&from=0",
+      "status": "found",
+      "responseTime": "2026-10-09T07:29:07.077Z",
+      "total": 24059,
+      "returned": 250,
+      "position": 199,
+      "version": "0.1.0-alpha.2"
+    },
+    {
+      "text": "nepali-transliteration",
+      "url": "https://registry.npmjs.org/-/v1/search?text=nepali-transliteration&size=250&from=0",
+      "status": "found",
+      "responseTime": "2026-10-09T07:29:07.476Z",
+      "total": 975,
+      "returned": 250,
+      "position": 176,
+      "version": "0.1.0-alpha.2"
+    },
+    {
+      "text": "phonetic-typing",
+      "url": "https://registry.npmjs.org/-/v1/search?text=phonetic-typing&size=250&from=0",
+      "status": "found",
+      "responseTime": "2026-10-09T07:29:07.863Z",
+      "total": 15295,
+      "returned": 250,
+      "position": 129,
+      "version": "0.1.0-alpha.2"
+    },
+    {
+      "text": "nepali-keyboard",
+      "url": "https://registry.npmjs.org/-/v1/search?text=nepali-keyboard&size=250&from=0",
+      "status": "absent_in_returned_window",
+      "responseTime": "2026-10-09T07:29:08.266Z",
+      "total": 21052,
+      "returned": 250,
+      "position": null,
+      "version": null
+    },
+    {
+      "text": "nepali input",
+      "url": "https://registry.npmjs.org/-/v1/search?text=nepali+input&size=250&from=0",
+      "status": "absent_in_returned_window",
+      "responseTime": "2026-10-09T07:29:08.663Z",
+      "total": 145847,
+      "returned": 250,
+      "position": null,
+      "version": null
+    },
+    {
+      "text": "roman nepali",
+      "url": "https://registry.npmjs.org/-/v1/search?text=roman+nepali&size=250&from=0",
+      "status": "found",
+      "total": 1618,
+      "position": 1,
+      "responseTime": "2026-10-09T07:30:34.146Z",
+      "returned": 250,
+      "version": "0.1.0-alpha.2",
+      "earlierAttempts": [
+        {
+          "checkedAtUtc": "2026-10-09T07:29:02.232255+00:00",
+          "status": "fetch_failed",
+          "reason": "HTTP Error 429: Too Many Requests"
+        }
+      ],
+      "checkedAtUtc": "2026-10-09T07:30:34.666780+00:00"
+    },
+    {
+      "text": "devanagari typing",
+      "url": "https://registry.npmjs.org/-/v1/search?text=devanagari+typing&size=250&from=0",
+      "status": "found",
+      "total": 15846,
+      "position": 85,
+      "responseTime": "2026-10-09T07:30:34.959Z",
+      "returned": 250,
+      "version": "0.1.0-alpha.2",
+      "earlierAttempts": [
+        {
+          "checkedAtUtc": "2026-10-09T07:29:02.232255+00:00",
+          "status": "fetch_failed",
+          "reason": "HTTP Error 429: Too Many Requests"
+        }
+      ],
+      "checkedAtUtc": "2026-10-09T07:30:35.182917+00:00"
+    }
+  ],
+  "completedAtUtc": "2026-10-09T07:30:35.182980+00:00"
+}

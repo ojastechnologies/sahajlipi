@@ -1,6 +1,6 @@
 # Reviewed native spellings — 2026-10-09
 
-**Unreleased source update:** these spellings are available in this repository checkout and its demo. The published `sahajlipi@0.1.0-alpha.2` package does not include this batch. Package metadata still says alpha.2; use a [local development installation](getting-started.md#local-development-installation) to try the update. A future alpha publication will have its own release record.
+**Alpha.3 preparation follow-up:** these merged spellings are included in the unpublished `0.1.0-alpha.3` source candidate and repository demo. The published `sahajlipi@0.1.0-alpha.2` package does not include this batch. Use a [local candidate tarball](getting-started.md#local-development-installation) to try the update. The [candidate release record](../release.md#alpha3-release-candidate) separates fresh alpha.3 preparation from the original source measurements below; npm publication remains pending.
 
 This follow-up adds twelve exact native-word preferences and the missing भाग्न alternative for `bhagna`, using the [unchanged development references](source-review-2026-10-01.md). It follows the [earlier four-word update](nepali-spelling-2026-10-01.md). The repository engine and Nepali-enabled browser fields use the same entries.
 
@@ -76,9 +76,9 @@ The ledger defers `mahila`, `shanta` and `angrejharuko`, whose listed alternativ
 
 ## Software validation
 
-Local validation on 2026-10-09 passed **345/345 Node tests**, **174/174 seed contracts**, **66/66 desktop browser checks** across Chromium, Firefox and WebKit, and **11/11 website checks**. The website build and public-link checks also passed.
+The original source-update validation on 2026-10-09, before alpha.3 release preparation, passed **345/345 Node tests**, **174/174 seed contracts**, **66/66 desktop browser checks** across Chromium, Firefox and WebKit, and **11/11 website checks**. The website build and public-link checks also passed. These dated checks retain their measured source identities; fresh checks of the versioned alpha.3 candidate will be recorded separately in the [release preparation section](../release.md#alpha3-release-candidate).
 
-A local unpublished tarball of this checkout passed standalone JavaScript and strict TypeScript NodeNext/Bundler consumers. Its installed engine passed all 13 new entry checks and a mixed-text integration check. This does not republish the npm alpha.2 artifact. These software checks do not establish physical mobile/IME compatibility, independent human spelling review or representative language accuracy.
+A local unpublished tarball from that original source update passed standalone JavaScript and strict TypeScript NodeNext/Bundler consumers. Its installed engine passed all 13 new entry checks and a mixed-text integration check. This does not republish the npm alpha.2 artifact. These software checks do not establish physical mobile/IME compatibility, independent human spelling review or representative language accuracy.
 
 ## Reproduce
 

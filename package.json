@@ -1,9 +1,9 @@
 {
   "name": "sahajlipi",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "private": false,
   "type": "module",
-  "description": "Dependency-free Roman Nepali to Unicode typing engine and browser input adapters",
+  "description": "Dependency-free Nepali phonetic typing and Roman Nepali to Devanagari Unicode transliteration for JavaScript, with browser input adapters and TypeScript types.",
   "exports": {
     ".": {
       "types": "./src/index.d.ts",
@@ -74,12 +74,23 @@
   },
   "keywords": [
     "nepali",
-    "nepali-typing",
-    "roman-nepali",
-    "transliteration",
     "devanagari",
+    "devnagari",
+    "roman-nepali",
+    "nepali-typing",
+    "nepali-keyboard",
+    "nepali-input",
+    "nepali-unicode",
+    "nepali-transliteration",
+    "phonetic-typing",
+    "transliteration",
     "unicode",
     "keyboard",
-    "input-method"
+    "ime",
+    "input-method",
+    "javascript",
+    "typescript",
+    "browser",
+    "textarea"
   ]
 }
