@@ -2,7 +2,7 @@
 
 The [live SahajLipi demo](https://ojastechnologies.github.io/sahajlipi/demo/) lets you try the current Nepali typing experience in a browser. This page covers the demo interface and how to run it. The [package website](https://ojastechnologies.github.io/sahajlipi/) introduces the library and provides developer documentation. For the reusable conversion engine, browser adapter, API, and typing rules, start with the [package documentation](../package/README.md).
 
-This guide describes the **repository demo**, including the full-consonant behavior introduced in alpha.2, the **Consonants** selector and the **13-key spelling slice shipped in alpha.3**. Website deployment is separate from npm publication. Alpha.1 retains its earlier half-consonant fallback; the [release record](../release.md) distinguishes registry packages from the repository demo. The later 34-form proposal is outside alpha.3.
+This guide describes the **repository demo**, including the full-consonant behavior introduced in alpha.2, the **Consonants** selector and the **13-key spelling slice shipped in alpha.3**. Website deployment is separate from npm publication. Alpha.1 retains its earlier half-consonant fallback; the [release record](../release.md) distinguishes registry packages from the repository demo. The repository demo also includes the [later unreleased 34-key native-form batch](../package/native-forms-2026-10-09.md), outside the published alpha.3 artifact. Hosted demo changes appear after merge and website deployment.
 
 ## Run it locally
 
@@ -70,6 +70,10 @@ Type `bhagna` to display **भग्न**, then choose **भाग्न** from 
 These exact aliases supply reviewed whole-word spellings. An unfinished or unlisted spelling can use the phonetic fallback; attached native forms are not inferred. Incidental capitals such as `Imandar` work, while reserved Shift spellings such as `Sarasar` keep their explicit sounds. English mode keeps these keys literal.
 
 The [earlier four-word review](../package/nepali-spelling-2026-10-01.md) and [alpha.3 batch review](../package/nepali-spelling-2026-10-09.md) record sources, decisions and measurements. The demo uses the repository engine in either consonant setting.
+
+The later **34-key native-form batch** adds complete spellings such as `astitwalai` → **अस्तित्वलाई**, `karyaharuma` → **कार्यहरूमा**, `pairaheka` → **पाइरहेका** and `samhalnubhaeko` → **सम्हाल्नुभएको**. Type `mahila` for **महिला** and choose **माहिला**; type `shanta` for **शान्त** and choose **शान्ता**; or type `angrejharuko` for **अङ्ग्रेजहरूको** and choose **अंग्रेजहरूको**. The dropdown or `Alt+2` selects the second reading while the word is active. The first two orders are maintainer choices, and the third preserves the explicit velar-nasal style. None is a frequency claim.
+
+The [native-form guide](../package/native-forms-2026-10-09.md) lists all 34 mappings, sources and 12 deferred cases. These are complete-key preferences in either consonant setting; they do not teach the engine arbitrary native suffixes. The [earlier four-word review](../package/nepali-spelling-2026-10-01.md) and [earlier 13-key review](../package/nepali-spelling-2026-10-09.md) retain their dated sources and measurements.
 
 ### English loanwords
 

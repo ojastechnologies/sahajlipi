@@ -25,6 +25,15 @@ for (const [roman, expected] of [
 assert.deepEqual(core.convertWord('bhagna'), { text: 'भग्न', candidates: ['भग्न', 'भाग्न'], ambiguous: true });
 assert.equal(core.convertText('imandar company 123 sakos| mahesh@example.com https://example.com'),
   'इमान्दार कम्पनी १२३ सकोस्। mahesh@example.com https://example.com');
+assert.equal(core.convertText('futera kendraharudwara manovaigyanikharule fyankidinchhan purnakalinlai|'),
+  'फुटेर केन्द्रहरूद्वारा मनोवैज्ञानिकहरूले फ्याँकिदिन्छन् पूर्णकालीनलाई।');
+assert.deepEqual(core.convertWord('mahila'), { text: 'महिला', candidates: ['महिला', 'माहिला'], ambiguous: true });
+assert.deepEqual(core.convertWord('shanta'), { text: 'शान्त', candidates: ['शान्त', 'शान्ता'], ambiguous: true });
+assert.deepEqual(core.convertWord('angrejharuko').candidates, ['अङ्ग्रेजहरूको', 'अंग्रेजहरूको']);
+assert.equal(core.convertWord('Shanta').text, 'षन्त');
+assert.equal(core.createEngine({ consonantMode: 'half' }).convertWord('fyankidinchhan').text, 'फ्याँकिदिन्छन्');
+assert.equal(core.createEngine({ entries: { mahila: ['माहिला', 'महिला'] } }).convertWord('mahila').text, 'माहिला');
+assert.equal(core.convertWord('mahila').text, 'महिला');
 assert.deepEqual(core.convertWord('schoolma'), { text: 'स्कुलमा', candidates: ['स्कुलमा', 'स्कूलमा'], ambiguous: true });
 assert.equal(core.convertText('mediasanga company@school.com https://media.com'), 'मिडियासँग company@school.com https://media.com');
 assert.equal(core.convertText('paani 123 test99@example.com https://example.com/456 |'),

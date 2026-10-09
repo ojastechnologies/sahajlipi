@@ -111,6 +111,23 @@ The example builder packed and installed a local alpha.2 tarball, compiled the R
 
 The record identifies the checkout based on `987e31f` with SHA-256 hashes of runtime modules, declarations, demo, tests, configuration, and consumer source files. Its generated browser report and installed-example manifest have separate hashes. Later documentation edits are outside that source-hash scope and can change a later tarball; the recorded tarball is not asserted to match a later checkout. Desktop-001 through desktop-005 retain their original sources, outcomes, and counts. The desktop engine and integration limits below still apply; this run makes no mobile, OS clipboard, installed Safari, accessibility, or general linguistic-accuracy claim.
 
+## Native-form follow-up — 2026-10-09
+
+The [desktop-007 record](../../browser/reports/desktop-007.json) captures **69/69 passing checks**: 23 scenarios in each of Chromium, Firefox and WebKit, with no failures, skips, flaky outcomes, retries or uncaught page errors. The recorded run used macOS arm64 with Node.js **22.22.3**. The record includes the run timestamps and identifies all eight runtime/declaration files, test sources, the installed-example manifest and the actual local tarball used for that run.
+
+The new desktop keyboard scenario selects the `mahila`, `shanta` and `angrejharuko` alternatives, then exercises editing, undo and English mode. The existing installed vanilla consumer also checks the `mahila` alternative. These tests accompany the [34-key native-form batch](native-forms-2026-10-09.md); they do not certify every listed form through every editor event. The previous 66-check [desktop-006 record](../../browser/reports/desktop-006.json) remains unchanged.
+
+| Engine | Scenarios | Passed | Browser version |
+| --- | ---: | ---: | --- |
+| Chromium | 23 | 23 | 153.0.8010.12 |
+| Firefox | 23 | 23 | 155.0 |
+| WebKit | 23 | 23 | 26.6 |
+| **Total** | **69** | **69** | Recorded headless builds |
+
+A separate `npm run verify:package` passed JavaScript public-import, option and isolation checks, strict TypeScript NodeNext core without DOM, DOM and Bundler consumers, and execution of the emitted core tutorial in Node. Those package checks are outside the 69 browser count. The local installed package contains 13 allowlisted files and still carries the existing alpha.2 manifest version; it is modified unreleased source, not the published npm alpha.2 artifact. Its tarball checksum identifies the exact archive used during the recorded run.
+
+These selected headless desktop flows retain the existing scope limits: injected clipboard/composition events do not establish OS clipboard or physical IME behavior, and the React example remains an uncontrolled textarea in development StrictMode. No controlled-field, mobile, assistive-technology or representative linguistic-accuracy result is added.
+
 ## Desktop engine matrix
 
 | Playwright project | Browser under test | Status evidence |

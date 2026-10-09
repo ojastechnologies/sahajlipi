@@ -4,6 +4,8 @@ SahajLipi provides a dependency-free Nepali transliteration engine and optional 
 
 The guides describe the **published `0.1.0-alpha.3` developer alpha**, including the [13-key native spelling update](nepali-spelling-2026-10-09.md). The full-consonant fallback introduced in alpha.2 uses full bare and final consonants (`k` → क, `kr` → क्र), with internal conjuncts formed automatically. Backtick or `/` explicitly keeps a consonant half; a following vowel is independent. Exact lexicon readings retain priority. Use `createEngine({ consonantMode: 'half' })` for alpha.1 fallback compatibility and pass both converters to browser fields as shown in the [migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior).
 
+The typing guide and repository demo also describe the [later unreleased 34-key native-form batch](native-forms-2026-10-09.md). Use a local checkout to try these complete forms; they are outside the published alpha.3 artifact.
+
 | Read | For |
 | --- | --- |
 | [Getting started](getting-started.md) | Install the published alpha or a local checkout, import the public entry points, choose a typing scope, and use TypeScript. |
@@ -23,6 +25,7 @@ The guides describe the **published `0.1.0-alpha.3` developer alpha**, including
 | [Ra-ya review and changes](ry-review.md) | Word-specific joiner preferences, Shift lookup, fixed-fixture results and source-quality triage. |
 | [Original English loanword pilot](loanword-review.md) | The dated 20-word pilot, its 34-key source catalogue, and original limits. |
 | [Alpha.3 native spelling follow-up](nepali-spelling-2026-10-09.md) | Twelve exact preferences, the additional `bhagna` reading, source access and unchanged-reference development measurements. |
+| [Unreleased native-form batch](native-forms-2026-10-09.md) | 34 complete-key preferences, chosen candidate orders, all 12 deferrals, source access and frozen development evaluation. |
 | [Native spelling review](nepali-spelling-2026-10-01.md) | Four exact vowel/nasal aliases, source evidence, frozen validation and unchanged-rule limits. |
 | [Loanword suffixes and review](loanword-suffixes-2026-10-01.md) | Current 51-stem scope, 19 suffix keys, school alternatives, source evidence, customization and recorded comparisons. |
 | [Earlier loanword expansion](loanword-expansion-2026-09-28.md) | The dated 30-key expansion, its candidate inventory and held decisions. |

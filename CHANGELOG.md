@@ -2,6 +2,17 @@
 
 Published versions and prepared candidates are recorded here. The [release record](docs/release.md) identifies the verified artifacts, sources, consumer checks, and experimental limits; the same page defines versioning and migration expectations.
 
+## Unreleased
+
+The 34-key native-form update below is not included in the verified published `0.1.0-alpha.3` artifact. Repository metadata retains that release version; a separate package release must identify and verify this later source batch.
+
+### Added
+
+- A [34-key native-form batch](docs/package/native-forms-2026-10-09.md) with exact complete inflections and compounds, 46 source-assisted case decisions and 12 explicit deferrals. The 51 recognized loanword stems are unchanged.
+- Maintainer-selected `mahila` → महिला / माहिला and `shanta` → शान्त / शान्ता ordering, plus `angrejharuko` → अङ्ग्रेजहरूको / अंग्रेजहरूको with the prior explicit velar-nasal style first. These orders are typing preferences rather than frequency findings; frozen references remain unchanged.
+
+The [native-form comparison](docs/package/native-forms-2026-10-09.md#recorded-comparison) improves defaults **28/74 → 62/74** and individual listed-reference coverage **30/79 → 67/79**; complete sentences remain **0/12**. Its final fixture scores **174/209 → 209/209**, with **174/174** historical contracts and all **176** earlier rows preserved. Twelve word defaults remain deferred. These are source-assisted development results, without held-out or representative accuracy claims.
+
 ## 0.1.0-alpha.3 — 2026-10-09
 
 Experimental developer alpha, [published on npm](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.3) by `maheshnepal` from merged preparation source [`4df0ebc`](https://github.com/ojastechnologies/sahajlipi/commit/4df0ebcc174e379ca345752228aceddf14e25d43). The official 13-file archive matches the reviewed alpha.3 artifact byte for byte. The verified `alpha` and `latest` tags both point to `0.1.0-alpha.3`; unversioned `npm install sahajlipi` selects alpha.3. Pin with `npm install --save-exact sahajlipi@0.1.0-alpha.3`; the [release record](docs/release.md#alpha3-release) documents integrity, migration and fresh registry consumers.

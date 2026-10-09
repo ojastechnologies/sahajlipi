@@ -150,5 +150,13 @@
   "docs/package/nepali-spelling-2026-10-01.md": {
     "title": "SahajLipi Native Spellings | Vowels, Nasals and Evidence",
     "description": "Review four exact Nepali spelling aliases in SahajLipi, their source evidence, frozen validation, unchanged typing rules and reproducible development results."
+  },
+  "docs/superpowers/plans/2026-10-09-native-inflections.md": {
+    "title": "Reviewed native forms implementation plan",
+    "description": "Implementation steps for source-supported Nepali inflections and compounds, exact aliases, preserved typing contracts and reproducible development evaluation."
+  },
+  "docs/package/native-forms-2026-10-09.md": {
+    "title": "SahajLipi Native Forms | Nepali Inflections and Source Evidence",
+    "description": "Review 34 unreleased complete Nepali spelling preferences in SahajLipi, candidate decisions, primary-source access, 12 deferrals and frozen development evaluation."
   }
 }
