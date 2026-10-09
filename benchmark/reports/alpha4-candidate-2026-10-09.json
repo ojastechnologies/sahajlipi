@@ -1,0 +1,485 @@
+{
+  "schemaVersion": 1,
+  "recordId": "alpha4-candidate-2026-10-09",
+  "recordedAtUtc": "2026-10-09T14:47:15.064550+00:00",
+  "status": "verified_local_candidate_unpublished",
+  "packageSourceCommit": "bf48129770a0fea168450a066728fa83b99df618",
+  "mergedRuntimeSourceCommit": "9bec98c4ce980d1bc7852d553dab01d15e664834",
+  "sourceIdentityLimit": "All distributed file bytes match packageSourceCommit. Later verification and status documentation is outside the tarball. Verify distributed equality again on the merged preparation PR before publishing.",
+  "runtimeUnchangedSinceMergedNativeFormBatch": true,
+  "environment": {
+    "node": "v22.22.3",
+    "npm": "10.9.8",
+    "python": "3.14.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "pinnedTools": {
+      "@playwright/test": "1.63.0",
+      "@types/react": "19.3.0",
+      "@types/react-dom": "19.3.0",
+      "esbuild": "0.28.2",
+      "react": "19.3.0",
+      "react-dom": "19.3.0",
+      "typescript": "5.9.3",
+      "vitepress": "1.6.4"
+    }
+  },
+  "maintainer": {
+    "npmAccountVerified": "maheshnepal",
+    "npmOrganization": "ojastech",
+    "intendedPublicPackage": "sahajlipi",
+    "identityVerification": "Official npm whoami returned maheshnepal during preparation on 2026-10-09; recheck before publication"
+  },
+  "registryBeforePreparation": {
+    "checkedAtUtc": "2026-10-09T14:36:07.870944+00:00",
+    "tags": {
+      "status": 200,
+      "body": {
+        "latest": "0.1.0-alpha.3",
+        "alpha": "0.1.0-alpha.3"
+      }
+    },
+    "candidateVersion": {
+      "status": 404,
+      "body": "version not found: 0.1.0-alpha.4"
+    }
+  },
+  "artifact": {
+    "name": "sahajlipi",
+    "version": "0.1.0-alpha.4",
+    "filename": "sahajlipi-0.1.0-alpha.4.tgz",
+    "compressedBytes": 26335,
+    "unpackedBytes": 87082,
+    "fileCount": 13,
+    "sha256": "950b21693f1f42455139296ed43f872968d56182de7ea6792b8c9e9156683e56",
+    "sha1": "5c2a1486db7b7c6d11fe02d8efa8147c9566611f",
+    "sha512": "sha512-AnYIzOW489PMakOjoLV0bZhndpps/j7JB4gWOJPy7KTQvaFkEn9bs9Zm9aLY8J1DpUkMDOCQyplF9Lkyr7NnMw==",
+    "files": [
+      {
+        "path": "LICENSE",
+        "size": 1079,
+        "mode": 420,
+        "sha256": "84abe5cb282f83d7da4f1bc92e19b28f64e89036877cad5fe5cb9b8f35ee84ad"
+      },
+      {
+        "path": "LICENSES/Unicode-3.0.txt",
+        "size": 2033,
+        "mode": 420,
+        "sha256": "220ba0e1c43b99530d2d5bdb892a99dca0989414f51ab695ecd90163eaa1ec3b"
+      },
+      {
+        "path": "NOTICE",
+        "size": 698,
+        "mode": 420,
+        "sha256": "56f72e63edd18ecb0708c7e2d8afb057e98c7014c3d510bd8888d138ce05eda5"
+      },
+      {
+        "path": "README.md",
+        "size": 26502,
+        "mode": 420,
+        "sha256": "4a4dcf13f71b358b46a58ea630b9a8b4b712933ba1dd9821a1aa751c1bf1707d"
+      },
+      {
+        "path": "package.json",
+        "size": 2939,
+        "mode": 420,
+        "sha256": "ab87b70a4637f041054806c57dbd60723ea2c96e013da09159b830cc051031bf"
+      },
+      {
+        "path": "src/dom.d.ts",
+        "size": 2023,
+        "mode": 420,
+        "sha256": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1"
+      },
+      {
+        "path": "src/dom.js",
+        "size": 27834,
+        "mode": 420,
+        "sha256": "a264f11888f8a611d116a065fa10191aec029fcce75ee7e797c3dad4342fb9ac"
+      },
+      {
+        "path": "src/index.d.ts",
+        "size": 1161,
+        "mode": 420,
+        "sha256": "7b8c9969df0326e6b3fbfbd97713b60cb38931840c1da696b6fea6ac52d5d77a"
+      },
+      {
+        "path": "src/index.js",
+        "size": 4787,
+        "mode": 420,
+        "sha256": "01f3fb9fc0fb8f60617d5af81e96ef7c8752fdada3ef5153a89dbe22577b1152"
+      },
+      {
+        "path": "src/lexicon.js",
+        "size": 8105,
+        "mode": 420,
+        "sha256": "b51f5e7bebc3cea321361962a5b31ee84865e27d16c5b0e8e795d206c7d8082d"
+      },
+      {
+        "path": "src/loanwords.js",
+        "size": 1779,
+        "mode": 420,
+        "sha256": "aa74e688d3b77980b5ee7e9fb89ce2c0a61fd27568d3230048bef91a8379e446"
+      },
+      {
+        "path": "src/phonetic.js",
+        "size": 2767,
+        "mode": 420,
+        "sha256": "ac571d6f4c94c5b48baa1558973d4d27ad6c7f2c5ff15fc7bed36ecdb2d29bf9"
+      },
+      {
+        "path": "src/text-policy.js",
+        "size": 5375,
+        "mode": 420,
+        "sha256": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa"
+      }
+    ],
+    "runtimeSha256": {
+      "src/dom.d.ts": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1",
+      "src/dom.js": "a264f11888f8a611d116a065fa10191aec029fcce75ee7e797c3dad4342fb9ac",
+      "src/index.d.ts": "7b8c9969df0326e6b3fbfbd97713b60cb38931840c1da696b6fea6ac52d5d77a",
+      "src/index.js": "01f3fb9fc0fb8f60617d5af81e96ef7c8752fdada3ef5153a89dbe22577b1152",
+      "src/lexicon.js": "b51f5e7bebc3cea321361962a5b31ee84865e27d16c5b0e8e795d206c7d8082d",
+      "src/loanwords.js": "aa74e688d3b77980b5ee7e9fb89ce2c0a61fd27568d3230048bef91a8379e446",
+      "src/phonetic.js": "ac571d6f4c94c5b48baa1558973d4d27ad6c7f2c5ff15fc7bed36ecdb2d29bf9",
+      "src/text-policy.js": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa"
+    }
+  },
+  "starterLexicon": {
+    "previousSourceCommit": "4df0ebcc174e379ca345752228aceddf14e25d43",
+    "previousKeys": 177,
+    "candidateKeys": 211,
+    "preservedReadingArrays": 177,
+    "addedKeys": [
+      "futera",
+      "shanta",
+      "mahila",
+      "astitwalai",
+      "vidhansabha",
+      "yasaprakar",
+      "lepchaharu",
+      "angrejharuko",
+      "adhyayama",
+      "karyaharuma",
+      "vedko",
+      "pairaheka",
+      "afumathi",
+      "sammanko",
+      "fulbariharu",
+      "goretaharuma",
+      "kendraharudwara",
+      "hospitaltarfa",
+      "manovaigyanikharule",
+      "vigyanle",
+      "gabhnuparchha",
+      "fyankidinchhan",
+      "lakhetiraheka",
+      "samhalnubhaeko",
+      "bolaunuparne",
+      "bhagidarko",
+      "sambhawanaharulai",
+      "dushprawrittiharuko",
+      "suktiharu",
+      "asuraharuko",
+      "aspatalbichko",
+      "bhaktiganyukta",
+      "purnakalinlai",
+      "lagalagi"
+    ]
+  },
+  "checks": {
+    "dependencyInstallation": {
+      "command": "npm ci --offline --no-audit --no-fund",
+      "result": "passed",
+      "pinnedDevelopmentPackages": 144
+    },
+    "node": {
+      "command": "npm test",
+      "passed": 389,
+      "failed": 0,
+      "skipped": 0
+    },
+    "seed": {
+      "command": "npm run benchmark -- --check",
+      "passed": 209,
+      "totalContracts": 209,
+      "exploratoryExcluded": 2,
+      "fixtureSha256": "53ff48a8f11a8eb25638bb049467ad6c74ce5aca8cab6da8fa5cb854ed64d19b"
+    },
+    "packageConsumer": {
+      "command": "npm run verify:package",
+      "result": "passed",
+      "tarballSha256": "950b21693f1f42455139296ed43f872968d56182de7ea6792b8c9e9156683e56",
+      "runtimeFixtureSha256": "448e3a1efaa294ff3f51283c6a0a9cbcba6f575e3e3b00055051e42126df1f09",
+      "checks": [
+        "Public ESM exports, server-safe DOM import, blocked internal imports, options and engine isolation",
+        "Reviewed native readings/candidate order, mixed text, loanword suffixes, digits, URLs and emails",
+        "Strict TypeScript 5.9.3 NodeNext core without DOM; DOM fixtures/tutorials; Bundler fixtures/tutorials; emitted core tutorial execution"
+      ],
+      "noRuntimePeerOrOptionalDependencies": true
+    },
+    "retainedArchiveConsumer": {
+      "command": "npm install <retained-alpha4.tgz> --offline --ignore-scripts --no-audit --no-fund; node runtime.mjs; node check-entries.mjs",
+      "result": "passed",
+      "checks": [
+        "Fresh installation uses the retained artifact directly",
+        "All 13 installed file hashes and lockfile SHA-512 integrity match the archive",
+        "All 34 new readings and exact candidate arrays pass through the public ESM export in full and half modes"
+      ]
+    },
+    "archive": {
+      "command": "npm pack --offline --json --ignore-scripts --cache <task-local-cache> --pack-destination <release-output>",
+      "result": "passed",
+      "allDistributedFilesEqualCommittedSource": true,
+      "licensesAndNoticeIncluded": true,
+      "developmentDataExcluded": true
+    },
+    "browser": {
+      "command": "node tools/build-examples.js; node node_modules/@playwright/test/cli.js test -c playwright.config.js --reporter=list,json --output=<evidence>/browser-artifacts",
+      "stats": {
+        "startTime": "2026-10-09T14:44:16.701Z",
+        "duration": 29650.127,
+        "expected": 69,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "errors": 0,
+      "retries": 0,
+      "result": "passed",
+      "rawResultSha256": "127870c1ff21e45613c59e41ce80a9ab52e03bb83b54e2f048fe9af4a064d019",
+      "engines": [
+        "chromium",
+        "firefox",
+        "webkit"
+      ],
+      "installedExampleTarballSha256": "950b21693f1f42455139296ed43f872968d56182de7ea6792b8c9e9156683e56",
+      "scope": "23 desktop scenarios in each of three engines; installed vanilla and uncontrolled React development StrictMode examples",
+      "environment": {
+        "PLAYWRIGHT_JSON_OUTPUT_FILE": "<evidence>/browser-results.json"
+      }
+    },
+    "website": {
+      "command": "npm run site:build; npm run site:check; node node_modules/@playwright/test/cli.js test -c playwright.site.config.js --reporter=list,json --output=<evidence>/site-artifacts",
+      "stats": {
+        "startTime": "2026-10-09T14:45:48.779Z",
+        "duration": 4444.743,
+        "expected": 11,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "errors": 0,
+      "retries": 0,
+      "result": "passed",
+      "rawResultSha256": "598c16f64af6c69ae67ea0ba566a0d3c5e1922833c6813af023bc3fc7e2247cd",
+      "scope": "Build and public-file/link verifier plus 11 Chromium website checks. Homepage and structured metadata retain published alpha.3; final public candidate-record links receive another build/link check after this run.",
+      "environment": {
+        "PLAYWRIGHT_JSON_OUTPUT_FILE": "<evidence>/site-results.json"
+      }
+    }
+  },
+  "historicalRecords": {
+    "preservedByteForByte": true,
+    "files": {
+      "benchmark/reports/alpha3-candidate-2026-10-09.json": "1ed9fc8ba2934f7909b01776ad5ec2f5c9a9099ee1f032a9a1a368850dd519fe",
+      "benchmark/reports/alpha3-publication-2026-10-09.json": "1454d719ea89463954c714e7f51b7359f741fe049ca4aa572e2b65b27bd40f75",
+      "benchmark/reports/consonant-defaults-2026-10-03.json": "2eaa486eb1112a34783de9aafd7c3c39423355231949c4a8becdac43b62223ee",
+      "benchmark/reports/digits-001.json": "78991781b88bcfd574978c23df51cf0f29b39d6b1a81237a98e0e7711196264d",
+      "benchmark/reports/early-address-001.json": "082f661778813c2b5943ed0c525458de011b27be919857a0b8339151e38c8695",
+      "benchmark/reports/loanword-research-2026-09-27.json": "91e3c5503132d0288c1b06f52b83a1b5c89945e2d3248340f2860533ad763f31",
+      "benchmark/reports/loanword-suffix-research-2026-10-01.json": "2a551d56b1b37ec2d333f715bfec348b709a753387f813bb558adcd44941fbf3",
+      "benchmark/reports/loanword-suffixes-2026-10-01.json": "abf522c3bb0124b3a6864e0b83d89d982681a27255d081e54afcab936c3474b3",
+      "benchmark/reports/mixed-text-001.json": "5b488efc1ccad07c6ccd15e455822da67bdad472d99e140ccb6b2784b7b6fe10",
+      "benchmark/reports/month-research-2026-09-27.json": "d3672780680fc6414788fdd6d75d2503baaeb624d22f5a1e6d017f204ae658cb",
+      "benchmark/reports/native-forms-2026-10-09.json": "69d54e11e3274a0c29b5ae4e639f4b8f13ee692260ad0b0a7b7a2bb4770a1e7c",
+      "benchmark/reports/native-forms-research-2026-10-09.json": "a1b0e2500b8d7a7883c767bc523932aa96d78290314cd88996e1102497ee928c",
+      "benchmark/reports/nepali-assisted-online-001.json": "39fff8c8a6f3733f7295055a3cdcceb7bcd32e52aaf6c2ac130271d72bb4a1ad",
+      "benchmark/reports/nepali-loanwords-001.json": "37740f529042361af3a0d061f0de6226bbffa46a81b4672c46defb899bd9afb8",
+      "benchmark/reports/nepali-months-001.json": "db6bf7cd7c491d6ec00d9424eb3234631bc026bd7a7fd59cfae907a337f6b595",
+      "benchmark/reports/nepali-review-001.json": "511c3a67702d8623922503d1809b3caaba259c61cf36492b3c34ec7723eaa0e6",
+      "benchmark/reports/nepali-ry-001.json": "bf749b5cc02e68547e7c069f5cc0e36da149d74b7720f1b793798204ff2285bc",
+      "benchmark/reports/nepali-source-review-2026-10-01.json": "5d9b36e39481d3f790fed503968f6bc504e71780ba083d8ed214f27ef674d34a",
+      "benchmark/reports/nepali-source-review-baseline-2026-10-01.json": "1ef9b88526e79989f356d295f98ef2d28b95f70d745db219a53ae2b059c24e6b",
+      "benchmark/reports/nepali-spelling-2026-10-01.json": "a0b86998485dc299e87506de95f714c8af3fa84982226d05627a04fe9199a955",
+      "benchmark/reports/nepali-spelling-2026-10-09.json": "7d40f1a3f1900db75447f86ec888b03594a2c6eb28aa0267b40036e72aeb67fb",
+      "benchmark/reports/nepali-spelling-research-2026-10-01.json": "b59d158212030c44a8ed8fa03bf3bd867eafba43d1867a9892b60d8748558099",
+      "benchmark/reports/nepali-spelling-research-2026-10-09.json": "fbf4c40255eee109322cd5d0842b7e101aff6df39436603326da1d1c3416dfa2",
+      "benchmark/reports/npm-search-2026-10-09.json": "022ca7b2f88480f6b270941ab88addac7bea93cb276e2980dbdfedb94749c67e",
+      "benchmark/reports/npm-search-after-alpha3-2026-10-09.json": "581a88925dd539320aed2d673fe8342e8e4b951b9660fbbd256828bf3779a51b",
+      "browser/reports/desktop-001.json": "15d7746b67b5b29fe72605af5146252ebcb89bea5f73a53499eabb7e8ee23d8e",
+      "browser/reports/desktop-002.json": "def65df8081e04d3ceedb5707d01558d0d3d929d8896f06b03ea107ca7de44f6",
+      "browser/reports/desktop-003.json": "a16062d7775a665a021becf3460c22b65ea3758e63691f03d7ef1988276d181a",
+      "browser/reports/desktop-004.json": "8a4a58452e7eba1b3fa2ad475dd1e2c21d1e3fa1cc824580d400bb9b56754bb5",
+      "browser/reports/desktop-005.json": "a05d608374e5459ca5f9abd0b0cc6d955cc42c62df7a3d3326521a779be21aaf",
+      "browser/reports/desktop-006.json": "3a51f5c134bfb3b3955d992e54ddf87180980c20a13502f7a1af90707e726e92",
+      "browser/reports/desktop-007.json": "2264ac96f403f661bc579d048b46efe6ba56e57c6a01da97e2fce2bba1990c59"
+    }
+  },
+  "sourceAssistedDevelopmentComparison": {
+    "originalComparison": "benchmark/reports/native-forms-2026-10-09.json",
+    "originalComparisonSha256": "69d54e11e3274a0c29b5ae4e639f4b8f13ee692260ad0b0a7b7a2bb4770a1e7c",
+    "researchLedger": "benchmark/reports/native-forms-research-2026-10-09.json",
+    "researchLedgerSha256": "a1b0e2500b8d7a7883c767bc523932aa96d78290314cd88996e1102497ee928c",
+    "sameRuntimeHashesAsArtifact": true,
+    "humanVerified": false,
+    "independentHumanReview": false,
+    "wordDefaults": {
+      "before": 28,
+      "candidate": 62,
+      "total": 74
+    },
+    "referenceCandidateCoverage": {
+      "before": 30,
+      "candidate": 67,
+      "total": 79
+    },
+    "completeSentenceDefaults": {
+      "before": 0,
+      "candidate": 0,
+      "total": 12
+    },
+    "deferredWordCases": 12,
+    "limitation": "These are the original selected source-assisted development measurements, not a new corpus run or held-out population accuracy. Historical references are frozen; licensed full sentences are withheld."
+  },
+  "npmDiscovery": {
+    "keywordCount": 19,
+    "description": "Dependency-free Nepali phonetic typing and Roman Nepali to Devanagari Unicode transliteration for JavaScript, with browser input adapters and TypeScript types.",
+    "keywords": [
+      "nepali",
+      "devanagari",
+      "devnagari",
+      "roman-nepali",
+      "nepali-typing",
+      "nepali-keyboard",
+      "nepali-input",
+      "nepali-unicode",
+      "nepali-transliteration",
+      "phonetic-typing",
+      "transliteration",
+      "unicode",
+      "keyboard",
+      "ime",
+      "input-method",
+      "javascript",
+      "typescript",
+      "browser",
+      "textarea"
+    ],
+    "metadataUnchangedFromAlpha3": true,
+    "latestPublishedObservation": "benchmark/reports/npm-search-after-alpha3-2026-10-09.json",
+    "limitation": "No new search-rank observation or guarantee is established by this preparation."
+  },
+  "remainingReleaseGates": [
+    "Maintainer preparation PR review and merge; inspect exact proposed/merged CI",
+    "Recheck npm maintainer and official registry alpha.4 availability",
+    "Verify merged distributed bytes against retained artifact; publish exact tarball publicly with alpha",
+    "Inspect alpha/latest tags and preserve authorized default installation behavior with verified tag update as required",
+    "Verify registry metadata, downloaded SHA-256/SHA-1/SHA-512 and fresh installed JavaScript/TypeScript/browser consumers",
+    "Create matching GitHub prerelease after verification; then update website and publication status"
+  ],
+  "unverifiedScope": [
+    "Physical mobile and IME behavior",
+    "Controlled React values and SSR/hydration",
+    "Assistive technology",
+    "Independent human linguistic review and representative accuracy"
+  ],
+  "browserEnvironment": {
+    "schemaVersion": 1,
+    "candidateCommit": "bf48129770a0fea168450a066728fa83b99df618",
+    "node": "v22.22.3",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "npm": "10.9.8",
+    "python": "Python 3.14.0",
+    "tools": {
+      "@playwright/test": "1.63.0",
+      "typescript": "5.9.3",
+      "esbuild": "0.28.2",
+      "react": "19.3.0",
+      "react-dom": "19.3.0",
+      "vitepress": "1.6.4"
+    },
+    "browsers": {
+      "chromium": {
+        "count": 23,
+        "versions": [
+          "153.0.8010.12"
+        ]
+      },
+      "firefox": {
+        "count": 23,
+        "versions": [
+          "155.0"
+        ]
+      },
+      "webkit": {
+        "count": 23,
+        "versions": [
+          "26.6"
+        ]
+      }
+    },
+    "settings": {
+      "headless": true,
+      "workers": 2,
+      "retries": 0,
+      "desktopViewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "desktopLoopbackPort": 4180,
+      "siteLoopbackPort": 4181
+    },
+    "commandPathNotation": "Commands use checkout-relative executable paths. Output paths are normalized to <evidence>; this is the dedicated private evidence directory, not a checked-in report directory.",
+    "commands": [
+      {
+        "command": "node tools/build-examples.js",
+        "stdout": "examples-build.log",
+        "stderr": "examples-build.log"
+      },
+      {
+        "command": "node node_modules/@playwright/test/cli.js test -c playwright.config.js --reporter=list,json --output=<evidence>/browser-artifacts",
+        "environment": {
+          "PLAYWRIGHT_JSON_OUTPUT_FILE": "<evidence>/browser-results.json"
+        },
+        "stdout": "browser.log",
+        "stderr": "browser.log"
+      },
+      {
+        "command": "npm run site:build",
+        "stdout": "site-build.log",
+        "stderr": "site-build.log"
+      },
+      {
+        "command": "npm run site:check",
+        "stdout": "site-check.log",
+        "stderr": "site-check.log"
+      },
+      {
+        "command": "node node_modules/@playwright/test/cli.js test -c playwright.site.config.js --reporter=list,json --output=<evidence>/site-artifacts",
+        "environment": {
+          "PLAYWRIGHT_JSON_OUTPUT_FILE": "<evidence>/site-results.json"
+        },
+        "stdout": "site.log",
+        "stderr": "site.log"
+      }
+    ],
+    "limits": [
+      "Installed examples were built from the exact local candidate tarball; this is not a registry publication or registry-install test.",
+      "Desktop checks use Playwright Chromium, Firefox and WebKit, not physical devices or installed Safari.",
+      "Site checks use Playwright Chromium only."
+    ]
+  },
+  "verificationToolSha256": {
+    "tools/verify-package.js": "b841b5d31ce34f2f91dba7b24e183e943b2301e83243b7b5bcbec8b09faa0a33",
+    "tools/build-examples.js": "48daa41e9c5cd1b2d0669707574609070ceae9673595f91d3c1dccfebf7f6526",
+    "tools/prepare-site.js": "d39da601eaeff89f504ccd7fd673c2791002f179b22dde49ae161e5467a556e1",
+    "tools/verify-site.js": "01d19156b689b3803f741b351e820502e7c795a34f2660ed3dae8f41e571619e",
+    "playwright.config.js": "63e7088707ab5629e1b7cc76975bcace6270778a4b60780e188f2b4d4800e96a",
+    "playwright.site.config.js": "cc92cd546316a14849eb1fa81bc62777e4b09baebe337b2696fbd9d193c3c7c2",
+    "verification/consumer/runtime.mjs": "448e3a1efaa294ff3f51283c6a0a9cbcba6f575e3e3b00055051e42126df1f09",
+    "verification/consumer/core.ts": "f7a47b063bccdc44691d5ab4f8cbae66ed6e46c93c832710f1e567697b22ca9e",
+    "verification/consumer/browser.ts": "149bc638c4bf11cb09bbb7ff9e65635d5e9402f08dea5ffe3c20ba31c3c2c36e"
+  }
+}

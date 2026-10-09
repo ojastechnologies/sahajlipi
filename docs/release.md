@@ -2,6 +2,39 @@
 
 SahajLipi is an experimental Nepali typing package. **`0.1.0-alpha.3` is the current published alpha**, available on npm with public access and the explicit `alpha` tag. This guide records published artifacts, registry verification, migration, compatibility limits and the release procedure. The [getting-started guide](package/getting-started.md) explains exact-version and local-tarball installation.
 
+<span id="alpha4-release-candidate"></span>
+
+## Prepared alpha candidate — alpha.4
+
+**Prepared on 2026-10-09; unpublished:** the `0.1.0-alpha.4` candidate packages the [34-key native-form batch](package/native-forms-2026-10-09.md#exact-mappings-and-sources) already merged in source `9bec98c4ce980d1bc7852d553dab01d15e664834`. Its source lexicon has **211 starter keys**. Alpha.3 remains the verified npm release with 177 keys; both `alpha` and `latest` remain on alpha.3. Preparation does not change those registry tags or the homepage's published-version metadata.
+
+### Alpha.4 contents and migration
+
+Alpha.4 adds 34 exact complete-key readings, including `astitwalai` → अस्तित्वलाई, `karyaharuma` → कार्यहरूमा, `pairaheka` → पाइरहेका and `samhalnubhaeko` → सम्हाल्नुभएको. The [complete output table](package/native-forms-2026-10-09.md#exact-mappings-and-sources) records every prior output, new reading, alternative and source access. The maintainer chose `mahila` → महिला / माहिला and `shanta` → शान्त / शान्ता. `angrejharuko` → अङ्ग्रेजहरूको / अंग्रेजहरूको retains the prior explicit velar-nasal style first. These orders are typing preferences, not measured frequency rankings.
+
+When upgrading from alpha.3 to alpha.4, applications converting these complete keys receive the listed readings in either consonant mode. Incomplete and unlisted forms retain ordinary fallback; this batch introduces no generic native suffix rule. Hosts can replace a complete key with `createEngine({ entries: { mahila: ['माहिला', 'महिला'] } })` and pass both converters to attached fields. Existing field values are not automatically rewritten. Public APIs, fallback sound keys, explicit half markers, the 51 loanword stems with their finite suffixes, digits and technical-text preservation keep their existing behavior.
+
+### Alpha.4 preparation and verification status
+
+The [release plan](superpowers/plans/2026-10-09-alpha4-release.md) covers committed-candidate validation, exact archive preservation, installed consumers, maintainer review and publication. The intended npm publisher is `maheshnepal`, with package access managed through `ojastech`; the package remains unscoped as `sahajlipi`.
+
+Fresh validation of committed candidate `bf48129770a0fea168450a066728fa83b99df618` passed. The retained archive has **13 files**, **26,335 compressed bytes**, and SHA-256 `950b21693f1f42455139296ed43f872968d56182de7ea6792b8c9e9156683e56`. Every distributed file matches that candidate commit, and all eight `src/` files retain the merged native-form source bytes from `9bec98c4ce980d1bc7852d553dab01d15e664834`. The [public candidate verification record](../benchmark/reports/alpha4-candidate-2026-10-09.json) identifies archive/file hashes, commands, tooling, consumer scope and preservation checks.
+
+| Fresh candidate check | Result and scope |
+| --- | --- |
+| Node suite | **389/389** tests passed. |
+| Seed contracts | **209/209** passed; two exploratory cases excluded from the gate. |
+| JavaScript and TypeScript consumers | Public ESM imports, options and isolation passed; strict NodeNext core without DOM, DOM and Bundler fixtures/tutorials passed, including execution of the emitted core tutorial. |
+| Retained-archive consumer | All 13 installed file hashes and lockfile integrity match the archive; all 34 new reading arrays passed through the public ESM export in full and half consonant modes. |
+| Desktop browsers | **69/69** checks passed, 23 each in Chromium, Firefox and WebKit, including installed vanilla and uncontrolled React examples. |
+| Website | Build/static verification and **11/11 Chromium** website checks passed; public evidence links receive a final build/link check after this record is added. |
+
+The browser and website runs had no failures, retries, skips, flaky outcomes or uncaught page errors. These are selected software and integration checks on the local candidate, separate from the unchanged source-assisted language comparison and from future registry-installed verification.
+
+The candidate remains **unpublished**. At the 2026-10-09 14:36 UTC registry check, alpha.4 returned HTTP 404 and both `alpha` and `latest` selected alpha.3; the authenticated npm CLI account was verified as `maheshnepal`. Preparation PR review, merge and exact merged-byte comparison remain before publication. Registry metadata, downloaded archive integrity, fresh registry-installed consumers and the GitHub prerelease will be verified after publication. Use the [local development installation](package/getting-started.md#local-development-installation) to try the candidate; `npm install sahajlipi@alpha` still selects published alpha.3.
+
+The native-form guide retains the original [source comparison](package/native-forms-2026-10-09.md#recorded-comparison), source-assisted review limits and [desktop-007 record](../browser/reports/desktop-007.json). Those dated results are development evidence, separate from fresh checks on the versioned alpha.4 archive. The 12 deferred word cases and all 12 complete-sentence mismatches remain. Physical mobile/IME, controlled framework fields and independent representative language accuracy remain unverified.
+
 <span id="alpha3-release-candidate"></span>
 <span id="alpha3-release"></span>
 <span id="prepared-alpha-candidate--alpha3"></span>
@@ -36,7 +69,7 @@ Fresh validation of the committed alpha.3 candidate passed **345/345 Node tests*
 5aa10ae915a56fcddfe842dd9abbdb31a5131a8a5323c82d85fe199e7d7b0cd9
 ```
 
-The original candidate bytes match [`ef86b35`](https://github.com/ojastechnologies/sahajlipi/commit/ef86b3543122496ce5f00108a00c5021705f3df9); all eight `src/` files are unchanged from the merged spelling batch. The immutable candidate record retains its preparation status and original checks. The later registry verification above also confirms equality with merged preparation commit `4df0ebcc174e379ca345752228aceddf14e25d43`. The separately proposed 34 native forms are outside alpha.3.
+The original candidate bytes match [`ef86b35`](https://github.com/ojastechnologies/sahajlipi/commit/ef86b3543122496ce5f00108a00c5021705f3df9); all eight `src/` files are unchanged from the merged spelling batch. The immutable candidate record retains its preparation status and original checks. The later registry verification above also confirms equality with merged preparation commit `4df0ebcc174e379ca345752228aceddf14e25d43`. The subsequently merged 34-key native-form batch is outside alpha.3 and included in the prepared, unpublished alpha.4 candidate.
 
 ### Alpha.3 registry consumer verification — 2026-10-09
 

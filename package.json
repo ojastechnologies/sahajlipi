@@ -1,6 +1,6 @@
 {
   "name": "sahajlipi",
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-alpha.4",
   "private": false,
   "type": "module",
   "description": "Dependency-free Nepali phonetic typing and Roman Nepali to Devanagari Unicode transliteration for JavaScript, with browser input adapters and TypeScript types.",

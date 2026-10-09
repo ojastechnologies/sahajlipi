@@ -4,7 +4,7 @@ SahajLipi converts Roman Nepali to Unicode Nepali. Use the core functions for st
 
 The current published npm version is **`0.1.0-alpha.3`**. It retains full bare and final fallback consonants and explicit backtick half forms introduced in alpha.2, and includes the [2026-10-09 native spelling update](nepali-spelling-2026-10-09.md). The examples below target alpha.3; `consonantMode` and backtick are unavailable in alpha.1. See [alpha.2 behavior](#alpha2-consonant-behavior) and the [migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior).
 
-The [alpha.3 release record](../release.md#alpha3-release) identifies the official registry archive, actual publisher and fresh installed consumers. The release includes twelve exact native spelling preferences and the additional भाग्न reading for `bhagna`; it does not include the separately proposed 34 native forms.
+The [alpha.3 release record](../release.md#alpha3-release) identifies the official registry archive, actual publisher and fresh installed consumers. The release includes twelve exact native spelling preferences and the additional भाग्न reading for `bhagna`; it excludes the later 34 native forms. The **prepared, unpublished alpha.4 candidate** includes those [34 complete forms](native-forms-2026-10-09.md) and 211 starter keys. Alpha.3 remains the npm version used by the examples below; the [candidate release section](../release.md#alpha4-release-candidate) records preparation status.
 
 ## 1. Install the published alpha
 
@@ -26,13 +26,13 @@ cd sahajlipi
 npm pack --ignore-scripts
 ```
 
-Check the checkout's version with `npm pkg get version` before packing. An alpha.3 checkout produces `sahajlipi-0.1.0-alpha.3.tgz`; another checkout produces a filename matching its own version. A local archive captures that checkout and remains separate from the verified registry artifact. In your application directory, install it using its absolute path:
+Check the checkout's version with `npm pkg get version` before packing. The alpha.4 candidate checkout produces `sahajlipi-0.1.0-alpha.4.tgz`; an alpha.3 checkout produces its own versioned filename. A local archive captures that checkout and remains separate from the verified registry artifact. In your application directory, install it using its absolute path:
 
 ```sh
-npm install --save-exact /absolute/path/to/sahajlipi/sahajlipi-0.1.0-alpha.3.tgz
+npm install --save-exact /absolute/path/to/sahajlipi/sahajlipi-0.1.0-alpha.4.tgz
 ```
 
-This installs the local archive rather than downloading alpha.3 from npm. Review the [changed-output table](nepali-spelling-2026-10-09.md#exact-preferences-and-evidence) before replacing an alpha.2 installation; complete-key preferences retain priority in both consonant modes.
+This installs the local alpha.4 candidate archive rather than downloading alpha.3 from npm. Use the filename produced by your own checkout if its version differs. Review the [34-form changed-output table](native-forms-2026-10-09.md#exact-mappings-and-sources) when trying alpha.4 from alpha.3, and the [earlier spelling table](nepali-spelling-2026-10-09.md#exact-preferences-and-evidence) when upgrading from alpha.2. Complete-key preferences retain priority in both consonant modes.
 
 Alternatively, install the local folder directly:
 

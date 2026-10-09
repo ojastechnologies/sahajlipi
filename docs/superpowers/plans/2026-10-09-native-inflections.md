@@ -49,4 +49,10 @@
 
 ## Review handoff
 
+The following paragraph records the pre-merge handoff on 2026-10-09.
+
 Submitted as [PR #28](https://github.com/ojastechnologies/sahajlipi/pull/28). Its current Actions checks are the authoritative CI status. Maintainer review and merge remain the next action. The separate [alpha.3 preparation PR #27](https://github.com/ojastechnologies/sahajlipi/pull/27) merged as `4df0ebcc174e379ca345752228aceddf14e25d43`. The [publication documentation PR #29](https://github.com/ojastechnologies/sahajlipi/pull/29) subsequently merged as `c4ce75a07b5607225dcb669195b4664d43c50292`. PR #28 retains its verified publication records, version, lockfile, npm keywords and version-neutral README links. The published alpha.3 artifact excludes these later 34 native forms; the [release record](../../release.md) documents its verified distribution. The dated native-form measurements and desktop-007 record retain their original alpha.2-manifest snapshot; fresh rebase checks do not replace those archives.
+
+## Merge and alpha.4 preparation — 2026-10-09
+
+PR #28 merged as `9bec98c4ce980d1bc7852d553dab01d15e664834` at `2026-10-09T14:13:29Z`. The 34 native forms are included in the prepared, unpublished alpha.4 candidate; the verified npm alpha.3 archive remains unchanged and excludes them. The [alpha.4 release plan](2026-10-09-alpha4-release.md) and [candidate release section](../../release.md#alpha4-release-candidate) record the later packaging and verification work. The original source comparison, source ledger and desktop-007 record retain their dated identities and alpha.2-manifest snapshot.

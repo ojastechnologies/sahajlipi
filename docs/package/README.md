@@ -4,7 +4,7 @@ SahajLipi provides a dependency-free Nepali transliteration engine and optional 
 
 The guides describe the **published `0.1.0-alpha.3` developer alpha**, including the [13-key native spelling update](nepali-spelling-2026-10-09.md). The full-consonant fallback introduced in alpha.2 uses full bare and final consonants (`k` → क, `kr` → क्र), with internal conjuncts formed automatically. Backtick or `/` explicitly keeps a consonant half; a following vowel is independent. Exact lexicon readings retain priority. Use `createEngine({ consonantMode: 'half' })` for alpha.1 fallback compatibility and pass both converters to browser fields as shown in the [migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior).
 
-The typing guide and repository demo also describe the [later unreleased 34-key native-form batch](native-forms-2026-10-09.md). Use a local checkout to try these complete forms; they are outside the published alpha.3 artifact.
+The typing guide and repository demo also describe the [later unreleased 34-key native-form batch](native-forms-2026-10-09.md). These forms are included in the **prepared, unpublished alpha.4 candidate** with 211 starter keys; they are outside the published alpha.3 artifact with 177. Use a local checkout to try them and see the [candidate release section](../release.md#alpha4-release-candidate) for preparation status.
 
 | Read | For |
 | --- | --- |
