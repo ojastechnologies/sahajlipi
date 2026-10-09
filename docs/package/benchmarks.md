@@ -2,6 +2,10 @@
 
 SahajLipi has a small, executable **seed behavior benchmark**. It checks that the default engine keeps documented typing decisions working. It is not a measure of accuracy across Nepali users or vocabulary. The cases were selected from existing tests and project discussions, so a high score on this set is expected.
 
+## Alpha.4 candidate verification — 2026-10-09
+
+The **prepared, unpublished alpha.4 candidate** packages the existing [34-key native-form batch](native-forms-2026-10-09.md) and 211 starter keys. The [release candidate section](../release.md#alpha4-release-candidate) and [public verification record](../../benchmark/reports/alpha4-candidate-2026-10-09.json) identify the retained archive and fresh Node, seed, installed-consumer, desktop-browser and website checks. The fresh seed gate passed **209/209 contracts**, with two exploratory cases excluded. These software checks are separate from the unchanged source-assisted development comparison; they establish no new independent human or representative language-accuracy result. Alpha.3 remains the published npm release.
+
 ## Run it
 
 From the repository root, with Node.js 18 or later:

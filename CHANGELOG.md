@@ -4,7 +4,7 @@ Published versions and prepared candidates are recorded here. The [release recor
 
 ## 0.1.0-alpha.4 — prepared candidate, unpublished
 
-Prepared on 2026-10-09 for an experimental developer alpha. The candidate packages the merged 34-key native-form update and 211 starter keys from source `9bec98c4ce980d1bc7852d553dab01d15e664834`. It is **not published on npm**. The verified `alpha` and `latest` tags remain on `0.1.0-alpha.3`, whose 177-key artifact excludes these 34 forms. The [release record](docs/release.md#alpha4-release-candidate) separates preparation from publication; fresh candidate and registry verification are recorded when completed.
+Prepared on 2026-10-09 for an experimental developer alpha. The candidate packages the merged 34-key native-form update and 211 starter keys from source `9bec98c4ce980d1bc7852d553dab01d15e664834`. It is **not published on npm**. The verified `alpha` and `latest` tags remain on `0.1.0-alpha.3`, whose 177-key artifact excludes these 34 forms. The [release record](docs/release.md#alpha4-release-candidate) and [candidate verification](benchmark/reports/alpha4-candidate-2026-10-09.json) record passed local candidate checks. Maintainer PR review/merge and registry publication verification remain pending.
 
 ### Added
 
@@ -18,6 +18,7 @@ The [native-form comparison](docs/package/native-forms-2026-10-09.md#recorded-co
 - Candidate version and lockfile advance to `0.1.0-alpha.4`; runtime behavior is the existing merged native-form update.
 - Packaged README uses the release record for current distribution status and distinguishes alpha.3's 177 starter keys from alpha.4's 211.
 - Preparation follows the [alpha.4 release plan](docs/superpowers/plans/2026-10-09-alpha4-release.md), preserving the exact alpha.1/2/3 archives and all dated source/candidate evidence.
+- Fresh candidate validation passed 389 Node tests, 209 seed contracts, JavaScript/strict TypeScript consumers, retained-archive identity and all 34 reading arrays in both consonant modes, 69 desktop browser checks and 11 Chromium website checks. The public candidate record identifies the 13-file, 26,335-byte archive and its exact source; these are local candidate checks, with publication still pending.
 
 ## 0.1.0-alpha.3 — 2026-10-09
 
