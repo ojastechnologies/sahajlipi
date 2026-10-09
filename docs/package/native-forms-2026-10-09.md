@@ -132,6 +132,8 @@ The comparison keeps the original denominators: **74 admitted words / 79 listed 
 
 The comparison record identifies the before and after engines, all eight runtime/declaration source files, original cases, frozen review, selected research ledger, seed fixture and measurement tools. Only `src/lexicon.js` changes among those eight files. Complete licensed sentence strings remain omitted from public results; their identities use hashes. Earlier dated reports and human review sheets keep their original contents.
 
+PR #28 was subsequently rebased onto the merged [alpha.3 preparation PR #27](https://github.com/ojastechnologies/sahajlipi/pull/27). The engine, all 211 seed rows and the frozen measurements retain their recorded bytes. Those dated records identify the earlier alpha.2 manifest used during measurement. The current alpha.3 manifest and npm metadata do not change the recorded results or add these 34 forms to the separately archived alpha.3 package. Reproduce the original record from the source identity recorded in PR #28; a measurement of a later checkout must use a new output file.
+
 ## Software validation
 
 The complete Node suite passed **389/389 tests**, including **39/39 focused native-form checks**. The current seed passed **209/209 contracts** with two exploratory rows excluded.
