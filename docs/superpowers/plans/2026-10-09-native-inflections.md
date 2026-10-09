@@ -12,7 +12,7 @@
 
 ## Constraints and review focus
 
-- Preserve the exact archived alpha.3 artifact. The native-form measurements start at merged source `5baaad071a5a673c756eb48e2f7523a05c3295fd`; PR #28 is subsequently rebased onto the merged alpha.3 preparation metadata without changing its engine, fixtures or frozen measurements.
+- Preserve the exact archived alpha.3 artifact. The native-form measurements start at merged source `5baaad071a5a673c756eb48e2f7523a05c3295fd`; PR #28 is subsequently rebased onto the merged alpha.3 preparation metadata and verified publication documentation without changing its engine, fixtures or frozen measurements.
 - Preserve the 74-word / 79-reference and 12-sentence / 13-reference denominators, all historical reports and the original review ledger. No licensed complete source sentences in public files.
 - Add only attested complete readings; identify indexed excerpts, PDF extraction and visual checks separately. Source occurrence establishes neither frequency nor an isolated person's identity.
 - Preserve reserved Shift sound keys and inherited incidental capitals.
@@ -49,4 +49,4 @@
 
 ## Review handoff
 
-Submitted as [PR #28](https://github.com/ojastechnologies/sahajlipi/pull/28). Its current Actions checks are the authoritative CI status. Maintainer review and merge remain the next action. The separate [alpha.3 preparation PR #27](https://github.com/ojastechnologies/sahajlipi/pull/27) merged as `4df0ebcc174e379ca345752228aceddf14e25d43`. PR #28 retains that version, lockfile, npm keywords and version-neutral README links. The separately archived alpha.3 artifact excludes these later 34 native forms; its publication status is recorded separately in the [release record](../../release.md).
+Submitted as [PR #28](https://github.com/ojastechnologies/sahajlipi/pull/28). Its current Actions checks are the authoritative CI status. Maintainer review and merge remain the next action. The separate [alpha.3 preparation PR #27](https://github.com/ojastechnologies/sahajlipi/pull/27) merged as `4df0ebcc174e379ca345752228aceddf14e25d43`. The [publication documentation PR #29](https://github.com/ojastechnologies/sahajlipi/pull/29) subsequently merged as `c4ce75a07b5607225dcb669195b4664d43c50292`. PR #28 retains its verified publication records, version, lockfile, npm keywords and version-neutral README links. The published alpha.3 artifact excludes these later 34 native forms; the [release record](../../release.md) documents its verified distribution. The dated native-form measurements and desktop-007 record retain their original alpha.2-manifest snapshot; fresh rebase checks do not replace those archives.
