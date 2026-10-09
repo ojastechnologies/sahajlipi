@@ -10,6 +10,8 @@ These examples consume the public `sahajlipi` and `sahajlipi/dom` entry points. 
 | [React component](react/NepaliInput.tsx) | An uncontrolled textarea, adapter state rendered in React, candidate selection, mode switching, and effect cleanup. |
 | [React app](react/main.tsx) | Development StrictMode plus editor unmount/remount, with a separate English field. |
 
+The verified registry release is `sahajlipi@0.1.0-alpha.3`; install it with `npm install --save-exact sahajlipi@0.1.0-alpha.3`. Its [publication record](../docs/release.md#alpha3-release) describes separate fresh registry-installed checks. The commands below continue to verify the local checkout archive.
+
 ## Verify the installed package
 
 From the repository root, using the Node version required by the development tooling:

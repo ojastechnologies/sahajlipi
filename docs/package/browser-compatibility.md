@@ -6,6 +6,8 @@ The engine's [Unicode behavior contracts](benchmarks.md) and language-review rec
 
 **Publication follow-up (2026-10-03):** `0.1.0-alpha.2` is now published on npm, and its registry artifact matches the reviewed source. The [release record](../release.md) documents current distribution verification. The dated browser runs below retain their original source-candidate and local-tarball scope.
 
+**Alpha.3 publication follow-up (2026-10-09):** the verified npm `0.1.0-alpha.3` archive matches the reviewed source. Fresh registry-installed vanilla and React examples passed **9/9** desktop checks, separate from the unchanged dated preparation runs below. See the [alpha.3 distribution record](../release.md#alpha3-release) for package identity and scoped JavaScript/TypeScript/browser evidence.
+
 ## Run locally
 
 The core engine and Node test suite run on **Node.js 18 or later** with no runtime dependencies. The browser test tooling requires **Node.js 20 or later**, npm, and Python 3. Playwright is a development dependency pinned to `1.63.0`; the lockfile records the dependency versions.

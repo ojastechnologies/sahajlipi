@@ -2,9 +2,9 @@
 
 Published versions and prepared candidates are recorded here. The [release record](docs/release.md) identifies the verified artifacts, sources, consumer checks, and experimental limits; the same page defines versioning and migration expectations.
 
-## 0.1.0-alpha.3 — prepared candidate, unpublished
+## 0.1.0-alpha.3 — 2026-10-09
 
-Prepared on 2026-10-09 from the merged native spelling update. Package metadata identifies alpha.3; the current published npm artifact and verified registry tags remain `0.1.0-alpha.2`. Use a [local candidate tarball](docs/package/getting-started.md#local-development-installation) for review. The [candidate release notes](docs/release.md#alpha3-release-candidate) describe migration, the dated source evidence and completed local candidate verification. No alpha.3 npm publication or registry-consumer verification is recorded yet.
+Experimental developer alpha, [published on npm](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.3) by `maheshnepal` from merged preparation source [`4df0ebc`](https://github.com/ojastechnologies/sahajlipi/commit/4df0ebcc174e379ca345752228aceddf14e25d43). The official 13-file archive matches the reviewed alpha.3 artifact byte for byte. The verified `alpha` and `latest` tags both point to `0.1.0-alpha.3`; unversioned `npm install sahajlipi` selects alpha.3. Pin with `npm install --save-exact sahajlipi@0.1.0-alpha.3`; the [release record](docs/release.md#alpha3-release) documents integrity, migration and fresh registry consumers.
 
 ### Added
 
@@ -16,12 +16,12 @@ The selected development comparison improves word defaults **16/74 → 28/74** a
 
 ### Packaging
 
-- Candidate version and lockfile advanced to `0.1.0-alpha.3`, with version-neutral packaged README guidance and additional npm keywords for Nepali typing and Devanagari discoverability, including `devnagari`.
+- Release preparation advanced version and lockfile to `0.1.0-alpha.3`, with version-neutral packaged README guidance and additional npm keywords for Nepali typing and Devanagari discoverability, including `devnagari`.
 - Release preparation documents the current `maheshnepal` npm account and `ojastech` organization; the published alpha.1 and alpha.2 records retain their historic publisher identities.
 
 ## 0.1.0-alpha.2 — 2026-10-03
 
-Experimental developer alpha, [published on npm](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.2) from source [`48a0321`](https://github.com/ojastechnologies/sahajlipi/commit/48a0321bed417b1e995f66adbcbf9ade2c82f1cf). Install the exact version with `npm install --save-exact sahajlipi@0.1.0-alpha.2`. The verified `alpha` and `latest` tags both point to `0.1.0-alpha.2`; `npm install sahajlipi` now selects alpha.2. The npm `0.1.0-alpha.1` artifact and its recorded verification remain unchanged. See the [release record](docs/release.md) for artifact identity and verification.
+Experimental developer alpha, [published on npm](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.2) from source [`48a0321`](https://github.com/ojastechnologies/sahajlipi/commit/48a0321bed417b1e995f66adbcbf9ade2c82f1cf). Install that historical version with `npm install --save-exact sahajlipi@0.1.0-alpha.2`. Its dated tag verification recorded `alpha` and `latest` on alpha.2; current tags are documented with alpha.3 in the [release record](docs/release.md). The alpha.1 and alpha.2 artifacts and their recorded verification remain unchanged.
 
 ### Changed
 

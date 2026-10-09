@@ -1,6 +1,6 @@
 # Reviewed native spellings — 2026-10-09
 
-**Alpha.3 preparation follow-up:** these merged spellings are included in the unpublished `0.1.0-alpha.3` source candidate and repository demo. The published `sahajlipi@0.1.0-alpha.2` package does not include this batch. Use a [local candidate tarball](getting-started.md#local-development-installation) to try the update. The [candidate release record](../release.md#alpha3-release-candidate) separates fresh alpha.3 preparation from the original source measurements below; npm publication remains pending.
+**Alpha.3 publication follow-up — 2026-10-09:** these merged spellings are included in the verified [`sahajlipi@0.1.0-alpha.3`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.3) registry package and repository demo. Alpha.2 does not include this slice. The [release record](../release.md#alpha3-release) separates publication and fresh registry-installed checks from the original source-development measurements below. The later 34-form proposal is outside this release.
 
 This follow-up adds twelve exact native-word preferences and the missing भाग्न alternative for `bhagna`, using the [unchanged development references](source-review-2026-10-01.md). It follows the [earlier four-word update](nepali-spelling-2026-10-01.md). The repository engine and Nepali-enabled browser fields use the same entries.
 
@@ -31,7 +31,7 @@ The twelve single-reading entries use their existing frozen preferred references
 
 Use the complete listed lowercase key. Incidental capitals such as `Imandar` and `Kathanak` follow existing normalization; reserved Shift sounds remain explicit. For example, `Sarasar`, `niSkanda` and `kaThanak` retain their phonetic readings. `samanjasya` supplies the reviewed ञ्ज cluster as a whole-word preference; it does not change the ordinary `ny` token.
 
-These exact entries retain priority in both full and half consonant modes. Attached native forms such as `imandarko` use ordinary conversion unless the host supplies a complete custom entry. Vowel lengths, explicit nasal marks, backtick/slash halants, joiners, recognized loanword suffixes, protected addresses and literal English mode keep their existing behavior. The [typing reference](typing-reference.md#reviewed-native-word-spellings) lists the original four keys and this unreleased batch separately.
+These exact entries retain priority in both full and half consonant modes. Attached native forms such as `imandarko` use ordinary conversion unless the host supplies a complete custom entry. Vowel lengths, explicit nasal marks, backtick/slash halants, joiners, recognized loanword suffixes, protected addresses and literal English mode keep their existing behavior. The [typing reference](typing-reference.md#reviewed-native-word-spellings) lists the original four keys and this alpha.3 spelling slice separately.
 
 From this source checkout:
 
@@ -55,9 +55,9 @@ In browser fields, finish `bhagna` and choose भाग्न from the candidate
 
 ## Recorded comparison
 
-The [machine report](../../benchmark/reports/nepali-spelling-2026-10-09.json) compares the published alpha.2 source commit `48a0321bed417b1e995f66adbcbf9ade2c82f1cf` with this unreleased update. Both engines are measured on the same final seed fixture and the unchanged reviewed development references. Engine, fixture, tool, original batch and ledger hashes identify the comparison.
+The [machine report](../../benchmark/reports/nepali-spelling-2026-10-09.json) compares the published alpha.2 source commit `48a0321bed417b1e995f66adbcbf9ade2c82f1cf` with this source update, unpublished at the recorded comparison. Both engines are measured on the same final seed fixture and the unchanged reviewed development references. Engine, fixture, tool, original batch and ledger hashes identify the comparison.
 
-| Metric | Alpha.2 source | Unreleased update |
+| Metric | Alpha.2 source | Source update before publication |
 | --- | ---: | ---: |
 | Same final seed contracts | 160/174 | 174/174 |
 | Historical seed contracts | 160/160 | 160/160 |
@@ -76,7 +76,7 @@ The ledger defers `mahila`, `shanta` and `angrejharuko`, whose listed alternativ
 
 ## Software validation
 
-The original source-update validation on 2026-10-09, before alpha.3 release preparation, passed **345/345 Node tests**, **174/174 seed contracts**, **66/66 desktop browser checks** across Chromium, Firefox and WebKit, and **11/11 website checks**. The website build and public-link checks also passed. These dated checks retain their measured source identities; fresh checks of the versioned alpha.3 candidate are recorded separately in the [release preparation section](../release.md#alpha3-release-candidate).
+The original source-update validation on 2026-10-09, before alpha.3 release preparation, passed **345/345 Node tests**, **174/174 seed contracts**, **66/66 desktop browser checks** across Chromium, Firefox and WebKit, and **11/11 website checks**. The website build and public-link checks also passed. These dated checks retain their measured source identities; fresh checks of the versioned alpha.3 candidate are recorded separately in the [historical preparation section](../release.md#alpha3-release-candidate).
 
 A local unpublished tarball from that original source update passed standalone JavaScript and strict TypeScript NodeNext/Bundler consumers. Its installed engine passed all 13 new entry checks and a mixed-text integration check. This does not republish the npm alpha.2 artifact. These software checks do not establish physical mobile/IME compatibility, independent human spelling review or representative language accuracy.
 

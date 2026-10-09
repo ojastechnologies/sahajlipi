@@ -1,0 +1,713 @@
+{
+  "schemaVersion": 1,
+  "recordId": "alpha3-publication-2026-10-09",
+  "recordedAtUtc": "2026-10-09T12:54:55.573831+00:00",
+  "status": "published_and_verified",
+  "package": {
+    "name": "sahajlipi",
+    "version": "0.1.0-alpha.3",
+    "access": "public",
+    "experimental": true,
+    "npmOrganization": "ojastech",
+    "actualRegistryPublisher": "maheshnepal",
+    "publicationCli": "npm 12.2.0",
+    "publicationUsedInteractive2FA": true,
+    "artifactPublishedWithoutRepacking": true
+  },
+  "source": {
+    "mergedPreparationCommit": "4df0ebcc174e379ca345752228aceddf14e25d43",
+    "preparationPullRequest": "https://github.com/ojastechnologies/sahajlipi/pull/27",
+    "packageCandidateCommit": "ef86b3543122496ce5f00108a00c5021705f3df9",
+    "all13DistributedFilesMatchMergedSource": true,
+    "later34NativeFormsIncluded": false,
+    "later34NativeFormsPullRequest": "https://github.com/ojastechnologies/sahajlipi/pull/28"
+  },
+  "artifact": {
+    "name": "sahajlipi",
+    "version": "0.1.0-alpha.3",
+    "filename": "sahajlipi-0.1.0-alpha.3.tgz",
+    "compressedBytes": 25135,
+    "fileCount": 13,
+    "sha256": "5aa10ae915a56fcddfe842dd9abbdb31a5131a8a5323c82d85fe199e7d7b0cd9",
+    "sha1": "7d6415f760b19a2cf27540503dc7bf085e2ed4e0",
+    "sha512": "sha512-IQ05rEkyUMOOkb/FhL/Tvko1eSNjBLxmSZFszapMOtg46pjQVHCP3TAOeN2pApg0LOwwam1IQGe0Nuee9SZ6gg==",
+    "files": [
+      {
+        "path": "LICENSE",
+        "size": 1079,
+        "mode": 420,
+        "sha256": "84abe5cb282f83d7da4f1bc92e19b28f64e89036877cad5fe5cb9b8f35ee84ad"
+      },
+      {
+        "path": "LICENSES/Unicode-3.0.txt",
+        "size": 2033,
+        "mode": 420,
+        "sha256": "220ba0e1c43b99530d2d5bdb892a99dca0989414f51ab695ecd90163eaa1ec3b"
+      },
+      {
+        "path": "NOTICE",
+        "size": 698,
+        "mode": 420,
+        "sha256": "56f72e63edd18ecb0708c7e2d8afb057e98c7014c3d510bd8888d138ce05eda5"
+      },
+      {
+        "path": "README.md",
+        "size": 23887,
+        "mode": 420,
+        "sha256": "591fbf15d3c58174844ff2a3045736264c21217f5aaf83f1634b0650ad176b4c"
+      },
+      {
+        "path": "package.json",
+        "size": 2939,
+        "mode": 420,
+        "sha256": "d14a88343bafc8b98e8a201344c3ecbb25c92761ed487fbab83ac838b5e6e584"
+      },
+      {
+        "path": "src/dom.d.ts",
+        "size": 2023,
+        "mode": 420,
+        "sha256": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1"
+      },
+      {
+        "path": "src/dom.js",
+        "size": 27834,
+        "mode": 420,
+        "sha256": "a264f11888f8a611d116a065fa10191aec029fcce75ee7e797c3dad4342fb9ac"
+      },
+      {
+        "path": "src/index.d.ts",
+        "size": 1161,
+        "mode": 420,
+        "sha256": "7b8c9969df0326e6b3fbfbd97713b60cb38931840c1da696b6fea6ac52d5d77a"
+      },
+      {
+        "path": "src/index.js",
+        "size": 4787,
+        "mode": 420,
+        "sha256": "01f3fb9fc0fb8f60617d5af81e96ef7c8752fdada3ef5153a89dbe22577b1152"
+      },
+      {
+        "path": "src/lexicon.js",
+        "size": 6182,
+        "mode": 420,
+        "sha256": "909b157d2e5601a24c8a7c27386524c0572dd7c29488ed2f135d24ff60573c78"
+      },
+      {
+        "path": "src/loanwords.js",
+        "size": 1779,
+        "mode": 420,
+        "sha256": "aa74e688d3b77980b5ee7e9fb89ce2c0a61fd27568d3230048bef91a8379e446"
+      },
+      {
+        "path": "src/phonetic.js",
+        "size": 2767,
+        "mode": 420,
+        "sha256": "ac571d6f4c94c5b48baa1558973d4d27ad6c7f2c5ff15fc7bed36ecdb2d29bf9"
+      },
+      {
+        "path": "src/text-policy.js",
+        "size": 5375,
+        "mode": 420,
+        "sha256": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa"
+      }
+    ],
+    "runtimeSha256": {
+      "src/dom.d.ts": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1",
+      "src/dom.js": "a264f11888f8a611d116a065fa10191aec029fcce75ee7e797c3dad4342fb9ac",
+      "src/index.d.ts": "7b8c9969df0326e6b3fbfbd97713b60cb38931840c1da696b6fea6ac52d5d77a",
+      "src/index.js": "01f3fb9fc0fb8f60617d5af81e96ef7c8752fdada3ef5153a89dbe22577b1152",
+      "src/lexicon.js": "909b157d2e5601a24c8a7c27386524c0572dd7c29488ed2f135d24ff60573c78",
+      "src/loanwords.js": "aa74e688d3b77980b5ee7e9fb89ce2c0a61fd27568d3230048bef91a8379e446",
+      "src/phonetic.js": "ac571d6f4c94c5b48baa1558973d4d27ad6c7f2c5ff15fc7bed36ecdb2d29bf9",
+      "src/text-policy.js": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa"
+    },
+    "description": "Dependency-free Nepali phonetic typing and Roman Nepali to Devanagari Unicode transliteration for JavaScript, with browser input adapters and TypeScript types.",
+    "keywords": [
+      "nepali",
+      "devanagari",
+      "devnagari",
+      "roman-nepali",
+      "nepali-typing",
+      "nepali-keyboard",
+      "nepali-input",
+      "nepali-unicode",
+      "nepali-transliteration",
+      "phonetic-typing",
+      "transliteration",
+      "unicode",
+      "keyboard",
+      "ime",
+      "input-method",
+      "javascript",
+      "typescript",
+      "browser",
+      "textarea"
+    ]
+  },
+  "registry": {
+    "url": "https://registry.npmjs.org/",
+    "versionDocument": "https://registry.npmjs.org/sahajlipi/0.1.0-alpha.3",
+    "packagePage": "https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.3",
+    "publishedAtUtc": "2026-10-09T12:37:56.193Z",
+    "tarballUrl": "https://registry.npmjs.org/sahajlipi/-/sahajlipi-0.1.0-alpha.3.tgz",
+    "sha1Verified": true,
+    "sha512Verified": true,
+    "sha256Verified": true,
+    "all13DownloadedFilesMatch": true,
+    "fileCount": 13,
+    "unpackedBytes": 82544,
+    "tagsImmediatelyAfterPublication": {
+      "alpha": "0.1.0-alpha.3",
+      "latest": "0.1.0-alpha.2"
+    },
+    "latestTagUpdate": {
+      "command": "npm dist-tag add sahajlipi@0.1.0-alpha.3 latest --registry=https://registry.npmjs.org/",
+      "commandExitCode": 0,
+      "interactive2FA": true,
+      "observedAtUtc": "2026-10-09T12:49:31.376501Z",
+      "observedTags": {
+        "alpha": "0.1.0-alpha.3",
+        "latest": "0.1.0-alpha.3"
+      },
+      "originalPublicationTimeUnchanged": true,
+      "observationEndpoints": [
+        "https://registry.npmjs.org/-/package/sahajlipi/dist-tags",
+        "https://registry.npmjs.org/sahajlipi"
+      ],
+      "observationLimit": "Observation time is not an exact tag mutation timestamp. An initial cached packument still showed latest alpha.2; the official dist-tags endpoint and an uncached packument both confirmed alpha.3."
+    }
+  },
+  "githubPrerelease": {
+    "url": "https://github.com/ojastechnologies/sahajlipi/releases/tag/v0.1.0-alpha.3",
+    "tag": "v0.1.0-alpha.3",
+    "tagPointsToMergedSource": true,
+    "tagCommit": "4df0ebcc174e379ca345752228aceddf14e25d43",
+    "prerelease": true,
+    "draft": false,
+    "publishedAtUtc": "2026-10-09T12:53:02Z",
+    "tarballAssetUrl": "https://github.com/ojastechnologies/sahajlipi/releases/download/v0.1.0-alpha.3/sahajlipi-0.1.0-alpha.3.tgz",
+    "tarballAssetBytes": 25135,
+    "tarballAssetDigest": "sha256:5aa10ae915a56fcddfe842dd9abbdb31a5131a8a5323c82d85fe199e7d7b0cd9",
+    "verificationAssetUrl": "https://github.com/ojastechnologies/sahajlipi/releases/download/v0.1.0-alpha.3/release-verification.json"
+  },
+  "mergedSourceCi": [
+    {
+      "completed_at": "2026-10-09T12:28:11Z",
+      "conclusion": "success",
+      "details_url": "https://github.com/ojastechnologies/sahajlipi/actions/runs/37930099374/job/113818758578",
+      "name": "deploy website",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-10-09T12:27:57Z",
+      "conclusion": "success",
+      "details_url": "https://github.com/ojastechnologies/sahajlipi/actions/runs/37930099374/job/113818428770",
+      "name": "website build and browser checks",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-10-09T12:28:00Z",
+      "conclusion": "success",
+      "details_url": "https://github.com/ojastechnologies/sahajlipi/actions/runs/37930099276/job/113818428561",
+      "name": "browser (firefox)",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-10-09T12:27:29Z",
+      "conclusion": "success",
+      "details_url": "https://github.com/ojastechnologies/sahajlipi/actions/runs/37930099340/job/113818428527",
+      "name": "package (Node 20)",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-10-09T12:27:21Z",
+      "conclusion": "success",
+      "details_url": "https://github.com/ojastechnologies/sahajlipi/actions/runs/37930099340/job/113818428465",
+      "name": "test (Node 18)",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-10-09T12:27:25Z",
+      "conclusion": "success",
+      "details_url": "https://github.com/ojastechnologies/sahajlipi/actions/runs/37930099340/job/113818428439",
+      "name": "package (Node 22)",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-10-09T12:27:14Z",
+      "conclusion": "success",
+      "details_url": "https://github.com/ojastechnologies/sahajlipi/actions/runs/37930099340/job/113818428394",
+      "name": "test (Node 24)",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-10-09T12:27:19Z",
+      "conclusion": "success",
+      "details_url": "https://github.com/ojastechnologies/sahajlipi/actions/runs/37930099340/job/113818428384",
+      "name": "test (Node 20)",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-10-09T12:27:14Z",
+      "conclusion": "success",
+      "details_url": "https://github.com/ojastechnologies/sahajlipi/actions/runs/37930099340/job/113818428369",
+      "name": "test (Node 22)",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-10-09T12:27:24Z",
+      "conclusion": "success",
+      "details_url": "https://github.com/ojastechnologies/sahajlipi/actions/runs/37930099340/job/113818428254",
+      "name": "package (Node 24)",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-10-09T12:28:00Z",
+      "conclusion": "success",
+      "details_url": "https://github.com/ojastechnologies/sahajlipi/actions/runs/37930099276/job/113818428247",
+      "name": "browser (chromium)",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-10-09T12:28:33Z",
+      "conclusion": "success",
+      "details_url": "https://github.com/ojastechnologies/sahajlipi/actions/runs/37930099276/job/113818427965",
+      "name": "browser (webkit)",
+      "status": "completed"
+    }
+  ],
+  "prepublicationCandidate": {
+    "record": "benchmark/reports/alpha3-candidate-2026-10-09.json",
+    "sha256": "1ed9fc8ba2934f7909b01776ad5ec2f5c9a9099ee1f032a9a1a368850dd519fe",
+    "nodeTestsPassed": 345,
+    "seedContractsPassed": 174,
+    "desktopChecksPassed": 66,
+    "websiteChecksPassed": 11,
+    "historicalRecordUnchanged": true,
+    "limit": "These dated local-candidate checks are separate from the fresh registry-installed consumer results below."
+  },
+  "registryConsumers": {
+    "schemaVersion": 1,
+    "reportId": "npm-alpha3-consumers-2026-10-09",
+    "recordedAt": "2026-10-09T12:49:31.477Z",
+    "status": "passed",
+    "purpose": "Fresh exact-version official-registry installations, checked before execution against the prepared alpha.3 artifact.",
+    "source": {
+      "mergeCommit": "4df0ebcc174e379ca345752228aceddf14e25d43",
+      "pullRequest": "https://github.com/ojastechnologies/sahajlipi/pull/27",
+      "commitUrl": "https://github.com/ojastechnologies/sahajlipi/commit/4df0ebcc174e379ca345752228aceddf14e25d43",
+      "artifactIdentitySha256": "f198e53a56fe9a1ecb8c567233f6ca310c13b3a1f8f0ae1a38ed77474c7f64e1",
+      "originalToolSha256": {
+        "tools/verify-package.js": "b841b5d31ce34f2f91dba7b24e183e943b2301e83243b7b5bcbec8b09faa0a33",
+        "tools/build-examples.js": "48daa41e9c5cd1b2d0669707574609070ceae9673595f91d3c1dccfebf7f6526"
+      },
+      "fixtureSha256": {
+        "browser/developer-examples.spec.js": "7ce276f6bfe63871914fa89908cbc6e2b569f0d5c621dbd099abca14001f7afb",
+        "verification/consumer/runtime.mjs": "489554bdbe1211e141f8132f3dcbeb86be2257527c503a45453852706bde31ec",
+        "verification/consumer/core.ts": "f7a47b063bccdc44691d5ab4f8cbae66ed6e46c93c832710f1e567697b22ca9e",
+        "verification/consumer/browser.ts": "149bc638c4bf11cb09bbb7ff9e65635d5e9402f08dea5ffe3c20ba31c3c2c36e",
+        "examples/typescript/core.mts": "65a0d0a3c2b54821eb424a3ce95e2d0f058624fbb2c458acaa1b6650c0fddb17",
+        "examples/typescript/browser.ts": "3709682c135b4d6ce027db50ddc3f84f37ecbe7c95b1e8326b2f83ac59ff2839",
+        "examples/vanilla/main.js": "4c9e9f56c07fe56c20b7f96d2f86dfcd070f23ec15466ce1c19e6cc1abe2fdb1",
+        "examples/react/main.tsx": "e0dc98294e8912c32902aa0c05fab8a329a8c0742cf4df94ef17232fb2bf48b9",
+        "examples/react/NepaliInput.tsx": "2e2f68329c13e2be52c3e447273ac962be9fd2857cc64a4df6338e7343cd5055"
+      }
+    },
+    "registry": {
+      "url": "https://registry.npmjs.org/",
+      "specifier": "sahajlipi@0.1.0-alpha.3",
+      "resolvedTarball": "https://registry.npmjs.org/sahajlipi/-/sahajlipi-0.1.0-alpha.3.tgz",
+      "lockfileResolved": "https://registry.npmjs.org/sahajlipi/-/sahajlipi-0.1.0-alpha.3.tgz",
+      "lockfileIntegrity": "sha512-IQ05rEkyUMOOkb/FhL/Tvko1eSNjBLxmSZFszapMOtg46pjQVHCP3TAOeN2pApg0LOwwam1IQGe0Nuee9SZ6gg==",
+      "packageLockSha256": "008fae3ff35799a4a0e0105e7782b07b136e1b3bb0ea27cc0cb6a6a7d190922a",
+      "separateFreshSuccessfulInstallations": 2,
+      "freshCachesPerInstallation": [
+        "metadata",
+        "tarball",
+        "install"
+      ],
+      "installScriptsDisabled": true,
+      "identityVerifiedBeforeExecution": true,
+      "npmConfiguration": "Task-owned empty user/global files; inherited npm/auth environment variables omitted."
+    },
+    "artifact": {
+      "name": "sahajlipi",
+      "version": "0.1.0-alpha.3",
+      "compressedBytes": 25135,
+      "fileCount": 13,
+      "sha256": "5aa10ae915a56fcddfe842dd9abbdb31a5131a8a5323c82d85fe199e7d7b0cd9",
+      "sha1": "7d6415f760b19a2cf27540503dc7bf085e2ed4e0",
+      "sha512": "sha512-IQ05rEkyUMOOkb/FhL/Tvko1eSNjBLxmSZFszapMOtg46pjQVHCP3TAOeN2pApg0LOwwam1IQGe0Nuee9SZ6gg==",
+      "installedFileSha256": {
+        "LICENSE": "84abe5cb282f83d7da4f1bc92e19b28f64e89036877cad5fe5cb9b8f35ee84ad",
+        "LICENSES/Unicode-3.0.txt": "220ba0e1c43b99530d2d5bdb892a99dca0989414f51ab695ecd90163eaa1ec3b",
+        "NOTICE": "56f72e63edd18ecb0708c7e2d8afb057e98c7014c3d510bd8888d138ce05eda5",
+        "README.md": "591fbf15d3c58174844ff2a3045736264c21217f5aaf83f1634b0650ad176b4c",
+        "package.json": "d14a88343bafc8b98e8a201344c3ecbb25c92761ed487fbab83ac838b5e6e584",
+        "src/dom.d.ts": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1",
+        "src/dom.js": "a264f11888f8a611d116a065fa10191aec029fcce75ee7e797c3dad4342fb9ac",
+        "src/index.d.ts": "7b8c9969df0326e6b3fbfbd97713b60cb38931840c1da696b6fea6ac52d5d77a",
+        "src/index.js": "01f3fb9fc0fb8f60617d5af81e96ef7c8752fdada3ef5153a89dbe22577b1152",
+        "src/lexicon.js": "909b157d2e5601a24c8a7c27386524c0572dd7c29488ed2f135d24ff60573c78",
+        "src/loanwords.js": "aa74e688d3b77980b5ee7e9fb89ce2c0a61fd27568d3230048bef91a8379e446",
+        "src/phonetic.js": "ac571d6f4c94c5b48baa1558973d4d27ad6c7f2c5ff15fc7bed36ecdb2d29bf9",
+        "src/text-policy.js": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa"
+      },
+      "allFilesMatch": true,
+      "starterEntryCount": 177,
+      "scope": "Earlier 13 spelling changes; the later 34 native-form changes in PR28 are absent."
+    },
+    "environment": {
+      "node": "v22.22.3",
+      "npm": "10.9.8",
+      "platform": "darwin",
+      "architecture": "arm64",
+      "developmentDependencyVersions": {
+        "typescript": "5.9.3",
+        "@playwright/test": "1.63.0",
+        "esbuild": "0.28.2",
+        "react": "19.3.0",
+        "react-dom": "19.3.0",
+        "@types/react": "19.3.0",
+        "@types/react-dom": "19.3.0"
+      }
+    },
+    "javascript": {
+      "status": "passed",
+      "checks": [
+        "Public core and DOM imports in plain Node without document",
+        "Release 12 exact spelling defaults and bhagna alternative",
+        "Digits, punctuation, technical text, full/half modes, options and isolation",
+        "Invalid options and blocked internal package exports"
+      ]
+    },
+    "typescript": {
+      "status": "passed",
+      "compilerVersion": "5.9.3",
+      "configurations": {
+        "core-nodenext.json": {
+          "sha256": "4ba402fe80fde0cdec26130fcbeed3e1975d8fb06bfee892337930449873beb6",
+          "configuration": {
+            "compilerOptions": {
+              "noEmit": true,
+              "strict": true,
+              "skipLibCheck": false,
+              "target": "ES2022",
+              "types": [],
+              "module": "NodeNext",
+              "moduleResolution": "NodeNext",
+              "lib": [
+                "ES2022"
+              ]
+            },
+            "files": [
+              "core.ts"
+            ]
+          }
+        },
+        "browser-nodenext.json": {
+          "sha256": "9ee5157639c0df4663e6d46be745a4b252a4357c52fa157cdd18cf9ff43ad855",
+          "configuration": {
+            "compilerOptions": {
+              "noEmit": true,
+              "strict": true,
+              "skipLibCheck": false,
+              "target": "ES2022",
+              "types": [],
+              "module": "NodeNext",
+              "moduleResolution": "NodeNext",
+              "lib": [
+                "ES2022",
+                "DOM"
+              ]
+            },
+            "files": [
+              "browser.ts",
+              "examples/typescript/core.mts",
+              "examples/typescript/browser.ts"
+            ]
+          }
+        },
+        "bundler.json": {
+          "sha256": "39d9ea2612d7121dd398de1ec9ee33280c51e2e1e1f533b0560d0fd82bda1b2c",
+          "configuration": {
+            "compilerOptions": {
+              "noEmit": true,
+              "strict": true,
+              "skipLibCheck": false,
+              "target": "ES2022",
+              "types": [],
+              "module": "ESNext",
+              "moduleResolution": "Bundler",
+              "lib": [
+                "ES2022",
+                "DOM"
+              ]
+            },
+            "files": [
+              "core.ts",
+              "browser.ts",
+              "examples/typescript/core.mts",
+              "examples/typescript/browser.ts"
+            ]
+          }
+        },
+        "tutorial-runtime.json": {
+          "sha256": "1c4762f74f3d7c399b1241b6cab0266df2b0ef2b062db1757f25cdd6b7a493ba",
+          "configuration": {
+            "compilerOptions": {
+              "noEmit": false,
+              "strict": true,
+              "skipLibCheck": false,
+              "target": "ES2022",
+              "types": [],
+              "module": "NodeNext",
+              "moduleResolution": "NodeNext",
+              "lib": [
+                "ES2022",
+                "DOM"
+              ],
+              "outDir": "compiled-tutorial"
+            },
+            "files": [
+              "examples/typescript/core.mts"
+            ]
+          }
+        }
+      },
+      "emittedCoreTutorial": {
+        "status": "passed",
+        "expectedStdout": "पानी\nपनि १२३।\nमेरोनाम 123।\n"
+      },
+      "reactExample": {
+        "status": "passed",
+        "moduleResolution": "Bundler",
+        "strict": true,
+        "jsx": "react-jsx",
+        "developmentStrictMode": true
+      }
+    },
+    "browser": {
+      "command": "node node_modules/@playwright/test/cli.js test -c playwright.config.js",
+      "loopbackPort": 4192,
+      "passed": 9,
+      "total": 9,
+      "failed": 0,
+      "retries": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "uncaughtPageErrors": 0,
+      "runStartedAt": "2026-10-09T12:45:40.560Z",
+      "durationMs": 5170.592000000001,
+      "projects": {
+        "chromium": {
+          "passed": 3,
+          "total": 3,
+          "browserVersion": "153.0.8010.12"
+        },
+        "firefox": {
+          "passed": 3,
+          "total": 3,
+          "browserVersion": "155.0"
+        },
+        "webkit": {
+          "passed": 3,
+          "total": 3,
+          "browserVersion": "26.6"
+        }
+      },
+      "outcomes": [
+        {
+          "title": "installed vanilla consumer converts marked fields, exposes candidates, and preserves English",
+          "project": "chromium",
+          "status": "passed"
+        },
+        {
+          "title": "installed vanilla consumer teardown leaves text literal and disables its controls",
+          "project": "chromium",
+          "status": "passed"
+        },
+        {
+          "title": "installed React uncontrolled consumer handles StrictMode, callbacks, mode, and remount cleanup",
+          "project": "chromium",
+          "status": "passed"
+        },
+        {
+          "title": "installed vanilla consumer converts marked fields, exposes candidates, and preserves English",
+          "project": "firefox",
+          "status": "passed"
+        },
+        {
+          "title": "installed vanilla consumer teardown leaves text literal and disables its controls",
+          "project": "firefox",
+          "status": "passed"
+        },
+        {
+          "title": "installed React uncontrolled consumer handles StrictMode, callbacks, mode, and remount cleanup",
+          "project": "firefox",
+          "status": "passed"
+        },
+        {
+          "title": "installed vanilla consumer converts marked fields, exposes candidates, and preserves English",
+          "project": "webkit",
+          "status": "passed"
+        },
+        {
+          "title": "installed vanilla consumer teardown leaves text literal and disables its controls",
+          "project": "webkit",
+          "status": "passed"
+        },
+        {
+          "title": "installed React uncontrolled consumer handles StrictMode, callbacks, mode, and remount cleanup",
+          "project": "webkit",
+          "status": "passed"
+        }
+      ],
+      "rawReportSha256": "de5f9cffa293163b0148df1a10a579eca7908072f64fb560c2ae2588b90c32ed",
+      "installedExampleManifestSha256": "65c1a5f0f7db5d1cbb21748903a605868a6fd19ae0be86c8ffd5e60a51c98b55"
+    },
+    "adaptation": {
+      "purpose": "Replace local packing with exact official registry metadata/download/install and immutable artifact checks; restrict browser run to the three installed-example scenarios.",
+      "patchSha256": "822d322d17a2d8fa9bf6792de441ad03ffd94036b207c94f73e0e86092a94767",
+      "fileSha256": {
+        "tools/verify-package.js": "6f3a518d487bc4a6f675da5f9559b686fece3b4694a8270fdc727274df3fa03c",
+        "tools/build-examples.js": "73eea3fe1986f37e5352e9bbd52b65a32982ce9e5988079038ee347bc6cdf30c",
+        "tools/registry-consumer.js": "25f9355ee12499ad5abd4ae0ec0d9cc897fb3c23d61372b6929fd56ad8fddc93",
+        "tools/run-registry-runtime.js": "13f2597cb73981ec7403e64e5d7633f8ba6c93a40776e70419a794b6f58a0618",
+        "playwright.config.js": "ab9f3ae289fa8b9f61919d14a208463b9715711a2d09dc543072989328b5bed9"
+      }
+    },
+    "privateEvidenceSha256": {
+      "registry-js-ts.log": "0222901cb7b465d948d6b6317d5d307baea4e0b91b8226875eac0cbeaadbc783",
+      "registry-examples-build.log": "855d4c38d7800db02dc1b7ececbf6510b6bad4b1e955dd2a11232bfa8f03f568",
+      "registry-browser.log": "e3ca6f72768c85f3a7f53696b6fa279f034cb0f43e89443bcd0e2a9a9018316f"
+    },
+    "infrastructureCorrections": [
+      {
+        "initialConsumerAttempt": "Artifact identity and JavaScript passed; TypeScript could not start because the archived development-dependency link was missing.",
+        "resolution": "Only the private runner development-dependency link changed to matching pinned versions; successful verification used another fresh registry installation."
+      },
+      {
+        "initialBrowserRun": {
+          "loopbackPort": 4190,
+          "passed": 3,
+          "failed": 6,
+          "retries": 0
+        },
+        "cause": "WebKit explicitly rejected restricted network port 4190; Firefox navigation also failed before any local server request.",
+        "resolution": "Only the private runner loopback port changed to 4192. The complete final nine-scenario run passed with unchanged package bytes and assertions; initial raw evidence is retained privately."
+      }
+    ],
+    "limitations": [
+      "Exact alpha.3 registry artifact only; npm tag changes and default unversioned installation are outside this record.",
+      "Headless Chromium/Firefox/WebKit on the recorded macOS environment; no physical mobile, OS clipboard, IME, assistive-technology or installed Safari certification.",
+      "React integration uses an uncontrolled textarea in development StrictMode; no controlled-field, SSR or general framework support claim.",
+      "Selected software contracts and integration flows; no independent human review or representative Nepali accuracy claim.",
+      "Development compilers/framework dependencies came from existing pinned repository dependencies; SahajLipi itself was installed independently from the official registry."
+    ]
+  },
+  "defaultInstallation": {
+    "schemaVersion": 1,
+    "startedAt": "2026-10-09T12:52:03.518Z",
+    "observedAt": "2026-10-09T12:52:04.278Z",
+    "command": "npm install sahajlipi --save-exact --ignore-scripts",
+    "registry": "https://registry.npmjs.org/",
+    "freshCache": true,
+    "preferOnline": true,
+    "installScriptsDisabled": true,
+    "expectedVersion": "0.1.0-alpha.3",
+    "installedVersion": "0.1.0-alpha.3",
+    "resolvedTarball": "https://registry.npmjs.org/sahajlipi/-/sahajlipi-0.1.0-alpha.3.tgz",
+    "lockfileIntegrity": "sha512-IQ05rEkyUMOOkb/FhL/Tvko1eSNjBLxmSZFszapMOtg46pjQVHCP3TAOeN2pApg0LOwwam1IQGe0Nuee9SZ6gg==",
+    "packageLockSha256": "c86c2d3fbe1a4f3934a43a6fbac393e3df4e24c9a43f72b8ddc304e4c7dd05f3",
+    "officialTags": {
+      "latest": "0.1.0-alpha.3",
+      "alpha": "0.1.0-alpha.3"
+    },
+    "tagObservation": {
+      "url": "https://registry.npmjs.org/-/package/sahajlipi/dist-tags",
+      "cacheControl": "no-cache",
+      "observedAt": "2026-10-09T12:52:04.636Z"
+    },
+    "status": "passed",
+    "reportId": "npm-alpha3-default-install-2026-10-09",
+    "recordedAt": "2026-10-09T12:52:04.677Z",
+    "installedFileSha256": {
+      "LICENSE": "84abe5cb282f83d7da4f1bc92e19b28f64e89036877cad5fe5cb9b8f35ee84ad",
+      "LICENSES/Unicode-3.0.txt": "220ba0e1c43b99530d2d5bdb892a99dca0989414f51ab695ecd90163eaa1ec3b",
+      "NOTICE": "56f72e63edd18ecb0708c7e2d8afb057e98c7014c3d510bd8888d138ce05eda5",
+      "README.md": "591fbf15d3c58174844ff2a3045736264c21217f5aaf83f1634b0650ad176b4c",
+      "package.json": "d14a88343bafc8b98e8a201344c3ecbb25c92761ed487fbab83ac838b5e6e584",
+      "src/dom.d.ts": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1",
+      "src/dom.js": "a264f11888f8a611d116a065fa10191aec029fcce75ee7e797c3dad4342fb9ac",
+      "src/index.d.ts": "7b8c9969df0326e6b3fbfbd97713b60cb38931840c1da696b6fea6ac52d5d77a",
+      "src/index.js": "01f3fb9fc0fb8f60617d5af81e96ef7c8752fdada3ef5153a89dbe22577b1152",
+      "src/lexicon.js": "909b157d2e5601a24c8a7c27386524c0572dd7c29488ed2f135d24ff60573c78",
+      "src/loanwords.js": "aa74e688d3b77980b5ee7e9fb89ce2c0a61fd27568d3230048bef91a8379e446",
+      "src/phonetic.js": "ac571d6f4c94c5b48baa1558973d4d27ad6c7f2c5ff15fc7bed36ecdb2d29bf9",
+      "src/text-policy.js": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa"
+    },
+    "filesVerified": 13,
+    "expectedArchiveSha256": "5aa10ae915a56fcddfe842dd9abbdb31a5131a8a5323c82d85fe199e7d7b0cd9",
+    "identityVerifiedBeforeExecution": true,
+    "packageDescription": "Dependency-free Nepali phonetic typing and Roman Nepali to Devanagari Unicode transliteration for JavaScript, with browser input adapters and TypeScript types.",
+    "packageKeywords": [
+      "nepali",
+      "devanagari",
+      "devnagari",
+      "roman-nepali",
+      "nepali-typing",
+      "nepali-keyboard",
+      "nepali-input",
+      "nepali-unicode",
+      "nepali-transliteration",
+      "phonetic-typing",
+      "transliteration",
+      "unicode",
+      "keyboard",
+      "ime",
+      "input-method",
+      "javascript",
+      "typescript",
+      "browser",
+      "textarea"
+    ],
+    "javascriptConsumer": {
+      "status": "passed",
+      "fixtureSha256": "489554bdbe1211e141f8132f3dcbeb86be2257527c503a45453852706bde31ec",
+      "outputSha256": "dd4e889a75fda5f6ab53c160229230d13bfaa05f30bc76700085e654fa0344e1"
+    },
+    "verificationToolSha256": "01234383bdd53ec44f57e15a3dfcc69479f6f6bd5240a09c71ba99819f43931b",
+    "sourceMergeCommit": "4df0ebcc174e379ca345752228aceddf14e25d43",
+    "npmConfiguration": "Task-owned empty user/global files; inherited npm/auth environment variables omitted.",
+    "limits": [
+      "This fresh unversioned install observes the default tag at the recorded time; tags may change later.",
+      "All installed bytes match the separately downloaded and verified alpha.3 artifact; compressed tarball hashing is in the exact-version consumer record.",
+      "JavaScript public runtime fixture only; strict TypeScript and nine browser checks are recorded separately for this exact version."
+    ]
+  },
+  "npmDiscovery": {
+    "record": "benchmark/reports/npm-search-after-alpha3-2026-10-09.json",
+    "sha256": "581a88925dd539320aed2d673fe8342e8e4b951b9660fbbd256828bf3779a51b",
+    "baseline": "benchmark/reports/npm-search-2026-10-09.json",
+    "queries": 12,
+    "foundInReturnedWindow": 11,
+    "observedVersion": "0.1.0-alpha.3",
+    "limit": "Dated official registry search API observations; no guaranteed npm website ranking or attribution of position changes to metadata."
+  },
+  "limitations": [
+    "Experimental Nepali-only alpha; latest is a default-installation tag, not a stable-release claim.",
+    "Physical mobile/IME, controlled React, SSR/hydration and assistive technology remain unverified.",
+    "Source-assisted selected language targets guided development; no independent linguistic review or representative accuracy claim.",
+    "The later 34 native forms and their 389/209/69 development results are outside this published artifact.",
+    "The repository and website publication-status follow-up is a separate documentation change; the packaged README and historical evidence remain immutable."
+  ],
+  "verificationTools": {
+    "assetUrl": "https://github.com/ojastechnologies/sahajlipi/releases/download/v0.1.0-alpha.3/registry-verification-tools.tgz",
+    "archiveSha256": "5a6873813667c52f7d8ac1aea94dc3b5cc6f08271e02b8988f0c9eec47d8deed",
+    "patchAssetUrl": "https://github.com/ojastechnologies/sahajlipi/releases/download/v0.1.0-alpha.3/registry-consumer-adaptation.patch",
+    "patchSha256": "822d322d17a2d8fa9bf6792de441ad03ffd94036b207c94f73e0e86092a94767",
+    "reproductionGuide": "REGISTRY-VERIFICATION.md inside tools archive",
+    "sourceFixturesCommit": "4df0ebcc174e379ca345752228aceddf14e25d43"
+  }
+}

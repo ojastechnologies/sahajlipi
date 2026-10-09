@@ -1,6 +1,6 @@
 # Package website and discoverability
 
-SahajLipi has three separate surfaces: the package website introduces the library, the documentation explains the reusable package, and the demo lets people try it. The generated site brings them together under `https://ojastechnologies.github.io/sahajlipi/`. Website deployment is separate from npm publication. `sahajlipi@0.1.0-alpha.2` was published to the public npm registry and verified on 2026-10-03. The homepage offers `npm install --save-exact sahajlipi@0.1.0-alpha.2` and labels it as an experimental Nepali developer alpha. Use the [release record](release.md) for artifact identity, registry tags, and distribution evidence.
+SahajLipi has three surfaces: the package website introduces the library, documentation explains the reusable package, and the demo lets people try it. The generated site brings them together under `https://ojastechnologies.github.io/sahajlipi/`. Website deployment is separate from npm publication. `sahajlipi@0.1.0-alpha.3` was published and verified on 2026-10-09. This website source offers `npm install --save-exact sahajlipi@0.1.0-alpha.3` and labels it as an experimental Nepali developer alpha; the hosted page changes after a successful Pages deployment. The [release record](release.md) records artifact identity, actual tags and distribution evidence.
 
 ## Pages and content ownership
 
@@ -96,7 +96,7 @@ A directory index uses a trailing slash, such as `/sahajlipi/docs/`; an ordinary
 
 The sitemap is published at [the project sitemap](https://ojastechnologies.github.io/sahajlipi/sitemap.xml). It includes intended public pages, not every source file or test fixture. Do not invent modification dates for pages to make them appear newer. Sitemaps help discovery, but submitting one does not guarantee indexing. See [Google's sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap).
 
-Structured metadata describes the implemented software and repository, the verified `0.1.0-alpha.2` version, its publication date, and its npm version page. It does not add invented reviews, ratings, download counts, or supported languages. It does not promise a rich search result.
+Structured metadata describes the implemented software and repository, the verified `0.1.0-alpha.3` version, its publication date, and its npm version page. It does not add invented reviews, ratings, download counts, or supported languages. It does not promise a rich search result.
 
 ### Robots on a GitHub Pages project
 
@@ -121,6 +121,27 @@ The package keywords cover the language and script (`nepali`, `devanagari`), inp
 The README uses absolute documentation, support, and license links so they work from the npm package page. npm's [README guidance](https://docs.npmjs.com/about-package-readme-files/) says the package page receives README changes when a new package version is published. Editing the repository or deploying the website alone does not update the published package's README or metadata. npm also warns that newly published packages may take up to two weeks to appear in search. Relevant metadata improves matching opportunities; it provides no guaranteed position or indexing date, and says nothing about Google ranking.
 
 The [dated npm search audit](../benchmark/reports/npm-search-2026-10-09.json) records queries against the official registry's `/-/v1/search` endpoint, including `nepali`, `devanagari`, `devnagari`, and related typing and transliteration terms. The [current registry API reference](https://api-docs.npmjs.com/#tag/Search) documents `text`, `size`, and `from`. The audit retains each query's parameters, time, total results, returned window, and SahajLipi's position or absence within that window. Failed requests remain unverified. Positions describe that API query at that time; they do not establish npm website placement, software quality, or Nepali accuracy. Website search and registry API results are distinct observations. Recheck the same queries after publication and indexing without turning the audit into a comparison of other packages.
+
+### After alpha.3 publication — 2026-10-09
+
+The [postpublication snapshot](../benchmark/reports/npm-search-after-alpha3-2026-10-09.json) repeated all twelve queries from `2026-10-09T12:51:20Z` to `12:52:02Z`. Eleven returned SahajLipi identified as alpha.3; no request failed. The table shows its one-based position in the returned API results, with `size=250` and `from=0`. The short `devnagari` query returned only six results before publication and seven afterward.
+
+| Query | Preparation snapshot, alpha.2 | Postpublication snapshot, alpha.3 |
+| --- | ---: | ---: |
+| `nepali` | 88 | 67 |
+| `devanagari` | 230 | 65 |
+| `devnagari` | Not returned | 6 |
+| `roman-nepali` | 1 | 1 |
+| `nepali-typing` | 77 | 51 |
+| `nepali-unicode` | 199 | 138 |
+| `nepali-transliteration` | 176 | 127 |
+| `phonetic-typing` | 129 | 1 |
+| `nepali-keyboard` | Not in first 250 | Not in first 250 |
+| `nepali input` | Not in first 250 | 210 |
+| `roman nepali` | 1 | 1 |
+| `devanagari typing` | 85 | 86 |
+
+These are dated API observations. They do not establish npm website ordering, show that metadata caused a position change, or guarantee future ranking or indexing. The original baseline and the new snapshot remain separate records; neither includes competitor reviews.
 
 ## Search Console and post-deployment review
 

@@ -2,7 +2,7 @@
 
 SahajLipi is currently a small, dependency-free **Nepali** transliteration prototype. A pure conversion engine chooses a default Devanagari rendering for Roman input; separate browser adapters apply that engine to configured text fields as the user types. The project name leaves room for other Devanagari languages, but no other language implementation exists today.
 
-This page describes the published `0.1.0-alpha.2` package and its source. The earlier alpha.1 artifact retains its half-consonant fallback. For supported keys and migration examples, see the [typing reference](typing-reference.md) and [integration recipe](integration-recipes.md#keep-alpha1-consonant-behavior). For evaluation methods and dated results, see [benchmarks](benchmarks.md).
+This page describes the published `0.1.0-alpha.3` package and its source. The earlier alpha.1 artifact retains its half-consonant fallback. For supported keys and migration examples, see the [typing reference](typing-reference.md) and [integration recipe](integration-recipes.md#keep-alpha1-consonant-behavior). For evaluation methods and dated results, see [benchmarks](benchmarks.md).
 
 ## Components and boundaries
 

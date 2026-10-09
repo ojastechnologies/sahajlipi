@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "package": "sahajlipi",
+  "checkedAtUtc": "2026-10-09T12:51:20.032995+00:00",
+  "phase": "after_alpha3_publication",
+  "surface": "official npm registry search API, not npm website search",
+  "endpoint": "https://registry.npmjs.org/-/v1/search",
+  "queryParameters": {
+    "size": 250,
+    "from": 0
+  },
+  "baseline": {
+    "fileName": "npm-search-baseline.json",
+    "sha256": "022ca7b2f88480f6b270941ab88addac7bea93cb276e2980dbdfedb94749c67e",
+    "checkedAtUtc": "2026-10-09T07:29:02.232255+00:00",
+    "completedAtUtc": "2026-10-09T07:30:35.182980+00:00"
+  },
+  "releaseContext": {
+    "version": "0.1.0-alpha.3",
+    "tags": [
+      "alpha",
+      "latest"
+    ],
+    "verifiedAtUtc": "2026-10-09T12:49:31Z",
+    "source": "Verified publication task context; tags are not queried or mutated by this audit"
+  },
+  "requestPolicy": {
+    "attemptsPerQuery": 1,
+    "minimumDelayBetweenQueriesSeconds": 3,
+    "retryAfterError": false
+  },
+  "results": [
+    {
+      "text": "nepali",
+      "url": "https://registry.npmjs.org/-/v1/search?text=nepali&size=250&from=0",
+      "checkedAtUtc": "2026-10-09T12:51:20.033168+00:00",
+      "baseline": {
+        "status": "found",
+        "position": 88,
+        "version": "0.1.0-alpha.2",
+        "total": 551,
+        "responseTime": "2026-10-09T07:29:03.362Z"
+      },
+      "httpStatus": 200,
+      "status": "found",
+      "responseTime": "2026-10-09T12:51:21.156Z",
+      "total": 550,
+      "returned": 250,
+      "position": 67,
+      "version": "0.1.0-alpha.3",
+      "positionDeltaAfterMinusBefore": -21,
+      "completedAtUtc": "2026-10-09T12:51:21.750376+00:00"
+    },
+    {
+      "text": "devanagari",
+      "url": "https://registry.npmjs.org/-/v1/search?text=devanagari&size=250&from=0",
+      "checkedAtUtc": "2026-10-09T12:51:24.755551+00:00",
+      "baseline": {
+        "status": "found",
+        "position": 230,
+        "version": "0.1.0-alpha.2",
+        "total": 480,
+        "responseTime": "2026-10-09T07:29:04.301Z"
+      },
+      "httpStatus": 200,
+      "status": "found",
+      "responseTime": "2026-10-09T12:51:25.026Z",
+      "total": 480,
+      "returned": 250,
+      "position": 65,
+      "version": "0.1.0-alpha.3",
+      "positionDeltaAfterMinusBefore": -165,
+      "completedAtUtc": "2026-10-09T12:51:25.140911+00:00"
+    },
+    {
+      "text": "devnagari",
+      "url": "https://registry.npmjs.org/-/v1/search?text=devnagari&size=250&from=0",
+      "checkedAtUtc": "2026-10-09T12:51:28.141614+00:00",
+      "baseline": {
+        "status": "absent_in_returned_window",
+        "position": null,
+        "version": null,
+        "total": 6,
+        "responseTime": "2026-10-09T07:29:05.432Z"
+      },
+      "httpStatus": 200,
+      "status": "found",
+      "responseTime": "2026-10-09T12:51:28.452Z",
+      "total": 7,
+      "returned": 7,
+      "position": 6,
+      "version": "0.1.0-alpha.3",
+      "positionDeltaAfterMinusBefore": null,
+      "completedAtUtc": "2026-10-09T12:51:28.563216+00:00"
+    },
+    {
+      "text": "roman-nepali",
+      "url": "https://registry.npmjs.org/-/v1/search?text=roman-nepali&size=250&from=0",
+      "checkedAtUtc": "2026-10-09T12:51:31.568166+00:00",
+      "baseline": {
+        "status": "found",
+        "position": 1,
+        "version": "0.1.0-alpha.2",
+        "total": 1420,
+        "responseTime": "2026-10-09T07:29:05.805Z"
+      },
+      "httpStatus": 200,
+      "status": "found",
+      "responseTime": "2026-10-09T12:51:31.849Z",
+      "total": 1418,
+      "returned": 250,
+      "position": 1,
+      "version": "0.1.0-alpha.3",
+      "positionDeltaAfterMinusBefore": 0,
+      "completedAtUtc": "2026-10-09T12:51:32.209471+00:00"
+    },
+    {
+      "text": "nepali-typing",
+      "url": "https://registry.npmjs.org/-/v1/search?text=nepali-typing&size=250&from=0",
+      "checkedAtUtc": "2026-10-09T12:51:35.214642+00:00",
+      "baseline": {
+        "status": "found",
+        "position": 77,
+        "version": "0.1.0-alpha.2",
+        "total": 15386,
+        "responseTime": "2026-10-09T07:29:06.683Z"
+      },
+      "httpStatus": 200,
+      "status": "found",
+      "responseTime": "2026-10-09T12:51:36.242Z",
+      "total": 15391,
+      "returned": 250,
+      "position": 51,
+      "version": "0.1.0-alpha.3",
+      "positionDeltaAfterMinusBefore": -26,
+      "completedAtUtc": "2026-10-09T12:51:36.850115+00:00"
+    },
+    {
+      "text": "nepali-unicode",
+      "url": "https://registry.npmjs.org/-/v1/search?text=nepali-unicode&size=250&from=0",
+      "checkedAtUtc": "2026-10-09T12:51:39.851047+00:00",
+      "baseline": {
+        "status": "found",
+        "position": 199,
+        "version": "0.1.0-alpha.2",
+        "total": 24059,
+        "responseTime": "2026-10-09T07:29:07.077Z"
+      },
+      "httpStatus": 200,
+      "status": "found",
+      "responseTime": "2026-10-09T12:51:40.119Z",
+      "total": 24069,
+      "returned": 250,
+      "position": 138,
+      "version": "0.1.0-alpha.3",
+      "positionDeltaAfterMinusBefore": -61,
+      "completedAtUtc": "2026-10-09T12:51:40.256685+00:00"
+    },
+    {
+      "text": "nepali-transliteration",
+      "url": "https://registry.npmjs.org/-/v1/search?text=nepali-transliteration&size=250&from=0",
+      "checkedAtUtc": "2026-10-09T12:51:43.258719+00:00",
+      "baseline": {
+        "status": "found",
+        "position": 176,
+        "version": "0.1.0-alpha.2",
+        "total": 975,
+        "responseTime": "2026-10-09T07:29:07.476Z"
+      },
+      "httpStatus": 200,
+      "status": "found",
+      "responseTime": "2026-10-09T12:51:43.552Z",
+      "total": 974,
+      "returned": 250,
+      "position": 127,
+      "version": "0.1.0-alpha.3",
+      "positionDeltaAfterMinusBefore": -49,
+      "completedAtUtc": "2026-10-09T12:51:43.927001+00:00"
+    },
+    {
+      "text": "phonetic-typing",
+      "url": "https://registry.npmjs.org/-/v1/search?text=phonetic-typing&size=250&from=0",
+      "checkedAtUtc": "2026-10-09T12:51:46.927496+00:00",
+      "baseline": {
+        "status": "found",
+        "position": 129,
+        "version": "0.1.0-alpha.2",
+        "total": 15295,
+        "responseTime": "2026-10-09T07:29:07.863Z"
+      },
+      "httpStatus": 200,
+      "status": "found",
+      "responseTime": "2026-10-09T12:51:47.213Z",
+      "total": 15300,
+      "returned": 250,
+      "position": 1,
+      "version": "0.1.0-alpha.3",
+      "positionDeltaAfterMinusBefore": -128,
+      "completedAtUtc": "2026-10-09T12:51:47.342294+00:00"
+    },
+    {
+      "text": "nepali-keyboard",
+      "url": "https://registry.npmjs.org/-/v1/search?text=nepali-keyboard&size=250&from=0",
+      "checkedAtUtc": "2026-10-09T12:51:50.345312+00:00",
+      "baseline": {
+        "status": "absent_in_returned_window",
+        "position": null,
+        "version": null,
+        "total": 21052,
+        "responseTime": "2026-10-09T07:29:08.266Z"
+      },
+      "httpStatus": 200,
+      "status": "absent_in_returned_window",
+      "responseTime": "2026-10-09T12:51:50.621Z",
+      "total": 21069,
+      "returned": 250,
+      "position": null,
+      "version": null,
+      "positionDeltaAfterMinusBefore": null,
+      "completedAtUtc": "2026-10-09T12:51:50.750174+00:00"
+    },
+    {
+      "text": "nepali input",
+      "url": "https://registry.npmjs.org/-/v1/search?text=nepali+input&size=250&from=0",
+      "checkedAtUtc": "2026-10-09T12:51:53.753617+00:00",
+      "baseline": {
+        "status": "absent_in_returned_window",
+        "position": null,
+        "version": null,
+        "total": 145847,
+        "responseTime": "2026-10-09T07:29:08.663Z"
+      },
+      "httpStatus": 200,
+      "status": "found",
+      "responseTime": "2026-10-09T12:51:54.037Z",
+      "total": 145928,
+      "returned": 250,
+      "position": 210,
+      "version": "0.1.0-alpha.3",
+      "positionDeltaAfterMinusBefore": null,
+      "completedAtUtc": "2026-10-09T12:51:54.171255+00:00"
+    },
+    {
+      "text": "roman nepali",
+      "url": "https://registry.npmjs.org/-/v1/search?text=roman+nepali&size=250&from=0",
+      "checkedAtUtc": "2026-10-09T12:51:57.175787+00:00",
+      "baseline": {
+        "status": "found",
+        "position": 1,
+        "version": "0.1.0-alpha.2",
+        "total": 1618,
+        "responseTime": "2026-10-09T07:30:34.146Z"
+      },
+      "httpStatus": 200,
+      "status": "found",
+      "responseTime": "2026-10-09T12:51:58.199Z",
+      "total": 1616,
+      "returned": 250,
+      "position": 1,
+      "version": "0.1.0-alpha.3",
+      "positionDeltaAfterMinusBefore": 0,
+      "completedAtUtc": "2026-10-09T12:51:58.788154+00:00"
+    },
+    {
+      "text": "devanagari typing",
+      "url": "https://registry.npmjs.org/-/v1/search?text=devanagari+typing&size=250&from=0",
+      "checkedAtUtc": "2026-10-09T12:52:01.789014+00:00",
+      "baseline": {
+        "status": "found",
+        "position": 85,
+        "version": "0.1.0-alpha.2",
+        "total": 15846,
+        "responseTime": "2026-10-09T07:30:34.959Z"
+      },
+      "httpStatus": 200,
+      "status": "found",
+      "responseTime": "2026-10-09T12:52:02.092Z",
+      "total": 15851,
+      "returned": 250,
+      "position": 86,
+      "version": "0.1.0-alpha.3",
+      "positionDeltaAfterMinusBefore": 1,
+      "completedAtUtc": "2026-10-09T12:52:02.688372+00:00"
+    }
+  ],
+  "limitations": [
+    "Positions are a dated observation in the first 250 API results, not a ranking guarantee.",
+    "This API is not npm website search; their ordering is not assumed to match.",
+    "Indexing may lag after publication or a latest-tag change; a returned version identifies the observed search result.",
+    "Baseline and after positions alone cannot establish that metadata changes caused an ordering change.",
+    "No competitor package results, package scores, maintainer identities or complete API responses are retained.",
+    "No requests are repeated to wait for indexing; HTTP 429 and other failures remain recorded."
+  ],
+  "completedAtUtc": "2026-10-09T12:52:02.688394+00:00",
+  "summary": {
+    "queries": 12,
+    "found": 11,
+    "absentInReturnedWindow": 1,
+    "failed": 0,
+    "observedAlpha3Results": 11
+  }
+}
