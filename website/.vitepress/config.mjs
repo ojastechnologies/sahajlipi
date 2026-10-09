@@ -129,6 +129,7 @@ export default defineConfig({
           { text: 'Loanword coverage audit', link: '/docs/package/loanword-coverage-audit.html' },
           { text: 'Loanword expansion', link: '/docs/package/loanword-expansion-2026-09-28.html' },
           { text: 'Loanword suffixes', link: '/docs/package/loanword-suffixes-2026-10-01.html' },
+          { text: 'Unreleased native spellings', link: '/docs/package/nepali-spelling-2026-10-09.html' },
           { text: 'Reviewed native spellings', link: '/docs/package/nepali-spelling-2026-10-01.html' },
         ] },
         { text: 'Evaluation and review', items: [

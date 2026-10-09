@@ -2,7 +2,7 @@
 
 The [live SahajLipi demo](https://ojastechnologies.github.io/sahajlipi/demo/) lets you try the current Nepali typing experience in a browser. This page covers the demo interface and how to run it. The [package website](https://ojastechnologies.github.io/sahajlipi/) introduces the library and provides developer documentation. For the reusable conversion engine, browser adapter, API, and typing rules, start with the [package documentation](../package/README.md).
 
-This guide describes the **`0.1.0-alpha.2` source demo**, including full consonants by default and the **Consonants** selector. Alpha.2 is published on npm; hosted demo changes appear after merge and website deployment. The published npm alpha.1 artifact keeps its earlier half-consonant fallback; the [release record](../release.md) distinguishes package distribution from the source demo.
+This guide describes the **repository demo**, including alpha.2 full consonants, the **Consonants** selector and the **unreleased 2026-10-09 native spelling batch**. The published npm alpha.2 does not include that batch; hosted demo changes appear after merge and website deployment. The published npm alpha.1 artifact keeps its earlier half-consonant fallback; the [release record](../release.md) distinguishes package distribution from the repository demo.
 
 ## Run it locally
 
@@ -27,7 +27,7 @@ Replace `YOUR_LAN_IP` with that address, then open `http://YOUR_LAN_IP:4173/saha
 
 ## Use the page
 
-- **Type in the editor.** Roman letters turn into Nepali in the same textarea. Space commits the displayed word; Backspace can edit the active Roman spelling. The on-page **How to type** guide shows examples for vowels, full consonants, automatic conjuncts, explicit half forms, `cha`/`chha`, the two र्य/र्‍य forms, listed word shortcuts, four reviewed native spellings, English loanwords and their supported suffixes, full English month names, Shift sounds, marks, digits, punctuation, mixed text, and alternatives. The [package typing reference](../package/typing-reference.md) documents the complete rules and the scope of those word entries.
+- **Type in the editor.** Roman letters turn into Nepali in the same textarea. Space commits the displayed word; Backspace can edit the active Roman spelling. The on-page **How to type** guide shows examples for vowels, full consonants, automatic conjuncts, explicit half forms, `cha`/`chha`, the two र्य/र्‍य forms, listed word shortcuts, reviewed native spellings, English loanwords and their supported suffixes, full English month names, Shift sounds, marks, digits, punctuation, mixed text, and alternatives. The [package typing reference](../package/typing-reference.md) documents the complete rules and the scope of those word entries.
 - **Choose consonant behavior.** **Consonants → Full (default)** displays full bare and final consonants, such as `k` → क and `kr` → क्र. **Strict half** retains alpha.1 fallback endings, such as `k` → क् and `kr` → क्र् until a vowel completes them. The selector controls the main editor and all three marked form fields. Changing it finishes their active words and preserves existing text and Nepali/English mode; subsequent typing and paste use the selected behavior.
 - **Choose a reading.** When the active spelling has multiple listed readings, a dropdown appears below the textarea. The first reading is displayed by default. Choose another from the dropdown or press `Alt` + a number from `1` through `9` while the word is active.
 - **Switch mode.** The button shows **Nepali mode** when conversion is on and **English mode** when input is literal. It controls subsequent typing and paste in every marked field on this page: the main editor and the three form examples. Existing text stays as it is when you switch modes.
@@ -52,9 +52,24 @@ Type backtick or `/` for an explicit half form: `` k` `` or `k/` → **क्**,
 
 ### Reviewed native-word spellings
 
-Try `halyo` → **हाल्यो**, `nabhani` → **नभनी**, `gaunle` → **गाउँले** and `dindaina` → **दिँदैन**. Each completed spelling currently has one reading. These exact aliases supply the reviewed vowel or nasal form; they do not change the ordinary key rules or infer attached native words. An unfinished or unlisted spelling can still use the phonetic fallback.
+The original four reviewed keys work in the published alpha.2 and repository demo: `halyo` → **हाल्यो**, `nabhani` → **नभनी**, `gaunle` → **गाउँले** and `dindaina` → **दिँदैन**.
 
-The [package spelling review](../package/nepali-spelling-2026-10-01.md) records sources, decisions and measurement. The demo uses the same engine, and English mode keeps these keys literal.
+The repository demo also includes the **unreleased 2026-10-09 batch**:
+
+| Type | Output | Type | Output |
+| --- | --- | --- | --- |
+| `imandar` | इमान्दार | `sarasar` | सरासर |
+| `sakos` | सकोस् | `kathanak` | कथानक |
+| `arambha` | आरम्भ | `ekadhik` | एकाधिक |
+| `jaghanya` | जघन्य | `pukar` | पुकार |
+| `niskanda` | निस्कँदा | `bora` | बोरा |
+| `utthan` | उत्थान | `samanjasya` | सामञ्जस्य |
+
+Type `bhagna` to display **भग्न**, then choose **भाग्न** from the readings dropdown or press `Alt+2` while the word is active. These are distinct valid readings; the first preserves the existing default rather than ranking their meanings. Space commits the displayed choice.
+
+These exact aliases supply reviewed whole-word spellings. An unfinished or unlisted spelling can use the phonetic fallback; attached native forms are not inferred. Incidental capitals such as `Imandar` work, while reserved Shift spellings such as `Sarasar` keep their explicit sounds. English mode keeps these keys literal.
+
+The [earlier four-word review](../package/nepali-spelling-2026-10-01.md) and [unreleased batch review](../package/nepali-spelling-2026-10-09.md) record sources, decisions and measurements. The demo uses the repository engine in either consonant setting.
 
 ### English loanwords
 

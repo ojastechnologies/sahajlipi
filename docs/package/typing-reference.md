@@ -1,6 +1,6 @@
 # Nepali typing reference
 
-SahajLipi currently converts Roman Nepali, 51 listed English-spelling loanword stems with finite attached suffix forms and 12 full English month names to Unicode Devanagari. The core returns a preferred reading and, where listed, alternatives. The optional browser adapters render that preferred reading in opted-in text fields as you type and report alternatives to the host interface. This reference describes the published **`0.1.0-alpha.2` package and its source**; the keys are project conventions rather than a standardized Romanization scheme. The earlier `0.1.0-alpha.1` keeps its half-consonant default; see the [migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior).
+SahajLipi currently converts Roman Nepali, 51 listed English-spelling loanword stems with finite attached suffix forms and 12 full English month names to Unicode Devanagari. The core returns a preferred reading and, where listed, alternatives. The optional browser adapters render that preferred reading in opted-in text fields as you type and report alternatives to the host interface. This reference describes the published **`0.1.0-alpha.2` package**, with the **unreleased 2026-10-09 source spellings** explicitly marked below; the keys are project conventions rather than a standardized Romanization scheme. The earlier `0.1.0-alpha.1` keeps its half-consonant default; see the [migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior).
 
 The [starter lexicon](../../src/lexicon.js) takes priority over the [phonetic fallback](../../src/phonetic.js). The listed word `cha` defaults to च and offers छ as an alternative; `chha` returns only छ. The fallback tokens remain `ch` → च and `chh` → छ. Custom entries can replace a built-in entry in one engine instance. See the [engine source](../../src/index.js) for the lookup order.
 
@@ -115,7 +115,7 @@ Online usage supports the listed Nepali spellings: [नेपाल कानू
 
 ## Reviewed native-word spellings
 
-Four common informal spellings have exact starter entries:
+The published alpha.2 includes four reviewed exact starter keys:
 
 | Roman key | Preferred output |
 | --- | --- |
@@ -124,9 +124,31 @@ Four common informal spellings have exact starter entries:
 | `gaunle` | गाउँले |
 | `dindaina` | दिँदैन |
 
-Each currently has one reading. These completed keys supply the source-reviewed vowel or nasal spelling. They preserve the vowel distinctions in the fallback: `pani` and `paani` remain distinct, and `ki` and `kii` retain their vowel lengths. The default fallback now makes bare and final consonants full; explicit backtick or `/` keeps a consonant half. Explicit `^` / `~` still choose bindu / chandrabindu; Shift keys keep their explicit sounds.
+Each has one reading. The [2026-10-01 review](nepali-spelling-2026-10-01.md) records their sources and dated comparison.
 
-Only the complete normalized key matches. Incidental title case such as `Halyo` works; reserved sound capitals inside an input keep their phonetic meaning unless an exact custom entry exists. Attached native forms and misspellings are not inferred from these aliases. Developers can replace a complete key’s readings with `createEngine({ entries })`. The [dated spelling review](nepali-spelling-2026-10-01.md) explains sources, choices, validation and limits.
+**Unreleased source update — 2026-10-09:** the repository checkout adds twelve single-reading preferences and a second reading for `bhagna`, bringing this reviewed native-key group to **17 keys**. The published `sahajlipi@0.1.0-alpha.2` package does not include this batch; use a [local development installation](getting-started.md#local-development-installation) to try it.
+
+| Roman key | Source-checkout output | Alternative |
+| --- | --- | --- |
+| `imandar` | इमान्दार | |
+| `sarasar` | सरासर | |
+| `sakos` | सकोस् | |
+| `kathanak` | कथानक | |
+| `arambha` | आरम्भ | |
+| `ekadhik` | एकाधिक | |
+| `jaghanya` | जघन्य | |
+| `pukar` | पुकार | |
+| `niskanda` | निस्कँदा | |
+| `bora` | बोरा | |
+| `utthan` | उत्थान | |
+| `samanjasya` | सामञ्जस्य | |
+| `bhagna` | भग्न | भाग्न |
+
+`bhagna` keeps its existing displayed भग्न reading and offers the distinct भाग्न reading for selection. Its order preserves the earlier default; the frozen references specify no uniquely preferred meaning. The [2026-10-09 review](nepali-spelling-2026-10-09.md) records source access, decisions and unchanged-reference measurements.
+
+These completed keys supply reviewed whole-word spellings. They preserve the vowel distinctions in the fallback: `pani` and `paani` remain distinct, and `ki` and `kii` retain their vowel lengths. The default fallback makes bare and final consonants full; explicit backtick or `/` keeps a consonant half. Explicit `^` / `~` still choose bindu / chandrabindu; Shift keys keep their explicit sounds.
+
+Only the complete normalized key matches. Incidental title case such as `Halyo` or `Imandar` works; reserved sound capitals keep their phonetic meaning unless an exact custom entry exists. For example, `Sarasar` still starts with ष, and `niSkanda` retains its explicit ष sound. Attached native forms and misspellings are not inferred from these aliases. Developers can replace a complete key’s readings with `createEngine({ entries })`.
 
 ## English-spelling loanwords
 

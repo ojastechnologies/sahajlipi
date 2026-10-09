@@ -15,9 +15,31 @@ The first command prints results and exits successfully even when a contract cas
 
 The dependency-free runner is [benchmark/run.js](../../benchmark/run.js). Its UTF-8, one-JSON-object-per-line fixtures are in [benchmark/cases.jsonl](../../benchmark/cases.jsonl). You can inspect a different fixture file with `node benchmark/run.js --fixtures path/to/cases.jsonl`; add `--check` if its contract cases should gate the command.
 
+## Unreleased native spelling follow-up — 2026-10-09
+
+The [new spelling review](nepali-spelling-2026-10-09.md) records twelve exact native preferences and the missing भाग्न candidate for `bhagna`, preserving its displayed भग्न default. These source-checkout changes are **unreleased**; the published npm alpha.2 retains its recorded behavior.
+
+The final seed has **174 contracts and two exploratory cases**. Thirteen word cases and one synthetic text guard are appended; all 162 prior rows remain byte-for-byte unchanged. Comparing alpha.2 source commit `48a0321bed417b1e995f66adbcbf9ade2c82f1cf` with this update on the same final fixture gives **160/174 → 174/174** full contracts. The frozen historical fixture stays at **160/160 for both engines**.
+
+On the unchanged development references, word defaults and cases with any reference candidate improve **16/74 → 28/74**; cases covering all listed alternatives improve **15/74 → 28/74**; individual reference coverage improves **17/79 → 30/79**. Preferred defaults improve **14/69 → 26/69**, excluding the five cases with no uniquely preferred reference. Exact complete sentences remain **0/12**. These targets guided implementation, so this is development progress without an independent or representative accuracy claim.
+
+The [machine report](../../benchmark/reports/nepali-spelling-2026-10-09.json) pins both engines, fixtures, measurement tools, the new [source ledger](../../benchmark/reports/nepali-spelling-research-2026-10-09.json), original case batch and unchanged frozen review. Prepare that pinned batch using the [review instructions](review-batch.md#prepare-the-batch), then run from a checkout containing this update:
+
+```sh
+SPELLING_BASELINE_DIR=$(mktemp -d)
+git archive 48a0321bed417b1e995f66adbcbf9ade2c82f1cf \
+  src package.json benchmark/cases.jsonl benchmark/run.js benchmark/reports \
+  | tar -x -C "$SPELLING_BASELINE_DIR"
+node benchmark/measure-reviewed-spelling.js "$SPELLING_BASELINE_DIR" \
+  --cases benchmark/data/review-batch-001/cases.jsonl \
+  --output benchmark/data/nepali-spelling-current.json
+```
+
+Use a new output path; the tool refuses an existing report. Frozen references, original exclusions, human review sheets and older dated reports retain their original contents. The [dated review](nepali-spelling-2026-10-09.md#recorded-comparison) lists remaining failures and scope limits.
+
 ## Full-consonant default update — 2026-10-03
 
-The [dated contract comparison](consonant-defaults-2026-10-03.md) records the new full-consonant default, automatic internal clusters, explicit backtick/slash halants and strict `consonantMode: 'half'` compatibility. The current seed has **160 contracts and two exploratory cases**: 14 intentional revisions to prior final-halant expectations, 18 additions and 130 byte-identical prior rows. On the same revised fixture, agreement with the new software contract is **130/160 → 160/160**; this policy change is not a gain in measured Nepali linguistic accuracy.
+The [dated contract comparison](consonant-defaults-2026-10-03.md) records the new full-consonant default, automatic internal clusters, explicit backtick/slash halants and strict `consonantMode: 'half'` compatibility. That dated seed has **160 contracts and two exploratory cases**: 14 intentional revisions to prior final-halant expectations, 18 additions and 130 byte-identical prior rows. On the same revised fixture, agreement with the new software contract is **130/160 → 160/160**; this policy change is not a gain in measured Nepali linguistic accuracy.
 
 The frozen original fixture remains separate: prior default **142/142**, new default **128/142** from those 14 declared changes, and strict half mode **142/142**. Strict mode also matches **144/144** complete archived raw outputs, including the two exploratory cases. A separate manually specified 31-case fixture passes **31/31** in the default, explicit full and half engines. The [machine report](../../benchmark/reports/consonant-defaults-2026-10-03.json) pins fixtures, tools, engine sources and all historical reports. Its [reproduction command](consonant-defaults-2026-10-03.md#reproduce) checks both modes without changing the seed runner schema. Earlier reports, exploratory labels and source-assisted references remain unchanged.
 

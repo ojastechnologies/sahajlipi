@@ -6,6 +6,8 @@ The experimental Nepali developer alpha **[`sahajlipi@0.1.0-alpha.2`](https://ww
 
 The current guides describe **`0.1.0-alpha.2`** with full bare and final fallback consonants, automatic internal conjuncts, and explicit backtick or `/` half forms. Published alpha.1 retains its earlier behavior. The [migration recipe](package/integration-recipes.md#keep-alpha1-consonant-behavior) preserves alpha.1 fallback endings with `createEngine({ consonantMode: 'half' })` when adopting alpha.2.
 
+The typing reference and repository demo also mark the [unreleased 2026-10-09 native spelling batch](package/nepali-spelling-2026-10-09.md). That source update is available through a local checkout and is not included in the published npm alpha.2.
+
 ## Reusable package
 
 | Read | For |
@@ -22,6 +24,7 @@ The current guides describe **`0.1.0-alpha.2`** with full bare and final fallbac
 
 | Read | For |
 | --- | --- |
+| [Unreleased native spelling follow-up](package/nepali-spelling-2026-10-09.md) | Twelve exact native preferences, an additional `bhagna` candidate, source checks and frozen development comparison. |
 | [Full-consonant candidate contracts](package/consonant-defaults-2026-10-03.md) | Full default endings, strict half compatibility, declared fixture revisions, and dated candidate evidence. |
 | [Developer consumer browser record](../browser/reports/desktop-003.json) | Inspect the later 51-check run, installed-package identity, and uncontrolled React lifecycle scope. |
 | [Digit desktop browser record](../browser/reports/desktop-002.json) | Inspect the later 42-check digit/configuration run, source identities, named flows, and limits. |
