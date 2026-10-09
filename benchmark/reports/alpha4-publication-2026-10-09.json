@@ -1,0 +1,837 @@
+{
+  "schemaVersion": 1,
+  "recordId": "alpha4-publication-2026-10-09",
+  "recordedAtUtc": "2026-10-09T15:26:07.167494+00:00",
+  "status": "published_and_verified",
+  "package": {
+    "name": "sahajlipi",
+    "version": "0.1.0-alpha.4",
+    "access": "public",
+    "experimental": true,
+    "npmOrganization": "ojastech",
+    "actualRegistryPublisher": "maheshnepal",
+    "publicationCli": "npm 12.2.0",
+    "publicationUsedInteractive2FA": true,
+    "artifactPublishedWithoutRepacking": true
+  },
+  "source": {
+    "mergedPreparationCommit": "b4bbe41b9734ae20729a7109a525324479c06c6b",
+    "preparationPullRequest": "https://github.com/ojastechnologies/sahajlipi/pull/30",
+    "packageCandidateCommit": "bf48129770a0fea168450a066728fa83b99df618",
+    "mergedRuntimeSourceCommit": "9bec98c4ce980d1bc7852d553dab01d15e664834",
+    "all13DistributedFilesMatchMergedSource": true,
+    "runtimeUnchangedSinceMergedNativeFormBatch": true,
+    "later34NativeFormsIncluded": true,
+    "later34NativeFormsPullRequest": "https://github.com/ojastechnologies/sahajlipi/pull/28",
+    "starterLexicon": {
+      "previousSourceCommit": "4df0ebcc174e379ca345752228aceddf14e25d43",
+      "previousKeys": 177,
+      "candidateKeys": 211,
+      "preservedReadingArrays": 177,
+      "addedKeys": [
+        "futera",
+        "shanta",
+        "mahila",
+        "astitwalai",
+        "vidhansabha",
+        "yasaprakar",
+        "lepchaharu",
+        "angrejharuko",
+        "adhyayama",
+        "karyaharuma",
+        "vedko",
+        "pairaheka",
+        "afumathi",
+        "sammanko",
+        "fulbariharu",
+        "goretaharuma",
+        "kendraharudwara",
+        "hospitaltarfa",
+        "manovaigyanikharule",
+        "vigyanle",
+        "gabhnuparchha",
+        "fyankidinchhan",
+        "lakhetiraheka",
+        "samhalnubhaeko",
+        "bolaunuparne",
+        "bhagidarko",
+        "sambhawanaharulai",
+        "dushprawrittiharuko",
+        "suktiharu",
+        "asuraharuko",
+        "aspatalbichko",
+        "bhaktiganyukta",
+        "purnakalinlai",
+        "lagalagi"
+      ]
+    }
+  },
+  "artifact": {
+    "name": "sahajlipi",
+    "version": "0.1.0-alpha.4",
+    "filename": "sahajlipi-0.1.0-alpha.4.tgz",
+    "compressedBytes": 26335,
+    "unpackedBytes": 87082,
+    "fileCount": 13,
+    "sha256": "950b21693f1f42455139296ed43f872968d56182de7ea6792b8c9e9156683e56",
+    "sha1": "5c2a1486db7b7c6d11fe02d8efa8147c9566611f",
+    "sha512": "sha512-AnYIzOW489PMakOjoLV0bZhndpps/j7JB4gWOJPy7KTQvaFkEn9bs9Zm9aLY8J1DpUkMDOCQyplF9Lkyr7NnMw==",
+    "files": [
+      {
+        "path": "LICENSE",
+        "size": 1079,
+        "mode": 420,
+        "sha256": "84abe5cb282f83d7da4f1bc92e19b28f64e89036877cad5fe5cb9b8f35ee84ad"
+      },
+      {
+        "path": "LICENSES/Unicode-3.0.txt",
+        "size": 2033,
+        "mode": 420,
+        "sha256": "220ba0e1c43b99530d2d5bdb892a99dca0989414f51ab695ecd90163eaa1ec3b"
+      },
+      {
+        "path": "NOTICE",
+        "size": 698,
+        "mode": 420,
+        "sha256": "56f72e63edd18ecb0708c7e2d8afb057e98c7014c3d510bd8888d138ce05eda5"
+      },
+      {
+        "path": "README.md",
+        "size": 26502,
+        "mode": 420,
+        "sha256": "4a4dcf13f71b358b46a58ea630b9a8b4b712933ba1dd9821a1aa751c1bf1707d"
+      },
+      {
+        "path": "package.json",
+        "size": 2939,
+        "mode": 420,
+        "sha256": "ab87b70a4637f041054806c57dbd60723ea2c96e013da09159b830cc051031bf"
+      },
+      {
+        "path": "src/dom.d.ts",
+        "size": 2023,
+        "mode": 420,
+        "sha256": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1"
+      },
+      {
+        "path": "src/dom.js",
+        "size": 27834,
+        "mode": 420,
+        "sha256": "a264f11888f8a611d116a065fa10191aec029fcce75ee7e797c3dad4342fb9ac"
+      },
+      {
+        "path": "src/index.d.ts",
+        "size": 1161,
+        "mode": 420,
+        "sha256": "7b8c9969df0326e6b3fbfbd97713b60cb38931840c1da696b6fea6ac52d5d77a"
+      },
+      {
+        "path": "src/index.js",
+        "size": 4787,
+        "mode": 420,
+        "sha256": "01f3fb9fc0fb8f60617d5af81e96ef7c8752fdada3ef5153a89dbe22577b1152"
+      },
+      {
+        "path": "src/lexicon.js",
+        "size": 8105,
+        "mode": 420,
+        "sha256": "b51f5e7bebc3cea321361962a5b31ee84865e27d16c5b0e8e795d206c7d8082d"
+      },
+      {
+        "path": "src/loanwords.js",
+        "size": 1779,
+        "mode": 420,
+        "sha256": "aa74e688d3b77980b5ee7e9fb89ce2c0a61fd27568d3230048bef91a8379e446"
+      },
+      {
+        "path": "src/phonetic.js",
+        "size": 2767,
+        "mode": 420,
+        "sha256": "ac571d6f4c94c5b48baa1558973d4d27ad6c7f2c5ff15fc7bed36ecdb2d29bf9"
+      },
+      {
+        "path": "src/text-policy.js",
+        "size": 5375,
+        "mode": 420,
+        "sha256": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa"
+      }
+    ],
+    "runtimeSha256": {
+      "src/dom.d.ts": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1",
+      "src/dom.js": "a264f11888f8a611d116a065fa10191aec029fcce75ee7e797c3dad4342fb9ac",
+      "src/index.d.ts": "7b8c9969df0326e6b3fbfbd97713b60cb38931840c1da696b6fea6ac52d5d77a",
+      "src/index.js": "01f3fb9fc0fb8f60617d5af81e96ef7c8752fdada3ef5153a89dbe22577b1152",
+      "src/lexicon.js": "b51f5e7bebc3cea321361962a5b31ee84865e27d16c5b0e8e795d206c7d8082d",
+      "src/loanwords.js": "aa74e688d3b77980b5ee7e9fb89ce2c0a61fd27568d3230048bef91a8379e446",
+      "src/phonetic.js": "ac571d6f4c94c5b48baa1558973d4d27ad6c7f2c5ff15fc7bed36ecdb2d29bf9",
+      "src/text-policy.js": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa"
+    }
+  },
+  "registry": {
+    "url": "https://registry.npmjs.org/",
+    "versionDocument": "https://registry.npmjs.org/sahajlipi/0.1.0-alpha.4",
+    "packagePage": "https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.4",
+    "publishedAtUtc": "2026-10-09T15:10:15.506Z",
+    "tarballUrl": "https://registry.npmjs.org/sahajlipi/-/sahajlipi-0.1.0-alpha.4.tgz",
+    "sha1Verified": true,
+    "sha512Verified": true,
+    "sha256Verified": true,
+    "all13DownloadedFilesMatch": true,
+    "fileCount": 13,
+    "unpackedBytes": 87082,
+    "tagsImmediatelyAfterPublication": {
+      "alpha": "0.1.0-alpha.4",
+      "latest": "0.1.0-alpha.3"
+    },
+    "latestTagUpdate": {
+      "command": "npx --offline npm@12.2.0 dist-tag add sahajlipi@0.1.0-alpha.4 latest --registry=https://registry.npmjs.org/",
+      "commandExitCode": 0,
+      "interactive2FA": true,
+      "observedAtUtc": "2026-10-09T15:14:54.715447+00:00",
+      "observedTags": {
+        "latest": "0.1.0-alpha.4",
+        "alpha": "0.1.0-alpha.4"
+      },
+      "originalPublicationTimeUnchanged": true,
+      "observationEndpoints": [
+        "https://registry.npmjs.org/-/package/sahajlipi/dist-tags",
+        "https://registry.npmjs.org/sahajlipi"
+      ],
+      "observationLimit": "The observation timestamp is not the exact tag mutation time."
+    }
+  },
+  "githubPrerelease": {
+    "url": "https://github.com/ojastechnologies/sahajlipi/releases/tag/v0.1.0-alpha.4",
+    "tag": "v0.1.0-alpha.4",
+    "tagPointsToMergedSource": true,
+    "tagCommit": "b4bbe41b9734ae20729a7109a525324479c06c6b",
+    "prerelease": true,
+    "draft": false,
+    "publishedAtUtc": "2026-10-09T15:19:51Z",
+    "verifiedInitialAssets": [
+      {
+        "name": "registry-consumer-adaptation.patch",
+        "size": 35862,
+        "digest": "sha256:5cc847689e299252a78beab2633b9ffb87c914cb5b2a94be88d76b0d3a604b27",
+        "browser_download_url": "https://github.com/ojastechnologies/sahajlipi/releases/download/v0.1.0-alpha.4/registry-consumer-adaptation.patch"
+      },
+      {
+        "name": "registry-verification-tools.tgz",
+        "size": 26107,
+        "digest": "sha256:e4dcee72a07fb925884560c1314c7e12ef8058a19ee1a569c790b87121dde94a",
+        "browser_download_url": "https://github.com/ojastechnologies/sahajlipi/releases/download/v0.1.0-alpha.4/registry-verification-tools.tgz"
+      },
+      {
+        "name": "sahajlipi-0.1.0-alpha.4.tgz",
+        "size": 26335,
+        "digest": "sha256:950b21693f1f42455139296ed43f872968d56182de7ea6792b8c9e9156683e56",
+        "browser_download_url": "https://github.com/ojastechnologies/sahajlipi/releases/download/v0.1.0-alpha.4/sahajlipi-0.1.0-alpha.4.tgz"
+      }
+    ],
+    "verificationAssetUrl": "https://github.com/ojastechnologies/sahajlipi/releases/download/v0.1.0-alpha.4/release-verification.json",
+    "verificationAssetScope": "This document is uploaded separately after its bytes are finalized. Its own digest is verified in retained upload evidence and omitted here to avoid a circular self-hash."
+  },
+  "mergedSourceCi": {
+    "sourceCommit": "b4bbe41b9734ae20729a7109a525324479c06c6b",
+    "workflows": {
+      "coreAndPackage": "https://github.com/ojastechnologies/sahajlipi/actions/runs/37947927650",
+      "desktopBrowsers": "https://github.com/ojastechnologies/sahajlipi/actions/runs/37947927668",
+      "website": "https://github.com/ojastechnologies/sahajlipi/actions/runs/37947927651"
+    },
+    "finalChecks": [
+      {
+        "conclusion": "success",
+        "name": "deploy website",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "website build and browser checks",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "test (Node 22)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "test (Node 18)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "package (Node 22)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "package (Node 24)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "package (Node 20)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "test (Node 24)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "test (Node 20)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "browser (webkit)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "browser (chromium)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "browser (firefox)",
+        "status": "completed"
+      }
+    ],
+    "originalWebsiteFailure": {
+      "schemaVersion": 1,
+      "sourceCommit": "b4bbe41b9734ae20729a7109a525324479c06c6b",
+      "workflowRun": "https://github.com/ojastechnologies/sahajlipi/actions/runs/37947927651",
+      "artifactId": 11624607778,
+      "originalFailure": {
+        "stats": {
+          "startTime": "2026-10-09T14:56:59.873Z",
+          "duration": 11183.478000000001,
+          "expected": 10,
+          "skipped": 0,
+          "unexpected": 1,
+          "flaky": 0
+        },
+        "globalErrors": 0,
+        "traceSha256": "077563595d64ffbb2a8fe9a2e1d9c6518a07246aecbb9087512f4905952bce0d",
+        "resultsSha256": "a75e0742e3ade5fe3fb66e307731a6248e9cab9fb4fa44005f0b1995259544de",
+        "failure": "Homepage demo-link typing expected पानी followed by space but received paani followed by space."
+      },
+      "traceTimeline": {
+        "typingStartApproximateUtc": "2026-10-09T14:57:03.267427Z",
+        "typingEndApproximateUtc": "2026-10-09T14:57:03.367427Z",
+        "requiredPhoneticModuleRequestUtc": "2026-10-09T14:57:03.160Z",
+        "requiredPhoneticModuleResponseEndApproximateUtc": "2026-10-09T14:57:03.418590Z",
+        "responseCompletedAfterTypingMs": 51.163,
+        "resourceStatus": 200,
+        "timingMethod": "Typing times converted from the retained trace monotonic clock using its wall-time anchor; response end derived from network request start plus recorded duration.",
+        "responseBodyAvailableInTrace": false
+      },
+      "sourceFileSha256": {
+        "website/tests/site.spec.js": "9db7de8e25d8b026030e7ee6a2ece3e08b31a86dfafc7c2d0fd04d46f75e4c2c",
+        "demo/main.js": "977f4eb5973b409ae5dd6c4045295bbf2ca575d37a660f60a587d44569e1a598",
+        "demo/index.html": "221318c53f5f2ab0316a4607ad27124faba0e88906d3c0e984771b8f06f753cf",
+        "src/dom.js": "a264f11888f8a611d116a065fa10191aec029fcce75ee7e797c3dad4342fb9ac",
+        "src/phonetic.js": "ac571d6f4c94c5b48baa1558973d4d27ad6c7f2c5ff15fc7bed36ecdb2d29bf9"
+      },
+      "sourceHashScope": "Expected committed bytes at the failing workflow commit. The phonetic response body was not retained in this trace; its response bytes are not independently hashed here.",
+      "reproduction": {
+        "kind": "deterministic delayed-module diagnosis",
+        "port": 4182,
+        "sourceEdits": false,
+        "scenarios": [
+          {
+            "waitForReady": false,
+            "documentStateBeforeRelease": "interactive",
+            "textBeforeModuleRelease": "paani ",
+            "textAfterReady": "paani ",
+            "textTypedAfterReady": "पानी ",
+            "errors": []
+          },
+          {
+            "waitForReady": true,
+            "documentStateBeforeRelease": "interactive",
+            "textTypedAfterReady": "पानी ",
+            "errors": []
+          }
+        ],
+        "browserVersion": "153.0.8010.12"
+      },
+      "diagnosis": "Deterministically reproduces typing before the demo ES-module graph finishes loading and before the field controller is attached. The attached engine converts fresh typing correctly after DOMContentLoaded. Existing preattachment Roman input is preserved literally.",
+      "minimalTestProposal": {
+        "patchSha256": "c0efcf0125588d2e8eafbc5ba4000efade7790e80f077010f6e4fe18ee8b34f0",
+        "action": "Await DOMContentLoaded after the native demo navigation URL assertion, before typing. Keep every text assertion and zero retries unchanged.",
+        "provenance": "Isolated diagnostic verified the same readiness wait with the final module deliberately held and released. Proposal has not been applied to repository files."
+      },
+      "limitations": [
+        "A test readiness wait addresses this harness timing race; it does not prevent a user typing into the enabled textarea while the demo module graph is still loading.",
+        "No engine, demo, repository test, package or registry changes were made during diagnosis.",
+        "The CI rerun is a separate outcome and does not erase this original failure."
+      ],
+      "diagnosticScriptSha256": "53821b1882dbb74b79a18173ed36c2efddd305724e28c461ff2964a033e89153",
+      "diagnosticLogSha256": "337aeb57235bc0e50759d5076d971552803afbf50527e3275cfffca87f52a3c5",
+      "earlyTraceSha256": "66ef442edee8cd2552d4256bb692b705fcb0bd8dff9634f49abacab090aab9b5",
+      "readyTraceSha256": "220e00c04a503bc168a2c792a2047e30c143348890fcf4e252187816e995f728"
+    },
+    "websiteRerun": {
+      "failedJobRerunCount": 1,
+      "sourceCommitUnchanged": true,
+      "websiteChecksPassed": 11,
+      "pagesDeploymentPassed": true,
+      "rawLogSha256": "9ff69a3dfe9eab3eeee67fade0949dfcb4470c33c432e76277a74609cbbc6c01",
+      "limit": "A successful unchanged-source rerun is recorded separately from the retained initial failure; it does not erase that failure."
+    },
+    "followupTestReadinessFix": {
+      "file": "website/tests/site.spec.js",
+      "action": "Await DOMContentLoaded after demo navigation and before typing; all assertions and zero retries retained.",
+      "includedInPublishedPackageOrTaggedSource": false,
+      "targetedLocalStats": {
+        "startTime": "2026-10-09T15:05:52.234Z",
+        "duration": 3964.1229999999996,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "targetedLocalErrors": 0,
+      "rawResultSha256": "18ebfab48238fe45ec96389c040a546942165a718ad91fe07d9a9881f5f56537",
+      "limit": "The wait corrects test timing. It does not prevent a person typing into the demo before the field controller is attached; preattachment text is preserved literally."
+    }
+  },
+  "prepublicationCandidate": {
+    "record": "benchmark/reports/alpha4-candidate-2026-10-09.json",
+    "sha256": "c8aad4e513cb1bf0b1348710503051e1270b63cd922da1aca28da105de9c8520",
+    "nodeTestsPassed": 389,
+    "seedContractsPassed": 209,
+    "desktopChecksPassed": 69,
+    "websiteChecksPassed": 11,
+    "historicalRecordUnchanged": true,
+    "limit": "These dated local-candidate checks are separate from the fresh registry-installed consumer results below. The candidate record retains its original unpublished preparation status."
+  },
+  "registryConsumers": {
+    "purpose": "Fresh exact-version official-registry installations verified against the reviewed artifact before execution.",
+    "separateFreshSuccessfulExactVersionInstallations": 2,
+    "javascriptAndTypeScript": {
+      "status": "passed",
+      "resultSha256": "024e63908572e93d1483dbb1cc5e61f9b0ca474b6a398ca9f4caa32d39a2ff41",
+      "rawLogSha256": "80ab6b89a958d0b1b57552f3b7a76f879388bc1e28d9f060bdabe699e91bfbba",
+      "startedAtUtc": "2026-10-09T15:12:19.816Z",
+      "completedAtUtc": "2026-10-09T15:12:24.346Z",
+      "durationSeconds": 4.53,
+      "packageVersion": "0.1.0-alpha.4",
+      "tarballSha256": "950b21693f1f42455139296ed43f872968d56182de7ea6792b8c9e9156683e56",
+      "fileCount": 13,
+      "compressedBytes": 26335,
+      "allInstalledBytesMatchArtifact": true,
+      "publicJavaScriptFixturePassed": true,
+      "all34NativeEntriesInBothConsonantModesPassed": true,
+      "strictTypeScriptNodeNextCoreWithoutDOM_DOM_BundlerAndTutorialPassed": true,
+      "preservedPreparationScriptHashes": {
+        "verification/consumer/runtime.mjs": "448e3a1efaa294ff3f51283c6a0a9cbcba6f575e3e3b00055051e42126df1f09",
+        "verification/consumer/core.ts": "f7a47b063bccdc44691d5ab4f8cbae66ed6e46c93c832710f1e567697b22ca9e",
+        "verification/consumer/browser.ts": "149bc638c4bf11cb09bbb7ff9e65635d5e9402f08dea5ffe3c20ba31c3c2c36e",
+        "examples/typescript/core.mts": "65a0d0a3c2b54821eb424a3ce95e2d0f058624fbb2c458acaa1b6650c0fddb17",
+        "examples/typescript/browser.ts": "3709682c135b4d6ce027db50ddc3f84f37ecbe7c95b1e8326b2f83ac59ff2839",
+        "tools/verify-package.js": "76fa187820103b37c85616fbab968bfd9763f3435be7efd260fdcaab66ddb8a4",
+        "tools/registry-consumer.js": "3389dad7718f837055378a3c683e5c2b6e975c00104cdf2c719c556afadd780e",
+        "tools/run-registry-runtime.js": "87e74100804423f09283746abcf874513ca40267a27902dfe4da1b20fb827ee7",
+        "verification/consumer/native-entries.mjs": "6bf7a42be27b3afec0cb8e57148c936fca029376b48f7fc78c0e6607e7588430",
+        "verification/consumer/expected-native-entries.json": "ed10d39bc194f11451271884228f719d1f0b2e17ae6dd0007d35581d894f76cc",
+        "artifact-identity.json": "1a9eeaa9051ebbfebb4b452d15801a8fb08da172f7726e96cb6ca6d0ed0fadfc",
+        "package.json": "86760ea393d8d565a207bd623a968a9b4161a0010e1953a7c8fbf242545387cd"
+      },
+      "tools": {
+        "node": "v22.22.3",
+        "npm": "10.9.8",
+        "typescript": "5.9.3"
+      },
+      "developmentDependencies": "Explicit matching frozen candidate node_modules link, no tools fetched during verification.",
+      "registryInstallScope": "One fresh exact official-registry npm installation with separate metadata, tarball and install caches; no tag/publication mutations.",
+      "registryInstallation": {
+        "registry": "https://registry.npmjs.org/",
+        "specifier": "sahajlipi@0.1.0-alpha.4",
+        "mergeCommit": "b4bbe41b9734ae20729a7109a525324479c06c6b",
+        "resolvedTarball": "https://registry.npmjs.org/sahajlipi/-/sahajlipi-0.1.0-alpha.4.tgz",
+        "tarballSha256": "950b21693f1f42455139296ed43f872968d56182de7ea6792b8c9e9156683e56",
+        "tarballSha512": "sha512-AnYIzOW489PMakOjoLV0bZhndpps/j7JB4gWOJPy7KTQvaFkEn9bs9Zm9aLY8J1DpUkMDOCQyplF9Lkyr7NnMw==",
+        "compressedBytes": 26335,
+        "fileCount": 13,
+        "packageLockSha256": "28c81ea11f60fa6a59c822b50380ee314ec8bec2a418fe8bcd967ce03ce841cb",
+        "lockfileResolved": "https://registry.npmjs.org/sahajlipi/-/sahajlipi-0.1.0-alpha.4.tgz",
+        "lockfileIntegrity": "sha512-AnYIzOW489PMakOjoLV0bZhndpps/j7JB4gWOJPy7KTQvaFkEn9bs9Zm9aLY8J1DpUkMDOCQyplF9Lkyr7NnMw==",
+        "installedFileSha256": {
+          "LICENSE": "84abe5cb282f83d7da4f1bc92e19b28f64e89036877cad5fe5cb9b8f35ee84ad",
+          "LICENSES/Unicode-3.0.txt": "220ba0e1c43b99530d2d5bdb892a99dca0989414f51ab695ecd90163eaa1ec3b",
+          "NOTICE": "56f72e63edd18ecb0708c7e2d8afb057e98c7014c3d510bd8888d138ce05eda5",
+          "README.md": "4a4dcf13f71b358b46a58ea630b9a8b4b712933ba1dd9821a1aa751c1bf1707d",
+          "package.json": "ab87b70a4637f041054806c57dbd60723ea2c96e013da09159b830cc051031bf",
+          "src/dom.d.ts": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1",
+          "src/dom.js": "a264f11888f8a611d116a065fa10191aec029fcce75ee7e797c3dad4342fb9ac",
+          "src/index.d.ts": "7b8c9969df0326e6b3fbfbd97713b60cb38931840c1da696b6fea6ac52d5d77a",
+          "src/index.js": "01f3fb9fc0fb8f60617d5af81e96ef7c8752fdada3ef5153a89dbe22577b1152",
+          "src/lexicon.js": "b51f5e7bebc3cea321361962a5b31ee84865e27d16c5b0e8e795d206c7d8082d",
+          "src/loanwords.js": "aa74e688d3b77980b5ee7e9fb89ce2c0a61fd27568d3230048bef91a8379e446",
+          "src/phonetic.js": "ac571d6f4c94c5b48baa1558973d4d27ad6c7f2c5ff15fc7bed36ecdb2d29bf9",
+          "src/text-policy.js": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa"
+        },
+        "packageDescription": "Dependency-free Nepali phonetic typing and Roman Nepali to Devanagari Unicode transliteration for JavaScript, with browser input adapters and TypeScript types.",
+        "packageKeywords": [
+          "nepali",
+          "devanagari",
+          "devnagari",
+          "roman-nepali",
+          "nepali-typing",
+          "nepali-keyboard",
+          "nepali-input",
+          "nepali-unicode",
+          "nepali-transliteration",
+          "phonetic-typing",
+          "transliteration",
+          "unicode",
+          "keyboard",
+          "ime",
+          "input-method",
+          "javascript",
+          "typescript",
+          "browser",
+          "textarea"
+        ],
+        "freshCaches": [
+          "metadata-cache",
+          "tarball-cache",
+          "install-cache"
+        ],
+        "npmConfig": "Task-owned empty user/global configuration; inherited npm/auth environment variables omitted.",
+        "identityBeforeExecution": true
+      },
+      "nativeEntryCount": 34,
+      "consonantModes": [
+        "full",
+        "half"
+      ],
+      "verificationHarness": {
+        "adaptationPatchSha256": "5cbe25929d9daa9ffbe71947e1aa0d58ea94cf085936c3a79656c7b60f336354",
+        "command": "node tools/run-registry-runtime.js",
+        "environment": {
+          "SAHAJLIPI_REGISTRY_ALPHA4_CONFIRMED": "b4bbe41b9734ae20729a7109a525324479c06c6b"
+        },
+        "firstAttemptPassed": true,
+        "pinnedCompilerBytesChecked": true
+      }
+    },
+    "browserExamples": {
+      "schemaVersion": 1,
+      "recordId": "npm-alpha4-browser-consumers-2026-10-09",
+      "recordedAtUtc": "2026-10-09T15:14:55.199Z",
+      "purpose": "Verify freshly official-registry-installed alpha.4 vanilla and React browser consumers independently of local candidate packing.",
+      "source": {
+        "mergeCommit": "b4bbe41b9734ae20729a7109a525324479c06c6b",
+        "repository": "https://github.com/ojastechnologies/sahajlipi",
+        "developerExampleSpec": "https://github.com/ojastechnologies/sahajlipi/blob/b4bbe41b9734ae20729a7109a525324479c06c6b/browser/developer-examples.spec.js",
+        "unchangedExampleAndFixtureSha256": {
+          "browser/developer-examples.spec.js": "414f3f6fa285db8ad2a1302f13df144690cc7666f0c91f446d41984bb88a8a25",
+          "examples/vanilla/index.html": "ac7bfbaf05c158fdc33c8f3b6ce3d83ddd3d3cd227bd69797aee58a78e595e46",
+          "examples/vanilla/main.js": "4c9e9f56c07fe56c20b7f96d2f86dfcd070f23ec15466ce1c19e6cc1abe2fdb1",
+          "examples/react/index.html": "944e3a2c86be09a8469b59a669422dd2500609739ef80da95f15d1d39aff8c0e",
+          "examples/react/main.tsx": "e0dc98294e8912c32902aa0c05fab8a329a8c0742cf4df94ef17232fb2bf48b9",
+          "examples/react/NepaliInput.tsx": "2e2f68329c13e2be52c3e447273ac962be9fd2857cc64a4df6338e7343cd5055"
+        }
+      },
+      "registryInstallation": {
+        "registry": "https://registry.npmjs.org/",
+        "specifier": "sahajlipi@0.1.0-alpha.4",
+        "resolvedTarball": "https://registry.npmjs.org/sahajlipi/-/sahajlipi-0.1.0-alpha.4.tgz",
+        "observedPublishedAtUtc": "2026-10-09T15:10:15.506Z",
+        "identityVerifiedBeforeExecutingPackage": true,
+        "identity": {
+          "name": "sahajlipi",
+          "version": "0.1.0-alpha.4",
+          "compressedBytes": 26335,
+          "unpackedBytes": 87082,
+          "fileCount": 13,
+          "sha256": "950b21693f1f42455139296ed43f872968d56182de7ea6792b8c9e9156683e56",
+          "sha1": "5c2a1486db7b7c6d11fe02d8efa8147c9566611f",
+          "sha512": "sha512-AnYIzOW489PMakOjoLV0bZhndpps/j7JB4gWOJPy7KTQvaFkEn9bs9Zm9aLY8J1DpUkMDOCQyplF9Lkyr7NnMw==",
+          "installedFileSha256": {
+            "LICENSE": "84abe5cb282f83d7da4f1bc92e19b28f64e89036877cad5fe5cb9b8f35ee84ad",
+            "LICENSES/Unicode-3.0.txt": "220ba0e1c43b99530d2d5bdb892a99dca0989414f51ab695ecd90163eaa1ec3b",
+            "NOTICE": "56f72e63edd18ecb0708c7e2d8afb057e98c7014c3d510bd8888d138ce05eda5",
+            "README.md": "4a4dcf13f71b358b46a58ea630b9a8b4b712933ba1dd9821a1aa751c1bf1707d",
+            "package.json": "ab87b70a4637f041054806c57dbd60723ea2c96e013da09159b830cc051031bf",
+            "src/dom.d.ts": "e2a93a70c49c7057dc52d995719ec5b22ee72453685bc519815bc0c67d85b0d1",
+            "src/dom.js": "a264f11888f8a611d116a065fa10191aec029fcce75ee7e797c3dad4342fb9ac",
+            "src/index.d.ts": "7b8c9969df0326e6b3fbfbd97713b60cb38931840c1da696b6fea6ac52d5d77a",
+            "src/index.js": "01f3fb9fc0fb8f60617d5af81e96ef7c8752fdada3ef5153a89dbe22577b1152",
+            "src/lexicon.js": "b51f5e7bebc3cea321361962a5b31ee84865e27d16c5b0e8e795d206c7d8082d",
+            "src/loanwords.js": "aa74e688d3b77980b5ee7e9fb89ce2c0a61fd27568d3230048bef91a8379e446",
+            "src/phonetic.js": "ac571d6f4c94c5b48baa1558973d4d27ad6c7f2c5ff15fc7bed36ecdb2d29bf9",
+            "src/text-policy.js": "3df92e5288f8b0a3cd1fff87d6dad2132b5f97c35fd24cebdabb54c2101fc5aa"
+          }
+        },
+        "lockfile": {
+          "resolved": "https://registry.npmjs.org/sahajlipi/-/sahajlipi-0.1.0-alpha.4.tgz",
+          "integrity": "sha512-AnYIzOW489PMakOjoLV0bZhndpps/j7JB4gWOJPy7KTQvaFkEn9bs9Zm9aLY8J1DpUkMDOCQyplF9Lkyr7NnMw==",
+          "sha256": "2991c71a8eddcac3ca957a0712426013cf4cca44bc63343c0439733ce460bd0a"
+        },
+        "configuration": "Task-owned empty user and global npm configuration; inherited npm/auth environment variables omitted.",
+        "caches": [
+          "metadata-cache",
+          "tarball-cache",
+          "install-cache"
+        ],
+        "allThreeCachesFresh": true,
+        "metadataDescriptionAndKeywordsMatchReviewedPackage": true
+      },
+      "toolchain": {
+        "node": "v22.22.3",
+        "npm": "10.9.8",
+        "platform": "darwin",
+        "architecture": "arm64",
+        "pinnedDevelopmentDependencies": {
+          "@playwright/test": "1.63.0",
+          "@types/react": "19.3.0",
+          "@types/react-dom": "19.3.0",
+          "esbuild": "0.28.2",
+          "react": "19.3.0",
+          "react-dom": "19.3.0",
+          "typescript": "5.9.3",
+          "vitepress": "1.6.4"
+        }
+      },
+      "exampleBuild": {
+        "status": "passed",
+        "strictReactTypeScript": {
+          "status": "passed",
+          "module": "ESNext",
+          "moduleResolution": "Bundler",
+          "target": "ES2022",
+          "lib": [
+            "ES2022",
+            "DOM",
+            "DOM.Iterable"
+          ],
+          "jsx": "react-jsx",
+          "strict": true,
+          "noEmit": true,
+          "skipLibCheck": false
+        },
+        "bundles": {
+          "vanilla": {
+            "packageInputs": [
+              "src/dom.js",
+              "src/index.js",
+              "src/lexicon.js",
+              "src/loanwords.js",
+              "src/phonetic.js",
+              "src/text-policy.js"
+            ],
+            "allInputsInsideFreshConsumer": true,
+            "bundleSha256": "22a4a035b02bc945e898ac5edf199ca423c6d17cea6f18fcb9a96baeda5aee1b",
+            "metafileSha256": "7b3d7c3d74d81ad2e5d7a2c4157b22d5eba7d3ecdf66d6a25488d3333d70dc96"
+          },
+          "react": {
+            "packageInputs": [
+              "src/dom.js",
+              "src/index.js",
+              "src/lexicon.js",
+              "src/loanwords.js",
+              "src/phonetic.js",
+              "src/text-policy.js"
+            ],
+            "allInputsInsideFreshConsumer": true,
+            "bundleSha256": "c13c01166d8112d2a66bdaac74358bbad0d548654967d6fc1a478ae99c13d289",
+            "metafileSha256": "023b93a65640ab052d40a6fa7b8ba40f7b998e03146c3a2d08292767d9b1afcf"
+          }
+        },
+        "manifestSha256": "525ac577410800df34fd27775db7cf0f869f1cbd4058bdeca14e82c2f307de7f",
+        "reactMode": "development StrictMode; uncontrolled textarea",
+        "corePackageSource": "Fresh registry-installed sahajlipi package. Development compiler, bundler, test framework and React dependencies use the pinned local development installation."
+      },
+      "browserChecks": {
+        "status": "passed",
+        "startTimeUtc": "2026-10-09T15:13:01.362Z",
+        "durationMs": 11111.193,
+        "total": 9,
+        "expected": 9,
+        "unexpected": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "retries": 0,
+        "globalErrors": 0,
+        "uncaughtPageErrors": 0,
+        "engines": {
+          "chromium": {
+            "checks": 3,
+            "browserVersion": "153.0.8010.12"
+          },
+          "firefox": {
+            "checks": 3,
+            "browserVersion": "155.0"
+          },
+          "webkit": {
+            "checks": 3,
+            "browserVersion": "26.6"
+          }
+        },
+        "headless": true,
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "workers": 2,
+        "loopbackPort": 4192,
+        "scenarios": [
+          "Vanilla marked fields, candidates, English preservation and mode switching.",
+          "Vanilla teardown preserves literal input and disables detached controls.",
+          "Uncontrolled React development StrictMode setup/cleanup, callbacks, candidates, mode switching and remount."
+        ]
+      },
+      "verificationHarness": {
+        "adaptationPatchSha256": "98733b2bea5e873ed53755ef468324fbcf612f268b13893afc39e81d04376825",
+        "adaptedScriptSha256": {
+          "tools/build-examples.js": "2bf02fe0fb3d73d8f9bf13860fbb6a33e1cfc47fe43305aa8fe33aa5c1e7117c",
+          "tools/verify-package.js": "ba0bf4a2bf1bd617b1ed35994617a349587806504334db2ff5db601f7845aa3f",
+          "tools/registry-consumer.js": "44040470e9a2c25455ad394ac05287b7d4b1e6b33d39a1adff1f9d243423599e",
+          "playwright.config.js": "ab9f3ae289fa8b9f61919d14a208463b9715711a2d09dc543072989328b5bed9"
+        },
+        "inputsStableBeforeAndAfterRun": true,
+        "commands": [
+          {
+            "command": "node tools/build-examples.js",
+            "environment": {
+              "SAHAJLIPI_REGISTRY_ALPHA4_CONFIRMED": "b4bbe41b9734ae20729a7109a525324479c06c6b"
+            },
+            "stdout": "registry-browser-build.log",
+            "stderr": "registry-browser-build.log"
+          },
+          {
+            "command": "node node_modules/@playwright/test/cli.js test -c playwright.config.js --reporter=list,json --output=<evidence>/registry-browser-artifacts",
+            "environment": {
+              "PLAYWRIGHT_JSON_OUTPUT_FILE": "<evidence>/registry-browser-results.json"
+            },
+            "stdout": "registry-browser.log",
+            "stderr": "registry-browser.log"
+          }
+        ],
+        "commandNotation": "Commands use runner-relative executable paths. <evidence> denotes the separate private evidence output directory."
+      },
+      "retainedEvidence": {
+        "rawBrowserReportSha256": "a290f6a48f870a0b08b3f99abb4ecb3817ed362a86b6c34ea599a8ce498f376e",
+        "browserLogSha256": "cc273589c91ee4c5d9592ad74724155ee3e6e9d2b90e27d1681c6fbee92c00fb",
+        "buildLogSha256": "ede0360cf3aab41845b916d18498887279d1e5a85e2098b5890075760b7c0b95",
+        "bundleProofSha256": "a9fa259386f07a301dffc2b021839939f76fc882a3f657876365dcfcd1cf6fa3",
+        "registryManifestSha256": "525ac577410800df34fd27775db7cf0f869f1cbd4058bdeca14e82c2f307de7f",
+        "rawLogsAndCachesRetainedPrivately": true
+      },
+      "limitations": [
+        "This record covers the explicitly versioned alpha.4 registry installation; it does not establish an unversioned default-install result or a dist-tag state.",
+        "Playwright Chromium, Firefox and WebKit coverage is not installed Safari, physical mobile devices, native OS IMEs, or a general language-accuracy evaluation.",
+        "The unchanged browser examples cover integration behavior. Node/TypeScript runtime fixtures and all 34 new whole-key readings are verified in the separate runtime consumer record.",
+        "The merged website navigation test had a startup race before publication; its original failure, deterministic diagnosis and subsequent outcomes are recorded separately. These registry-installed browser example checks all passed on their first run."
+      ]
+    },
+    "publicJavaScriptScope": [
+      "Public core and DOM imports in plain Node without document; blocked internal exports.",
+      "Exact reviewed defaults, alternatives, mixed text, loanword suffixes, digits, URLs and emails.",
+      "Full and half modes, validation, options and independent engine instances.",
+      "All 34 newly added whole-key readings and candidate arrays in both consonant modes."
+    ],
+    "strictTypeScriptScope": [
+      "NodeNext core without DOM libraries.",
+      "NodeNext DOM fixtures and core/browser tutorial.",
+      "Bundler fixtures and tutorials.",
+      "Emitted core tutorial execution.",
+      "React development example with strict Bundler compilation."
+    ]
+  },
+  "defaultInstallation": {
+    "observedAtUtc": "2026-10-09T15:15:00.348497+00:00",
+    "command": "npm install sahajlipi --save-exact --ignore-scripts --no-audit --no-fund --prefer-online --registry=https://registry.npmjs.org/ --cache <fresh-cache>",
+    "result": "passed",
+    "installedVersion": "0.1.0-alpha.4",
+    "lockfileResolved": "https://registry.npmjs.org/sahajlipi/-/sahajlipi-0.1.0-alpha.4.tgz",
+    "lockfileIntegrity": "sha512-AnYIzOW489PMakOjoLV0bZhndpps/j7JB4gWOJPy7KTQvaFkEn9bs9Zm9aLY8J1DpUkMDOCQyplF9Lkyr7NnMw==",
+    "all13InstalledFilesMatch": true,
+    "publicJavaScriptRuntimeFixturePassed": true,
+    "packageLockSha256": "516336d3413d2f46e34c6004949328e55612ed4dfd0d716832b5f8371aa27d6a",
+    "configuration": "Task-owned empty user/global npm config, fresh cache, inherited npm/auth environment variables omitted."
+  },
+  "sourceAssistedDevelopmentComparison": {
+    "originalComparison": "benchmark/reports/native-forms-2026-10-09.json",
+    "originalComparisonSha256": "69d54e11e3274a0c29b5ae4e639f4b8f13ee692260ad0b0a7b7a2bb4770a1e7c",
+    "researchLedger": "benchmark/reports/native-forms-research-2026-10-09.json",
+    "researchLedgerSha256": "a1b0e2500b8d7a7883c767bc523932aa96d78290314cd88996e1102497ee928c",
+    "sameRuntimeHashesAsArtifact": true,
+    "humanVerified": false,
+    "independentHumanReview": false,
+    "wordDefaults": {
+      "before": 28,
+      "candidate": 62,
+      "total": 74
+    },
+    "referenceCandidateCoverage": {
+      "before": 30,
+      "candidate": 67,
+      "total": 79
+    },
+    "completeSentenceDefaults": {
+      "before": 0,
+      "candidate": 0,
+      "total": 12
+    },
+    "deferredWordCases": 12,
+    "limitation": "These are the original selected source-assisted development measurements, not a new corpus run or held-out population accuracy. Historical references are frozen; licensed full sentences are withheld."
+  },
+  "npmDiscovery": {
+    "keywordCount": 19,
+    "description": "Dependency-free Nepali phonetic typing and Roman Nepali to Devanagari Unicode transliteration for JavaScript, with browser input adapters and TypeScript types.",
+    "keywords": [
+      "nepali",
+      "devanagari",
+      "devnagari",
+      "roman-nepali",
+      "nepali-typing",
+      "nepali-keyboard",
+      "nepali-input",
+      "nepali-unicode",
+      "nepali-transliteration",
+      "phonetic-typing",
+      "transliteration",
+      "unicode",
+      "keyboard",
+      "ime",
+      "input-method",
+      "javascript",
+      "typescript",
+      "browser",
+      "textarea"
+    ],
+    "metadataUnchangedFromAlpha3": true,
+    "latestPublishedObservation": "benchmark/reports/npm-search-after-alpha3-2026-10-09.json",
+    "limitation": "The 19 keywords and description are unchanged from alpha.3 and verified in official alpha.4 metadata. The linked alpha.3 search observation remains dated; this publication establishes no new ranking observation or guarantee.",
+    "registryMetadataMatchesReviewedPackage": true,
+    "latestPublishedObservationSha256": "581a88925dd539320aed2d673fe8342e8e4b951b9660fbbd256828bf3779a51b"
+  },
+  "limitations": [
+    "Experimental alpha; support and accuracy are limited to the documented package and checked cases.",
+    "Source-assisted development review is not an independent human review or held-out language-accuracy measurement. Historical measurements and deferred cases remain unchanged.",
+    "Desktop Playwright coverage does not establish installed Safari, physical mobile devices, native OS IME behavior or React Native support.",
+    "The starter lexicon contains 211 exact Roman keys; the 34 additions do not create a general native-word suffix parser or expand phonetic grammar.",
+    "Website/demo source and publication documentation are separate from the archived npm artifact. The demo imports checkout engine source.",
+    "The original merged website timing failure and later unchanged-source rerun are both retained. The test wait is a publication-docs followup; the demo remains editable before asynchronous controller startup.",
+    "Licensed full-sentence corpora, raw private evidence, npm credentials and authentication URLs are excluded from this public record.",
+    "Registry and tag timestamps describe the cited observations; publication metadata, default installation and explicitly versioned consumers are distinct checks."
+  ],
+  "verificationTools": {
+    "archiveUrl": "https://github.com/ojastechnologies/sahajlipi/releases/download/v0.1.0-alpha.4/registry-verification-tools.tgz",
+    "archiveSha256": "e4dcee72a07fb925884560c1314c7e12ef8058a19ee1a569c790b87121dde94a",
+    "archiveBytes": 26107,
+    "adaptationPatchUrl": "https://github.com/ojastechnologies/sahajlipi/releases/download/v0.1.0-alpha.4/registry-consumer-adaptation.patch",
+    "adaptationPatchSha256": "5cc847689e299252a78beab2633b9ffb87c914cb5b2a94be88d76b0d3a604b27",
+    "adaptationPatchBytes": 35862,
+    "guide": "REGISTRY-VERIFICATION.md inside the archive",
+    "scope": "Auditable registry adaptations of the merged verification tools, unchanged public fixtures/examples, exact artifact identity and normalized reproduction instructions. Development dependencies must be installed from the pinned source lockfile; raw outputs and caches remain private."
+  }
+}

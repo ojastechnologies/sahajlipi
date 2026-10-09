@@ -2,11 +2,11 @@
 
 Browse the [package website](https://ojastechnologies.github.io/sahajlipi/) for the library overview and searchable documentation, or read the Markdown guides here on GitHub. Choose the guide for the part of SahajLipi you are using. The **package** provides conversion and optional browser input adapters. The **demo** is a static playground built with that package.
 
-The experimental Nepali developer alpha **[`sahajlipi@0.1.0-alpha.3`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.3)** was published and verified on 2026-10-09. Pin that exact version for reproducible behavior. The verified `alpha` and `latest` tags both point to `0.1.0-alpha.3`; unversioned `npm install sahajlipi` selects alpha.3. All versions remain experimental. The [release record](release.md) documents registry integrity, fresh consumers and remaining limitations.
+The experimental Nepali developer alpha **[`sahajlipi@0.1.0-alpha.4`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.4)** was published and verified on 2026-10-09. Pin that exact version for reproducible behavior. The verified `alpha` and `latest` tags both select alpha.4; unversioned `npm install sahajlipi` selects alpha.4. All versions remain experimental. The [release record](release.md) documents registry integrity, fresh consumers and remaining limitations.
 
-The current guides describe **`0.1.0-alpha.3`**, including the full fallback consonants and explicit backtick or `/` half forms introduced in alpha.2. Alpha.1 retains its earlier behavior. The [migration recipe](package/integration-recipes.md#keep-alpha1-consonant-behavior) preserves alpha.1 fallback endings with `createEngine({ consonantMode: 'half' })` when adopting alpha.2 or later.
+The current guides describe **`0.1.0-alpha.4`**, including the full fallback consonants and explicit backtick or `/` half forms introduced in alpha.2. Alpha.1 retains its earlier behavior. The [migration recipe](package/integration-recipes.md#keep-alpha1-consonant-behavior) preserves alpha.1 fallback endings with `createEngine({ consonantMode: 'half' })` when adopting alpha.2 or later.
 
-The typing reference and repository demo include the [13-key spelling slice shipped in alpha.3](package/nepali-spelling-2026-10-09.md). This repository also contains the [later unreleased 34-key native-form batch](package/native-forms-2026-10-09.md), available through a local checkout and its demo. The 34 forms are outside the published alpha.3 artifact and are included in the **prepared, unpublished alpha.4 candidate**. Its [release section](release.md#alpha4-release-candidate) distinguishes candidate preparation from the unchanged npm alpha.3 distribution.
+The typing reference and repository demo include the [13-key spelling slice introduced in alpha.3](package/nepali-spelling-2026-10-09.md) and the [34 native forms shipped in alpha.4](package/native-forms-2026-10-09.md). The earlier alpha.3 artifact excludes those later forms. The [release section](release.md#alpha4-release) distinguishes verified registry publication from dated candidate checks and separately deployed website content.
 
 ## Reusable package
 
@@ -24,8 +24,9 @@ The typing reference and repository demo include the [13-key spelling slice ship
 
 | Read | For |
 | --- | --- |
+| [Alpha.4 registry publication](../benchmark/reports/alpha4-publication-2026-10-09.json) | Official archive identity, tags, fresh JavaScript/strict TypeScript consumers and 9/9 registry-installed browser checks. |
 | [Alpha.3 native spelling follow-up](package/nepali-spelling-2026-10-09.md) | Twelve exact native preferences, an additional `bhagna` candidate, source checks and frozen development comparison. |
-| [Unreleased native-form batch](package/native-forms-2026-10-09.md) | 34 exact mappings, candidate-order decisions, source access, all 12 deferrals and unchanged evaluation denominators. |
+| [Alpha.4 native-form batch](package/native-forms-2026-10-09.md) | 34 exact mappings, candidate-order decisions, source access, all 12 deferrals and unchanged evaluation denominators. |
 | [Full-consonant candidate contracts](package/consonant-defaults-2026-10-03.md) | Full default endings, strict half compatibility, declared fixture revisions, and dated candidate evidence. |
 | [Developer consumer browser record](../browser/reports/desktop-003.json) | Inspect the later 51-check run, installed-package identity, and uncontrolled React lifecycle scope. |
 | [Digit desktop browser record](../browser/reports/desktop-002.json) | Inspect the later 42-check digit/configuration run, source identities, named flows, and limits. |

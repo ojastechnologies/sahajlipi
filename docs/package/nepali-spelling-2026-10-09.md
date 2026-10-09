@@ -1,6 +1,6 @@
 # Reviewed native spellings — 2026-10-09
 
-**Alpha.3 publication follow-up — 2026-10-09:** these merged spellings are included in the verified [`sahajlipi@0.1.0-alpha.3`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.3) registry package and repository demo. Alpha.2 does not include this slice. The [release record](../release.md#alpha3-release) separates publication and fresh registry-installed checks from the original source-development measurements below. The later merged 34-form batch is outside alpha.3 and included in the prepared, unpublished alpha.4 candidate.
+**Alpha.3 publication follow-up — 2026-10-09:** these merged spellings are included in the verified [`sahajlipi@0.1.0-alpha.3`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.3) registry package and repository demo. Alpha.2 does not include this slice. The [release record](../release.md#alpha3-release) separates publication and fresh registry-installed checks from the original source-development measurements below. The later merged 34-form batch is outside alpha.3 and shipped in published alpha.4.
 
 This follow-up adds twelve exact native-word preferences and the missing भाग्न alternative for `bhagna`, using the [unchanged development references](source-review-2026-10-01.md). It follows the [earlier four-word update](nepali-spelling-2026-10-01.md). The repository engine and Nepali-enabled browser fields use the same entries.
 

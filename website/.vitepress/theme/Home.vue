@@ -22,7 +22,7 @@ typing.destroy();`;
           <a class="sahaj-button sahaj-button-primary" :href="withBase('/docs/package/getting-started.html')">Get started</a>
           <a class="sahaj-button sahaj-button-secondary" :href="withBase('/demo/')" target="_self">Try the demo</a>
         </div>
-        <p class="sahaj-release-note">0.1.0-alpha.3 is available on <a href="https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.3">npm</a>.<br>Experimental Nepali developer alpha. Read the <a :href="withBase('/docs/release.html')">release record</a>.</p>
+        <p class="sahaj-release-note">0.1.0-alpha.4 is available on <a href="https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.4">npm</a>.<br>Experimental Nepali developer alpha. Read the <a :href="withBase('/docs/release.html')">release record</a>.</p>
         <p class="sahaj-source-note">Alpha.2 uses full consonant endings, automatic conjuncts, and backtick for explicit halves. Strict half mode retains alpha.1 fallback endings. See the <a :href="withBase('/docs/package/consonant-defaults-2026-10-03.html')">change and compatibility checks</a>.</p>
       </div>
       <WordPreview />
@@ -39,7 +39,7 @@ typing.destroy();`;
           <span>Install the developer alpha</span>
           <span>npm</span>
         </div>
-        <pre aria-label="Install the verified Nepali developer alpha"><code>npm install --save-exact sahajlipi@0.1.0-alpha.3</code></pre>
+        <pre aria-label="Install the verified Nepali developer alpha"><code>npm install --save-exact sahajlipi@0.1.0-alpha.4</code></pre>
         <div class="sahaj-code-heading">
           <span>One initializer for your app</span>
           <span>JavaScript</span>
