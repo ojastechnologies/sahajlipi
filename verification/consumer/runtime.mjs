@@ -13,6 +13,18 @@ assert.deepEqual(core.convertWord(''), { text: '', candidates: [], ambiguous: fa
 assert.equal(core.convertWord('paryo').text, 'पर्\u200dयो');
 assert.equal(core.convertWord('companyharumathi').text, 'कम्पनीहरूमाथि');
 assert.equal(core.convertText('halyo nabhani gaunle dindaina|'), 'हाल्यो नभनी गाउँले दिँदैन।');
+// Check the release's reviewed entries through the installed public export.
+for (const [roman, expected] of [
+  ['imandar', 'इमान्दार'], ['sarasar', 'सरासर'], ['sakos', 'सकोस्'],
+  ['kathanak', 'कथानक'], ['arambha', 'आरम्भ'], ['ekadhik', 'एकाधिक'],
+  ['jaghanya', 'जघन्य'], ['pukar', 'पुकार'], ['niskanda', 'निस्कँदा'],
+  ['bora', 'बोरा'], ['utthan', 'उत्थान'], ['samanjasya', 'सामञ्जस्य'],
+]) {
+  assert.deepEqual(core.convertWord(roman), { text: expected, candidates: [expected], ambiguous: false });
+}
+assert.deepEqual(core.convertWord('bhagna'), { text: 'भग्न', candidates: ['भग्न', 'भाग्न'], ambiguous: true });
+assert.equal(core.convertText('imandar company 123 sakos| mahesh@example.com https://example.com'),
+  'इमान्दार कम्पनी १२३ सकोस्। mahesh@example.com https://example.com');
 assert.deepEqual(core.convertWord('schoolma'), { text: 'स्कुलमा', candidates: ['स्कुलमा', 'स्कूलमा'], ambiguous: true });
 assert.equal(core.convertText('mediasanga company@school.com https://media.com'), 'मिडियासँग company@school.com https://media.com');
 assert.equal(core.convertText('paani 123 test99@example.com https://example.com/456 |'),

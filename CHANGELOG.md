@@ -1,10 +1,10 @@
 # Changelog
 
-Published versions and their changes are recorded here. The [release record](docs/release.md) identifies the verified artifacts, sources, consumer checks, and experimental limits; the same page defines versioning and migration expectations.
+Published versions and prepared candidates are recorded here. The [release record](docs/release.md) identifies the verified artifacts, sources, consumer checks, and experimental limits; the same page defines versioning and migration expectations.
 
-## Unreleased
+## 0.1.0-alpha.3 — prepared candidate, unpublished
 
-Repository changes below are not included in the published `0.1.0-alpha.2` npm artifact. Package metadata retains that version until a separate release is prepared.
+Prepared on 2026-10-09 from the merged native spelling update. Package metadata identifies alpha.3; the current published npm artifact and verified registry tags remain `0.1.0-alpha.2`. Use a [local candidate tarball](docs/package/getting-started.md#local-development-installation) for review. The [candidate release notes](docs/release.md#alpha3-release-candidate) describe migration, the dated source evidence and completed local candidate verification. No alpha.3 npm publication or registry-consumer verification is recorded yet.
 
 ### Added
 
@@ -13,6 +13,11 @@ Repository changes below are not included in the published `0.1.0-alpha.2` npm a
 - A [dated source review and comparison](docs/package/nepali-spelling-2026-10-09.md), frozen-reference measurement command, 14 appended seed contracts, and updated repository demo guidance.
 
 The selected development comparison improves word defaults **16/74 → 28/74** and listed reference coverage **17/79 → 30/79**. Complete reviewed sentences remain **0/12**. The 174-contract fixture preserves all 162 historical rows; these results do not establish general accuracy.
+
+### Packaging
+
+- Candidate version and lockfile advanced to `0.1.0-alpha.3`, with version-neutral packaged README guidance and additional npm keywords for Nepali typing and Devanagari discoverability, including `devnagari`.
+- Release preparation documents the current `maheshnepal` npm account and `ojastech` organization; the published alpha.1 and alpha.2 records retain their historic publisher identities.
 
 ## 0.1.0-alpha.2 — 2026-10-03
 

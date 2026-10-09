@@ -60,7 +60,7 @@ On Linux, install with `npx playwright install --with-deps chromium`. The same N
 
 The [eleven website scenarios](../website/tests/site.spec.js) cover:
 
-- Homepage content without JavaScript, published alpha status text, the exact npm install command, and the interactive converter preview.
+- Homepage content without JavaScript, experimental alpha status text, the npm install command, and the interactive converter preview.
 - Documentation links, canonical routes, and local search.
 - Demo links from the homepage, header, and documentation body, plus demo typing.
 - Desktop and mobile Home/logo navigation, with legacy local entry paths redirected to the complete site.
@@ -81,7 +81,7 @@ After a deployment, check the production homepage, a direct documentation URL, t
 
 ## Metadata and canonical URLs
 
-[`website/page-meta.json`](../website/page-meta.json) owns the human-readable title and description for every generated page and the copied demo. Titles identify the page's purpose; descriptions summarize its actual contents. Add an entry whenever adding a page. Avoid repeated descriptions, keyword lists, or unsupported language and quality claims. npm availability is verified for `0.1.0-alpha.2`; describe it as an experimental Nepali developer alpha and keep release claims aligned with the [release record](release.md).
+[`website/page-meta.json`](../website/page-meta.json) owns the human-readable title and description for every generated page and the copied demo. Titles identify the page's purpose; descriptions summarize its actual contents. Add an entry whenever adding a page. Avoid repeated descriptions, keyword lists, or unsupported language and quality claims. Describe the implemented Nepali developer alpha and keep version and publication claims aligned with the [release record](release.md).
 
 The site configuration adds:
 
@@ -108,9 +108,19 @@ Public pages therefore use their HTML indexing directives and the project's site
 
 GitHub controls the HTML metadata of the repository page. This project can improve its own visible description, topics, README, homepage link, and repository social preview; it cannot configure arbitrary meta tags on `github.com`.
 
-Keep the About description specific: an open-source JavaScript library with TypeScript declarations for phonetic Roman Nepali to Unicode typing. Link About's website field to the package homepage, and use relevant topics such as `nepali`, `transliteration`, `unicode`, `javascript`, and `typescript`. Topics help developers find related repositories; see [GitHub's topic guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/classifying-your-repository-with-topics).
+Keep the About description specific: an open-source JavaScript library with TypeScript declarations for phonetic Nepali typing and Roman Nepali to Devanagari Unicode transliteration. Link About's website field to the package homepage, and use relevant topics such as `nepali`, `transliteration`, `unicode`, `javascript`, and `typescript`. Topics help developers find related repositories; see [GitHub's topic guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/classifying-your-repository-with-topics).
 
 The README begins with a searchable text project heading and description, then links the website, getting started, demo, and evidence. Preserve the logo's accessible name. The website uses the supplied brand social preview. GitHub currently uses its default generated repository preview; a custom image has not been uploaded. A maintainer can optionally upload the asset through the [brand guide instructions](brand.md#github-repository-identity). An organization avatar is a separate company identity. Do not present discoverability work as a guarantee of search position or GitHub popularity.
+
+## npm package discovery
+
+npm discovery uses the published package's metadata and README. Its [search documentation](https://docs.npmjs.com/searching-for-and-choosing-packages-to-download/) describes keyword matching against the package name, description, README, and keywords. The [package.json reference](https://docs.npmjs.com/cli/v11/configuring-npm/package-json/#description) identifies descriptions and keywords as discovery fields. Keep the package name `sahajlipi`; describe the implemented Nepali typing library in the description and opening README paragraph.
+
+The package keywords cover the language and script (`nepali`, `devanagari`), input and output (`roman-nepali`, `nepali-unicode`, `nepali-transliteration`), typing (`nepali-typing`, `nepali-keyboard`, `nepali-input`, `phonetic-typing`, `keyboard`, `ime`, `input-method`), and developer use (`javascript`, `typescript`, `browser`, `textarea`). `transliteration` and `unicode` describe the conversion. The keyword `devnagari` intentionally includes a spelling variant people may search for; use canonical **Devanagari** in the prose. These terms describe current functionality. React integration is documented as an uncontrolled textarea example.
+
+The README uses absolute documentation, support, and license links so they work from the npm package page. npm's [README guidance](https://docs.npmjs.com/about-package-readme-files/) says the package page receives README changes when a new package version is published. Editing the repository or deploying the website alone does not update the published package's README or metadata. npm also warns that newly published packages may take up to two weeks to appear in search. Relevant metadata improves matching opportunities; it provides no guaranteed position or indexing date, and says nothing about Google ranking.
+
+The [dated npm search audit](../benchmark/reports/npm-search-2026-10-09.json) records queries against the official registry's `/-/v1/search` endpoint, including `nepali`, `devanagari`, `devnagari`, and related typing and transliteration terms. The [current registry API reference](https://api-docs.npmjs.com/#tag/Search) documents `text`, `size`, and `from`. The audit retains each query's parameters, time, total results, returned window, and SahajLipi's position or absence within that window. Failed requests remain unverified. Positions describe that API query at that time; they do not establish npm website placement, software quality, or Nepali accuracy. Website search and registry API results are distinct observations. Recheck the same queries after publication and indexing without turning the audit into a comparison of other packages.
 
 ## Search Console and post-deployment review
 

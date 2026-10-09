@@ -4,6 +4,8 @@ SahajLipi converts Roman Nepali to Unicode Nepali. Use the core functions for st
 
 The current published npm version is **`0.1.0-alpha.2`**. It changes the phonetic fallback to full bare and final consonants and adds backtick as an explicit half marker. The examples below target alpha.2; `consonantMode` and backtick are unavailable in alpha.1. See [alpha.2 behavior](#alpha2-consonant-behavior) and the [migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior) before changing versions.
 
+**Prepared source candidate:** this checkout identifies `0.1.0-alpha.3` and includes the [2026-10-09 native spellings](nepali-spelling-2026-10-09.md). Alpha.3 is unpublished; use the local tarball instructions below and review the [candidate migration notes](../release.md#alpha3-release-candidate). The published installation in this guide continues to select alpha.2.
+
 ## 1. Install the published alpha
 
 **[`sahajlipi@0.1.0-alpha.2`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.2)** was published on 2026-10-03 as an experimental Nepali developer alpha. Its registry tarball matches the archived candidate and reviewed release source. Pin the exact version:
@@ -24,11 +26,13 @@ cd sahajlipi
 npm pack --ignore-scripts
 ```
 
-A checkout at `0.1.0-alpha.2` produces `sahajlipi-0.1.0-alpha.2.tgz`. Check your checkout's version before packing; a locally packed file reflects that checkout and is separate from the verified registry tarball. In your application directory, install the packed file using its absolute path:
+Check the checkout's version with `npm pkg get version` before packing. The prepared `0.1.0-alpha.3` checkout produces `sahajlipi-0.1.0-alpha.3.tgz`; an older checkout produces a filename matching its own version. A locally packed file captures that checkout and is separate from a verified registry artifact. In your application directory, install the alpha.3 candidate using its absolute path:
 
 ```sh
-npm install /absolute/path/to/sahajlipi/sahajlipi-0.1.0-alpha.2.tgz
+npm install --save-exact /absolute/path/to/sahajlipi/sahajlipi-0.1.0-alpha.3.tgz
 ```
+
+This tests the candidate locally and does not install alpha.3 from npm. Review the [complete changed-output table](nepali-spelling-2026-10-09.md#exact-preferences-and-evidence) before replacing an alpha.2 installation; the candidate's exact preferences take priority in both consonant modes.
 
 Alternatively, install the local folder directly:
 

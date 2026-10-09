@@ -2,6 +2,36 @@
 
 SahajLipi is an experimental Nepali typing package. **`0.1.0-alpha.2` is the current published alpha**, available on npm with public access and the explicit `alpha` tag. This guide records the published artifacts, registry verification, migration, compatibility limits, and future release procedure. The [getting-started guide](package/getting-started.md) explains exact-version and local-tarball installation.
 
+<span id="alpha3-release-candidate"></span>
+
+## Prepared alpha candidate — alpha.3
+
+**Unpublished release preparation — 2026-10-09:** package metadata identifies `0.1.0-alpha.3` as the next experimental Nepali developer alpha. The current verified npm release and both registry tags remain alpha.2. Install the candidate from a [local tarball](package/getting-started.md#local-development-installation) for review; the candidate version does not establish registry availability.
+
+The current npm maintainer account is `maheshnepal`, and the npm organization is `ojastech`. The alpha.1 and alpha.2 records below retain their original `ojastechadmin` publisher identity. Alpha.3's actual publisher, publication time, registry integrity and tags will be recorded after publication and verification.
+
+### Candidate contents and migration
+
+The candidate includes the merged [2026-10-09 native spelling batch](package/nepali-spelling-2026-10-09.md#exact-preferences-and-evidence): twelve exact single-reading preferences for `imandar`, `sarasar`, `sakos`, `kathanak`, `arambha`, `ekadhik`, `jaghanya`, `pukar`, `niskanda`, `bora`, `utthan` and `samanjasya`. The linked table gives every alpha.2 output, new output and source-access limit. For example, `imandar` changes इमन्दर → इमान्दार and `niskanda` changes निस्कन्द → निस्कँदा. `bhagna` retains भग्न as its default and adds भाग्न as its second candidate, returning `[भग्न, भाग्न]`.
+
+Applications converting these complete keys will receive the listed exact readings in either full or half consonant mode. The batch introduces no general native suffix rule; attached forms such as `imandarko` still use ordinary conversion unless configured as complete custom entries. Hosts that need a different reading or candidate order can provide `createEngine({ entries: { bhagna: ['भाग्न', 'भग्न'] } })` and pass both engine converters to browser adapters. Existing field contents are not automatically rewritten. Public APIs, full-consonant fallback, explicit half markers, loanword suffixes and technical-text preservation retain their alpha.2 behavior.
+
+Release preparation also makes the packaged README's installation and feature descriptions usable across alpha publications and adds npm search keywords for Nepali typing and Devanagari, including the `devnagari` spelling variant. These metadata and documentation changes add no runtime dependency or implemented language.
+
+### Dated evidence and candidate verification
+
+The [spelling comparison](package/nepali-spelling-2026-10-09.md#recorded-comparison) records development measurements made before alpha.3 preparation: **160/174 → 174/174** on the final seed fixture, **16/74 → 28/74** reviewed word defaults, and **17/79 → 30/79** individual reference coverage. Both engines retain **160/160** historical contracts and all **162** historical fixture rows. Complete reviewed sentences remain **0/12**. The two exploratory seed cases remain outside the regression gate. The source-assisted targets guided implementation; these selected development gains establish no representative accuracy result.
+
+The same dated source update passed **345 Node tests**, **174 seed contracts**, **66 desktop browser checks**, **11 website checks**, and local tarball JavaScript/strict TypeScript consumers. Those results retain their original source identities and are separate from fresh validation of the versioned alpha.3 candidate.
+
+Fresh validation of the committed alpha.3 candidate passed **345/345 Node tests**, **174/174 seed contracts**, **66/66 desktop browser checks**, **11/11 website checks**, and installed JavaScript/strict TypeScript consumers. The [candidate verification record](../benchmark/reports/alpha3-candidate-2026-10-09.json) retains the tested commit, all distributed file hashes, 13-file allowlist, consumer scope and identical tarball checksum used by the installed browser examples. The archived candidate is **25,135 compressed bytes**, with SHA-256:
+
+```text
+5aa10ae915a56fcddfe842dd9abbdb31a5131a8a5323c82d85fe199e7d7b0cd9
+```
+
+Its distributed bytes match candidate commit [`ef86b35`](https://github.com/ojastechnologies/sahajlipi/commit/ef86b3543122496ce5f00108a00c5021705f3df9); all eight `src/` files are unchanged from the merged spelling batch. The verification record and this status update are outside the npm tarball. Inspect CI on the preparation PR and merged commit, and verify distributed file equality again before publishing the retained artifact. Publication and fresh registry-installed consumers remain pending. Physical mobile/IME behavior, controlled React fields, SSR/hydration, assistive technology and independent language accuracy remain unverified.
+
 <span id="current-alpha-candidate"></span>
 
 ## Current alpha release — alpha.2
