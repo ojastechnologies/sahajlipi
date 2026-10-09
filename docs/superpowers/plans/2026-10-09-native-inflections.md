@@ -45,4 +45,8 @@
 
 - [x] Run installed-package consumers and the desktop browser suite for exact aliases, editing and custom-engine behavior. Run the website build/link checks and relevant navigation checks.
 - [x] Review source/data boundaries, archived measurements, installed-package scope and full-sentence privacy with a separate reviewer.
-- [ ] Commit the branch, open a separate PR, attach it to the chat and inspect all CI checks. Do not merge or publish the next changes without the maintainer's review.
+- [x] Commit the branch, open a separate PR, attach it to the chat and inspect all CI checks. Do not merge or publish the next changes without the maintainer's review.
+
+## Review handoff
+
+Submitted as [PR #28](https://github.com/ojastechnologies/sahajlipi/pull/28). Its current Actions checks are the authoritative CI status. Maintainer review and merge remain the next action. The separate [alpha.3 preparation](https://github.com/ojastechnologies/sahajlipi/pull/27) and its archived artifact are unchanged.
