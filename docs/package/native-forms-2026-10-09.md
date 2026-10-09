@@ -1,6 +1,6 @@
 # Reviewed native forms — 2026-10-09
 
-**Unreleased repository update:** this batch adds 34 exact whole-key preferences for Nepali forms, compounds and inflections. Use a [local development installation](getting-started.md#local-development-installation) to try them. The verified published npm alpha.3 artifact does not include this batch. Package publication and hosted-demo deployment have their own verification steps.
+**Unreleased repository update:** this batch adds 34 exact whole-key preferences for Nepali forms, compounds and inflections. Use a [local development installation](getting-started.md#local-development-installation) to try them. The **prepared, unpublished alpha.4 candidate** includes this batch and 211 starter keys; the verified published npm alpha.3 artifact has 177 keys and excludes it. The [candidate release section](../release.md#alpha4-release-candidate) records preparation status. Original source measurements below are separate from fresh versioned-candidate verification; package publication and website deployment have their own verification steps.
 
 The batch reviews the 46 remaining word-default mismatches after the [earlier spelling follow-up](nepali-spelling-2026-10-09.md). Its frozen source ledger selects 34 additions and records 12 deferrals. The first displayed reading is a project typing preference; alternatives remain available where the Roman input admits multiple readings.
 

@@ -2,6 +2,26 @@
 
 SahajLipi is an experimental Nepali typing package. **`0.1.0-alpha.3` is the current published alpha**, available on npm with public access and the explicit `alpha` tag. This guide records published artifacts, registry verification, migration, compatibility limits and the release procedure. The [getting-started guide](package/getting-started.md) explains exact-version and local-tarball installation.
 
+<span id="alpha4-release-candidate"></span>
+
+## Prepared alpha candidate — alpha.4
+
+**Prepared on 2026-10-09; unpublished:** the `0.1.0-alpha.4` candidate packages the [34-key native-form batch](package/native-forms-2026-10-09.md#exact-mappings-and-sources) already merged in source `9bec98c4ce980d1bc7852d553dab01d15e664834`. Its source lexicon has **211 starter keys**. Alpha.3 remains the verified npm release with 177 keys; both `alpha` and `latest` remain on alpha.3. Preparation does not change those registry tags or the homepage's published-version metadata.
+
+### Alpha.4 contents and migration
+
+Alpha.4 adds 34 exact complete-key readings, including `astitwalai` → अस्तित्वलाई, `karyaharuma` → कार्यहरूमा, `pairaheka` → पाइरहेका and `samhalnubhaeko` → सम्हाल्नुभएको. The [complete output table](package/native-forms-2026-10-09.md#exact-mappings-and-sources) records every prior output, new reading, alternative and source access. The maintainer chose `mahila` → महिला / माहिला and `shanta` → शान्त / शान्ता. `angrejharuko` → अङ्ग्रेजहरूको / अंग्रेजहरूको retains the prior explicit velar-nasal style first. These orders are typing preferences, not measured frequency rankings.
+
+When upgrading from alpha.3 to alpha.4, applications converting these complete keys receive the listed readings in either consonant mode. Incomplete and unlisted forms retain ordinary fallback; this batch introduces no generic native suffix rule. Hosts can replace a complete key with `createEngine({ entries: { mahila: ['माहिला', 'महिला'] } })` and pass both converters to attached fields. Existing field values are not automatically rewritten. Public APIs, fallback sound keys, explicit half markers, the 51 loanword stems with their finite suffixes, digits and technical-text preservation keep their existing behavior.
+
+### Alpha.4 preparation and verification status
+
+The [release plan](superpowers/plans/2026-10-09-alpha4-release.md) covers committed-candidate validation, exact archive preservation, installed consumers, maintainer review and publication. The intended npm publisher is `maheshnepal`, with package access managed through `ojastech`; the package remains unscoped as `sahajlipi`.
+
+Fresh alpha.4 artifact validation and publication verification are pending. Archive identity, fresh validation results and publication evidence will be recorded after verification. Use the [local development installation](package/getting-started.md#local-development-installation) to try the candidate source; `npm install sahajlipi@alpha` still selects the published alpha.3 package.
+
+The native-form guide retains the original [source comparison](package/native-forms-2026-10-09.md#recorded-comparison), source-assisted review limits and [desktop-007 record](../browser/reports/desktop-007.json). Those dated results are development evidence, separate from fresh checks on the versioned alpha.4 archive. The 12 deferred word cases and all 12 complete-sentence mismatches remain. Physical mobile/IME, controlled framework fields and independent representative language accuracy remain unverified.
+
 <span id="alpha3-release-candidate"></span>
 <span id="alpha3-release"></span>
 <span id="prepared-alpha-candidate--alpha3"></span>

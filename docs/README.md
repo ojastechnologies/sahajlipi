@@ -6,7 +6,7 @@ The experimental Nepali developer alpha **[`sahajlipi@0.1.0-alpha.3`](https://ww
 
 The current guides describe **`0.1.0-alpha.3`**, including the full fallback consonants and explicit backtick or `/` half forms introduced in alpha.2. Alpha.1 retains its earlier behavior. The [migration recipe](package/integration-recipes.md#keep-alpha1-consonant-behavior) preserves alpha.1 fallback endings with `createEngine({ consonantMode: 'half' })` when adopting alpha.2 or later.
 
-The typing reference and repository demo include the [13-key spelling slice shipped in alpha.3](package/nepali-spelling-2026-10-09.md). This repository also contains the [later unreleased 34-key native-form batch](package/native-forms-2026-10-09.md), available through a local checkout and its demo. The 34 forms are outside the published alpha.3 artifact; hosted demo changes appear after merge and website deployment.
+The typing reference and repository demo include the [13-key spelling slice shipped in alpha.3](package/nepali-spelling-2026-10-09.md). This repository also contains the [later unreleased 34-key native-form batch](package/native-forms-2026-10-09.md), available through a local checkout and its demo. The 34 forms are outside the published alpha.3 artifact and are included in the **prepared, unpublished alpha.4 candidate**. Its [release section](release.md#alpha4-release-candidate) distinguishes candidate preparation from the unchanged npm alpha.3 distribution.
 
 ## Reusable package
 

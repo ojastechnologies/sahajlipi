@@ -146,7 +146,7 @@ Each has one reading. The [2026-10-01 review](nepali-spelling-2026-10-01.md) rec
 
 `bhagna` keeps its existing displayed भग्न reading and offers the distinct भाग्न reading for selection. Its order preserves the earlier default; the frozen references specify no uniquely preferred meaning. The [2026-10-09 review](nepali-spelling-2026-10-09.md) records source access, decisions and unchanged-reference measurements.
 
-**Later unreleased native-form batch — 2026-10-09:** the source checkout adds another 34 complete keys. For example, `futera` → फुटेर, `astitwalai` → अस्तित्वलाई, `karyaharuma` → कार्यहरूमा, `pairaheka` → पाइरहेका and `samhalnubhaeko` → सम्हाल्नुभएको. The [complete native-form guide](native-forms-2026-10-09.md#exact-mappings-and-sources) lists every mapping, its prior output and source access. These additions are outside the verified published alpha.3 artifact.
+**Later unreleased native-form batch — 2026-10-09:** the source checkout adds another 34 complete keys. For example, `futera` → फुटेर, `astitwalai` → अस्तित्वलाई, `karyaharuma` → कार्यहरूमा, `pairaheka` → पाइरहेका and `samhalnubhaeko` → सम्हाल्नुभएको. The [complete native-form guide](native-forms-2026-10-09.md#exact-mappings-and-sources) lists every mapping, its prior output and source access. These additions are included in the **prepared, unpublished alpha.4 candidate** and outside the verified published alpha.3 artifact. See the [candidate release section](../release.md#alpha4-release-candidate) and local installation instructions before trying them.
 
 | Roman key | Displayed reading | Alternative |
 | --- | --- | --- |
