@@ -2,7 +2,7 @@
 
 The [live SahajLipi demo](https://ojastechnologies.github.io/sahajlipi/demo/) lets you try the current Nepali typing experience in a browser. This page covers the demo interface and how to run it. The [package website](https://ojastechnologies.github.io/sahajlipi/) introduces the library and provides developer documentation. For the reusable conversion engine, browser adapter, API, and typing rules, start with the [package documentation](../package/README.md).
 
-This guide describes the **repository demo**, including alpha.2 full consonants, the **Consonants** selector and the **unreleased 2026-10-09 native spelling batch**. The published npm alpha.2 does not include that batch; hosted demo changes appear after merge and website deployment. The published npm alpha.1 artifact keeps its earlier half-consonant fallback; the [release record](../release.md) distinguishes package distribution from the repository demo.
+This guide describes the **repository demo**, including the full-consonant behavior introduced in alpha.2, the **Consonants** selector and the **13-key spelling slice shipped in alpha.3**. Website deployment is separate from npm publication. Alpha.1 retains its earlier half-consonant fallback; the [release record](../release.md) distinguishes registry packages from the repository demo. The later 34-form proposal is outside alpha.3.
 
 ## Run it locally
 
@@ -52,9 +52,9 @@ Type backtick or `/` for an explicit half form: `` k` `` or `k/` → **क्**,
 
 ### Reviewed native-word spellings
 
-The original four reviewed keys work in the published alpha.2 and repository demo: `halyo` → **हाल्यो**, `nabhani` → **नभनी**, `gaunle` → **गाउँले** and `dindaina` → **दिँदैन**.
+The original four reviewed keys were included before alpha.3 and remain available in the published package and repository demo: `halyo` → **हाल्यो**, `nabhani` → **नभनी**, `gaunle` → **गाउँले** and `dindaina` → **दिँदैन**.
 
-The repository demo also includes the **unreleased 2026-10-09 batch**:
+The repository demo also includes the **13-key spelling update shipped in alpha.3**:
 
 | Type | Output | Type | Output |
 | --- | --- | --- | --- |
@@ -69,7 +69,7 @@ Type `bhagna` to display **भग्न**, then choose **भाग्न** from 
 
 These exact aliases supply reviewed whole-word spellings. An unfinished or unlisted spelling can use the phonetic fallback; attached native forms are not inferred. Incidental capitals such as `Imandar` work, while reserved Shift spellings such as `Sarasar` keep their explicit sounds. English mode keeps these keys literal.
 
-The [earlier four-word review](../package/nepali-spelling-2026-10-01.md) and [unreleased batch review](../package/nepali-spelling-2026-10-09.md) record sources, decisions and measurements. The demo uses the repository engine in either consonant setting.
+The [earlier four-word review](../package/nepali-spelling-2026-10-01.md) and [alpha.3 batch review](../package/nepali-spelling-2026-10-09.md) record sources, decisions and measurements. The demo uses the repository engine in either consonant setting.
 
 ### English loanwords
 

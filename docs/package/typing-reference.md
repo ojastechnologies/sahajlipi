@@ -1,6 +1,6 @@
 # Nepali typing reference
 
-SahajLipi currently converts Roman Nepali, 51 listed English-spelling loanword stems with finite attached suffix forms and 12 full English month names to Unicode Devanagari. The core returns a preferred reading and, where listed, alternatives. The optional browser adapters render that preferred reading in opted-in text fields as you type and report alternatives to the host interface. This reference describes the published **`0.1.0-alpha.2` package**, with the **unreleased 2026-10-09 source spellings** explicitly marked below; the keys are project conventions rather than a standardized Romanization scheme. The earlier `0.1.0-alpha.1` keeps its half-consonant default; see the [migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior).
+SahajLipi currently converts Roman Nepali, 51 listed English-spelling loanword stems with finite attached suffix forms and 12 full English month names to Unicode Devanagari. The core returns a preferred reading and, where listed, alternatives. The optional browser adapters render that preferred reading in opted-in text fields as you type and report alternatives to the host interface. This reference describes the published **`0.1.0-alpha.3` package**, including the **13-key spelling slice released on 2026-10-09**; the keys are project conventions rather than a standardized Romanization scheme. The earlier `0.1.0-alpha.1` keeps its half-consonant default; see the [migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior).
 
 The [starter lexicon](../../src/lexicon.js) takes priority over the [phonetic fallback](../../src/phonetic.js). The listed word `cha` defaults to च and offers छ as an alternative; `chha` returns only छ. The fallback tokens remain `ch` → च and `chh` → छ. Custom entries can replace a built-in entry in one engine instance. See the [engine source](../../src/index.js) for the lookup order.
 
@@ -82,7 +82,7 @@ A vowel after either explicit half marker is independent: `` k`i `` and `k/i` �
 
 Type backtick followed by `=` (`` `= ``) or `/=` after a consonant when you need a zero width joiner after its virama: `` par`=yo `` and `par/=yo` → पर्‍यो. The inserted sequence is virama U+094D followed by zero width joiner U+200D. The exact visible half form or conjunct depends on the browser's text shaping and font. See the [Unicode Indic FAQ on half forms and joiners](https://www.unicode.org/faq/indic.html).
 
-In alpha.2, developers can select `createEngine({ consonantMode: 'half' })` to retain alpha.1 phonetic fallback endings: `k` → क्, `kr` → क्र्, while `ka` → क and `kra` → क्र. The default is `consonantMode: 'full'`. This option changes fallback endings only; exact built-in and custom readings keep their priority and supplied Unicode. See the [API option](api.md#consonant-mode), [browser migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior), and [dated software-contract record](consonant-defaults-2026-10-03.md).
+Since alpha.2, developers can select `createEngine({ consonantMode: 'half' })` to retain alpha.1 phonetic fallback endings: `k` → क्, `kr` → क्र्, while `ka` → क and `kra` → क्र. The default is `consonantMode: 'full'`. This option changes fallback endings only; exact built-in and custom readings keep their priority and supplied Unicode. See the [API option](api.md#consonant-mode), [browser migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior), and [dated software-contract record](consonant-defaults-2026-10-03.md).
 
 ### र्य and र्‍य
 
@@ -115,7 +115,7 @@ Online usage supports the listed Nepali spellings: [नेपाल कानू
 
 ## Reviewed native-word spellings
 
-The published alpha.2 includes four reviewed exact starter keys:
+Four earlier reviewed starter keys remain included in alpha.3:
 
 | Roman key | Preferred output |
 | --- | --- |
@@ -126,9 +126,9 @@ The published alpha.2 includes four reviewed exact starter keys:
 
 Each has one reading. The [2026-10-01 review](nepali-spelling-2026-10-01.md) records their sources and dated comparison.
 
-**Unreleased source update — 2026-10-09:** the repository checkout adds twelve single-reading preferences and a second reading for `bhagna`, bringing this reviewed native-key group to **17 keys**. The published `sahajlipi@0.1.0-alpha.2` package does not include this batch; use a [local development installation](getting-started.md#local-development-installation) to try it.
+**Alpha.3 spelling update — 2026-10-09:** twelve single-reading preferences and a second reading for `bhagna` bring this reviewed native-key group to **17 keys**. The published `sahajlipi@0.1.0-alpha.3` package includes this slice; the [release record](../release.md#alpha3-release) identifies the verified artifact. The separately proposed 34 native forms are outside alpha.3.
 
-| Roman key | Source-checkout output | Alternative |
+| Roman key | Alpha.3 output | Alternative |
 | --- | --- | --- |
 | `imandar` | इमान्दार | |
 | `sarasar` | सरासर | |

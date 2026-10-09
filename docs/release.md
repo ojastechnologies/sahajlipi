@@ -1,18 +1,24 @@
 # Release and compatibility policy
 
-SahajLipi is an experimental Nepali typing package. **`0.1.0-alpha.2` is the current published alpha**, available on npm with public access and the explicit `alpha` tag. This guide records the published artifacts, registry verification, migration, compatibility limits, and future release procedure. The [getting-started guide](package/getting-started.md) explains exact-version and local-tarball installation.
+SahajLipi is an experimental Nepali typing package. **`0.1.0-alpha.3` is the current published alpha**, available on npm with public access and the explicit `alpha` tag. This guide records published artifacts, registry verification, migration, compatibility limits and the release procedure. The [getting-started guide](package/getting-started.md) explains exact-version and local-tarball installation.
 
 <span id="alpha3-release-candidate"></span>
+<span id="alpha3-release"></span>
+<span id="prepared-alpha-candidate--alpha3"></span>
 
-## Prepared alpha candidate — alpha.3
+## Current alpha release — alpha.3
 
-**Unpublished release preparation — 2026-10-09:** package metadata identifies `0.1.0-alpha.3` as the next experimental Nepali developer alpha. The current verified npm release and both registry tags remain alpha.2. Install the candidate from a [local tarball](package/getting-started.md#local-development-installation) for review; the candidate version does not establish registry availability.
+**Published and verified on 2026-10-09:** [`sahajlipi@0.1.0-alpha.3`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.3), published by `maheshnepal` and managed through npm organization `ojastech`. Publication completed at `2026-10-09T12:37:56.193Z` after npm's interactive two-factor authentication. The [GitHub prerelease](https://github.com/ojastechnologies/sahajlipi/releases/tag/v0.1.0-alpha.3) retains the reviewed archive and [release verification](https://github.com/ojastechnologies/sahajlipi/releases/download/v0.1.0-alpha.3/release-verification.json). The identical [repository publication record](../benchmark/reports/alpha3-publication-2026-10-09.json) is available with these docs.
 
-The current npm maintainer account is `maheshnepal`, and the npm organization is `ojastech`. The alpha.1 and alpha.2 records below retain their original `ojastechadmin` publisher identity. Alpha.3's actual publisher, publication time, registry integrity and tags will be recorded after publication and verification.
+The downloaded official registry archive has **13 files**, **25,135 compressed bytes**, and SHA-256 `5aa10ae915a56fcddfe842dd9abbdb31a5131a8a5323c82d85fe199e7d7b0cd9`. SHA-1 `7d6415f760b19a2cf27540503dc7bf085e2ed4e0` and the SHA-512 integrity also match the reviewed archive. Every distributed file matches merged preparation source [`4df0ebc`](https://github.com/ojastechnologies/sahajlipi/commit/4df0ebcc174e379ca345752228aceddf14e25d43) byte for byte. The published archive and its README retain their original bytes; this repository follow-up records publication separately. Alpha.1 and alpha.2 retain their original `ojastechadmin` publisher identities.
 
-### Candidate contents and migration
+The verified `alpha` and `latest` tags both point to `0.1.0-alpha.3`; unversioned `npm install sahajlipi` selects alpha.3. Install exactly with `npm install --save-exact sahajlipi@0.1.0-alpha.3`. The release remains experimental; a default-installation tag is not a stable-release promise.
 
-The candidate includes the merged [2026-10-09 native spelling batch](package/nepali-spelling-2026-10-09.md#exact-preferences-and-evidence): twelve exact single-reading preferences for `imandar`, `sarasar`, `sakos`, `kathanak`, `arambha`, `ekadhik`, `jaghanya`, `pukar`, `niskanda`, `bora`, `utthan` and `samanjasya`. The linked table gives every alpha.2 output, new output and source-access limit. For example, `imandar` changes इमन्दर → इमान्दार and `niskanda` changes निस्कन्द → निस्कँदा. `bhagna` retains भग्न as its default and adds भाग्न as its second candidate, returning `[भग्न, भाग्न]`.
+Immediately after publication, `alpha` selected alpha.3 and `latest` still selected alpha.2. The final `alpha` and `latest` state was independently observed at `2026-10-09T12:49:31.376501Z` after the authorized two-factor tag update. This is the observation time, not an asserted exact mutation timestamp; the original package publication time remains `2026-10-09T12:37:56.193Z`. A separate fresh unversioned `npm install sahajlipi` observed alpha.3 at `2026-10-09T12:52:04.278Z`; its lockfile URL/integrity and all 13 installed files matched the official archive, and the public JavaScript fixture passed.
+
+### Contents and migration
+
+Alpha.3 includes the merged [2026-10-09 native spelling batch](package/nepali-spelling-2026-10-09.md#exact-preferences-and-evidence): twelve exact single-reading preferences for `imandar`, `sarasar`, `sakos`, `kathanak`, `arambha`, `ekadhik`, `jaghanya`, `pukar`, `niskanda`, `bora`, `utthan` and `samanjasya`. The linked table gives every alpha.2 output, new output and source-access limit. For example, `imandar` changes इमन्दर → इमान्दार and `niskanda` changes निस्कन्द → निस्कँदा. `bhagna` retains भग्न as its default and adds भाग्न as its second candidate, returning `[भग्न, भाग्न]`.
 
 Applications converting these complete keys will receive the listed exact readings in either full or half consonant mode. The batch introduces no general native suffix rule; attached forms such as `imandarko` still use ordinary conversion unless configured as complete custom entries. Hosts that need a different reading or candidate order can provide `createEngine({ entries: { bhagna: ['भाग्न', 'भग्न'] } })` and pass both engine converters to browser adapters. Existing field contents are not automatically rewritten. Public APIs, full-consonant fallback, explicit half markers, loanword suffixes and technical-text preservation retain their alpha.2 behavior.
 
@@ -30,11 +36,24 @@ Fresh validation of the committed alpha.3 candidate passed **345/345 Node tests*
 5aa10ae915a56fcddfe842dd9abbdb31a5131a8a5323c82d85fe199e7d7b0cd9
 ```
 
-Its distributed bytes match candidate commit [`ef86b35`](https://github.com/ojastechnologies/sahajlipi/commit/ef86b3543122496ce5f00108a00c5021705f3df9); all eight `src/` files are unchanged from the merged spelling batch. The verification record and this status update are outside the npm tarball. Inspect CI on the preparation PR and merged commit, and verify distributed file equality again before publishing the retained artifact. Publication and fresh registry-installed consumers remain pending. Physical mobile/IME behavior, controlled React fields, SSR/hydration, assistive technology and independent language accuracy remain unverified.
+The original candidate bytes match [`ef86b35`](https://github.com/ojastechnologies/sahajlipi/commit/ef86b3543122496ce5f00108a00c5021705f3df9); all eight `src/` files are unchanged from the merged spelling batch. The immutable candidate record retains its preparation status and original checks. The later registry verification above also confirms equality with merged preparation commit `4df0ebcc174e379ca345752228aceddf14e25d43`. The separately proposed 34 native forms are outside alpha.3.
+
+### Alpha.3 registry consumer verification — 2026-10-09
+
+Fresh consumers installed `sahajlipi@0.1.0-alpha.3` from the official npm registry. The installed version, lockfile URL/integrity and all thirteen file bytes were checked against the reviewed archive. Public JavaScript imports, options and engine isolation passed. Strict TypeScript NodeNext core without DOM, DOM and Bundler consumers/tutorials passed, including execution of the emitted core tutorial.
+
+The registry-installed vanilla and React examples passed **9/9 browser checks**: three each in Chromium, Firefox and WebKit, with zero retries, failures, skips, flaky outcomes or uncaught page errors. These postpublication consumers are separate from the 66-check local candidate suite. The release remains limited to the documented uncontrolled React lifecycle and selected desktop flows.
+
+Two verification-runner corrections are recorded. The first installed-package attempt passed identity and JavaScript checks, then could not start TypeScript because its archived development-dependency link was missing; the corrected private runner used a second fresh registry installation with the matching pinned tools. The first browser run passed 3/9 checks on port 4190: WebKit rejected that restricted port, and Firefox navigation failed before a server request. Changing only the private runner's port to 4192 produced the complete 9/9 result with unchanged package bytes and assertions. The initial raw runs remain preserved privately and are identified in the public verification record; they are not counted as passes.
+
+The [verification-tools archive](https://github.com/ojastechnologies/sahajlipi/releases/download/v0.1.0-alpha.3/registry-verification-tools.tgz) includes `REGISTRY-VERIFICATION.md` and the task's registry runners. Its [adaptation patch](https://github.com/ojastechnologies/sahajlipi/releases/download/v0.1.0-alpha.3/registry-consumer-adaptation.patch) and the public record identify changes from merged preparation source, tool hashes and reproduction scope. These private verification adaptations did not change the published package or the repository's package-verification commands.
+
+Physical mobile/IME behavior, controlled React fields, SSR/hydration, assistive technology and independent language accuracy remain unverified. Registry-installed consumer checks exercise the selected software flows rather than a representative Nepali accuracy sample.
 
 <span id="current-alpha-candidate"></span>
+<span id="current-alpha-release--alpha2"></span>
 
-## Current alpha release — alpha.2
+## Previous alpha release — alpha.2
 
 **Published on 2026-10-03:** [`sahajlipi@0.1.0-alpha.2`](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.2), maintained and published on npm by `ojastechadmin`. The maintainer authorized this publication after reviewing the merged consonant change and release-readiness checks. Publication completed at `2026-10-03T10:33:27.051Z` after npm's interactive two-factor authentication.
 
@@ -44,7 +63,7 @@ The exact reviewed tarball was published from merged source [`48a0321bed417b1e99
 b1c3bb6dc673ad55a574ef8d95ce19daddc9c5a38f403f0c2defc449adc35fd5
 ```
 
-Install with `npm install --save-exact sahajlipi@0.1.0-alpha.2`. After the maintainer-authorized tag update on 2026-10-03, the verified registry tags are **`alpha` → `0.1.0-alpha.2`** and **`latest` → `0.1.0-alpha.2`**. Unversioned `npm install sahajlipi` now selects alpha.2. The release remains experimental; assigning `latest` establishes the default installation, without a stable-release promise. The first-publication tag exception is recorded in the alpha.1 history below.
+Install with `npm install --save-exact sahajlipi@0.1.0-alpha.2`. After the maintainer-authorized tag update on 2026-10-03, the verified registry tags at that time were **`alpha` → `0.1.0-alpha.2`** and **`latest` → `0.1.0-alpha.2`**. Unversioned `npm install sahajlipi` selected alpha.2 at that time; current tags are recorded in the alpha.3 section. The release remains experimental; assigning `latest` establishes the default installation, without a stable-release promise. The first-publication tag exception is recorded in the alpha.1 history below.
 
 Fresh checks on the exact merged source passed **317 Node tests**, **160 seed contracts**, and **66 desktop browser checks**. The two exploratory seed proposals remain excluded from the regression gate. All merged-commit CI jobs passed: Node 18/20/22/24 engine checks, Node 20/22/24 package consumers, Chromium/Firefox/WebKit browser jobs, and the website's eleven checks and deployment. Actual tarball consumers passed public JavaScript imports, strict TypeScript configurations, and installed vanilla/React examples. The retained artifact checksum matched the tarball used by those browser examples.
 
@@ -92,7 +111,7 @@ The prerelease's [verification record](https://github.com/ojastechnologies/sahaj
 
 ## Alpha.2 behavior and migration
 
-`0.1.0-alpha.2` is published on npm under the `alpha` tag. The alpha.1 artifact, source tag, checksum, and dated checks above remain unchanged. Install alpha.2 with `npm install --save-exact sahajlipi@0.1.0-alpha.2`; pin alpha.1 explicitly if you need its earlier package behavior. The [local tarball instructions](package/getting-started.md#local-development-installation) remain available for source development.
+`0.1.0-alpha.2` was published using the `alpha` tag; current distribution tags are recorded with alpha.3 above. The alpha.1 artifact, source tag, checksum, and dated checks above remain unchanged. Install alpha.2 with `npm install --save-exact sahajlipi@0.1.0-alpha.2`; pin alpha.1 explicitly if you need its earlier package behavior. The [local tarball instructions](package/getting-started.md#local-development-installation) remain available for source development.
 
 Alpha.2 changes phonetic fallback endings from half to full by default: `k` changes क् → क, `kr` changes क्र् → क्र, and `kar` changes कर् → कर. Both `k` / `ka` → क and `kr` / `kra` → क्र; `kri` → क्रि and `shakti` → शक्ति retain their internal conjuncts and vowel signs. This affects unlisted spellings and fallback segments. Exact built-in/custom readings and recognized loanword suffix outputs retain their supplied Unicode and priority.
 
@@ -100,7 +119,7 @@ Backtick now requests an explicit half form like `/`; both persist across spaces
 
 For integrations that need alpha.1 fallback output after adopting alpha.2, use `createEngine({ consonantMode: 'half' })`. Pass **both** of that engine's `convertWord` and `convertText` functions to each adapter or manager; the [migration recipe](package/integration-recipes.md#keep-alpha1-consonant-behavior) includes complete browser setup. The default is `'full'`, and another `consonantMode` value throws `TypeError`. Attachment and configuration do not rewrite existing field contents. The published alpha.1 has no `consonantMode` option or backtick shortcut.
 
-The alpha.1 measurements above describe that release. Separate alpha.2 checks on 2026-10-03 passed 317 Node tests, 160 seed contracts, 66 desktop browser scenarios, 11 website scenarios, and installed JavaScript/strict TypeScript consumers. The [candidate contract report](package/consonant-defaults-2026-10-03.md) records declared fixture revisions, finite full/half contracts, and 144/144 exact archived results preserved by strict mode. Its preparation results retain their original source identities and scope. These are software and integration checks, not representative linguistic accuracy or physical mobile validation. The current release section above records alpha.2 distribution separately.
+The alpha.1 measurements above describe that release. Separate alpha.2 checks on 2026-10-03 passed 317 Node tests, 160 seed contracts, 66 desktop browser scenarios, 11 website scenarios, and installed JavaScript/strict TypeScript consumers. The [candidate contract report](package/consonant-defaults-2026-10-03.md) records declared fixture revisions, finite full/half contracts, and 144/144 exact archived results preserved by strict mode. Its preparation results retain their original source identities and scope. These are software and integration checks, not representative linguistic accuracy or physical mobile validation. The alpha.2 history above records its distribution separately from current alpha.3 verification.
 
 ### Verify and publish future alphas
 
@@ -137,7 +156,7 @@ An ESM import of the DOM module can be evaluated on a server, but attachment nee
 
 ## Versioning and changes
 
-The first published developer alpha is `0.1.0-alpha.1`; the current published alpha is `0.1.0-alpha.2`. Alpha users should pin an exact version when typing behavior matters.
+The first published developer alpha is `0.1.0-alpha.1`; the current published alpha is `0.1.0-alpha.3`. Alpha users should pin an exact version when typing behavior matters.
 
 During `0.x` development:
 

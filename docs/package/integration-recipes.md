@@ -1,6 +1,6 @@
 # Integration recipes
 
-These recipes use the public `sahajlipi` and `sahajlipi/dom` entry points from the published experimental Nepali version `0.1.0-alpha.2`. General attachment and lifecycle recipes also apply to alpha.1; the consonant compatibility option below requires alpha.2. See [getting started](getting-started.md) for exact-version npm installation and local tarballs, and the [release record](../release.md) for distribution status and verification. The core is ESM, and the adapters require real browser fields.
+These recipes use the public `sahajlipi` and `sahajlipi/dom` entry points from the published experimental Nepali version `0.1.0-alpha.3`. General attachment and lifecycle recipes also apply to alpha.1; the consonant compatibility option below requires alpha.2 or later. See [getting started](getting-started.md) for exact-version npm installation and local tarballs, and the [release record](../release.md) for distribution status and verification. The core is ESM, and the adapters require real browser fields.
 
 ## Runnable examples
 
@@ -100,7 +100,7 @@ Do not combine a document-wide manager with another manager targeting the same f
 
 Alpha.2 changes fallback endings: `k` → क and `kr` → क्र by default, where alpha.1 yields क् and क्र्. Internal conjuncts still form automatically, and vowel signs keep their existing rules. Exact lexicon readings, including custom entries, keep priority and are not rewritten.
 
-When adopting alpha.2, select `'half'` on a shared engine to retain alpha.1 fallback endings. Pass **both** converters to the manager so live words, paste, and completed composition use the same configuration:
+When adopting alpha.2 or later, select `'half'` on a shared engine to retain alpha.1 fallback endings. Pass **both** converters to the manager so live words, paste, and completed composition use the same configuration:
 
 ```js
 import { createEngine } from 'sahajlipi';

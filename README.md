@@ -29,6 +29,8 @@ Install from the alpha channel and save the resolved version exactly:
 npm install --save-exact sahajlipi@alpha
 ```
 
+The current verified distribution is **`sahajlipi@0.1.0-alpha.3`**; the [release record](https://ojastechnologies.github.io/sahajlipi/docs/release.html#alpha3-release) identifies its publisher, artifact, tags and fresh registry consumers. The separately proposed 34 native forms are outside alpha.3.
+
 The `alpha` tag can move to a later prerelease. `--save-exact` records the version resolved by this installation; retain your lockfile for reproducible installs. The [release record](https://ojastechnologies.github.io/sahajlipi/docs/release.html) records published artifact identities, registry tags, consumer checks, and the experimental scope. The [local tarball instructions](https://ojastechnologies.github.io/sahajlipi/docs/package/getting-started.html#local-development-installation) cover source development.
 
 The core engine converts words and text without a browser. The browser examples assume an ESM bundler or an import map that resolves the installed package. For live typing, mark the fields that should accept Roman Nepali, then initialize the browser adapter once:
@@ -130,6 +132,7 @@ The badges show current `main` workflow status. Node CI runs automated tests and
 
 | Evaluation | Recorded result | Run date | Interpretation |
 | --- | --- | --- | --- |
+| [Alpha.3 registry distribution and consumers](https://ojastechnologies.github.io/sahajlipi/docs/release.html#alpha3-registry-consumer-verification--2026-10-09) | Official 13-file archive and installed bytes verified; JavaScript/strict TypeScript consumers and 9/9 browser checks passed | 2026-10-09 | Postpublication registry-installed software checks; historical candidate/source comparisons remain unchanged. No physical mobile/IME or representative accuracy claim. |
 | [Reviewed native spelling batch](https://ojastechnologies.github.io/sahajlipi/docs/package/nepali-spelling-2026-10-09.html#recorded-comparison) | Contracts 160/174 → 174/174; reviewed word defaults 16/74 → 28/74, reference candidates 17/79 → 30/79 | 2026-10-09 | All 162 historical rows unchanged; both engines retain 160/160 historical contracts; full reviewed sentences remain 0/12. Source-assisted development gains, with no general accuracy claim. |
 | [Reviewed native spelling contracts and comparison](https://ojastechnologies.github.io/sahajlipi/docs/package/nepali-spelling-2026-10-01.html#recorded-comparison) | Contracts 137/142 → 142/142; reviewed word defaults 11/74 → 15/74, reference candidates 12/79 → 16/79 | 2026-10-01 | All 139 prior rows unchanged; constructed controls 11/11 before and after; complete reviewed sentences remain 0/12. No representative accuracy claim. |
 | [Native spelling browser regressions](https://ojastechnologies.github.io/sahajlipi/docs/package/browser-compatibility.html#native-spelling-follow-up--2026-10-01) | 60/60 checks: 20 scenarios in each of Chromium, Firefox and WebKit | 2026-10-01 | Adds reviewed native word editing, undo/redo and English mode; alpha tarball tested locally, registry availability requires separate verification. |

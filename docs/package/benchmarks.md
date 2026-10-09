@@ -15,9 +15,11 @@ The first command prints results and exits successfully even when a contract cas
 
 The dependency-free runner is [benchmark/run.js](../../benchmark/run.js). Its UTF-8, one-JSON-object-per-line fixtures are in [benchmark/cases.jsonl](../../benchmark/cases.jsonl). You can inspect a different fixture file with `node benchmark/run.js --fixtures path/to/cases.jsonl`; add `--check` if its contract cases should gate the command.
 
-## Unreleased native spelling follow-up — 2026-10-09
+<span id="unreleased-native-spelling-follow-up--2026-10-09"></span>
 
-The [new spelling review](nepali-spelling-2026-10-09.md) records twelve exact native preferences and the missing भाग्न candidate for `bhagna`, preserving its displayed भग्न default. These source-checkout changes are **unreleased**; the published npm alpha.2 retains its recorded behavior.
+## Alpha.3 native spelling follow-up — 2026-10-09
+
+The [new spelling review](nepali-spelling-2026-10-09.md) records twelve exact native preferences and the missing भाग्न candidate for `bhagna`, preserving its displayed भग्न default. This 13-key slice is shipped in **alpha.3**; the comparison below was recorded before publication, and alpha.2 retains its original artifact and behavior.
 
 The final seed has **174 contracts and two exploratory cases**. Thirteen word cases and one synthetic text guard are appended; all 162 prior rows remain byte-for-byte unchanged. Comparing alpha.2 source commit `48a0321bed417b1e995f66adbcbf9ade2c82f1cf` with this update on the same final fixture gives **160/174 → 174/174** full contracts. The frozen historical fixture stays at **160/160 for both engines**.
 
