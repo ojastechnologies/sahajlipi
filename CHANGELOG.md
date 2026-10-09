@@ -2,6 +2,18 @@
 
 Published versions and their changes are recorded here. The [release record](docs/release.md) identifies the verified artifacts, sources, consumer checks, and experimental limits; the same page defines versioning and migration expectations.
 
+## Unreleased
+
+Repository changes below are not included in the published `0.1.0-alpha.2` npm artifact. Package metadata retains that version until a separate release is prepared.
+
+### Added
+
+- Twelve exact reviewed native-word preferences: `imandar`, `sarasar`, `sakos`, `kathanak`, `arambha`, `ekadhik`, `jaghanya`, `pukar`, `niskanda`, `bora`, `utthan` and `samanjasya`.
+- The भाग्न candidate for `bhagna`, keeping its existing भग्न default and preserving both distinct valid readings.
+- A [dated source review and comparison](docs/package/nepali-spelling-2026-10-09.md), frozen-reference measurement command, 14 appended seed contracts, and updated repository demo guidance.
+
+The selected development comparison improves word defaults **16/74 → 28/74** and listed reference coverage **17/79 → 30/79**. Complete reviewed sentences remain **0/12**. The 174-contract fixture preserves all 162 historical rows; these results do not establish general accuracy.
+
 ## 0.1.0-alpha.2 — 2026-10-03
 
 Experimental developer alpha, [published on npm](https://www.npmjs.com/package/sahajlipi/v/0.1.0-alpha.2) from source [`48a0321`](https://github.com/ojastechnologies/sahajlipi/commit/48a0321bed417b1e995f66adbcbf9ade2c82f1cf). Install the exact version with `npm install --save-exact sahajlipi@0.1.0-alpha.2`. The verified `alpha` and `latest` tags both point to `0.1.0-alpha.2`; `npm install sahajlipi` now selects alpha.2. The npm `0.1.0-alpha.1` artifact and its recorded verification remain unchanged. See the [release record](docs/release.md) for artifact identity and verification.

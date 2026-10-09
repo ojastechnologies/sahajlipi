@@ -1,0 +1,470 @@
+{
+  "schemaVersion": 1,
+  "purpose": "development",
+  "reviewKind": "source-assisted-project-spelling-preferences",
+  "humanVerified": false,
+  "independentHumanReview": false,
+  "reviewedAt": "2026-10-09",
+  "targets": [
+    {
+      "input": "imandar",
+      "referenceOutputs": [
+        "इमान्दार"
+      ],
+      "preferredReferenceIndex": 0,
+      "sourceReviewCaseId": "word-validation:nep778",
+      "sourceReviewReviewedAt": "2026-10-01",
+      "evidence": [
+        {
+          "url": "https://metronews.kathmandu.gov.np/news/detail/483",
+          "title": "Kathmandu Metropolitan City Metro News — clean-air measures",
+          "support": "The exact whole adjective इमान्दार appears in the official headline.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-09",
+          "locator": {
+            "kind": "browser-text-lines",
+            "lines": [
+              349,
+              351
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "input": "sarasar",
+      "referenceOutputs": [
+        "सरासर"
+      ],
+      "preferredReferenceIndex": 0,
+      "sourceReviewCaseId": "word-validation:nep662",
+      "sourceReviewReviewedAt": "2026-10-01",
+      "evidence": [
+        {
+          "url": "https://nkp.gov.np/full_detail/1654",
+          "title": "Nepal Kanoon Patrika — decision 8636, furniture purchasing",
+          "support": "The exact whole adverb सरासर occurs in the official decision.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-09",
+          "locator": {
+            "kind": "browser-text-lines",
+            "lines": [
+              68
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "input": "sakos",
+      "referenceOutputs": [
+        "सकोस्"
+      ],
+      "preferredReferenceIndex": 0,
+      "sourceReviewCaseId": "word-validation:nep516",
+      "sourceReviewReviewedAt": "2026-10-01",
+      "evidence": [
+        {
+          "url": "https://www.kawasotikrishi.gov.np/livestock-info/5218",
+          "title": "Kawasoti Agriculture — fish farming",
+          "support": "The exact whole optative सकोस् occurs with its final virama.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-09",
+          "locator": {
+            "kind": "browser-text-lines",
+            "lines": [
+              273,
+              782
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "input": "kathanak",
+      "referenceOutputs": [
+        "कथानक"
+      ],
+      "preferredReferenceIndex": 0,
+      "sourceReviewCaseId": "word-validation:nep729",
+      "sourceReviewReviewedAt": "2026-10-01",
+      "evidence": [
+        {
+          "url": "https://doib.gov.np/pages/7981026/",
+          "title": "Department of Information and Broadcasting — introduction",
+          "support": "The exact whole word कथानक occurs in the department’s description of narrative films.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-09",
+          "locator": {
+            "kind": "browser-text-lines",
+            "lines": [
+              212,
+              213
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "input": "arambha",
+      "referenceOutputs": [
+        "आरम्भ"
+      ],
+      "preferredReferenceIndex": 0,
+      "sourceReviewCaseId": "word-validation:nep719",
+      "sourceReviewReviewedAt": "2026-10-01",
+      "evidence": [
+        {
+          "url": "https://tourismdepartment.gov.np/pages/tourism-destination/",
+          "title": "Department of Tourism — main tourism destinations",
+          "support": "The exact whole noun आरम्भ occurs in the Pokhara description, including its initial long vowel.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-09",
+          "locator": {
+            "kind": "browser-text-lines",
+            "lines": [
+              67
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "input": "ekadhik",
+      "referenceOutputs": [
+        "एकाधिक"
+      ],
+      "preferredReferenceIndex": 0,
+      "sourceReviewCaseId": "word-validation:nep500",
+      "sourceReviewReviewedAt": "2026-10-01",
+      "evidence": [
+        {
+          "url": "https://egyankosh.ac.in/bitstream/123456789/89717/3/Unit-1.pdf",
+          "title": "IGNOU eGyanKosh — नेपाली कथाको प्रवृत्तिमूलक परिचय",
+          "support": "The indexed excerpt of this original Nepali-language educational text contains the exact whole adjective एकाधिक in its opening discussion of literary genres. Direct PDF retrieval failed; no full-PDF or visual inspection is claimed.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-10-09",
+          "locator": {
+            "kind": "search-indexed-pdf-section",
+            "section": "Opening १.० उद्देश्य text"
+          }
+        }
+      ]
+    },
+    {
+      "input": "jaghanya",
+      "referenceOutputs": [
+        "जघन्य"
+      ],
+      "preferredReferenceIndex": 0,
+      "sourceReviewCaseId": "word-validation:nep435",
+      "sourceReviewReviewedAt": "2026-10-01",
+      "evidence": [
+        {
+          "url": "https://nkp.gov.np/full_detail/10160",
+          "title": "Nepal Kanoon Patrika — decision page 10160",
+          "support": "The exact whole adjective जघन्य occurs in the official decision.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-09",
+          "locator": {
+            "kind": "browser-text-lines",
+            "lines": [
+              103,
+              104,
+              109
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "input": "pukar",
+      "referenceOutputs": [
+        "पुकार"
+      ],
+      "preferredReferenceIndex": 0,
+      "sourceReviewCaseId": "word-validation:nep491",
+      "sourceReviewReviewedAt": "2026-10-01",
+      "evidence": [
+        {
+          "url": "https://www.nepalpolice.gov.np/media/filer_public/03/c6/03c6d652-1a18-4ce7-8136-05e6a608aec3/aasara_2079m.pdf",
+          "title": "Nepal Police — Aasara publication 2079, collective prayer",
+          "support": "The indexed original Nepali prayer contains the exact whole word पुकार. Direct PDF retrieval failed; no full-PDF or visual inspection is claimed.",
+          "accessScope": "indexed-snippet",
+          "verifiedAt": "2026-10-09",
+          "locator": {
+            "kind": "search-indexed-pdf-section",
+            "section": "सामूहिक प्रार्थना"
+          }
+        }
+      ]
+    },
+    {
+      "input": "niskanda",
+      "referenceOutputs": [
+        "निस्कँदा"
+      ],
+      "preferredReferenceIndex": 0,
+      "sourceReviewCaseId": "word-validation:nep612",
+      "sourceReviewReviewedAt": "2026-10-01",
+      "evidence": [
+        {
+          "url": "https://daomakawanpur.moha.gov.np/en/post/sha-ra-jal-tatha-ma-sama-va-ja-nia-na-va-bha-ga-ma-sama-pa-ra-va-na-ma-na-maha",
+          "title": "Makawanpur District Administration — weather department heat bulletin",
+          "support": "The administration’s republication of the weather department bulletin contains the exact whole verb form निस्कँदा, including chandrabindu.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-09",
+          "locator": {
+            "kind": "browser-text-lines",
+            "lines": [
+              183
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "input": "bora",
+      "referenceOutputs": [
+        "बोरा"
+      ],
+      "preferredReferenceIndex": 0,
+      "sourceReviewCaseId": "word-validation:nep632",
+      "sourceReviewReviewedAt": "2026-10-01",
+      "evidence": [
+        {
+          "url": "https://nkp.gov.np/full_detail/9177",
+          "title": "Nepal Kanoon Patrika — decision 10125, cement packaging",
+          "support": "The exact standalone whole noun बोरा occurs in the sack/packaging sense; this check does not infer it by stripping suffixes from inflected forms.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-09",
+          "locator": {
+            "kind": "browser-text-lines",
+            "lines": [
+              67,
+              88,
+              95
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "input": "utthan",
+      "referenceOutputs": [
+        "उत्थान"
+      ],
+      "preferredReferenceIndex": 0,
+      "sourceReviewCaseId": "word-validation:nep560",
+      "sourceReviewReviewedAt": "2026-10-01",
+      "evidence": [
+        {
+          "url": "https://nkp.gov.np/full_detail/2438",
+          "title": "Nepal Kanoon Patrika — decision page 2438",
+          "support": "The exact whole noun उत्थान occurs in discussion of community development, including the त्थ conjunct.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-09",
+          "locator": {
+            "kind": "browser-text-lines",
+            "lines": [
+              85,
+              94
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "input": "samanjasya",
+      "referenceOutputs": [
+        "सामञ्जस्य"
+      ],
+      "preferredReferenceIndex": 0,
+      "sourceReviewCaseId": "word-validation:nep786",
+      "sourceReviewReviewedAt": "2026-10-01",
+      "evidence": [
+        {
+          "url": "https://nkp.gov.np/full_detail/2438",
+          "title": "Nepal Kanoon Patrika — decision page 2438",
+          "support": "The exact whole word सामञ्जस्य occurs in discussion of social harmony, including ञ्ज.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-09",
+          "locator": {
+            "kind": "browser-text-lines",
+            "lines": [
+              94
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "input": "bhagna",
+      "referenceOutputs": [
+        "भाग्न",
+        "भग्न"
+      ],
+      "preferredReferenceIndex": null,
+      "sourceReviewCaseId": "word-validation:nep628",
+      "sourceReviewReviewedAt": "2026-10-01",
+      "evidence": [
+        {
+          "url": "https://ppsc.lumbini.gov.np/media/list/%E0%A4%95%E0%A4%B5%E0%A4%B0%E0%A4%9C_final.pdf",
+          "title": "Lumbini Provincial Public Service Commission — Ayurvedic syllabus",
+          "support": "The exact whole word भग्न occurs in the syllabus’s list of conditions. The full PDF’s extracted text was available; visual screenshot retrieval failed, so no visual inspection is claimed.",
+          "accessScope": "full-PDF extracted text; visual page not inspected",
+          "verifiedAt": "2026-10-09",
+          "locator": {
+            "kind": "browser-pdf-text",
+            "pagesZeroBased": [
+              6,
+              9
+            ],
+            "lines": [
+              222,
+              335
+            ]
+          }
+        },
+        {
+          "url": "https://www.kawasotikrishi.gov.np/livestock-info/5218",
+          "title": "Kawasoti Agriculture — fish farming",
+          "support": "The exact standalone infinitive भाग्न occurs in the article, corroborating the distinct long-vowel alternative.",
+          "accessScope": "full-page",
+          "verifiedAt": "2026-10-09",
+          "locator": {
+            "kind": "browser-text-lines",
+            "lines": [
+              300
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "implementationEntries": [
+    {
+      "input": "imandar",
+      "outputs": [
+        "इमान्दार"
+      ]
+    },
+    {
+      "input": "sarasar",
+      "outputs": [
+        "सरासर"
+      ]
+    },
+    {
+      "input": "sakos",
+      "outputs": [
+        "सकोस्"
+      ]
+    },
+    {
+      "input": "kathanak",
+      "outputs": [
+        "कथानक"
+      ]
+    },
+    {
+      "input": "arambha",
+      "outputs": [
+        "आरम्भ"
+      ]
+    },
+    {
+      "input": "ekadhik",
+      "outputs": [
+        "एकाधिक"
+      ]
+    },
+    {
+      "input": "jaghanya",
+      "outputs": [
+        "जघन्य"
+      ]
+    },
+    {
+      "input": "pukar",
+      "outputs": [
+        "पुकार"
+      ]
+    },
+    {
+      "input": "niskanda",
+      "outputs": [
+        "निस्कँदा"
+      ]
+    },
+    {
+      "input": "bora",
+      "outputs": [
+        "बोरा"
+      ]
+    },
+    {
+      "input": "utthan",
+      "outputs": [
+        "उत्थान"
+      ]
+    },
+    {
+      "input": "samanjasya",
+      "outputs": [
+        "सामञ्जस्य"
+      ]
+    },
+    {
+      "input": "bhagna",
+      "outputs": [
+        "भग्न",
+        "भाग्न"
+      ]
+    }
+  ],
+  "provenance": {
+    "frozenSourceReviewFile": "benchmark/reports/nepali-source-review-2026-10-01.json",
+    "frozenSourceReviewSha256": "5d9b36e39481d3f790fed503968f6bc504e71780ba083d8ed214f27ef674d34a",
+    "frozenSourceReviewReviewedAt": "2026-10-01",
+    "frozenReferenceSubsetSha256": "a5f662269a64daa5b9e146bbab3640f1db7b42179a3fb671a9edf0236a0378aa",
+    "frozenReferenceSubsetHashMethod": "SHA-256 of UTF-8 JSON of the ordered target array projected to sourceReviewCaseId, input, referenceOutputs and preferredReferenceIndex, using ensure_ascii=False, sort_keys=True and separators=(comma, colon), without a final newline.",
+    "frozenReferenceSubsetFields": [
+      "sourceReviewCaseId",
+      "input",
+      "referenceOutputs",
+      "preferredReferenceIndex"
+    ],
+    "frozenReferenceSubsetCount": 13,
+    "referenceStatus": "All target references and preferred indices are copied unchanged from the frozen 2026-10-01 project development review; no reference was added or corrected in this refresh.",
+    "refreshMethod": "Assistant browser retrieval of primary online Nepali material on 2026-10-09, using full page or PDF text where available and explicitly limited indexed excerpts where retrieval failed. This is source-assisted corroboration; no human review is claimed."
+  },
+  "policy": {
+    "accuracyScope": "Selected project development references; these cases are implementation targets and cannot measure independent held-out or population accuracy.",
+    "romanIntent": "Whole-form Nepali attestation supports the spelling but does not independently establish the informal Roman writer’s intended word or a deterministic keyboard mapping.",
+    "implementationScope": "Exact lowercase lexical entries, with existing explicit keyboard behavior protected by the runtime’s established policy.",
+    "singleReferenceOrder": "The twelve single-output targets retain frozen preferredReferenceIndex 0.",
+    "ambiguousAlternativeOrder": "bhagna retains frozen reference order [भाग्न, भग्न] and preferredReferenceIndex null. implementationEntries uses [भग्न, भाग्न] solely to preserve the existing engine default भग्न while exposing the missing भाग्न alternative. This ordering makes no linguistic frequency or unique-intent claim.",
+    "sourceAccess": "verifiedAt records the browser check date. Browser line numbers are retrieval locators and may change. Full-page scope means returned HTML text was inspected; indexed-snippet and uninspected visual pages remain explicitly limited.",
+    "copyright": "Only narrow spelling support notes and source metadata are recorded; full articles, sentences and poems are not reproduced."
+  },
+  "deferred": [
+    {
+      "inputs": [
+        "mahila"
+      ],
+      "reason": "The alpha.2 default is महिल. The frozen valid alternatives महिला and माहिला do not establish a unique ranked default; defer the ordering and default choice."
+    },
+    {
+      "inputs": [
+        "shanta",
+        "angrejharuko"
+      ],
+      "reason": "Multiple frozen valid readings or variants have no unique preferred default; defer ranking decisions."
+    },
+    {
+      "category": "names and contextual compounds",
+      "reason": "Defer personal and foreign names, context-dependent readings and compounds requiring broader morphology or word-boundary decisions."
+    }
+  ]
+}

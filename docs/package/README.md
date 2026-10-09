@@ -2,7 +2,7 @@
 
 SahajLipi provides a dependency-free Nepali transliteration engine and optional browser input adapters. These pages describe the reusable package: its public contract, implementation, typing rules, and measurement method. The separate [demo documentation](../demo/README.md) covers the playground and its controls.
 
-The API, architecture, and typing guides describe the **published `0.1.0-alpha.2` developer alpha**. Its default fallback uses full bare and final consonants (`k` → क, `kr` → क्र), with internal conjuncts formed automatically. Backtick or `/` explicitly keeps a consonant half; a following vowel is independent. Exact lexicon readings retain priority. Use `createEngine({ consonantMode: 'half' })` for alpha.1 fallback compatibility and pass both converters to browser fields as shown in the [migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior).
+The API and architecture guides describe the **published `0.1.0-alpha.2` developer alpha**. The typing guide also marks the **unreleased 2026-10-09 native spelling batch**, available in the repository checkout and its demo. That batch is not in the published npm package. Alpha.2's default fallback uses full bare and final consonants (`k` → क, `kr` → क्र), with internal conjuncts formed automatically. Backtick or `/` explicitly keeps a consonant half; a following vowel is independent. Exact lexicon readings retain priority. Use `createEngine({ consonantMode: 'half' })` for alpha.1 fallback compatibility and pass both converters to browser fields as shown in the [migration recipe](integration-recipes.md#keep-alpha1-consonant-behavior).
 
 | Read | For |
 | --- | --- |
@@ -22,6 +22,7 @@ The API, architecture, and typing guides describe the **published `0.1.0-alpha.2
 | [Earlier source-assisted online review](assisted-online-review.md) | Historical 100-case draft recommendations and research evidence. |
 | [Ra-ya review and changes](ry-review.md) | Word-specific joiner preferences, Shift lookup, fixed-fixture results and source-quality triage. |
 | [Original English loanword pilot](loanword-review.md) | The dated 20-word pilot, its 34-key source catalogue, and original limits. |
+| [Unreleased native spelling follow-up](nepali-spelling-2026-10-09.md) | Twelve exact preferences, the additional `bhagna` reading, source access and unchanged-reference development measurements. |
 | [Native spelling review](nepali-spelling-2026-10-01.md) | Four exact vowel/nasal aliases, source evidence, frozen validation and unchanged-rule limits. |
 | [Loanword suffixes and review](loanword-suffixes-2026-10-01.md) | Current 51-stem scope, 19 suffix keys, school alternatives, source evidence, customization and recorded comparisons. |
 | [Earlier loanword expansion](loanword-expansion-2026-09-28.md) | The dated 30-key expansion, its candidate inventory and held decisions. |
