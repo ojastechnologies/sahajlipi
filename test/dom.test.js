@@ -438,6 +438,82 @@ test("committed Nepali deletes a full visible grapheme", (t) => {
   assert.equal(field.value, "पा");
 });
 
+test("Backspace segments only text near the caret in a long field", (t) => {
+  const RealSegmenter = Intl.Segmenter;
+  const segmented = [];
+  Intl.Segmenter = class extends RealSegmenter {
+    segment(text) {
+      segmented.push(text.length);
+      return super.segment(text);
+    }
+  };
+  t.after(() => { Intl.Segmenter = RealSegmenter; });
+  const { field, beforeInput } = setup(t);
+  field.value = "क".repeat(20000) + "क्षि";
+  field.setSelectionRange(field.value.length, field.value.length);
+  beforeInput("deleteContentBackward");
+  assert.equal(field.value, "क".repeat(20000));
+  field.setSelectionRange(0, 0);
+  beforeInput("deleteContentForward");
+  assert.equal(field.value.length, 19999);
+  assert.ok(segmented.length > 0);
+  assert.ok(Math.max(...segmented) < 200, `segmented ${Math.max(...segmented)} code units`);
+});
+
+test("Backspace and Delete step by code point without Intl.Segmenter", (t) => {
+  const RealSegmenter = Intl.Segmenter;
+  Intl.Segmenter = undefined;
+  t.after(() => { Intl.Segmenter = RealSegmenter; });
+  const { field, beforeInput } = setup(t);
+  field.value = "a😀b😀";
+  field.setSelectionRange(field.value.length, field.value.length);
+  beforeInput("deleteContentBackward");
+  assert.equal(field.value, "a😀b");
+  field.setSelectionRange(1, 1);
+  beforeInput("deleteContentForward");
+  assert.equal(field.value, "ab");
+});
+
+function composingEvent(type, inputType, data = null) {
+  const event = new Event(type, { cancelable: type === "beforeinput" });
+  Object.defineProperties(event, {
+    inputType: { value: inputType },
+    data: { value: data },
+    isComposing: { value: false },
+  });
+  return event;
+}
+
+test("a composition without compositionend is finished by the next ordinary beforeinput", (t) => {
+  const { field, controller, type } = setup(t);
+  field.dispatchEvent(new Event("compositionstart"));
+  field.value = "pani";
+  field.setSelectionRange(4, 4);
+  // No compositionend: the next non-composing key must recover the adapter.
+  const space = composingEvent("beforeinput", "insertText", " ");
+  field.dispatchEvent(space);
+  assert.equal(space.defaultPrevented, true);
+  assert.equal(field.value, "पनि ");
+  type("paani");
+  assert.equal(field.value, "पनि पानी");
+  controller.undo();
+  assert.equal(field.value, "पनि पान");
+});
+
+test("a composition without compositionend is finished by the next ordinary input event", (t) => {
+  const { field, controller } = setup(t);
+  field.dispatchEvent(new Event("compositionstart"));
+  field.value = "pani";
+  field.setSelectionRange(4, 4);
+  field.setRangeText(" paani", 4, 4, "end");
+  field.dispatchEvent(composingEvent("input", "insertText", " paani"));
+  assert.equal(field.value, "पनि पानी");
+  field.setRangeText("k", field.value.length, field.value.length, "end");
+  field.dispatchEvent(composingEvent("input", "insertText", "k"));
+  assert.equal(field.value, "पनि पानीक");
+  assert.equal(controller.getState().activeRoman, "k");
+});
+
 test("a mobile composition is converted after its final input event", async (t) => {
   const { field, controller } = setup(t);
   field.dispatchEvent(new Event("compositionstart"));
