@@ -111,6 +111,10 @@
     "title": "SahajLipi Status and Roadmap | Scope and Next Steps",
     "description": "Understand the published SahajLipi developer alpha, Nepali typing limits, package and demo status, review priorities, and next steps."
   },
+  "docs/extension-design.md": {
+    "title": "SahajLipi Browser Extension Spike | Coverage and Design",
+    "description": "A prototype Manifest V3 extension for SahajLipi Nepali typing: what it covers, why rich editors need more, privacy, and the recommended path."
+  },
   "docs/brand.md": {
     "title": "SahajLipi Brand Guide | Name, Logo, Colors, and Assets",
     "description": "Use SahajLipi logos, mark, wordmark, colors, typography, social preview, and accessible names consistently across the repository and package website."

@@ -13,3 +13,7 @@ website/.vitepress/cache/
 .site-dist/
 site-test-results/
 site-playwright-report/
+
+# Browser extension build output and test bundles
+extension/dist/
+extension/fixtures/.generated/

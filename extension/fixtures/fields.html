@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>SahajLipi extension fields</title></head>
+<body>
+  <h1>Plain fields</h1>
+  <textarea id="textarea" rows="3" cols="40"></textarea>
+  <input id="text" type="text">
+  <input id="search" type="search">
+  <input id="ignored" type="text" data-sahajlipi-ignore>
+  <input id="email" type="email">
+  <input id="card" type="text" autocomplete="cc-number" inputmode="numeric">
+  <input id="otp" type="text" autocomplete="one-time-code">
+  <input id="username" type="text" autocomplete="section-login username">
+  <div id="editable" contenteditable="true" style="border:1px solid #999;min-height:2em"></div>
+  <div id="shadow-host"></div>
+  <iframe id="frame" src="frame.html" title="Same-origin frame"></iframe>
+  <script>
+    document.querySelector('#shadow-host').attachShadow({ mode: 'open' }).innerHTML =
+      '<input id="shadow-input" type="text">';
+    setTimeout(() => {
+      const late = document.createElement('textarea');
+      late.id = 'late';
+      document.body.append(late);
+    }, 50);
+  </script>
+</body>
+</html>
