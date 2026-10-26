@@ -730,3 +730,26 @@ test("a directly attached field cannot be attached twice and is released on dest
   type(input, " paani");
   assert.equal(input.value, "पनि पानी");
 });
+
+test("a field attached elsewhere does not stop later fields from attaching automatically", async (t) => {
+  const document = setup();
+  const manager = attachNepaliInputs();
+  const taken = new FakeField("input", "text");
+  const direct = attachNepaliInput(taken);
+  t.after(() => { direct.destroy(); manager.destroy(); document.cleanup(); });
+
+  taken.setAttribute("data-sahajlipi");
+  document.appendChild(taken);
+  await mutationsFlush();
+  assert.equal(manager.getController(taken), null);
+
+  const later = field(document, "textarea", "text", true);
+  await mutationsFlush();
+  assert.ok(manager.getController(later));
+  type(later, "pani");
+  assert.equal(later.value, "पनि");
+
+  document.removeChild(later);
+  await mutationsFlush();
+  assert.equal(manager.getController(later), null);
+});
