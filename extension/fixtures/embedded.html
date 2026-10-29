@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Page that embeds SahajLipi</title></head>
+<body>
+  <textarea id="embedded" data-sahajlipi></textarea>
+  <script type="module">
+    import { attachNepaliInputs } from '../../src/dom.js';
+    window.pageManager = attachNepaliInputs(document);
+    document.body.dataset.ready = 'true';
+  </script>
+</body>
+</html>

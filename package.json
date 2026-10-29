@@ -33,7 +33,9 @@
     "site:build": "node tools/prepare-site.js && vitepress build website",
     "site:check": "node tools/verify-site.js",
     "site:preview": "python3 tools/serve-site.py --port 4178",
-    "test:site": "npm run site:build && npm run site:check && playwright test -c playwright.site.config.js"
+    "test:site": "npm run site:build && npm run site:check && playwright test -c playwright.site.config.js",
+    "extension:build": "node tools/build-extension.js",
+    "extension:check": "node tools/check-extension.js"
   },
   "engines": {
     "node": ">=18"

@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "SahajLipi Nepali Typing (prototype)",
+  "short_name": "SahajLipi",
+  "version": "0.0.1",
+  "description": "Type Roman Nepali and get Unicode Devanagari in ordinary text boxes on sites you turn it on for.",
+  "minimum_chrome_version": "111",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "optional_host_permissions": ["https://*/*", "http://*/*"],
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "SahajLipi Nepali typing",
+    "default_popup": "src/popup.html"
+  },
+  "commands": {
+    "toggle-nepali": {
+      "suggested_key": { "default": "Alt+Shift+N" },
+      "description": "Turn Nepali typing on or off for this site"
+    }
+  }
+}
