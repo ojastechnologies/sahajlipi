@@ -288,22 +288,31 @@ export function attachNepaliInput(input, {
 
   function insertRoman(letters) { insertText(letters); }
 
+  // Segment a window around the caret instead of the whole value. The window
+  // grows only while one grapheme fills it, so long fields stay cheap.
   function previousGraphemeStart(caret, text = input.value) {
-    const prefix = text.slice(0, caret);
-    if (!prefix) return caret;
-    if (segmenter) {
-      let previous = 0;
-      for (const part of segmenter.segment(prefix)) previous = part.index;
-      return previous;
+    if (caret <= 0) return caret;
+    if (!segmenter) return caret - Array.from(text.slice(Math.max(0, caret - 2), caret)).at(-1).length;
+    for (let size = 32; ; size *= 2) {
+      const windowStart = Math.max(0, caret - size);
+      let previous = windowStart;
+      for (const part of segmenter.segment(text.slice(windowStart, caret))) {
+        previous = windowStart + part.index;
+      }
+      if (previous > windowStart || windowStart === 0) return previous;
     }
-    return caret - Array.from(prefix).at(-1).length;
   }
 
   function nextGraphemeEnd(caret) {
-    const suffix = input.value.slice(caret);
-    if (!suffix) return caret;
-    if (segmenter) return caret + segmenter.segment(suffix)[Symbol.iterator]().next().value.segment.length;
-    return caret + Array.from(suffix)[0].length;
+    const length = input.value.length;
+    if (caret >= length) return caret;
+    if (!segmenter) return caret + Array.from(input.value.slice(caret, caret + 2))[0].length;
+    for (let size = 32; ; size *= 2) {
+      const windowEnd = Math.min(length, caret + size);
+      const first = segmenter.segment(input.value.slice(caret, windowEnd))[Symbol.iterator]().next().value;
+      const end = caret + first.segment.length;
+      if (end < windowEnd || windowEnd === length) return end;
+    }
   }
 
   function deleteBackward() {
@@ -361,7 +370,15 @@ export function attachNepaliInput(input, {
     restore(next);
   }
 
+  // Some IMEs end a composition without compositionend. A later event that the
+  // browser marks as non-composing shows the composition is over.
+  function compositionWasAbandoned(event) {
+    return composing && event.isComposing === false &&
+      !/Composition/.test(event.inputType ?? "");
+  }
+
   function onBeforeInput(event) {
+    if (compositionWasAbandoned(event)) finishComposition();
     if (composing || event.isComposing) return;
     if (!event.cancelable) return;
     const kind = event.inputType;
@@ -445,7 +462,12 @@ export function attachNepaliInput(input, {
   }
 
   function onInput(event) {
-    if (mutating || composing || compositionBefore) return;
+    if (mutating) return;
+    if (compositionWasAbandoned(event)) {
+      finishComposition();
+      return;
+    }
+    if (composing || compositionBefore) return;
     if (input.value === lastSnapshot.value) return;
     reconcileNative(lastSnapshot, event.inputType);
   }
@@ -519,13 +541,17 @@ export function attachNepaliInput(input, {
   function onCompositionEnd() {
     composing = false;
     // Some mobile keyboards dispatch their final input event after compositionend.
-    compositionTimer = setTimeout(() => {
-      compositionTimer = null;
-      if (destroyed || !compositionBefore) return;
-      const before = compositionBefore;
-      compositionBefore = null;
-      reconcileNative(before, 'insertCompositionText');
-    }, 0);
+    compositionTimer = setTimeout(finishComposition, 0);
+  }
+
+  function finishComposition() {
+    composing = false;
+    if (compositionTimer !== null) clearTimeout(compositionTimer);
+    compositionTimer = null;
+    if (destroyed || !compositionBefore) return;
+    const before = compositionBefore;
+    compositionBefore = null;
+    reconcileNative(before, 'insertCompositionText');
   }
 
   function chooseCandidate(index) {
@@ -665,18 +691,26 @@ export function attachNepaliInputs(root = globalThis.document, {
   const isExcluded = (field) => typeof field.matches === "function" &&
     field.matches(excludeSelector);
 
-  function refresh() {
+  // A direct or explicit scan rejects fields attached elsewhere before attaching
+  // anything. Observer scans skip those fields so one conflict cannot stall
+  // discovery of later fields.
+  function refresh({ skipConflicts = false } = {}) {
     if (destroyed) return;
     const matches = new Set(root.querySelectorAll(fieldSelector));
     if (typeof root.matches === "function" && root.matches(fieldSelector)) matches.add(root);
-    const eligible = [...matches].filter((field) => isSupportedField(field) && !isExcluded(field));
-    for (const field of eligible) {
-      if (!controllers.has(field) && attachedFields.has(field)) {
-        throw new TypeError("This field already has a SahajLipi adapter attached");
+    for (const [field, controller] of controllers) {
+      if (!matches.has(field) || !isSupportedField(field) || isExcluded(field)) {
+        controller.destroy();
+        controllers.delete(field);
       }
     }
+    const eligible = [...matches].filter((field) => isSupportedField(field) && !isExcluded(field));
+    const conflicts = eligible.filter((field) => !controllers.has(field) && attachedFields.has(field));
+    if (conflicts.length && !skipConflicts) {
+      throw new TypeError("This field already has a SahajLipi adapter attached");
+    }
     for (const field of eligible) {
-      if (!controllers.has(field)) {
+      if (!controllers.has(field) && !conflicts.includes(field)) {
         let registered = false;
         let pendingInitial = false;
         const controller = attachNepaliInput(field, {
@@ -705,12 +739,6 @@ export function attachNepaliInputs(root = globalThis.document, {
         }
       }
     }
-    for (const [field, controller] of controllers) {
-      if (!matches.has(field) || !isSupportedField(field) || isExcluded(field)) {
-        controller.destroy();
-        controllers.delete(field);
-      }
-    }
   }
 
   refresh();
@@ -734,7 +762,7 @@ export function attachNepaliInputs(root = globalThis.document, {
           .some(containsEligibleOrManaged);
       }
       return false;
-    })) refresh();
+    })) refresh({ skipConflicts: true });
   }
 
   const Observer = root.defaultView?.MutationObserver ??
@@ -752,7 +780,9 @@ export function attachNepaliInputs(root = globalThis.document, {
   observer?.observe(root, observeOptions);
 
   return {
-    refresh,
+    refresh() {
+      refresh();
+    },
     getController(field) {
       return controllers.get(field) ?? null;
     },
