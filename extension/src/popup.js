@@ -3,6 +3,7 @@ import { originPattern, siteKey, siteOrigin } from "./site.js";
 const siteLabel = document.querySelector("#site");
 const toggle = document.querySelector("#toggle");
 const note = document.querySelector("#note");
+const remember = document.querySelector("#remember");
 const forget = document.querySelector("#forget");
 
 const send = (message) => chrome.runtime.sendMessage(message);
@@ -17,10 +18,11 @@ async function render() {
   // the script never reached; a click then has to turn it on, not off.
   toggle.checked = status?.enabled ?? false;
   toggle.disabled = false;
+  remember.hidden = granted || !status?.enabled;
   forget.hidden = !granted;
   note.textContent = granted
     ? "Remembered for this site."
-    : status ? "On for this tab only. Allow the site to remember it." : "";
+    : status?.enabled ? "On for this tab until it navigates." : "";
 }
 
 if (!origin) {
@@ -31,15 +33,16 @@ if (!origin) {
   toggle.addEventListener("change", async () => {
     const enabled = toggle.checked;
     toggle.disabled = true;
-    // Apply before asking: Chrome's permission dialog can close this popup, and
-    // nothing after the prompt would then run. activeTab covers this tab either
-    // way; the request, made while the click still counts as a user gesture,
-    // only decides whether the site is remembered.
-    const applied = send({ type: "sahajlipi:set-site", tabId: tab.id, enabled });
-    if (enabled) await chrome.permissions.request({ origins: [originPattern(origin)] }).catch(() => false);
-    const result = await applied;
+    // The click grants activeTab for this tab, so no permission is needed here.
+    const result = await send({ type: "sahajlipi:set-site", tabId: tab.id, enabled });
     await render();
     if (!result?.ok) note.textContent = `Could not run here: ${result?.reason ?? "unknown error"}`;
+  });
+  // Chrome's dialog can close this popup, so the service worker registers the
+  // site from permissions.onAdded. A refusal leaves this tab as it is.
+  remember.addEventListener("click", async () => {
+    await chrome.permissions.request({ origins: [originPattern(origin)] }).catch(() => false);
+    await render();
   });
   forget.addEventListener("click", async () => {
     await chrome.storage.local.remove(siteKey(origin));

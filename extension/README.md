@@ -13,7 +13,8 @@ The build bundles `sahajlipi/dom` and the extension's content script into `exten
 
 ## Use
 
-- Click the toolbar button on a site and switch **Nepali typing on this site** on. Chrome asks once for access to that site; allowing it remembers the site, and declining still turns typing on for the current tab until it navigates.
+- Click the toolbar button and switch **Nepali typing on this site** on. It starts straight away in this tab, with no prompt, and lasts until the tab navigates.
+- Click **Remember this site** to keep it across reloads. Chrome asks once for access to that site; declining leaves the current tab as it is.
 - **Alt+Shift+N** toggles the current site. Rebind it at `chrome://extensions/shortcuts`.
 - Ambiguous words show a small list under the field; click a choice or press **Alt+1**…**Alt+9**. **Escape** closes it.
 - **Forget this site** in the popup removes the site's access and its saved choice.

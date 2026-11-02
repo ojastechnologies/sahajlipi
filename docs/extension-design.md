@@ -23,7 +23,7 @@ Status: **prototype spike, 2026-10-26.** Not published to any store. Code: [`ext
 | **Chosen:** `activeTab` + optional host permission per origin | None at install | Yes, after the user approves that one origin | Light; optional permissions are justified per use |
 | `activeTab` only | None | No: every tab and every navigation needs a click or the shortcut | Lightest |
 
-How it plays out: when the user switches a site on in the popup, the script is injected into the open tab through `activeTab` straight away, and Chrome asks for that origin only. The injection comes first because the permission dialog can close the popup, and nothing after the prompt would then run. If they approve, the background worker adds the origin to a dynamic content script registration (`chrome.scripting.registerContentScripts`, `allFrames: true`) so later page loads get the script too. If they decline, typing keeps working in the current tab until it navigates. **Forget this site** removes the permission and the saved choice. The cost of opt-in is friction: a new site needs a click and a permission dialog, and the keyboard shortcut cannot ask for a permission, so on an unapproved site it only covers the current page.
+How it plays out: the popup switch never asks for anything. Clicking it grants `activeTab`, so the script is injected into the open tab straight away and typing lasts until that tab navigates. Once typing is on, a separate **Remember this site** button makes the one request, for that origin only. If the user approves, the background worker adds the origin to a dynamic content script registration (`chrome.scripting.registerContentScripts`, `allFrames: true`) from `permissions.onAdded`, which also works if the dialog closed the popup, so later page loads get the script too. If they decline, the current tab is unchanged and the site is not remembered. This split means Deny can never look ignored: the switch only ever speaks for this tab. **Forget this site** removes the permission and the saved choice. The cost of opt-in is friction: until a site is remembered, each page load needs a click or the shortcut, and remembering it takes one more click and a permission dialog. The shortcut cannot ask for a permission, so on an unapproved site it only covers the current page.
 
 ## Coverage assessment
 
@@ -69,7 +69,7 @@ How it plays out: when the user switches a site on in the popup, the script is i
 
 ## Test log
 
-Run: `npm run extension:check` ([`tools/check-extension.js`](../tools/check-extension.js)), 2026-11-02. Playwright 1.63.0, Chromium 153.0.8010.12 (Playwright's `chromium` channel, headless), macOS 27.0.1, Node 22.22.3. The unpacked extension was copied to a temp directory with `host_permissions` for `http://127.0.0.1:4181/*` added, standing in for an approved permission prompt. Fixtures are served from the repository by `python3 -m http.server`. Result: **33 passed, 0 failed.**
+Run: `npm run extension:check` ([`tools/check-extension.js`](../tools/check-extension.js)), 2026-11-02. Playwright 1.63.0, Chromium 153.0.8010.12 (Playwright's `chromium` channel, headless), macOS 27.0.1, Node 22.22.3. The unpacked extension was copied to a temp directory with `host_permissions` for `http://127.0.0.1:4181/*` added, standing in for an approved permission prompt. Fixtures are served from the repository by `python3 -m http.server`. Result: **40 passed, 0 failed.**
 
 | Area | Check | Result |
 | --- | --- | --- |
@@ -81,18 +81,18 @@ Run: `npm run extension:check` ([`tools/check-extension.js`](../tools/check-exte
 | Candidates | `ma` → `म`; dropdown 4 px under the field; clicking `मा` replaces the word, keeps focus, closes the list; Escape closes it | Pass |
 | Re-injection | `executeScript` on a tab that already has the script does not attach twice | Pass |
 | Toggle | popup's `set-site` message turns the site off (typing literal) and on; off survives a reload | Pass |
-| First enable | switching on from the popup on an open page converts without a reload, with the permission request left unanswered as if the dialog had closed the popup (fails with the earlier request-first order) | Pass |
+| First enable | switching on from the popup on an open page converts without a reload and requests no permission | Pass |
+| Remember | hidden until typing is on; asks for this origin only; a refusal (stubbed) leaves the switch and typing on; an approved site offers Forget instead | Pass |
 | Opt-in | `http://localhost:4181` (not granted) gets no script | Pass |
 | Double conversion | field marked `data-sahajlipi` and attached by the page converts once (without the exclusion: `ननअअममअअससततएए`) | Pass |
 | React | controlled input converts; state matches; survives re-render; candidate choice reaches state | Pass |
 | `npm test` | unit suite | 394 / 394 pass |
 
-**Manual retest, 2026-11-02:** the maintainer loaded the unpacked extension in their own browser and reported that first enable works without a reload through the real permission prompt, and that the logo shows.
+**Manual retest, 2026-11-02, before the permission request moved to its own button:** the maintainer loaded the unpacked extension in their own browser and reported that first enable worked without a reload through the real permission prompt, that the logo showed, and that the switch stayed on after clicking Deny, which led to this split.
 
 **Not verified:**
 
-- the decline path of the real permission prompt (it needs a human click);
-- the popup UI on a real toolbar (it was only driven by the message it sends);
+- the current popup flow with a real toolbar click and `activeTab`, and the real **Remember this site** prompt, both Allow and Deny (these need a human click);
 - the Alt+Shift+N command;
 - headed Chrome or Edge stable;
 - real third-party sites;

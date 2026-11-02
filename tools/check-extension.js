@@ -154,9 +154,9 @@ try {
   })());
   check('candidate choice reaches React state', await page.locator('#mirror').textContent(), 'नमस्ते मा');
 
-  // First enable on an already open page. Chrome's permission dialog can close the popup,
-  // so a request that never resolves stands in for it. Typing must start without a reload.
-  // This run reaches the page through its host permission; a real popup uses activeTab.
+  // First enable on an already open page: the switch needs no permission and no reload.
+  // Stubs make the origin look unapproved. This run reaches the page through its test host
+  // permission; a real popup click uses activeTab.
   await worker.evaluate(() => chrome.scripting.unregisterContentScripts());
   await worker.evaluate((key) => chrome.storage.local.remove(key), `site:${origin}`);
   const firstEnableUrl = `${fixtures}/fields.html?first-enable`;
@@ -164,17 +164,44 @@ try {
   await page.waitForTimeout(500);
   check('page starts without the script', await typeInto('#textarea', 'namaste'), 'namaste');
   await page.locator('#textarea').fill('');
-  const prompting = await context.newPage();
-  await prompting.addInitScript((url) => {
+  const popupUrl = `chrome-extension://${new URL(worker.url()).host}/src/popup.html`;
+  const showActiveTab = (url) => {
     const query = chrome.tabs.query.bind(chrome.tabs);
     chrome.tabs.query = (filter) => query(filter.active ? { url } : filter);
-    chrome.permissions.request = () => new Promise(() => {});
-  }, firstEnableUrl);
-  await prompting.goto(`chrome-extension://${new URL(worker.url()).host}/src/popup.html`);
-  await prompting.locator('#toggle').click();
-  await page.waitForTimeout(500);
+  };
+  const unapproved = await context.newPage();
+  await unapproved.addInitScript(showActiveTab, firstEnableUrl);
+  await unapproved.addInitScript(() => {
+    globalThis.permissionRequests = [];
+    chrome.permissions.contains = async () => false;
+    chrome.permissions.request = async (request) => {
+      globalThis.permissionRequests.push(request);
+      return false;
+    };
+  });
+  await unapproved.goto(popupUrl);
+  const permissionRequests = () => unapproved.evaluate(() => JSON.stringify(globalThis.permissionRequests));
+  check('Remember is hidden until typing is on', await unapproved.locator('#remember').isVisible(), false);
+  await unapproved.locator('#toggle').click();
+  await unapproved.locator('#remember').waitFor();
+  check('the switch does not ask for permission', await permissionRequests(), '[]');
+  check('popup says the tab is on until it navigates', await unapproved.locator('#note').textContent(), 'On for this tab until it navigates.');
   await page.bringToFront();
   check('first enable works without a reload', await typeInto('#textarea', 'namaste'), 'नमस्ते');
+  await unapproved.bringToFront();
+  await unapproved.locator('#remember').click();
+  await unapproved.waitForFunction(() => globalThis.permissionRequests.length === 1);
+  check('Remember asks for this origin only', await permissionRequests(), JSON.stringify([{ origins: [`${origin}/*`] }]));
+  await unapproved.locator('#remember').waitFor();
+  check('declining leaves the switch on', await unapproved.locator('#toggle').isChecked(), true);
+  await page.bringToFront();
+  await page.locator('#textarea').fill('');
+  check('declining leaves typing on in this tab', await typeInto('#textarea', 'namaste'), 'नमस्ते');
+  const approved = await context.newPage();
+  await approved.addInitScript(showActiveTab, firstEnableUrl);
+  await approved.goto(popupUrl);
+  await approved.locator('#forget').waitFor();
+  check('an approved site offers Forget, not Remember', await approved.locator('#remember').isVisible(), false);
 } finally {
   await context?.close();
   server.kill();
