@@ -35,5 +35,6 @@ Loads the unpacked extension in Playwright's Chromium and runs the fixture pages
 | `src/candidates.js` | Candidate list in a closed shadow root next to the focused field. |
 | `src/background.js` | Registers the content script for granted sites, injects into the active tab, handles the shortcut. |
 | `src/popup.*` | Toolbar popup. |
+| `icons/` | Toolbar and store icons, rendered from `assets/brand/favicon.svg` (16, 32) and `mark.svg` (48, 128). |
 | `fixtures/` | Local pages used by `npm run extension:check`. |
 | `dist/` | Build output (not committed). |

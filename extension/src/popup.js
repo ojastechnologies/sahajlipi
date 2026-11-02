@@ -13,8 +13,9 @@ const origin = tab?.url ? siteOrigin(tab.url) : null;
 async function render() {
   const granted = await chrome.permissions.contains({ origins: [originPattern(origin)] });
   const status = await send({ type: "sahajlipi:tab-status", tabId: tab.id });
-  const stored = (await chrome.storage.local.get(siteKey(origin)))[siteKey(origin)];
-  toggle.checked = status ? status.enabled : granted && stored !== false;
+  // Report what this tab is doing. An approved site can still have an open page
+  // the script never reached; a click then has to turn it on, not off.
+  toggle.checked = status?.enabled ?? false;
   toggle.disabled = false;
   forget.hidden = !granted;
   note.textContent = granted
@@ -30,10 +31,13 @@ if (!origin) {
   toggle.addEventListener("change", async () => {
     const enabled = toggle.checked;
     toggle.disabled = true;
-    // Ask while the click still counts as a user gesture. A refusal still
-    // leaves activeTab, which covers this tab until it navigates.
+    // Apply before asking: Chrome's permission dialog can close this popup, and
+    // nothing after the prompt would then run. activeTab covers this tab either
+    // way; the request, made while the click still counts as a user gesture,
+    // only decides whether the site is remembered.
+    const applied = send({ type: "sahajlipi:set-site", tabId: tab.id, enabled });
     if (enabled) await chrome.permissions.request({ origins: [originPattern(origin)] }).catch(() => false);
-    const result = await send({ type: "sahajlipi:set-site", tabId: tab.id, enabled });
+    const result = await applied;
     await render();
     if (!result?.ok) note.textContent = `Could not run here: ${result?.reason ?? "unknown error"}`;
   });

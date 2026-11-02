@@ -153,6 +153,28 @@ try {
     return [box.x + 20, box.y + box.height * 0.72];
   })());
   check('candidate choice reaches React state', await page.locator('#mirror').textContent(), 'नमस्ते मा');
+
+  // First enable on an already open page. Chrome's permission dialog can close the popup,
+  // so a request that never resolves stands in for it. Typing must start without a reload.
+  // This run reaches the page through its host permission; a real popup uses activeTab.
+  await worker.evaluate(() => chrome.scripting.unregisterContentScripts());
+  await worker.evaluate((key) => chrome.storage.local.remove(key), `site:${origin}`);
+  const firstEnableUrl = `${fixtures}/fields.html?first-enable`;
+  await page.goto(firstEnableUrl);
+  await page.waitForTimeout(500);
+  check('page starts without the script', await typeInto('#textarea', 'namaste'), 'namaste');
+  await page.locator('#textarea').fill('');
+  const prompting = await context.newPage();
+  await prompting.addInitScript((url) => {
+    const query = chrome.tabs.query.bind(chrome.tabs);
+    chrome.tabs.query = (filter) => query(filter.active ? { url } : filter);
+    chrome.permissions.request = () => new Promise(() => {});
+  }, firstEnableUrl);
+  await prompting.goto(`chrome-extension://${new URL(worker.url()).host}/src/popup.html`);
+  await prompting.locator('#toggle').click();
+  await page.waitForTimeout(500);
+  await page.bringToFront();
+  check('first enable works without a reload', await typeInto('#textarea', 'namaste'), 'नमस्ते');
 } finally {
   await context?.close();
   server.kill();
