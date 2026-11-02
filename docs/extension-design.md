@@ -87,9 +87,11 @@ Run: `npm run extension:check` ([`tools/check-extension.js`](../tools/check-exte
 | React | controlled input converts; state matches; survives re-render; candidate choice reaches state | Pass |
 | `npm test` | unit suite | 394 / 394 pass |
 
+**Manual retest, 2026-11-02:** the maintainer loaded the unpacked extension in their own browser and reported that first enable works without a reload through the real permission prompt, and that the logo shows.
+
 **Not verified:**
 
-- the real permission prompt, the decline path and real `activeTab` injection (these need a human click; the first-enable check reaches the page through a test host permission);
+- the decline path of the real permission prompt (it needs a human click);
 - the popup UI on a real toolbar (it was only driven by the message it sends);
 - the Alt+Shift+N command;
 - headed Chrome or Edge stable;
