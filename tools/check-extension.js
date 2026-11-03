@@ -8,6 +8,8 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { chromium } from '@playwright/test';
 import { build } from 'esbuild';
+import { convertText } from '../src/index.js';
+import { TYPING_GUIDE } from '../extension/src/typing-guide.js';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const port = 4181;
@@ -75,10 +77,17 @@ try {
   check('one-time-code field stays literal', await typeInto('#otp', '123456'), '123456');
   check('username field stays literal', await typeInto('#username', 'ram'), 'ram');
   check('textarea added after load converts', await typeInto('#late', 'namaste'), 'नमस्ते');
+  const notice = page.locator('sahajlipi-notice');
+  check('excluded and supported fields show no notice', await notice.isVisible(), false);
   await page.locator('#editable').click();
   await page.keyboard.type('namaste');
   check('contenteditable is not converted (unsupported)', await page.locator('#editable').textContent(), 'namaste');
+  check('typing in a rich text box shows the notice', await notice.isVisible(), true);
+  const noticeBox = await notice.boundingBox();
+  const editableBox = await page.locator('#editable').boundingBox();
+  check('notice sits just below the box', Math.round(noticeBox.y - (editableBox.y + editableBox.height)), 6);
   check('input inside a shadow root is not converted (unsupported)', await typeInto('#shadow-input', 'namaste'), 'namaste');
+  check('notice hides when focus leaves the box, and shows once per page', await notice.isVisible(), false);
   check('same-origin iframe converts (allFrames)', await typeInto('#frame-input', 'namaste', page.frameLocator('#frame')), 'नमस्ते');
 
   // Candidate dropdown: "ma" is ambiguous between म and मा.
@@ -123,6 +132,45 @@ try {
   await toast.waitFor({ state: 'hidden', timeout: 3000 });
   check('shortcut confirmation clears itself', await toast.isVisible(), false);
 
+  // The notice for boxes the extension cannot type in.
+  const noticeKey = `notice-off:${origin}`;
+  const noticePage = await context.newPage();
+  const noticeHost = noticePage.locator('sahajlipi-notice');
+  await noticePage.goto(`${fixtures}/fields.html?shadow-notice`);
+  await noticePage.waitForTimeout(500);
+  await noticePage.locator('#shadow-input').click();
+  await noticePage.locator('#shadow-input').evaluate((element) => {
+    element.dispatchEvent(new InputEvent('beforeinput', { inputType: 'insertText', data: 'a', bubbles: true, composed: true, cancelable: true }));
+  });
+  check('a synthetic event does not trigger the notice', await noticeHost.isVisible(), false);
+  await noticePage.keyboard.press('1');
+  check('a digit does not trigger the notice', await noticeHost.isVisible(), false);
+  await noticePage.keyboard.type('a');
+  check('an input inside a shadow root shows the notice', await noticeHost.isVisible(), true);
+  await noticePage.goto(`${fixtures}/fields.html?off-notice`);
+  await noticePage.waitForTimeout(500);
+  await worker.evaluate((key) => chrome.storage.local.set({ [key]: false }), `site:${origin}`);
+  await noticePage.locator('#editable').click();
+  await noticePage.keyboard.type('a');
+  check('no notice while typing is off', await noticeHost.isVisible(), false);
+  await worker.evaluate((key) => chrome.storage.local.set({ [key]: true }), `site:${origin}`);
+  await noticePage.goto(`${fixtures}/fields.html?dismiss-notice`);
+  await noticePage.waitForTimeout(500);
+  await noticePage.locator('#editable').click();
+  await noticePage.keyboard.type('a');
+  const dismissBox = await noticeHost.boundingBox();
+  await noticePage.mouse.click(dismissBox.x + dismissBox.width - 30, dismissBox.y + dismissBox.height / 2);
+  check('dismissing hides the notice', await noticeHost.isVisible(), false);
+  check('dismissing keeps focus in the box', await noticePage.evaluate(() => document.activeElement.id), 'editable');
+  check('dismissing is saved for the site', await worker.evaluate(async (key) => (await chrome.storage.local.get(key))[key], noticeKey), true);
+  await noticePage.reload();
+  await noticePage.waitForTimeout(500);
+  await noticePage.locator('#editable').click();
+  await noticePage.keyboard.type('a');
+  check('a dismissed site shows no notice', await noticeHost.isVisible(), false);
+  await worker.evaluate((key) => chrome.storage.local.remove(key), noticeKey);
+  await noticePage.close();
+
   // A second injection into the same isolated world must not attach twice.
   await worker.evaluate(async (url) => {
     const [tab] = await chrome.tabs.query({ url });
@@ -132,8 +180,17 @@ try {
   check('re-injection does not double-convert', await typeInto('#textarea', 'namaste'), 'नमस्ते');
 
   // Toggle through the same message the popup sends.
+  // The popup's typing guide must match what the engine does.
+  for (const [roman, nepali] of TYPING_GUIDE) check(`typing guide: ${roman}`, convertText(roman), nepali);
   const popup = await context.newPage();
   await popup.goto(`chrome-extension://${new URL(worker.url()).host}/src/popup.html`);
+  check('typing guide starts collapsed', await popup.locator('#guide-list').isVisible(), false);
+  await popup.locator('#guide summary').click();
+  check('typing guide opens and lists every example', await popup.locator('#guide-list > div').count(), TYPING_GUIDE.length);
+  check('typing guide shows Nepali output', await popup.locator('#guide-list > div').first().locator('dd').textContent(), TYPING_GUIDE[0][1]);
+  const guideHeight = await popup.evaluate(() => document.querySelector('main').getBoundingClientRect().height);
+  check(`open popup fits the browser's 600px limit (${Math.ceil(guideHeight)}px)`, guideHeight <= 600, true);
+  check('reference link opens a new tab', await popup.locator('.links a').first().getAttribute('target'), '_blank');
   const setSite = (enabled) => popup.evaluate(async ({ url, enabled }) => {
     const [tab] = await chrome.tabs.query({ url });
     return chrome.runtime.sendMessage({ type: 'sahajlipi:set-site', tabId: tab.id, enabled });

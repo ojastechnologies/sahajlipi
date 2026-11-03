@@ -1,7 +1,8 @@
 import { attachNepaliInputs } from "sahajlipi/dom";
 import { createCandidateMenu } from "./candidates.js";
-import { siteKey } from "./site.js";
+import { noticeKey, siteKey } from "./site.js";
 import { createStatusToast } from "./status-toast.js";
+import { createUnsupportedNotice, isUnsupportedEditable } from "./unsupported-notice.js";
 
 // The registered script and an activeTab injection share this isolated world;
 // the flag keeps a second injection from attaching the same fields again.
@@ -28,7 +29,8 @@ function topOrigin() {
 
 async function start() {
   const key = siteKey(topOrigin());
-  const stored = await chrome.storage.local.get(key);
+  const dismissKey = noticeKey(topOrigin());
+  const stored = await chrome.storage.local.get([key, dismissKey]);
   let manager = null;
   const menu = createCandidateMenu(document, {
     onChoose(field, index) {
@@ -46,6 +48,21 @@ async function start() {
     console.warn("SahajLipi could not attach to this page:", error);
     return null;
   }
+  // Typing a letter into a box the adapter cannot reach would otherwise just stay
+  // in Roman, which looks broken. Say why, once per page, at the moment it matters.
+  let noticeDone = Boolean(stored[dismissKey]);
+  const notice = createUnsupportedNotice(document, {
+    onDismiss: () => chrome.storage.local.set({ [dismissKey]: true }),
+  });
+  document.addEventListener("beforeinput", (event) => {
+    if (noticeDone || !manager.getEnabled()) return;
+    if (!event.isTrusted || event.isComposing || event.inputType !== "insertText") return;
+    if (!/[a-z]/i.test(event.data ?? "")) return;
+    const element = event.composedPath()[0];
+    if (manager.getController(element) || !isUnsupportedEditable(element, EXCLUDE_SELECTOR)) return;
+    noticeDone = true;
+    notice.show(element);
+  }, true);
   // The toolbar badge follows the tab, so only its top frame reports.
   const reportState = () => {
     if (window !== window.top) return;
@@ -57,6 +74,7 @@ async function start() {
   chrome.storage.onChanged.addListener((changes, area) => {
     if (area !== "local" || !(key in changes)) return;
     manager.setEnabled(changes[key].newValue ?? false);
+    if (!manager.getEnabled()) notice.hide();
     reportState();
   });
   chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {

@@ -1,4 +1,5 @@
-import { originPattern, siteKey, siteOrigin } from "./site.js";
+import { noticeKey, originPattern, siteKey, siteOrigin } from "./site.js";
+import { TYPING_GUIDE } from "./typing-guide.js";
 
 const siteLabel = document.querySelector("#site");
 const toggle = document.querySelector("#toggle");
@@ -9,6 +10,19 @@ const shortcut = document.querySelector("#shortcut");
 const shortcutKey = document.querySelector("#shortcut-key");
 
 const send = (message) => chrome.runtime.sendMessage(message);
+
+document.querySelector("#guide-list").append(...TYPING_GUIDE.map(([roman, nepali]) => {
+  const entry = document.createElement("div");
+  const term = document.createElement("dt");
+  const key = document.createElement("kbd");
+  key.textContent = roman;
+  term.append(key);
+  const result = document.createElement("dd");
+  result.lang = "ne";
+  result.textContent = nepali;
+  entry.append(term, result);
+  return entry;
+}));
 
 const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 const origin = tab?.url ? siteOrigin(tab.url) : null;
@@ -70,7 +84,7 @@ if (!origin) {
     if (!granted) say("Not remembered. Still on until you leave or reload this page.");
   });
   forget.addEventListener("click", async () => {
-    await chrome.storage.local.remove(siteKey(origin));
+    await chrome.storage.local.remove([siteKey(origin), noticeKey(origin)]);
     await chrome.permissions.remove({ origins: [originPattern(origin)] });
     await render();
   });

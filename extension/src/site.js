@@ -8,6 +8,11 @@ export function siteKey(origin) {
   return `site:${origin}`;
 }
 
+/** The storage key set when the user stops the "can't type here" notice on one site. */
+export function noticeKey(origin) {
+  return `notice-off:${origin}`;
+}
+
 /** Returns the origin of an http(s) URL, or null for pages extensions cannot script. */
 export function siteOrigin(url) {
   try {

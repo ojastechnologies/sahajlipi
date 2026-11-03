@@ -17,7 +17,9 @@ The build bundles `sahajlipi/dom` and the extension's content script into `exten
 - Click **Remember this site** to keep it across reloads. Chrome asks once for access to that site; declining leaves the current tab as it is.
 - **Alt+Shift+N** toggles the current site and shows a brief confirmation on the page. Rebind it at `chrome://extensions/shortcuts`; the popup shows the current binding.
 - Ambiguous words show a small list at the caret; click a choice or press **Alt+1**…**Alt+9** (**Option+1**…**Option+9** on macOS). **Escape** closes it.
-- **Forget this site** in the popup removes the site's access and its saved choice.
+- Typing in a box the extension can't reach, such as a rich editor, shows a short notice once per page. **Don't show again** stops it on that site.
+- **Typing guide** in the popup lists common spellings and links to the full typing reference and the demo.
+- **Forget this site** in the popup removes the site's access and its saved choices.
 
 ## Check
 
@@ -35,8 +37,10 @@ Loads the unpacked extension in Playwright's Chromium and runs the fixture pages
 | `src/content.js` | Attaches `attachNepaliInputs(document, { scope: 'all' })` and follows the site's on/off choice. |
 | `src/candidates.js` | Candidate list in a closed shadow root, placed at the caret. |
 | `src/status-toast.js` | On-page confirmation for the keyboard shortcut. |
+| `src/unsupported-notice.js` | Notice shown when typing in a box the adapter cannot attach to. |
 | `src/background.js` | Registers the content script for granted sites, injects into the active tab, handles the shortcut. |
 | `src/popup.*` | Toolbar popup. |
+| `src/typing-guide.js` | Typing guide examples; `extension:check` verifies them against the engine. |
 | `icons/` | Toolbar and store icons, rendered from `assets/brand/favicon.svg` (16, 32) and `mark.svg` (48, 128). |
 | `fixtures/` | Local pages used by `npm run extension:check`. |
 | `dist/` | Build output (not committed). |
