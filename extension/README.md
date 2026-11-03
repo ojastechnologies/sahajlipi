@@ -28,7 +28,7 @@ The build bundles `sahajlipi/dom` and the extension's content script into `exten
 npm run extension:check
 ```
 
-Installs the test editors from `tools/extension-editors/`, loads the unpacked extension in Playwright's Chromium and runs the fixture pages in `fixtures/`. See the design note's test log for what that covers.
+Installs the test editors from `tools/extension-editors/`, loads the unpacked extension in Playwright's Chromium and runs the fixture pages in `fixtures/`. See the design note's test log for what that covers. CI runs it on every pull request and every push to `main`.
 
 ## Layout
 
