@@ -4,7 +4,7 @@ Status: **prototype spike, 2026-10-26; rich text support added 2026-11-03.** Not
 
 **Question:** could a browser extension let people type SahajLipi on any website?
 
-**Short answer:** an extension built on the current adapter works in plain `<textarea>`, text and search boxes, including React-controlled ones. Most of the places people write Nepali day to day are rich editors (Gmail, Facebook, Messenger, WhatsApp Web, Slack, Notion, X). The extension now covers `contenteditable` boxes too, and passes against the real Draft.js, Lexical, ProseMirror, Slate and Quill libraries. **That result comes from local test pages. Live sites customise these editors and have not been tested, so it does not yet show that any named site works.** Google Docs stays out of reach because it draws on a canvas. Phased recommendation is at the end.
+**Short answer:** an extension built on the current adapter works in plain `<textarea>`, text and search boxes, including React-controlled ones. Most of the places people write Nepali day to day are rich editors (Gmail, Facebook, Messenger, WhatsApp Web, Slack, Notion, X). The extension now covers `contenteditable` boxes too, and passes against the real Draft.js, Lexical, ProseMirror, Slate and Quill libraries. **That result comes from local test pages, plus one live site: the maintainer reports typing works on X. Live sites customise these editors, so this does not yet show that any other named site works.** Google Docs stays out of reach because it draws on a canvas. Phased recommendation is at the end.
 
 ## What the prototype does
 
@@ -89,11 +89,11 @@ How it plays out: the popup switch never asks for anything. Clicking it grants `
 3. **Broad coverage: test the rich text path on live sites first, and keep an OS-level input method as the fallback.**
    - The earlier advice here was not to build a `contenteditable` adapter. One now exists and passes on the five libraries, at a cost of about 400 lines, which is less than expected. Its open risk is the one predicted: it depends on editor internals and breaks if sites change them, so it needs a per-site test list and a way to switch off per site.
    - An OS input method (macOS Input Method Kit, Windows Text Services Framework, Linux IBus/Fcitx, Android/iOS keyboards) remains the only route to canvas editors, native apps and phones. The engine is dependency-free JavaScript with deterministic rules, so it can be embedded in a small JS runtime or ported per platform. The cost is a separate product per OS with its own signing and distribution.
-   - **Decide after the manual pass:** if X, Gmail and Facebook hold up, the extension is worth shipping for desktop web users. If they need per-site patches, prefer the OS input method for broad coverage.
+   - **Decide after the manual pass:** X has been reported working. If Gmail and Facebook hold up too, the extension is worth shipping for desktop web users. If they need per-site patches, prefer the OS input method for broad coverage.
 
 ## Test log
 
-Run: `npm run extension:check` ([`tools/check-extension.js`](../tools/check-extension.js)), 2026-11-03. Playwright 1.63.0, Chromium 153.0.8010.12 (Playwright's `chromium` channel, headless), macOS 27.0.1, Node 22.22.3. The unpacked extension was copied to a temp directory with `host_permissions` for `http://127.0.0.1:4181/*` added, standing in for an approved permission prompt. Fixtures are served from the repository by `python3 -m http.server`. Result: **179 passed, 0 failed.**
+Run: `npm run extension:check` ([`tools/check-extension.js`](../tools/check-extension.js)), 2026-11-03. Playwright 1.63.0, Chromium 153.0.8010.12 (Playwright's `chromium` channel, headless), macOS 27.0.1, Node 22.22.3. The unpacked extension was copied to a temp directory with `host_permissions` for `http://127.0.0.1:4181/*` added, standing in for an approved permission prompt. Fixtures are served from the repository by `python3 -m http.server`. Result: **227 passed, 0 failed.**
 
 | Area | Check | Result |
 | --- | --- | --- |
@@ -115,12 +115,15 @@ Run: `npm run extension:check` ([`tools/check-extension.js`](../tools/check-exte
 
 **Manual retest, 2026-11-02, before the permission request moved to its own button:** the maintainer loaded the unpacked extension in their own browser and reported that first enable worked without a reload through the real permission prompt, that the logo showed, and that the switch stayed on after clicking Deny, which led to this split.
 
+**Manual check on X, 2026-11-03, merged build:** the maintainer tested the rich text build in their own browser, signed in to X, and reported that typing Nepali works. This is one person's report on one site, with no details recorded for individual cases.
+
 **Not verified:**
 
 - the current popup flow with a real toolbar click and `activeTab`, and the real **Remember this site** prompt, both Allow and Deny (these need a human click);
 - the Alt+Shift+N command;
 - headed Chrome or Edge stable;
-- real third-party sites, including any live rich text box (X, Gmail, Facebook, Slack and others), mention menus and hashtag handling there;
+- real third-party sites other than X, including any other live rich text box (Gmail, Facebook, Slack and others);
+- mention menus, hashtag handling and the character count on X or any live site;
 - the candidate list's position in rich text boxes (clicking it is checked, its placement is not), and Alt+digit and Escape there;
 - macOS Option+digit candidate keys on a physical keyboard (the extension now matches the physical key; only a synthetic event was checked);
 - the "can't type here" notice on a real site (only fixtures were checked);
