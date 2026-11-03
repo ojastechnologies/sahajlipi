@@ -33,6 +33,15 @@ const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
 manifest.host_permissions = [`${origin}/*`];
 await writeFile(manifestPath, JSON.stringify(manifest, null, 2));
 
+// Real editors, from their own small package so the published one gains no dependencies.
+await build({
+  absWorkingDir: path.join(root, 'tools/extension-editors'),
+  entryPoints: ['editors.jsx'],
+  outfile: path.join(root, 'extension/fixtures/.generated/editors.js'),
+  bundle: true, format: 'iife', platform: 'browser', jsx: 'automatic',
+  define: { 'process.env.NODE_ENV': '"development"', global: 'globalThis' }, logLevel: 'warning',
+});
+
 const server = spawn('python3', ['-m', 'http.server', String(port), '--bind', '127.0.0.1'], { cwd: root, stdio: 'ignore' });
 const results = [];
 function check(name, actual, expected) {
@@ -81,13 +90,20 @@ try {
   check('excluded and supported fields show no notice', await notice.isVisible(), false);
   await page.locator('#editable').click();
   await page.keyboard.type('namaste');
-  check('contenteditable is not converted (unsupported)', await page.locator('#editable').textContent(), 'namaste');
-  check('typing in a rich text box shows the notice', await notice.isVisible(), true);
-  const noticeBox = await notice.boundingBox();
-  const editableBox = await page.locator('#editable').boundingBox();
-  check('notice sits just below the box', Math.round(noticeBox.y - (editableBox.y + editableBox.height)), 6);
+  check('contenteditable converts', await page.locator('#editable').textContent(), 'नमस्ते');
+  await page.locator('#editable-ignored').click();
+  await page.keyboard.type('namaste');
+  check('contenteditable marked data-sahajlipi-ignore stays literal', await page.locator('#editable-ignored').textContent(), 'namaste');
+  check('a box handled as rich text shows no notice', await notice.isVisible(), false);
   check('input inside a shadow root is not converted (unsupported)', await typeInto('#shadow-input', 'namaste'), 'namaste');
-  check('notice hides when focus leaves the box, and shows once per page', await notice.isVisible(), false);
+  check('typing in an unsupported box shows the notice', await notice.isVisible(), true);
+  const noticeBox = await notice.boundingBox();
+  const unsupportedBox = await page.locator('#shadow-input').boundingBox();
+  check('notice sits just below the box', Math.round(noticeBox.y - (unsupportedBox.y + unsupportedBox.height)), 6);
+  await page.locator('#search').click();
+  check('notice hides when focus leaves the box', await notice.isVisible(), false);
+  await typeInto('#shadow-input', 'a');
+  check('notice shows once per page', await notice.isVisible(), false);
   check('same-origin iframe converts (allFrames)', await typeInto('#frame-input', 'namaste', page.frameLocator('#frame')), 'नमस्ते');
 
   // Candidate dropdown: "ma" is ambiguous between म and मा.
@@ -150,22 +166,22 @@ try {
   await noticePage.goto(`${fixtures}/fields.html?off-notice`);
   await noticePage.waitForTimeout(500);
   await worker.evaluate((key) => chrome.storage.local.set({ [key]: false }), `site:${origin}`);
-  await noticePage.locator('#editable').click();
+  await noticePage.locator('#shadow-input').click();
   await noticePage.keyboard.type('a');
   check('no notice while typing is off', await noticeHost.isVisible(), false);
   await worker.evaluate((key) => chrome.storage.local.set({ [key]: true }), `site:${origin}`);
   await noticePage.goto(`${fixtures}/fields.html?dismiss-notice`);
   await noticePage.waitForTimeout(500);
-  await noticePage.locator('#editable').click();
+  await noticePage.locator('#shadow-input').click();
   await noticePage.keyboard.type('a');
   const dismissBox = await noticeHost.boundingBox();
   await noticePage.mouse.click(dismissBox.x + dismissBox.width - 30, dismissBox.y + dismissBox.height / 2);
   check('dismissing hides the notice', await noticeHost.isVisible(), false);
-  check('dismissing keeps focus in the box', await noticePage.evaluate(() => document.activeElement.id), 'editable');
+  check('dismissing keeps focus in the box', await noticePage.evaluate(() => document.activeElement.id), 'shadow-host');
   check('dismissing is saved for the site', await worker.evaluate(async (key) => (await chrome.storage.local.get(key))[key], noticeKey), true);
   await noticePage.reload();
   await noticePage.waitForTimeout(500);
-  await noticePage.locator('#editable').click();
+  await noticePage.locator('#shadow-input').click();
   await noticePage.keyboard.type('a');
   check('a dismissed site shows no notice', await noticeHost.isVisible(), false);
   await worker.evaluate((key) => chrome.storage.local.remove(key), noticeKey);
@@ -236,6 +252,98 @@ try {
     return [box.x + 20, box.y + box.height * 0.72];
   })());
   check('candidate choice reaches React state', await page.locator('#mirror').textContent(), 'नमस्ते मा');
+
+  // Real rich text editors. What counts is the editor's own model: that is what a site
+  // posts, and the DOM can show text the model never accepted.
+  const siteKeyName = `site:${origin}`;
+  const setStored = (enabled) => worker.evaluate(([key, value]) => chrome.storage.local.set({ [key]: value }), [siteKeyName, enabled]);
+  const scenarios = [
+    ['word and space', 'नमस्ते ', async () => page.keyboard.type('namaste ')],
+    ['two words', 'मेरो नेपाल', async () => page.keyboard.type('mero nepal')],
+    ['Backspace edits the Roman word', 'नमस', async () => {
+      await page.keyboard.type('namast');
+      await page.keyboard.press('Backspace');
+      await page.keyboard.press('Backspace');
+      await page.keyboard.type('s');
+    }],
+    ['Enter starts a new line', 'राम\nनेपाल', async () => {
+      await page.keyboard.type('ram');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('nepal');
+    }],
+    ['Backspace at a line start merges lines', 'राम नेपाल', async () => {
+      await page.keyboard.type('ram');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Backspace');
+      await page.keyboard.type(' nepal');
+    }],
+    ['candidate click, then more typing', 'मा राम', async () => {
+      await page.keyboard.type('ma');
+      const box = await page.locator('sahajlipi-candidates').boundingBox();
+      await page.mouse.click(box.x + 20, box.y + box.height * 0.72);
+      await page.keyboard.type(' ram');
+    }],
+    ['typing over a selection in one line', 'नेपाल', async () => {
+      await page.keyboard.type('ram');
+      await page.keyboard.press('ControlOrMeta+a');
+      await page.keyboard.type('nepal');
+      await page.waitForTimeout(400);
+    }],
+    ['typing over a selection across lines', 'मेरो', async () => {
+      await page.keyboard.type('ram');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('nepal');
+      await page.keyboard.press('ControlOrMeta+a');
+      await page.waitForTimeout(150);
+      await page.keyboard.type('mero');
+      await page.waitForTimeout(400);
+    }],
+    ['typing in the middle of a line', 'मराम नेपाल', async () => {
+      await page.keyboard.type('ram nepal');
+      for (let i = 0; i < 6; i++) await page.keyboard.press('ArrowLeft');
+      await page.keyboard.type('ma');
+    }],
+    ['a web address stays literal', 'हि https://a.co ', async () => page.keyboard.type('hi https://a.co ')],
+  ];
+  const editable = page.locator('[contenteditable="true"]').first();
+  const openEditor = async (editor) => {
+    await page.goto(`${fixtures}/rich.html?editor=${editor}`);
+    await page.waitForTimeout(400);
+    await editable.click();
+  };
+  const readEditor = async () => {
+    await page.waitForTimeout(150);
+    return page.evaluate(() => ({
+      model: editorText().replace(/\n+/g, '\n'),
+      shown: document.querySelector('[contenteditable="true"]').innerText.replace(/\uFEFF/g, '').replace(/\n+/g, '\n').replace(/\n$/, ''),
+    }));
+  };
+  const pageErrors = [];
+  page.on('pageerror', (error) => pageErrors.push(error.message));
+  for (const editor of ['plain', 'draft', 'lexical', 'prosemirror', 'slate', 'quill']) {
+    for (const [name, expected, act] of scenarios) {
+      await openEditor(editor);
+      await act();
+      const { model, shown } = await readEditor();
+      check(`${editor}: ${name}`, model, expected);
+      check(`${editor}: ${name} (shown matches model)`, shown.replace(/\u00A0/g, ' '), expected);
+    }
+    await openEditor(editor);
+    await page.keyboard.type('ram nepal');
+    await page.waitForTimeout(400);
+    await page.keyboard.press('ControlOrMeta+z');
+    await page.waitForTimeout(150);
+    const undone = (await readEditor()).model;
+    check(`${editor}: undo goes to the editor and leaves no Roman text`, /[a-z]/i.test(undone) || undone === 'राम नेपाल', false);
+    await setStored(false);
+    await openEditor(editor);
+    await page.keyboard.type('namaste');
+    check(`${editor}: typing is literal while the site is off`, (await readEditor()).model, 'namaste');
+    await setStored(true);
+    check(`${editor}: no page errors`, pageErrors.join('; '), '');
+    pageErrors.length = 0;
+  }
+  await worker.evaluate((key) => chrome.storage.local.remove(key), siteKeyName);
 
   // First enable on an already open page: the switch needs no permission and no reload.
   // Stubs make the origin look unapproved. This run reaches the page through its test host

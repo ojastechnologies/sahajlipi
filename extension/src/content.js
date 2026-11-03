@@ -1,5 +1,6 @@
 import { attachNepaliInputs } from "sahajlipi/dom";
 import { createCandidateMenu } from "./candidates.js";
+import { createRichTextFields } from "./rich-text.js";
 import { noticeKey, siteKey } from "./site.js";
 import { createStatusToast } from "./status-toast.js";
 import { createUnsupportedNotice, isUnsupportedEditable } from "./unsupported-notice.js";
@@ -32,17 +33,24 @@ async function start() {
   const dismissKey = noticeKey(topOrigin());
   const stored = await chrome.storage.local.get([key, dismissKey]);
   let manager = null;
+  let rich = null;
   const menu = createCandidateMenu(document, {
     onChoose(field, index) {
-      manager?.getController(field)?.chooseCandidate(index);
+      (manager?.getController(field) ?? rich?.getController(field))?.chooseCandidate(index);
     },
   });
   try {
+    const enabled = stored[key] ?? true;
     manager = attachNepaliInputs(document, {
       scope: "all",
       excludeSelector: EXCLUDE_SELECTOR,
-      enabled: stored[key] ?? true,
+      enabled,
       onStateChange: (state, field) => menu.update(field, state),
+    });
+    rich = createRichTextFields(document, {
+      excludeSelector: EXCLUDE_SELECTOR,
+      enabled,
+      onStateChange: (state, field, anchor) => menu.update(field, state, anchor),
     });
   } catch (error) {
     console.warn("SahajLipi could not attach to this page:", error);
@@ -59,7 +67,8 @@ async function start() {
     if (!event.isTrusted || event.isComposing || event.inputType !== "insertText") return;
     if (!/[a-z]/i.test(event.data ?? "")) return;
     const element = event.composedPath()[0];
-    if (manager.getController(element) || !isUnsupportedEditable(element, EXCLUDE_SELECTOR)) return;
+    if (manager.getController(element) || rich.manages(element)) return;
+    if (!isUnsupportedEditable(element, EXCLUDE_SELECTOR)) return;
     noticeDone = true;
     notice.show(element);
   }, true);
@@ -74,6 +83,7 @@ async function start() {
   chrome.storage.onChanged.addListener((changes, area) => {
     if (area !== "local" || !(key in changes)) return;
     manager.setEnabled(changes[key].newValue ?? false);
+    rich.setEnabled(changes[key].newValue ?? false);
     if (!manager.getEnabled()) notice.hide();
     reportState();
   });

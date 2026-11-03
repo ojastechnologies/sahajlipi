@@ -1,0 +1,23 @@
+{
+  "name": "sahajlipi-extension-editor-fixtures",
+  "private": true,
+  "description": "Real rich text editors for npm run extension:check. Kept apart from the package's own dev dependencies; Draft.js needs React 18.",
+  "dependencies": {
+    "draft-js": "0.11.7",
+    "lexical": "0.21.0",
+    "@lexical/rich-text": "0.21.0",
+    "@lexical/history": "0.21.0",
+    "prosemirror-example-setup": "1.2.3",
+    "prosemirror-model": "1.24.1",
+    "prosemirror-schema-basic": "1.2.3",
+    "prosemirror-state": "1.4.3",
+    "prosemirror-view": "1.37.1",
+    "quill": "2.0.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "slate": "0.112.0",
+    "slate-dom": "0.112.2",
+    "slate-history": "0.110.3",
+    "slate-react": "0.112.1"
+  }
+}

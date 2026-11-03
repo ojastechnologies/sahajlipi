@@ -57,10 +57,12 @@ export function createCandidateMenu(doc, { onChoose }) {
   shadow.append(style, menu, live);
 
   let field = null;
+  let anchor = null;
   let count = 0;
 
   function hide() {
     field = null;
+    anchor = null;
     count = 0;
     live.textContent = "";
     host.style.display = "none";
@@ -96,19 +98,20 @@ export function createCandidateMenu(doc, { onChoose }) {
 
   function position() {
     if (!field) return;
-    const rect = field.getBoundingClientRect();
-    const caret = caretPosition(field);
     const clamp = (value, low, high) => Math.min(Math.max(value, low), high);
-    // A one-line field keeps the list clear of its whole box; a text area follows the line.
     const multiline = field.tagName === "TEXTAREA";
-    const lineTop = multiline ? clamp(rect.top + caret.top, rect.top, rect.bottom) : rect.top;
-    const lineBottom = multiline ? clamp(rect.top + caret.bottom, rect.top, rect.bottom) : rect.bottom;
+    // A rich text box gives its caret through the anchor, and has no text to mirror.
+    const rect = anchor?.() ?? field.getBoundingClientRect();
+    const caret = anchor || typeof field.value !== "string" ? null : caretPosition(field);
+    // A one-line field keeps the list clear of its whole box; a text area follows the line.
+    const lineTop = caret && multiline ? clamp(rect.top + caret.top, rect.top, rect.bottom) : rect.top;
+    const lineBottom = caret && multiline ? clamp(rect.top + caret.bottom, rect.top, rect.bottom) : rect.bottom;
     const height = host.offsetHeight;
     const below = lineBottom + 4;
     const top = below + height > innerHeight && lineTop - height - 4 >= 0
       ? lineTop - height - 4
       : below;
-    const left = clamp(rect.left + caret.x, rect.left, rect.right);
+    const left = caret ? clamp(rect.left + caret.x, rect.left, rect.right) : rect.left;
     host.style.left = `${Math.max(0, Math.min(left, innerWidth - host.offsetWidth))}px`;
     host.style.top = `${top}px`;
   }
@@ -137,7 +140,7 @@ export function createCandidateMenu(doc, { onChoose }) {
     }));
   }
 
-  function update(changedField, state) {
+  function update(changedField, state, changedAnchor = null) {
     if (changedField !== doc.activeElement) {
       if (changedField === field) hide();
       return;
@@ -147,6 +150,7 @@ export function createCandidateMenu(doc, { onChoose }) {
       return;
     }
     field = changedField;
+    anchor = changedAnchor;
     count = state.candidates.length;
     if (!host.isConnected) doc.documentElement.append(host);
     render(state.candidates);

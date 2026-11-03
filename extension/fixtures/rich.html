@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Rich text editors</title>
+  <style>
+    #editor { border: 1px solid #999; min-height: 3em; padding: 4px; }
+    /* ProseMirror and Quill require this: without it a trailing space becomes U+00A0 in their models. */
+    #editor [contenteditable] { min-height: 3em; outline: none; white-space: pre-wrap; }
+  </style>
+</head>
+<body><div id="editor"></div><button id="other" type="button">Other</button><script src=".generated/editors.js"></script></body>
+</html>
