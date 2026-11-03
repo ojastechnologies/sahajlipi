@@ -50,6 +50,14 @@ async function setSite(tab, enabled) {
   return { ok: true };
 }
 
+// Per-tab, so the browser clears it when the tab navigates away.
+async function showTabState(tabId, enabled) {
+  await chrome.action.setBadgeBackgroundColor({ tabId, color: "#116B75" });
+  await chrome.action.setBadgeTextColor({ tabId, color: "#F4F7FA" });
+  await chrome.action.setBadgeText({ tabId, text: enabled ? "ने" : "" });
+  await chrome.action.setTitle({ tabId, title: `SahajLipi: Nepali typing ${enabled ? "on" : "off"}` });
+}
+
 chrome.runtime.onInstalled.addListener(syncRegistration);
 chrome.runtime.onStartup.addListener(syncRegistration);
 chrome.permissions.onAdded.addListener(syncRegistration);
@@ -58,10 +66,18 @@ chrome.permissions.onRemoved.addListener(syncRegistration);
 chrome.commands.onCommand.addListener(async (command, tab) => {
   if (command !== "toggle-nepali" || !tab?.id) return;
   const status = await tabStatus(tab.id);
-  await setSite(tab, status ? !status.enabled : true);
+  const enabled = status ? !status.enabled : true;
+  const result = await setSite(tab, enabled);
+  if (result.ok) {
+    await chrome.tabs.sendMessage(tab.id, { type: "sahajlipi:announce", enabled }, { frameId: 0 }).catch(() => {});
+  }
 });
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message?.type === "sahajlipi:state" && sender.id === chrome.runtime.id && sender.tab && sender.frameId === 0) {
+    showTabState(sender.tab.id, Boolean(message.enabled));
+    return false;
+  }
   // Only the extension's own pages (the popup) may drive these, not content scripts.
   if (sender.id !== chrome.runtime.id || !sender.url?.startsWith(chrome.runtime.getURL(""))) return false;
   if (message?.type === "sahajlipi:tab-status") {

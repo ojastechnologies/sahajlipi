@@ -1,6 +1,7 @@
 import { attachNepaliInputs } from "sahajlipi/dom";
 import { createCandidateMenu } from "./candidates.js";
 import { siteKey } from "./site.js";
+import { createStatusToast } from "./status-toast.js";
 
 // The registered script and an activeTab injection share this isolated world;
 // the flag keeps a second injection from attaching the same fields again.
@@ -45,10 +46,18 @@ async function start() {
     console.warn("SahajLipi could not attach to this page:", error);
     return null;
   }
+  // The toolbar badge follows the tab, so only its top frame reports.
+  const reportState = () => {
+    if (window !== window.top) return;
+    chrome.runtime.sendMessage({ type: "sahajlipi:state", enabled: manager.getEnabled() }).catch(() => {});
+  };
+  reportState();
   // A missing choice means "on" for a fresh injection, but forgetting a site
   // while its tabs are open should switch them off rather than on.
   chrome.storage.onChanged.addListener((changes, area) => {
-    if (area === "local" && key in changes) manager.setEnabled(changes[key].newValue ?? false);
+    if (area !== "local" || !(key in changes)) return;
+    manager.setEnabled(changes[key].newValue ?? false);
+    reportState();
   });
   chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     if (message?.type === "sahajlipi:status") sendResponse({ enabled: manager.getEnabled() });
@@ -56,4 +65,12 @@ async function start() {
   return manager;
 }
 
-if (!globalThis[INSTANCE]) globalThis[INSTANCE] = start();
+if (!globalThis[INSTANCE]) {
+  // Registered before start() awaits storage: the shortcut's announcement can
+  // arrive right after a first injection.
+  const showStatus = createStatusToast(document);
+  chrome.runtime.onMessage.addListener((message) => {
+    if (message?.type === "sahajlipi:announce") showStatus(message.enabled);
+  });
+  globalThis[INSTANCE] = start();
+}

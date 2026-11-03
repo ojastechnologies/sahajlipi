@@ -8,16 +8,27 @@
 </head>
 <body>
   <main>
-    <h1><img src="../icons/icon-48.png" alt="" width="24" height="24">SahajLipi <span lang="ne">सहजलिपि</span></h1>
-    <p id="site" class="site"></p>
-    <label class="switch">
-      <input type="checkbox" id="toggle" disabled>
-      <span>Nepali typing on this site</span>
-    </label>
-    <p id="note" class="note" role="status"></p>
-    <button type="button" id="remember" hidden>Remember this site</button>
-    <button type="button" id="forget" hidden>Forget this site</button>
-    <p class="hint">Shortcut: <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd>. Works in text boxes and text areas; not in rich editors.</p>
+    <header>
+      <img src="../icons/icon-48.png" alt="" width="28" height="28">
+      <div>
+        <h1>SahajLipi</h1>
+        <p id="site" class="site"></p>
+      </div>
+    </header>
+    <section class="control">
+      <label class="switch">
+        <span>Nepali typing</span>
+        <input type="checkbox" role="switch" id="toggle" disabled>
+      </label>
+      <p id="note" class="note" role="status"></p>
+      <button type="button" id="remember" class="button" hidden>Remember this site</button>
+      <button type="button" id="forget" class="link" hidden>Forget this site</button>
+    </section>
+    <footer>
+      <p>Type in Roman keys: <kbd>namaste</kbd> → <span lang="ne">नमस्ते</span></p>
+      <p>Works in plain text boxes. Not yet in rich editors such as Gmail or X posts.</p>
+      <p id="shortcut" hidden>Turn on or off with <kbd id="shortcut-key"></kbd></p>
+    </footer>
   </main>
 </body>
 </html>

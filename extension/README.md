@@ -13,10 +13,10 @@ The build bundles `sahajlipi/dom` and the extension's content script into `exten
 
 ## Use
 
-- Click the toolbar button and switch **Nepali typing on this site** on. It starts straight away in this tab, with no prompt, and lasts until the tab navigates.
+- Click the toolbar button and switch **Nepali typing** on. The toolbar badge shows ने while it is on. It starts straight away in this tab, with no prompt, and lasts until the tab navigates.
 - Click **Remember this site** to keep it across reloads. Chrome asks once for access to that site; declining leaves the current tab as it is.
-- **Alt+Shift+N** toggles the current site. Rebind it at `chrome://extensions/shortcuts`.
-- Ambiguous words show a small list under the field; click a choice or press **Alt+1**…**Alt+9**. **Escape** closes it.
+- **Alt+Shift+N** toggles the current site and shows a brief confirmation on the page. Rebind it at `chrome://extensions/shortcuts`; the popup shows the current binding.
+- Ambiguous words show a small list at the caret; click a choice or press **Alt+1**…**Alt+9** (**Option+1**…**Option+9** on macOS). **Escape** closes it.
 - **Forget this site** in the popup removes the site's access and its saved choice.
 
 ## Check
@@ -33,7 +33,8 @@ Loads the unpacked extension in Playwright's Chromium and runs the fixture pages
 | --- | --- |
 | `manifest.json` | MV3 manifest: `activeTab`, `scripting`, `storage`; site access is optional and requested per origin. |
 | `src/content.js` | Attaches `attachNepaliInputs(document, { scope: 'all' })` and follows the site's on/off choice. |
-| `src/candidates.js` | Candidate list in a closed shadow root next to the focused field. |
+| `src/candidates.js` | Candidate list in a closed shadow root, placed at the caret. |
+| `src/status-toast.js` | On-page confirmation for the keyboard shortcut. |
 | `src/background.js` | Registers the content script for granted sites, injects into the active tab, handles the shortcut. |
 | `src/popup.*` | Toolbar popup. |
 | `icons/` | Toolbar and store icons, rendered from `assets/brand/favicon.svg` (16, 32) and `mark.svg` (48, 128). |

@@ -97,6 +97,32 @@ try {
   await page.keyboard.press('Escape');
   check('Escape dismisses the dropdown', await menu.isVisible(), false);
 
+  // A tall text area: the list follows the caret's line instead of the box's bottom edge.
+  await page.locator('#textarea').evaluate((element) => { element.rows = 12; });
+  await page.locator('#textarea').fill('');
+  await typeInto('#textarea', 'ma');
+  const tallMenu = await menu.boundingBox();
+  const tallField = await page.locator('#textarea').boundingBox();
+  check('text area list sits near the caret line', tallMenu.y - tallField.y < 50, true);
+  check('text area list stays inside the field width', tallMenu.x >= tallField.x && tallMenu.x <= tallField.x + tallField.width, true);
+  // macOS Option+digit: event.key is not a digit, so the menu matches the physical key.
+  await page.locator('#textarea').evaluate((element) => {
+    element.dispatchEvent(new KeyboardEvent('keydown', { key: '™', code: 'Digit2', altKey: true, bubbles: true, cancelable: true }));
+  });
+  check('Option+2 chooses the second spelling', await page.locator('#textarea').inputValue(), 'मा');
+  await page.locator('#textarea').fill('');
+  await page.locator('#textarea').evaluate((element) => { element.rows = 3; });
+
+  // Toolbar badge and the shortcut's on-page confirmation.
+  const activeTabId = await worker.evaluate(async (url) => (await chrome.tabs.query({ url }))[0].id, page.url());
+  const badge = () => worker.evaluate((tabId) => chrome.action.getBadgeText({ tabId }), activeTabId);
+  check('badge shows typing is on', await badge(), 'ने');
+  await worker.evaluate((tabId) => chrome.tabs.sendMessage(tabId, { type: 'sahajlipi:announce', enabled: true }, { frameId: 0 }), activeTabId);
+  const toast = page.locator('sahajlipi-toast');
+  check('shortcut confirmation appears', await toast.isVisible(), true);
+  await toast.waitFor({ state: 'hidden', timeout: 3000 });
+  check('shortcut confirmation clears itself', await toast.isVisible(), false);
+
   // A second injection into the same isolated world must not attach twice.
   await worker.evaluate(async (url) => {
     const [tab] = await chrome.tabs.query({ url });
@@ -185,7 +211,7 @@ try {
   await unapproved.locator('#toggle').click();
   await unapproved.locator('#remember').waitFor();
   check('the switch does not ask for permission', await permissionRequests(), '[]');
-  check('popup says the tab is on until it navigates', await unapproved.locator('#note').textContent(), 'On for this tab until it navigates.');
+  check('popup says the tab is on until it navigates', await unapproved.locator('#note').textContent(), 'On until you leave or reload this page.');
   await page.bringToFront();
   check('first enable works without a reload', await typeInto('#textarea', 'namaste'), 'नमस्ते');
   await unapproved.bringToFront();
@@ -194,6 +220,8 @@ try {
   check('Remember asks for this origin only', await permissionRequests(), JSON.stringify([{ origins: [`${origin}/*`] }]));
   await unapproved.locator('#remember').waitFor();
   check('declining leaves the switch on', await unapproved.locator('#toggle').isChecked(), true);
+  await unapproved.waitForFunction(() => document.querySelector('#note').textContent.startsWith('Not remembered'));
+  check('declining says the site was not remembered', await unapproved.locator('#note').textContent(), 'Not remembered. Still on until you leave or reload this page.');
   await page.bringToFront();
   await page.locator('#textarea').fill('');
   check('declining leaves typing on in this tab', await typeInto('#textarea', 'namaste'), 'नमस्ते');

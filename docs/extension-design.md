@@ -12,7 +12,7 @@ Status: **prototype spike, 2026-10-26.** Not published to any store. Code: [`ext
 - **Content script** ([`src/content.js`](../extension/src/content.js)) calls `attachNepaliInputs(document, { scope: 'all', excludeSelector, enabled, onStateChange })` from the published `sahajlipi/dom` entry point. It does not change the engine, typing rules or adapter.
 - **Bundling:** MV3 content scripts are classic scripts and cannot `import`. `src/dom.js` imports `./index.js` and `./text-policy.js`, which import the lexicon, loanwords and phonetic modules. [`tools/build-extension.js`](../tools/build-extension.js) bundles all of it with esbuild (already a dev dependency) into a single IIFE, `extension/dist/content.js` (about 58 KB, unminified). `sahajlipi/dom` resolves through the package's own `exports` map, the same way a consumer's would. The build output is gitignored; run `npm run extension:build` before loading. Dynamic `import()` of `src/` files was rejected because it would expose them as `web_accessible_resources`, which any page can probe to fingerprint the extension.
 - **Toggle:** the toolbar popup and the **Alt+Shift+N** command flip a per-site boolean in `chrome.storage.local` (key `site:<origin>`). Every content script on that site, including its frames, listens for the change and calls `manager.setEnabled`. The choice survives reloads and browser restarts.
-- **Candidates:** [`src/candidates.js`](../extension/src/candidates.js) renders a small list under the focused field from `onStateChange` candidates. It lives in a closed shadow root so page CSS cannot restyle it. Click calls `controller.chooseCandidate(i)`, and `mousedown` is cancelled so focus and the active word stay in the field. The adapter's own **Alt+1–9** and **Escape** keys keep working.
+- **Candidates:** [`src/candidates.js`](../extension/src/candidates.js) renders a small list at the caret from `onStateChange` candidates. It lives in a closed shadow root so page CSS cannot restyle it. Click calls `controller.chooseCandidate(i)`, and `mousedown` is cancelled so focus and the active word stay in the field. The adapter's own **Alt+1–9** and **Escape** keys keep working.
 - **Sensitive fields:** `scope: 'all'` already skips email, password, number and tel inputs, because the adapter only accepts text and search inputs. Plain text inputs are still a risk. With default digits, `4111 1111` typed into a `type="text"` card box becomes `४१११ ११११`, and a Roman username becomes Devanagari. The extension extends the adapter's `excludeSelector` to skip fields that declare `inputmode` numeric/decimal/tel/email/url, or `autocomplete` card, one-time-code, tel, email, username, url or postal-code. It also skips `[data-sahajlipi]` fields (see double conversion). This is a heuristic. A card field with neither attribute is still converted, which is one reason the extension is per-site opt-in.
 
 ### Permission model and trade-off
@@ -96,6 +96,7 @@ Run: `npm run extension:check` ([`tools/check-extension.js`](../tools/check-exte
 - the Alt+Shift+N command;
 - headed Chrome or Edge stable;
 - real third-party sites;
-- macOS Option+digit candidate keys;
+- macOS Option+digit candidate keys on a physical keyboard (the extension now matches the physical key; only a synthetic event was checked);
+- the toolbar badge's appearance on a real toolbar (its text was read through the API), and the shortcut confirmation after a real key press (it was triggered by its message);
 - observer performance on heavy pages;
 - Firefox and Safari.
