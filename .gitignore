@@ -17,3 +17,4 @@ site-playwright-report/
 # Browser extension build output and test bundles
 extension/dist/
 extension/fixtures/.generated/
+.extension-dist/
