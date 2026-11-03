@@ -233,11 +233,14 @@ export function createRichTextFields(doc, { excludeSelector, enabled: initialEna
     return entry;
   }
 
+  function manages(element) {
+    if (UNSUPPORTED_HOSTS.has(location.hostname)) return false;
+    if (!element?.isContentEditable || element.closest(excludeSelector)) return false;
+    return element.closest("[contenteditable]") === element;
+  }
+
   function focusedHost() {
-    if (UNSUPPORTED_HOSTS.has(location.hostname)) return null;
-    const active = doc.activeElement;
-    if (!active?.isContentEditable || active.closest(excludeSelector)) return null;
-    return active.closest("[contenteditable]") === active ? active : null;
+    return manages(doc.activeElement) ? doc.activeElement : null;
   }
 
   // Line up the adapter with the editor before each edit. Anything the adapter did
@@ -301,6 +304,9 @@ export function createRichTextFields(doc, { excludeSelector, enabled: initialEna
   function typeInto(event, data) {
     const host = focusedHost();
     if (!host) return;
+    // With the caret elsewhere there is nowhere to type, so the key stays the page's.
+    const selection = doc.getSelection();
+    if (!selection?.rangeCount || !host.contains(selection.getRangeAt(0).startContainer)) return;
     take(event);
     if (queued) {
       queued.push(data);
@@ -362,6 +368,7 @@ export function createRichTextFields(doc, { excludeSelector, enabled: initialEna
   view.addEventListener("keydown", onKeyDown, true);
 
   return {
+    manages,
     setEnabled(next) {
       enabled = Boolean(next);
       for (const entry of entries.values()) entry.controller.setEnabled(enabled);
