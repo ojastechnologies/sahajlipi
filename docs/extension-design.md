@@ -1,6 +1,6 @@
 # Browser extension: design note and coverage assessment
 
-Status: **prototype spike, 2026-10-26; rich text support added 2026-11-03.** Not published to any store. Code: [`extension/`](../extension/README.md).
+Status: **prototype spike, 2026-10-26; rich text support added 2026-11-03.** Not published to any store. Code: [`extension/`](../extension/README.md). Releases: [release process](extension-release.md).
 
 **Question:** could a browser extension let people type SahajLipi on any website?
 

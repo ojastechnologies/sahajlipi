@@ -26,8 +26,9 @@ await build({
 });
 
 // Stand in for an approved permission prompt: grant the fixture origin up front.
+// EXTENSION_DIR tests an unpacked release zip instead of the working tree.
 const unpacked = await mkdtemp(path.join(tmpdir(), 'sahajlipi-extension-'));
-await cp(path.join(root, 'extension'), unpacked, { recursive: true });
+await cp(process.env.EXTENSION_DIR ?? path.join(root, 'extension'), unpacked, { recursive: true });
 const manifestPath = path.join(unpacked, 'manifest.json');
 const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
 manifest.host_permissions = [`${origin}/*`];

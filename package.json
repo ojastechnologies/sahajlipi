@@ -35,6 +35,7 @@
     "site:preview": "python3 tools/serve-site.py --port 4178",
     "test:site": "npm run site:build && npm run site:check && playwright test -c playwright.site.config.js",
     "extension:build": "node tools/build-extension.js",
+    "extension:package": "node tools/package-extension.js",
     "extension:check": "npm ci --prefix tools/extension-editors --ignore-scripts --no-audit --no-fund && node tools/check-extension.js"
   },
   "engines": {

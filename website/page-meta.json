@@ -115,6 +115,10 @@
     "title": "SahajLipi Browser Extension Spike | Coverage and Design",
     "description": "A prototype Manifest V3 extension for SahajLipi Nepali typing: text and rich text box coverage, known limits, privacy, and the recommended path."
   },
+  "docs/extension-release.md": {
+    "title": "SahajLipi Browser Extension Releases | Build and Rollout",
+    "description": "How the SahajLipi browser extension is versioned, packaged, checked in CI, uploaded to browser stores, rolled out, and rolled back."
+  },
   "docs/brand.md": {
     "title": "SahajLipi Brand Guide | Name, Logo, Colors, and Assets",
     "description": "Use SahajLipi logos, mark, wordmark, colors, typography, social preview, and accessible names consistently across the repository and package website."
