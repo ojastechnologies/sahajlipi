@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SahajLipi</title>
+  <link rel="stylesheet" href="popup.css">
+  <script type="module" src="popup.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <img src="../icons/icon-48.png" alt="" width="28" height="28">
+      <div>
+        <h1>SahajLipi</h1>
+        <p id="site" class="site"></p>
+      </div>
+    </header>
+    <section class="control">
+      <label class="switch">
+        <span>Nepali typing</span>
+        <input type="checkbox" role="switch" id="toggle" disabled>
+      </label>
+      <p id="note" class="note" role="status"></p>
+      <button type="button" id="remember" class="button" hidden>Remember this site</button>
+      <button type="button" id="forget" class="link" hidden>Forget this site</button>
+    </section>
+    <footer>
+      <p>Type in Roman keys: <kbd>namaste</kbd> → <span lang="ne">नमस्ते</span></p>
+      <p>Works in text boxes and most rich text boxes; not in Google Docs.</p>
+      <p id="shortcut" hidden>Turn on or off with <kbd id="shortcut-key"></kbd></p>
+      <details id="guide">
+        <summary>Typing guide</summary>
+        <dl id="guide-list"></dl>
+        <p class="links">
+          <a href="https://ojastechnologies.github.io/sahajlipi/docs/package/typing-reference.html" target="_blank" rel="noopener">Full typing reference</a>
+          <a href="https://ojastechnologies.github.io/sahajlipi/demo/" target="_blank" rel="noopener">Try the demo</a>
+        </p>
+      </details>
+    </footer>
+  </main>
+</body>
+</html>

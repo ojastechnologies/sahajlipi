@@ -67,6 +67,7 @@ The demo is one consumer of the package. Its Copy and Clear buttons, character c
 | [Changelog](../CHANGELOG.md) | Published alpha contents and migration notes. |
 | [Development guide](development.md) | Repository workflow, tests, CI, and release readiness. |
 | [Status and roadmap](status-and-roadmap.md) | Current capabilities, limits, and priorities. |
+| [Browser extension spike](extension-design.md) | Prototype MV3 extension, site coverage, privacy, and the path to broader typing coverage. |
 | [Website and SEO](website-and-seo.md) | Markdown site builds, metadata, sitemap, publishing, and discoverability limits. |
 | [Brand guide](brand.md) | Name, message, logo assets, colors, typography and repository identity. |
 | [Contributing](../CONTRIBUTING.md) | Reporting a typing issue or proposing a focused change. |
