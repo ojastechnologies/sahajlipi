@@ -36,15 +36,17 @@ export function createCandidateMenu(doc, { onChoose }) {
   shadow.append(style, menu);
 
   let field = null;
+  let anchor = null;
 
   function hide() {
     field = null;
+    anchor = null;
     host.style.display = "none";
   }
 
   function position() {
     if (!field) return;
-    const rect = field.getBoundingClientRect();
+    const rect = anchor?.() ?? field.getBoundingClientRect();
     const height = host.offsetHeight;
     const below = rect.bottom + 4;
     const top = below + height > innerHeight && rect.top - height - 4 >= 0
@@ -76,7 +78,7 @@ export function createCandidateMenu(doc, { onChoose }) {
     }));
   }
 
-  function update(changedField, state) {
+  function update(changedField, state, changedAnchor = null) {
     if (changedField !== doc.activeElement) {
       if (changedField === field) hide();
       return;
@@ -86,6 +88,7 @@ export function createCandidateMenu(doc, { onChoose }) {
       return;
     }
     field = changedField;
+    anchor = changedAnchor;
     if (!host.isConnected) doc.documentElement.append(host);
     render(state.candidates);
     host.style.display = "block";

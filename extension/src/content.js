@@ -1,5 +1,6 @@
 import { attachNepaliInputs } from "sahajlipi/dom";
 import { createCandidateMenu } from "./candidates.js";
+import { createRichTextFields } from "./rich-text.js";
 import { siteKey } from "./site.js";
 
 // The registered script and an activeTab injection share this isolated world;
@@ -29,17 +30,24 @@ async function start() {
   const key = siteKey(topOrigin());
   const stored = await chrome.storage.local.get(key);
   let manager = null;
+  let rich = null;
   const menu = createCandidateMenu(document, {
     onChoose(field, index) {
-      manager?.getController(field)?.chooseCandidate(index);
+      (manager?.getController(field) ?? rich?.getController(field))?.chooseCandidate(index);
     },
   });
   try {
+    const enabled = stored[key] ?? true;
     manager = attachNepaliInputs(document, {
       scope: "all",
       excludeSelector: EXCLUDE_SELECTOR,
-      enabled: stored[key] ?? true,
+      enabled,
       onStateChange: (state, field) => menu.update(field, state),
+    });
+    rich = createRichTextFields(document, {
+      excludeSelector: EXCLUDE_SELECTOR,
+      enabled,
+      onStateChange: (state, field, anchor) => menu.update(field, state, anchor),
     });
   } catch (error) {
     console.warn("SahajLipi could not attach to this page:", error);
@@ -48,7 +56,9 @@ async function start() {
   // A missing choice means "on" for a fresh injection, but forgetting a site
   // while its tabs are open should switch them off rather than on.
   chrome.storage.onChanged.addListener((changes, area) => {
-    if (area === "local" && key in changes) manager.setEnabled(changes[key].newValue ?? false);
+    if (area !== "local" || !(key in changes)) return;
+    manager.setEnabled(changes[key].newValue ?? false);
+    rich.setEnabled(changes[key].newValue ?? false);
   });
   chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     if (message?.type === "sahajlipi:status") sendResponse({ enabled: manager.getEnabled() });

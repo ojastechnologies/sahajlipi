@@ -1,10 +1,10 @@
 # Browser extension: design note and coverage assessment
 
-Status: **prototype spike, 2026-10-26.** Not published to any store. Code: [`extension/`](../extension/README.md).
+Status: **prototype spike, 2026-10-26; rich text support added 2026-11-03.** Not published to any store. Code: [`extension/`](../extension/README.md).
 
 **Question:** could a browser extension let people type SahajLipi on any website?
 
-**Short answer:** an extension built on the current adapter works well in plain `<textarea>`, text and search boxes, including React-controlled ones. Most of the places people write Nepali day to day are rich editors (Gmail, Facebook, Messenger, WhatsApp Web, Slack, Notion, X) and Google Docs. The adapter does not support those, so a textarea-only extension reaches a minority of real typing. Broad coverage needs either a `contenteditable` adapter (large, per-site fragile work) or an OS-level input method (a different product). Phased recommendation is at the end.
+**Short answer:** an extension built on the current adapter works in plain `<textarea>`, text and search boxes, including React-controlled ones. Most of the places people write Nepali day to day are rich editors (Gmail, Facebook, Messenger, WhatsApp Web, Slack, Notion, X). The extension now covers `contenteditable` boxes too, and passes against the real Draft.js, Lexical, ProseMirror, Slate and Quill libraries. **That result comes from local test pages. Live sites customise these editors and have not been tested, so it does not yet show that any named site works.** Google Docs stays out of reach because it draws on a canvas. Phased recommendation is at the end.
 
 ## What the prototype does
 
@@ -14,6 +14,28 @@ Status: **prototype spike, 2026-10-26.** Not published to any store. Code: [`ext
 - **Toggle:** the toolbar popup and the **Alt+Shift+N** command flip a per-site boolean in `chrome.storage.local` (key `site:<origin>`). Every content script on that site, including its frames, listens for the change and calls `manager.setEnabled`. The choice survives reloads and browser restarts.
 - **Candidates:** [`src/candidates.js`](../extension/src/candidates.js) renders a small list under the focused field from `onStateChange` candidates. It lives in a closed shadow root so page CSS cannot restyle it. Click calls `controller.chooseCandidate(i)`, and `mousedown` is cancelled so focus and the active word stay in the field. The adapter's own **Alt+1–9** and **Escape** keys keep working.
 - **Sensitive fields:** `scope: 'all'` already skips email, password, number and tel inputs, because the adapter only accepts text and search inputs. Plain text inputs are still a risk. With default digits, `4111 1111` typed into a `type="text"` card box becomes `४१११ ११११`, and a Roman username becomes Devanagari. The extension extends the adapter's `excludeSelector` to skip fields that declare `inputmode` numeric/decimal/tel/email/url, or `autocomplete` card, one-time-code, tel, email, username, url or postal-code. It also skips `[data-sahajlipi]` fields (see double conversion). This is a heuristic. A card field with neither attribute is still converted, which is one reason the extension is per-site opt-in.
+
+### Rich text boxes
+
+[`src/rich-text.js`](../extension/src/rich-text.js) adds `contenteditable` support without changing the engine, typing rules or `src/dom.js`. It has two parts:
+
+- **A text box facade.** It gives `attachNepaliInput` an object with the shape of a text input (`value`, `selectionStart`, `setRangeText` and so on), where the "field" is the line holding the caret. Word tracking, candidates and Roman Backspace therefore come from the same adapter code as in a text box, so the typing rules cannot drift. This leans on how the adapter checks its input (it accepts any object of the right shape), so the two should be kept in step; a host interface exported by the package would make that contract explicit.
+- **Taking keys before the editor sees them, then replaying the result as typing.** A window capture listener takes `keypress`, plus `keydown` for Backspace and Delete, so the editor never receives the Roman letter. The Nepali text then goes through the same steps as a real key press, each of which an editor may take over: `textInput`, then a synthetic `beforeinput`, then `execCommand('insertText')`.
+
+Each step exists because a real editor needed it. All of this was measured on the test pages:
+
+| Finding | Consequence |
+| --- | --- |
+| Draft.js takes text from `textInput`. A bare `execCommand` on an empty line made React throw `removeChild` and the editor vanished. | `textInput` is dispatched first. |
+| Chromium fires no `beforeinput` for `execCommand`, so Slate's model stayed empty while the page showed text, which would post nothing. | A synthetic `beforeinput` with target ranges is offered. |
+| A synthetic `textInput` inserts nothing by itself, so the page lagged behind Draft.js's model. | The command runs unless an editor cancelled an earlier step. |
+| A selection starting inside a cluster such as `ना` gets widened by the browser. | Replacements start on a grapheme edge. |
+| Editors learn of selection changes asynchronously, so Draft.js would edit at its old caret. | `selectionchange` is dispatched synchronously after selecting. |
+| Lexical and others render after the event, and a trailing space may be stored as U+00A0. | The caret check waits for the text to catch up, and U+00A0 compares equal to a space. |
+
+**Deliberate differences from a text box:** undo stays with the editor, whose history holds every edit, so it can step differently from a text box. Paste is left to the editor and is **not converted**, because replacing it would lose its formatting. An IME composition stays as composed.
+
+**Limits:** only editable boxes in the top DOM. A `contenteditable` in a shadow root or inside an injected `about:blank` or `srcdoc` iframe (TinyMCE's classic mode, for example) is not reached. Code editors built on `contenteditable` are converted as well on a site the user turned on. `docs.google.com` is explicitly skipped. These replayed events are heuristics against each editor's internals, so a site's editor upgrade could break them.
 
 ### Permission model and trade-off
 
@@ -31,11 +53,11 @@ How it plays out: the popup switch never asks for anything. Clicking it grants `
 
 - `<textarea>`, `<input type="text">` and `<input type="search">`, including fields added after load (the manager's `MutationObserver`).
 - React controlled inputs (`value` + `onChange`). The adapter dispatches a bubbling `input` event after each replacement, so React state follows the converted text, survives a re-render, and receives candidate choices. This was verified with React 19.3 in development mode. Other frameworks that listen to `input` (Vue `v-model`, Svelte `bind:value`, Angular forms) should behave the same but were **not tested**.
+- `contenteditable` boxes on the five editor libraries above, on local test pages only. See [Rich text boxes](#rich-text-boxes) and the test log.
 - Same-origin iframes (`allFrames: true`). A frame follows the **tab's** site choice through `location.ancestorOrigins`.
 
 ### Does not work
 
-- **`contenteditable` and rich editors.** The adapter rejects anything that is not a textarea or text/search input. That excludes the composers in Gmail, Facebook and Messenger, WhatsApp Web, Slack, Notion, X, LinkedIn, Discord and most CMS editors. They are built on `contenteditable` with editor frameworks (Draft.js, Lexical, ProseMirror, Slate, Quill) that keep their own document model and fight outside DOM edits.
 - **Google Docs** draws text on a canvas and takes input through a hidden, offscreen iframe. Nothing an extension can attach to looks like a text field. (Google's own Input Tools for Docs is built into Docs.)
 - **Shadow DOM.** The manager's `root.querySelectorAll` and `MutationObserver` do not cross shadow roots, so inputs inside web components are never attached. Workarounds: walk open shadow roots and run one manager per root, or track `composedPath()[0]` on `focusin` and attach lazily. Neither reaches closed shadow roots without `chrome.dom.openOrClosedShadowRoot`.
 - **Cross-origin iframes** (embedded comment widgets, payment frames, chat widgets). `allFrames` only injects where the extension has host access. Those frames need their own origin approved, and the popup only asks for the top site. `about:blank` and `srcdoc` frames would need `matchOriginAsFallback`, which this prototype does not set.
@@ -44,6 +66,7 @@ How it plays out: the popup switch never asks for anything. Clicking it grants `
 ### Known risks, not verified
 
 - **Observer cost.** With the default exclude selector, the manager filters its `MutationObserver` to three attributes. A custom `excludeSelector` turns that filter off, so the extension observes every attribute change on the page. Each one can run `querySelectorAll` under the changed node. On pages that animate attributes constantly this could add measurable main-thread work. **Not measured.**
+- **Live rich text sites.** Sites wrap these libraries in their own handlers, such as mention menus and draft saving. Only a manual pass can show how they behave.
 - **Alt+digit on macOS.** The adapter matches `event.key` against `1`–`9`. On macOS, Option+1 normally reports `¡`, so the shortcut hinted in the dropdown may not fire there. Synthetic Playwright key presses cannot show this. Needs a manual check on a Mac keyboard.
 - **Site keyboard shortcuts and Alt+Shift+N.** Pages with their own Alt shortcuts may conflict. Chrome lets the user rebind the command.
 - **Edge.** The manifest uses only APIs Edge shares with Chrome, but it was not loaded in Edge. Firefox would need `browser_specific_settings` and a different background declaration; Safari needs an Xcode wrapper. Neither was attempted.
@@ -57,26 +80,27 @@ How it plays out: the popup switch never asks for anything. Clicking it grants `
 
 ## Recommendation
 
-1. **Phase 1: ship a "plain text boxes" extension only if that audience is worth it.** This prototype is close. It still needs icons, a store listing, a privacy policy, a manual pass on real sites (government forms, news comment boxes, search boxes), the macOS Alt+digit check, and an observer cost measurement. Set expectations on the listing: no Gmail, Facebook, WhatsApp or Docs.
+1. **Phase 1: ship a "plain text boxes" extension only if that audience is worth it.** This prototype is close. It still needs icons, a store listing, a privacy policy, a manual pass on real sites (government forms, news comment boxes, search boxes), the macOS Alt+digit check, and an observer cost measurement. Set expectations on the listing: no Google Docs, and list only the rich text sites that have passed a manual check.
 2. **Phase 2: small package changes that make any second host safe**, each its own PR with tests:
    - the adapter ignores `beforeinput` events that are already `defaultPrevented`, or marks attached fields (for example `data-sahajlipi-attached`), so two copies of SahajLipi never double-convert;
    - an option to keep the observer's attribute filter with a custom `excludeSelector`;
    - optional shadow-root traversal in the manager.
-3. **Broad coverage: prefer an OS-level input method over a `contenteditable` adapter.**
-   - A `contenteditable` adapter is not one adapter. Each editor framework (Lexical, ProseMirror, Draft.js, Slate, Quill, Google's closure editors) reconciles DOM changes differently. The robust technique is to synthesize `beforeinput`/`insertText` or drive `execCommand('insertText')` and let the editor update its own model. That breaks as sites ship editor updates, needs a per-site test matrix, and still cannot reach Google Docs, native apps, or the browser's address bar.
-   - An OS input method (macOS Input Method Kit, Windows Text Services Framework, Linux IBus/Fcitx, Android/iOS keyboards) works in every text surface, including canvas editors, native apps and messengers. That is where people actually type Nepali, and Romanized Nepali IMEs already exist there. The engine is dependency-free JavaScript with deterministic rules, so it can be embedded in a small JS runtime or ported per platform. The cost is a separate product per OS with its own signing and distribution.
-   - **Suggested path:** treat the extension as a cheap Phase 1 for web form users. Invest in an OS IME (starting with the platform the target users use most, likely Windows or Android) for broad coverage. Do not build a `contenteditable` adapter unless one specific high-value editor justifies it.
+3. **Broad coverage: test the rich text path on live sites first, and keep an OS-level input method as the fallback.**
+   - The earlier advice here was not to build a `contenteditable` adapter. One now exists and passes on the five libraries, at a cost of about 400 lines, which is less than expected. Its open risk is the one predicted: it depends on editor internals and breaks if sites change them, so it needs a per-site test list and a way to switch off per site.
+   - An OS input method (macOS Input Method Kit, Windows Text Services Framework, Linux IBus/Fcitx, Android/iOS keyboards) remains the only route to canvas editors, native apps and phones. The engine is dependency-free JavaScript with deterministic rules, so it can be embedded in a small JS runtime or ported per platform. The cost is a separate product per OS with its own signing and distribution.
+   - **Decide after the manual pass:** if X, Gmail and Facebook hold up, the extension is worth shipping for desktop web users. If they need per-site patches, prefer the OS input method for broad coverage.
 
 ## Test log
 
-Run: `npm run extension:check` ([`tools/check-extension.js`](../tools/check-extension.js)), 2026-11-02. Playwright 1.63.0, Chromium 153.0.8010.12 (Playwright's `chromium` channel, headless), macOS 27.0.1, Node 22.22.3. The unpacked extension was copied to a temp directory with `host_permissions` for `http://127.0.0.1:4181/*` added, standing in for an approved permission prompt. Fixtures are served from the repository by `python3 -m http.server`. Result: **40 passed, 0 failed.**
+Run: `npm run extension:check` ([`tools/check-extension.js`](../tools/check-extension.js)), 2026-11-03. Playwright 1.63.0, Chromium 153.0.8010.12 (Playwright's `chromium` channel, headless), macOS 27.0.1, Node 22.22.3. The unpacked extension was copied to a temp directory with `host_permissions` for `http://127.0.0.1:4181/*` added, standing in for an approved permission prompt. Fixtures are served from the repository by `python3 -m http.server`. Result: **179 passed, 0 failed.**
 
 | Area | Check | Result |
 | --- | --- | --- |
 | Load | MV3 manifest loads; service worker starts; dynamic content script registers for the granted origin | Pass |
 | Fields | textarea `namaste ` → `नमस्ते `; search `nepal ` → `नेपाल `; textarea added 50 ms after load converts | Pass |
 | Exclusions | `data-sahajlipi-ignore` field, `type="email"`, `autocomplete="cc-number"`, `one-time-code`, `section-login username` all stay literal | Pass |
-| Unsupported (expected) | `contenteditable` div and an input in an open shadow root stay literal | Pass (documents the gap) |
+| Unsupported (expected) | an input in an open shadow root stays literal | Pass (documents the gap) |
+| Rich text | Draft.js 0.11.7, Lexical 0.21, ProseMirror, Slate 0.112, Quill 2 and a plain `contenteditable`, each checked in its own model and on screen: words, Roman Backspace, Enter, merging lines, candidate click, typing over a selection within and across lines, mid-line typing, a literal web address; undo goes to the editor; literal while off; no page errors. A box marked `data-sahajlipi-ignore` stays literal. | Pass |
 | Frames | same-origin iframe input converts; it follows the top site's off switch | Pass |
 | Candidates | `ma` → `म`; dropdown 4 px under the field; clicking `मा` replaces the word, keeps focus, closes the list; Escape closes it | Pass |
 | Re-injection | `executeScript` on a tab that already has the script does not attach twice | Pass |
@@ -95,7 +119,8 @@ Run: `npm run extension:check` ([`tools/check-extension.js`](../tools/check-exte
 - the current popup flow with a real toolbar click and `activeTab`, and the real **Remember this site** prompt, both Allow and Deny (these need a human click);
 - the Alt+Shift+N command;
 - headed Chrome or Edge stable;
-- real third-party sites;
+- real third-party sites, including any live rich text box (X, Gmail, Facebook, Slack and others), mention menus and hashtag handling there;
+- the candidate list's position in rich text boxes (clicking it is checked, its placement is not), and Alt+digit and Escape there;
 - macOS Option+digit candidate keys;
 - observer performance on heavy pages;
 - Firefox and Safari.
