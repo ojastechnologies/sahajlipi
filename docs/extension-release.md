@@ -65,9 +65,8 @@ Firefox and Safari need porting work; see the design note.
 Owner decisions and content:
 
 - A Chrome Web Store developer account under Ojas Technologies, and a support contact.
-- A privacy policy URL. It must state that the extension sees typing on sites the user enables, handles it locally and collects nothing.
-- A store listing: single-purpose description, screenshots, a justification for each permission and the data disclosure form. List only the rich text sites that passed a manual check, and state that Google Docs is not supported.
-- The final name in `extension/manifest.json`, without "(prototype)".
+- Trader verification, started from the account that should own it, because only that account can finish or change it.
+- Screenshots. The rest of the [listing text](../extension/store-listing.md) is ready to paste, and the [privacy policy](extension-privacy.md) is published with the website. Name only the sites that passed a manual check.
 
 Checks still open from the [design note's recommendation](extension-design.md#recommendation):
 

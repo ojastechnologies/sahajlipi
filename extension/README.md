@@ -1,6 +1,6 @@
-# SahajLipi browser extension (prototype)
+# SahajLipi browser extension
 
-A Chrome/Edge Manifest V3 extension that runs the published SahajLipi browser adapter in text boxes and rich text boxes on sites you turn it on for. It is a spike, not a release: read [the design note](../docs/extension-design.md) for what it covers and what it cannot.
+A Chrome/Edge Manifest V3 extension that runs the published SahajLipi browser adapter in text boxes and rich text boxes on sites you turn it on for. Read [the design note](../docs/extension-design.md) for what it covers and what it cannot, and the [privacy policy](../docs/extension-privacy.md) for how it handles what you type.
 
 ## Build and load
 
@@ -52,5 +52,6 @@ Builds the store zip in `.extension-dist/`. The [release process](../docs/extens
 | `src/popup.*` | Toolbar popup. |
 | `src/typing-guide.js` | Typing guide examples; `extension:check` verifies them against the engine. |
 | `icons/` | Toolbar and store icons, rendered from `assets/brand/favicon.svg` (16, 32) and `mark.svg` (48, 128). |
+| `store-listing.md` | Text to paste into the store dashboard; not packaged. |
 | `fixtures/` | Local pages used by `npm run extension:check`. |
 | `dist/` | Build output (not committed). |
