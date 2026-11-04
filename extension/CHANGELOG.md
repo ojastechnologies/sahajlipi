@@ -13,4 +13,4 @@ First store release, for desktop Chrome.
 - A notice appears when typing in a box the extension can't reach, and the popup includes a typing guide.
 - Not supported: Google Docs, phones and browsers other than desktop Chrome.
 
-The extension sends nothing anywhere. See the [privacy policy](../docs/extension-privacy.md).
+The extension sends nothing anywhere. See the [privacy policy](https://ojastechnologies.github.io/sahajlipi/docs/extension-privacy.html).
