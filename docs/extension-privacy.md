@@ -1,6 +1,6 @@
 # SahajLipi browser extension privacy policy
 
-Effective from the extension's first store release. This policy covers the SahajLipi Nepali Typing browser extension, published by Ojas Technologies. The extension converts Roman Nepali into Devanagari as you type, on your own device.
+Effective from the extension's first store release. This policy covers the SahajLipi Nepali Typing browser extension, published by Ojas Technologies (Ojas Technologies Pvt. Ltd.). The extension converts Roman Nepali into Devanagari as you type, on your own device.
 
 **In short: the extension does not collect, send, sell or share your data.** It has no network code, no analytics and no remote configuration, and Ojas Technologies receives nothing from it.
 
