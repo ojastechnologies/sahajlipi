@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFile } from 'node:fs/promises';
+import { readdir, readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { inflateRawSync } from 'node:zlib';
 import {
@@ -71,6 +71,16 @@ test('the package holds what the manifest reaches and no fixtures or bundled sou
   }
   assert.deepEqual(files.filter(file => /fixtures|README|content\.js$/.test(file) && file !== 'dist/content.js'), []);
   assert.ok(!files.includes('src/candidates.js'));
+});
+
+test('the extension and engine have no network or page storage code, as the privacy policy states', async () => {
+  const banned = /\bfetch\(|XMLHttpRequest|WebSocket|sendBeacon|EventSource|importScripts|localStorage|sessionStorage|indexedDB|storage\.sync/;
+  for (const folder of ['../extension/src/', '../src/']) {
+    for (const entry of await readdir(new URL(folder, import.meta.url))) {
+      if (!/\.(js|html)$/.test(entry)) continue;
+      assert.doesNotMatch(await readFile(new URL(folder + entry, import.meta.url), 'utf8'), banned, entry);
+    }
+  }
 });
 
 test('zips round-trip and do not depend on entry order', () => {

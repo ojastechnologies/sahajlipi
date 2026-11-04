@@ -69,6 +69,7 @@ The demo is one consumer of the package. Its Copy and Clear buttons, character c
 | [Status and roadmap](status-and-roadmap.md) | Current capabilities, limits, and priorities. |
 | [Browser extension spike](extension-design.md) | Prototype MV3 extension, site coverage, privacy, and the path to broader typing coverage. |
 | [Browser extension releases](extension-release.md) | Extension versioning, packaging, store upload, rollout, and rollback. |
+| [Browser extension privacy policy](extension-privacy.md) | What the extension reads and stores, its permissions, and how to contact us. |
 | [Website and SEO](website-and-seo.md) | Markdown site builds, metadata, sitemap, publishing, and discoverability limits. |
 | [Brand guide](brand.md) | Name, message, logo assets, colors, typography and repository identity. |
 | [Contributing](../CONTRIBUTING.md) | Reporting a typing issue or proposing a focused change. |
