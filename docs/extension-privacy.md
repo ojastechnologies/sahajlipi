@@ -2,7 +2,7 @@
 
 Effective from the extension's first store release. This policy covers the SahajLipi Nepali Typing browser extension, published by Ojas Technologies (Ojas Technologies Pvt. Ltd.). The extension converts Roman Nepali into Devanagari as you type, on your own device.
 
-**In short: the extension does not collect, send, sell or share your data.** It has no network code, no analytics and no remote configuration, and Ojas Technologies receives nothing from it.
+**In short: on sites where you turn it on, the extension reads what you type, only to convert it on your device. It does not send, sell or share your data.** It has no network code, no analytics and no remote configuration, and Ojas Technologies receives nothing from it.
 
 ## What the extension reads
 
@@ -43,6 +43,12 @@ These settings are not synced by the extension and never leave your device. They
 The popup links to the SahajLipi typing reference and demo. They open only when you click them, on a website hosted on GitHub Pages, whose host can see ordinary access details such as your IP address.
 
 The extension is distributed through browser stores. The store's own terms and privacy policy cover your use of the store, such as installing and updating.
+
+## Chrome Web Store disclosures
+
+The Chrome Web Store asks developers to disclose data an extension handles, even when it stays on the device. The listing therefore declares **User activity**, for the typing the extension reads, and **Website content**, for the text in the boxes it converts. Both are handled only as described above, on your device, and are never sent to Ojas Technologies or anyone else.
+
+The use of information received from Google APIs will adhere to the [Chrome Web Store User Data Policy](https://developer.chrome.com/docs/webstore/program-policies/policies#limited_use), including the Limited Use requirements.
 
 ## Changes and contact
 

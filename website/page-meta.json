@@ -120,7 +120,7 @@
     "description": "How the SahajLipi browser extension is versioned, packaged, checked in CI, uploaded to browser stores, rolled out, and rolled back."
   },
   "docs/extension-privacy.md": {
-    "title": "SahajLipi Browser Extension Privacy Policy | No Data Collected",
+    "title": "SahajLipi Browser Extension Privacy Policy | On-Device Typing",
     "description": "What the SahajLipi Nepali typing extension reads and stores on your device, why it asks for each permission, and how to remove its settings."
   },
   "docs/brand.md": {
