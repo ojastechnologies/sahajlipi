@@ -1,10 +1,22 @@
 import { attachNepaliInput } from "sahajlipi/dom";
+import { googleEditor } from "./docs-typing.js";
 
-// Google Docs types into a hidden editable box and draws on a canvas, so a
-// replacement there would not land in the document. See the design note.
-const UNSUPPORTED_HOSTS = new Set(["docs.google.com"]);
+// Of Google's editors, only Sheets edits in an editable box that holds the text.
+// Docs has its own path (docs-typing.js); the others are left alone. See the design note.
+const richTextAllowed = (editor) => editor === null || editor === "spreadsheets";
+
+// A Sheets cell that starts with "=" holds a formula, which must stay as typed.
+const isFormula = (host, data) => {
+  const text = host.textContent.replace(/^[\s\u200B\uFEFF]+/, "");
+  return text.startsWith("=") || (!text && data === "=");
+};
+
+// A Sheets cell that is only selected has its editor focused but closed; a real key
+// opens it, and Sheets ignores typing sent before then.
+const isClosedCell = (host) => host.id === "waffle-rich-text-editor" && !host.classList.contains("editable");
 
 const RENDER_WAIT_MS = 50;
+const OPEN_TRIES = 10;
 
 const isInline = (element) => /^(inline|contents|ruby)/.test(getComputedStyle(element).display);
 
@@ -214,10 +226,13 @@ function createField(host, doc) {
  */
 export function createRichTextFields(doc, { excludeSelector, enabled: initialEnabled, onStateChange }) {
   const view = doc.defaultView;
+  const editor = googleEditor(view);
+  const allowed = richTextAllowed(editor);
   const entries = new Map();
   let enabled = initialEnabled;
   let busy = false;
   let queued = null;
+  let opening = false;
 
   function entryFor(host) {
     let entry = entries.get(host);
@@ -234,7 +249,7 @@ export function createRichTextFields(doc, { excludeSelector, enabled: initialEna
   }
 
   function manages(element) {
-    if (UNSUPPORTED_HOSTS.has(location.hostname)) return false;
+    if (!allowed) return false;
     if (!element?.isContentEditable || element.closest(excludeSelector)) return false;
     return element.closest("[contenteditable]") === element;
   }
@@ -301,12 +316,50 @@ export function createRichTextFields(doc, { excludeSelector, enabled: initialEna
     run(entry, () => entry.created.handlers.get("beforeinput")(synthetic("insertText", data)));
   }
 
+  // Letters typed while an edit is still rendering, one per render.
+  function drain(host) {
+    if (!queued?.length) {
+      queued = null;
+      return;
+    }
+    typeAtCaret(host, queued.shift());
+    setTimeout(() => drain(host), RENDER_WAIT_MS);
+  }
+
+  // Let the key open the cell, then replace the letter Sheets typed with its Nepali.
+  function openCell(host, data) {
+    queued = [];
+    opening = true;
+    let tries = 0;
+    const settle = () => {
+      opening = false;
+      const read = readBlock(host);
+      if (read.value.startsWith(data)) {
+        const [node, offset] = pointAt(read, host, data.length);
+        const [startNode, startOffset] = pointAt(read, host, 0);
+        doc.getSelection().setBaseAndExtent(startNode, startOffset, node, offset);
+        doc.dispatchEvent(new Event("selectionchange"));
+        typeAtCaret(host, data);
+      } else if (++tries < OPEN_TRIES) {
+        opening = true;
+        setTimeout(settle, RENDER_WAIT_MS);
+        return;
+      }
+      setTimeout(() => drain(host), RENDER_WAIT_MS);
+    };
+    setTimeout(settle, 0);
+  }
+
   function typeInto(event, data) {
     const host = focusedHost();
-    if (!host) return;
+    if (!host || (editor === "spreadsheets" && isFormula(host, data))) return;
     // With the caret elsewhere there is nowhere to type, so the key stays the page's.
     const selection = doc.getSelection();
     if (!selection?.rangeCount || !host.contains(selection.getRangeAt(0).startContainer)) return;
+    if (!queued && editor === "spreadsheets" && isClosedCell(host)) {
+      openCell(host, data);
+      return;
+    }
     take(event);
     if (queued) {
       queued.push(data);
@@ -314,12 +367,7 @@ export function createRichTextFields(doc, { excludeSelector, enabled: initialEna
       // Some editors render the deletion after this event, and a letter typed
       // before then would be lost when they do.
       queued = [data];
-      const drain = () => {
-        typeAtCaret(host, queued.shift());
-        if (queued.length) setTimeout(drain, RENDER_WAIT_MS);
-        else queued = null;
-      };
-      setTimeout(drain, RENDER_WAIT_MS);
+      setTimeout(() => drain(host), RENDER_WAIT_MS);
     } else {
       typeAtCaret(host, data);
     }
@@ -333,7 +381,8 @@ export function createRichTextFields(doc, { excludeSelector, enabled: initialEna
   // Keyboards reach the page through keypress; this covers what arrives without
   // one, such as an emoji picker.
   function onBeforeInput(event) {
-    if (!enabled || busy || event.isComposing || !event.cancelable) return;
+    // The key that opens a Sheets cell is the page's to insert.
+    if (!enabled || busy || opening || event.isComposing || !event.cancelable) return;
     if (event.inputType === "insertText" && typeof event.data === "string") typeInto(event, event.data);
   }
 

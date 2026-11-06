@@ -26,7 +26,7 @@ WHAT IT DOES
 WHERE IT WORKS
 Most ordinary text boxes on desktop websites, and most rich text boxes. Websites build their editors differently, so some may not work. If it can't type in a box, it tells you.
 
-It does not work in Google Docs, on Chrome's own pages, or in apps outside the browser.
+It also works in Google Docs and Sheets. It does not work in other Google editors such as Slides, on Chrome's own pages, or in apps outside the browser.
 
 PRIVACY
 Everything happens on your device. SahajLipi reads what you type only to convert it. It has no network code and no analytics, and sends nothing anywhere. It only saves your per-site choices, in your browser. Password, email, number and telephone fields are skipped.

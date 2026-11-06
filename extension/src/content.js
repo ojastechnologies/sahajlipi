@@ -1,5 +1,6 @@
 import { attachNepaliInputs } from "sahajlipi/dom";
 import { createCandidateMenu } from "./candidates.js";
+import { createDocsTyping, docsTypingFrame } from "./docs-typing.js";
 import { createRichTextFields } from "./rich-text.js";
 import { noticeKey, siteKey } from "./site.js";
 import { createStatusToast } from "./status-toast.js";
@@ -34,7 +35,9 @@ async function start() {
   const stored = await chrome.storage.local.get([key, dismissKey]);
   let manager = null;
   let rich = null;
-  const menu = createCandidateMenu(document, {
+  // Google Docs takes keys in a hidden frame, so its candidate list goes in the page around it.
+  const docsFrame = docsTypingFrame();
+  const menu = createCandidateMenu(docsFrame?.ownerDocument ?? document, {
     onChoose(field, index) {
       (manager?.getController(field) ?? rich?.getController(field))?.chooseCandidate(index);
     },
@@ -47,11 +50,10 @@ async function start() {
       enabled,
       onStateChange: (state, field) => menu.update(field, state),
     });
-    rich = createRichTextFields(document, {
-      excludeSelector: EXCLUDE_SELECTOR,
-      enabled,
-      onStateChange: (state, field, anchor) => menu.update(field, state, anchor),
-    });
+    const onRichState = (state, field, anchor) => menu.update(field, state, anchor);
+    rich = docsFrame
+      ? createDocsTyping(document, { frame: docsFrame, enabled, onStateChange: onRichState })
+      : createRichTextFields(document, { excludeSelector: EXCLUDE_SELECTOR, enabled, onStateChange: onRichState });
   } catch (error) {
     console.warn("SahajLipi could not attach to this page:", error);
     return null;

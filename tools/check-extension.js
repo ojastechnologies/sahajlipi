@@ -15,6 +15,10 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const port = 4181;
 const origin = `http://127.0.0.1:${port}`;
 const fixtures = `${origin}/extension/fixtures`;
+// Google's editors share one host. The browser sends it to the fixture server, so
+// stand-in pages there run under the real host name the extension checks.
+const google = 'http://docs.google.com';
+const googleFixtures = `${google}/extension/fixtures/google`;
 
 await import('./build-extension.js');
 await build({
@@ -31,7 +35,7 @@ const unpacked = await mkdtemp(path.join(tmpdir(), 'sahajlipi-extension-'));
 await cp(process.env.EXTENSION_DIR ?? path.join(root, 'extension'), unpacked, { recursive: true });
 const manifestPath = path.join(unpacked, 'manifest.json');
 const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
-manifest.host_permissions = [`${origin}/*`];
+manifest.host_permissions = [`${origin}/*`, `${google}/*`];
 await writeFile(manifestPath, JSON.stringify(manifest, null, 2));
 
 // Real editors, from their own small package so the published one gains no dependencies.
@@ -60,7 +64,8 @@ try {
   context = await chromium.launchPersistentContext('', {
     channel: 'chromium',
     headless: true,
-    args: [`--disable-extensions-except=${unpacked}`, `--load-extension=${unpacked}`],
+    args: [`--disable-extensions-except=${unpacked}`, `--load-extension=${unpacked}`,
+      `--host-resolver-rules=MAP docs.google.com 127.0.0.1:${port}`],
   });
   const worker = context.serviceWorkers()[0] ?? await context.waitForEvent('serviceworker');
   await worker.evaluate(async () => {
@@ -70,6 +75,8 @@ try {
     }
     throw new Error('content script was never registered');
   });
+  check('the registered script also reaches about:blank frames',
+    await worker.evaluate(async () => (await chrome.scripting.getRegisteredContentScripts())[0].matchOriginAsFallback), true);
 
   const page = await context.newPage();
   await page.goto(`${fixtures}/fields.html`);
@@ -346,10 +353,143 @@ try {
   }
   await worker.evaluate((key) => chrome.storage.local.remove(key), siteKeyName);
 
+  // Google Docs: keys go to an editable box in a hidden about:blank frame, and Docs empties
+  // it after each key. The stand-in keeps the document text where Docs keeps its own model.
+  const docsText = () => page.locator('#text').textContent();
+  const openDocs = async () => {
+    await page.goto(`${googleFixtures}/document/index.html`);
+    await page.waitForTimeout(500);
+    await page.locator('#canvas').click();
+  };
+  const docsPageErrors = [];
+  page.on('pageerror', (error) => docsPageErrors.push(error.message));
+  const docsScenarios = [
+    ['word and space', 'नमस्ते ', () => page.keyboard.type('namaste ')],
+    ['two words', 'मेरो नेपाल', () => page.keyboard.type('mero nepal')],
+    ['Backspace edits the Roman word', 'नमस', async () => {
+      await page.keyboard.type('namast');
+      await page.keyboard.press('Backspace');
+      await page.keyboard.press('Backspace');
+      await page.keyboard.type('s');
+    }],
+    ['Shift+Backspace edits the Roman word too', 'नमस', async () => {
+      await page.keyboard.type('namast');
+      await page.keyboard.press('Shift+Backspace');
+      await page.keyboard.press('Shift+Backspace');
+      await page.keyboard.type('s');
+    }],
+    ['Backspace after a word goes to Docs', 'नमस्ते', async () => {
+      await page.keyboard.type('namaste ');
+      await page.keyboard.press('Backspace');
+    }],
+    ['Enter goes to Docs and ends the word', `${convertText('ram')}\n${convertText('nepal')}`, async () => {
+      await page.keyboard.type('ram');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('nepal');
+    }],
+    ['a click ends the word', convertText('ram') + convertText('a'), async () => {
+      await page.keyboard.type('ram');
+      await page.locator('#canvas').click();
+      await page.keyboard.type('a');
+    }],
+    ['an arrow key ends the word', convertText('ram') + convertText('a'), async () => {
+      await page.keyboard.type('ram');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.type('a');
+    }],
+    ['a shortcut ends the word', convertText('ram') + convertText('a'), async () => {
+      await page.keyboard.type('ram');
+      await page.keyboard.press('ControlOrMeta+b');
+      await page.keyboard.type('a');
+    }],
+    ['a paste ends the word', convertText('ram') + convertText('a'), async () => {
+      await page.keyboard.type('ram');
+      await page.frameLocator('.docs-texteventtarget-iframe').locator('div').dispatchEvent('paste');
+      await page.keyboard.type('a');
+    }],
+    ['after punctuation, Enter keeps the earlier text', `${convertText('google.')}\n${convertText('com')}`, async () => {
+      await page.keyboard.type('google.');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('com');
+    }],
+    ['digits and punctuation', convertText('12 ram.'), () => page.keyboard.type('12 ram.')],
+    ['a web address stays literal', 'हि https://a.co ', () => page.keyboard.type('hi https://a.co ')],
+  ];
+  for (const [name, expected, act] of docsScenarios) {
+    await openDocs();
+    await act();
+    check(`Google Docs: ${name}`, await docsText(), expected);
+  }
+  await openDocs();
+  await page.keyboard.type('ma');
+  const docsMenu = page.locator('sahajlipi-candidates');
+  check('Google Docs: the candidate list shows in the page', await docsMenu.isVisible(), true);
+  const docsMenuBox = await docsMenu.boundingBox();
+  const docsCaret = await page.locator('.kix-cursor-caret').boundingBox();
+  check('Google Docs: the list sits just below Docs\' caret', Math.round(docsMenuBox.y - (docsCaret.y + docsCaret.height)), 4);
+  await page.mouse.click(docsMenuBox.x + 20, docsMenuBox.y + docsMenuBox.height * 0.72);
+  await page.keyboard.type(' ram');
+  check('Google Docs: clicking a candidate, then more typing', await docsText(), `मा ${convertText('ram')}`);
+  await openDocs();
+  await page.keyboard.type('ma');
+  await page.keyboard.press('Alt+2');
+  check('Google Docs: Alt+2 chooses the second spelling', await docsText(), 'मा');
+  const googleKey = `site:${google}`;
+  await worker.evaluate((key) => chrome.storage.local.set({ [key]: false }), googleKey);
+  await openDocs();
+  await page.keyboard.type('namaste');
+  check('Google Docs: typing goes to Docs as typed while off', await docsText(), 'namaste');
+  await worker.evaluate((key) => chrome.storage.local.remove(key), googleKey);
+  check('Google Docs: no page errors', docsPageErrors.join('; '), '');
+
+  // Google Slides takes keys the same way but is not supported, so its keys pass untouched.
+  await page.goto(`${googleFixtures}/presentation/index.html`);
+  await page.waitForTimeout(500);
+  await page.locator('#canvas').click();
+  await page.keyboard.type('namaste');
+  check('Google Slides: typing is left alone', await docsText(), 'namaste');
+
+  // Google Sheets edits a cell in an editable box that holds the text. A click only
+  // selects a cell, and a real key has to open it.
+  const sheetsCell = page.locator('#waffle-rich-text-editor');
+  // The letters after the one that opens the cell follow one render apart.
+  const sheetsText = async () => {
+    await page.waitForTimeout(800);
+    return (await sheetsCell.textContent()).replace(/\u00A0/g, ' ');
+  };
+  const openSheets = async (how) => {
+    await page.goto(`${googleFixtures}/spreadsheets/index.html`);
+    await page.waitForTimeout(500);
+    if (how === 'double-click') await page.locator('#grid').dblclick();
+    else await page.locator('#grid').click();
+  };
+  await openSheets('click');
+  await page.keyboard.type('namaste ');
+  check('Google Sheets: typing into a selected cell converts', await sheetsText(), 'नमस्ते ');
+  await openSheets('click');
+  await page.keyboard.type('mero nepal');
+  check('Google Sheets: the first letter is converted with the rest', await sheetsText(), 'मेरो नेपाल');
+  await openSheets('double-click');
+  await page.keyboard.type('namaste ');
+  check('Google Sheets: typing into an open cell converts', await sheetsText(), 'नमस्ते ');
+  await openSheets('click');
+  await page.keyboard.type('=sum(a1:a3)');
+  check('Google Sheets: a formula stays as typed', await sheetsText(), '=sum(a1:a3)');
+
   // First enable on an already open page: the switch needs no permission and no reload.
   // Stubs make the origin look unapproved. This run reaches the page through its test host
   // permission; a real popup click uses activeTab.
   await worker.evaluate(() => chrome.scripting.unregisterContentScripts());
+  // The popup and shortcut inject with executeScript, which reaches Docs' frame as well.
+  await page.goto(`${googleFixtures}/document/index.html`);
+  await page.waitForTimeout(500);
+  await worker.evaluate(async (url) => {
+    const [tab] = await chrome.tabs.query({ url });
+    await chrome.scripting.executeScript({ target: { tabId: tab.id, allFrames: true }, files: ['dist/content.js'] });
+  }, `${googleFixtures}/document/index.html`);
+  await page.locator('#canvas').click();
+  await page.keyboard.type('namaste ');
+  check('Google Docs: a first enable without a reload converts', await docsText(), 'नमस्ते ');
   await worker.evaluate((key) => chrome.storage.local.remove(key), `site:${origin}`);
   const firstEnableUrl = `${fixtures}/fields.html?first-enable`;
   await page.goto(firstEnableUrl);

@@ -17,7 +17,7 @@ The build bundles `sahajlipi/dom` and the extension's content script into `exten
 - Click **Remember this site** to keep it across reloads. Chrome asks once for access to that site; declining leaves the current tab as it is.
 - **Alt+Shift+N** toggles the current site and shows a brief confirmation on the page. Rebind it at `chrome://extensions/shortcuts`; the popup shows the current binding.
 - Ambiguous words show a small list at the caret; click a choice or press **Alt+1**…**Alt+9** (**Option+1**…**Option+9** on macOS). **Escape** closes it.
-- In rich text boxes, paste is not converted, undo belongs to the editor, and Google Docs is not supported.
+- In rich text boxes, paste is not converted and undo belongs to the editor. Google Docs and Sheets are handled too (a Sheets formula stays as typed); the editing surfaces of other Google editors, such as Slides, and Docs comment boxes are left alone.
 - Typing in a box the extension can't reach, such as one inside a web component, shows a short notice once per page. **Don't show again** stops it on that site.
 - **Typing guide** in the popup lists common spellings and links to the full typing reference and the demo.
 - **Forget this site** in the popup removes the site's access and its saved choices.
@@ -45,6 +45,7 @@ Builds the store zip in `.extension-dist/`. The [release process](../docs/extens
 | `manifest.json` | MV3 manifest: `activeTab`, `scripting`, `storage`; site access is optional and requested per origin. |
 | `src/content.js` | Attaches `attachNepaliInputs(document, { scope: 'all' })` and follows the site's on/off choice. |
 | `src/rich-text.js` | Runs the same adapter in `contenteditable` boxes, one line at a time, and replays results as typing. |
+| `src/docs-typing.js` | Google Docs: types into Docs' hidden typing frame, keeping its own copy of the word. |
 | `src/candidates.js` | Candidate list in a closed shadow root, placed at the caret. |
 | `src/status-toast.js` | On-page confirmation for the keyboard shortcut. |
 | `src/unsupported-notice.js` | Notice shown when typing in a box the adapter cannot attach to. |
