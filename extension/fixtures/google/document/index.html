@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Google Docs stand-in</title>
+  <style>
+    body { font: 16px sans-serif; margin: 0; }
+    #canvas { position: relative; height: 240px; margin: 16px; border: 1px solid #ccc; cursor: text; }
+    #text { white-space: pre-wrap; padding: 8px; }
+    .kix-cursor-caret { position: absolute; left: 120px; top: 40px; width: 2px; height: 20px; background: #000; }
+    .docs-texteventtarget-iframe { position: absolute; top: -10000px; width: 1px; height: 1px; border: 0; }
+  </style>
+</head>
+<body>
+  <!-- Behaves like Google Docs as measured in docs/extension-design.md: keys go to an
+       editable box in a script-made about:blank frame, Docs takes the text from keypress
+       and beforeinput insertText, deletes one code point per Backspace keydown, ignores
+       textInput and edit commands, and empties the box after every edit. -->
+  <div id="canvas"><div id="text"></div><div class="kix-cursor-caret"></div></div>
+  <script>
+    const text = document.querySelector("#text");
+    const frame = document.createElement("iframe");
+    frame.className = "docs-texteventtarget-iframe";
+    document.body.append(frame);
+    const doc = frame.contentDocument;
+    doc.body.innerHTML = '<div contenteditable="true" role="textbox"></div>';
+    const box = doc.querySelector("div");
+    const append = (data) => { text.textContent += data; };
+    box.addEventListener("keypress", (event) => {
+      event.preventDefault();
+      if (event.key === "Enter") return;
+      append(event.key);
+    });
+    box.addEventListener("beforeinput", (event) => {
+      if (event.inputType !== "insertText") return;
+      event.preventDefault();
+      append(event.data);
+    });
+    box.addEventListener("keydown", (event) => {
+      if (event.keyCode === 8) {
+        event.preventDefault();
+        text.textContent = [...text.textContent].slice(0, -1).join("");
+      } else if (event.key === "Enter") {
+        event.preventDefault();
+        append("\n");
+      }
+    });
+    box.addEventListener("input", () => { box.textContent = ""; });
+    document.querySelector("#canvas").addEventListener("mousedown", (event) => {
+      event.preventDefault();
+      box.focus();
+    });
+    box.focus();
+  </script>
+</body>
+</html>

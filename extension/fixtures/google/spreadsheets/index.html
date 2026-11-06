@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Google Sheets stand-in</title>
+  <style>
+    body { font: 16px sans-serif; }
+    #grid { width: 240px; height: 60px; border: 1px solid #ccc; margin-bottom: 8px; }
+    #waffle-rich-text-editor { min-height: 24px; border: 1px solid #ccc; padding: 4px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <!-- Google Sheets edits a cell in an editable box that holds the text, as measured in
+       docs/extension-design.md. A click on the grid selects a cell: the box keeps focus
+       but stays closed, and only a real key press opens it; until then Sheets drops
+       anything else that changes the box. A double-click opens the cell straight away. -->
+  <div id="grid"></div>
+  <div id="waffle-rich-text-editor" class="cell-input" contenteditable="true" role="textbox"></div>
+  <script>
+    const cell = document.querySelector("#waffle-rich-text-editor");
+    const grid = document.querySelector("#grid");
+    const open = () => cell.classList.add("editable");
+    const select = () => {
+      cell.classList.remove("editable");
+      cell.textContent = "";
+      cell.focus();
+    };
+    grid.addEventListener("mousedown", (event) => {
+      event.preventDefault();
+      select();
+    });
+    grid.addEventListener("dblclick", () => {
+      open();
+      cell.focus();
+    });
+    cell.addEventListener("keypress", open);
+    cell.addEventListener("input", () => {
+      if (!cell.classList.contains("editable")) cell.textContent = "";
+    });
+  </script>
+</body>
+</html>

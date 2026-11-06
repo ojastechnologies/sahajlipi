@@ -2,6 +2,12 @@
 
 Store releases of the browser extension. The npm package has [its own changelog](../CHANGELOG.md). A release needs a section here headed `## <manifest version>`, and that section becomes its release notes. See the [release process](../docs/extension-release.md).
 
+## Unreleased
+
+- Types proper Nepali in Google Docs. Before, turning it on in a Doc converted each letter on its own, such as `नअमअसतए` for `namaste`.
+- Types in Google Sheets cells, which stayed in Roman letters before. Formulas starting with `=` stay as typed.
+- On remembered sites, also reaches frames without an address of their own, as turning it on from the toolbar already did.
+
 ## 0.1.0
 
 First store release, for desktop Chrome.

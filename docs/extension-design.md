@@ -4,7 +4,7 @@ Status: **prototype spike, 2026-10-26; rich text support added 2026-11-03.** Not
 
 **Question:** could a browser extension let people type SahajLipi on any website?
 
-**Short answer:** an extension built on the current adapter works in plain `<textarea>`, text and search boxes, including React-controlled ones. Most of the places people write Nepali day to day are rich editors (Gmail, Facebook, Messenger, WhatsApp Web, Slack, Notion, X). The extension now covers `contenteditable` boxes too, and passes against the real Draft.js, Lexical, ProseMirror, Slate and Quill libraries. **That result comes from local test pages, plus one live site: the maintainer reports typing works on X. Live sites customise these editors, so this does not yet show that any other named site works.** Google Docs stays out of reach because it draws on a canvas. Phased recommendation is at the end.
+**Short answer:** an extension built on the current adapter works in plain `<textarea>`, text and search boxes, including React-controlled ones. Most of the places people write Nepali day to day are rich editors (Gmail, Facebook, Messenger, WhatsApp Web, Slack, Notion, X). The extension now covers `contenteditable` boxes too, and passes against the real Draft.js, Lexical, ProseMirror, Slate and Quill libraries. **That result comes from local test pages, plus one live site: the maintainer reports typing works on X. Live sites customise these editors, so this does not yet show that any other named site works.** Google Docs draws on a canvas, so it has its own path that tracks each word itself (see [Google Docs and Sheets](#google-docs-and-sheets)); Sheets uses the rich text path. Both pass on local stand-in pages built from measurements of the live editors. Phased recommendation is at the end.
 
 ## What the prototype does
 
@@ -36,7 +36,17 @@ Each step exists because a real editor needed it. All of this was measured on th
 
 **Deliberate differences from a text box:** undo stays with the editor, whose history holds every edit, so it can step differently from a text box. Paste is left to the editor and is **not converted**, because replacing it would lose its formatting. An IME composition stays as composed.
 
-**Limits:** only editable boxes in the top DOM. A `contenteditable` in a shadow root or inside an injected `about:blank` or `srcdoc` iframe (TinyMCE's classic mode, for example) is not reached. Code editors built on `contenteditable` are converted as well on a site the user turned on. `docs.google.com` is explicitly skipped. These replayed events are heuristics against each editor's internals, so a site's editor upgrade could break them.
+**Limits:** a `contenteditable` in a shadow root is not reached. Frames without a URL of their own (`about:blank`, `srcdoc`, used by TinyMCE's classic mode, for example) are reached on both injection paths: `executeScript` always covers them, and the registration sets `matchOriginAsFallback`. Chrome 111 to 118 reject that option, so there the extension registers without it and remembered sites miss these frames. Code editors built on `contenteditable` are converted as well on a site the user turned on. Of Google's editors on `docs.google.com`, only the Docs document and Sheets cells get rich text handling; the editing surfaces of Slides and the others are left alone, and so are comment boxes in Docs. Plain text boxes on those pages (Google Forms answers, the Docs title) are converted as on any site. These replayed events are heuristics against each editor's internals, so a site's editor upgrade could break them.
+
+### Google Docs and Sheets
+
+Measured on 2026-11-06 in the maintainer's own Chrome, signed in, with console probes on scratch files (the extension off):
+
+- **Docs** takes keys in an editable box inside a hidden `iframe.docs-texteventtarget-iframe`. The frame is `about:blank`, so inside it `location.hostname` is empty. That is how the first release's `docs.google.com` guard missed it: on a first enable, which uses `executeScript` and so reaches the frame, the rich text path ran there. Docs moves each edit into its document and **empties the box after every key**, so the rich text path never saw a whole word and converted each letter alone (`namaste` → `नअमअसतए`).
+- What Docs accepts, read back from the Doc's own text: a `beforeinput` insertText and a synthetic `keypress` insert; a synthetic Backspace `keydown` deletes **one code point** (`ना` → `न`, `नमस्` → `नमस`); `textInput`, `execCommand` and `beforeinput` deletion do nothing. Replacing a word ending in place (`नमस्`, two Backspaces, `स्ते`) gives `नमस्ते`, with or without pauses between steps.
+- **Sheets** sends every key to `#waffle-rich-text-editor`, an editable box in the page that holds the cell text as it is typed. A cell that is only selected has that box focused but closed (no `editable` class): a real key press opens it, and typing sent before then is dropped. The maintainer's test of the first build showed this: a double-clicked cell converted, a single-clicked one took no typing at all.
+
+So [`src/docs-typing.js`](../extension/src/docs-typing.js) runs in Docs' frame instead of the rich text path. It keeps its own copy of the text typed since the caret last moved, shows that copy to the same adapter, and turns each change into Backspaces (one per code point) followed by a `beforeinput` insertText. A Backspace inside the word being typed edits the Roman spelling; any other Backspace, Enter, a caret key, a shortcut, a click, paste or an IME composition goes to Docs and ends the word, so undo, formatting and spell check stay with Docs. The candidate list goes in the page, under Docs' caret element (`.kix-cursor-caret`). Sheets only needed the rich text path allowed on `/spreadsheets/`, except in a cell that starts with `=`, where a formula stays as typed. In a closed cell the first key is let through to open it, and once Sheets has typed it, that letter is replaced with its Nepali; keys typed meanwhile wait and follow one render apart. Both decide the editor from the frame's own origin (which an `about:blank` frame inherits) and the nearest page address, so an editor embedded in another site is still recognised.
 
 ### Permission model and trade-off
 
@@ -56,18 +66,20 @@ How it plays out: the popup switch never asks for anything. Clicking it grants `
 - React controlled inputs (`value` + `onChange`). The adapter dispatches a bubbling `input` event after each replacement, so React state follows the converted text, survives a re-render, and receives candidate choices. This was verified with React 19.3 in development mode. Other frameworks that listen to `input` (Vue `v-model`, Svelte `bind:value`, Angular forms) should behave the same but were **not tested**.
 - `contenteditable` boxes on the five editor libraries above, on local test pages only. See [Rich text boxes](#rich-text-boxes) and the test log.
 - Same-origin iframes (`allFrames: true`). A frame follows the **tab's** site choice through `location.ancestorOrigins`.
+- Google Docs and Sheets, on stand-in pages built from the measurements above. See [Google Docs and Sheets](#google-docs-and-sheets).
 
 ### Does not work
 
-- **Google Docs** draws text on a canvas and takes input through a hidden, offscreen iframe. Nothing an extension can attach to looks like a text field. (Google's own Input Tools for Docs is built into Docs.)
+- **Google Slides, Forms and the other Google editors**, and comment boxes in Docs, get no rich text handling. Slides takes keys the way Docs does but was not measured.
 - **Shadow DOM.** The manager's `root.querySelectorAll` and `MutationObserver` do not cross shadow roots, so inputs inside web components are never attached. Workarounds: walk open shadow roots and run one manager per root, or track `composedPath()[0]` on `focusin` and attach lazily. Neither reaches closed shadow roots without `chrome.dom.openOrClosedShadowRoot`.
-- **Cross-origin iframes** (embedded comment widgets, payment frames, chat widgets). `allFrames` only injects where the extension has host access. Those frames need their own origin approved, and the popup only asks for the top site. `about:blank` and `srcdoc` frames would need `matchOriginAsFallback`, which this prototype does not set.
+- **Cross-origin iframes** (embedded comment widgets, payment frames, chat widgets). `allFrames` only injects where the extension has host access. Those frames need their own origin approved, and the popup only asks for the top site.
 - **Pages that already run SahajLipi.** The adapter stops double attachment with a module-level `attachedFields` WeakSet. The extension's isolated world loads its own copy of the module, so it cannot see the page's WeakSet. Both adapters cancel the same `beforeinput` and both insert. Measured on a fixture page: typing `namaste` into a field the page had attached produced `ननअअममअअससततएए`. The prototype skips `[data-sahajlipi]` fields, which covers pages using the default `'marked'` scope. A page that attaches with `scope: 'all'` or by calling `attachNepaliInput` directly is not detected. A reliable fix belongs in the package (see recommendation).
 
 ### Known risks, not verified
 
 - **Observer cost.** With the default exclude selector, the manager filters its `MutationObserver` to three attributes. A custom `excludeSelector` turns that filter off, so the extension observes every attribute change on the page. Each one can run `querySelectorAll` under the changed node. On pages that animate attributes constantly this could add measurable main-thread work. **Not measured.**
 - **Live rich text sites.** Sites wrap these libraries in their own handlers, such as mention menus and draft saving. Only a manual pass can show how they behave.
+- **Google Docs changes.** The Docs path depends on how Docs reads its typing frame today: which events it accepts, that Backspace removes one code point, and the class names of the frame and its caret. A Docs update could break any of them.
 - **Alt+digit on macOS.** The adapter matches `event.key` against `1`–`9`. On macOS, Option+1 normally reports `¡`, so the shortcut hinted in the dropdown may not fire there. Synthetic Playwright key presses cannot show this. Needs a manual check on a Mac keyboard.
 - **Site keyboard shortcuts and Alt+Shift+N.** Pages with their own Alt shortcuts may conflict. Chrome lets the user rebind the command.
 - **Edge.** The manifest uses only APIs Edge shares with Chrome, but it was not loaded in Edge. Firefox would need `browser_specific_settings` and a different background declaration; Safari needs an Xcode wrapper. Neither was attempted.
@@ -81,7 +93,7 @@ How it plays out: the popup switch never asks for anything. Clicking it grants `
 
 ## Recommendation
 
-1. **Phase 1: ship a "plain text boxes" extension only if that audience is worth it.** This prototype is close. It still needs icons, a store listing, a privacy policy, a manual pass on real sites (government forms, news comment boxes, search boxes), the macOS Alt+digit check, and an observer cost measurement. Set expectations on the listing: no Google Docs, and list only the rich text sites that have passed a manual check.
+1. **Phase 1: ship a "plain text boxes" extension only if that audience is worth it.** This prototype is close. It still needs icons, a store listing, a privacy policy, a manual pass on real sites (government forms, news comment boxes, search boxes), the macOS Alt+digit check, and an observer cost measurement. Set expectations on the listing: list only the rich text sites that have passed a manual check.
 2. **Phase 2: small package changes that make any second host safe**, each its own PR with tests:
    - the adapter ignores `beforeinput` events that are already `defaultPrevented`, or marks attached fields (for example `data-sahajlipi-attached`), so two copies of SahajLipi never double-convert;
    - an option to keep the observer's attribute filter with a custom `excludeSelector`;
@@ -93,7 +105,7 @@ How it plays out: the popup switch never asks for anything. Clicking it grants `
 
 ## Test log
 
-Run: `npm run extension:check` ([`tools/check-extension.js`](../tools/check-extension.js)), 2026-11-03. Playwright 1.63.0, Chromium 153.0.8010.12 (Playwright's `chromium` channel, headless), macOS 27.0.1, Node 22.22.3. The unpacked extension was copied to a temp directory with `host_permissions` for `http://127.0.0.1:4181/*` added, standing in for an approved permission prompt. Fixtures are served from the repository by `python3 -m http.server`. Result: **227 passed, 0 failed.**
+Run: `npm run extension:check` ([`tools/check-extension.js`](../tools/check-extension.js)), 2026-11-06. Playwright 1.63.0, Chromium 153.0.8010.12 (Playwright's `chromium` channel, headless), macOS 27.0.1, Node 22.22.3. The unpacked extension was copied to a temp directory with `host_permissions` for `http://127.0.0.1:4181/*` added, standing in for an approved permission prompt, plus `http://docs.google.com/*`, which the browser maps to the same fixture server so the Google stand-in pages run under the real host name. Fixtures are served from the repository by `python3 -m http.server`. Result: **253 passed, 0 failed.**
 
 | Area | Check | Result |
 | --- | --- | --- |
@@ -111,13 +123,21 @@ Run: `npm run extension:check` ([`tools/check-extension.js`](../tools/check-exte
 | Opt-in | `http://localhost:4181` (not granted) gets no script | Pass |
 | Double conversion | field marked `data-sahajlipi` and attached by the page converts once (without the exclusion: `ननअअममअअससततएए`) | Pass |
 | React | controlled input converts; state matches; survives re-render; candidate choice reaches state | Pass |
-| `npm test` | unit suite | 394 / 394 pass |
+| Google Docs (stand-in) | words, Roman Backspace (also with Shift held), Backspace after a word goes to Docs, Enter, a click, an arrow key, a shortcut and a paste end the word, Enter after punctuation leaves the earlier text alone, digits and punctuation, a literal web address, candidate list 4 px under Docs' caret, candidate click, Alt+2, literal while off, no page errors; converts on both the registered and the `executeScript` path | Pass |
+| Google Slides, Sheets (stand-ins) | Slides' typing frame is left alone; a selected (closed) Sheets cell and an open one convert, including the first letter; a formula stays as typed; the registration sets `matchOriginAsFallback` | Pass |
+| `npm test` | unit suite | 401 / 401 pass |
 
 **Manual retest, 2026-11-02, before the permission request moved to its own button:** the maintainer loaded the unpacked extension in their own browser and reported that first enable worked without a reload through the real permission prompt, that the logo showed, and that the switch stayed on after clicking Deny, which led to this split.
 
 **Manual check on X, 2026-11-03, merged build:** the maintainer tested the rich text build in their own browser, signed in to X, and reported that typing Nepali works. This is one person's report on one site, with no details recorded for individual cases.
 
+**Console probes in Google Docs and Sheets, 2026-11-06:** see [Google Docs and Sheets](#google-docs-and-sheets) for what they measured. They used no extension build.
+
+**Manual check in Google Docs and Sheets, 2026-11-06, first build:** the maintainer reported that typing works in Docs. In Sheets it worked in a double-clicked cell but not after a single click, which led to the closed-cell handling above. With that build, the maintainer reported that typing into a single-clicked cell works too.
+
 **Not verified:**
+
+- in live Sheets, cases beyond the maintainer's report (fast typing into a closed cell, autocomplete suggestions, the formula bar); in live Docs, the candidate list placement, a long paragraph, typing with a selection and an IME composition;
 
 - the current popup flow with a real toolbar click and `activeTab`, and the real **Remember this site** prompt, both Allow and Deny (these need a human click);
 - the Alt+Shift+N command;

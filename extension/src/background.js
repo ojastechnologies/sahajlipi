@@ -14,10 +14,21 @@ async function syncRegistration() {
     js: [CONTENT_SCRIPT_FILE],
     matches: origins,
     allFrames: true,
+    // Also reach about:blank frames, as executeScript does. Google Docs takes keys in one.
+    matchOriginAsFallback: true,
     runAt: "document_idle",
   };
-  if (existing.length) await chrome.scripting.updateContentScripts([script]);
-  else await chrome.scripting.registerContentScripts([script]);
+  const save = () => existing.length
+    ? chrome.scripting.updateContentScripts([script])
+    : chrome.scripting.registerContentScripts([script]);
+  try {
+    await save();
+  } catch (error) {
+    // Chrome 111 to 118 do not know the option; register without it there.
+    if (!/matchOriginAsFallback/.test(error?.message)) throw error;
+    delete script.matchOriginAsFallback;
+    await save();
+  }
 }
 
 async function inject(tabId) {

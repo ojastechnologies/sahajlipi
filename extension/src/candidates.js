@@ -42,6 +42,8 @@ const altLabel = /Mac/.test(navigator.platform) ? "⌥" : "Alt+";
  * shadow root so page styles cannot reach it.
  */
 export function createCandidateMenu(doc, { onChoose }) {
+  // Google Docs puts the list in the page around the frame the script runs in.
+  const view = doc.defaultView;
   const host = doc.createElement("sahajlipi-candidates");
   host.style.cssText = "all: initial; position: fixed; z-index: 2147483647; display: none;";
   const shadow = host.attachShadow({ mode: "closed" });
@@ -71,7 +73,7 @@ export function createCandidateMenu(doc, { onChoose }) {
   // Text fields do not expose caret coordinates, so lay the text out in a hidden
   // copy inside the shadow root, where the page's observers and styles cannot see it.
   function caretPosition(target) {
-    const computed = getComputedStyle(target);
+    const computed = view.getComputedStyle(target);
     const multiline = target.tagName === "TEXTAREA";
     const mirror = doc.createElement("div");
     for (const name of MIRRORED_STYLES) mirror.style[name] = computed[name];
@@ -108,11 +110,11 @@ export function createCandidateMenu(doc, { onChoose }) {
     const lineBottom = caret && multiline ? clamp(rect.top + caret.bottom, rect.top, rect.bottom) : rect.bottom;
     const height = host.offsetHeight;
     const below = lineBottom + 4;
-    const top = below + height > innerHeight && lineTop - height - 4 >= 0
+    const top = below + height > view.innerHeight && lineTop - height - 4 >= 0
       ? lineTop - height - 4
       : below;
     const left = caret ? clamp(rect.left + caret.x, rect.left, rect.right) : rect.left;
-    host.style.left = `${Math.max(0, Math.min(left, innerWidth - host.offsetWidth))}px`;
+    host.style.left = `${Math.max(0, Math.min(left, view.innerWidth - host.offsetWidth))}px`;
     host.style.top = `${top}px`;
   }
 
@@ -172,8 +174,8 @@ export function createCandidateMenu(doc, { onChoose }) {
   doc.addEventListener("focusout", (event) => {
     if (event.target === field) hide();
   }, true);
-  addEventListener("scroll", position, { capture: true, passive: true });
-  addEventListener("resize", position, { passive: true });
+  view.addEventListener("scroll", position, { capture: true, passive: true });
+  view.addEventListener("resize", position, { passive: true });
 
   return { update, hide };
 }
